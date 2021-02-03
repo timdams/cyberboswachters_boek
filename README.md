@@ -1,1 +1,1 @@
-Een Nederlandstalige handbooek over Computerbeveiliging
+Een Nederlandstalige handboek over Computerbeveiliging

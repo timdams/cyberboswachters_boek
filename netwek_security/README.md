@@ -1,4 +1,0 @@
-# Netwek security
-
-Algemeen
-
