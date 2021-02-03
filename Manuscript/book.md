@@ -1,5 +1,4 @@
 frontmatter.txt
-README.md
 mainmatter.txt
 ethisch_hacken.md
 0_het_security_landschap/README.md
