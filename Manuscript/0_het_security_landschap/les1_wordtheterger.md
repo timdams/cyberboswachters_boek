@@ -35,16 +35,16 @@ Dat glazen huisje werd in 2013 hardhandig aan diggelen geslagen door twee belang
 * Edward Snowden: als systeembeheerder bij de NSA, de Amerikaanse inlichtingendienst gericht op elektronische spionage, had hij toegang tot het doen en laten van de dienst. Snowden lekte een grote hoeveelheid documenten naar de bevolking die onder andere het *PRISM*-programma uit de doeken deed. Hieruit bleek dat de NSA complexe samenwerking heeft met enkele grote Amerikaanse internetbedrijven die zogenaamde *taps* op hun systemen hebben staan zodat de NSA "kan meeluisteren" op de netwerken.
 * Julian Assange: rond 2013 waren er geregeld zogenaamde klokkenluiders (*whistleblowers*) die om persoonlijke overtuigingen vonden dat bepaalde informatie met het publiek moesten worden gedeeld. Zeker in dictatoriale middens kan dit levensgevaarlijk zijn. Julian Assange besefte dit en richtte daarom in 2006 Wikileaks op. Een site waar klokkenluiders op een anonieme manier documenten konden *lekken*. Tot 2010 zijn zo enkele erg controversiële documenten met de wereld gedeeld die soms verregaande diplomatieke of geopolitieke gevolgen had.
 
-{% hint style='warning' %}
+{aside}
 Het is niet evident om over mensen als Assange en Snowden te praten zonder in een controversiële modderpoel te geraken. Voor de één is Snowden een held, voor de ander een verrader. In dit boek trachten we een objectief beeld te geven, zonder waardeoordelen te geven. Wat wel buiten kijf staat is dat zowel Snowden als Assange de wereld getoond hebben dat er in de duistere wandelgangen van de veiligheidsdiensten zaken gebeuren waar "normale stervelingen" zelden weet van hebben.
-{% endhint %}
+{/aside}
 
 
 Het waren uiteraard vooral de onthullingen van Snowden die bij velen de oogkleppen deed afvallen. Op het Internet ben je hoegenaamd niét anoniem. Grote (en kleine) mogendheden en privéfirma's kunnen ons doen en laten op het internet bekijken en bewaren. Privacy en het internet zijn een oxymoron - een contradictorische term zoals zwarte sneeuw). Wanneer je je op het internet begeeft, op welke manier ook, gooi je een deel van je privacy te grabbel. En dat is iets dat helaas de voorbije 10 jaar er niet op verbeterd is. 
 
-{% hint style='tip' %}
+{aside}
 Een interessant debat dat altijd opduikt bij deze problematiek is de "Ik heb toch niets te verbergen"-houding. In het kleine maar fijne boekje "Je hebt wél iets te verbergen" van onderzoeksjournalisten Maurits Martijn en Dimitri Tokmetzis (ISBN 9789082821611) wordt onherroepelijk brandhout gemaakt met deze stelling. Finaal zijn we volledig afhankelijk van de diensten die we gebruiken wat ze met onze data nu én belangrijker, in de toekomst zullen doen. Privé-informatie over jou die nu ogenschijnlijk ongevaarlijk lijkt, kan dat potentiëel in de toekomst wel zijn wanneer onze normen, waarden of wetten veranderen. 
-{% endhint %}
+{/aside}
 
 #### 2014: hoe veilig is *the cloud* ?
 
@@ -56,17 +56,48 @@ Om dergelijke diensten te gebruiken dien je natuurlijk een veilig paswoord te he
 
 De diefstal van de foto's werd echter vergemakkelijkt om 2 redenen:
 * Sommige slachtoffers gebruikten makkelijk te raden, of snel te bruteforcen paswoorden.
-* Andere hadden de beveiligingsvragen ter goeder trouw ingediend. Veel diensten stellen een extra beveiligingsvraag (zoals "Wat is de naam van je eerste huisdier" of "Op welke school zat je vader") die ze kunnen gebruiken om jouw identiteit te verifiëren indien je je paswoord vergeten bent en je dit wenst te resetten. Wanneer jij of ik dit soort vragen invullen dan is dit 90% van de tijd informatie die nergens te vinden valt, enkel in de grijze massa in je hoofd en misschien in een genant dagboekje uit je jeugd. Bij de Amerikaanse beroemdheden wiens iCloud werd gehackt, is dat niet zo. Hun leven kan volledig gereconcstrueerd worden aan de hand van de ontelbare interviews die ze al hebben gegeven. Gegarandeerd dat ooit een interviewer al heeft gevraagd wat de kleur van zijn of haar eerste auto was, of in welk dorp hij of zij is opgegroeid. 
+* Andere hadden de beveiligingsvragen ter goeder trouw ingediend. Veel diensten stellen een extra beveiligingsvraag (zoals "Wat is de naam van je eerste huisdier" of "Op welke school zat je vader") die ze kunnen gebruiken om jouw identiteit te verifiëren indien je je paswoord vergeten bent en je dit wenst te resetten. Wanneer jij of ik dit soort vragen invullen dan is dit 90% van de tijd informatie die nergens te vinden valt, enkel in de grijze massa in je hoofd en misschien in een genant dagboekje uit je jeugd. Bij de Amerikaanse beroemdheden wiens iCloud werd gehackt, is dat niet zo. Hun leven kan volledig gereconstrueerd worden aan de hand van de ontelbare interviews die ze al hebben gegeven. Gegarandeerd dat ooit een interviewer al heeft gevraagd wat de kleur van zijn of haar eerste auto was, of in welk dorp hij of zij is opgegroeid. 
 
-{% hint style='warning' %}
+{aside}
 Het is een verkeerde reflex om in dit soort zaken ogenblikkelijk aan *victim shaming* te doen (kijk maar naar het recentere voorval waarbij enkele Bekende Vlamingen het slachtoffer waren van catfishing). Ieder doet en laat wat hij wenst in z'n privésfeer - daarom heet het ook privé- maar het is belangrijk te beseffen dat als je zaken *in the cloud* bewaard, de kans erg bestaande is dat iets of iemand er ooit onrechtmatige toegang tot zal krijgen. U weze gewaarschuwd.
-{% endhint %}
+{/aside}
 
-{% hint style='tip' %}
+{aside}
 Niemand verplicht je om op de beveiligingsvragen een eerlijk antwoord te geven. Er bestaat geen leugendetector in die systemen of een mama die op je vingers komt tikken. Lieg er dus op los, maar onthoudt uiteraard je antwoord. Dankzij die beveiligingsvragen hou je echter een stok achter de hand moest je je paswoord vergeten zijn. 
-{% endhint %}
+{/aside}
 
+#### Ook in 2014: wie zijn de daders?
 
+Het was te verwachten dat ook op cyberniveau er een wapenwedloop zou starten zoals ,helaas, ook in de echte wereld plaatsvindt. Daar waar landen voorheen nog vooral defensive cybermogelijkheden hadden, begon halverwege het vorige decennium dit arsenaal meer en maar uitgebreid te worden met offensieve cyberwapens. Het was met andere woorden wachten tot de eerste cyberaanvallen door soevereine staten op andere staten. Het probleem met dergelijke aanvallen is dat het als aangevallen mogendheid ongelooflijk moeilijk is om
+1. De bron van de aanval te identificeren. Wie weet lijkt de aanval te komen vanuit land X, terwijl het eigenlijk land Y is dat gewoon de aanval via land X routeert. En het laatste dat je natuurlijk wil doen is het verkeerde land beschuldigen.
+2. En wat als een hacker, zonder staatsinmeningen, beslist om op eigen houtje een cyberaanval te initiëren. Is het land van herkomt van die aanvaller dan verantwoordelijk voor de schade?
+3. De "schade" van een cyberaanval is niet altijd duidelijk. Wanneer een raket op een stad wordt afgestuurd is dat een duidelijk *act of agression* en is er grote kans op een militair conflict (indien de diplomatieke weg geen soelaas brengt). Maar is een cyberaanval, zoals een denial-of-service (DoS, zie later), genoeg reden om de oorlog buiten het cyberdomein te escaleren? Zijn er eigenlijk *rules of engagement*? Is er een conventie van geneve? Neen op dit alles. Daar cyberaanvallen zo moeilijk te traceren en identificeren zijn, blijft het allemaal het betere nattevinger werk.
 
+Een bewuste cyberaanval op een soevereine staat was al een enkele keer gebeurt (denk maar aan de cyberaanvallen in 2007 van Rusland op Estland) maar in 2014 was er helaas een nieuwe primeur. Ook nu moeten we naar Hollywood keren, niet om de beroemdheden en hun privé-kiekjes, maar omwille van een film waar een andere staat niet om kon lachen. In 2014 zou Sony een nieuwe film uitbrengen, getiteld "The Interview", met James Franco en Seth Rogan. In deze komedie worden 2 journalisten gevraagd om tijdens hun interview van een Noord-Koreaanse hem te doden. De vergelijkingen met de Noord-Koreaanse leider Kim Jong-un waren voor iedereen duidelijk. Dat Noord-Korea op de tenen zou zijn getrapt stond dan ook in de sterren geschreven.
 
+De daaropvolgende gebeurtenissen zijn nog steeds niet uitgeklaard, maar vast staat wel dat een selecte groep hackers toegang had gekregen tot confidentiële data op de servers van Sony en deze vervolgens op het internet lekte. De financiële schade voor Sony was enorm. De daders wisten onuitgebrachte films, emails, salarissen en andere privé-informatie te stelen. Heel lang werd gedacht dat de groeperingen die achter de aanval stond door Noord-Korea was aangestuurd. Echter, nu nog steeds heeft men dat niet kunnen bevestigen. Zou zijn er ook experts die denken in het bewijsmateriaal de hand van Rusland en/of China te zien. Kortom, zoals eerder gezegd, cyberaanvallen zijn verdomd lastig om in kaart te brengen.
 
+Als het toch Noord-Korea zou zijn geweest - wat nog steeds meer dan mogelijk is- dan hebben ze hiermee dus een dubieuze primeur: voor het eerst valt een soeverein land een bedrijf aan in een ander land. En de vraag die vervolgens veel experten zich stelden was: "vanaf wanneer is dit een *act of aggression*?" en "moet een land op dit soort aanval reageren namens het bedrijf, of namens de hele natie waar het bedrijf zich bevindt?" Wie zal het zeggen. Dit boekje helaas niet, maar het geeft wel voor voor discussie.
+
+### 2015: Stuxnet bewaarheid
+
+Keer op keer zullen we dit moeten herhalen: we kunnen nooit met 100% zekerheid de origine van een cyberaanval vaststellen. Heel af en toe, met dank aan klokkenluiders zoals Snowden, of verregaand (al dan niet journalistiek) onderzoek worden specifiek aanvallen volledig uit de doeken gedaan. 
+
+In 2015, iets meer dan een jaar na de Sony aanval, werd dat waar we voor vreesden bewaarheid: hackers waren er in geslaagd om de elektriciteitsinfrastructuur van Oekraïne deels plat te leggen. Een groepering slaagde er zo in om bijna een kwart miljoen mensen gedurende meerdere uren zonder stroom te zetten. Iedereen keek uiteraard ogenblikkelijk in de richting van Rusland - Oekraïne maakte vroeger deel uit van de voormalige Sovjetrepubliek- daar de aanvallen origineerden van IP-adressen die waren toegewezen aan Rusland. Maar zelfs als dat zou zijn, zonder harde bewijzen dat de hackers ook handelden in naam van de Russische overheid blijft het modderdik kijken wie *op de vingers getikt* moet worden voor de aanval.
+
+Wie het ook waren, één ding staat wel vast: in 2015 waren hackers er voor het eerst in geslaagd om met één welgemikte aanval honderdduizenden mensen in problemen te brengen. 
+
+### Scheidingen en zelfmoord
+
+2015 wordt de schaal van cyberaanvallen steeds groter. De hoeveelheden informatie die hackers van bedrijven kunnen bemachtingen kunnen al lang niet meer op een A4'tje afgedrukt worden. Wanneer hackers toegang krijgen tot de privé-servers van hun doelwit kunnen ze vlotjes ettelijke gigabytes, tot zelfs terrabytes, aan geheime informatie stellen. Tegenwoordig hebben we in Europa de GDPR wetgeving die probeert bedrijven duidelijk te maken (en te straffen) dat zij verantwoordelijk zijn om onze data op een veilige manier te bewaren. In 2015 was dat veel minder. De berichten van datalekken in die tijd spraken boekdelen: van zodra cybercriminelen toegang hadden tot de privéservers konden ze de data zonder problemen lezen. Paswoorden, kredietkaartgegeven, rijksregisternummers, alles stond onbeveiligd (*ongeëncrypteerd*) op de systemen.
+
+Ashley Madison was de tinder voor mensen die een relatie wilden naast hun "officiele relatie". De site hielp kortom mensen aan een affaire. Hun leuze "Life is short.Have an affair" wond er geen doekjes rond. En met hun meer dan 20 miljoen "klanten" was het duidelijk dat ze een lucratief idee hadden. Dat ze tegenwind zouden krijgen was te verwachten. Maar een wind van 12 beaufort? Dat niet. 
+
+In juli 2015 plaatste een groep hackers een ultimatum op een website aan het adres van de eigenaars van Ashley Madison: "Haal jullie moreel dubieuze website van het internet, of wij plaatsen meer dan 60 gigabyte aan gestolen data online". De site werd niet offline gehaald en de hackers "hielden woord." De gevolgen waren immens, niet zo zeer voor Ashley Madison, wel voor z'n klanten. Plotsklaps kreeg de wereld een lijst te zien waarin honderdduizenden klanten open en bloot aan de schandpaal werden genageld. Mensen werden publieke vernederd. Er is sprake van minstens 2 of 3 zelfmoorden rechtstreeks als gevolg van de lek. Mensen werden ontslagen. Kortom, het lekken van wat uiteindelijk maar een hoop binaire data- nullen en eentjes- was had gevolgen voor relaties, mensenlevens en carriéres. 
+
+Als positieve noot in dit verhaal halen we hier uit dat dit soort gigantische lekken mensen heeft doen inzien dat ze twee maal moeten nadenken voor ze hun perosonlijke informatie weggeven aan één of andere internet-gigant (het is helaas een les die we jaarlijkse lijken te vergeten, kijk maar naar de populariteit van Tik Tok, Facebook, etc.). 
+
+{aside}
+Een stelregel die bedrijven nu hanteren is de volgende: vraag je niet af **of** je gaat gehackt worden maar vraag je af **wanneer** je zal gehackt worden. Dit is een heel andere manier van tegen je beveiligingsprobleem aankijken. Vergelijk het met het in huis halen van een koffer met daarin 10 miljoen euro aan diamanten. Als je je afvraagt of er ooit inbrekers zullen binnengeraken en daar naar beveiligt -waakhonden, videocamera's rond het huis, dubbel slot- dan heb je daar niets aan als ze vervolgens toch binnen geraken en je koffertje stelen. Veel beter kan je én je huis beveiligen, én ervan uitgaan dat ze de koffer gaan bemachtigen: en je dus maar beter ook ervoor zorgt dat de dieven niets met de diamanten kunnen doen (door bijvoorbeeld je naam er in te graveren).
+Kortom: bedrijven moéten data die ze van ons opslaan minstens encrypteren en systemen inbouwen die de data onbruikbaar maken als ze toch gelekt zou worden.
+{/aside}
