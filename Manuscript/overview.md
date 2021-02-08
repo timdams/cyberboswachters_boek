@@ -1,4 +1,4 @@
-[ectfiche](https://bamaflexweb.ap.be/BMFUIDetailxOLOD.aspx?a=138332&b=5&c=1)
+<!---[ectfiche](https://bamaflexweb.ap.be/BMFUIDetailxOLOD.aspx?a=138332&b=5&c=1)
 
 Topics:
   
@@ -11,7 +11,7 @@ Topics:
 * Hardware security
 * Practical privacy (gdpr)
 
-
+--->
 
 <!---“12 lessen die we kunnen leren van de digitale stropers” ofzo. 
 

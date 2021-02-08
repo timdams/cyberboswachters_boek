@@ -1,17 +1,13 @@
 ## Wordt het erger?
 
-<!---NOBOOKSTART--->
-{% hint style='tip' %}
-<!---NOBOOKEND--->
-<!---{aside}--->
-<!--- {float:right, width:50%} --->
+
+{aside}
+{float:right, width:50%} 
 ![](../assets/gotopolice.png)
 De laatste 10 jaar is de (cyber)security wereld erg veranderd. Ze doet dit niet omdat ze daar zin in heeft, maar wel als antwoord op wat er gebeurt in de wereld in zake cyberaanvallen, geopolitieke situaties, etc. Het is altijd een kat en muisspel, waarbij de boswachters helaas *by definition* steeds zullen achterlopen op de stropers. De kwaadwillige hackers hoeven maar 1 klein gaatje te vinden in je peperdure beveiliging en ze zijn binnen. Terwijl jij wel aan alles moet (proberen te denken). 
 Dat het erger wordt is eigenlijk daarom bijna automatisch een evidentie. De wereld van de beveiliging gebeurt bij opbod en hoe beter de boswachters het bos kunnen verdedigen, hoe complexer de technieken zullen worden die de stropers hanteren.
-<!---{/aside}--->
-<!---NOBOOKSTART--->
-{% endhint %}
-<!---NOBOOKEND--->
+{/aside}
+
 
 We gaan geregeld terug in de tijd gaan om te bekijken hoe bepaalde verdedigings-en aanvalstechnieken zijn ontstaan, maar in dit hoofdstuk gaan we enkel terug tot 2010. Het jaar waarin Mack Zuckerberg, CEO van Facebook, door Time Magazine tot persoon van het jaar werd uitgeroepen en ook waarin Apple de eerste IPad table aan het publiek toonde. Het was helaas ook het jaar waarin het boorplatform, Deepwater Horizon, voor één van de ergste milieurampen ooit zorgde, alsook het jaar dat 33 mijnwerkers anderhalve maand lang 700 meter diep opgesloten zaten in een mijn. Voor ons was echter de meest cruciale gebeurtenis het ontdekken van **Stuxnet**.
 
@@ -29,9 +25,9 @@ Wat Stuxnet deed was zich tussen de hardware en de software nestelen. Als een vi
 
 We moeten er geen tekeningetje bij maken wat de effecten kunnen zijn indien een Stuxnet variant bewust werd ingezet om bijvoorbeeld de machinerie in een kerncentrale of waterdam te saboteren. Zonder in details van Stuxnet in te gaan - daarvoor verwijzen we graag naar de uitstekende in 2006 verschenen documentaire "Zero Days" door Alex Gibney die een zeer ontluisterend én boeiend beeld over de zoektocht naar de oorsprong van het Stuxnet virus- is het duidelijk dat het verschijnen van dit virus een ommekeer betekende in wat de gevolgen van cyberterrorisme konden betekenen: mensenlevens stonden plots op het spel, niet enkel onze dierbare emails en digitale vakantiefoto's.
 
-{% hint style='tip' %}
+{aside}
 Stuxnet bleek een bewust ontworpen virus te zijn dat probeerde een specifiek soort centrifuge te saboteren. Namelijk de centrifuges die onder andere Iran gebruikt om uraniam te verrijken. De inlichtingendiensten van de Verenigde Staten en Israel zouden klaarblijkelijk Stuxnet hebben ontworpen om zo dit uraniumverrijkkingsproces van Iran te dwarsbomen. 
-{% endhint %}
+{/aside}
 
 
 
