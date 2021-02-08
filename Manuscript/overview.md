@@ -1,7 +1,7 @@
 <!---[ectfiche](https://bamaflexweb.ap.be/BMFUIDetailxOLOD.aspx?a=138332&b=5&c=1)
 
 Topics:
-  
+* Situering domein
 * Overzicht netwerkbeveiligingsmethodes
 * Intrusion detection systemen, firewalls en honeypots
 * Cryptografische concepten en Certificaten
