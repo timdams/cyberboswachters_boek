@@ -1,0 +1,23 @@
+---
+title:  'Cyberboswachters'
+subtitle: "De beste digitale stropers zijn ook de beste cyberboswachters"
+author:
+- Dams Tim
+subject: "security"
+keywords: [cybersecurity, cryptografie, beveiliging]
+colorlinks: true
+titlepage-background: "assets/cover.png"
+lang: "nl"
+titlepage: true
+header-includes:
+- |
+  ```{=latex}
+  \usepackage{awesomebox}
+  ```
+pandoc-latex-environment:
+  noteblock: [note]
+  tipblock: [tip]
+  warningblock: [warning]
+  cautionblock: [caution]
+  importantblock: [important]
+...
