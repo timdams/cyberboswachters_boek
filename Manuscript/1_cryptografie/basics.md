@@ -16,7 +16,7 @@ De zogenaamde McCumber kubus, ontwikkeld door John McCumber in 1991, geeft een g
 
 Om ons doel te bereiken (C.I.A.) moeten we ervoor zorgen dat we dit toepassen op alle vormen die onze data kan hebben (opslag, verzenden, verwerken). Dit kunnen we tewerkstellingen door technologische oplossingen (zoals encryptie wat zo meteen wordt uitgespit), maar een niet onbelangrijke factor zijn ook de mensen die met de data moeten werken. Als zij zich niet aan de afspraken (procedures) houden en hun paswoorden gewoon op postits aan hun scherm hangen, dan mag je een nog zo'n dure firewall hebben, het zal niet baten. 
 
-![De McCumber kubus](crypto/secmodel.png)
+![De McCumber kubus](crypto/secmodel.png){ width=70% }
 
 
 ### Encryptie
@@ -120,7 +120,7 @@ Het voordeel van een transpositiecipher is natuurlijk dat een zogenaamde "known 
 
 Uiteraard zijn er tal van varianten mogelijk om transpositie te doen. Eerst kan je beslissen om je plaintext in een bepaalde vorm te plaatsen: bijvoorbeeld in 10 kolommen. Vervolgens kan je dan, gebaseerd op de sleutel, beslissen in welke volgorde je de kolommen achter elkaar plaatst om de originele tekst te krijgen. Dit is een zogenaamd *route cipher* wat onder andere werd gebruikt tijdens de Amerikaanse Burgeroorlog. 
 
-![Bron Wikipedia](crypto/skytale.png)
+![Bron Wikipedia](crypto/skytale.png){ width=50% }
 
 ### Combinatie
 
@@ -197,9 +197,7 @@ De waarheidstabel van de XOR-functie is de volgende:
 | 0               | 0               | 0                 |
 | 1               | 1               | 0                 |
 
-De xor-functie wordt in schema's aangeduid door een cirkel met een plusje in:
-
-![](crypto/xor.png)
+De xor-functie wordt in schema's aangeduid door een cirkel met een plusje in: ![](crypto/xor.png){ width=20px }
 
 De XOR-functie heeft de fijne eigenschap dat je deze dus voor encryptie kan gebruiken. 
 
@@ -340,7 +338,8 @@ Blockciphers, de naam zegt het al, zal eerst de plaintext in blokken karakters o
 
 #### Feistel structuren
 Ook hier zullen we dezelfde soorten operaties (XOR, substituties en transposities) zien terugkomen. Echter, ook zogenaamde **feistel**-structuren worden hier gebruikt: in deze operatie zal steeds de data in 2 helften worden gesplitst en wordt steeds een specifieke operatie (aangeduid met *F* van functie in de figuur), zoals een substitutie, op 1 helft uitgevoerd dat dan wordt ge-xor'd met de andere helft. Dit wordt meerdere keren herhaald, waarbij de linker (*L*) en rechterzijde (*R*) steeds afwisselend door de specifieke encryptie-operatie gaan. Net zoals bij RC4 zullen we ook vaak met een zogenaamd key scheduling algorithme werken zodat de sleutel niet constant doorheen het hele proces dezelfde is en we dus met **subkeys** werken (*K* in onderstaande figuur)
-![Bron wikipedia](crypto/feistel.png)
+
+![Bron wikipedia](crypto/feistel.png){ width=60% }
 
 #### DES tot op het bot
 
@@ -351,29 +350,117 @@ Er was veel controverse rond de adaptie van deze standaard (gebaseerd op het doo
 :::
 
 Data met DES encrypteren (en bijgevolg ook decrypteren daar het een symmetrisch cipher is) bestaat uit 2 onderdelen:
+
 1. Versleuteling: Een reeks feistel-structuren na elkaar (**16 rondes**) die de data block per block versleutelen.
 2. Subkeys maken: Een key scheduling algorithme dat 16 subkeys genereert (1 voor iedere encryptieronde), gebaseerd op de 56 bit sleutel.
 
+::: tip
+Je kan de DES standaard [hier](https://web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm) nalezen en ontdekken dat deze niet zo lang is zoals je zou verwachten van een wereldwijd geaddopteerde standaard.
+:::
+
 ##### Versleuteling
-Volgende schema toont het versleutelingsgedeelte, bestaande uit 16 rondes:
-![De 16 rondes, bestaande uit 16 feistel structuren (Bron wikipedia)](crypto/des1.png)
+Volgende schema toont de encryptie bestaande uit 16 rondes:
+
+![](crypto/des1.png)
 
 De data wordt blok per blok doorheen dit gedeelte gestuurd. Eerst gebeurt er een zogenaamde *Initiele permutatie* (*IP* in de figuur) waarbij iedere bit naar een andere plek wordt gestuurd volgens een vast patroon. Achteraan gebeurt dit nogmaals in een *Finale permutatie (*FP*).
 
-![De Initiële permutatie (Bron wikipedia)](crypto/des2.png)
+![De Initiële permutatie (Bron wikipedia)](crypto/des2.png){ width=60% }
 
-Na de *IP* gaat de data door 16 feistel structuren die telkens het zelfde doen. De data wordt in 2 helften gesplits waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-xor'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
+Na de *IP* gaat de data door 16 feistel structuren die telkens het zelfde doen. De data wordt in 2 helften gesplitst waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-xor'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
+
+![Binnenin de F-operatie (Bron wikipedia)](crypto/des3.png){ width=60% }
+
+In het F-blok wordt eerst het 32-bit block uitgebreid (*E* in de figuur, van expansie) naar een 48 bit blok zodat deze even lang is als de subkey voor deze ronde. De expansie gebeurt, net als de initiële permutatie, volgens een vast patroon:
+
+![De expansie van 32 naar 48 bits (Bron wikipedia)](crypto/des4.png){ width=60% }
+
+Nu worden deze 48 bits ge-xor'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst. 
+
+![Waarheidstabel van het S5-blok (Bron wikipedia)](crypto/des5.png){ width=60% }
+
+Finaal krijgen we dus terug een 32 bit blok dat nog een laatste permutatie ondergaat die weer de bits van plaats verandert en de output hiervan is een geëncrypteerd blok data dat kan doorgestuurd worden naar de ontvanger.
+
+##### Subkeys maken
+
+Iedere ronde tijdens de versleuteling vereist een sleutel. Om te voorkomen dat steeds de hoofdsleutel wordt gebruikt (en er zo potentiëel dezelfde keystreams worden gemaakt) wordt deze sleutel doorheen een *round-key generator* algorithme gestuurd. Dit algorithme bestaat uit 16 rondes waarbij de 56 bit sleutel (8 van de 64 bits in de originele sleutel zijn zogenaamde pariteits-bits, die dienen om te controleren of de sleutel geen fouten bevat) steeds in 2 helften van 28 bits wordt *geknipt*.
+
+![De 16 rondes die telkens 1 subkey maken (Bron wikipedia)](crypto/des6.png){ width=60% }
+
+Iedere ronde wordt iedere helft van de sleutel 2 bits *geshift* (in ronde 1,2, 9 en 16 maar 1 bit). Dat wil zeggen dat alle bits 2 plekjes opschuiven en de eerste (of laatste) bits komen dan achteraan (of vooraan) te staan. Deze 2 geshifte helften worden dan enerzijds doorgestuurd naar de volgende ronde, anders naar een *compressie P-box* waarvan het resultaat een 48 bits subkey zal zijn van die ronde.
+
+De *compressie P-box* doet al vermoeden wat er gebeurt:
+* Compressie: dus een aantal bits zullen wegvallen (er komt 56 bits in, maar we hebben maar 48 bits nodig)
+* P-box: een permutatie oftewel transpositie dat alle bits van plek zal veranderen.
+
+Er bestaan verschillende varianten hoe dit in z'n werk zal gaan, maar bij DES wordt volgende tabel gehanteerd:
+
+
+
+|1  | 2 | 3|4|5|6|7|8|
+| -  | - | -|-|-|-|-|-|
+| 14  | 17 | 11|24|01|05|03|28|
+| 15  | 06 | 21|10|23|19|12|04|
+| 26  | 08 |16|07|27|20|13|02|
+| 41  | 52 | 31|37|47|55|30|40|
+| 51  | 45 |33|48|44|49|39|56|
+| 34  | 53 |46|42|50|36|29|32|
+
+Voor zij die graag puzzelen, welke getallen ontbreken? 
+
+::: tip
+De bits op locaties 9, 18, 22, 25, 35, 43 en 54 worden geblokkeerd. Daar de sleutel steeds geshift wordt wil dit zeggen dat steeds andere bits *achtergelaten* geworden.
+:::
+
+En zo hebben we het einde van de werking van DES bereikt. Dat viel al bij al nog mee, niet? Uiteraard hebben we nu vooral getoond *hoe* het werkt, maar niet *waarom* het werkt.
+
+<!---#### DES problemen en 3DES
+
+De ultieme encryptie-standaard maken is ijdele hoop. Naast het feit dat, dankzij *Moores law*, computers steeds krachtiger worden en dus ook de sleutellengte steeds moet vergroot worden, is er ook het feit dat hoe populairden een standaard is, hoe meer mensen op zoek gaan gaan naar mogelijk fouten in het systeem. Eén van de interessantere vaststellingen bij DES waren de zogenaamde **weak keys**. Dit zijn sleutels waarvan geweten is dat ze door malafide personen kunnen gebruikt worden om de originele plaintext of sleutel terug te vinden. In het geval van DES was dit zelfs niet zo moeilijk: er waren een aantal sleutels die, als je ze gebruikte, resulteerden in zogenaamde *self-inverting* keys. Het resultaat van je encryptie gaf een ciphertext...die gelijk was aan de plaintext! Over een knullige encryptie gesproken. --->
+
+#### 3DES 
+
+Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES (56 bits, 48 in effecitiviteit vanwege de pariteitsbits) redelijk snel zou gebruteforced worden. Om die reden werd 3DES in het leven geroepen in 1995. De oplossing was een mooi staaltje compromis: het bood een verhoogde beveiliging doordat het een lange sleutel had (tot 168 bits lang) maar bleef tegelijkertijd compatibel met de bestaande DES hardware en software.
+
+De werking van 3DES (*tripple DES*) verrassend eenvoudig: ieder blok data wordt 3 keer doorheen een DES-cipher gestuurd. Hierbij wordt steeds een andere sleutel gebruikt. Om de bestaande DES hardware te gebruiken wordt hierbij de data eerst door de encryptie gestuurd, dan doorheen de decryptie en terug door de encryptie. Daar we een andere sleutel gebruiken in iedere fase heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we dus effectief 3 maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvanger zijde gebeurt dan het omgekeerde: decryptie, encryptie, decryptie én dit dus allemaal met de bestaande DES hardware!
+
+![De 16 rondes die telkens 1 subkey maken (Bron wikipedia)](crypto/3des.png){ width=60% }
+
+::: tip
+3DES laat dus ook (single) DES encryptie toe. Het enige dat je hiervoor moet doen is de subsleutels K2 en K3 gelijkstellen waardoor de 2 en derde fase tijdens de encryptie (en decryptie) eigenlijk niets doet, daar het gewoon de data encryptieerd in ronde 2 en dan ogenblikkelijk in ronde 3 terug gecrypteerd.
+:::
+
+::: note
+Het bankwezen gebruikt 3DES nog steeds (of varianten die erop gebaseerd) zijn om financiële transacties van onder andere Visa en Mastercard te beveiligen.
+:::
+
 
 
 #### Block cipher modes
 
-#### In de praktijk
+Tot hiertoe gingen we steeds blok per blok in het encryptiecipher sturen en het resultaaterva doorsturen. Klaar.  Oplettende mensen hebben hier mogelijk al een hiaat in gezien: wat als twee blokken exact dezelfde data bevatten? Beide zullen dezelfde ciphertext als resultaat genereren, daar we telkens dezelfde sleutel (en dus subkeys) gebruiken. Twee ciphertexts die identiek zijn willen we vermijden, daar het potentiële informatie over de plaintext zichtbaar maakt. Voorts laat dit soort werking ook replay attacks toe: de aanvaller kan een geëncrypteerd pakket bewaren en op een later moment terug opsturen, zonder dat hij moet weten wat de plaintext bevat.
+
+::: tip
+Door paketten te sniffen zou de aanvaller kunnen achterhalen wat de mogelijk inhoud van een pakket is. Ieder netwerkprotocol volgt de standaarden die ervoor beschreven zijn en zo kan dus de aanvaller heel veel informatie ontdekken over een ciphertext gewoon ten opzichte van wanner een pakket wordt verstuurd tegenover de andere. Als het bijvoorbeeld het eerste pakket is dat verstuurd wordt, dan is de kans groot dat dit pakket de typische *"ik wi een verbinding opzetten"*-request is.
+:::
+
+Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren, noemen we de **Electronic Codebook (ECB)** modus. Alhoewel deze modus dus duidelijk een veiligheiddsprobleem met zich mee draagt, heeft deze modus ook één voordeel:
+* Ieder blok wordt onafhankelijk van andere blokken gedecrypteerd. Als er dus een blok door wat voor fout niet gedecrypteerd worden, dan heeft dat gee invloed op de daaropvolgende. Dit is dus voor streaming-situaties nuttig: beeld je in dat je decryptie faalt halverwege het binnenkrijgen van een film die je aan het bekijken bent. Je zou helemaal opnieuw moeten beginnen.
+
+![Volgende voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia)](crypto/ecbfail.png){ width=60% }
+
+ECB is duidelijk een niet zo veilige manier om een block cipher toe te passen. Veel interessanter (veiliger) wordt het wanneer we extra informatie gebruiken om een blok te encrypteren. **Enkel het huidige blok en dezelfde sleutel gebruiken is namelijk niét veilig.** Er zijn verschillende modes om veiliger te encrypteren dan ECB:
+
+* Cipher block chaining (CBC): de output van het vorige block (de ciphertext) wordt mee als input voor de encryptie van het volgende block gebruikt.
+* Cipher feedback (CFB)
+* Output feedback (OFB): het block cipher wordt als een stream cipher gebruikt.
+* Counter-mode (CTR): een extra teller wordt gebruikt als input bij de encryptie van een blok. Deze teller wordt steeds verhoogd. Eén van de meest gebruikte modes (in onder andere WPA2 en IPSEC).
 
 
 
-##### 3DES
+#### AES
 
-##### AES
+
 
 ## Asymmetrische encryptie
 
