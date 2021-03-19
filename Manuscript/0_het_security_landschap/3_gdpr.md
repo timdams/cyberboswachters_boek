@@ -1,5 +1,3 @@
-
-
 # GDPR 
 
 De General Data Protection Regulation (2018), of in het Nederlands de *Algemene Verordering Gegevensbescherming* is een Europese richtlijn om de privacy van Europese burgers, eender waar in de wereld, te beschermen. Of zoals de EU zelf op haar website beschrijft "the thoughest privacy and security law in the world" (wat ook effectief zo is: het is de enige wet momenteel die er in slaagt om wereldwijd de regels ervan af te dwingen).
@@ -44,5 +42,41 @@ Van zodra het bedrijf weet heeft van een (mogelijk) datalek dienen zij dit ogenb
 * Aan **ieder individu waar de data betrekking op had**: als de gelekt data ook maar op één manier kan gelinkt worden aan een individu, dan dienst deze van de lek op de hoogte gebracht te worden.
 * Dit dient **binnen de 72uur na ontdekking van het datalek te gebeuren**. Merk op dat tegenwoordig een datalek zelden zo snel wordt ontdekt, dat beseft GDPR ook. Daarom is de regel dat 72 uur ingaan vanaf het moment dat het bedrijf weet heeft van het datalek. Het is dus perfect mogelijk dat de datalek reeds maanden eerder plaatsvond maar dat het bedrijf nu pas heeft ontdekt dat dit heeft plaatsgevonden.
 
+### Uitzonderingen meldplicht individu
 
-(23:00)
+Bij een datalek zijn er enkele mogelijke uitzonderingen waarom het bedrijf niet noodzakelijk het individu op de hoogte moet stellen van de datalek:
+
+* Indien het bedrijf kan aantonen dat de gestolen data zodanig beveiligd is dat deze onbruikbaar is. Als dus de data bijvoorbeeld geëncrypteerd is dan zou het bedrijf dit als argument kunnen gebruiken om de meldplicht te verzaken. Een kanttekening is hier natuurlijk op z'n plaats: er bestaat altijd nog de mogelijkheid dat de data finaal nog kan gedecrypteerd zal worden en er dus alsnog private gegevens in verkeerde handen komen.
+* Stel dat het bedrijf de persoonlijke voorkeuren van de gebruikers in een ene database heeft staan en de identificeerbare persoongegevens in een andere. Als nu blijkt dat enkel de database met persoonlijke voorkeuren werd gehackt, dan kan deze data nooit gelinkt worden aan personen en is er dus ook geen sprake van een privacy schending.
+
+::: tip
+Het is sowieso altijd een goede gewoonte om het adagio *"don't put all your eggs in one basket"* te hanteren. Het is wijzer om de data over verschillende databases te beawaren. Zo voorkom je dat bij een datalek automatisch steeds alle data kan gestolen worden.
+:::
+
+::: warning
+Indien er een erg grote hoeveelheid mensen moeten ingelicht worden na een datalek, dan mag het bedrijf ook beslissen om in de plaats daarvan een publieke aankondiging te doen. Uiteraard zijn de bedrijven hier minder happig op omdat dit sowieso een PR-nachtmerrie is (iedere aankondiging van een datalek is dat sowieso).
+:::
+
+### Boetes
+
+Als er uiteindelijk toch een inbreuk op de GDPR-wetgeving wordt vastgesteld dan zal er dus een boete opgelegd worden afhankelijk van de ernst van de inbreuk:
+
+* Minder ernstige inbreuken: boete tot € 10 miljoen, of 2% van de wereldwijde jaaromzet van het bedrijf uit het voorgaande boekjaar, afhankelijk van welk bedrag hoger is.
+* Meer ernstige inbreuken (inbreuken die ingaan tegen de principes van het recht op privacy en het recht om te worden vergeten, die de kern vormen van GDPR): boete van maximaal € 20 miljoen, of 4% van de wereldwijde jaaromzet, afhankelijk van welk bedrag hoger is.
+
+Of en hoe groot de boete zal zijn is gebaseerd op een aantal criteria:
+
+* Ernst en aard van de overtreding.
+* Intentie.
+* Schadebeperkende omstandigheden.
+* Genomen voorzorgen.
+* Geschiedenis van overtredingen
+* Medewerking.
+* Gegevenscategorie.
+* Kennisgeving (heeft men zich aan de meldplicht gehouden).
+* Certificering.
+* Verzwarende of verzachtende factoren.
+
+::: tip 
+Uit deze criteria wordt ook duidelijk dat de GDPR-wetgeving rekening houdt met het feit dat, zoals we gezien hebben, het onmogelijk is om ieder datalek te voorkomen. Je moet echter als bedrijf wel alle moeite doen om datalekken enerzijds te voorkomen, en anderzijds de gevolgen ervan in te perken. 
+:::
