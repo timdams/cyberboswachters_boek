@@ -461,6 +461,11 @@ ECB is duidelijk een niet zo veilige manier om een block cipher toe te passen. V
 
 Alle modes uit de doeken doen is hier niet aan de orde maar het moge duidelijk zijn dat ECB de minst veilige mode voorhande is en deze wordt dan ook best vermeden.
 
+::: tip
+Het concept **Initializatie Vector (IV)** zal je veel zien terugkomen in ciphers. Een IV is een getal dat men als extra seed meegeeft tijdens de encryptie, naast de sleutel. Op deze manier voorkomen we dat steeds enkel de sleutel als seed wordt gebruikt en we dus effectief steeds met een *andere* sleutel werken. Uiteraard zal ook de andere zijde over dezelfde IV moeten beschikken en zal deze dus doorgestuurd moeten worden. Dit gebeurt meestal via de header van het bijhorende pakketje en is ongeëncrypteerd. Dit lijkt contra-intuitief - de IV onbeveiligd doorsturen - maar is geen probleem.
+Uiteraard is het belangrijk dat er een goed *IV selectie algorithme* wordt gebruikt dat bepaald hoe steeds het volgende IV moet worden berekend (bv steeds met 1 verhogen, een willekeurig, etc.).
+:::
+
 #### AES
 
 Alhoewel 3DES een verbetering op DES was, was er toch nood aan een nieuwe encryptie-standaard die langere tijd kon bestaan. In 2001 werd daarom de **Advanced Encryption Standard (AES)** onder het doopvont gehouden als de nieuwe defactor encryptiestandaard wereldwijd. Deze Amerikaanse standaard is gebaseerd op het **Rijndeal** algorithme waar we als Belgen fier op mogen zijn: Rijndael is ontwikkeld door 2 Belgische KUL-cryptografen Vincent Rymen en Joan Daemen.
@@ -473,8 +478,3 @@ AES is een symmetrisch block cipher dat data in blocks van 128 bits zal opsplits
 
 ![AES encryptie (Bron wikipedia)](crypto/aes.png){ width=80% }
 
-## Asymmetrische encryptie
-
-TODO
-
-Voorbeelden: RSA, Diffie-Hellman, Knapsack, ElGamal, DSA, ECC, etc.
