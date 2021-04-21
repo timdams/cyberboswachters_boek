@@ -13,7 +13,7 @@ Wat als je bij symmetrische encryptie met meerdere mensen wilt communiceren zond
 
 Symmetrische encryptie heeft dus een *key distribution problem* wanneer er encryptie op een grote schaal nodig is. Zeker als we spreken over online communicatie, over het internet, wordt de schaal ogenblikkelijk gigantisch groot en wordt het *sleutelmanagement* problematisch. Een andere oplossing is dus aan de orde.
 
-### Public crypto
+### Publieke cryptografie
 
 Publieke crypto oftewel **asymmetrische encryptie** zal het probleem met symmetrische encryptie oplossen doordat er gebruikt wordt gemaakt van 2 sleutels:
 
@@ -71,7 +71,7 @@ Uiteraard zullen in de praktijk Bob en Alice véél grotere getallen kiezen dan 
 
 Eén van de oudste, maar nog steeds populairste, publieke cryptosystemen is het in 1977 ontwikkelde RSA algorithm. RSA, wat staat voor de achternamen van de 3 ontwikkelaars (Rivest, Shamis en Adleman) gebruikt sleutels van 1536 tot 4096 bits lang . Het systeem is vrij traag maar heeft natuurlijk als voordeel dat het veilige sleuteltransmissie toestaat over een onveilig kanaal: we zien daarom vaak RSA gebruikt worden om eerst sessiesleutels uit te wisselen, vervolgens wordt overgeschakeld op een sneller symmetrisch cipher.
 
-De exacte berekeningen die gebeuren tijdens ecnryptie en decryptie nemen ons iets te ver, maar volgend voorbeeld toont een vereenvoudigde wijze waarop RSA wordt toegepast:
+De exacte berekeningen die gebeuren tijdens encryptie en decryptie nemen ons iets te ver, maar volgend voorbeeld toont een vereenvoudigde wijze waarop RSA wordt toegepast:
 
 
 Data encrypteren met behulp van asymmetrische versleuteling gebeurt op bijna dezelfde wijze als de Diffie-Hellman sleutel uitwisseling. Ook nu zullen beide zijde rekenen op de eigenschappen van de modulo-operator om over een onveilig kanaal veilige communicatie te kunnen doen.
@@ -159,3 +159,7 @@ Kortom, we hebben een manier nodig om de **identiteit** en echtheid van een publ
 
 ### Digitale certificaten
 
+TODO
+
+## TODO
+https://www.cryptool.org/en/ct2/ 

@@ -7,6 +7,7 @@ pandoc ^
  1_cryptografie/publiccrypto.md^
  2_social_engineering/README.md^
  3_netwerk_security/README.md^
+ 3_netwerk_security/wifi.md^
  4_internet_security/README.md^
  --variable toc-own-page=true^
  --variable book=true^

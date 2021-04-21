@@ -452,6 +452,7 @@ Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren,
 ECB is duidelijk een niet zo veilige manier om een block cipher toe te passen. Veel interessanter (veiliger) wordt het wanneer we extra informatie gebruiken om een blok te encrypteren. **Enkel het huidige blok en dezelfde sleutel gebruiken is namelijk niét veilig.** Er zijn verschillende modes om veiliger te encrypteren dan ECB:
 
 * Cipher block chaining (CBC): de output van het vorige block (de ciphertext) wordt mee als input voor de encryptie van het volgende block gebruikt.
+* Propagating CBC (PCBC): zelfde als CBC maar bij decryptie van een block zijn ook alle vorige blocken vereist.
 * Cipher feedback (CFB): ongeveer zelfde als CBC alleen wordt het vorige block iets later in de encryptie van het volgende block gebruikt.
 * Output feedback (OFB): het block cipher wordt als een stream cipher gebruikt.
 * Counter-mode (CTR): een extra teller wordt gebruikt als input bij de encryptie van een blok. Deze teller wordt steeds verhoogd. Eén van de meest gebruikte modes (in onder andere WPA2 en IPSEC).
@@ -463,12 +464,16 @@ Alle modes uit de doeken doen is hier niet aan de orde maar het moge duidelijk z
 
 ::: tip
 Het concept **Initializatie Vector (IV)** zal je veel zien terugkomen in ciphers. Een IV is een getal dat men als extra seed meegeeft tijdens de encryptie, naast de sleutel. Op deze manier voorkomen we dat steeds enkel de sleutel als seed wordt gebruikt en we dus effectief steeds met een *andere* sleutel werken. Uiteraard zal ook de andere zijde over dezelfde IV moeten beschikken en zal deze dus doorgestuurd moeten worden. Dit gebeurt meestal via de header van het bijhorende pakketje en is ongeëncrypteerd. Dit lijkt contra-intuitief - de IV onbeveiligd doorsturen - maar is geen probleem.
-Uiteraard is het belangrijk dat er een goed *IV selectie algorithme* wordt gebruikt dat bepaald hoe steeds het volgende IV moet worden berekend (bv steeds met 1 verhogen, een willekeurig, etc.).
+Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebruikt dat bepaald hoe steeds het volgende IV moet worden berekend (bv steeds met 1 verhogen, een willekeurig, etc.).
+:::
+
+::: note
+[De wikipedia pagina over block cipher]https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation modes geeft een zeer goed overzicht (én vergelijking).
 :::
 
 #### AES
 
-Alhoewel 3DES een verbetering op DES was, was er toch nood aan een nieuwe encryptie-standaard die langere tijd kon bestaan. In 2001 werd daarom de **Advanced Encryption Standard (AES)** onder het doopvont gehouden als de nieuwe defactor encryptiestandaard wereldwijd. Deze Amerikaanse standaard is gebaseerd op het **Rijndeal** algorithme waar we als Belgen fier op mogen zijn: Rijndael is ontwikkeld door 2 Belgische KUL-cryptografen Vincent Rymen en Joan Daemen.
+Alhoewel 3DES een verbetering op DES was, was er toch nood aan een nieuwe encryptie-standaard die langere tijd kon bestaan. In 2001 werd daarom de **Advanced Encryption Standard (AES)** onder het doopvont gehouden als de nieuwe defactor encryptiestandaard wereldwijd. Deze Amerikaanse standaard is gebaseerd op het **Rijndael** algoritme waar we als Belgen fier op mogen zijn: Rijndael is ontwikkeld door 2 Belgische KUL-cryptografen Vincent Rijmen en Joan Daemen.
 
 AES is een symmetrisch block cipher dat data in blocks van 128 bits zal opsplitsen en sleutel van tot 256 bits lang toelaat. De volledige werking van AES gaan we hier niet uit de doeken doen, het voldoet te begrijpen dat in grote lijnen hetzelfde soort stappen worden doorlopen als DES en andere symmetrische ciphers:
 
