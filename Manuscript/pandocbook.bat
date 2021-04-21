@@ -9,6 +9,7 @@ pandoc ^
  3_netwerk_security/README.md^
  3_netwerk_security/wifi.md^
  4_internet_security/README.md^
+ dank.md^
  --variable toc-own-page=true^
  --variable book=true^
  --top-level-division=chapter^

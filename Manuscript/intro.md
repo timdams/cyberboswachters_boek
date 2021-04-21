@@ -3,6 +3,11 @@
 
 **Dit is versie 0.0.5** (1/5/21)
 
+Changes:
+* Hoofdstuk 1 en 2 aangevuld en op schrijffouten verbeterd.
+
+
+
 Nu dat Zie Scherp en Zie Scherper ingeblikt zijn, wordt het tijd voor een nieuw project. De teksten in deze PDF zijn pre-alpha. Dit wil concreet zeggen dat:
 
 * De teksten nog niet zijn nagelezen qua inhoud én spelling.
