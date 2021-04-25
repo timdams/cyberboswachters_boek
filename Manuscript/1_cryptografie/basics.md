@@ -30,6 +30,8 @@ Er zijn al veel encryptie algoritmes de revue gepasseerd doorheen de geschiedeni
 De volledige geschiedenis van de cryptografie hier vertellen zou ongeveer 1200 pagina's vereisen. Het briljante boek "The Codebreakers" van David Kahn is een aanrader voor eenieder die meer willen weten over deze boeiende geschiedenis. Laat de 1200 pagina's je niet afschrikken, het boek leest als een echte thriller.
 :::
 
+
+
 Alle bestaande cryptografische systemen kunnen op verschillende manieren gekarakteriseerd worden (bron Network Security Essentials, door William Stallings):
 
 * De **acties** die op de data wordt uitgevoerd om deze te encrypteren:
@@ -65,6 +67,9 @@ Stel dat je een sleutel hebt die bestaat uit 8 karakters. Een karakter is een le
 
 Het doel van ieder encryptie-algoritme is dus om data zodanig te versleutelen zodat enkel eigenaars van de gebruikte sleutel de originele tekst kunnen terugvinden. We vertelden net dat encryptiealgoritmes kunnen onderverdeeld volgens de actie die ze uitvoeren: substitutie, transpositie of een combinatie. We tonen van iedere variant nu een historisch voorbeeld.
 
+::: tip
+Volgende tool, speciaal gemaakt om crypto te leren, is een erg handig iets om de verschillende cryptografische systemen te visualiseren én testen: [link](https://www.cryptool.org/en/ct2/)
+:::
 
 ### Substitutie: Caesar encryptie
 

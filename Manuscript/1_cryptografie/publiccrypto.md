@@ -159,7 +159,7 @@ Kortom, we hebben een manier nodig om de **identiteit** en echtheid van een publ
 
 ### Digitale certificaten
 
-TODO
+::: note
+Hier komt hopelijk tegen volgende keer een flap tekst :)
+:::
 
-## TODO
-https://www.cryptool.org/en/ct2/ 
