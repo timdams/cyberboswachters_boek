@@ -1,6 +1,6 @@
 # Wifi security
 
-:::tip
+::: tip
 Alhoewel dit hoofdstuk integraal na het crypto hoofdstuk komt, is het toch interessant om dit hoofdstuk geschrankt met het crypto hoofdstuk door te nemen als volgt:
 * "Crypto" tot en met "Symmetric stream ciphers".
 * "Wifi security" tot en met "WEP en waarom het faalde".
@@ -28,7 +28,7 @@ Draadloze netwerken die gevonden worden hebben dan ook een schare aan problemen:
 * **Eavesdropping**: iedereen kan "meeluisteren" wat er door de lucht vliegt. Dit heb je niet met een bedrade kabel. 
 * **Invasion**: je kan eenvoudig verbinden met het netwerk indien er geen beveiliging voorzien werd. Iets dat je dus bij een bedraad netwerk enkel kunt als je fysiek toegang hebt tot een netwerkkabel.
 * **Man-in-the-middle aanvallen**: hier gaan we zo meteen dieper op in.
-* **Backdoor**: een veelvoorkomend probleem zijn zogenaamde **rogue access points** die worden bijgeplaatst op het netwerk door goedbedoelde werknemers die zou het het bereik van het netwerk wat willen uitbreiden. Vaak zijn echter de beveilingsinstelling van zo'n (meestal goedkoop) access point niet zo sterk als die van het bedrijf. Bijgevolg is dit de ideale backdoor voor malafide gebruikers die het netwerk aan het surveileren zijn. Wanneer ze een netwerkscan doen zullen ze tientalle goed beveiligde access points zien en 1 zwak beveiligd.
+* **Backdoor**: een veelvoorkomend probleem zijn zogenaamde **rogue access points** die worden bijgeplaatst op het netwerk door goedbedoelde werknemers die zou het het bereik van het netwerk wat willen uitbreiden. Vaak zijn echter de beveilingsinstellingen van zo'n (meestal goedkoop) access point niet zo sterk als die van het bedrijf. Bijgevolg is dit de ideale backdoor voor malafide gebruikers die het netwerk aan het surveileren zijn. Wanneer ze een netwerkscan doen zullen ze tientalle goed beveiligde access points zien en 1 zwak beveiligd.
 
 ![Een rogue access point is de ideale manier om binnen te geraken voor hacker.](wifi/rogue.png)
 
@@ -81,7 +81,7 @@ Volgende Engelstalige teksten koment uit een oudere cursus van dme en zullen (oo
 :::
 
 
-### Phase 1 : WEP, the original security
+### Phase 1.1 : WEP, the original security
 
 The original “ANSI/IEEE Std. 802.11” was written in 1999 and had the purpose “to develop a medium access control (MAC) and physical layer (PHY) specification for wireless connectivity for fixed, portable, and moving station within a local area.”  
 The security chapter in the standard (Chapter 8: “Authentication and Privacy”) was only a mere 10pages long, compared to the total number of pages (528) this might be seen as a forebode of how little security was originally conceived in the standard.
@@ -94,6 +94,7 @@ The moment there is any form of interaction between the attacker and his target 
 Yet, capturing data passively as described is one thing, actively attacking a network is a whole other business. To be able to do so, an attacker needs to actually join a network, one way or another. 
 
 The IEEE 802.11 standard specifies how a wireless LAN can be joined. Several steps need to be undertaken before a user or attacker can be granted actual permission to the network and use it for higher-layer data traffic:
+
 1.	**Scanning**: Searching for possible networks to join.
 2.	**Joining**: Choosing a network you want to access.
 3.	**Authentication**: Giving the right credentials to be allowed to use the network.
@@ -167,8 +168,8 @@ After being associated to a wireless network, the eavesdropping problem (and oth
 
 When WEP is enabled, all data is encrypted before being transmitted. Only with the right key can the receiver decrypt the data afterwards. And so, when a user is finally associated with a network, he can rely on WEP to have some form of privacy.
 
-:::note
-To be exact: the MAC layer receives packets from the LLC layer. If WEP is enabled this packet is sent to WEP where it is fragmented, if needed, into several frames. It is these frames that are encrypted and sent further down, to the PHY layer.
+::: note
+To be exact: the MAC layer receives packets from the LLC layer. If WEP is enabled this packet is sent to WEP where it is fragmented, if needed, into several frames. It is these frames that are encrypted and sent further down, to the PHY layer.z
 
 ![The 802.11 layers have different names compared to the classic OSI layers, but there functions are basically the same.](wifi/osimac.png)
 
@@ -207,4 +208,213 @@ To enable the receiver to generate the same random stream, thus enabling him to 
 ![WEP encryption in full](wifi/wepfull.png) 
 
 ![WEP decryption in full](wifi/wepdec.png) 
+
+### Phase 1.2: How WEP failed
+
+Throughout time, more and more papers were released, identifying flaws in the overall WEP security.
+
+The flaws can be summarized to 4 large problems with WEP, each having their own problematic results:
+
+* RC4 cipher was not meant for datagram environments.
+* The IV is badly implemented.
+* The CRC-32 is not secure enough.
+* No real key distribution system.
+* There is no replay protection.
+* 
+The problem of having no replay protection will not be discussed separable since it is basically a flaw that ‘helps’ to make the four other mentioned problems even bigger.
+
+#### Problem 1: RC4
+
+Most problems result from a misuse of the RC4 cipher. It is used in a large range of modern security devices, because it provides a high degree of privacy and that for a relatively low performance penalty (consumes very little power since it uses no multiplications). 
+
+However, stream ciphers in general, RC4 in particular, are questionable choices in an unreliable datagram environment like that of WEP. In a datagram environment, the same packet is often resent because of a transmission error, which happens as much as 20% of the transmissions. This is normal, but unwanted for a secure stream cipher. Because of this datagram environment, two properties of a stream cipher produce severe privacy gaps that, in conjunction with the IV and other flaws, can be abused by attackers.
+
+
+##### RC4 has no random access property
+
+Before we actually begin discussing the security related flaws, it should be noted on why RC4 actually was a bad choice by the IEEE 802.11 group when it comes to encryption and decryption speed on the MAC-layer.
+
+The loss of a single bit of a data stream encrypted under RC4 causes the loss of all the data following the lost bit. This is because a data loss desynchronizes the RC4 encryption and decryption engines. A full reset of both the engines is then the only real solution. 
+
+Since IEEE 802.11 MAC is neither reliable nor delivers-in order at the level of which WEP operates, WEP requires that the cipher support a random access, “seek” type capability, where it is wanted to instantly and efficiently switch the cipher to any selected point in the key stream and not having to begin from the start after an error. 
+
+Instead of selecting a stream cipher with characteristics needed for a datagram environment, the WEP architecture tries to accommodate itself by reinitializing the cipher key schedule on every data frame. Creating an overhead that could have been avoided when a cipher with random access was chosen (one such as AES).
+
+##### RC4 disallows key re-use
+
+Stream ciphers have a second property that is important: it is unsafe to use the same key twice, ever. 
+
+Presume you have two plaintext byte sequences $p_1,p_2,p_3,…$ and $q_1,q_2,q_3,…$ both which you encrypt with the a key stream $k_1,k_2,k_3,…$.This encryption, as we have seen, is an XOR of the key and plain text. So we have two new cipher texts:
+
+$p_1 \oplus k_1, p_2 \oplus k_2, p_3 \oplus k_3$ 
+
+$q_1 \oplus k_1, q_2 \oplus k_2, q_3 \oplus k_3$
+
+Now, presume an attacker captures these two cipher texts; what then follows is a failure of privacy, since:
+
+$(p_i \oplus k_i) \oplus (q_i \oplus k_i) = p_i \oplus q_i$
+
+Or in other words, combining two cipher texts produces a stream, which is not dependant of the used key, and so a large deal of information about the plain texts is revealed.  If one of the two plain texts is known, the other can be read, if it has the same length, without the need for a key, a property that will be abused in the following flaws.
+
+As a result, stream ciphers are insecure in a datagram environment without some sort of key management to replace keys before they can be reused. The WEP design attempts to accommodate this lack of key management by introducing the IV. WEP combines the IV with the key to produce a new frame specific encryption key, preventing that any collisions of two or more frames with the same key occur (explained further on).
+
+#### Problem 2: IV
+
+The WEP designers had some knowledge of the first flaw concerning RC4 and therefore introduced a per-packet key (the IV). From a cryptographic view, this is a good solution.
+
+However a major flaw is the fact that no replay protection is implemented whatsoever which shall soon be explained.
+
+##### IV gives rise to weak keys
+
+The paper by Scott Fluhrer, Itsik Mantin, and Adi Shamir presented in August 2001 investigated the RC4 key schedule when a portion of the RC4 key stream is known. Explaining the paper and its consequences in depth requires some advanced mathematical knowledge, thus only a summary is provided:
+
+The paper showed when a part of the RC4 key stream is known, a class of RC4 weak keys could be identified. When these weak keys are used to generate a pseudo random stream there is a small, but not insignificant, correlation between the input (the WEP key) and the output (the key stream). 
+
+**In other words: weak IV are the cause of some key leakage to the key stream which, of course, is a very unwanted property of any type of cryptographic cipher.** 
+
+As a result of these so-called weak keys, if the first two bytes of enough key streams (around 60) can be observed, then the WEP key can be recovered through these weak keys using an FMS attack, named after the authors of the paper. 
+
+The FMS attack utilizes the fact that, in some cases, knowledge of the IV and the first output byte leaks information about the key bytes.
+This attack itself is already a problem but it is even made worse because of another implementation error by WEP: the first couple of bytes of encrypted WEP-data in every packet ARE known.  The LLC/SNAP header encapsulating some higher layer protocol is always the first 8 bytes in the encrypted packet, namely 0xAA, in other words: we have a part of the original plain text.
+
+How can this be used? Suppose a plain text $p_i$, where $i$ denotes the number of blocks, which is encrypted with a key stream $k_i$. This produces the cipher text $c_i$:
+
+$c_i = k_i \oplus p_i$
+
+An interesting property of all one-time pad ciphers, like RC4, is the following:
+
+$c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$
+
+Suppose $p_i$ is the first 8 bytes of the known plain text. If these known bytes (the LLC/SNAP header) are XOR’d with the first 8 bytes of the cipher text, the first bytes of the key stream are reproduced. Which of course is exactly the part needed to start an FSM-attack. This part of the key stream can now be used to recover the rest of the RC4 key. An attacker now has all the ingredients to read any cipher text using this key, since both the IV and the PRNG are always known. Making it possible to create the needed key streams to decrypt any captured packet, or vice versa: encrypt any chosen data and sent it to anyone, pretending to be an authorized user.
+
+::: tip
+Two very popular Linux programs utilize the FMS-attack: Airsnort & WEPCrack.
+:::
+
+##### IV collisions occur
+
+If the FMS attack itself is not disastrous enough on its own, a whole other breed of flaws results from the fact that the IV is only 24 bit large. The use of a 24-bit IV is inadequate because the same IV, and therefore the same key stream, must be reused within a relative short period of time. 
+
+A 24-bit field can contain $2^{24}$ or 16 777 216 possible values. A short calculation demonstrates the short life of a 24-bit IV.
+
+*Given: a slow access point running at 11 Mbps and constantly transmitting 1.500-byte packets:*
+
+* 11 Mbps / (1.500 bytes per packet x 8 bits per byte) = 916.67 packets transmitted each second
+* 16.777.216 IVs / 916.67 packets per second = 18.302,41745 seconds 
+ 
+That means that after a little bit more than 5 hours all IVs are used up and collisions will start occuring.
+
+This flaw can be abused in two ways, by passively attacking the network, or actively flooding the network with data and retrieving the key streams because of the collisions. 
+
+**Passive attack**
+A passive eavesdropper can quietly intercept all wireless traffic, until an IV collision occurs. By XOR'ing two packets that use the same IV, the attacker obtains the XOR of the two plaintext messages. The resulting XOR can be used to retrieve information about the contents of the two messages.
+
+IP traffic is often very predictable and includes a lot of redundancy. This redundancy can be used to eliminate many possibilities for the contents of messages. Further educated guesses (through means of cryptanalysisy) about the contents of one or both of the messages can be used to statistically reduce the space of possible messages, and in some cases it is possible to determine the exact contents, an example of this was given earlier where the LLC-header was used to launch an FMS attack.
+
+When such statistical analysis is inconclusive based on only two messages, the attacker can look for more collisions of the same IV. With only a small factor in the amount of time necessary, it is possible to recover a modest number of messages encrypted with the same key stream, and the success rate of statistical analysis grows quickly. Once it is possible to recover the entire plaintext for one of the messages, the plaintext for all other messages with the same IV follows directly, since all the pairwise XOR's are known.
+
+
+**Active attack**
+An extension to this attack uses a host somewhere on the Internet to send traffic from the outside to a host on the WLAN installation. The contents of such traffic will be known to the attacker, yielding the known plaintext. When the attacker intercepts the encrypted version of his message sent over 802.11, he will be able to decrypt all packets that use the same initialization vector.
+
+An attacker could use the Internet for this type of attack:
+
+![](wifi/inject.png)
+
+1.	A known plain-text message is sent to an observable wireless LAN client (an e-mail message). If the attacker is only capable of utilizing the WLAN he will have to use a bit-flip attack, explained later on.
+2.	The network attacker will then start sniffing the wireless LAN looking for the predicted cipher-text and eventually find it. 
+3.	The network attacker will find the known frame and derive the key stream using the reverse XOR action: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$. Where $k_i$ is the desired key stream.
+
+##### Growing key streams
+
+When the attacker has one key stream, the story does not end here. With this key stream, the attack can now create any key stream, of any desired length due to the fact that there is no replay protection. WEP doesn’t check if a frame sent is authentic or not, if a frame is encrypted with the right key, WEP considers the user to be valid. Someone can capture a packet and resend it at any given time; it will not be checked and thus be used as if it were a valid packet. An attacker can thus use the WLAN as was it is own private laboratory where he can test as much as desired. 
+
+And so the attacker can grow his own key stream of any given length :
+
+![](wifi/grow.png)
+
+1.	The network attacker can build a frame one byte larger than the known key stream size; an Internet Control Message Protocol (ICMP) echo frame is ideal because the access point solicits a known response.
+2.	The network attacker then augments the key stream by one byte.
+3.	The additional byte is guessed because only 256 possible values are possible and he can 'guess' as many times as he wants.
+4.	When the network attacker guesses the correct value, the expected response is received: in this example, the ICMP echo reply message. Otherwise he won't get anything since the packet was encrypted with an invalid key stream.
+5.	The process is repeated until the desired key stream length is obtained.
+
+##### IV Selection
+
+The fourth problem with the IV is how it needs to be selected. The 802.11 standard specifies no rules for IV selection, instead it merely recommends updating "frequently", a pretty undefined term. Each vendor implemented his or her own IV selection strategy, some being smarter then others:
+
+* Fixed IV: Some implementations operate with a fixed IV, employing the same RC4 key to encrypt every packet. Making it necessary that the RC4 key needs to change after each packet, since a collision occurs afterwards with the second packet!
+* Random IV: Other vendors selected the IV at random, seemingly the best solution but actually not much better then the former solution, all due to the infamous **birthday paradox**. Because this paradox it only takes 4823 packets to have a 50% chance of collision. And so a key change needs to occur about every three seconds.
+* Incremental IV: A third option is to have a circular counter, incrementing the IV after each transmission, starting always from zero upon boot. This strategy guarantees a collision after two different stations transmit a single packet, since it is common to use only default keys (i.e. the same key on every device).
+  
+It is clear that 16.777.216 possible values are not enough in a high data-rate environment, such as in a WLAN, and so the IV is a severe weakness. 
+
+No matter what IV sequencing formula is used, a strong key management system is required, which is not available. This key management could solve the IV problem by including a system that would change the keys before all the IV possibilities are exhausted, thus creating new key streams.
+
+#### Problem 3: CRC
+
+WEP uses an integrity checksum field to prevent a packet from being modified during transmission, using a CRC-32 checksum. This wasn’t the best choice: CRCs in general are designed to detect random errors in a message (such as sudden line interference, noise, etc), not to detect planned forgeries.
+
+This, and the fact that a stream cipher is used to encrypt the payload, gives raise to 1 more group of vulnerabilities in WEP. 
+
+The WEP checksum is a linear function of the message, as is with all CRCs. Meaning that the CRC of one message XOR'd with the CRC of another message, is the same as the CRC of two XOR'd messages:
+
+$CRC (message_1) \oplus CRC (message_2) = CRC (message_1 \oplus message_2)$
+
+As a consequence it becomes possible to make a controlled forgery without disrupting the checksum. To do this, an attacker employs a 'bit-flip attack'. 
+
+##### Bit-flip attack
+A bit-flip attacks enables an attacker to inject his own messages without the receiver being able to detect that it is not the original message.
+
+
+
+Firstly the attacker captures a valid WEP frame (without needing to known the plaintext context). He then XOR's this frame with a self created stream of bits, where the 1 bits cause the bit to flip (0 to 1, 1 to 0), the so-called bitmask. Usually this stream of bits is randomly. As will be shown, the attacker just needs a valid frame, whatever the data it caries. 
+Lastly the attacker, to have a valid ICV, XOR’s both ICVs of the new and original frame. Since XOR’ing is commute (the order of the operations is not relevant) a new valid hash is created.
+
+![](wifi/bitflip.png)
+
+The attacker can now send a forged frame that is considered genuine by the receiver. The receiver (AP) dutifully decapsulates the bit flipped data and the LLC discovers that the data is 'gibberish'. Yet, since the ICV was valid, the receiver simply thinks some higher layer CRC error has occurred and thus sends an encrypted error-message to the attacker.
+
+
+![](wifi/respat.png)
+
+It is this error-message that the attacker knows he will receive, so encrypted or not, the attacker can now recreate the key stream by XOR'ing the encrypted error-message with the original error-message as shown as explained before:
+$c = k \oplus p \Leftrightarrow k = c \oplus p$
+
+Once this key stream $k$ is derived, the attacker can have a key stream of any size by 'growing' one, as described earlier.  By doing this, the hacker can create a dictionary of keystreams of all sizes. From then on, the attacker can transmt any message of any size, since he has valid keystreams 
+
+::: note
+Note that the attacker in this scenario doesn't need to have the WEP-key. He simply uses the keystreams to mimick being a valid user.
+:::
+
+
+#### Problem 4: Keying
+
+A problem, where most symmetric systems suffer from, is the key distribution. The default keys need to be distributed to all the stations that want to participate in the service set secured by WEP. There is, however, no key distribution specified in the 802.11 standard. And so, vendors haven’t done anything: most devices just have you type the keys manually in to the device drivers or APs. (Some provide a way of distributing the keys on a small disk with an executable).
+
+It is clear that this manual entry is entirely dependent of the users and system manager, not of the protocols, creating a very insecure key environment:
+
+Keys cannot be considered secret: all keys need to be manually entered, and any local user, with a minor knowledge of his system, can extract the keys (e.g. in Windows OS through the device manager).
+
+Whenever someone, a staff member for example, leaves the organization, all keys should be changed. Knowledge of WEP keys allows a user to setup a station and passively monitor and decrypt traffic using the secret key. WEP thus cannot protect against authorized insiders who also have the key.
+Organizations with a large number of authorized users must publish the key to this group when needed, which, of course, prevents the keys from being secret.
+
+### Phase 2: WPA 1
+
+By 2001, it was clear that an urgent solution was needed. Wifi was booming everywhere, both in private homes as in companies. A task group was created to create a new standard. However, they couldn't just simply start writing a new security standard for the IEEE 802.11 specifications; some constraints existed:
+
+* Already millions of WEP-based devices have been sold. WEP patches operating on already-deployed hardware therefore will have to rely entirely on a firmware upgrade.
+* Most AP’s are equipped with a cheap, slower processor (i486, ARM7 or PowerPC running at 40 or even 25MHz). The load however generated by normal WLAN traffic consumes 90% or more of this microprocessor. And so there aren’t many spare cycles left making that the solutions need to have a limited amount of instructions.
+* To support RC4 encryption without consuming too many cycles, additional hardware is installed to take care of the encryption functions. However, these are basically ASICs and these hardwired encryptions thus create a third constraint. Some functions of the WEP/RC4 combination will always be performed, no matter what. And so WEP will never really leave the security business.
+
+
+As a result of these constraints, the taskgroup started working on two solutions, one that will work with these constraints, the other one won’t.
+One solution will be entirely new, based on AES and will be used for future devices called "counter with CBC-MAC mode AES protocol" (CCMP, WPA2). To allow existing devices to be upgraded, a lightweight protocol called Temporal Key Integrity Protocol (TKIP, WPA1) is being developed. TKIP can be implemented on existing hardware platforms while still providing acceptable security in the short-term future.
+
+Another standard that is being discussed is IEEE 802.1X standard, which enables authentication and key management for LANs.  802.1X will be used together with CCMP and/or TKIP, the latter two providing the data encapsulation and integrity, the former, 802.1X, providing the key management and authentication.
+
+
+### Phase 3: WPA 2
+
+### Phase 4: WPA 3 ("Wifi 6")
 
