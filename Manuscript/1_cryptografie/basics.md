@@ -202,7 +202,7 @@ De waarheidstabel van de XOR-functie is de volgende:
 | 0               | 0               | 0                 |
 | 1               | 1               | 0                 |
 
-De xor-functie wordt in schema's aangeduid door een cirkel met een plusje in: ![](crypto/xor.png){ width=20px }
+De xor-functie wordt in schema's aangeduid door een cirkel met een plusje in: $\oplus$
 
 De XOR-functie heeft de fijne eigenschap dat je deze dus voor encryptie kan gebruiken. 
 
