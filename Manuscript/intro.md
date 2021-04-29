@@ -1,10 +1,11 @@
 # Introductie
 
 
-**Dit is versie 0.0.6** (26/4/21)
+**Dit is versie 0.0.7** (29/4/21)
 
 Changelog:
-
+* 0.0.7
+  * Aantal tekeningen omgezet 
 * 0.0.6
   * Wifi hoofdstuk vervolledigd (deels Engelstalig) Afbeeldingen moeten nog goed gezet worden.
 * 0.0.5
