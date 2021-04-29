@@ -1,10 +1,12 @@
 # Introductie
 
 
-**Dit is versie 0.0.5** (1/5/21)
+**Dit is versie 0.0.6** (26/4/21)
 
 Changelog:
 
+* 0.0.6
+  * Wifi hoofdstuk vervolledigd (deels Engelstalig) Afbeeldingen moeten nog goed gezet worden.
 * 0.0.5
   * Hoofdstuk 1 en 2 aangevuld en op schrijffouten verbeterd.
 

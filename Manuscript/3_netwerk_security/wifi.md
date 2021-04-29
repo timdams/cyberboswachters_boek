@@ -1,24 +1,26 @@
 # Wifi security
 
-::: tip
+
+
 Alhoewel dit hoofdstuk integraal na het crypto hoofdstuk komt, is het toch interessant om dit hoofdstuk geschrankt met het crypto hoofdstuk door te nemen als volgt:
+
 * "Crypto" tot en met "Symmetric stream ciphers".
 * "Wifi security" tot en met "WEP en waarom het faalde".
 * De rest van "Crypto".
 * De rest van "Wifi security"
-:::
+
 
 ## De problemen van Wifi
 
 We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven inbeelden. De opkomst van de IEEE 802.11b standaard in 1999 veroorzaakte een kleine revolutie in de manier waarop bedrijven en privégebruikers konden werken. Plots kon je met een laptop van overal in het gebouw - en zelfs er buiten- op het netwerk geraken. Die vrijheid voor de gebruikers betekende wel een nachtmerrie voor de cyberboswachters. Een netwerkkabel heeft een intrinsieke extra beveiliging: enkel daar waar de kabel ligt kunnen gebruikers aan het netwerk geraken. Zolang je dus geen netwerkkabel bijvoorbeeld naar de publieke parking brengt kan niemand van daar illegaal het netwerk benaderen. Met wifi leek het alsof plotseling het hele netwerk in een straal van tientallen meters rond het gebouw beschikbaar was, met alle gevolgen van dien.
 
-![](wifi/afstand.jpg)
+![](wifi/afstand.jpg){ width=60% }
 
 Al gauw werd een nieuwe sport uitgevonden door hobbyist hackers en professionele cybercriminelen: **wardriving**. De idee is eenvoudig: rijdt rond in de stad en laat de laptop naast je in de auto scannen naar alle netwerken, met extra aandacht voor die netwerken die geen of zwakke beveiliging hadden.
 
 ::: note
 
-![](wifi/wargames.png)
+![](wifi/wargames.png){ width=10% }
 
 De term wardriving komt van de term *wardialing* die op zijn beurt gebaseerd is op de  klassieke cyber-cult film "Wargames" uit 1983. Voor de geschiedkundigen onder ons, wardialing was het opbellen van willekeurige telefoonnummers met je modem in de hoop een zogenaamd *bulletin board system oftewel **BBS** (een pre-internet forum zeg maar) te vinden.
 :::
@@ -30,9 +32,9 @@ Draadloze netwerken die gevonden worden hebben dan ook een schare aan problemen:
 * **Man-in-the-middle aanvallen**: hier gaan we zo meteen dieper op in.
 * **Backdoor**: een veelvoorkomend probleem zijn zogenaamde **rogue access points** die worden bijgeplaatst op het netwerk door goedbedoelde werknemers die zou het het bereik van het netwerk wat willen uitbreiden. Vaak zijn echter de beveilingsinstellingen van zo'n (meestal goedkoop) access point niet zo sterk als die van het bedrijf. Bijgevolg is dit de ideale backdoor voor malafide gebruikers die het netwerk aan het surveileren zijn. Wanneer ze een netwerkscan doen zullen ze tientalle goed beveiligde access points zien en 1 zwak beveiligd.
 
-![Een rogue access point is de ideale manier om binnen te geraken voor hacker.](wifi/rogue.png)
+![Een rogue access point is de ideale manier om binnen te geraken voor hacker.](wifi/rogue.png){ width=70% }
 
-* **Denian-of-service op fysiek niveau**: om een gebruiker toegang tot een bedraad netwerk te ontzeggen op fysiek niveau dien je de kabel door te knippen. Bij wifi is dit nog eenvoudiger: de "kabel" bij wifi zijn de frequentiebanden in de lucht waarbinnen de apparaten mogen werken (circa 2.4 Ghz bij de oudere wifi apparaten, nu meestal rond de 5 Ghz band). De wifi-apparaten kunnen enkel met elkaar communiceren indien zij een signaal naar elkaar over die frequentieband kunnen sturen op een moment dat niemand anders in de buurt die band gebruikt (zie note hierna). Als een malafide gebruiker dus die frequentieband vult met andere signalen, dan zullen de legale gebruikers nooit iets kunnen uitsturen. Wil je dus een wifi netwerk *Dos'n*, koop dan een signaalgenerator die op de juiste frequentieband de nodige ruist uitzend en klaar is kees.
+* **Denial-of-service op fysiek niveau**: om een gebruiker toegang tot een bedraad netwerk te ontzeggen op fysiek niveau dien je de kabel door te knippen. Bij wifi is dit nog eenvoudiger: de "kabel" bij wifi zijn de frequentiebanden in de lucht waarbinnen de apparaten mogen werken (circa 2.4 Ghz bij de oudere wifi apparaten, nu meestal rond de 5 Ghz band). De wifi-apparaten kunnen enkel met elkaar communiceren indien zij een signaal naar elkaar over die frequentieband kunnen sturen op een moment dat niemand anders in de buurt die band gebruikt (zie note hierna). Als een malafide gebruiker dus die frequentieband vult met andere signalen, dan zullen de legale gebruikers nooit iets kunnen uitsturen. Wil je dus een wifi netwerk *Dos'n*, koop dan een signaalgenerator die op de juiste frequentieband de nodige ruist uitzend en klaar is kees.
 
 ::: note
 Bedrade netwerk apparaten werken volgens het CSMA/CD (Carrier Sense Multiple Access / Collision Detection) om met elkaar over de draad te communiceren, hierbij detecteren ze wanneer er 'botsingen' tussen pakketen voordoen en de informatie dus opnieuw moet uitgestuurd worden. Bij draadloze netwerken is het echter onmogelijk om *botsingen in de lucht* te detecteren, daarom werken ze met een variant: **CSMA/CA** , oftewel CSMA/ **Collision Avoidance**. Een wifi-apparaat dat iets wil uitsturen zal eerst controleren of de frequentieband waarop ze werken vrij is, enkel dan zal er vervolgens een pakketje de lucht worden ingestuurd.
@@ -42,10 +44,10 @@ Bedrade netwerk apparaten werken volgens het CSMA/CD (Carrier Sense Multiple Acc
 Sommige gebruikers schakelen het broadcasten van hun netwerknaam (het zogenaamde **SSID**) uit in de hoop dat zo dat buren, voorbijgangers en wardrivers hun netwerk niet kunnen zien. Helaas is dit zogenaamde *snake's oil*: het geeft een vals gevoel van veiligheid. Je kan weliswaar SSID-broadcasting uitzetten (dit is een pakketje dat je access point elke paar seconden uitstuurt om aan iedereen die luistert te zeggen *"Hallo, hier is het netwerk met naam X, en dit zijn de parameters die je nodig hebt om met mij te verbinden"*) maar het SSID wordt ook in een hoop andere pakketjes de lucht in gestuurd. Een beetje wifi hacker kan dus het SSID ogenblikkelijk uit de lucht plukken, ongeacht dat broadcasting werd uitgeschakeld of niet.
 :::
 
-## De originele wifi beveiliging
-
+::: note
 Om de huidige, en betere, beveiliging van wifi te appreciëren gaan we wederom even terug in de tijd om te kijken hoe de originele IEEE wifi standaard de beveiliging beschreef. Het zal een ietwat horror-achtige tocht worden waarin we gaan ontdekken dat enkele stevige hiaten ervoor gezorgd hebben dat illegale toegang tot bijna ieder wifi netwerk rond de eeuwwisseling binnen enkele minuten kon gebeuren. Lees verder en huiver mee.
 
+:::
 ### Onbeveiligde managementframes 
 
 Veel keuzes die in de IEEE standaard werden gemaakt zijn vermoedelijk het gevolg dat men leentje buur is gaan spelen bij de reeds bestaande IEEE standaarden voor bedrade netwerken. Echter, bij bedrade netwerken had je niet de inherente onveilige omgeving van het draadloze aspect, waardoor op gebied van beveiliging hier weinig tot geen aandacht aan werd besteed. 
@@ -64,12 +66,12 @@ Dit resulteerde in onder andere volgende scenario's:
 * Een hacker kan legale gebruikers DoS'n door constant zogenaamde *disassociation* naar hen te sturen. Dit frame, gebruikt door access points, geeft aan clients de opdracht dat ze het netwerk moeten verlaten. De hacker kan zo'n frame uitsturen en daarbij het "source" veld instellen op het MAC-adres van het access points. Dit spoofing kan ongecontroleerd, waardoor legale gebruikers dit frame altijd zullen aanvaarden én vervolgens uitvoeren: de gebruiker kan niet meer verbinden met het netwerk zolang de disassociation frames blijven verstuurd worden (** disassociation flooding**)
 * **Identity spoofing** was ook eenvoudig daar de hacker eender welk veld in de frames kan aanpassen. Van zodra hij een legale gebruiker met voorgaande techniek van het netwerk heeft geschopt, kan hij vervolgens zichzelf voordoen als deze gebruiker. Hiervoor moet hij gewoon het MAC-adres spoofing van de legale gebruikers tijdens de communicatie met het access point.
 
-![](wifi/spoofwifi.png)
+![](wifi/spoofwifi.png){ width=60% }
 
 * En last but not least laten de onbeveiligde management frames toe dat we eenvoudig een  access point kunt nabootsen (**impersonation**). Vervolgens kunnen we een  **man-in-the-middle aanval** uitvoeren daar een hacker zich kan plaatsen tussen de gebruiker en het internet en zo informatie kan ontfutselen. 
   
 
-![](wifi/mitmwifi.png)
+![](wifi/mitmwifi.png){ width=60% }
 
 ::: tip
 De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd success heeft (vanuit het standpunt van de hacker) is een fake Telenet Wifree hotspot op te zetten. Hierbij zal je eerst de login pagina van Telenet  Wifree kopieren en via een lokale webserver aanbieden aan de gebruikers die op jouw access point met de naam "Telenet Wi-Free" verbinden. Je kan nu van iedere gebruiker de gebruikersnaam en paswoord stelen telkens deze die informatie op jouw fake pagina invoert.
@@ -81,7 +83,7 @@ Volgende Engelstalige teksten koment uit een oudere cursus van dme en zullen (oo
 :::
 
 
-### Phase 1.1 : WEP, the original security
+## The 802.11 standard and its security
 
 The original “ANSI/IEEE Std. 802.11” was written in 1999 and had the purpose “to develop a medium access control (MAC) and physical layer (PHY) specification for wireless connectivity for fixed, portable, and moving station within a local area.”  
 The security chapter in the standard (Chapter 8: “Authentication and Privacy”) was only a mere 10pages long, compared to the total number of pages (528) this might be seen as a forebode of how little security was originally conceived in the standard.
@@ -89,7 +91,7 @@ The security chapter in the standard (Chapter 8: “Authentication and Privacy�
 Before we dive into WEP, the original *security motor* of wifi, we will first have a look how clients actually join a wireless network. As previously noted, this prcoes includes the usage of unprotected management frames.
 
 
-#### Joining a network
+### Joining a network
 The moment there is any form of interaction between the attacker and his target he can begin his malicious acts. The same applies to wireless hacking: before being to hack a network the attacker first needs to find one and establish a 'link', in this case this can be nothing more but an antenna that captures all passing radio signals.
 Yet, capturing data passively as described is one thing, actively attacking a network is a whole other business. To be able to do so, an attacker needs to actually join a network, one way or another. 
 
@@ -103,7 +105,7 @@ It is important to note that a user or attacker can only begin using a network�
 
 
 
-##### Scanning
+#### Scanning
 
 Any device that wants to use a network first needs to find one, and so it scans the area to discover a compatible network to join. 
 Several parameters are used in the scanning procedure and some of them can be specified by user; many implementations have default values for these parameters in the driver.
@@ -111,13 +113,13 @@ One of these parameters is the SSID, or Service Set Identifier, which contains t
 
 The SSID is a 32byte ASCII character string as described in the 802.11 specifications. In these specifications is also stated that any client setting this string to a ‘NULL’ string will associate to any access point regardless of the SSID setting on the access points. This is referred to as the broadcast SSID and is normally only used in Probe Request frames when a station attempts to discover all the 802.11 networks in its area.
 
-##### Joining
+#### Joining
 
 After the scan report is made the station can choose to join one of the networks. This joining is not the same as associating; it is analogous to aiming a weapon, you are only planning to use the chosen network and its services, but first you have to be authenticated one way or the other and be associated.
 
 What network is joined depends on whether the user chooses one or not. If the user lets the device choose, the station works with some criteria to make the decision like the power level and signal strength.** When chosen, the station has to synchronize its timing and also match the physical and MAC parameters.** It then tries to authenticate itself.
 
-##### Authentication
+#### Authentication
 
 When in a wired network, authentication is almost provided by the mere physical access; if you are close enough to plug in a cable, you most likely were allowed by, for example, the receptionist at the front desk and thus need no extra authentication to use the network.
 
@@ -143,6 +145,7 @@ If no encryption is used in the network, any device knowing the SSID of the AP c
 
 ::: note
 It may seem useless to have an authentication algorithm like this that provides no real security when no other encryption is used. However, there are many wireless devices that simply don’t have enough CPU resources to support more complex authentication algorithms. Hand-held devices like bar-code reader, network scanners etc just need quick access to a network without the extra hassle of authentication and therefore could use open-system authentication.
+:::
 
 **Shared-key authentication**
 
@@ -155,14 +158,14 @@ This proof is accomplesh through a  **challenge-response** system:
 
 ![](wifi/sharedkey.jpg)
 
-##### Association
+#### Association
 
 Once authentication is completed, the station is allowed to associate and/or reassociate with any access points in the network, for which he is authenticated. 
 
 Once associated, actual data transmissions (i.e. usage of the network) can start. Depending on the settings of the network, it is at this point that actual encryption of the data starts. This encryption is accomplished using WEP, as explained next.
 
 
-#### WEP
+### WEP
 
 After being associated to a wireless network, the eavesdropping problem (and others) become obvious. Therefore the 802.11 specifications described **WEP** or **"Wired Equivalent Privacy**", a protocol that was believed to create the same level of privacy experienced on a wired LAN. WEP is 802.11's optional encryption standard implemented in the MAC Layer that most wireless LAN-cards and access point vendors supported around the time Wifi become immensely poppular.
 
@@ -171,12 +174,12 @@ When WEP is enabled, all data is encrypted before being transmitted. Only with t
 ::: note
 To be exact: the MAC layer receives packets from the LLC layer. If WEP is enabled this packet is sent to WEP where it is fragmented, if needed, into several frames. It is these frames that are encrypted and sent further down, to the PHY layer.z
 
-![The 802.11 layers have different names compared to the classic OSI layers, but there functions are basically the same.](wifi/osimac.png)
+![The 802.11 layers have different names compared to the classic OSI layers, but there functions are basically the same.](wifi/osimac.png){ width=60% }
 
 :::
 
 
-##### How WEP works
+#### How WEP works
 
 ![WEP in full](wifi/wepencr.png)
 
@@ -191,7 +194,7 @@ The decapsulation (decryption) is basically the reverse procedure, with that res
 
 Shown in the following figure is a schematic overview of the resulting frame:
 
-![WEP frame layout](wifi/wepframe.png) 
+![WEP frame layout](wifi/wepframe.png){ width=60% }
 
 ::: note 
 To protect traffic from brute-force decryption attacks, a set of up to four default keys is used. 
@@ -209,7 +212,7 @@ To enable the receiver to generate the same random stream, thus enabling him to 
 
 ![WEP decryption in full](wifi/wepdec.png) 
 
-### Phase 1.2: How WEP failed
+##  How WEP failed
 
 Throughout time, more and more papers were released, identifying flaws in the overall WEP security.
 
@@ -399,8 +402,7 @@ Keys cannot be considered secret: all keys need to be manually entered, and any 
 Whenever someone, a staff member for example, leaves the organization, all keys should be changed. Knowledge of WEP keys allows a user to setup a station and passively monitor and decrypt traffic using the secret key. WEP thus cannot protect against authorized insiders who also have the key.
 Organizations with a large number of authorized users must publish the key to this group when needed, which, of course, prevents the keys from being secret.
 
-### Phase 2: WPA 1
-
+## WPA 1
 By 2001, it was clear that an urgent solution was needed. Wifi was booming everywhere, both in private homes as in companies. A task group was created to create a new standard. However, they couldn't just simply start writing a new security standard for the IEEE 802.11 specifications; some constraints existed:
 
 * Already millions of WEP-based devices have been sold. WEP patches operating on already-deployed hardware therefore will have to rely entirely on a firmware upgrade.
@@ -413,8 +415,208 @@ One solution will be entirely new, based on AES and will be used for future devi
 
 Another standard that is being discussed is IEEE 802.1X standard, which enables authentication and key management for LANs.  802.1X will be used together with CCMP and/or TKIP, the latter two providing the data encapsulation and integrity, the former, 802.1X, providing the key management and authentication.
 
+#### 802.1X
 
-### Phase 3: WPA 2
+Where TKIP and CCMP provide integrity and encryption, it is 802.1X that provides the following:
 
-### Phase 4: WPA 3 ("Wifi 6")
+* Provide (mutual) **authentication**.
+* Have a** central user management** system.
+* Have a secure way to **distribute secret keys**.
 
+::: note
+As noted, 802.1X is only used in the enterprise modes of WPA1 and WPA2. If you are a home user, you will probably use WPA-Personal, which is without 802.1X. In personal mode, you simply will have a secret passphrase that is only known by the access points and the legal user. 
+:::
+
+There are several methods to have one authenticated but the most important thing to remember is that usually the access point won’t do the actual authentication (some access points actually do). This is done by a RADIUS server; the access point (authenticator) merely relays the authentication message exchanges between the user (supplicant) and RADIUS (authentication server). While the user isn’t authenticated the access point will only allow 802.1x/EAP-based traffic. Once the user is authenticated the access point will open the port for normal traffic.
+
+
+![](wifi/port.png)
+
+Make note that 802.1X is not an authentication/authorization algorithm itself; it merely translates messages to and from an authentication/authorization algorithm, using the appropriate frame formats. 802.1X leaves the choices of authentication/authorization algorithm, key management method and accounting profiles up to each EAP authentication type.
+
+
+![](wifi/8021x.png){ width=60% }
+
+**EAP** (Extensible Authentication Protocol) is extensible meaning that several different authentication methods can be used, depending on the user friendliness and grade of security.
+
+It is important to understand that you have to make sure that both your client and server are compatible with the chosen EAP method. From a customer point-of-view this means that you have to check not only whether the AP is 802.1X-, EAP- or WPA-compatible but that it also supports the wanted EAP method(s).
+
+The most important and usually most-supported EAP (described later on) methods are:
+
+* EAP-TLS
+* PEAP
+* LEAP
+* EAP-TTLS
+
+And to a lesser extent:
+
+1.	EAP-SIM
+
+For an 802.1X port-controlled environment to work it is of utmost importance that your access points are connected to a switch (and not to a hub) and more importantly that the switch is 802.1X-compatible. Most switches from the last 10 years will probably be 802.1X-compatible, with older ones this might not be case.
+
+When integrating your wireless network in your wired LAN it is important that you isolate the traffic of the access points in the network (just as you would isolate Internet traffic using a firewall). Using a firewall would give a large management overhead and is not recommended. A good option is to have a Virtual LAN for isolating your wireless network traffic.
+
+![](wifi/8021X2.png){ width=60% }
+
+The previous figure shows what general steps are performed using 802.1X:
+
+1.	Both the client and the access point will exchange messages to discover which EAP-methods are possible to use (being a method they both thus should have).
+2.	Once a mutual agreement on the EAP-method is reached, the AP will act as a relay between the client and the authentication server. Client and server will then commence the authentication exchange.
+3.	If the server has enough evidence to authenticate the client it will generate the necessary keys (explained here-after) and relay them to the access point.
+4.	The access point will further distribute the needed keys and make sure they are updated often.
+5.	Once the keys are correctly distributed the actual data can be started, which will be encrypted using CCMP or TKIP, depending on the chosen encryption type.
+
+In 802.1X-enabled WLANs, two sets of keys are generated, session keys (also referred to as pairwise keys) and group keys (also referred to as groupwise keys). Group keys are shared amongst all the clients connected to the same AP and are used for multi-cast traffic. Session keys are unique to each association between an individual client and the AP and create a private virtual port between a client and the AP.
+
+If configured to implement dynamic key exchange, the 802.1X authentication server can return session keys to the access point along with the accept message. The access point uses the session keys to build, sign and encrypt an EAP key message that is sent to the client immediately after sending the success message. The client can then use contents of the key message to define applicable encryption keys. In typical 802.1X implementations, the client can automatically change encryption keys as often as necessary to minimize the possibility of eavesdroppers having enough time to crack the key in current use. 
+
+### TKIP
+
+Having obtained the needed keys through the 802.1X framework, it is time to encrypt the data. The **Temporal Key Integrity Protoco**l (TKIP) is a suite of algorithms wrapping the WEP protocol on old hardware to enhance security, minimizing the threats that exist when using WEP. 
+
+TKIP surrounds WEP with new algorithms, namely:
+
+1.	A cryptographic message integrity code (MIC), called Michael, to defeat forgeries.
+2.	A new IV sequencing discipline, to prevent replay attacks.
+3.	A per-packet key mixing algorithm, to solve the weak keys issue in RC4.
+4.	A re-keying mechanism, which changes the integrity keys every 10,000 packets or so.
+
+
+Because an adversary can compromise the TKIP MIC with relatively few messages (it isn't the most secure thing, explained in the next chapter), TKIP also implements countermeasures. In the original WEP specifications, no countermeasures were undertaken when an attack was detected; taken into account that WEP itself could actually not detect a lot. 
+
+In TKIP, these countermeasures have the following consequences:
+1.	They force key updates to be rate limited. 
+2.	They limit the probability of a successful forgery and the amount of information an attacker can learn about a key before it is renewed.
+
+Firstly, we will describe how these 4 algorithms work on their own, afterwards shall be described they all work together under TKIP.
+
+#### Michael the Mic
+
+A message integrity check (MIC) is a cryptographic device to detect any tampering with data.
+
+::: note
+ The literature calls these MICs usually ‘message authentication codes’ or MACs. However, IEEE 802 already used this acronym for “media access control” and so MIC was chosen instead. A typical MIC is the HMAC used in the IPSec protocol suite.
+:::
+
+"Michael" computes a MIC of the payload but it also includes the authentication key, the sender address and the receiver address (in comparison to CRC-32 which only included the payload itself).  
+
+![](wifi/michael.png){ width=60% }
+
+When a TKIP implementation detects two failed forgeries in a second, it is assumed there’s an ongoing attack and performs the following steps:
+1.	The station deletes its keys
+2.	Disassociates from the AP
+3.	Waits for a minute and then reassociates
+
+Although this disrupts the communications, it is the only way of thwarting the active attack. 
+
+
+#### IV Sequence enforcement
+
+WEP did not provide protection against replay attacks since any packet resend later, with a valid key, was considered secure. A simple, yet robust method to prevent replaying packets is to introduce a sequencing number for each packet send. This sequence number is associated with a MIC key (a MIC on its own doesn’t provide detection of replay attacks). 
+
+Only a packet which has the next number of the previously send packet is allowed. Of course, this would mean that an infinite sequencing is necessary. Otherwise, in a finite sequencing loop, once all numbers are used replay attacks are possible. The choices available for the transmitter to prevent this sequence number exhaustion are:
+1.	Halt communication altogether
+2.	Rekey the MIC with a fresh key
+3.	Keep sending, but with no protection against replay.
+
+TKIP closely follows this design. To defeat replays, TKIP uses an extended 48-bit IV called the TKIP sequence counter (TSC). The TSC is constructed from the first and second bytes from the original WEP IV and the 4 bytes provided in the extended IV. TKIP extends the length of a WEP encrypted frame by 12 bytes; 4 bytes for the extended IV information and 8 bytes for the MIC.
+
+#### Key mixing
+
+WEP misuses the RC4 algorithm as described earlier. TKIP’s per-packet key construction is a feature therefore necessary to correct this flaw. The new per-packet construction, the **TKIP key mixing function, uses a temporal key or per-packet key, which is substituted for the WEP base key.** This key is called temporal because they have a short lifetime and are replaced frequently.
+
+The key mixing works as follows. A key mixing function transforms a temporal key and packet sequence number into a per-packet key and IV.
+
+This is done in two phases, each phase compensating for a particular WEP design flaw:
+* Phase 1 eliminates the same key from use by all links by mixing the transmitter address (TA) with the IV and the base key. 
+* Phase 2 eliminates knowing the per-packet key by viewing the public IV.
+
+![](wifi/mixing.png)
+
+**Phase 1 mixing**
+
+Phase 1 combines the MAC address of the local wireless interface and the temporal key by iteratively XOR'ing each of their bytes to index into an S-Box, producing an intermediate key. 
+
+By doing so, using the local MAC address, a different key is generated, even if they begin from the same temporal key (a common situation in ad hoc deployments). And so the stream of generated per-packet encryption keys generated is different at every station. The intermediate keys needs only to be computed when the temporal key is updates, so most implementations cache this key (to improve performance)
+
+**Phase 2 mixing**
+
+A tiny cipher, a Feistel structure (see crypto chapter), is used in phase 2 to encrypt the packet sequence number, using the intermediate key. A 128-bit per-packet key is produced. 
+
+The first 3 bytes of the phase 2 output correspond exactly to the WEP IV, the last 13 to the WEP base key, as existing WEP hardware expects. (Since it uses the base key and IV to form the per-packet key).
+
+Phase 2 assigns the 8most significant bits of this counter to the first and second bytes of the WEP IV, the least significant counter bots to the third IV byte. The most significant bit of the second IV byte is then masked; ultimately preventing any RC4 weak keys attacks.
+
+### Putting it all together
+
+And so finally we have all the pieces ready, which we now can wrap around the broken WEP hardware:
+
+![](wifi/wpa1.png)
+
+Even though this solution was a nice interim solution, at its core, WEP was still used. In 2009 WPA1-Personal was ready to be retired as several new vulnrabilities were found that allowed attacker to retrieve the WPA passphrase by capturing the handshake client and access point perform when they start communicating. 
+
+::: tip
+Check out coWPAtty and Aircrack. Also, have a look at Asleap and THC-LEAPcracker which can hack parts of 802.1X.
+:::
+
+##  WPA 2
+
+The final solution that would ignore the constraints was built around AES.
+
+AES based encryption can be used in a number of different modes or algorithms. The mode that has been chosen for 802.11 is the counter mode with CBC-MAC (CCM). The counter mode delivers data privacy while the CBC-MAC delivers data integrity and authentication. This was named: **"counter with CBC-mode AES protocol"**(**CCMP**).
+
+CBC-MAC, short for "Cipher Block Chaining – Message Authentication Code", as it name implies will create a hash of the data being encrypted in AES.
+
+As noted, 802.1X is used for key distribution and user authentication.
+
+### Encryption and MIC creation
+
+Like TKIP, CCMP also uses a 48-bit IV called a packet number (PN). The packet number is used along with other information to initialize the AES cipher, which is a block cipher, for both the MIC calculation and the frame encryption. 
+
+::: note
+Remember that MAC was already reserved and thus CBC-MAC could actually be CBC-MIC.
+:::
+
+The AES encryption blocks in both the MIC calculation and the packet encryption use the same temporal encryption key (K in the figure). As with TKIP, the temporal key is derived from the master key that was derived as part of the 802.1X exchange. 
+
+![](wifi/ccmp.png)
+
+The MIC calculation and encryption proceed along parallel paths as shown the figure. The MIC calculation is seeded with an IV formed by a flag value, the PN, and other data pulled from the header of the frame. This IV is fed into an AES block and its output is XOR'd with select elements from the frame header, which is then fed into the next AES block. This process continues over the remainder of the frame header and down the length of the packet data to compute a final 128-bit CBC-MAC value. The upper 64 bits of this MAC are extracted and used in the final MIC appended to the encrypted frame. 
+The encryption process is seeded by a counter preload also formed from the PN, a flag value, data from the frame header, and a counter value which is initialized to 1. 
+
+This preload value is fed to the AES block and it's output is XOR'd with 128 bits of clear text from the unencrypted frame. The counter value is incremented by one and this process is repeated for the next block of 128 bits of clear text. This process continues down the length of the frame until the entire frame has been encrypted. The final counter value is set to 0 and input to an AES block whose output is XOR'd with the MIC value computed previously before appending to the end of the encrypted frame for transmission. 
+
+### There goes the neighbourhood
+
+Until 2017 all seemed well. WPA2 was a a well-spoken of standard and everyone was happy with the security provided. However, in may 2017 Belgian researcher Mathy Vanhoef published a paper describing it as follows:
+
+>  We discovered serious weaknesses in WPA2, a protocol that secures all modern protected Wi-Fi networks. An attacker within range of a victim can exploit these weaknesses using key reinstallation attacks (KRACKs). Concretely, attackers can use this novel attack technique to read information that was previously assumed to be safely encrypted. This can be abused to steal sensitive information such as credit card numbers, passwords, chat messages, emails, photos, and so on. The attack works against all modern protected Wi-Fi networks. Depending on the network configuration, it is also possible to inject and manipulate data. For example, an attacker might be able to inject ransomware or other malware into websites.
+
+::: note
+We will not go into detail on how this attacks works. Check out [krackattacks.com](https://www.krackattacks.com/) to learn more about it.
+:::
+
+As a result, IEEE needed to go back to the drawing board and design a *final final solution*, called WPA3.
+
+##  WPA 3 ("Wifi 6")
+
+In 2018 the Wifi Alliance announced the release of WPA3 (also called Wifi 6). The standard provides much improved security, and also copes with the way wireless networks are used nowadays. Modern networks are populated by a plethora of devices, not only laptops. 21th century wireless networks, at workd and at home, have mobiles phones, internet-of-thing devices, printers, and whatnot.
+
+As with WPA1 and 2, version 3 also both a personal and enterprise mode. Additionally, it provides several improvements:
+
+* Simultaneous Authentication of Equals (SAE): this crptographic concept makes the personal passphrase-based authentication much more secure. 
+* It replaces the passphrase in WPA2-personal with a more secure implementation.
+* It is resistant to offline dictionary attacks 
+* Forward secrecy: even if hacker the finds the wifi key of old captures, they can’t be decrypted.
+* Wifi Easy connect: a user-friendly, and secure, methode to connect internet-of-thing devices to the network.
+* Wifi Enhanced open: a secure way of connecting to public hotspots. Gone are the days of sniffing a public network for juicy details, now every user will have a secure, encrypted channel with the access point.
+
+It also replaces 802.1X in WP3-Enterprise with more advanced features:
+* Authenticated encryption: 256-bit Galois/Counter Mode Protocol (GCMP-256)
+* Key derivation and confirmation: 384-bit Hashed Message Authentication Mode (HMAC) with Secure Hash Algorithm (HMAC-SHA384)
+* Key establishment and authentication: Elliptic Curve Diffie-Hellman (ECDH) exchange and Elliptic Curve Digital Signature Algorithm (ECDSA) using a 384-bit elliptic curve
+* Robust management frame protection: 256-bit Broadcast/Multicast Integrity Protocol Galois Message Authentication Code (BIP-GMAC-256)
+
+::: tip
+We did not discuss these advanced cryptographic features, but it is safe to say that they are state-of-the-art and very secure.
+:::
