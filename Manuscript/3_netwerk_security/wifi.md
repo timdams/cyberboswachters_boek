@@ -156,7 +156,7 @@ This proof is accomplesh through a  **challenge-response** system:
 2. The client encrypts this string and sends it back to the access point (*the reponse*)
 3. The access point will try to decrypt the response using his own WEP key: if the original challenge text appears, the access point knows that the response was encrypted with the correct key and so will grant access to the client on the network.
 
-![](wifi/sharedkey.jpg)
+![](wifi/sharedkey.png)
 
 #### Association
 
