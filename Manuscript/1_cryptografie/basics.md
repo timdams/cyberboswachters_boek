@@ -370,15 +370,15 @@ Volgende schema toont de encryptie bestaande uit 16 rondes:
 
 De data wordt blok per blok doorheen dit gedeelte gestuurd. Eerst gebeurt er een zogenaamde *Initiële permutatie* (*IP* in de figuur) waarbij iedere bit naar een andere plek wordt gestuurd volgens een vast patroon. Achteraan gebeurt dit nogmaals in een *Finale permutatie (*FP*).
 
-![De Initiële permutatie (Bron wikipedia)](crypto/des2.png){ width=60% }
+![De Initiële permutatie](crypto/des2.png){ width=60% }
 
 Na de *IP* gaat de data door 16 feistel structuren die telkens het zelfde doen. De data wordt in 2 helften gesplitst waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-xor'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
 
-![Binnenin de F-operatie (Bron wikipedia)](crypto/des3.png){ width=60% }
+![Binnenin de F-operatie](crypto/des3.png){ width=60% }
 
 In het F-blok wordt eerst het 32-bit block uitgebreid (*E* in de figuur, van expansie) naar een 48 bit blok zodat deze even lang is als de subkey voor deze ronde. De expansie gebeurt, net als de initiële permutatie, volgens een vast patroon:
 
-![De expansie van 32 naar 48 bits (Bron wikipedia)](crypto/des4.png){ width=60% }
+![De expansie van 32 naar 48 bits](crypto/des4.png){ width=60% }
 
 Nu worden deze 48 bits ge-xor'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst. 
 
@@ -390,7 +390,7 @@ Finaal krijgen we dus terug een 32 bit blok dat nog een laatste permutatie onder
 
 Iedere ronde tijdens de versleuteling vereist een sleutel. Om te voorkomen dat steeds de hoofdsleutel wordt gebruikt (en er zo potentieel dezelfde keystreams worden gemaakt) wordt deze sleutel doorheen een *round-key generator* algoritme gestuurd. Dit algoritme bestaat uit 16 rondes waarbij de 56 bit sleutel (8 van de 64 bits in de originele sleutel zijn zogenaamde pariteits-bits, die dienen om te controleren of de sleutel geen fouten bevat) steeds in 2 helften van 28 bits wordt *geknipt*.
 
-![De 16 rondes die telkens 1 subkey maken (Bron wikipedia)](crypto/des6.png){ width=60% }
+![De 16 rondes die telkens 1 subkey maken](crypto/des6.png){ width=60% }
 
 Iedere ronde wordt iedere helft van de sleutel 2 bits *geshift* (in ronde 1,2, 9 en 16 maar 1 bit). Dat wil zeggen dat alle bits 2 plekjes opschuiven en de eerste (of laatste) bits komen dan achteraan (of vooraan) te staan. Deze 2 geshifte helften worden dan enerzijds doorgestuurd naar de volgende ronde, anders naar een *compressie P-box* waarvan het resultaat een 48 bits subkey zal zijn van die ronde.
 
@@ -429,7 +429,7 @@ Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES
 
 De werking van 3DES (*tripple DES*) verrassend eenvoudig: ieder blok data wordt 3 keer doorheen een DES-cipher gestuurd. Hierbij wordt steeds een andere sleutel gebruikt. Om de bestaande DES hardware te gebruiken wordt hierbij de data eerst door de encryptie gestuurd, dan doorheen de decryptie en terug door de encryptie. Daar we een andere sleutel gebruiken in iedere fase heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we dus effectief 3 maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvanger zijde gebeurt dan het omgekeerde: decryptie, encryptie, decryptie én dit dus allemaal met de bestaande DES hardware!
 
-![De 16 rondes die telkens 1 subkey maken (Bron wikipedia)](crypto/3des.png){ width=60% }
+![](crypto/3des.png){ width=60% }
 
 ::: tip
 3DES laat dus ook (single) DES encryptie toe. Het enige dat je hiervoor moet doen is de subsleutels K2 en K3 gelijkstellen waardoor de 2 en derde fase tijdens de encryptie (en decryptie) eigenlijk niets doet, daar het gewoon de data encrypteerd in ronde 2 en dan ogenblikkelijk in ronde 3 terug gecrypteerd.
