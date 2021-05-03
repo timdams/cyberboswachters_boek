@@ -117,7 +117,7 @@ The SSID is a 32byte ASCII character string as described in the 802.11 specifica
 
 After the scan report is made the station can choose to join one of the networks. This joining is not the same as associating; it is analogous to aiming a weapon, you are only planning to use the chosen network and its services, but first you have to be authenticated one way or the other and be associated.
 
-What network is joined depends on whether the user chooses one or not. If the user lets the device choose, the station works with some criteria to make the decision like the power level and signal strength.** When chosen, the station has to synchronize its timing and also match the physical and MAC parameters.** It then tries to authenticate itself.
+What network is joined depends on whether the user chooses one or not. If the user lets the device choose, the station works with some criteria to make the decision like the power level and signal strength.**When chosen, the station has to synchronize its timing and also match the physical and MAC parameters.** It then tries to authenticate itself.
 
 #### Authentication
 
@@ -420,7 +420,7 @@ Another standard that is being discussed is IEEE 802.1X standard, which enables 
 Where TKIP and CCMP provide integrity and encryption, it is 802.1X that provides the following:
 
 * Provide (mutual) **authentication**.
-* Have a** central user management** system.
+* Have a **central user management** system.
 * Have a secure way to **distribute secret keys**.
 
 ::: note
@@ -528,6 +528,7 @@ WEP misuses the RC4 algorithm as described earlier. TKIP’s per-packet key cons
 The key mixing works as follows. A key mixing function transforms a temporal key and packet sequence number into a per-packet key and IV.
 
 This is done in two phases, each phase compensating for a particular WEP design flaw:
+
 * Phase 1 eliminates the same key from use by all links by mixing the transmitter address (TA) with the IV and the base key. 
 * Phase 2 eliminates knowing the per-packet key by viewing the public IV.
 
@@ -612,6 +613,7 @@ As with WPA1 and 2, version 3 also both a personal and enterprise mode. Addition
 * Wifi Enhanced open: a secure way of connecting to public hotspots. Gone are the days of sniffing a public network for juicy details, now every user will have a secure, encrypted channel with the access point.
 
 It also replaces 802.1X in WP3-Enterprise with more advanced features:
+
 * Authenticated encryption: 256-bit Galois/Counter Mode Protocol (GCMP-256)
 * Key derivation and confirmation: 384-bit Hashed Message Authentication Mode (HMAC) with Secure Hash Algorithm (HMAC-SHA384)
 * Key establishment and authentication: Elliptic Curve Diffie-Hellman (ECDH) exchange and Elliptic Curve Digital Signature Algorithm (ECDSA) using a 384-bit elliptic curve
