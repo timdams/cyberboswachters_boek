@@ -1,6 +1,6 @@
 pandoc ^
  metadata.yaml^
- 1_cryptografie/publiccrypto.md^
+ 1_cryptografie/authenticatie.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^
