@@ -1,6 +1,6 @@
 pandoc ^
  metadata.yaml^
- 3_netwerk_security/wifi.md^
+ 1_cryptografie/publiccrypto.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^

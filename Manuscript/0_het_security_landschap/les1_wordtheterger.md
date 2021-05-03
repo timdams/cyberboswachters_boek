@@ -22,6 +22,7 @@ Voor het ontdekken van Stuxnet in 2010 leek de cyberbeveiligingswereld wel een w
 
 :::note
 De termen worm, virus en malware zal geregeld door elkaar worden gebruikt in deze cursus. Alle drie betekenen net niet hetzelfde, maar  toch:
+
 * Een **virus** is een kwaadaardig programma dat, eens het op een computer of apparaat staat, digitale schade kan aanbrengen.
 * Een **worm** daarentegen is ook een virus, maar eentje dat zichzelf kan *voortplanten* naar andere systemen, iets wat een virus niet kan. Een worm kan zichzelf dus verspreiden zonder menselijke hulp.
 * **Malware** is een overkoepelende term voor alle programma's en code die digitale schade aan een systeem of netwerk brengen. Virussen en wormen behoren dus tot deze groep.
