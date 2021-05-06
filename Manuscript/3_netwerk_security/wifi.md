@@ -68,7 +68,7 @@ Dit resulteerde in onder andere volgende scenario's:
 
 ![](wifi/spoofwifi.png){ width=60% }
 
-* En last but not least laten de onbeveiligde management frames toe dat we eenvoudig een  access point kunt nabootsen (**impersonation**). Vervolgens kunnen we een  **man-in-the-middle aanval** uitvoeren daar een hacker zich kan plaatsen tussen de gebruiker en het internet en zo informatie kan ontfutselen. 
+* En *last but not least* laten de onbeveiligde management frames toe dat we eenvoudig een  access point kunt nabootsen (**impersonation**). Vervolgens kunnen we een  **man-in-the-middle aanval** uitvoeren daar een hacker zich kan plaatsen tussen de gebruiker en het internet en zo informatie kan ontfutselen. 
   
 
 ![](wifi/mitmwifi.png){ width=60% }
@@ -79,138 +79,144 @@ De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te 
 
 
 ::: alert
-Volgende Engelstalige teksten koment uit een oudere cursus van dme en zullen (ooit) vertaald worden. Op deze manier kan ik echter focussen op jullie zoveel mogelijk leerstof in cursusvorm aan te bieden.
+Volgende Engelstalige teksten komen uit een oudere cursus van me en zullen (later) vertaald worden. Op deze manier kan ik echter focussen op jullie zoveel mogelijk leerstof in cursusvorm aan te bieden.
 :::
 
 
-## The 802.11 standard and its security
+## De 802.11 standaard qua beveiliging
 
-The original “ANSI/IEEE Std. 802.11” was written in 1999 and had the purpose “to develop a medium access control (MAC) and physical layer (PHY) specification for wireless connectivity for fixed, portable, and moving station within a local area.”  
-The security chapter in the standard (Chapter 8: “Authentication and Privacy”) was only a mere 10pages long, compared to the total number of pages (528) this might be seen as a forebode of how little security was originally conceived in the standard.
+De originele "ANSI/IEEE Std. 802.11" die de wifi specificaties beschrijft werd geschreven in 1999. Het had als doel *"to develop a medium access control (MAC) and physical layer (PHY) specification for wireless connectivity for fixed, portable, and moving station within a local area."* Hoofdstuk 8 van deze standaard had als titel "Authentication and privacy" en was maar 10 miezerige pagina's lang, in vergelijking de totale grootte van het document (528 pagina's) was dit misschien wel een voorbode hoe weinig aandacht er aan beveiliging zou worden gegeven. 
 
-Before we dive into WEP, the original *security motor* of wifi, we will first have a look how clients actually join a wireless network. As previously noted, this prcoes includes the usage of unprotected management frames.
+::: tip
+Vanaf nu zullen we geregeld het woord access point afkorten naar **AP**. In deze tekst kan een AP zowel een eenvoudig access point zijn als een complexe draadloze router of modem.
+:::
 
+Voor we dat kleine hoofdstuk gaan openbreken -en ontdekken hoe WEP in de eerste generatie wifi-apparaten een navenante beveiliging aanbood- zullen we eerst bekijken hoe gebruikers met een draadloos netwerk effectief kunnen verbinden. Zoals reeds vermeld gebeurt dit gebruik makende van de onbeveiligde management frames.
 
-### Joining a network
-The moment there is any form of interaction between the attacker and his target he can begin his malicious acts. The same applies to wireless hacking: before being to hack a network the attacker first needs to find one and establish a 'link', in this case this can be nothing more but an antenna that captures all passing radio signals.
-Yet, capturing data passively as described is one thing, actively attacking a network is a whole other business. To be able to do so, an attacker needs to actually join a network, one way or another. 
+### Verbinden met een netwerk
 
-The IEEE 802.11 standard specifies how a wireless LAN can be joined. Several steps need to be undertaken before a user or attacker can be granted actual permission to the network and use it for higher-layer data traffic:
+Voor aanvallers actieve aanvallen kunnen starten op een netwerk dienen ze verbinding te maken met het netwerk. Dit proces bestaat uit 4 stappen die doorloppen moeten worden voor legale en illegale gebruiker effectief gebruik kunnen maken van het netwerk en *higher-layer* datatraffiek kunnen verwerken.
 
-1.	**Scanning**: Searching for possible networks to join.
-2.	**Joining**: Choosing a network you want to access.
-3.	**Authentication**: Giving the right credentials to be allowed to use the network.
-4.	**Association**: Making sure the system keeps track of your location in the network.
-It is important to note that a user or attacker can only begin using a network’s resources when he is associated.
-
+1.	**Scannen**: Passief of actief zoeken naar de netwerken in de buurt.
+2.	**Verbinden (*joining*)**: Kiezen met welk netwerk zal verbonden worden.
+3.	**Authenticatie**: Bewijzen dat de gebruiker toegang heeft tot het netwerk. 
+4.	**Associatie (*association*)**: Bijhouden met welk AP de gebruiker verbonden is van het netwerk. Pas vanaf deze stap kan het netwerk gebruikt en misbruikt worden.
 
 
-#### Scanning
+#### Scannen
 
-Any device that wants to use a network first needs to find one, and so it scans the area to discover a compatible network to join. 
-Several parameters are used in the scanning procedure and some of them can be specified by user; many implementations have default values for these parameters in the driver.
-One of these parameters is the SSID, or Service Set Identifier, which contains the name of the network. With this parameter, the user can choose to scan for a specific network, or scan for any network in the area using the broadcast SSID. 
+In deze stap zal de client ontdekken welke netwerk er in de omgeving zijn. Oftewel zoekt de client specifiek naar een netwerk, oftewel wil hij gewoon een oplijsting van alle aanwezige netwerken. Ieder draadloze netwerk heeft een netwerknaam, de **SSID** (*service set identifier*) die bestaat uit een 32 byte ASCII character string, en zal deze op geregeld tijdstip broadcasten voor iedereen die hier nood aan heeft (we merkten al eerder op dat dit broadcasten kan uitgezet worden, maar dat dat een vals gevoel van veiligheid zal geven). Naast het SSID zal ieder netwerk ook meerdere fysische parameters uitsturen die de client in de volgende stap zal nodig hebben. 
 
-The SSID is a 32byte ASCII character string as described in the 802.11 specifications. In these specifications is also stated that any client setting this string to a ‘NULL’ string will associate to any access point regardless of the SSID setting on the access points. This is referred to as the broadcast SSID and is normally only used in Probe Request frames when a station attempts to discover all the 802.11 networks in its area.
+Er zijn meerdere kanalen beschikbaar in het spectrum waar binnen een netwerk mag werken. De client zal bij het scannen daarom steeds enkele milliseconden op een bepaald kanaal luisteren om potentiële SSID boradcasts op te vangen, om dan naar het volgende kanaal hetzelfde te doen. 
 
-#### Joining
+#### Verbinden
 
-After the scan report is made the station can choose to join one of the networks. This joining is not the same as associating; it is analogous to aiming a weapon, you are only planning to use the chosen network and its services, but first you have to be authenticated one way or the other and be associated.
+Wanneer de gebruiker gekozen heeft met welk SSID er moet verbonden worden zal in deze stap de wifi-netwerkkaart ingesteld worden op de juiste fysische parameters (frequentie kanaal, snelheid, etc.) zodat als het ware AP en client synchroon lopen (en dus op de juiste moment iets tegen elkaar kunnen zeggen zonder elkaars signalen te storen). In de scan-stap keken we als het waren goed rond, in deze stap richten we onze blik nu op een bepaald netwerk.
 
-What network is joined depends on whether the user chooses one or not. If the user lets the device choose, the station works with some criteria to make the decision like the power level and signal strength.**When chosen, the station has to synchronize its timing and also match the physical and MAC parameters.** It then tries to authenticate itself.
+#### Authenticatie
 
-#### Authentication
+::: note
+Deze en de voorgaande stappen gebeurt volledig automatisch indien de gebruiker eerder heeft geopteerd om automatisch met een netwerk te verbinden.
+:::
 
-When in a wired network, authentication is almost provided by the mere physical access; if you are close enough to plug in a cable, you most likely were allowed by, for example, the receptionist at the front desk and thus need no extra authentication to use the network.
+In een bedraad netwerk zit authenticatie impliciet vervat in het fysisch aspect: wanneer je de kabel in je laptop kan steken dan is de kans groot dat je een legale gebruiker bent in het gebouw en dus is er geen extra authenticatie nodig (kort door de bocht gezien, weliswaar). Dat is niet zo met draadloze netwerken die voorbije de grenzen van het gebouw hun signaal uitsturen. Er is daarom een extra stap nodig voor we het netwerk kunnen betreden.
 
-This is certainly not the fact in a wireless LAN. Therefore authentication was added to the process of joining a network nonetheless. Two major approaches are specified by 802.11 to ensure that a station attempting to associate with a network is allowed to do so:
+In de 802.11 standaard staan 2 mogelijke authenticatie-methoden beschreven (die we verderop zullen toelichten):
 
-* **Open-system authentication** (might include WEP)
-* **Shared-key authentication** (includes WEP)
+* **Open-system authentication** 
+* **Shared-key authentication** 
 
-802.11 authentication as originally specified as a one-way street. There is no mutual authentication whatsoever, thus allowing a malicious attacker to employ ‘man-in-the-middle’ attacks (see earlier) without the end user knowing it. A rogue access point could send Beacon frames for a network it is not part of and for example attempt to steal authentication credentials.
+Origineel was deze authenticatie een enkelrichtingsstraat. Enkel de client dient zich te authenticeren. Hierdoor bestaat dus de kans dat de gebruiker verbind met een rogue of fake AP. 
 
-No other authentication algorithms are defined in the 802.11 standard but the two mentioned before; there exists however a third popular (but not yet standardized) method, 
+::: tip
+Naast voorgaande 2 methoden is er nog een derde die niet in de standaard staat beschreven maar die wel door veel fabrikanten werd aangeboden in hun wifi-apparaten:
 
-* **MAC Address Authentication using a MAC-ACL**: this is simply a whitelist (ACL stands for **access control list**) containing all the MAC-addresses that are allowed on the network. However, as we've seen, this is useless snce MAC spoofing in wifi is peanuts (including sniffing the air for a legal MAC-address).
+* **MAC Address Authentication gebruik makend van een MAC-ACL**: hierbij kan de beheerder van een AP een *access control list* (ACL) aanleggen waarin alle MAC-adressen staan van toegelaten apparaten. 
+:::
+
 
 **Open-system authentication**
 
-Originally the open-system authentication was seen as the ‘no-security’ method of authentication for wireless networks. History however has proven that this mode is now more secure when used in 802.1X since it does not leak any information on the used encryption etc (more about this later). Two frames are exchanged in this setup:
+Deze vorm van authenticatie werd eerst gezien als de "er is geen authenticatie nodig op dit netwerk"-versie van authenticatie. Echter, de problemen met WEP op gebied van beveiliging hebben er voor gezorgd dat sinds de WEP-opvolger WPA, deze vorm de veiligere van de twee modes is. 
 
-1. From client to access point, requesting access .
-2. The other way around, with the access point  basically sending an "hello there" frame.
+In netwerken met deze modus om te authenticeren worden er exact 2 frames tussen client en AP uitgewisseld:
 
-If no encryption is used in the network, any device knowing the SSID of the AP can gain access to the network. With WEP encryption enabled, the WEP key itself becomes a form of access control. If a device does not have the correct WEP key, even though authentication was successful, the device will be unable to transmit data through the AP. And neither can the device decrypt data it receives from the AP. This way however, there is no security against attackers that have stolen/cracked the WEP key; there is no form of real user authentication.
+1. Eerst vraagt de de client aan het AP toegang.
+2. Vervolgens stuurt het AP naar de client een "Welkom" frame.
 
-::: note
-It may seem useless to have an authentication algorithm like this that provides no real security when no other encryption is used. However, there are many wireless devices that simply don’t have enough CPU resources to support more complex authentication algorithms. Hand-held devices like bar-code reader, network scanners etc just need quick access to a network without the extra hassle of authentication and therefore could use open-system authentication.
-:::
+Meer gebeurt er niet in deze modus.
+
+Als er in dit soort netwerk geen encryptie wordt toegepast dan kan dus eender welk apparaat in de omgeving verbinding maken met dit netwerk. Als er wél WEP encryptie wordt gebruikt dan zal het bezit van de WEP-sleutel als een soort toegangscontrole werken: je kan namelijk wel authenticeren (daar het AP iedereen toelaat in deze authenticatie-fase) maar vervolgens kan je geen data lezen en versturen tenzij je een geldige WEP-sleutel hebt.
 
 **Shared-key authentication**
 
-Shared-key authentication, as its name implies, requires that a shared key is distributed to the stations before they attempt to authenticate. This is done using WEP and therefore can only be used with products that implement WEP. Proving that you own the correct WEP key is enough proof to be allowed on the network.
+In deze modus moet je bewijzen dat je in het bezit bent van een geldige WEP-sleutel voor dit netwerk. Het AP zal daarom een **challenge-response** authenticatie opstarten bestaande uit volgende sequentie van frames:
 
-This proof is accomplesh through a  **challenge-response** system:
-1. The access point creates a random string (*the challenge*) and sends this in plaintext to the client
-2. The client encrypts this string and sends it back to the access point (*the reponse*)
-3. The access point will try to decrypt the response using his own WEP key: if the original challenge text appears, the access point knows that the response was encrypted with the correct key and so will grant access to the client on the network.
+1. Het AP maakt een random string aan, de *challenge*, en stuurt deze in plaintext naar de client.
+2. De client encrypteert deze string met z'n WEP-sleutel en stuurt dit terug naar het AP (de *response*).
+3. Het AP zal nu de response decrypteren met z'n eigen WEP-sleutel en het resultaat vergelijken met de challenge-string. Als beide gelijk zijn weet het AP dat de client een geldige WEP-sleutel heeft en dus toegelaten mag worden op het netwerk.
 
 ![](wifi/sharedkey.png)
 
-#### Association
+::: tip
+Merk op dat stap 1 en 2 ervoor zorgen dat aanvallers die deze *handshake* sniffen 2 interessante frames zien passeren. Eerst zien ze een plaintext, ogenblikkelijk gevolgd door de bijhorende ciphertext ervan (indien ze een gebruiker sniffen met een geldige WEP-sleutel). Dit zal interessante informatie blijken verderop in dit horror-verhaal waarin we zullen tonen waarom WEP niet zo veilig bleek te zijn als gehoopt.
+:::
 
-Once authentication is completed, the station is allowed to associate and/or reassociate with any access points in the network, for which he is authenticated. 
+#### Associatie
 
-Once associated, actual data transmissions (i.e. usage of the network) can start. Depending on the settings of the network, it is at this point that actual encryption of the data starts. This encryption is accomplished using WEP, as explained next.
+Na een succesvolle authenticatie krijgt de client een *association ID* toegewezen. Dit ID gebruikt het netwerk om te weten waar in het netwerk de client zich bevind. Veel draadloze netwerken bestaan namelijk uit meerdere AP's en via dit id weet het netwerk met welk AP de client momenteel verbonden is en zal alle data voor de client dan naar dat AP sturen.
 
+Vanaf dit punt kan de gebruiker dus de bronnen van het netwerk beginnen gebruiken en wordt het tijd om deze communicatie te beveiligen (tenzij het om een publieke hotspot gaat waar iedereen alles van elkaar kan zien). 
 
 ### WEP
 
-After being associated to a wireless network, the eavesdropping problem (and others) become obvious. Therefore the 802.11 specifications described **WEP** or **"Wired Equivalent Privacy**", a protocol that was believed to create the same level of privacy experienced on a wired LAN. WEP is 802.11's optional encryption standard implemented in the MAC Layer that most wireless LAN-cards and access point vendors supported around the time Wifi become immensely poppular.
-
-When WEP is enabled, all data is encrypted before being transmitted. Only with the right key can the receiver decrypt the data afterwards. And so, when a user is finally associated with a network, he can rely on WEP to have some form of privacy.
+Om potentiële aanvallers ervan te weerhouden dat ze traffiek kunnen sniffen (of zelf op het netewrk zetten) voorziet de 802.11 vanaf de associatie de optie om encryptie te voorzien. Dit gebeurt aan de hand van **WEP**, wat staat voor *wired equivalent privacy*. Een naam die veel beloofde maar niet zo goed was: de idee was dat WEP even veilig zou zijn als een bedraad netwerk. 
 
 ::: note
-To be exact: the MAC layer receives packets from the LLC layer. If WEP is enabled this packet is sent to WEP where it is fragmented, if needed, into several frames. It is these frames that are encrypted and sent further down, to the PHY layer.z
 
-![The 802.11 layers have different names compared to the classic OSI layers, but there functions are basically the same.](wifi/osimac.png){ width=60% }
+WEP is optioneel en bevindt zich vlak voor frames naar de fysische laag (*PHY*) worden gestuurd die de frames "in de lucht" zal sturen. Het IEEE werkt met lagen die ongeveer overeen komen met de OSI-lagen maar met iets andere namen. In volgende figuur zie je waar WEP, optioneel, zich bevindt ten opzichte van de onderliggen en bovenliggende lagen.
+
+![](wifi/osimac.png){ width=60% }
 
 :::
 
 
-#### How WEP works
+#### Hoe werkt WEP?
 
-![WEP in full](wifi/wepencr.png)
+![WEP in z'n geheel](wifi/wepencr.png)
 
-WEP uses RC4, a symmetric stream cipher and a WEP-key to create a pseudo random key stream. It is based on the principle of a one-time pad, which is the only known encryption scheme that is mathematically proven to protect against certain types of attacks. The RC4 algorithm is a set of rules used to expand the key into a key stream as a explained earlier. This generated stream is XOR’d with the plain text producing the cipher text. To read this text again, the receiver needs to have the same key. Using this key he then recreates the same pseudorandom stream and XOR’s the cipher text.
+Het hart van WEP is het RC4-algoritme dat we reeds zagen in het crypto-hoofdstuk. De WEP-sleutel zal dienst doen als de seed voor de keystream generatie. Deze keystream zal op zijn beurt ge-XOR'd worden met het te encrypteren frame. 
 
 
 ![Integrity check](wifi/crc.png) 
 
-Confidentiality and integrity are handled simultaneously. Before the encryption, the frame is run through an integrity check algorithm (CRC-32), generating a hash called the integrity check value (ICV). This ICV protects the data from being forged during transmission. Both the frame and the ICV are encrypted making the ICV unavailable to casual attackers. 
 
-The decapsulation (decryption) is basically the reverse procedure, with that respect that the receiver also makes a CRC-32 hash which is compared to the one received. If both received and self-made hash are equal the data is considered ‘clean’ (i.e. was not changed due to random noise, etc)
+Confidentiality en integriteit worden tegelijkertijd afgehandeld in WEP. Vlak voor dat het frame via de XOR-operatie wordt geëncrypteerd zal het frame eerst door een *integrity check algoritme* gestuurd worden. Deze integrity check gebeurt met behulp van CRC-32, een oude getrouwe op dit gebied. CRC-32 zal een hash genereren die de ontvanger bij ontvangst kan gebruiken om te zien of het frame werd aangepast na verzenden (bewust door een aanvaller, of door bijvoorbeeld ruis in het netwerk). Deze hash, de **Integrity Check VALUE (ICV**), zal mee worden geëncrypteerd door RC4 voor hij verstuurd wordt. Op deze manier kunnen ordinaire aanvallers het frame niet aanpassen zonder dat ze daarmee ook de ICV ongeldig maken.
 
-Shown in the following figure is a schematic overview of the resulting frame:
+
+Finaal verkrijgen we dus volgende WEP-frame dat kan verstuurd worden:
 
 ![WEP frame layout](wifi/wepframe.png){ width=60% }
 
 ::: note 
-To protect traffic from brute-force decryption attacks, a set of up to four default keys is used. 
-The default keys, identified by a variable keyid (0 to 3), need to be shared among all stations in a service set. Once a station has obtained the default keys for its service set, it can communicate using WEP.
+In de originele standaard zat de mogelijkheid om tot 4 WEP-sleutels in een netwerk te gebruiken. Via de *keyid* kon een client of AP dan aangeven met welk van de geïnstalleerde sleutels een frame werd geëncrypteerd. 
 :::
 
-WEP originally specified the use of a 40bit secret key; proprietary versions however also support longer keys (e.g. 104, 128, etc). The secret key is combined with a 24-bit initialisation vector (IV) to create a longer key (64 if 40-bit key was used). The IV is a random generated number; however this was not stated in the original specifications. This new key (WEP-key + IV) is used as the seed  for the RC4 key stream generator. The key stream is then XOR’d with the frame body and the ICV.
+#### Sleutellengte en de IV
 
+Origineel ondersteunde WEP enkel 40-bit WEP sleutels. Ondertussen is dat opgetrokken maar toen de standaard werd geschreven besefte men al dat er sowieso een probleem met de sleutel zou zijn als die zo zou gebruikt worden: ieder frame dat met dezelfde sleutel wordt geëncrypteerd zal dezelfde keystream hebben gebruikt. Dat was natuurlijk geen optie. Om die reden werd gekozen om te werken met een **initialisatie vector (IV)** van 24-bit. Deze IV werd mee als seed aan RC4 gegeven. Door ieder frame een andere IV te kiezen zorgden men er zo voor dat ieder frame een andere keystream gebruikte (WEP-sleutel+IV werd de nieuwe seed per frame).In de originele standaard werd echter niet beschreven hoe deze IV moest veranderen wat nefaste gevolgen zal hebben verderop. 
 
-![Encryption](wifi/crc.png) 
+Omdat ook de ontvanger dezelfde keystream moet kunnen genereren tijdens decryptie is het natuurlijk belangrijk dat de IV ook bij de ontvanger gekend is. De enige manier om dit op te lossen is door de IV mee in de header van het frame te plaatsen en door te sturen. Uiteraard moet deze IV als plaintext door het leven gaan. 
 
-To enable the receiver to generate the same random stream, thus enabling him to decrypt the frame, the IV and keyid is placed in the header of the frame.
+::: tip
+Dit concept van een sleutel verlengen met een arbitrair getal heet *salting* en zullen we in het hoofdstuk omtrent paswoorden en authenticatie verderop in de cursus nog zien terugkomen.
+:::
 
-![WEP encryption in full](wifi/wepfull.png) 
+Finaal krijgen we dus de finale werking, encryptie en decryptie, als volgt:
 
-![WEP decryption in full](wifi/wepdec.png) 
+![WEP encryptie](wifi/wepfull.png) 
+
+![WEP decryptie](wifi/wepdec.png) 
 
 ##  How WEP failed
 
