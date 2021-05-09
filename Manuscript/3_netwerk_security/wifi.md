@@ -78,9 +78,6 @@ De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te 
 :::
 
 
-::: alert
-Volgende Engelstalige teksten komen uit een oudere cursus van me en zullen (later) vertaald worden. Op deze manier kan ik echter focussen op jullie zoveel mogelijk leerstof in cursusvorm aan te bieden.
-:::
 
 
 ## De 802.11 standaard qua beveiliging
@@ -212,7 +209,7 @@ Omdat ook de ontvanger dezelfde keystream moet kunnen genereren tijdens decrypti
 Dit concept van een sleutel verlengen met een arbitrair getal heet *salting* en zullen we in het hoofdstuk omtrent paswoorden en authenticatie verderop in de cursus nog zien terugkomen.
 :::
 
-Finaal krijgen we dus de finale werking, encryptie en decryptie, als volgt:
+Finaal krijgen we dus de volgende werking, encryptie en decryptie, als volgt:
 
 ![WEP encryptie](wifi/wepfull.png) 
 
@@ -220,147 +217,171 @@ Finaal krijgen we dus de finale werking, encryptie en decryptie, als volgt:
 
 ##  How WEP failed
 
-Throughout time, more and more papers were released, identifying flaws in the overall WEP security.
+Het leek een verbonden vat: hoe populairde wifi werd over de hele wereld, hoe meer papers er verschenen die fouten identificeerden in WEP. Al vrij snel werd duidelijk dat WEP hoegenaamd géén CIA kon aanbieden. De meeste fouten die werden gevonden kunnen gegroepeerd worden in volgende 4 zaken:
 
-The flaws can be summarized to 4 large problems with WEP, each having their own problematic results:
-
-* RC4 cipher was not meant for datagram environments.
-* The IV is badly implemented.
-* The CRC-32 is not secure enough.
-* No real key distribution system.
-* There is no replay protection.
-* 
-The problem of having no replay protection will not be discussed separable since it is basically a flaw that ‘helps’ to make the four other mentioned problems even bigger.
-
-#### Problem 1: RC4
-
-Most problems result from a misuse of the RC4 cipher. It is used in a large range of modern security devices, because it provides a high degree of privacy and that for a relatively low performance penalty (consumes very little power since it uses no multiplications). 
-
-However, stream ciphers in general, RC4 in particular, are questionable choices in an unreliable datagram environment like that of WEP. In a datagram environment, the same packet is often resent because of a transmission error, which happens as much as 20% of the transmissions. This is normal, but unwanted for a secure stream cipher. Because of this datagram environment, two properties of a stream cipher produce severe privacy gaps that, in conjunction with the IV and other flaws, can be abused by attackers.
+1. Het **RC4 algorithme** is helemaal niet gemaakt voor een datagramnetwerk zoals wifi.
+2. De manier waarop de **IV** in de standaard is beschreven is ontoerijkend en verhoogd de kans op foute implementaties door fabrikanten.
+3. **CRC-32** kan omzeilt worden en kan dus geen integriteit van frames garanderen.
+4. Er is **geen sleutel-management systeem**. 
 
 
-##### RC4 has no random access property
+Er is echter nog een vijfde fout die de voorgaande 4 als het ware nog versterkt:
 
-Before we actually begin discussing the security related flaws, it should be noted on why RC4 actually was a bad choice by the IEEE 802.11 group when it comes to encryption and decryption speed on the MAC-layer.
+5. Er is geen **replay protection**.
 
-The loss of a single bit of a data stream encrypted under RC4 causes the loss of all the data following the lost bit. This is because a data loss desynchronizes the RC4 encryption and decryption engines. A full reset of both the engines is then the only real solution. 
+Hierdoor heeft de aanvaller dus vrij spel en kan hij draadloze netwerk als een soort experimenteertuin gebruiken en duizenden pakketjes te pas en te pas onpas heruitzenden. We zullen nu de eerste 4 grote problemen beschrijven. De *replay proection* behandelen we niet apart maar zullen we geregeld bij de andere problemen zien opduiken.
 
-Since IEEE 802.11 MAC is neither reliable nor delivers-in order at the level of which WEP operates, WEP requires that the cipher support a random access, “seek” type capability, where it is wanted to instantly and efficiently switch the cipher to any selected point in the key stream and not having to begin from the start after an error. 
+#### Probleem 1: RC4
 
-Instead of selecting a stream cipher with characteristics needed for a datagram environment, the WEP architecture tries to accommodate itself by reinitializing the cipher key schedule on every data frame. Creating an overhead that could have been avoided when a cipher with random access was chosen (one such as AES).
+De meeste problemen met WEP komen van een verkeerd gebruik van het RC4 algoritme. RC4 wordt in erg veel moderne beveiligingsappaten toegepast omdat het een sterk én efficient algoritme is (het verbruikt weinig energie omdat er geen dure vermenigvuldiginsoperaties in voorkomen). Echter, stream ciphers in het algemeen, RC4 specifiek, zijn eigenlijk geen goede keuze voor datagram netwerken waarin transmissies onbetrouwbaar zijn. 
 
-##### RC4 disallows key re-use
+In een datagram netwerk worden pakketjes vaak opnieuw verstuurd wanneer er een fout optrad en de ontvanger voor een *retransmission* vraagt (dit gebeurt voor ongeveer 20% van de verstuurde data). Dit is volledig normaal gedrag in zowel bedrade als draadloze netwerken, echter voor een stream cipher is dit nefast. Specifiek 2 eigenschappen van stream ciphers (en dus ook RC4) zorgen voor stevige gebreken in het WEP-protocol inzake confidentiality:
 
-Stream ciphers have a second property that is important: it is unsafe to use the same key twice, ever. 
+1. RC4 heeft **geen *random access* mogelijkheden**.
+2. RC4 staat **geen sleutel hergebruik** toe.
 
-Presume you have two plaintext byte sequences $p_1,p_2,p_3,…$ and $q_1,q_2,q_3,…$ both which you encrypt with the a key stream $k_1,k_2,k_3,…$.This encryption, as we have seen, is an XOR of the key and plain text. So we have two new cipher texts:
+Laten we die 2 eigenschappen eens bekijken en welke cascade van problemen ze met zich meebrengen.
+
+##### RC4 heeft geen random access mogelijkheden
+
+Deze eigenschap is niet zo zeer een probleem vanuit beveiligingsperspectief, maar wel vanuit performantieperspectief. RC4 had eigenlijk nooit gekozen mogen worden door het IEEE om in WEP gebruikt te worden. Het verlies van één bit van de datastroom zalervoor zorgen dat alle bits erna met RC4 ook verloren zijn, daar we met een stream cipher werken waarbij de synchronisatie van de stroom bits tussen verzender (encryptie) en ontvanger (decryptie) gelijk moet blijven. Bij het minste dataverlies moeten beide zijden hun *RC4-motortje* resetten en opnieuw beginnen.
+
+AES bijvoorbeeld heeft wél die random access mogelijkheid: hierdoor kan steeds herbegonnen worden aan het punt van dataverlies en niet helemaal opnieuw, wat natuurlijk veel efficiënter is (daar we werken in een datagram omgeving waar bitverlies bijna continue voorkomt). 
+
+
+##### RC4 staat geen sleutel hergebruik toe
+
+Stream ciphers hebben een tweede erg belangrijke eigenschappen: **het is uiterst onveilig om een zelfde sleutel twee keer te gebruiken!**
+
+Stel dat je volgende 2 plaintext byte squenties hebt:  $p_1,p_2,p_3,…$ en $q_1,q_2,q_3,…$. Beide worden met dezelfde keystream $k_1,k_2,k_3,…$ geëncrypteerd. Dit geeft ons vervolgens volgende 2 ciphertext sequenties:
 
 $p_1 \oplus k_1, p_2 \oplus k_2, p_3 \oplus k_3$ 
 
 $q_1 \oplus k_1, q_2 \oplus k_2, q_3 \oplus k_3$
 
-Now, presume an attacker captures these two cipher texts; what then follows is a failure of privacy, since:
+Als we nu veronderstellen dat een aanvaller deze 2 ciphertexts capteert, wat dan volgt is een grove schending van de confidentialiteit die RC4 zou moeten garanderen: 
 
 $(p_i \oplus k_i) \oplus (q_i \oplus k_i) = p_i \oplus q_i$
 
-Or in other words, combining two cipher texts produces a stream, which is not dependant of the used key, and so a large deal of information about the plain texts is revealed.  If one of the two plain texts is known, the other can be read, if it has the same length, without the need for a key, a property that will be abused in the following flaws.
+Of in andere woorden, wanneer we de beide ciphertexts met elkaar XOR'n krijgen we een sequentie die **niet afhankelijk is van de gebruikte sleutel**! Een stevige hoeveelheid informatie over beide plaintext wordt zo onthult. Als 1 van beide plaintexts gekend is dan volstaat een eenvoudige XOR-operatie om ook de andere plaintext te kunnen zonder dat hierbij de gebruikte sleutel moet gekend zijn. Deze fout zullen we verderop misbruiken.
 
-As a result, stream ciphers are insecure in a datagram environment without some sort of key management to replace keys before they can be reused. The WEP design attempts to accommodate this lack of key management by introducing the IV. WEP combines the IV with the key to produce a new frame specific encryption key, preventing that any collisions of two or more frames with the same key occur (explained further on).
+Kortom, stream ciphers zijn niet veilig in een datagram omgeving indien er geen vorm van sleutelmanagement bestaat die de sleutels kan vervangen voor ze herbruikt worden.  WEP probeert dit gebrek aan sleutelmanagement te omzeilen door met een IV te werken zodat er geen collisions zoals eerder beschreven kunnen optreden...maar ook dat zal een resem problemen met zich meebrengen. 
 
 #### Problem 2: IV
 
-The WEP designers had some knowledge of the first flaw concerning RC4 and therefore introduced a per-packet key (the IV). From a cryptographic view, this is a good solution.
+Het IEEE had dus weet van voorgaand probleem met RC4 en introduceerde daarom het IV. Vanuit cryptografisch standpunt is dit een solide oplossing. Echter, door het gebrek aan replay protection krijgen we helaas een hoop fouten met de IV.
 
-However a major flaw is the fact that no replay protection is implemented whatsoever which shall soon be explained.
+##### De IV veroorzaakt weak keys
 
-##### IV gives rise to weak keys
+In een paper van 2001 door Scott Fluhrer, Itsik Mantin en Adi Shamir werd aangetoond dat het key scheduling algoritme (KSA) van RC4 een hiaat bevat: 
 
-The paper by Scott Fluhrer, Itsik Mantin, and Adi Shamir presented in August 2001 investigated the RC4 key schedule when a portion of the RC4 key stream is known. Explaining the paper and its consequences in depth requires some advanced mathematical knowledge, thus only a summary is provided:
+1. Wanneer een deel van de gebruikte RC4 keystream gekend is dan kan een groep *RC4 weak keys* gevonden worden. 
+2. Wanneer deze weak keys gebruikt worden om een keystream te genereren dan zal er informatie van de gebruikte WEP sleutel in deze keystream gelekt worden. 
 
-The paper showed when a part of the RC4 key stream is known, a class of RC4 weak keys could be identified. When these weak keys are used to generate a pseudo random stream there is a small, but not insignificant, correlation between the input (the WEP key) and the output (the key stream). 
+**Of anders gezegd: sommige IV's zorgen voor een sleutel-lekkage naar de keystream, wat natuurlijk nefast is voor eender welk cryptografisch cipher.**
 
-**In other words: weak IV are the cause of some key leakage to the key stream which, of course, is a very unwanted property of any type of cryptographic cipher.** 
+Een gevolg van die weak keys is dat, indien de eerste 2 bytes van genoeg keystreams (ongeveer 60) geweten is, men de gebruikte WEP sleutel kan achterhalen door middel van een FMS aanval (de afkorting staat voor de eerste letters van de 3 onderzoekers uit de paper).
 
-As a result of these so-called weak keys, if the first two bytes of enough key streams (around 60) can be observed, then the WEP key can be recovered through these weak keys using an FMS attack, named after the authors of the paper. 
+De FMS aanval werkt indien:
 
-The FMS attack utilizes the fact that, in some cases, knowledge of the IV and the first output byte leaks information about the key bytes.
-This attack itself is already a problem but it is even made worse because of another implementation error by WEP: the first couple of bytes of encrypted WEP-data in every packet ARE known.  The LLC/SNAP header encapsulating some higher layer protocol is always the first 8 bytes in the encrypted packet, namely 0xAA, in other words: we have a part of the original plain text.
+1. We ongeveer 60 keystreams kunnen capteren waarvan geweten is dat ze *weak* zijn.
+2. We de eerste 2 bytes van de plaintext van de bijhorende frames kennen die met deze weak keystreams zijn geencrypteerd.
 
-How can this be used? Suppose a plain text $p_i$, where $i$ denotes the number of blocks, which is encrypted with a key stream $k_i$. This produces the cipher text $c_i$:
+Dat tweede is geen probleem, met dank aan de netwerkspecificaties:  de payload van een met WEP geëncrypteerd pakket bevat de LLC header (de header van de logical link layer). Volgens de standaard (RFC 2684) moeten *"IP datagram pakketten altijd zichzelf in de header identificeren via de SNAP header"* En laten de eerste 2 bytes van die header toch wel niet altijd starten met 0xAA. Kortom, quasi alle frames die over een WEP-netwerk vliegen zullen altijd met de hexadecimale waarde AA starten. Nu volstaat het om de bijhorende keystream te achterhalen aangezien we de plaintext kennen, kunnen we ook de eerste 2 bytes van de keystream kennen daar we weten dat:
 
 $c_i = k_i \oplus p_i$
 
-An interesting property of all one-time pad ciphers, like RC4, is the following:
+(waarbij $p_i$ AA is)
+
+En dus:
 
 $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$
 
-Suppose $p_i$ is the first 8 bytes of the known plain text. If these known bytes (the LLC/SNAP header) are XOR’d with the first 8 bytes of the cipher text, the first bytes of the key stream are reproduced. Which of course is exactly the part needed to start an FSM-attack. This part of the key stream can now be used to recover the rest of the RC4 key. An attacker now has all the ingredients to read any cipher text using this key, since both the IV and the PRNG are always known. Making it possible to create the needed key streams to decrypt any captured packet, or vice versa: encrypt any chosen data and sent it to anyone, pretending to be an authorized user.
+We hebben zo ook deel 1 van de FMS in onze handen en kunnen nu het algoritme de gebruikte WEP-sleutel laten berekenen (de manier waarop dat gebeurt zou ons te ver brengen)/
 
 ::: tip
-Two very popular Linux programs utilize the FMS-attack: Airsnort & WEPCrack.
+De FMS aanval is geïmplmenteerd in volgende 2 erg populaire Linux tools: Airsnort & WEPCrack. Beide kunnen dus gebruikt worden om de WEP-sleutel van een draadloos netwerk te achterhalen.
 :::
 
-##### IV collisions occur
+##### IV collisions treden op
 
-If the FMS attack itself is not disastrous enough on its own, a whole other breed of flaws results from the fact that the IV is only 24 bit large. The use of a 24-bit IV is inadequate because the same IV, and therefore the same key stream, must be reused within a relative short period of time. 
+Op zich is de FMS aanval al dramatisch, maar helaas stopt het hier niet. Doordat de IV maar 24 bit groot is treden er veel sneller collisions op dan intuïtief wordt verwacht. Van zodra 2 pakketjes met dezelfde IV zijn verstuurd treedt er een collision op, en die zijn erg interessant voor aanvallers. Pakketjes met dezelfde IV zijn pakketjes waarvan de payload met dezelfde keystream werd geëncrypteerd.
 
-A 24-bit field can contain $2^{24}$ or 16 777 216 possible values. A short calculation demonstrates the short life of a 24-bit IV.
+Een 24-bit IV kan $2^{24}$ oftewel 16 777 216 mogelijke waarden hebben. Een kleine berekening toont hoe snel collisions optreden:
 
-*Given: a slow access point running at 11 Mbps and constantly transmitting 1.500-byte packets:*
 
-* 11 Mbps / (1.500 bytes per packet x 8 bits per byte) = 916.67 packets transmitted each second
-* 16.777.216 IVs / 916.67 packets per second = 18.302,41745 seconds 
+*Gegeven: een eerste generatie AP die aan een miezerige 11 Mbps werkt en cotinue 1.500-byte pakketjes in de lucht stuur:*
+
+* $\frac{11\;Mbps}{(1500\; bytes/pakket)* 8\;bits/byte} =  916.67\;pakketjes/seconde$
+* $\frac{16.777.216\;IVs}{916.67\;pakketjes/seconde} \approx  18302 \;seconden$
  
-That means that after a little bit more than 5 hours all IVs are used up and collisions will start occuring.
+Dat wil dus zeggen dat na ongeveer 5uur alle IV's opgebruikt zijn en er dan ten laatste collisions optreden.
 
-This flaw can be abused in two ways, by passively attacking the network, or actively flooding the network with data and retrieving the key streams because of the collisions. 
+Deze fout kunnen aanvallers op 2 manieren misbruiken: met een passieve of met een actieve aanval.
 
-**Passive attack**
-A passive eavesdropper can quietly intercept all wireless traffic, until an IV collision occurs. By XOR'ing two packets that use the same IV, the attacker obtains the XOR of the two plaintext messages. The resulting XOR can be used to retrieve information about the contents of the two messages.
+**Passieve IV aanval**
 
-IP traffic is often very predictable and includes a lot of redundancy. This redundancy can be used to eliminate many possibilities for the contents of messages. Further educated guesses (through means of cryptanalysisy) about the contents of one or both of the messages can be used to statistically reduce the space of possible messages, and in some cases it is possible to determine the exact contents, an example of this was given earlier where the LLC-header was used to launch an FMS attack.
+Een aanvaller kan passief meeluisteren (*eavesdropping*) en stilletjes alle traffiek onderscheppen tot er een IV collision optreedt. Door twee pakketjes met eenzelfde IV te XOR'n verkrijgt de aanvaller een pakket dat bestaat uit de XOR van beide plaintext'n van de gecapteerde pakketten. Als dus één van beide plaintexten gekend is, is de inhoud van het andere pakket ook gekend.
 
-When such statistical analysis is inconclusive based on only two messages, the attacker can look for more collisions of the same IV. With only a small factor in the amount of time necessary, it is possible to recover a modest number of messages encrypted with the same key stream, and the success rate of statistical analysis grows quickly. Once it is possible to recover the entire plaintext for one of the messages, the plaintext for all other messages with the same IV follows directly, since all the pairwise XOR's are known.
+IP traffiek is vaak erg voorspelbaar en bevat aardig wat redundantie (om fouten op te vangen). Hierdoor wordt het makkelijker voor een aanvaller om via cryptanalysis te achterhalen wat de inhoud, of een deel, van het pakket bevat. Een voorbeeld hiervan toonden we bij de FMS aanval waarbij steeds de LLC header gekend was van de meeste pakketten.
+
+Omdat colissions redelijk snel optreden (vergeet niet dat het voorbeeld hierboven maar sprak over één client en één AP. Als er dus meerdere clients acitef zijn in een netwerk treden colissions véél sneller op) is het voor een aanvaller dus maar een kwestie van lang genoeg te sniffen om zo een grote hoeveelheid pakketten met gelijke IV's op te vangen, waardoor de cryptanalys ongelooflijk vereenvoudigd wordt.
+
+::: note
+In al deze voorbeelden gaan we er vanuit dat de gebruiker geen encryptie toepast op de hogere lagen waar z'n data vandaan komt. Uiteraard wordt cryptanalyse een pak moeilijker als de payload van gecapteerde pakketten geëncrypteerd blijkt te zijn.
+:::
 
 
-**Active attack**
-An extension to this attack uses a host somewhere on the Internet to send traffic from the outside to a host on the WLAN installation. The contents of such traffic will be known to the attacker, yielding the known plaintext. When the attacker intercepts the encrypted version of his message sent over 802.11, he will be able to decrypt all packets that use the same initialization vector.
+**Actieve IV aanval**
 
-An attacker could use the Internet for this type of attack:
+De passieve aanval heeft als nadeel dat we als aanvaller:
+
+1. moeten wachten op colissions, en dus bijgevolg op traffiek over het netwerk.
+2. we enkel door weloverwogen gokken (cryptanalyse) kunnen proberen te weten te komen wat de originele plaintext juist is.
+
+Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol te gaan spelen. Doordat een AP braaf alle traffiek encrypteerdt dat het van het bedrade netwerk krijgt om naar een client te sturen, is het voor een aanvaller een kwestie van "gekende" plaintext van buitenuit naar het slachtoffer te sturen. Als volgt:
+
+1. Een gekende plaintext boodschap (bijvoorbeeld een emailbericht of ping) wordt naar het AP gestuurd (via het internet bijvoorbeeld), dat vervolgens door de aanvaller in het oog wordt gehouden. Noot: als de aanvaller enkel het draadloze netwerk ter beschikking heeft (en niet het internet) dan zal een bitflip-aanval moeten gebruikt worden, wat we verderop zullen uitleggen.
+2. De aanvaller blijft sniffen tot het de ciphertext ziet passeren waarin (vermoedelijk) z'n gestuurde plaintext zit.
+3. Vervolgens kan de aanvaller een keystream te pakken krijgen door z'n plaintext te XOR'n met de gecapteerde ciperhtext: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$.
+
 
 ![](wifi/inject.png)
 
-1.	A known plain-text message is sent to an observable wireless LAN client (an e-mail message). If the attacker is only capable of utilizing the WLAN he will have to use a bit-flip attack, explained later on.
-2.	The network attacker will then start sniffing the wireless LAN looking for the predicted cipher-text and eventually find it. 
-3.	The network attacker will find the known frame and derive the key stream using the reverse XOR action: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$. Where $k_i$ is the desired key stream.
+##### Keystreams groeien
 
-##### Growing key streams
+Wanneer een aanvaller met voorgaande IV colissions keystreams kan capteren kan hij in principe data op het netwerk beginnen plaatsen (aangezien het netwerk ervan uitgaat dat het gebruiken van geldige keystreams, wil zeggen dat de gebruiker geauthenticeerd is omdat hij de bijhorende WEP-sleutel heeft). De aanvaller kan nu plaintext XOR'n met deze gevonden keystream en op het netwerk zetten. Echter, hij is beperkt tot pakketten die even lang zijn als de keystream die gevangen werd. Het zou véél nuttiger zijn als de aanvaller als het ware een bibliotheekje heeft van geldige keystreams van allerlei lengtes.
 
-When the attacker has one key stream, the story does not end here. With this key stream, the attack can now create any key stream, of any desired length due to the fact that there is no replay protection. WEP doesn’t check if a frame sent is authentic or not, if a frame is encrypted with the right key, WEP considers the user to be valid. Someone can capture a packet and resend it at any given time; it will not be checked and thus be used as if it were a valid packet. An attacker can thus use the WLAN as was it is own private laboratory where he can test as much as desired. 
+Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n gecapteerde keystreams doen *groeien* en zo byte per byte een langere keystream genereren. Dit gaat als volgt te werk:
 
-And so the attacker can grow his own key stream of any given length :
+1. De aanvaller maakt een plaintext pakketje aan dat 1 byte langer is dan de keytstream die hij al heeft. Het ping-commando (ICMP) kan je met de "-l" optie bijvoorbeeld een ping van eender welke bytesize laten genereren. Het voordeel van het ping-commando gebruiken is ook dat we exact weten wat voor response er kan verwacht worden.
+2.	De aanvaller plakt nu 1 byte achter de gecapteerde keystream. Hij kiest hierbij een willekeurige waarde en heeft dus 1 kans op 256 om de juiste te kiezen. 
+3. De aanvaller XOR'r deze keystream met het commando uit stap 1 en stuurt dit op het netwerk. 
+4. Indien de aanvaller in stap 2 de juiste byte gekozen heeft dan zal er een reactie op de ping volgen (daar het pakket werd gedecrypteerd door het AP en dan hoger in de OSI-stack door het netwerk werd gestuurd). Als de keystream fout is zal er geen reactie komen daar het AP het pakketje als foutief heeft weggegooid en dus heeft genegeerd.
+5. Als een verkeerde byte werd gekozen in stap 2 dan zal de gebruiker dit proces onieuw starten en nu een andere byte-waarde kiezen. Hij zal dit blijven herhalen tot hij in stap 4 reactie krijgt en dus weet dat hij nu z'n keystream met succes heeft doen groeien met 1 byte.
 
 ![](wifi/grow.png)
 
-1.	The network attacker can build a frame one byte larger than the known key stream size; an Internet Control Message Protocol (ICMP) echo frame is ideal because the access point solicits a known response.
-2.	The network attacker then augments the key stream by one byte.
-3.	The additional byte is guessed because only 256 possible values are possible and he can 'guess' as many times as he wants.
-4.	When the network attacker guesses the correct value, the expected response is received: in this example, the ICMP echo reply message. Otherwise he won't get anything since the packet was encrypted with an invalid key stream.
-5.	The process is repeated until the desired key stream length is obtained.
+##### IV selectie 
 
-##### IV Selection
+De vierde fout met de Initialisatie Vectoren is de manier waarop de selectie ervan moet gebeuren in de hardware. De 802.11 gaf enkel aan dat het IV *"geregeld moest geupdate"* worden. Dat is uiteraard te vaag en heeft ervoor gezorgd dat fabrikanten zelf moesten bepalen welke IV selectie strategie ze in hun hardware zouden implementeren. Hierdoor waren er 3 strategiën die hun weg in de verschillende apparaten vonden:
 
-The fourth problem with the IV is how it needs to be selected. The 802.11 standard specifies no rules for IV selection, instead it merely recommends updating "frequently", a pretty undefined term. Each vendor implemented his or her own IV selection strategy, some being smarter then others:
+* **Vast IV**: Sommige fabrikanten hadden geen flauw benul wat het doel van de IV was vanuit cryptografisch standpunt en kozen daarom zelfs gewoon om alle pakketten steeds met het zelfde IV te versturen. 
+* **Willekeurig IV**: Andere fabrikanten verkozen het om hun hardware bij ieder pakketje een willekeurig IV te laten selecteren. Alhoewel dit uiteraard veel veiliger is dan een "vaste IV"-strategie, treden er toch veel sneller collisions op dan verwacht. Dit valt te verklaren door het zogenaamde **verjaardagenparadox** (zie kader verder) dat verklaart waarom er reeds 50% kans op een colissions is na 4823 pakketjes. Dat wil dus zeggen dat al na enkele seconden er meestal collisions optreden.
+* **Incrementele IV**: In deze strategie wordt een circulaire teller gebruikt waarbij het IV telkens met 1 wordt verhoogd wanneer een pakket moet worden verstuurd. Meestal begint deze teller op een vaste waarde. Dit zal er dan ook voor zorgen dat er een collisions optreedt van zodra een tweede apparaat zich op het netwerk begeeft en dus begint uit te zenden met het IV gelijk aan het IV van het allereerste pakketje dat het eerste apparaat gebruikte.
 
-* Fixed IV: Some implementations operate with a fixed IV, employing the same RC4 key to encrypt every packet. Making it necessary that the RC4 key needs to change after each packet, since a collision occurs afterwards with the second packet!
-* Random IV: Other vendors selected the IV at random, seemingly the best solution but actually not much better then the former solution, all due to the infamous **birthday paradox**. Because this paradox it only takes 4823 packets to have a 50% chance of collision. And so a key change needs to occur about every three seconds.
-* Incremental IV: A third option is to have a circular counter, incrementing the IV after each transmission, starting always from zero upon boot. This strategy guarantees a collision after two different stations transmit a single packet, since it is common to use only default keys (i.e. the same key on every device).
-  
-It is clear that 16.777.216 possible values are not enough in a high data-rate environment, such as in a WLAN, and so the IV is a severe weakness. 
+Kortom, een 24-bit *salt* is véél te klein in een omgeving met erg hoge data-rates zoals een draadloos netwerk. Dit probleem zou nog beperkt kunnen worden indien de originele WEP geregeld sleutels kon verversen, maar door het gebrek aan enig key management was dat dus uit den boze (want herinner je: de enige reden dat we IV's nodig hadden was omdat anders steeds dezelfde WEP-sleutel als seed werd gebruikt en dus alle keystreams gelijk zouden zijn. Door geregeld een andere sleutel te gebruiken zou onze kleine IV-lengte minder precair zijn, als we maar tijdig de sleutels verversen).
 
-No matter what IV sequencing formula is used, a strong key management system is required, which is not available. This key management could solve the IV problem by including a system that would change the keys before all the IV possibilities are exhausted, thus creating new key streams.
+::: note
+Volgende tekst uit Wikipedia legt de **verjaardagenparadox** uit: "De verjaardagenparadox is een paradox uit de kansrekening, die een resultaat toont dat tegen de verwachting ingaat. Het gaat om de vraag hoe groot de kans is dat in een groep willekeurig gekozen mensen er (minstens) twee dezelfde verjaardag hebben. Het blijkt dat, onder enkele lichte veronderstellingen, deze kans al meer dan 50% is voor een groep van maar 23 mensen. Bij 57 mensen is de kans zelfs meer dan 99%."
 
-#### Problem 3: CRC
+Beeld je nu in dat in plaats van mensen, je honderden pakketten hebt, niet met een verjaardag maar met een eigen IV: de kans op colissions, ook al is de IV 24 bit, wordt dus 50% bij reeds een 5000 tal pakketten.
+:::
+
+
+#### Probleem 3: CRC
+
+WEP gebruikt een *integrity checksum field* om te voorkomen dat een pakket wordt aangepast tijdens tranmissie, namelijk een CRC-32 checksum.
 
 WEP uses an integrity checksum field to prevent a packet from being modified during transmission, using a CRC-32 checksum. This wasn’t the best choice: CRCs in general are designed to detect random errors in a message (such as sudden line interference, noise, etc), not to detect planned forgeries.
 
@@ -409,6 +430,11 @@ Whenever someone, a staff member for example, leaves the organization, all keys 
 Organizations with a large number of authorized users must publish the key to this group when needed, which, of course, prevents the keys from being secret.
 
 ## WPA 1
+
+::: note
+Bart Preneel van de KUL/Cosic, één van Belgiës meest vooraanstaande crypto-experts, zei ooit over WEP dat het het perfecte schoolvoorbeeld is van wat er allemaal kan fout lopen wanneer je beslist om zelf een nieuw crypto-algoritme te ontwikkelen. 
+:::
+
 By 2001, it was clear that an urgent solution was needed. Wifi was booming everywhere, both in private homes as in companies. A task group was created to create a new standard. However, they couldn't just simply start writing a new security standard for the IEEE 802.11 specifications; some constraints existed:
 
 * Already millions of WEP-based devices have been sold. WEP patches operating on already-deployed hardware therefore will have to rely entirely on a firmware upgrade.
