@@ -1,6 +1,6 @@
 pandoc ^
  metadata.yaml^
- 1_cryptografie/authenticatie.md^
+ 3_netwerk_security/wifi.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^

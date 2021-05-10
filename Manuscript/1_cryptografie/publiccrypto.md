@@ -217,3 +217,9 @@ Als je in Windows 10 een applicatie of installer probeert uit te voeren dan zal 
 
 ![](crypto/smartscreen.png){width=40%}
 :::
+
+## HTTPS en TLS
+
+::: note
+TODO
+:::

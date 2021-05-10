@@ -17,8 +17,10 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog:
 
-**Dit is versie 0.0.8** (3/5/21)
-
+**Dit is versie 0.0.9** (10/5/21)
+* 0.0.9
+  * Hoofdstuk Wifi volledig vertaald
+  * Eerste helft van hoofdstuk "Authenticatie" beschreven
 * 0.0.8
   * Uitleg en tekeningen certificaten toegevoegd. Hiermee kan hoofdstuk crypto (voorlopig) als afgerond beschouw worden.
 * 0.0.7

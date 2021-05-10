@@ -12,7 +12,7 @@ Alhoewel dit hoofdstuk integraal na het crypto hoofdstuk komt, is het toch inter
 
 ## De problemen van Wifi
 
-We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven inbeelden. De opkomst van de IEEE 802.11b standaard in 1999 veroorzaakte een kleine revolutie in de manier waarop bedrijven en privégebruikers konden werken. Plots kon je met een laptop van overal in het gebouw - en zelfs er buiten- op het netwerk geraken. Die vrijheid voor de gebruikers betekende wel een nachtmerrie voor de cyberboswachters. Een netwerkkabel heeft een intrinsieke extra beveiliging: enkel daar waar de kabel ligt kunnen gebruikers aan het netwerk geraken. Zolang je dus geen netwerkkabel bijvoorbeeld naar de publieke parking brengt kan niemand van daar illegaal het netwerk benaderen. Met wifi leek het alsof plotseling het hele netwerk in een straal van tientallen meters rond het gebouw beschikbaar was, met alle gevolgen van dien.
+We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven inbeelden. De opkomst van de IEEE 802.11b standaard (spreek IEEE uit als *"Ai-trippel-i"*) in 1999 veroorzaakte een kleine revolutie in de manier waarop bedrijven en privégebruikers konden werken. Plots kon je met een laptop van overal in het gebouw - en zelfs er buiten- op het netwerk geraken. Die vrijheid voor de gebruikers betekende wel een nachtmerrie voor de cyberboswachters. Een netwerkkabel heeft een intrinsieke extra beveiliging: enkel daar waar de kabel ligt kunnen gebruikers aan het netwerk geraken. Zolang je dus geen netwerkkabel bijvoorbeeld naar de publieke parking brengt kan niemand van daar illegaal het netwerk benaderen. Met wifi leek het alsof plotseling het hele netwerk in een straal van tientallen meters rond het gebouw beschikbaar was, met alle gevolgen van dien.
 
 ![](wifi/afstand.jpg){ width=60% }
 
@@ -125,11 +125,9 @@ In de 802.11 standaard staan 2 mogelijke authenticatie-methoden beschreven (die 
 
 Origineel was deze authenticatie een enkelrichtingsstraat. Enkel de client dient zich te authenticeren. Hierdoor bestaat dus de kans dat de gebruiker verbind met een rogue of fake AP. 
 
-::: tip
 Naast voorgaande 2 methoden is er nog een derde die niet in de standaard staat beschreven maar die wel door veel fabrikanten werd aangeboden in hun wifi-apparaten:
 
 * **MAC Address Authentication gebruik makend van een MAC-ACL**: hierbij kan de beheerder van een AP een *access control list* (ACL) aanleggen waarin alle MAC-adressen staan van toegelaten apparaten. 
-:::
 
 
 **Open-system authentication**
@@ -215,7 +213,7 @@ Finaal krijgen we dus de volgende werking, encryptie en decryptie, als volgt:
 
 ![WEP decryptie](wifi/wepdec.png) 
 
-##  How WEP failed
+## Hoe WEP faalde
 
 Het leek een verbonden vat: hoe populairde wifi werd over de hele wereld, hoe meer papers er verschenen die fouten identificeerden in WEP. Al vrij snel werd duidelijk dat WEP hoegenaamd géén CIA kon aanbieden. De meeste fouten die werden gevonden kunnen gegroepeerd worden in volgende 4 zaken:
 
@@ -267,7 +265,7 @@ Of in andere woorden, wanneer we de beide ciphertexts met elkaar XOR'n krijgen w
 
 Kortom, stream ciphers zijn niet veilig in een datagram omgeving indien er geen vorm van sleutelmanagement bestaat die de sleutels kan vervangen voor ze herbruikt worden.  WEP probeert dit gebrek aan sleutelmanagement te omzeilen door met een IV te werken zodat er geen collisions zoals eerder beschreven kunnen optreden...maar ook dat zal een resem problemen met zich meebrengen. 
 
-#### Problem 2: IV
+#### Probleem 2: IV
 
 Het IEEE had dus weet van voorgaand probleem met RC4 en introduceerde daarom het IV. Vanuit cryptografisch standpunt is dit een solide oplossing. Echter, door het gebrek aan replay protection krijgen we helaas een hoop fouten met de IV.
 
@@ -362,6 +360,10 @@ Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n
 
 ![](wifi/grow.png)
 
+::: warning
+We hebben bij deze aanval 1 belangrijk concept genegeert waardoor deze aanval op eerste zich niet mogelijk is: hte aanpassen van een payload resulteert ook in een nieuwe CRC. Deze is echter mee geënrypteerd waardoor het niet duidelijk is hoe we dit kunnen omzeilen. Wacht nog even tot we aan de bitflip aanval komen en alles zal duidelijk worden (dat dit dus geen probleem is).
+:::
+
 ##### IV selectie 
 
 De vierde fout met de Initialisatie Vectoren is de manier waarop de selectie ervan moet gebeuren in de hardware. De 802.11 gaf enkel aan dat het IV *"geregeld moest geupdate"* worden. Dat is uiteraard te vaag en heeft ervoor gezorgd dat fabrikanten zelf moesten bepalen welke IV selectie strategie ze in hun hardware zouden implementeren. Hierdoor waren er 3 strategiën die hun weg in de verschillende apparaten vonden:
@@ -381,276 +383,247 @@ Beeld je nu in dat in plaats van mensen, je honderden pakketten hebt, niet met e
 
 #### Probleem 3: CRC
 
-WEP gebruikt een *integrity checksum field* om te voorkomen dat een pakket wordt aangepast tijdens tranmissie, namelijk een CRC-32 checksum.
+WEP gebruikt een *integrity checksum field* om te voorkomen dat een pakket wordt aangepast tijdens tranmissie, namelijk een CRC-32 checksum. Dit was niet zo'n wijze keuze: CRCs zijn in het algemeen vooral bedoeld om random transmissiefouten te detecteren, niet bewuste aanpassingen. Daarnaast heeft de CRC-32 ook nefaste gevolgen in combinatie met RC4 waardoor bitflipaanvallen mogelijk zijn.
 
-WEP uses an integrity checksum field to prevent a packet from being modified during transmission, using a CRC-32 checksum. This wasn’t the best choice: CRCs in general are designed to detect random errors in a message (such as sudden line interference, noise, etc), not to detect planned forgeries.
+CRC-32 is een zogenaamde lineaire functie. Zonder in detail hierover in te gaan volstaat hete te begrijpen dat als gevolg hiervan het volgende hebben: De CRC van 1 boodschap geXOR'd met de CRC van een andere boodschap is hetzelfde als de CRC nemen nadat beide boodschapen samen werden geXOR'd. Of beter gezegd:
 
-This, and the fact that a stream cipher is used to encrypt the payload, gives raise to 1 more group of vulnerabilities in WEP. 
+$CRC (boodschap_1) \oplus CRC (message_2) = CRC (message_1 \oplus message_2)$
 
-The WEP checksum is a linear function of the message, as is with all CRCs. Meaning that the CRC of one message XOR'd with the CRC of another message, is the same as the CRC of two XOR'd messages:
-
-$CRC (message_1) \oplus CRC (message_2) = CRC (message_1 \oplus message_2)$
-
-As a consequence it becomes possible to make a controlled forgery without disrupting the checksum. To do this, an attacker employs a 'bit-flip attack'. 
-
-##### Bit-flip attack
-A bit-flip attacks enables an attacker to inject his own messages without the receiver being able to detect that it is not the original message.
+Door deze eigenschap kunnen we gecontroleerd aanpassingen aan paketten doen, zonder daarmee de CRC te breken. Welgekome, bitflip aanval.
 
 
+##### Bitflip aanval
 
-Firstly the attacker captures a valid WEP frame (without needing to known the plaintext context). He then XOR's this frame with a self created stream of bits, where the 1 bits cause the bit to flip (0 to 1, 1 to 0), the so-called bitmask. Usually this stream of bits is randomly. As will be shown, the attacker just needs a valid frame, whatever the data it caries. 
-Lastly the attacker, to have a valid ICV, XOR’s both ICVs of the new and original frame. Since XOR’ing is commute (the order of the operations is not relevant) a new valid hash is created.
+Om een bitflip aanval te doen heeft de aanvaller enkel 1 geldig WEP frame nodig. Hij hoeft zelfs niette weten wat de inhoud ervan is, zolang het maar een geldig frame is. 
+
+Vervolgens maakt de aanvaller een bitflip masker: dit bestaat uit een reeks 0'n, met 1 of 2 bits op 1. Dit zijn de bits die geflipt zullen worden in de volgende stap: de XOR nemen het bitflip masker met het payload gedeelte van het oorspronkelijke pakket. Welke bits geflipt worden doet er niet toe, integendeel: we willen net een geldig WEP-frame maken mét een foute data, zoals we zo meteen zullen zien. Deze nieuwe payload willen we nu in een geldig frame plaatsen, en dus hebben we een geldige ICV nodig. We doen dit door de ICV van de nieuwe payload te berekenen en deze te XOR'n met de, geëncrypteerde originele ICV. Het resultaat is een geldig, geencrypteerde ICV voor de nieuwe payload. Bijgevolg hebben we een geldig frame kunnen maken dat door access points op het netwerk aanvaard zullen worden.
 
 ![](wifi/bitflip.png)
 
 The attacker can now send a forged frame that is considered genuine by the receiver. The receiver (AP) dutifully decapsulates the bit flipped data and the LLC discovers that the data is 'gibberish'. Yet, since the ICV was valid, the receiver simply thinks some higher layer CRC error has occurred and thus sends an encrypted error-message to the attacker.
 
+Wanneer een AP dergelijk pakket krijgt zal het dit pakket braaf naar de volgende laag sturen, ook al bevat de inhoud *rommel*,, dankzij de geldige ICV. Op de volgende laag komt nu een pakket aan dat duidelijk stuk is, en deze laag zal bijgevolg een foutboodschap genereren en terugsturen. De aanvaller krijgt deze boodschap in een WEP-frame aan. En alhoewel dit pakket geencrypteerd is, weet de aanvaller de inhoud van dit pakket (daar hij heeft opgezocht wat de foutboodschap zal bevatten op de volgende laag volgens de standaard van die laag) en kan dus een geldige keystream te pakken krijgen:
+
+$c = k \oplus p \Leftrightarrow k = c \oplus p$
 
 ![](wifi/respat.png)
 
-It is this error-message that the attacker knows he will receive, so encrypted or not, the attacker can now recreate the key stream by XOR'ing the encrypted error-message with the original error-message as shown as explained before:
-$c = k \oplus p \Leftrightarrow k = c \oplus p$
-
-Once this key stream $k$ is derived, the attacker can have a key stream of any size by 'growing' one, as described earlier.  By doing this, the hacker can create a dictionary of keystreams of all sizes. From then on, the attacker can transmt any message of any size, since he has valid keystreams 
-
-::: note
-Note that the attacker in this scenario doesn't need to have the WEP-key. He simply uses the keystreams to mimick being a valid user.
-:::
+Dankzij de bitflip aanval kan de aanvaller dus zonder problemen keystreams groeien zoals eerder uitgelegd.
 
 
-#### Problem 4: Keying
+### Probleem 4: Sleutelmanagement
 
-A problem, where most symmetric systems suffer from, is the key distribution. The default keys need to be distributed to all the stations that want to participate in the service set secured by WEP. There is, however, no key distribution specified in the 802.11 standard. And so, vendors haven’t done anything: most devices just have you type the keys manually in to the device drivers or APs. (Some provide a way of distributing the keys on a small disk with an executable).
+Het moge duidelijk zijn: cosntant dezelfde WEP-sleutel gebruiken, op meerdere apparaten, gedurende meerdere dagen, is vragen om problemen. Werknemers die ontslagen worden kunnen een potentiële sleutel-lekkage veroorzaken met alle gevolgen van dein. Administrators moeten manueel nieuwe sleutels in voeren bij de werkgevers, etc. Kortom, 2 belangrijke oorzaken zorgen voor een nog lagere beveligingsgraad van WEP dan er al was ten gevolge van de voorbije 3 problemen (IV, RC4, CRC):
 
-It is clear that this manual entry is entirely dependent of the users and system manager, not of the protocols, creating a very insecure key environment:
+1. Er is **geen geautomatiseerd sleutel verversmechanisme**: idealiter worden de sleutels binnen 1 sessie vervangen voor dat de poole van mogelijke IV's is opgeraakt.
+2. Er is **geen gecentraliseerd sleutelmanagementsystee**m.
 
-Keys cannot be considered secret: all keys need to be manually entered, and any local user, with a minor knowledge of his system, can extract the keys (e.g. in Windows OS through the device manager).
 
-Whenever someone, a staff member for example, leaves the organization, all keys should be changed. Knowledge of WEP keys allows a user to setup a station and passively monitor and decrypt traffic using the secret key. WEP thus cannot protect against authorized insiders who also have the key.
-Organizations with a large number of authorized users must publish the key to this group when needed, which, of course, prevents the keys from being secret.
-
-## WPA 1
+## Hoe WEP oplossen?
 
 ::: note
 Bart Preneel van de KUL/Cosic, één van Belgiës meest vooraanstaande crypto-experts, zei ooit over WEP dat het het perfecte schoolvoorbeeld is van wat er allemaal kan fout lopen wanneer je beslist om zelf een nieuw crypto-algoritme te ontwikkelen. 
 :::
 
-By 2001, it was clear that an urgent solution was needed. Wifi was booming everywhere, both in private homes as in companies. A task group was created to create a new standard. However, they couldn't just simply start writing a new security standard for the IEEE 802.11 specifications; some constraints existed:
+Rond 2001, nog geen 2 jaar nadat de eerste wifi-standaard de wereld "het wonder van draadloze netwerken" bracht, werd duidelijk dat er dringend een oplossing moest verschijnen voor de vele veiligheidsproblemen. Wifi was alomtegenwoordig, zowel bij particulieren als in bedrijven, en dus moest een oplossing gezocht worden voor al die duizenden bestaande apparaten reeds in huizen en gebouwen. Het IEEE kon moeilijk een nieuwe standaard uitschrijven die alle bestaande gebruikers in de kou zette. Er werd daarom besloten om 2 pistes uit te werken:
 
-* Already millions of WEP-based devices have been sold. WEP patches operating on already-deployed hardware therefore will have to rely entirely on a firmware upgrade.
-* Most AP’s are equipped with a cheap, slower processor (i486, ARM7 or PowerPC running at 40 or even 25MHz). The load however generated by normal WLAN traffic consumes 90% or more of this microprocessor. And so there aren’t many spare cycles left making that the solutions need to have a limited amount of instructions.
-* To support RC4 encryption without consuming too many cycles, additional hardware is installed to take care of the encryption functions. However, these are basically ASICs and these hardwired encryptions thus create a third constraint. Some functions of the WEP/RC4 combination will always be performed, no matter what. And so WEP will never really leave the security business.
+1. WPA1: een (tijdelijke) oplossing voor bestaande apparaten, rekening houdend met enkele duidelijke beperkingen.
+2. WPA2: de "ultieme oplossing" die een volledig nieuwe suite aan veiligheidsprotocollen zou bevatten voor toekomstige Wifi-producten, maar die niet compatibel zou zijn met bestaande apparatuur.
 
-
-As a result of these constraints, the taskgroup started working on two solutions, one that will work with these constraints, the other one won’t.
-One solution will be entirely new, based on AES and will be used for future devices called "counter with CBC-MAC mode AES protocol" (CCMP, WPA2). To allow existing devices to be upgraded, a lightweight protocol called Temporal Key Integrity Protocol (TKIP, WPA1) is being developed. TKIP can be implemented on existing hardware platforms while still providing acceptable security in the short-term future.
-
-Another standard that is being discussed is IEEE 802.1X standard, which enables authentication and key management for LANs.  802.1X will be used together with CCMP and/or TKIP, the latter two providing the data encapsulation and integrity, the former, 802.1X, providing the key management and authentication.
-
-#### 802.1X
-
-Where TKIP and CCMP provide integrity and encryption, it is 802.1X that provides the following:
-
-* Provide (mutual) **authentication**.
-* Have a **central user management** system.
-* Have a secure way to **distribute secret keys**.
-
-::: note
-As noted, 802.1X is only used in the enterprise modes of WPA1 and WPA2. If you are a home user, you will probably use WPA-Personal, which is without 802.1X. In personal mode, you simply will have a secret passphrase that is only known by the access points and the legal user. 
+::: tip
+WPA staat voor Wi-Fi protected standard.
 :::
 
-There are several methods to have one authenticated but the most important thing to remember is that usually the access point won’t do the actual authentication (some access points actually do). This is done by a RADIUS server; the access point (authenticator) merely relays the authentication message exchanges between the user (supplicant) and RADIUS (authentication server). While the user isn’t authenticated the access point will only allow 802.1x/EAP-based traffic. Once the user is authenticated the access point will open the port for normal traffic.
+
+De beide oplossingen zouden ook de IEEE 802.1X standaard omarmen. Deze standaard zou sleutelmanagement en gebruikersauthenticatie voorzien in combinatie met de nieuwe encryptie en integriteits-oplossingen van WPA1 of WPA2.
+
+Omdat sleutelmanagement én de bijhorende 802.1X infrastructuur redelijk overkill kon zijn voor huis-tuin-en keukegebruikers van wifi, besloot het IEEE om 2 versies van zowel WPA1 en WPA2 te maken:
+
+* **Personal**: de thuisversie voor gewone gebruikers waarbij met een gedeelde sleutel of passphrase wordt gewerkt (een zogenaamde **PSK** oftewel *pres-shared key*). Hierbij wordt géén 802.1X gebruikt.
+* **Enterprise**: de versie voor (grote) bedrijven waar sleutelmanagement belangrijk is en dus 802.1X wordt gebruikt
+
+
+We vatten hier alvast de belangrijkste verschillen tussen WEP, WPA1 en WPA2 samen.
+
+|  Standaard |Encryptie   | Integrity  | Authenticatie & sleutelmanagement  |   
+|---|---|---|---|
+| WEP  | RC4  | CRC-32   | Geen  |   
+| WPA1-Personal  |  TKIP | Michael   |  pre-shared key |   
+| WPA1-Enterprise  |  TKIP | Michael   |  802.1X |   
+| WPA2-Personal  |  CCMP | CBC-MAC  | pre-shared key  |   
+| WPA2-Enterprise  |  CCMP | CBC-MAC  | 802.1X  |   
+
+::: note
+Ondertussen bestaat er ook WPA3, die we op het einde van dit hoofdstuk zullen bespreken. WPA1 en WPA2 zijn echter , historisch gezien, gerelateerd aan WEP en daarom bekijken we deze beiden samen in functie van WEP.
+:::
+
+## WPA1
+
+Voor de tijdelijke oplossing, WPA1n werden volgende beperkingen geïdentificeerd:
+
+* Zoals verteld, miljoenen WEP-gebaseerde apparaten waren reeds  in gebruik. Deze apparaten zouden met behulp van een firmware upgrade gepatcht moeten kunnen worden naar de tussendtijdse oplossing.
+* De meeste AP's werkten met processoren die reeds quasi volcontinue tegen hun maximum capaciteit werkten. De extra algorithmes die het AP moesten draaien mocht dus maar een beperkte overhead creëren.
+* Delen van de RC4 encryptie zijn *hardwired* voor een deel in de hardware van de AP. Hierdoor kunnen bepaalde delen van WEP onmogelijk 'omzeilt' worden en hangen we dus inherent vast aan WEP.
+
+
+### 802.1X
+
+De IEEE 802.1X standaard is, ondertussen, een veelgebruikte standaard in veel draadloze én bedrade netwerken. Het voorziet volgende zaken aan WPA1 en WPA2 netwerken die in *Enterprise-mode* werken:
+
+* (Mutual) **authentication**.
+* Een **centraal user management** systeem.
+* Een **veilige manier om geheime sleutels uit te wisselen**.
+
+
+We gaan de volledige werking van de 802.1X standaard hier niet uit de doeken doen, dat zou ons te ver brengen. Het is echter nuttig om te begrijpen dat deze standaard werd gekozen omdat hij ervoor zorgt dat de AP niet meer zelf de authenticatie moeten doen, maar dat ze gebruik maken van de bestaande authenticatie-infrastructuur van het bedrijf. De APs zullen gewoon als een doorgeefluik aan de start tussen gebruiker en de authenticatie-server optreden en de boodschappen tussen beiden uitwisselen. Enkel wanneer het AP toestemming krijgt van de authenticatieserver (meestal een RADIUS server) zal het AP de eindgebruiker toegang tot het draadloze netwerk verschaffen.
 
 
 ![](wifi/port.png)
 
-Make note that 802.1X is not an authentication/authorization algorithm itself; it merely translates messages to and from an authentication/authorization algorithm, using the appropriate frame formats. 802.1X leaves the choices of authentication/authorization algorithm, key management method and accounting profiles up to each EAP authentication type.
+802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algorithme. Integendeel: het is een **framework** waar binnen andere algorithmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft-en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticiate- boodschappen tussen enerzijds het netwerkprotocol (bv Ethernet, Wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
 
 
 ![](wifi/8021x.png){ width=60% }
 
-**EAP** (Extensible Authentication Protocol) is extensible meaning that several different authentication methods can be used, depending on the user friendliness and grade of security.
+EAP oftewel *Extensible Authentication Protocol* is, zoals de naam doet vermoeden, een uitbreidbaar protocol van te gebruiken authenticatie-methoden. Afhankelijk van de keuze van het bedrijf kan voor een bepaald EAP-protocol gekozen worden, het enige is gebruiksvriendelijker en of veiliger dan het andere. Uiteraard dienen zowel de client als de netwerkinfrastructuur compatibel te zijn met de gekozen EAP-methoden van het netwerk. Koop je dus een AP dat WPA2-Enterprise compatibel is, moet je nog steeds controleren of het AP compatibel is met de gekozen EAP-methode van het bedrijf.
 
-It is important to understand that you have to make sure that both your client and server are compatible with the chosen EAP method. From a customer point-of-view this means that you have to check not only whether the AP is 802.1X-, EAP- or WPA-compatible but that it also supports the wanted EAP method(s).
+De meest gebruikte EAP-methoden zijn:
 
-The most important and usually most-supported EAP (described later on) methods are:
-
-* EAP-TLS
-* PEAP
-* LEAP
-* EAP-TTLS
-
-And to a lesser extent:
-
-1.	EAP-SIM
-
-For an 802.1X port-controlled environment to work it is of utmost importance that your access points are connected to a switch (and not to a hub) and more importantly that the switch is 802.1X-compatible. Most switches from the last 10 years will probably be 802.1X-compatible, with older ones this might not be case.
-
-When integrating your wireless network in your wired LAN it is important that you isolate the traffic of the access points in the network (just as you would isolate Internet traffic using a firewall). Using a firewall would give a large management overhead and is not recommended. A good option is to have a Virtual LAN for isolating your wireless network traffic.
+* **EAP-TLS**: gebruikt een TLS-tunnel om op een beveiligde manier te communiceren (we zagen TLS ook reeds aan het einde van crypto waar het gebruikt werd om https-trafiek te beveiligen). Hierbij gebeurt een certificaat-gebaseerde authenticatie.
+* **EAP-TTLS** (*Tunneled TLS*): Omdat niet alle eindgebruikers zich kunnen authenticeren aan de hand van een certificaat, voorziet PEAP authenticatie met behulp van een username/paswoord login, waarbij wel nog steeds een TLS tunnel wordt gebruikt voor veilige communicatie. Ter info: EAP-TTLS is quasi hetzelde als *Protected EAP* (PEAP) een ander EAP-protocol dat je soms zal zien passeren.
 
 ![](wifi/8021X2.png){ width=60% }
 
-The previous figure shows what general steps are performed using 802.1X:
+De voorgaande figuur toont de typische uitwisseling van boodschappen die plaatsvinden wanneer een client voor het eerst verbinding wil maken op een WPA1 of WPA2 Enterprise netwerk:
 
-1.	Both the client and the access point will exchange messages to discover which EAP-methods are possible to use (being a method they both thus should have).
-2.	Once a mutual agreement on the EAP-method is reached, the AP will act as a relay between the client and the authentication server. Client and server will then commence the authentication exchange.
-3.	If the server has enough evidence to authenticate the client it will generate the necessary keys (explained here-after) and relay them to the access point.
-4.	The access point will further distribute the needed keys and make sure they are updated often.
-5.	Once the keys are correctly distributed the actual data can be started, which will be encrypted using CCMP or TKIP, depending on the chosen encryption type.
+1. Client en access zoeken samen welke EAP-methoden zij beide kunnen gebruiken om de authenticatie te starten. Enkel indien ze samen tot 1 keuze kunnen komen wordt over gegaan naar stap 2.
+2. Vanaf nu zal het AP enkel dienst doen als doorgeefluik tussen de client en de authenticatie-server.
+3. Als de server genoeg bewijs heeft om de client te authenticeren zal de server de nodige sleutels genereren en deze aan het AP geven.
+4. Het AP zal vanaf nu instaan voor het verdere sleutelbeheer en wanneer nodig de sleutels verversen tijdens de sessie.
+5. Wanneer de sleutels tussen client en AP zijn verwerkt krijgt de client toegang tot het netwerk.
 
-In 802.1X-enabled WLANs, two sets of keys are generated, session keys (also referred to as pairwise keys) and group keys (also referred to as groupwise keys). Group keys are shared amongst all the clients connected to the same AP and are used for multi-cast traffic. Session keys are unique to each association between an individual client and the AP and create a private virtual port between a client and the AP.
+In wifi-netwerken met 802.1X  worden 2 sets van sleutels aangmaakt:
 
-If configured to implement dynamic key exchange, the 802.1X authentication server can return session keys to the access point along with the accept message. The access point uses the session keys to build, sign and encrypt an EAP key message that is sent to the client immediately after sending the success message. The client can then use contents of the key message to define applicable encryption keys. In typical 802.1X implementations, the client can automatically change encryption keys as often as necessary to minimize the possibility of eavesdroppers having enough time to crack the key in current use. 
+* Sessie sleutels, ook wel "*pairwise keys*" genoemd: deze is uniek per client en is enkel gekend door die client en het AP.
+* Groepsleutels, ook wel "*group keys*" genoemd: deze wordt tussen alle clienten van hetzelfde AP gedeeld en worden gebruikt voor multi-cast traffiek.
+
+Indien het *dynamic key exhange* is geconfigureerd dan zal de authenticatie de sessiesleutels eenmalig aanmaken en doorsturen. Daarna zullen specifieke encryptie-sleutels gegenereerd worden bij de client en AP gebaseerd op deze sessiesleutel. De client (en AP) kan dan zelf, automatisch, op gepaste momenen en nieuwe enceyptie-sleutel genereren.
 
 ### TKIP
 
-Having obtained the needed keys through the 802.1X framework, it is time to encrypt the data. The **Temporal Key Integrity Protoco**l (TKIP) is a suite of algorithms wrapping the WEP protocol on old hardware to enhance security, minimizing the threats that exist when using WEP. 
+Wanneer de nodige sleutels zijn uitgewisseld is het tijd om data te encrypteren. Dit gebeurt door middel van het **Temporal Key Integrity Protocol** (TKIP), wat een suite van algorithms is dat als een wrapper rond WEP wordt gelegd om zo encryptie aan te bieden en daarbij de fouten van WEP minimaliseert.
 
-TKIP surrounds WEP with new algorithms, namely:
+TKIP omhult WEP met volgende zaken:
 
-1.	A cryptographic message integrity code (MIC), called Michael, to defeat forgeries.
-2.	A new IV sequencing discipline, to prevent replay attacks.
-3.	A per-packet key mixing algorithm, to solve the weak keys issue in RC4.
-4.	A re-keying mechanism, which changes the integrity keys every 10,000 packets or so.
+1. Een nieuwe **integrity check genaamd Michael** dat een *message integrity code* (MIC) genereert die wél bestand is tegen bitflip aanvallen.
+2. Een nieuwe manier van **IV selectie** die replay aanvallen voorkomt.
+3. Een **per-pakket sleutel mixing** algorithme dat het probleem met *weak keys* in RC4 oplost.
+4. Een *re-keying* mechanisme dat ongeveer elke 10000 pakketjes een nieuwe sleutel doet genereren.
 
 
-Because an adversary can compromise the TKIP MIC with relatively few messages (it isn't the most secure thing, explained in the next chapter), TKIP also implements countermeasures. In the original WEP specifications, no countermeasures were undertaken when an attack was detected; taken into account that WEP itself could actually not detect a lot. 
 
-In TKIP, these countermeasures have the following consequences:
-1.	They force key updates to be rate limited. 
-2.	They limit the probability of a successful forgery and the amount of information an attacker can learn about a key before it is renewed.
-
-Firstly, we will describe how these 4 algorithms work on their own, afterwards shall be described they all work together under TKIP.
 
 #### Michael the Mic
 
-A message integrity check (MIC) is a cryptographic device to detect any tampering with data.
+Om bewuste aanpassingen aan de payload van een frame te detecteren gebruikt WPA1 een *message integrity check* (**MIC**). Dit is een cryptografisch sterker concept dan de originele CRC checks en wordt verzorgd door het "Michael" algoritme.
 
 ::: note
- The literature calls these MICs usually ‘message authentication codes’ or MACs. However, IEEE 802 already used this acronym for “media access control” and so MIC was chosen instead. A typical MIC is the HMAC used in the IPSec protocol suite.
+In de literatuur wordt meestal gesproken over "Message authentication codes" of MAC's. Echter, in de IEEE 802 standaarden wordt MAC reeds gebruikt voor *message access control* en werd dus gekozen voor MIC.
 :::
 
-"Michael" computes a MIC of the payload but it also includes the authentication key, the sender address and the receiver address (in comparison to CRC-32 which only included the payload itself).  
+"Michael" berekent de MIC van een payload maar gebruikt hierbij ook de authenticatie sleutel, het adres van de verzender én ontvanger. Hierdoor wordt het voor een aanvaller veel moeilijker om een dergelijke MIC na te bootsen, laat staat te *replayen*.
 
 ![](wifi/michael.png){ width=60% }
 
-When a TKIP implementation detects two failed forgeries in a second, it is assumed there’s an ongoing attack and performs the following steps:
-1.	The station deletes its keys
-2.	Disassociates from the AP
-3.	Waits for a minute and then reassociates
+Wanneer TKIP een 2 foute MICs na elkaar detecteert gaat het er van uit dat er een aanval bezig is. Volgende stappen worden dan ogenblikkelijk uitgevoerd door de client:
 
-Although this disrupts the communications, it is the only way of thwarting the active attack. 
+1. Alle huidige sleutels worden verwijderd.
+2. De client verbreekt de verbinding.
+3. Er wordt 1 minuut gewacht voor een nieuwe verbinding (*association*) wordt opgezet.
 
 
-#### IV Sequence enforcement
+#### IV selectie verbetering
 
-WEP did not provide protection against replay attacks since any packet resend later, with a valid key, was considered secure. A simple, yet robust method to prevent replaying packets is to introduce a sequencing number for each packet send. This sequence number is associated with a MIC key (a MIC on its own doesn’t provide detection of replay attacks). 
+Om te voorkomen dat fabrikanten weer naïeve oplossingen voor de IV-selectie implementeerden, legde WPA1 nu de regels op. Een ontvangen pakket zal pas aanvaard worden indien het IV van het pakket op het IV van het vorige pakket volgt. Uiteraard zit er een kleine marge om hertransmissies toe te staan, maar een pakket met IV 12933 zal nooit aanvaard worden als het AP vlak ervoor een pakket met IV 4 heeft aangekregen.
 
-Only a packet which has the next number of the previously send packet is allowed. Of course, this would mean that an infinite sequencing is necessary. Otherwise, in a finite sequencing loop, once all numbers are used replay attacks are possible. The choices available for the transmitter to prevent this sequence number exhaustion are:
-1.	Halt communication altogether
-2.	Rekey the MIC with a fresh key
-3.	Keep sending, but with no protection against replay.
+Daarnaast wordt ook het IV gevoelig vergroot. TKIP hanteert namelijk een 48-bit IV genaamd de *TKIP sequence counter* (TSC). Deze wordt opgebouwd door de eerste en tweede byte van de originele WEP IV te combineren met 4 bytes van een speciaal gegenereerde *extended IV*. 
 
-TKIP closely follows this design. To defeat replays, TKIP uses an extended 48-bit IV called the TKIP sequence counter (TSC). The TSC is constructed from the first and second bytes from the original WEP IV and the 4 bytes provided in the extended IV. TKIP extends the length of a WEP encrypted frame by 12 bytes; 4 bytes for the extended IV information and 8 bytes for the MIC.
+#### Key mixing en re-keying
 
-#### Key mixing
+Om weak keys te voorkomen gebruikt een TKIP een *key mixing function* dat zal resulteren in een **temporal of per-pakket sleutel** die dienst zal doen als vervanger voor de WEP-sleutel. Deze sleutel zal geregeld ververst worden (vandaar *temporal* oftewel tijdelijk) en heeft dus een beperkte levensduur voor actieve aanvallen.
 
-WEP misuses the RC4 algorithm as described earlier. TKIP’s per-packet key construction is a feature therefore necessary to correct this flaw. The new per-packet construction, the **TKIP key mixing function, uses a temporal key or per-packet key, which is substituted for the WEP base key.** This key is called temporal because they have a short lifetime and are replaced frequently.
+Het mixen van de sleutel gebeurt in twee fases, waarbij iedere fase een specifieke zwakte van WEP indijkt:
 
-The key mixing works as follows. A key mixing function transforms a temporal key and packet sequence number into a per-packet key and IV.
-
-This is done in two phases, each phase compensating for a particular WEP design flaw:
-
-* Phase 1 eliminates the same key from use by all links by mixing the transmitter address (TA) with the IV and the base key. 
-* Phase 2 eliminates knowing the per-packet key by viewing the public IV.
+* Fase 1: zorgt ervoor dat alle clients een eigen sleutel hebben doordat het verzender adres (TA, *transmitter address*) wordt toegevoegd aan de basis sleutel.
+* Fase 2: zorgt voor een 'per-pakket' sleutel waarbij kennis van de IV niet meer door de aanvallers kan misbruikt worden.
 
 ![](wifi/mixing.png)
 
-**Phase 1 mixing**
+**Fase 1 mix**
 
-Phase 1 combines the MAC address of the local wireless interface and the temporal key by iteratively XOR'ing each of their bytes to index into an S-Box, producing an intermediate key. 
 
-By doing so, using the local MAC address, a different key is generated, even if they begin from the same temporal key (a common situation in ad hoc deployments). And so the stream of generated per-packet encryption keys generated is different at every station. The intermediate keys needs only to be computed when the temporal key is updates, so most implementations cache this key (to improve performance)
+Het MAC address van de client wordt ge-XOR'd met de basissleutel (zijnde ofwel de PSK sleutel in Personal modus of de *temporal* sleutel verkregen van 802.1X tijdens de authenticatie). Dit resultaat wordt door een S-box (substitie) gestuurd, resulterend in een tussentijdse (*intermediate*) sleutel. 
 
 **Phase 2 mixing**
 
-A tiny cipher, a Feistel structure (see crypto chapter), is used in phase 2 to encrypt the packet sequence number, using the intermediate key. A 128-bit per-packet key is produced. 
+In deze fase wordt de TSC (de pakket-teller, uitgelegd in de "IV selectie verbetering" sectie) geëncrypteerd samen met de tussentijdse sleutel. De encryptie gebeurt door middel van een kleine Feistel-structuur (zie hoofdstuk crypto) en resulteert in een 128-bit per-pakket sleutel. Vervolgens wordt deze sleutel, samen met delen van de TSC als "WEP-sleutel" en IV aan het originele WEP-gedeelte aangeboden. Hierbij wordt ervoor gezorgd dat er geen RC4 weak keys meer mogelijk zijn omdat die IV worden weggefilterd voor ze aan de hardware worden aangeboden.
 
-The first 3 bytes of the phase 2 output correspond exactly to the WEP IV, the last 13 to the WEP base key, as existing WEP hardware expects. (Since it uses the base key and IV to form the per-packet key).
+### WPA1: alle blokjes samen
 
-Phase 2 assigns the 8most significant bits of this counter to the first and second bytes of the WEP IV, the least significant counter bots to the third IV byte. The most significant bit of the second IV byte is then masked; ultimately preventing any RC4 weak keys attacks.
-
-### Putting it all together
-
-And so finally we have all the pieces ready, which we now can wrap around the broken WEP hardware:
+Finaal kunnen we vervolgens WPA1 visualiseren, waarbij duidelijk is dat we vooral een wrapper rond WEP hebben verkregen, maar dat WEP nog steeds het hart van het systeem is.
 
 ![](wifi/wpa1.png)
 
-Even though this solution was a nice interim solution, at its core, WEP was still used. In 2009 WPA1-Personal was ready to be retired as several new vulnrabilities were found that allowed attacker to retrieve the WPA passphrase by capturing the handshake client and access point perform when they start communicating. 
+In 2009 verschenen er al enkele exploits die WPA1-Personal misbruikten waardoor aanvallers de WPA passphrase (de PSK) konden achterhalen door de handshake aan de start van een sessie te capteren.
 
 ::: tip
-Check out coWPAtty and Aircrack. Also, have a look at Asleap and THC-LEAPcracker which can hack parts of 802.1X.
+Bekijk coWPAtty en Aircrack om WPA1-Personal te *hacken*.
 :::
 
-##  WPA 2
+##  WPA2
 
-The final solution that would ignore the constraints was built around AES.
+De finale oplossing voor het WEP-veiligdheidsprobleem werd gegoten in WPA2 waarvan AES het hart vormt. Toen de standaard werd ontwikkeld was AES zonet verschenen en het bleek de ideale toepassing voor WPA2. Hierbij werden 2 onderdelen van AES gebruikt namelijk:
 
-AES based encryption can be used in a number of different modes or algorithms. The mode that has been chosen for 802.11 is the counter mode with CBC-MAC (CCM). The counter mode delivers data privacy while the CBC-MAC delivers data integrity and authentication. This was named: **"counter with CBC-mode AES protocol"**(**CCMP**).
+1. AES met *counter mode* voor de encryptie.
+2. AES in CBC-MAC mode voor integriteit en authentication.
 
-CBC-MAC, short for "Cipher Block Chaining – Message Authentication Code", as it name implies will create a hash of the data being encrypted in AES.
+Voor de sleuteldistributie en management werd, zoals vermeld, gebruik gemaakt van de 802.1X standaard.
 
-As noted, 802.1X is used for key distribution and user authentication.
-
-### Encryption and MIC creation
-
-Like TKIP, CCMP also uses a 48-bit IV called a packet number (PN). The packet number is used along with other information to initialize the AES cipher, which is a block cipher, for both the MIC calculation and the frame encryption. 
-
-::: note
-Remember that MAC was already reserved and thus CBC-MAC could actually be CBC-MIC.
+::: tip
+Toen WPA2 uitkwam ontdekte men dat toch aardig wat bestaande hardware kon gepatch'd worden om ook WPA2-compatibel te zijn. Dit was een opsteker voor velen, daar de originele premise van WPA2 net was dat ze geen rekening zouden houden met de bestaande hardware die reeds op de markt was.
 :::
 
-The AES encryption blocks in both the MIC calculation and the packet encryption use the same temporal encryption key (K in the figure). As with TKIP, the temporal key is derived from the master key that was derived as part of the 802.1X exchange. 
+### Encryptie en MIC creatie
+
+CCMP gebruikt, net als TKIP, een 48-bit IV die *packet number* (PN) werd genoemd. Deze PN wordt, samen met andere informatie, gebruikt om de AES encryptie van een seed te voorzien. Hierbij wordt het frame (en de header) in blokken van 128 bit verdeeld en zo blok per blok verwerkt. De encryptie gebeurt parallel met het berekenen van de MIC (de ICV in WEP) die finaal achteraan als een laatste blok ook mee wordt geëncrypteerd. Ook nu wordt met een tijdelijke sleutel gewerkt die gebaseerd is op de hoofdsleutel verkregen via 802.11X (enterprise mode) of de passphrase (in personal mode)
 
 ![](wifi/ccmp.png)
 
-The MIC calculation and encryption proceed along parallel paths as shown the figure. The MIC calculation is seeded with an IV formed by a flag value, the PN, and other data pulled from the header of the frame. This IV is fed into an AES block and its output is XOR'd with select elements from the frame header, which is then fed into the next AES block. This process continues over the remainder of the frame header and down the length of the packet data to compute a final 128-bit CBC-MAC value. The upper 64 bits of this MAC are extracted and used in the final MIC appended to the encrypted frame. 
-The encryption process is seeded by a counter preload also formed from the PN, a flag value, data from the frame header, and a counter value which is initialized to 1. 
+In de figuur zie je duidelijk de elegantie van het systeem en hoe de integriteit in parallel wordt berekend met de encryptie. De MIC wordt berekend met behulp van CBC-MAC, wat staat voor **cipherblock chaining - message authentication code**, een veelzeggende naam. Zoals we uit het hoofdstuk crypto weten, zal er bij CBC een keten van encrypties starten, waarbij de encryptie van het huidige blok geXOR'd wordt met het resultaat van de encryptie van het vorige blok. Het finale geencrypteerde cipherblock zal daarbij dienstdoens als MIC. Bij de minste bitfout ergens in de payload of header zal een totaal andere MIC gegenereerd worden.
 
-This preload value is fed to the AES block and it's output is XOR'd with 128 bits of clear text from the unencrypted frame. The counter value is incremented by one and this process is repeated for the next block of 128 bits of clear text. This process continues down the length of the frame until the entire frame has been encrypted. The final counter value is set to 0 and input to an AES block whose output is XOR'd with the MIC value computed previously before appending to the end of the encrypted frame for transmission. 
+Om de payload te encrypteren (*merk op dat de header niét geëncrypteerd wordt, het wordt enkel mee betrokken om de MIC te berekenen*) wordt de **counter mode** van AES gebruikt. Hierbij worden de blokken onafhankelijk van de andere blokken geencrypteerd en zal een *payload counter* (PC) telkens met 1 verhoogd worden en als extra seed voor de AES-motor van het huidige blok dienen (samen met de te gebruiken sleutel).
 
-### There goes the neighbourhood
+### Helaas, aan alles komt een einde
 
-Until 2017 all seemed well. WPA2 was a a well-spoken of standard and everyone was happy with the security provided. However, in may 2017 Belgian researcher Mathy Vanhoef published a paper describing it as follows:
-
->  We discovered serious weaknesses in WPA2, a protocol that secures all modern protected Wi-Fi networks. An attacker within range of a victim can exploit these weaknesses using key reinstallation attacks (KRACKs). Concretely, attackers can use this novel attack technique to read information that was previously assumed to be safely encrypted. This can be abused to steal sensitive information such as credit card numbers, passwords, chat messages, emails, photos, and so on. The attack works against all modern protected Wi-Fi networks. Depending on the network configuration, it is also possible to inject and manipulate data. For example, an attacker might be able to inject ransomware or other malware into websites.
-
-::: note
-We will not go into detail on how this attacks works. Check out [krackattacks.com](https://www.krackattacks.com/) to learn more about it.
-:::
-
-As a result, IEEE needed to go back to the drawing board and design a *final final solution*, called WPA3.
+Tot 2017 ging alles goed. De AES standaard was al jaren een robuuste standaard gebleken en werd op vele plekken nog steeds gebruikt. En dit zou ook bij Wifi zou zijn geweest, waren het niet dat in mei 2017 een Belgische onderzoeker, Mathy Vanhoef, de bevindingen van z'n onderzoek publiceerde. Hij had helaas een belangrijke fout gevonden in de WPA2 standaard. Deze had niets te maken met AES - dat blijft een stevige standaard zijn- maar wel de manier waarop een bepaalde uitwisseling van berichten tijdens de intiële handshake tijdens de authenticatie plaatsvinden tijdens de *sleutel reinstallatie fase*. Deze aanvallen worden beschreven én gedemonstreerd op [krackattacks.com](https://www.krackattacks.com/) en verplichtten de IEEE om te beginnen werken aan een opvolger voor WPA2.
 
 ##  WPA 3 ("Wifi 6")
 
-In 2018 the Wifi Alliance announced the release of WPA3 (also called Wifi 6). The standard provides much improved security, and also copes with the way wireless networks are used nowadays. Modern networks are populated by a plethora of devices, not only laptops. 21th century wireless networks, at workd and at home, have mobiles phones, internet-of-thing devices, printers, and whatnot.
+In 2018 kwam de Wifi Alliance uit met de opvolger van WPA2, de titel, je raadt het nooit, was uiteraard WPA3, maar werd ook wel Wifi 6 genoemd. De standaard gaan  we hier niet zo gedetailleerd bespreken, het volstaat te begrijpen dat ze
 
-As with WPA1 and 2, version 3 also both a personal and enterprise mode. Additionally, it provides several improvements:
-
-* Simultaneous Authentication of Equals (SAE): this crptographic concept makes the personal passphrase-based authentication much more secure. 
-* It replaces the passphrase in WPA2-personal with a more secure implementation.
-* It is resistant to offline dictionary attacks 
-* Forward secrecy: even if hacker the finds the wifi key of old captures, they can’t be decrypted.
-* Wifi Easy connect: a user-friendly, and secure, methode to connect internet-of-thing devices to the network.
-* Wifi Enhanced open: a secure way of connecting to public hotspots. Gone are the days of sniffing a public network for juicy details, now every user will have a secure, encrypted channel with the access point.
-
-It also replaces 802.1X in WP3-Enterprise with more advanced features:
-
-* Authenticated encryption: 256-bit Galois/Counter Mode Protocol (GCMP-256)
-* Key derivation and confirmation: 384-bit Hashed Message Authentication Mode (HMAC) with Secure Hash Algorithm (HMAC-SHA384)
-* Key establishment and authentication: Elliptic Curve Diffie-Hellman (ECDH) exchange and Elliptic Curve Digital Signature Algorithm (ECDSA) using a 384-bit elliptic curve
-* Robust management frame protection: 256-bit Broadcast/Multicast Integrity Protocol Galois Message Authentication Code (BIP-GMAC-256)
+* op veiligheidsniveau state-of-the-art was.
+* rekening hield met de noden van 21e eeuwste draadloze netwerken (denk maar aan Internet-of-things apparaten, beveiligde publieke hotspots, etc.).
 
 ::: tip
-We did not discuss these advanced cryptographic features, but it is safe to say that they are state-of-the-art and very secure.
+De Wifi Alliance is in het leven geroepen als een organisatie die ervoor zorgde dat producten wel officieel konden claimen dat hun producten conform een IEEE standaard waren. Enkel wanneer heun producten de nodige tests van de Wifi Alliance aflegden kon het product het label van "Wifi alliance compatibel" product dragen.
 :::
+
+Ook in WPA3 werden 2 modes voorzien: een personal en een enterprise mode. Enkele van de interessantste verbeteren zijn:
+
+* *Simultaneous Authentication of Equals (SAE)*: een nieuw cryptografisch concept waarbij in de personal mode authenticatie veel veiliger kan plaatsvinden dan voorgeen.
+* Resistant tegen offline dictionary attacks: iets waar zowel WPA1 en WPA2 last van hadden voor aanvallers met geduld.
+* *Forward secrecy*: zelfs als de aanvakker de wifi-sleutel van oude gecapteerde paketten vind zal hij deze toch niet kunnen decrypteren. Het aloude "safe now, decrypt later" is dus niet van toepassing op WPA3.
+* *Wifi easy connect*: een gebruiksvriendelijke manier om internet-of-things apparaten met het netwerk te verbinden.
+* *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de STarbuck zetten om zo prive-traffiek van omstaanders te sniffen.
+* *Geauthenticeerde encryptie* gebruik maken van *"256-bit Galois/Counter Mode Protocol (GCMP-256)"* een cryptocipher dat we hier niet uit de doeken gaan doen.
+* Gebruikt de meest secure authenticatie en sleuteldistributie methoden mogelijk binnen 802.1X (HMAC, HMAC-SHA384 en ECDH)
