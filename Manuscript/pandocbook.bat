@@ -5,8 +5,8 @@ pandoc ^
  0_het_security_landschap/3_gdpr.md^
  1_cryptografie/basics.md^
  1_cryptografie/publiccrypto.md^
- 1_cryptografie/authenticatie.md^
  3_netwerk_security/wifi.md^
+ 1_cryptografie/authenticatie.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^

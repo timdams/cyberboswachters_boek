@@ -103,8 +103,83 @@ Merk op dat ook nu we nog steeds niet beschermd zijn tegen pash-the-hash aanvall
 
 ## CRAM en SCRAM
 
+Om iemand te authenticeren spraken we totnogtoe enkel over een username/paswoord systeem. Echter,er zijn vele andere manieren om iemand te authenticeren. We spreken over "**challenge-response authentication (SCRAM)** wanneer de gebruiker een vraag gesteld krijgt (de *challenge*) en hij hierop een geldig antwoord (de *response*) moet geven voor hij wordt toegelaten. Authenticeren met een paswoord is dus een vorm van CRAM. Er zijn er echter nog vele andere denk maar aan de gehekelde CAPTCHAs -de ambetante vraag om te bewijzen dat je geen robot bent door alle boten in een afbeeldingen aan te duiden- of inloggen met behulp van je iris-scan.
+
+![](auth/cram.png){}
+
+Om het probleem van *pash-the-hash* op te lossen kan je gebruiken maken van een **SCRAM**, een *salted challenge response authentication mechanism*. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted paswoord loging van daarnet. Met dit systeem zorgen we ervoor dat 
+
+1. de salted hash van de gebruiker NOOIT moet verzonden worden.
+2. geen replay aanval m.b.v. pass-the-hash mogelijk is.
+
+Het mechanisme werkt als volgt:
+
+1. De gebruiker stuurt z'n username met de vraag om in te loggen.
+2. De server genereert een random challenge en stuurt deze terug.
+3. Server en client creëren nu een hash van deze challenge met de hash van het paswoord (de server heeft dit bewaard, de client genereert de hash door z'n paswoord in te voeren)
+4. De client stuurt deze hash, de response, terug naar de server.
+5. De server vergelijkt of zijn gegenereerde response hash dezelfde is als die van de gebruiker.
+
+![](auth/scram.png){}
+
+::: tip
+Merk op dat we ook hier nog steeds met een salted paswoord kunnen werken. Het enige dat dan verandert is dat de server naast de challenge, ook de te gebruiken salt doorstuurt die reeds in de database bewaard werd samen met de salted hash van de gebruiker.
+:::
+
 ## Multifactor authentication
 
-## Biometrics
+We hebben enkel nog maar over paswoorden gesproken in dit hoofdstuk, maar uiteraard zijn er ook andere zaken die je kan gebruiken om je te identificeren. Er zijn verschillende **factoren** die kunnen gebruikt worden om te controleren of een persoon wel degelijk toegang mag krijgen tot een systeem:
 
-## Federation en single-sign on 
+* Iets wat je **weet**: je paswoord, je pincode, je rijksregisternummer, etc.
+* Iets wat je **bent**: een eigenschap die uniek is per persoon en onder de noemer "*biometrics" valt, zoals je vingerafdruk, irisscan, etc.
+* Iets wat je **hebt**: een stuk hardware zoals een smartphone, USBkey, etc.
+* **Waar** of **wanneer** je bent: je IP-adres , het moment van de dag dat je probeert in te loggen.
+
+![Multifactor authenticatie factoren](auth/mfa.png){}
+
+We zien meer en meer systemen verschijnen die aan zogenaamde *multifactor authentication" (MFA) doen waarbij het systeem minstens 2 factoren (*2FA*) wil controleren voor het je toegang tot het systeem geeft. Hoe meer verschillende factoren er worden gebruikt bij de authenticatie hoe veiliger het systeem is, maar ook hoe minder gebruiksvriendelijk het wordt. Het blijft dus een afweging tussen die 2 eigenschappen om in te schatten wat de ideale hoeveelheid veiligheid en gebruiksvriendelijkheid je wenst te hebben.
+
+Systemen die MFA aanbieden doen dit vaak op een gecontroleerde manier: afhankelijk van de gebeurtenissen zal het systeem beslissen of meerdere factoren moeten getest worden of niet. Als je bijvoorbeeld woont in België, maar Google zit plots dat iemand met jouw paswoord probeert in te loggen vanuit een IP-adres op de Azoren, dan zal Google belissen dat "iets wat je weet" (het paswoord) niet genoeg controle is en extra informatie vragen.
+
+### Iets wat je weet: paswoorden 
+
+Deze factor hebben reeds uitvoerig behandeld doorheen deze cursus. Het grote probleem met dingen weten is dat
+
+* Je ze kan vergeten en daardoor niet meer kan inloggen.
+* Anderen die informatie kunnen te weten komen en dus zich als jou voordoen.
+
+Kortom, alhoewel deze factor vaak vanuit technologisch standpunt het eenvoudigst te implementeren is, is dat ook de minst veilige.
+
+### Iets wat je bent: biometrics
+
+"We zijn allemaal uniek". Iedere mens heeft een hele hoop eigenschappen die uniek zijn per persoon. Zelfs als bepaalde van onze eigenschappen gelijkaardig zijn met andere personen dan zal zeker een combinatie van 2 of meerdere eigenschappen dat niet zijn. Door dus menselijke eigenschappen van je te gebruiken als authenticatie hebben we een factor gevonden die zeer moeilijk na te bootsen valt: op voorwaarde dat je een echt unieke eigenschap kiest én deze op deze juiste manier meet.
+
+Enkel veel gebruikte biometrieken als authenticatievorm zijn:
+
+* vingerafdruk
+* iris
+* stem
+* gezicht (vaak met behulp van "stereo camera" voor 3D beeld)
+
+Maar ook andere metrieken kunnen erg interessant zijn zoals de manier waarop je je paswoord invoert, de manier waarop je wandelt (*gait*) etc.
+
+Om een biometriek in de paswoord database te bewaren hebben we een manier nodig om deze te digitaliseren op een zodanige manier dat de unieke aspecten ervan bewaard worden. Voorts moet er rekening mee gehouden worden dat het "registreren" van een biometrische eigenschap nooit 100% accuraat kan. Denk maar aan een tijdelijk krasje op je vinger, je baard die anders geschoren is, etc. De zogenaamde *feature points* van een biometrische eigenschap worden in de database bewaard: dit zijn de unieke waarden waarvan geweten is dat deze per persoon anders zijn. We gaan deze niet per biometrische eigenschap bespreken, het volstaat te begrijpen dat in de gebruikersdatabase meestal een korte sequentie van getallen (of letters, denk maar aan een DNA-sample)  wordt bewaard die als het ware jouw unieke paswoord voorstel voor die specifieke biometrische eigenschap van je. Enkel wanneer je bij het opnieuw inloggen (quasi) dezelfde feature points genereert bij de registratie zal deze factor aanvaardt wordt als correct.
+
+::: tip
+Biometrische eigenschappen kunnen niet alleen dienst doen als een extra factor bij het authenticeren,ze zijn uiteraard ook erg handig voor identificatie. In principe kan iemand nog steeds de gebruikersnaam van een ander persoon gebruiken (*impersonation*). Als de biometrische eigenschappen als identificatie dienen kunnen aanvallers dat niet meer doen: ze kunnen onmogelijk aan het systeem zeggen *"ik ben persoon x"* terwijl de vingerafdrukscanner duidelijk een vingerafdruk registreert van *persoon y*.
+:::
+
+### Iets wat je hebt: hardware 
+
+Een fysiek object, zeker als het complex is, kan moeilijk nagemaakt worden en is dus een ideale factor. De elektronica van de 21e eeuw behoort tot de meest complexe dingen ooit die de mensheid heeft kunnen vervaardigen. Het is dan ook logisch dat we deze elektronica gebruiken als extra authenticatiefactor.
+
+Er zijn twee grote families van hardware-gebaseerde authenticatie-vormen:
+
+* Een smartphone, met daarop een *authenticator* app.
+* Een USB sleutel
+
+Een nadeel van deze groep is dat het om een fysiek object gaat dat je kan verliezen of dat stuk kan gaan.
+
+## Federation en single-sign on (SSO)
+
+
