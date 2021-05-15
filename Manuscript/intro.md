@@ -17,7 +17,9 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog:
 
-**Dit is versie 0.0.9** (10/5/21)
+**Dit is versie 0.1.1** (15/5/21)
+* 0.1.1
+  * Hoofdstuk Authenticatie klaar.
 * 0.0.9
   * Hoofdstuk Wifi volledig vertaald
   * Eerste helft van hoofdstuk "Authenticatie" beschreven
