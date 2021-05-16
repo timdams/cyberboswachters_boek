@@ -68,7 +68,7 @@ Stel dat je een sleutel hebt die bestaat uit 8 karakters. Een karakter is een le
 Het doel van ieder encryptie-algoritme is dus om data zodanig te versleutelen zodat enkel eigenaars van de gebruikte sleutel de originele tekst kunnen terugvinden. We vertelden net dat encryptiealgoritmes kunnen onderverdeeld volgens de actie die ze uitvoeren: substitutie, transpositie of een combinatie. We tonen van iedere variant nu een historisch voorbeeld.
 
 ::: tip
-Volgende tool, speciaal gemaakt om crypto te leren, is een erg handig iets om de verschillende cryptografische systemen te visualiseren én testen: [link](https://www.cryptool.org/en/ct2/)
+Volgende tool, speciaal gemaakt om crypto te leren, is een erg handig iets om de verschillende cryptografische systemen te visualiseren én testen: [link](HTTPS://www.cryptool.org/en/ct2/)
 :::
 
 ### Substitutie: Caesar encryptie
@@ -164,7 +164,7 @@ $MaximaleTijd = \frac{26^{8}}{30000000}$
 
 Oftewel ongeveer 6960 seconden, wat neerkomt op ongeveer 1,9 uur tijd benodigd om alle mogelijke sleutels te testen (herinner je eraan dat deze tijd gehalveerd moet worden om te weten hoe lang het gemiddeld zal duren om de juiste sleutel terug te vinden.
 
-Volgende tabel toont nog voorbeelden waarbij telkens dezelfde GeForce GTX kaart werd gebruikt. Het getal tussen haakjes geeft aan hoeveel mogelijke tekens er in dit type mogelijk zijn:
+Volgende tabel ([bron](HTTPS://uwnthesis.wordpress.com/2020/07/01/brute-force-password-how-long-will-it-take-to-brute-force-a-password/)) toont nog voorbeelden waarbij telkens dezelfde GeForce GTX kaart werd gebruikt. Het getal tussen haakjes geeft aan hoeveel mogelijke tekens er in dit type mogelijk zijn:
 
 | # tekens  | enkel nummers (10)  | kleine letters (26)  | grote & kleine letters & nummers (62)  | eender welk teken (95)   |   
 |---|---|---|---|---|
@@ -182,7 +182,6 @@ Volgende tabel toont nog voorbeelden waarbij telkens dezelfde GeForce GTX kaart 
 | 15  | 1,1 jaar |$1,8*10^{6}$ jaren | $8,1*10^{11}$ jaren  | $4,9*10^{14}$ jaren  |     
 | 16  |  11jaar |$4,6*10^{7}$ jaren | $5*10^{13}$ jaren  |$4,7*10^{16}$ jaren   |     
 
-<!---Bron: https://uwnthesis.wordpress.com/2020/07/01/brute-force-password-how-long-will-it-take-to-brute-force-a-password/--->
 
 ::: tip
 Per extra GeForce-kaart die de aanvaller zou gebruiken halveert de tijd in deze tabel.
@@ -206,16 +205,15 @@ Er zijn nog enkele meer gespecialiseerde types, maar voor deze cursus zullen we 
 :::
 
 ::: note
-Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalyst automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van:
-
-* Enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden.
-* Ze helpen ons in tijden van oorlog om (hopelijk) de boodschappen van vijanden te onderscheppen en lezen.
+Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalyst automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van: Enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden. Anderzijds,ze helpen ons in tijden van oorlog om (hopelijk) de boodschappen van vijanden te onderscheppen en lezen.
 :::
 
-<!---TODO--->
-<!---* cryptanalytic attacks vs bruteforce
-* Bruteforce vs dictattack
-* Noot omtrent quantum computers--->
+::: note
+TODO
+cryptanalytic attacks vs bruteforce
+Bruteforce vs dictattack
+Noot omtrent quantum computers
+:::
 
 ## Symmetrische encryptie
 
@@ -282,11 +280,9 @@ De keystream generator heeft dus als doel om voor iedere karakter dat moet geën
 De kracht (en zwakte) van een symmetrisch streamcipher ligt in de implementatie van de manier waarom deze keystream generator werkt. Mogelijke zwakheden kunnen bijvoorbeeld zijn dat de gegenereerde stroom informatie van de sleutel "lekt" naar de keystream (wat desastreuze gevolgen bleek te hebben bij de originele wifi-security (WEP) waarover later meer) of een voorspelbare "randomiteit" van de keystream?
 
 ::: note
-
 Om aan encryptie te kunnen doen hebben we systemen nodig die onvoorspelbaar zijn. Als de aanvaller kan voorspellen wat de uitvoer van een onderdeel van de encryptie zal zijn, dan kunnen we geen confidentiality en/integrity voorzien. Kortom, we hebben algoritmes nodig die willekeurige getallen kunnen generen die 100% onvoorspelbaar zijn. Net zoals het werpen van een dobbelsteen niet voorspeld kan worden, zo ook moeten onze algoritmes een (digitale) dobbelsteen hebben.
 
 Digitale systemen die perfect willekeurige getallen genereren noemt men **random number generator** (RNG). Uiteraard moet een RNG geprogrammeerd kunnen worden: dat behelst dus een algoritme. Een algoritme is per definitie "voorspelbaar". Alles hangt daarom af van de invoer die het algoritme gebruikt om random getallen te beginnen genereren. We spreken dan van een **pseudo random number generator** (PRNG), pseudo (**schijnbaar**) omdat de uitvoer afhankelijk is van het startgetal, de zogenaamde **seed**. Die seed kan bijvoorbeeld de encryptiesleutel zijn: enkel met dié sleutel zal het algoritme dezelfde reeks getallen generen. Er zijn echt ook systemen die bijvoorbeeld de staat van een flipflop als startpunt gebruiken: wanneer je een flipflop aanzet kan je niet voorspellen of deze op 1 of 0 zal staan (daar deze staat beïnvloed wordt door de elektromagnetische straling). Uiteraard is een dergelijke seed voor een keystreamgenerator nutteloos, daar zowel verzender én ontvanger dezelfde reeks getallen moeten kunnen genereren.
-
 :::
 
 #### RC4 tot op het bot
@@ -425,7 +421,7 @@ Data met DES encrypteren (en bijgevolg ook decrypteren daar het een symmetrisch 
 2. Subkeys maken: Een key scheduling algoritme dat 16 subkeys genereert (1 voor iedere encryptieronde), gebaseerd op de 56 bit sleutel.
 
 ::: tip
-Je kan de DES standaard [hier](https://web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm) nalezen en ontdekken dat deze niet zo lang is zoals je zou verwachten van een wereldwijd geaddopteerde standaard.
+Je kan de DES standaard [hier](HTTPS://web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm) nalezen en ontdekken dat deze niet zo lang is zoals je zou verwachten van een wereldwijd geaddopteerde standaard.
 :::
 
 ##### Versleuteling
@@ -485,9 +481,6 @@ De bits op locaties 9, 18, 22, 25, 35, 43 en 54 worden geblokkeerd. Daar de sleu
 
 En zo hebben we het einde van de werking van DES bereikt. Dat viel al bij al nog mee, niet? Uiteraard hebben we nu vooral getoond *hoe* het werkt, maar niet *waarom* het werkt.
 
-<!---#### DES problemen en 3DES
-
-De ultieme encryptie-standaard maken is ijdele hoop. Naast het feit dat, dankzij *Moores law*, computers steeds krachtiger worden en dus ook de sleutellengte steeds moet vergroot worden, is er ook het feit dat hoe populairden een standaard is, hoe meer mensen op zoek gaan gaan naar mogelijk fouten in het systeem. Eén van de interessantere vaststellingen bij DES waren de zogenaamde **weak keys**. Dit zijn sleutels waarvan geweten is dat ze door malafide personen kunnen gebruikt worden om de originele plaintext of sleutel terug te vinden. In het geval van DES was dit zelfs niet zo moeilijk: er waren een aantal sleutels die, als je ze gebruikte, resulteerden in zogenaamde *self-inverting* keys. Het resultaat van je encryptie gaf een ciphertext...die gelijk was aan de plaintext! Over een knullige encryptie gesproken. --->
 
 #### 3DES 
 
@@ -540,7 +533,7 @@ Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebrui
 :::
 
 ::: note
-[De wikipedia pagina over block cipher]https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation modes geeft een zeer goed overzicht (én vergelijking).
+[De wikipedia pagina over block cipher]HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation modes geeft een zeer goed overzicht (én vergelijking).
 :::
 
 #### AES

@@ -76,11 +76,11 @@ Een interessant debat dat altijd opduikt bij deze problematiek is de "Ik heb toc
 :::
 
 ::: note
-Alhoewel het **HTTPS** al sinds  1995 bestond, werd het in 2013 amper door websites aangeboden. Nochtans geeft https een extra defensielaag tijdens de communicatie van jouw computer met die waar een website op *gehost* staat. Https zal namelijk je communicatie versleutelen (zie hoofdstuk crypto) zodat enkel zender en ontvanger kunnen lezen wat er gezegd wordt. Met http is dat niet: al je communicatie kan door eender wie gelezen worden die zich tussen jouw computer en je eindbestemming nestelt.
+Alhoewel het **HTTPS** al sinds  1995 bestond, werd het in 2013 amper door websites aangeboden. Nochtans geeft HTTPS een extra defensielaag tijdens de communicatie van jouw computer met die waar een website op *gehost* staat. HTTPS zal namelijk je communicatie versleutelen (zie hoofdstuk crypto) zodat enkel zender en ontvanger kunnen lezen wat er gezegd wordt. Met http is dat niet: al je communicatie kan door eender wie gelezen worden die zich tussen jouw computer en je eindbestemming nestelt.
 
-Pas in 2017 boden meer dan de helft van de website wereldwijd https aan. In 2021 gebruikt ongeveer 70% van alle website https als standaard communicatiemiddel aan (vroeger waren er al websites met https, maar http was de standaard oplossing).
+Pas in 2017 boden meer dan de helft van de website wereldwijd HTTPS aan. In 2021 gebruikt ongeveer 70% van alle website HTTPS als standaard communicatiemiddel aan (vroeger waren er al websites met HTTPS, maar http was de standaard oplossing).
 
-//https://transparencyreport.google.com/https/overview
+//HTTPS://transparencyreport.google.com/HTTPS/overview
 :::
 
 ### 2014: hoe veilig is *the cloud* ?

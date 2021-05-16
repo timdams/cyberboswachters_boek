@@ -146,7 +146,7 @@ We versturen dus naar de ontvanger de boodschap zelf en de bijhorende handtekeni
 De ontvanger kan nu controleren of de ontvangen boodschap ``35`` dezelfde handtekening geeft. Hij gebruikt hiervoor de publieke sleutel ``e`` en berekent: $42^e == 35^n$, als dit overeenkomt dan weet de ontvanger dat hij het bericht kan vertrouwen.
 
 ::: tip
-[Getallen voorbeeld komt van hier](https://crypto.stackexchange.com/questions/11117/simple-digital-signature-example-with-number)
+[Getallen voorbeeld komt van hier](HTTPS://crypto.stackexchange.com/questions/11117/simple-digital-signature-example-with-number)
 :::
 
 ![](crypto/signaturesend.png)
@@ -184,11 +184,11 @@ De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensd
 
 ![](crypto/certcreatie.png)
 
-Voorgaande proces zal plaatsvinden wanneer je browser via een **https** verbinding surft naar een website en zo wil controleren of wel degelijk met de website wordt gecommuniceerd en niet met een imposter. Indien de browser (of de gebruiker) twijfelt aan de echtheid van de publieke sleutel van de CA die het certificaat van de website ondertekent, dan zla voorgaande proces zich herhalen, maar deze keer om het certificaat van de CA te controleren met behulp van een bovenliggende CA. Op die manier kan het dus zijn dat een keten van CA's ontstaan die telkens CA's onder zich bewijzen. Uiteraard zal er steeds bovenaan zo'n ketting een **root CA** staan. Als je die vertrouwt, dan kan je al de CA's er onder dus ook vertrouwen...maar ook vice versa! 
+Voorgaande proces zal plaatsvinden wanneer je browser via een **HTTPS** verbinding surft naar een website en zo wil controleren of wel degelijk met de website wordt gecommuniceerd en niet met een imposter. Indien de browser (of de gebruiker) twijfelt aan de echtheid van de publieke sleutel van de CA die het certificaat van de website ondertekent, dan zla voorgaande proces zich herhalen, maar deze keer om het certificaat van de CA te controleren met behulp van een bovenliggende CA. Op die manier kan het dus zijn dat een keten van CA's ontstaan die telkens CA's onder zich bewijzen. Uiteraard zal er steeds bovenaan zo'n ketting een **root CA** staan. Als je die vertrouwt, dan kan je al de CA's er onder dus ook vertrouwen...maar ook vice versa! 
 
 ![](crypto/webcert.png)
 
-Het ergste voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op hun systemen dan bestaat er de kans dat aanvallers de private sleutel van de de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kan bestaat dan is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
+Het ergste voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op hun systemen dan bestaat er de kans dat aanvallers de private sleutel van de de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kans bestaat dan is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
 
 ![](crypto/chaintrust.png){width=60%}
 
@@ -197,7 +197,7 @@ Het ergste voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in
 
 #### Certificaten bekijken
 
-In iedere moderne browser kan je snel bekijken hoe zo'n certificaat er juist uitziet. Als je via een https verbinding naar een website surft dan op het slotje naast de URL n de adresbalk klikt kan je doorklikken om het certificaat te openen. Als je naar *https://www.belgium.be* surft en dit doet dan krijg je eerst wat samenvattende informatie:
+In iedere moderne browser kan je snel bekijken hoe zo'n certificaat er juist uitziet. Als je via een HTTPS verbinding naar een website surft dan op het slotje naast de URL n de adresbalk klikt kan je doorklikken om het certificaat te openen. Als je naar *HTTPS://www.belgium.be* surft en dit doet dan krijg je eerst wat samenvattende informatie:
 
 Zo zien we onder andere de geldigheidsduur, alsook de CA die dit certificaat heeft gegenereerd.  Onder details kunnen we onder andere de publieke sleutel zien van de website alsook de gebruikte algorithmes voor de hash, e.d.
 
@@ -220,7 +220,31 @@ Als je in Windows 10 een applicatie of installer probeert uit te voeren dan zal 
 
 ## HTTPS en TLS
 
-Soon
-<!---::: note
-TODO
-:::--->
+Certifcaten vormen het hart van een veilige manier van surfen. HTTPS, "http-secure", zorgt ervoor dat de communicatie tussen je browser ende website via een beveiligde, geëncrypteerde tunnel gebeurt. Tegenwoordig is HTTPS de default manier om een website te benaderen, maar dat is maar recent. Vroeger gebeurde alles via http, waardoor iedereen die jouw trafiek kon sniffen, kon zien welke informatie je met de website uitwisselde. 
+
+HTTPS is een protocol dat een zogenaamde beveiligde tunnel opzet tussen jou en de website waarover vervolgens gewoon http-verkeer kan verlopen (dit gebeurt over poort 443 in plaat van de klassieke poort 80 waarover http verloopt). Deze tunnel wordt opgezet door het **TLS**-protocol, het *Transport Layer Security* protocol, dat de opvolger is van **SSL** (*Secure Sockets Layer*). TLS gebruikt certificaten om te vergewissen dat de website aan de andere zijde wel degelijk de website is die de gebruiker verwacht. Het doet dit door de publieke sleutel van de website eerst te controleren voor het vervolgens deze sleutel gebruikt om een gemeenschappelijke sleutel af te spreken die zal dienst doen als de encryptie-sleutel voor de gemeenschappelijke tunnel. Vanaf dit punt kunnen derden de trafiek van en naar de website niet meer sniffen.
+
+![](crypto/tlshttp.png){}
+
+Samengevat zal dus TLS 2 zaken doen:
+
+* Door middel van een certificaat (assymmetrische crypto) wordt de identiteit (de publieke sleutel) van de website gecontroleerd.
+* Door middel van deze sleutel wordt een *Diffie-Hellman sleutel uitwisseling* (zie RSA) gedaan, gebruik makend van de publieke sleutel, opdat er een gemeenschappelijk sleutel kan worden afgesproken die gebruikt wordt voor een symmetrische crypto verbinding.
+
+
+::: tip
+Zoals reeds eerder vermeld is asymmetrische crypto trager, waardoor het altijd aanbevolen is om de trafiek tussen 2 punten finaal via een symmetrische crypto verbinding te laten plaatsvinden. TLS/HTTPS combineert met andere woorden de sterkes van beide soorten crypto om zo de zwaktes van beide te neutraliseren.
+:::
+
+De manier waarop een TLS-verbinding wordt opgezet is vrij uitgebreid. Volgende briljante website ([tls.ulfheim.net/](HTTPS://tls.ulfheim.net/)) visualiseert de berichten die serven en client uitwisselen om zo'n verbiding te starten, onderhouden en eindigen.
+
+::: warning
+Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naa je te sturen. Ook de website naar waar je surft ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via hun caching overnemen. 
+:::
+
+::: tip
+*mitmproxy* is een krachtige linux-tool die een man-in-the-middle aanval op HTTPS toelaat. Het zal ervoor zorgen dat een aanvaller zich tussen jou en het internet kan nestelen en vervolgens doen alsof al je HTTPS-verbinding veilig blijven. In de praktijk zorgt mitmproxy ervoor dat alle HTTPS-verbinding van de client naar de aanvaller gebeuren, die op zijn beurt tls-tunnels zal opzetten met de website waar het slachtoffer naar surft...
+
+![](crypto/mitmproxy.png){width=80%}
+
+:::

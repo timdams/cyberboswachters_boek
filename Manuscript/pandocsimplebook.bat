@@ -1,6 +1,6 @@
 pandoc ^
  metadata.yaml^
- 3_netwerk_security/wifi.md^
+ 0_het_security_landschap/2_basicsec.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^
@@ -12,9 +12,9 @@ pandoc ^
  --verbose^
  -s  --template eisvogel -o booktest.pdf
 
- REM https://learnbyexample.github.io/customizing-pandoc/
- REM https://github.com/Wandmalfarbe/pandoc-latex-template
- REM https://stackoverflow.com/questions/30880200/pandoc-what-are-the-available-syntax-highlighters
+ REM HTTPS://learnbyexample.github.io/customizing-pandoc/
+ REM HTTPS://github.com/Wandmalfarbe/pandoc-latex-template
+ REM HTTPS://stackoverflow.com/questions/30880200/pandoc-what-are-the-available-syntax-highlighters
  REM --include-before-body cover.tex
     
 

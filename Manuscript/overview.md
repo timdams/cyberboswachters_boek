@@ -1,4 +1,4 @@
-<!---[ectfiche](https://bamaflexweb.ap.be/BMFUIDetailxOLOD.aspx?a=138332&b=5&c=1)
+<!---[ectfiche](HTTPS://bamaflexweb.ap.be/BMFUIDetailxOLOD.aspx?a=138332&b=5&c=1)
 
 Topics:
 * Situering domein

@@ -6,7 +6,7 @@ S.Mime
 
 SSL/TLS
 
-Https
+HTTPS
 
 
 

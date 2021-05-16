@@ -19,5 +19,5 @@ Algemeen
 
 ## Iot sec
 
-<!---//https://www.comparitech.com/blog/information-security/iot-data-safety-privacy-hackers/--->
+<!---//HTTPS://www.comparitech.com/blog/information-security/iot-data-safety-privacy-hackers/--->
 

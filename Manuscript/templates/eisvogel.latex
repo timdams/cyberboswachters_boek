@@ -37,7 +37,7 @@
 % This is the Eisvogel pandoc LaTeX template.
 %
 % For usage information and examples visit the official GitHub page:
-% https://github.com/Wandmalfarbe/pandoc-latex-template
+% HTTPS://github.com/Wandmalfarbe/pandoc-latex-template
 %%
 
 % Options for packages loaded elsewhere
@@ -251,7 +251,7 @@ $endif$
 \definecolor{default-urlcolor}{HTML}{4077C0}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 $if(footnotes-pretty)$
-% load footmisc in order to customize footnotes (footmisc has to be loaded before hyperref, cf. https://tex.stackexchange.com/a/169124/144087)
+% load footmisc in order to customize footnotes (footmisc has to be loaded before hyperref, cf. HTTPS://tex.stackexchange.com/a/169124/144087)
 \usepackage[hang,flushmargin,bottom,multiple]{footmisc}
 \setlength{\footnotemargin}{0.8em} % set space between footnote nr and text
 \setlength{\footnotesep}{\baselineskip} % set space between multiple footnotes
@@ -327,8 +327,8 @@ $if(highlighting-macros)$
 $highlighting-macros$
 
 % Workaround/bugfix from jannick0.
-% See https://github.com/jgm/pandoc/issues/4302#issuecomment-360669013)
-% or https://github.com/Wandmalfarbe/pandoc-latex-template/issues/2
+% See HTTPS://github.com/jgm/pandoc/issues/4302#issuecomment-360669013)
+% or HTTPS://github.com/Wandmalfarbe/pandoc-latex-template/issues/2
 %
 % Redefine the verbatim environment 'Highlighting' to break long lines (with
 % the help of fvextra). Redefinition is necessary because it is unlikely that
@@ -360,7 +360,7 @@ $else$
 \makesavenoteenv{longtable}
 $endif$
 $endif$
-% add backlinks to footnote references, cf. https://tex.stackexchange.com/questions/302266/make-footnote-clickable-both-ways
+% add backlinks to footnote references, cf. HTTPS://tex.stackexchange.com/questions/302266/make-footnote-clickable-both-ways
 $if(footnotes-disable-backlinks)$
 $else$
 \usepackage{footnotebackref}
@@ -427,7 +427,7 @@ $if(lang)$
 \ifxetex
   $if(mainfont)$
   $else$
-  % See issue https://github.com/reutenauer/polyglossia/issues/127
+  % See issue HTTPS://github.com/reutenauer/polyglossia/issues/127
   \renewcommand*\familydefault{\sfdefault}
   $endif$
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
@@ -548,9 +548,9 @@ $endif$
   $if(mainfont)$
   $else$
   % Workaround for bug in Polyglossia that breaks `\familydefault` when `\setmainlanguage` is used.
-  % See https://github.com/Wandmalfarbe/pandoc-latex-template/issues/8
-  % See https://github.com/reutenauer/polyglossia/issues/186
-  % See https://github.com/reutenauer/polyglossia/issues/127
+  % See HTTPS://github.com/Wandmalfarbe/pandoc-latex-template/issues/8
+  % See HTTPS://github.com/reutenauer/polyglossia/issues/186
+  % See HTTPS://github.com/reutenauer/polyglossia/issues/127
   \renewcommand*\familydefault{\sfdefault}
   $endif$
   % load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
@@ -631,8 +631,8 @@ $endif$
   \usepackage[default]{sourcesanspro}
   \usepackage{sourcecodepro}
 
-  % XeLaTeX specific adjustments for straight quotes: https://tex.stackexchange.com/a/354887
-  % This issue is already fixed (see https://github.com/silkeh/latex-sourcecodepro/pull/5) but the
+  % XeLaTeX specific adjustments for straight quotes: HTTPS://tex.stackexchange.com/a/354887
+  % This issue is already fixed (see HTTPS://github.com/silkeh/latex-sourcecodepro/pull/5) but the
   % fix is still unreleased.
   % TODO: Remove this workaround when the new version of sourcecodepro is released on CTAN.
   \ifxetex
@@ -692,7 +692,7 @@ $if(table-use-row-colors)$
 % TODO: This doesn't work anymore. I don't know why.
 % Reset rownum counter so that each table
 % starts with the same row colors.
-% https://tex.stackexchange.com/questions/170637/restarting-rowcolors
+% HTTPS://tex.stackexchange.com/questions/170637/restarting-rowcolors
 %
 % Unfortunately the colored cells extend beyond the edge of the
 % table because pandoc uses @-expressions (@{}) like so:
@@ -700,7 +700,7 @@ $if(table-use-row-colors)$
 % \begin{longtable}[]{@{}ll@{}}
 % \end{longtable}
 %
-% https://en.wikibooks.org/wiki/LaTeX/Tables#.40-expressions
+% HTTPS://en.wikibooks.org/wiki/LaTeX/Tables#.40-expressions
 \let\oldlongtable\longtable
 \let\endoldlongtable\endlongtable
 \renewenvironment{longtable}{

@@ -5,7 +5,7 @@
 Alhoewel dit hoofdstuk integraal na het crypto hoofdstuk komt, is het toch interessant om dit hoofdstuk geschrankt met het crypto hoofdstuk door te nemen als volgt:
 
 * "Crypto" tot en met "Symmetric stream ciphers".
-* "Wifi security" tot en met "WEP en waarom het faalde".
+* "Wifi security" tot en met "Hoe WEP faalde".
 * De rest van "Crypto".
 * De rest van "Wifi security"
 
@@ -165,7 +165,7 @@ Vanaf dit punt kan de gebruiker dus de bronnen van het netwerk beginnen gebruike
 
 ### WEP
 
-Om potentiële aanvallers ervan te weerhouden dat ze traffiek kunnen sniffen (of zelf op het netewrk zetten) voorziet de 802.11 vanaf de associatie de optie om encryptie te voorzien. Dit gebeurt aan de hand van **WEP**, wat staat voor *wired equivalent privacy*. Een naam die veel beloofde maar niet zo goed was: de idee was dat WEP even veilig zou zijn als een bedraad netwerk. 
+Om potentiële aanvallers ervan te weerhouden dat ze traffiek kunnen sniffen (of zelf op het netwerk zetten) voorziet de 802.11 vanaf de associatie de optie om encryptie te voorzien. Dit gebeurt aan de hand van **WEP**, wat staat voor *wired equivalent privacy*. Een naam die veel beloofde maar niet zo goed was: de idee was dat WEP even veilig zou zijn als een bedraad netwerk. 
 
 ::: note
 
@@ -361,7 +361,7 @@ Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n
 ![](wifi/grow.png)
 
 ::: warning
-We hebben bij deze aanval 1 belangrijk concept genegeert waardoor deze aanval op eerste zich niet mogelijk is: hte aanpassen van een payload resulteert ook in een nieuwe CRC. Deze is echter mee geënrypteerd waardoor het niet duidelijk is hoe we dit kunnen omzeilen. Wacht nog even tot we aan de bitflip aanval komen en alles zal duidelijk worden (dat dit dus geen probleem is).
+We hebben bij deze aanval 1 belangrijk concept genegeert waardoor deze aanval op eerste zich niet mogelijk is: het aanpassen van een payload resulteert ook in een nieuwe CRC. Deze is echter mee geënrypteerd waardoor het niet duidelijk is hoe we dit kunnen omzeilen. Wacht nog even tot we aan de bitflip aanval komen en alles zal duidelijk worden (dat dit dus geen probleem is).
 :::
 
 ##### IV selectie 
@@ -413,7 +413,7 @@ Dankzij de bitflip aanval kan de aanvaller dus zonder problemen keystreams groei
 
 ### Probleem 4: Sleutelmanagement
 
-Het moge duidelijk zijn: cosntant dezelfde WEP-sleutel gebruiken, op meerdere apparaten, gedurende meerdere dagen, is vragen om problemen. Werknemers die ontslagen worden kunnen een potentiële sleutel-lekkage veroorzaken met alle gevolgen van dein. Administrators moeten manueel nieuwe sleutels in voeren bij de werkgevers, etc. Kortom, 2 belangrijke oorzaken zorgen voor een nog lagere beveligingsgraad van WEP dan er al was ten gevolge van de voorbije 3 problemen (IV, RC4, CRC):
+Het moge duidelijk zijn: cosntant dezelfde WEP-sleutel gebruiken, op meerdere apparaten, gedurende meerdere dagen, is vragen om problemen. Werknemers die ontslagen worden kunnen een potentiële sleutel-lekkage veroorzaken met alle gevolgen van dien. Administrators moeten manueel nieuwe sleutels in voeren bij de werkgevers, etc. Kortom, 2 belangrijke oorzaken zorgen voor een nog lagere beveligingsgraad van WEP dan er al was ten gevolge van de voorbije 3 problemen (IV, RC4, CRC):
 
 1. Er is **geen geautomatiseerd sleutel verversmechanisme**: idealiter worden de sleutels binnen 1 sessie vervangen voor dat de poole van mogelijke IV's is opgeraakt.
 2. Er is **geen gecentraliseerd sleutelmanagementsystee**m.
@@ -489,7 +489,7 @@ EAP oftewel *Extensible Authentication Protocol* is, zoals de naam doet vermoede
 
 De meest gebruikte EAP-methoden zijn:
 
-* **EAP-TLS**: gebruikt een TLS-tunnel om op een beveiligde manier te communiceren (we zagen TLS ook reeds aan het einde van crypto waar het gebruikt werd om https-trafiek te beveiligen). Hierbij gebeurt een certificaat-gebaseerde authenticatie.
+* **EAP-TLS**: gebruikt een TLS-tunnel om op een beveiligde manier te communiceren (we zagen TLS ook reeds aan het einde van crypto waar het gebruikt werd om HTTPS-trafiek te beveiligen). Hierbij gebeurt een certificaat-gebaseerde authenticatie.
 * **EAP-TTLS** (*Tunneled TLS*): Omdat niet alle eindgebruikers zich kunnen authenticeren aan de hand van een certificaat, voorziet PEAP authenticatie met behulp van een username/paswoord login, waarbij wel nog steeds een TLS tunnel wordt gebruikt voor veilige communicatie. Ter info: EAP-TTLS is quasi hetzelde als *Protected EAP* (PEAP) een ander EAP-protocol dat je soms zal zien passeren.
 
 ![](wifi/8021X2.png){ width=60% }
@@ -605,7 +605,7 @@ Om de payload te encrypteren (*merk op dat de header niét geëncrypteerd wordt,
 
 ### Helaas, aan alles komt een einde
 
-Tot 2017 ging alles goed. De AES standaard was al jaren een robuuste standaard gebleken en werd op vele plekken nog steeds gebruikt. En dit zou ook bij Wifi zou zijn geweest, waren het niet dat in mei 2017 een Belgische onderzoeker, Mathy Vanhoef, de bevindingen van z'n onderzoek publiceerde. Hij had helaas een belangrijke fout gevonden in de WPA2 standaard. Deze had niets te maken met AES - dat blijft een stevige standaard zijn- maar wel de manier waarop een bepaalde uitwisseling van berichten tijdens de intiële handshake tijdens de authenticatie plaatsvinden tijdens de *sleutel reinstallatie fase*. Deze aanvallen worden beschreven én gedemonstreerd op [krackattacks.com](https://www.krackattacks.com/) en verplichtten de IEEE om te beginnen werken aan een opvolger voor WPA2.
+Tot 2017 ging alles goed. De AES standaard was al jaren een robuuste standaard gebleken en werd op vele plekken nog steeds gebruikt. En dit zou ook bij Wifi zou zijn geweest, waren het niet dat in mei 2017 een Belgische onderzoeker, Mathy Vanhoef, de bevindingen van z'n onderzoek publiceerde. Hij had helaas een belangrijke fout gevonden in de WPA2 standaard. Deze had niets te maken met AES - dat blijft een stevige standaard zijn- maar wel de manier waarop een bepaalde uitwisseling van berichten tijdens de intiële handshake tijdens de authenticatie plaatsvinden tijdens de *sleutel reinstallatie fase*. Deze aanvallen worden beschreven én gedemonstreerd op [krackattacks.com](HTTPS://www.krackattacks.com/) en verplichtten de IEEE om te beginnen werken aan een opvolger voor WPA2.
 
 ##  WPA 3 ("Wifi 6")
 
@@ -615,14 +615,14 @@ In 2018 kwam de Wifi Alliance uit met de opvolger van WPA2, de titel, je raadt h
 * rekening hield met de noden van 21e eeuwste draadloze netwerken (denk maar aan Internet-of-things apparaten, beveiligde publieke hotspots, etc.).
 
 ::: tip
-De Wifi Alliance is in het leven geroepen als een organisatie die ervoor zorgde dat producten wel officieel konden claimen dat hun producten conform een IEEE standaard waren. Enkel wanneer heun producten de nodige tests van de Wifi Alliance aflegden kon het product het label van "Wifi alliance compatibel" product dragen.
+De Wifi Alliance is in het leven geroepen als een organisatie die ervoor zorgde dat producten wel officieel konden claimen dat hun producten conform een IEEE standaard waren. Enkel wanneer hun producten de nodige tests van de Wifi Alliance aflegden kon het product het label van "Wifi alliance compatibel" product dragen.
 :::
 
 Ook in WPA3 werden 2 modes voorzien: een personal en een enterprise mode. Enkele van de interessantste verbeteren zijn:
 
 * *Simultaneous Authentication of Equals (SAE)*: een nieuw cryptografisch concept waarbij in de personal mode authenticatie veel veiliger kan plaatsvinden dan voorgeen.
 * Resistant tegen offline dictionary attacks: iets waar zowel WPA1 en WPA2 last van hadden voor aanvallers met geduld.
-* *Forward secrecy*: zelfs als de aanvakker de wifi-sleutel van oude gecapteerde paketten vind zal hij deze toch niet kunnen decrypteren. Het aloude "safe now, decrypt later" is dus niet van toepassing op WPA3.
+* *Forward secrecy*: zelfs als de aanvaller de wifi-sleutel van oude gecapteerde paketten vind zal hij deze toch niet kunnen decrypteren. Het aloude "safe now, decrypt later" is dus niet van toepassing op WPA3.
 * *Wifi easy connect*: een gebruiksvriendelijke manier om internet-of-things apparaten met het netwerk te verbinden.
 * *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de STarbuck zetten om zo prive-traffiek van omstaanders te sniffen.
 * *Geauthenticeerde encryptie* gebruik maken van *"256-bit Galois/Counter Mode Protocol (GCMP-256)"* een cryptocipher dat we hier niet uit de doeken gaan doen.
