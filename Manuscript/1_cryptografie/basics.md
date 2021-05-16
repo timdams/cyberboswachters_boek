@@ -143,14 +143,79 @@ Doel van dit hoofdstuk is ook aantonen dat je geen wiskundig wondertalent moet z
 
 ## Cryptanalyse
 
-**TODO:**
+De term cryptanalyse is al enkele keren nu gevallen: de wereld van de cryptologie bestaat uit 2 delen, die elkaars tegengestelden zijn:
 
-* Sleutel lengte en permutaties berekenen afh van alfabetgrootte
-* Tijd om te bruteforcen tabel
-* cryptanalytics attack
-* cryptanalytic attacks vs bruteforce
+1. Cryptografie: de wetenschap van het versleutelen van informatie.
+2. Cryptanalyse: de wetenschap van het ontcijferen van versleutelde informatie, zonder kennis van de gebruikte sleutel.
+
+We gaan in dit boek niet te veel tijd aan de wondere wereld van cryptanalyse spenderen, daar dit ons te ver zou brengen. We vatten echter even de belangrijkste concepten hier samen.
+
+### Sleutellengtes en brute forcen
+
+Zoals je je kan inbeelden is de sleutellengte evenredig met de tijd die cryptanalysten  nodig hebben om je sleutel te bruteforcen. De maximale tijd die nodig is alle sleutels van een bepaalde lengte te berekenen kan je als volgt vinden: 
+
+$MaximaleTijd = \frac{AantalMogelijkeTekens^{SleutelLengte}}{pogingen/seconde}$
+
+Een voorbeeld:
+
+Een sleutel (of paswoord) bestaat uit 8 tekens, enkel kleine letters van a tot en met z zijn toegestaan. De berekeningen worden op een GeForce GTX 1080 gedaan die ongeveer 30 miljoen pogingen per seconde kan doen. We krijgen dan:
+
+$MaximaleTijd = \frac{26^{8}}{30000000}$
+
+Oftewel ongeveer 6960 seconden, wat neerkomt op ongeveer 1,9 uur tijd benodigd om alle mogelijke sleutels te testen (herinner je eraan dat deze tijd gehalveerd moet worden om te weten hoe lang het gemiddeld zal duren om de juiste sleutel terug te vinden.
+
+Volgende tabel toont nog voorbeelden waarbij telkens dezelfde GeForce GTX kaart werd gebruikt. Het getal tussen haakjes geeft aan hoeveel mogelijke tekens er in dit type mogelijk zijn:
+
+| # tekens  | enkel nummers (10)  | kleine letters (26)  | grote & kleine letters & nummers (62)  | eender welk teken (95)   |   
+|---|---|---|---|---|
+| 4  | 0,3 ms  |  15 ms | 490 ms  |  2,7 s |   
+|  5 | 3 ms  |  400 ms | 31 s  | 4,3 min  |   
+|  6 | 33 ms  | 10 s  | 32 min  | 6,8 uur  |   
+| 7  | 330 ms  | 4,5 min  |  33 uur | 27 dagen  |   
+| 8  | 3,3 s  | 1,9 uur  | 84 dagen  |  7 jaren |   
+| 9  | 33 s  | 2,1 dagen  | 14 jaren  | 670 jaren  |   
+| 10  | 5,6 min  | 54 dagen  | 890 jaren  | $6,3*10^{4}$ jaren  |   
+| 11  | 56 min  | 3,9 jaren  | $5,5*10^{4}$ jaren  | $6*10^{6}$ jaren  |   
+| 12  | 9,3 u   | 100 jaren  | $3,4*10^{6}$ jaren  |  $5,7*10^{8}$ jaren |   
+| 13  | 3,9 dagen | $2,6*10^{3}$ jaren  |  $2,1*10^{8}$ jaren  | $5,4*10^{10}$ jaren  |    
+| 14  | 39 dagen |$6,8*10^{4}$ jaren | $1,3*10^{10}$ jaren  | $5,1*10^{12}$ jaren  |     
+| 15  | 1,1 jaar |$1,8*10^{6}$ jaren | $8,1*10^{11}$ jaren  | $4,9*10^{14}$ jaren  |     
+| 16  |  11jaar |$4,6*10^{7}$ jaren | $5*10^{13}$ jaren  |$4,7*10^{16}$ jaren   |     
+
+<!---Bron: https://uwnthesis.wordpress.com/2020/07/01/brute-force-password-how-long-will-it-take-to-brute-force-a-password/--->
+
+::: tip
+Per extra GeForce-kaart die de aanvaller zou gebruiken halveert de tijd in deze tabel.
+:::
+
+::: note
+Om bovenstaande gigantische getallen wat te duiden: de leeftijd van ons universum wordt op 13,8 miljard jaar geschat, oftewel $13,8*10^{9}$ jaren. Onze mooie blauwe planeet is ongeveer 4,5 miljard jaar oud. De Tyrannosaurus Rex liep ongeveer 70 miljoen jaar geleden rond, oftewel $70*10^{6}$ jaren geleden. 
+:::
+
+### Soorten cryptanalytische aanvallen
+
+Geregeld in dit boek zullen we bepaalde zwakheden in algoritmes beschrijven die misbruikt kunnen worden door een bepaald type cryptanalytische aanval. Deze aanvallen zijn afhankelijk van de informatie die de cryptanalysist bezit:
+
+* Enkel de ciphertext: vanuit het standpunt van de cyberboswachters is dit het beste soort informatie dat de aanvaller bezit. Hij heeft enkel een hoop geencrypteerde informatie en moet proberen daar de originele plaintext uit te krijgen. Vanuit het standpunt van de cryptanalyst is dit dus de minst goede situatie om vanuit te starten.
+* Gekende plaintext: de cryptanalyst heeft 1 of meerdere stukken informatie waarvan zowel de ciphertext als de bijhorende plaintext gekend is.
+* Gekozen plaintext: de cryptanalyst kan zelf plaintext kiezen waarvan de bijhorende ciphertext moet gemaakt worden. Dit zorgt ervoor dat de cryptanalyst als het ware kan experimenteren.
+* Gekozen ciphertext: het zelfde concept als *gekozen plaintext* maar deze keer kiest de cryptanalyst de ciphertext waarvan hij de bijhorende plaintext wil genereren.
+
+::: note
+Er zijn nog enkele meer gespecialiseerde types, maar voor deze cursus zullen we het bij deze 4 basistypes houden.
+:::
+
+::: note
+Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalyst automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van:
+
+* Enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden.
+* Ze helpen ons in tijden van oorlog om (hopelijk) de boodschappen van vijanden te onderscheppen en lezen.
+:::
+
+<!---TODO--->
+<!---* cryptanalytic attacks vs bruteforce
 * Bruteforce vs dictattack
-* Noot omtrent quantum computers
+* Noot omtrent quantum computers--->
 
 ## Symmetrische encryptie
 

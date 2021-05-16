@@ -18,7 +18,7 @@ We gaan geregeld terug in de tijd gaan om te bekijken hoe bepaalde cyberverdedig
 
 Voor het ontdekken van Stuxnet in 2010 leek de cyberbeveiligingswereld wel een wereld van (relatieve) peis en vree. Het ergste dat kon gebeuren was dat je computer een virusje opdeed waardoor je mogelijk wat data, en vooral veel werkuren, kwijt raakte. Virussen, wormen en spam waren alomtegenwoordig maar eigenlijk niet meer dan luizen in de pels van de eindgebruikers. Tuurlijk, er werd een grondig gevloekt als een virus je foto's verwijderde of wanneer een worm zichzelf verspreidde naar je contacten - denk maar aan het *ILOVEYOU* virus dat als een soort *social engineer* mensen deed geloven dat ze een potentiële liefdesmatch hadden waarop ze vol spanning de bijlage openden en zo de worm *in huis haalden*. Of wat te denken van de *Conficker* worm die in 2008 meer dan 3 miljoen systemen kon besmetten en telkens de update-services van het Windows toestel uitschakelde. Uiteraard, dat was irritant, maar menig mens zou maar al te graag terug naar die tijd willen gaan als daarmee ransomware, botnets en door overheden gesponsorde cyberaanvallen onbestaande zouden zijn.
 
-//TODO: jan g vragen voor beschrijving over hoe het op bedrijven was
+<!---TODO: jan g vragen voor beschrijving over hoe het op bedrijven was--->
 
 :::note
 De termen worm, virus en malware zal geregeld door elkaar worden gebruikt in deze cursus. Alle drie betekenen net niet hetzelfde, maar  toch:

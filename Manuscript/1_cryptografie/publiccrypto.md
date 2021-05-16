@@ -220,6 +220,7 @@ Als je in Windows 10 een applicatie of installer probeert uit te voeren dan zal 
 
 ## HTTPS en TLS
 
-::: note
+Soon
+<!---::: note
 TODO
-:::
+:::--->

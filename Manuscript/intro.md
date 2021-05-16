@@ -20,6 +20,7 @@ Alle feedback is in deze fase zéér welkom:
 **Dit is versie 0.1.1** (15/5/21)
 * 0.1.1
   * Hoofdstuk Authenticatie klaar.
+  * Eerste deel sectie "cryptanalyse" geschreven.
 * 0.0.9
   * Hoofdstuk Wifi volledig vertaald
   * Eerste helft van hoofdstuk "Authenticatie" beschreven
