@@ -162,7 +162,7 @@ We kunnen daarom als kwaadwillig persoon bijvoorbeeld een legaal bericht ondersc
 
 Kortom, we hebben een manier nodig om de **identiteit van de eigenaar** van een publieke sleutel te verifiëren. Kom binnen: **certificaten**.
 
-### Digitale certificaten
+## Digitale certificaten
 
 Een certificaat is een (digitaal) document dat de identiteit van een gebruiker bindt aan een publiek sleutel. Dit document werd digitaal ondertekent door een vertrouwde derde partij (**trusted third party**) zodat bij twijfel van de echtheid van het certificaat men altijd bij deze derde partij terecht kan. Uiteraard is het belangrijk dat we deze derde partij kunnen vertrouwen, anders kunnen we ook niet de het certificaat vertrouwen dat zijn onderschrijven. 
 
@@ -195,7 +195,7 @@ Het ergste voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in
 
 
 
-#### Certificaten bekijken
+### Certificaten bekijken
 
 In iedere moderne browser kan je snel bekijken hoe zo'n certificaat er juist uitziet. Als je via een HTTPS verbinding naar een website surft dan op het slotje naast de URL n de adresbalk klikt kan je doorklikken om het certificaat te openen. Als je naar *HTTPS://www.belgium.be* surft en dit doet dan krijg je eerst wat samenvattende informatie:
 
