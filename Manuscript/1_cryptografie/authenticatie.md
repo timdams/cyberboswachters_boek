@@ -131,15 +131,15 @@ Merk op dat we ook hier nog steeds met een salted paswoord kunnen werken. Het en
 We hebben enkel nog maar over paswoorden gesproken in dit hoofdstuk, maar uiteraard zijn er ook andere zaken die je kan gebruiken om je te identificeren. Er zijn verschillende **factoren** die kunnen gebruikt worden om te controleren of een persoon wel degelijk toegang mag krijgen tot een systeem:
 
 * Iets wat je **weet**: je paswoord, je pincode, je rijksregisternummer, etc.
-* Iets wat je **bent**: een eigenschap die uniek is per persoon en onder de noemer "*biometrics" valt, zoals je vingerafdruk, irisscan, etc.
+* Iets wat je **bent**: een eigenschap die uniek is per persoon en onder de noemer "*biometrics*" valt, zoals je vingerafdruk, irisscan, etc.
 * Iets wat je **hebt**: een stuk hardware zoals een smartphone, USBkey, etc.
 * **Waar** of **wanneer** je bent: je IP-adres , het moment van de dag dat je probeert in te loggen.
 
 ![Multifactor authenticatie factoren](auth/mfa.png){}
 
-We zien meer en meer systemen verschijnen die aan zogenaamde *multifactor authentication" (MFA) doen waarbij het systeem minstens 2 factoren (*2FA*) wil controleren voor het je toegang tot het systeem geeft. Hoe meer verschillende factoren er worden gebruikt bij de authenticatie hoe veiliger het systeem is, maar ook hoe minder gebruiksvriendelijk het wordt. Het blijft dus een afweging tussen die 2 eigenschappen om in te schatten wat de ideale hoeveelheid veiligheid en gebruiksvriendelijkheid je wenst te hebben.
+We zien meer en meer systemen verschijnen die aan zogenaamde *multifactor authentication* (MFA) doen waarbij het systeem minstens 2 factoren (*2FA*) wil controleren voor het je toegang tot het systeem geeft. Hoe meer verschillende factoren er worden gebruikt bij de authenticatie hoe veiliger het systeem is, maar ook hoe minder gebruiksvriendelijk het wordt. Het blijft dus een afweging tussen die 2 eigenschappen om in te schatten wat de ideale hoeveelheid veiligheid en gebruiksvriendelijkheid je wenst te hebben.
 
-Systemen die MFA aanbieden doen dit vaak op een gecontroleerde manier: afhankelijk van de gebeurtenissen zal het systeem beslissen of meerdere factoren moeten getest worden of niet. Als je bijvoorbeeld woont in België, maar Google zit plots dat iemand met jouw paswoord probeert in te loggen vanuit een IP-adres op de Azoren, dan zal Google belissen dat "iets wat je weet" (het paswoord) niet genoeg controle is en extra informatie vragen.
+Systemen die MFA aanbieden doen dit vaak op een gecontroleerde manier: afhankelijk van de gebeurtenissen zal het systeem beslissen of meerdere factoren moeten getest worden of niet. Als je bijvoorbeeld woont in België, maar Google zit plots dat iemand met jouw paswoord probeert in te loggen vanuit een IP-adres op de Azoren, dan zal Google beslissen dat "iets wat je weet" (het paswoord) niet genoeg controle is en extra informatie vragen.
 
 ### Iets wat je weet: paswoorden 
 

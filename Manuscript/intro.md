@@ -17,7 +17,13 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog:
 
-**Dit is versie 0.1.1** (16/5/21)
+**Dit is versie 0.1.1** (19/5/21)
+
+* 0.1.3
+  * Verdere aanvullingen "Fundemanten van cybersec"
+  * Dit is de finale editie van academiejaar 2020-2021.
+* 0.1.2
+  * Hoofdstuk "Fundamenten van cybersec" gestart. Verre van klaar.
 * 0.1.1
   * Hoofdstuk Authenticatie klaar.
   * Eerste deel sectie "cryptanalyse" geschreven.
@@ -33,3 +39,4 @@ Alle feedback is in deze fase zéér welkom:
   * Wifi hoofdstuk vervolledigd (deels Engelstalig) Afbeeldingen moeten nog goed gezet worden.
 * 0.0.5
   * Hoofdstuk 1 en 2 aangevuld en op schrijffouten verbeterd.
+
