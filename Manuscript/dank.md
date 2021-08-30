@@ -4,6 +4,8 @@ Een oprechte dank aan Stefaan Somerling (RealDolmen) voor de feedback op het hoo
 
 Dank aan eerstejaars Dimitriy Vassilchenko om als externe spellingchecker aardig wat (genante) typos te ontdekken!
 
+Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Serge Horsmans!
+
 # Bronnen
 
 * 802.11 Wireless Network (first edition), Gast, O'Reilly, ISBN: 0-596-0018-3

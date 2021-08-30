@@ -4,7 +4,7 @@
 
 Herinner je dat we in het vorige hoofdstuk de termen CIA aanhaalden ende McCumber kubus. Een grote pijler van CIA, confidentiality, wordt opgelost met behulp van encryptie, namelijk het versleutelen van onze data met behulp van een geheime sleutel. Door deze te versleutelen wordt deze onleesbaar voor personen die de geheime sleutel niet hebben (en bijgevolg niet geautoriseerd zijn om de data te mogen lezen). De moeilijkheid van een goed cryptografisch systeem is dat de data op een zodanig manier met versleuteld worden dat het quasi onmogelijk is om zonder sleutel de originele data terug te vinden. We spreken hierbij over de originele data als de *plaintext* en de geëncrypteerde data als *ciphertext*. De ontvanger van een ciphertext moet deze, als hij de juiste sleutel heeft, terug kunnen omzetten naar de originele plaintext.
 
-Er zijn al veel encryptie algoritmes de revue gepasseerd doorheen de geschiedenis van de mens. Al van in de tijd van de Romeinen werd er aan cryptografie gedaan. Mensen hebben altijd gevoelige data gehad waar vertrouwelijk mee moest om gesprongen worden. Naarmate de **cryptanalyse** (dat is het proberen ontcijferen van een ciphertext zonder dat je de geheime sleutel hebt) evolueerde moesten ook de cryptografische algoritmes verbeteren. Ook hier zien we weer diezelfde wedloop tussen digitale stropers en cyberboswachters. Hoe sterker onze computers worden (met dank aan de wet van Moore) hoe krachtiger onze algoritmes moeten worden. De eenvoudigste vorm van cryptanalyse, bruteforcing, is rechtstreeks afhankelijk van de snelheid van de computer. Hoe meer sleutels per seconde een computer kan testen, hoe sneller de originele sleutel kan gevonden worden. 
+Er zijn al veel encryptie algoritmes de revue gepasseerd doorheen de geschiedenis van de mens. Al van in de tijd van de Romeinen werd er aan cryptografie gedaan. Mensen hebben altijd gevoelige data gehad waar vertrouwelijk mee moest om gesprongen worden. Naarmate de **cryptanalyse** (dat is het proberen ontcijferen van een ciphertext zonder dat je de geheime sleutel hebt) evolueerde, moesten ook de cryptografische algoritmes verbeteren.  Ook hier zien we weer diezelfde wedloop tussen digitale stropers en cyberboswachters. Hoe sterker onze computers worden (met dank aan de wet van Moore), hoe krachtiger onze algoritmes moeten worden De eenvoudigste vorm van cryptanalyse, bruteforcing, is rechtstreeks afhankelijk van de snelheid van de computer. Hoe meer sleutels per seconde een computer kan testen, hoe sneller de originele sleutel kan gevonden worden. 
 
 ::: tip
 De volledige geschiedenis van de cryptografie hier vertellen zou ongeveer 1200 pagina's vereisen. Het briljante boek "The Codebreakers" van David Kahn is een aanrader voor eenieder die meer willen weten over deze boeiende geschiedenis. Laat de 1200 pagina's je niet afschrikken, het boek leest als een echte thriller.
@@ -28,9 +28,9 @@ Alle bestaande cryptografische systemen kunnen op verschillende manieren gekarak
 
 We gaan zo meteen bekijken hoe encryptie effectief gebeurt, maar we willen al even een mythe onderuit halen. Binnen encryptie heb je de *principes van Kerckhoff*, 6 regels die in de 19e eeuw werden vastgelegd waarin encryptie-algoritmes moeten voldoen om als veilig beschouwd te worden. Sommige principes zijn, onder ander door onze steeds krachtige computers, niet meer relevant, meer 1 blijft ongelooflijk belangrijk: " het kennen van het gebruikte encryptiealgoritme door de *tegenstander* is geen probleem, het is enkel de geheime sleutel die ten allen tijde uit de handen van de tegenstander moet blijven.".
 
-Dit ogenschijnlijk eenvoudige zinnetje is veel zeggen: **je sleutel (of paswoord) is wat je het beste moet beschermen. Zonder kennis van de sleutel zou iemand nooit toegang mogen krijgen tot versleutelde data, ongeacht dat geweten is met welk systeem de data werd vercijferd.** 
+Dit ogenschijnlijk eenvoudige zinnetje betekent heel veel: **je sleutel (of paswoord) is wat je het beste moet beschermen. Zonder kennis van de sleutel zou iemand nooit toegang mogen krijgen tot versleutelde data, ongeacht dat geweten is met welk systeem de data werd vercijferd.** 
 
-*Security through obscurity* is al lang een dubbel snijdend zwaard binnen de security wereld. Enerzijds is het niet aangeraden om met veel tamtam aan te kondigen hoe jij je data beveiligd. Anderzijds geeft het je mogelijk een vals gevoel van veiligheid (*snake's oil*) daar het geheimhouden van je algoritme en systemen geen garantie is dat deze ook effectief veilig zijn. In de 21e eeuw zijn de meest gebruikte encryptie-algoritmes publiek gekende algoritmes die door duizenden experts aan de tand zijn gevoeld. De kans dat er dus (bewuste) fouten in dergelijke standaarden ziet is véél kleine dan wanneer je met een zogenaamd *proprietary* systeem werkt waarvan de werking angstvallig geheim wordt gehouden.
+*Security through obscurity* is al lang een dubbel snijdend zwaard binnen de security wereld. Enerzijds is het niet aangeraden om met veel tamtam aan te kondigen hoe jij je data beveiligd. Anderzijds geeft het je mogelijk een vals gevoel van veiligheid (*snake's oil*) daar het geheimhouden van je algoritme en systemen geen garantie is dat deze ook effectief veilig zijn. In de 21e eeuw zijn de meest gebruikte encryptie-algoritmes publiek gekende algoritmes die door duizenden experts aan de tand zijn gevoeld. De kans dat er dus (bewuste) fouten in dergelijke standaarden ziet, is véél kleine dan wanneer je met een zogenaamd proprietary systeem werkt waarvan de werking angstvallig geheim wordt gehouden.
 
 **Finaal draait alles op het geheimhouden van je sleutel, iets dat we telkens weer in dit boek zullen herhalen!**
 
@@ -96,7 +96,7 @@ Het principe van Caesar-encryptie, de substitutie, blijft echter overeind staan 
 
 Bij transpositie-algoritmen gaan we de positie van de karakters veranderen. De sleutel kan hierbij bepalen op welke manier dit moet gebeuren. De Oude Grieken gebruikten een zogenaamde scytale om aan transpositie-encryptie te doen. Een scytale was een lange stok bestaande uit 3 of meerdere lange zijden. De boodschap werd op een lang lint geschreven en dit lint werd dan over de skytale gedraaid. De sleutel gaf aan uit hoeveel vlakken de te gebruiken scytale moest bestaan. Ieder karakter van de plaintext (het lint) kwam op een andere zijde te liggen. Vervolgens werden alle letters op 1 zijde achter elkaar gezet, en dit werd herhaald voor iedere zijde: dit werd de ciphertext die werd doorgestuurd.
 
-Om de nu de cipertext decrypteren werd een onbeschreven lint over de juiste scytale gelegd. Vervolgens werd de verkregen op dit lint, zijde per zijde, beschreven. Als de ontvanger dan het lint ontrolde kreeg hij terug de originele tekst te zien.
+Om de nu de cipertext decrypteren werd een onbeschreven lint over de juiste scytale gelegd. Vervolgens werd de verkregen ciphertext op dit lint, zijde per zijde, overgeschreven. Als de ontvanger dan het lint ontrolde kreeg hij terug de originele tekst te zien.
 
 ::: tip
 Het voordeel van een transpositiecipher is natuurlijk dat een zogenaamde "known plaintext" aanval iets moeilijker wordt. Een veel gebruikte manier die cryptanalisten vroeger gebruikten is de kennis die ze hadden van delen van de plaintext. Als geweten was dat het bericht altijd begon met "Beste dokter" dan was dit al een goede aanzet om van hieruit verder te werken. 
@@ -117,12 +117,12 @@ De **Advanced Encryption Standard (AES)** is in de 21e eeuw zo'n beetje de de fa
 We gaan AES nog terugzien opduiken wanneer we gaan bekijken hoe draadloze netwerken worden beveiligd. Als Belg mogen we trouwens erg fier zijn op deze wereldwijd gebruikte Amerikaanse standaard. Je zal later ontdekken waarom dat zo is!
 
 ::: tip
-Doel van dit hoofdstuk is ook aantonen dat je geen wiskundig wondertalent moet zijn om de basisconcepten van cryptografie te begrijpen. Hier en daar neem ik wat vrijheden om bepaalde stappen te vereenvoudigen, maar de essentie van de algoritmen blijft wel bewaard en daarmee, hopelijk, ook de eenvoudigheid (en dus elegantie) ervan.
+Doel van dit hoofdstuk is ook aantonen dat je geen wiskundig wondertalent moet zijn om de basisconcepten van cryptografie te begrijpen. Hier en daar neem ik wat vrijheden om bepaalde stappen te vereenvoudigen, maar de essentie van de algoritmen blijft wel bewaard en daarmee, hopelijk, ook de eenvoud (en dus elegantie) ervan.
 :::
 
 ## Cryptanalyse
 
-De term cryptanalyse is al enkele keren nu gevallen: de wereld van de cryptologie bestaat uit 2 delen, die elkaars tegengestelden zijn:
+De term cryptanalyse is nu al enkele keren nu gevallen: de wereld van de cryptologie bestaat uit 2 delen, die elkaars tegengestelden zijn:
 
 1. Cryptografie: de wetenschap van het versleutelen van informatie.
 2. Cryptanalyse: de wetenschap van het ontcijferen van versleutelde informatie, zonder kennis van de gebruikte sleutel.
@@ -172,9 +172,9 @@ Om bovenstaande gigantische getallen wat te duiden: de leeftijd van ons universu
 
 ### Soorten cryptanalytische aanvallen
 
-Geregeld in dit boek zullen we bepaalde zwakheden in algoritmes beschrijven die misbruikt kunnen worden door een bepaald type cryptanalytische aanval. Deze aanvallen zijn afhankelijk van de informatie die de cryptanalysist bezit:
+Geregeld zullen we in dit boek bepaalde zwakheden beschrijven die in algoritmes misbruikt kunnen worden door een bepaald type cryptanalytische aanval. Deze aanvallen zijn afhankelijk van de informatie die de cryptanalysist bezit:
 
-* Enkel de ciphertext: vanuit het standpunt van de cyberboswachters is dit het beste soort informatie dat de aanvaller bezit. Hij heeft enkel een hoop geencrypteerde informatie en moet proberen daar de originele plaintext uit te krijgen. Vanuit het standpunt van de cryptanalyst is dit dus de minst goede situatie om vanuit te starten.
+* Enkel de ciphertext: vanuit het standpunt van de cyberboswachters is dit het beste soort informatie dat de aanvaller bezit. Hij heeft enkel een hoop geëncrypteerde informatie en moet proberen daar de originele plaintext uit te krijgen. Vanuit het standpunt van de cryptanalyst is dit dus de minst goede situatie om vanuit te starten.
 * Gekende plaintext: de cryptanalyst heeft 1 of meerdere stukken informatie waarvan zowel de ciphertext als de bijhorende plaintext gekend is.
 * Gekozen plaintext: de cryptanalyst kan zelf plaintext kiezen waarvan de bijhorende ciphertext moet gemaakt worden. Dit zorgt ervoor dat de cryptanalyst als het ware kan experimenteren.
 * Gekozen ciphertext: het zelfde concept als *gekozen plaintext* maar deze keer kiest de cryptanalyst de ciphertext waarvan hij de bijhorende plaintext wil genereren.
@@ -224,12 +224,12 @@ Er zijn 2 soorten symmetrische encryptieciphers als we kijken naar de manier waa
 
 De werking van een symmetrisch stream cipher is verrassend eenvoudig en bestaat uit 2 delen:
 
-* Een pseudorandom keystream generator: deze zal de sleutel als het ware expanderen naar een sleutel met de zelfde lengte als de stream, genaamd een **keystream**. Daar we met een stream werken zal deze generator teken per teken genereren. Hoe dit gebeurt leggen we verderop uit.
+* Een pseudorandom keystream generator: deze zal de sleutel als het ware expanderen naar een sleutel met de zelfde lengte als de stream, genaamd een **keystream**. Daar we met een stream werken zal deze generator teken per teken genereren. Hoe dit gebeurt, leggen we verderop uit.
 * De **xor** of "exclusieve of" functie: deze zal de plaintext naar een ciphertext omzetten door de plaintext met de keystream samen te voegen.
 
 ![](crypto/stream.png)
 
-Aan de ontvanger zijde gebeurt exact hetzelfde. **Enkel indien de ontvanger dezelfde sleutel gebruikt, zal deze dezelfde keystream kunnen genereren, en bijgevolg enkel dan de originele plaintext verkrijgen.**
+Aan de ontvangerzijde gebeurt exact hetzelfde. **Enkel indien de ontvanger dezelfde sleutel gebruikt, zal deze dezelfde keystream kunnen genereren, en bijgevolg enkel dan de originele plaintext verkrijgen.**
 
 Het hart van een symmetrisch streamcipher is dus enerzijds de xor-functie én, belangrijker, de manier waarop de keystream wordt gemaakt. 
 
@@ -256,10 +256,10 @@ Beeld je in dat we het bericht `1010` willen versleutelen, en we hebben een gege
 
 De keystream generator heeft dus als doel om voor iedere karakter dat moet geëncrypteerd worden een bijhorend keystream karakter te maken. Deze karaktergeneratie moet onvoorspelbaar zijn (*random*) tegenover de sleutel die wordt gebruikt en het voorgaande karakter dat werd gemaakt. Echter, dit moet wel PSEUDO (*schijn*)-willekeurig zijn: dezelfde sleutel als begintpunt (*seed*) moet dezelfde reeks genereren. 
 
-De kracht (en zwakte) van een symmetrisch streamcipher ligt in de implementatie van de manier waarom deze keystream generator werkt. Mogelijke zwakheden kunnen bijvoorbeeld zijn dat de gegenereerde stroom informatie van de sleutel "lekt" naar de keystream (wat desastreuze gevolgen bleek te hebben bij de originele wifi-security (WEP) waarover later meer) of een voorspelbare "randomiteit" van de keystream?
+De kracht (en zwakte) van een symmetrisch streamcipher ligt in de implementatie van de manier waarom deze keystreamgenerator werkt. Mogelijke zwakheden kunnen bijvoorbeeld zijn dat de gegenereerde stroom informatie van de sleutel "lekt" naar de keystream (wat desastreuze gevolgen bleek te hebben bij de originele wifi-security (WEP) waarover later meer) of een voorspelbare "randomiteit" van de keystream?
 
 ::: note
-Om aan encryptie te kunnen doen hebben we systemen nodig die onvoorspelbaar zijn. Als de aanvaller kan voorspellen wat de uitvoer van een onderdeel van de encryptie zal zijn, dan kunnen we geen confidentiality en/integrity voorzien. Kortom, we hebben algoritmes nodig die willekeurige getallen kunnen generen die 100% onvoorspelbaar zijn. Net zoals het werpen van een dobbelsteen niet voorspeld kan worden, zo ook moeten onze algoritmes een (digitale) dobbelsteen hebben.
+Om aan encryptie te kunnen doen, hebben we systemen nodig die onvoorspelbaar zijn. Als de aanvaller kan voorspellen wat de uitvoer van een onderdeel van de encryptie zal zijn, dan kunnen we geen confidentiality en/integrity voorzien. Kortom, we hebben algoritmes nodig die willekeurige getallen kunnen generen die 100% onvoorspelbaar zijn. Net zoals het werpen van een dobbelsteen niet voorspeld kan worden, zo ook moeten onze algoritmes een (digitale) dobbelsteen hebben.
 
 Digitale systemen die perfect willekeurige getallen genereren noemt men **random number generator** (RNG). Uiteraard moet een RNG geprogrammeerd kunnen worden: dat behelst dus een algoritme. Een algoritme is per definitie "voorspelbaar". Alles hangt daarom af van de invoer die het algoritme gebruikt om random getallen te beginnen genereren. We spreken dan van een **pseudo random number generator** (PRNG), pseudo (**schijnbaar**) omdat de uitvoer afhankelijk is van het startgetal, de zogenaamde **seed**. Die seed kan bijvoorbeeld de encryptiesleutel zijn: enkel met dié sleutel zal het algoritme dezelfde reeks getallen generen. Er zijn echt ook systemen die bijvoorbeeld de staat van een flipflop als startpunt gebruiken: wanneer je een flipflop aanzet kan je niet voorspellen of deze op 1 of 0 zal staan (daar deze staat beïnvloed wordt door de elektromagnetische straling). Uiteraard is een dergelijke seed voor een keystreamgenerator nutteloos, daar zowel verzender én ontvanger dezelfde reeks getallen moeten kunnen genereren.
 :::
@@ -291,7 +291,7 @@ for i = 0 tot 255
 }
 ```
 
-Deze stap zal dus de elementen in de sleutelarray S naar nieuwe posities in de T array plaatsen en deze ook de hele tijd van plek wisselen. De index j is afhankelijk van de sleutelwaarde en zorgt er dus voor dat iedere sleutel een unieke array T zal opleveren.
+Deze stap zal dus de elementen in de sleutelarray S naar nieuwe posities in de S array plaatsen en deze ook de hele tijd van plek wisselen. De index j is afhankelijk van de sleutelwaarde en zorgt er dus voor dat iedere sleutel een unieke array T zal opleveren.
 
 ###### Uitgewerkt voorbeeld van KSA
 
@@ -374,7 +374,7 @@ we outputten de waarde die op S[1] staat
 Finaal zal deze *geoutputte* waarde ``k`` ge-xor'd worden met het huidige karakter van de plaintext.
 
 ::: note
-Zo, dat viel nog mee he? Zoals al gezegd, een belangrijke motivatie van dit boek is aantonen dat je niet bang hoeft te zijn van wat er achter de schermen van de cyberwereld gebeurt. De hoeveelheid wiskunde die we bijvoorbeeld nodig hadden is beperkt gebleven tot onze trouwe modulo (%)-operator en meer niet. Wanneer we zo meteen een block ciphers gaan uitkleden zal je ook daar ontdekken dat je best in staat bent schijnbaar complexe technologieën te begrijpen. Hop naar de blockciphers dus!
+Zo, dat viel nog mee he? Zoals al gezegd, een belangrijke motivatie van dit boek is aantonen dat je niet bang hoeft te zijn van wat er achter de schermen van de cyberwereld gebeurt. De hoeveelheid wiskunde die we bijvoorbeeld nodig hadden, is beperkt gebleven tot onze trouwe modulo (%)-operator en meer niet. Wanneer we zo meteen een block ciphers gaan uitkleden, zal je ook daar ontdekken dat je best in staat bent schijnbaar complexe technologieën te begrijpen. Hop naar de blockciphers dus!
 :::
 
 ### Blockciphers
@@ -428,7 +428,7 @@ Finaal krijgen we dus terug een 32 bit blok dat nog een laatste permutatie onder
 
 ##### Subkeys maken
 
-Iedere ronde tijdens de versleuteling vereist een sleutel. Om te voorkomen dat steeds de hoofdsleutel wordt gebruikt (en er zo potentieel dezelfde keystreams worden gemaakt) wordt deze sleutel doorheen een *round-key generator* algoritme gestuurd. Dit algoritme bestaat uit 16 rondes waarbij de 56 bit sleutel (8 van de 64 bits in de originele sleutel zijn zogenaamde pariteits-bits, die dienen om te controleren of de sleutel geen fouten bevat) steeds in 2 helften van 28 bits wordt *geknipt*.
+Iedere ronde tijdens de versleuteling vereist een sleutel. Om te voorkomen dat steeds de hoofdsleutel wordt gebruikt (en er zo potentieel dezelfde keystreams worden gemaakt), wordt deze sleutel doorheen een *round-key generator algoritme* gestuurd Dit algoritme bestaat uit 16 rondes waarbij de 56 bit sleutel (8 van de 64 bits in de originele sleutel zijn zogenaamde pariteits-bits, die dienen om te controleren of de sleutel geen fouten bevat) steeds in 2 helften van 28 bits wordt *geknipt*.
 
 ![De 16 rondes die telkens 1 subkey maken](crypto/des6.png){ width=60% }
 
@@ -439,7 +439,7 @@ De *compressie P-box* doet al vermoeden wat er gebeurt:
 * Compressie: dus een aantal bits zullen wegvallen (er komt 56 bits in, maar we hebben maar 48 bits nodig)
 * P-box: een permutatie oftewel transpositie dat alle bits van plek zal veranderen.
 
-Er bestaan verschillende varianten hoe dit in z'n werk zal gaan, maar bij DES wordt volgende tabel gehanteerd:
+Er bestaan verschillende varianten over hoe dit in z'n werk gaat, maar bij DES wordt de volgende tabel gehanteerd:
 
 
 
@@ -455,7 +455,7 @@ Er bestaan verschillende varianten hoe dit in z'n werk zal gaan, maar bij DES wo
 Voor zij die graag puzzelen, welke getallen ontbreken? 
 
 ::: tip
-De bits op locaties 9, 18, 22, 25, 35, 43 en 54 worden geblokkeerd. Daar de sleutel steeds geshift wordt wil dit zeggen dat steeds andere bits *achtergelaten* geworden.
+De bits op locaties 9, 18, 22, 25, 35, 43 en 54 worden geblokkeerd. Daar de sleutel steeds geshift wordt, wil dit zeggen dat steeds andere bits *achtergelaten* geworden.
 :::
 
 En zo hebben we het einde van de werking van DES bereikt. Dat viel al bij al nog mee, niet? Uiteraard hebben we nu vooral getoond *hoe* het werkt, maar niet *waarom* het werkt.
@@ -463,9 +463,9 @@ En zo hebben we het einde van de werking van DES bereikt. Dat viel al bij al nog
 
 #### 3DES 
 
-Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES (56 bits, 48 in effectiviteit vanwege de pariteitsbits) redelijk snel zou gebruteforced worden. Om die reden werd 3DES in het leven geroepen in 1995. De oplossing was een mooi staaltje compromis: het bood een verhoogde beveiliging doordat het een lange sleutel had (tot 168 bits lang) maar bleef tegelijkertijd compatibel met de bestaande DES hardware en software.
+Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES (56 bits, 48 in effectiviteit vanwege de pariteitsbits) redelijk snel zou gebruteforced worden. Om die reden werd 3DES in het leven geroepen in 1995. De oplossing was een mooi staaltje compromisvorming: het bood een verhoogde beveiliging doordat het een lange sleutel had (tot 168 bits lang) maar bleef tegelijkertijd compatibel met de bestaande DES hardware en software.
 
-De werking van 3DES (*tripple DES*) verrassend eenvoudig: ieder blok data wordt 3 keer doorheen een DES-cipher gestuurd. Hierbij wordt steeds een andere sleutel gebruikt. Om de bestaande DES hardware te gebruiken wordt hierbij de data eerst door de encryptie gestuurd, dan doorheen de decryptie en terug door de encryptie. Daar we een andere sleutel gebruiken in iedere fase heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we dus effectief 3 maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvanger zijde gebeurt dan het omgekeerde: decryptie, encryptie, decryptie én dit dus allemaal met de bestaande DES hardware!
+De werking van 3DES (*tripple DES*) is verrassend eenvoudig: ieder blok data wordt 3 keer doorheen een DES-cipher gestuurd. Hierbij wordt steeds een andere sleutel gebruikt. Om de bestaande DES hardware te gebruiken, wordt hierbij de data eerst door de encryptie gestuurd, dan doorheen de decryptie en terug door de encryptie. Daar we in iedere fase een andere sleutel gebruiken heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we dus effectief 3 maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvanger zijde gebeurt dan het omgekeerde: decryptie, encryptie, decryptie én dit dus allemaal met de bestaande DES hardware!
 
 ![](crypto/3des.png){ width=60% }
 
@@ -481,17 +481,17 @@ Het bankwezen gebruikt 3DES nog steeds (of varianten die erop gebaseerd) zijn om
 
 #### Block cipher modes
 
-Tot hiertoe gingen we steeds blok per blok in het encryptiecipher sturen en het resultaat ervan doorsturen. Klaar.  Oplettende mensen hebben hier mogelijk al een hiaat in gezien: wat als twee blokken exact dezelfde data bevatten? Beide zullen dezelfde ciphertext als resultaat genereren, daar we telkens dezelfde sleutel (en dus subkeys) gebruiken. Twee ciphertexts die identiek zijn willen we vermijden, daar het potentiële informatie over de plaintext zichtbaar maakt. Voorts laat dit soort werking ook replay attacks toe: de aanvaller kan een geëncrypteerd pakket bewaren en op een later moment terug opsturen, zonder dat hij moet weten wat de plaintext bevat.
+Tot hiertoe gingen we steeds blok per blok in het encryptiecipher sturen en het resultaat ervan doorsturen. Klaar.  Oplettende mensen hebben hier mogelijk al een hiaat in gezien: wat als twee blokken exact dezelfde data bevatten? Beide zullen dezelfde ciphertext als resultaat genereren, daar we telkens dezelfde sleutel (en dus subkeys) gebruiken. Twee ciphertexts die identiek zijn, willen we vermijden daar het potentiële informatie over de plaintext zichtbaar maakt. Voorts laat dit soort werking ook replay attacks toe: de aanvaller kan een geëncrypteerd pakket bewaren en op een later moment terug opsturen, zonder dat hij moet weten wat de plaintext bevat.
 
 ::: tip
-Door pakketten te sniffen zou de aanvaller kunnen achterhalen wat de mogelijk inhoud van een pakket is. Ieder netwerkprotocol volgt de standaarden die ervoor beschreven zijn en zo kan dus de aanvaller heel veel informatie ontdekken over een ciphertext gewoon ten opzichte van wanner een pakket wordt verstuurd tegenover de andere. Als het bijvoorbeeld het eerste pakket is dat verstuurd wordt, dan is de kans groot dat dit pakket de typische *"ik wi een verbinding opzetten"*-request is.
+Door pakketten te sniffen zou de aanvaller kunnen achterhalen wat de mogelijk inhoud van een pakket is. Ieder netwerkprotocol volgt de standaarden die ervoor beschreven zijn en zo kan dus de aanvaller heel veel informatie ontdekken over een ciphertext gewoon ten opzichte van wanneer een pakket wordt verstuurd tegenover de andere. Als het bijvoorbeeld het eerste pakket is dat verstuurd wordt, dan is de kans groot dat dit pakket de typische *"ik wil een verbinding opzetten"*-request is.
 :::
 
 Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren, noemen we de **Electronic Codebook (ECB)** modus. Alhoewel deze modus dus duidelijk een veiligheidsprobleem met zich mee draagt, heeft deze modus ook één voordeel:
 
 * Ieder blok wordt onafhankelijk van andere blokken gedecrypteerd. Als er dus een blok door wat voor fout niet gedecrypteerd worden, dan heeft dat geen invloed op de daaropvolgende. Dit is dus voor streaming-situaties nuttig: beeld je in dat je decryptie faalt halverwege het binnenkrijgen van een film die je aan het bekijken bent. Je zou helemaal opnieuw moeten beginnen.
 
-![Volgende voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia)](crypto/ecbfail.png){ width=60% }
+![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia)](crypto/ecbfail.png){ width=60% }
 
 ECB is duidelijk een niet zo veilige manier om een block cipher toe te passen. Veel interessanter (veiliger) wordt het wanneer we extra informatie gebruiken om een blok te encrypteren. **Enkel het huidige blok en dezelfde sleutel gebruiken is namelijk niét veilig.** Er zijn verschillende modes om veiliger te encrypteren dan ECB:
 
@@ -512,12 +512,12 @@ Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebrui
 :::
 
 ::: note
-[De wikipedia pagina over block cipher]HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation modes geeft een zeer goed overzicht (én vergelijking).
+[De wikipediapagina over block cipher]HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation modes geeft een zeer goed overzicht (én vergelijking).
 :::
 
 #### AES
 
-Alhoewel 3DES een verbetering op DES was, was er toch nood aan een nieuwe encryptie-standaard die langere tijd kon bestaan. In 2001 werd daarom de **Advanced Encryption Standard (AES)** onder het doopvont gehouden als de nieuwe defactor encryptiestandaard wereldwijd. Deze Amerikaanse standaard is gebaseerd op het **Rijndael** algoritme waar we als Belgen fier op mogen zijn: Rijndael is ontwikkeld door 2 Belgische KUL-cryptografen Vincent Rijmen en Joan Daemen.
+Alhoewel 3DES een verbetering op DES was, was er toch nood aan een nieuwe encryptie-standaard die langere tijd kon bestaan. In 2001 werd daarom de **Advanced Encryption Standard (AES)** onder het doopvont gehouden als de nieuwe defactor encryptiestandaard wereldwijd. Deze Amerikaanse standaard is gebaseerd op het **Rijndael**-algoritme waar we als Belgen fier op mogen zijn: Rijndael is ontwikkeld door 2 Belgische KUL-cryptografen Vincent Rijmen en Joan Daemen.
 
 AES is een symmetrisch block cipher dat data in blocks van 128 bits zal opsplitsen en sleutel van tot 256 bits lang toelaat. De volledige werking van AES gaan we hier niet uit de doeken doen, het voldoet te begrijpen dat in grote lijnen hetzelfde soort stappen worden doorlopen als DES en andere symmetrische ciphers:
 

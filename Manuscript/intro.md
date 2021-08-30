@@ -17,10 +17,12 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog:
 
-**Dit is versie 0.1.1** (19/5/21)
+**Dit is versie 0.2.0** (1/9/21)
 
+* 0.2.0
+  * Opmerkingen collega Horsmans verwerkt
 * 0.1.3
-  * Verdere aanvullingen "Fundemanten van cybersec"
+  * Verdere aanvullingen "Fundamenten van cybersec"
   * Dit is de finale editie van academiejaar 2020-2021.
 * 0.1.2
   * Hoofdstuk "Fundamenten van cybersec" gestart. Verre van klaar.

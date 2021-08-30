@@ -1,3 +1,10 @@
+REM To use this script. Install:
+REM 0.Pandoc: https://pandoc.org/installing.html
+REM 1.Python: https://www.python.org/downloads/release/python-396/
+REM 2.Then:  pip install pandoc-latex-environment 
+REM 3.MikTex: https://miktex.org/download
+REM 4. Make sure to update all packages using "miktex console" once before running
+
 pandoc ^
  metadata.yaml^
  intro.md^
@@ -16,7 +23,7 @@ pandoc ^
  --filter pandoc-latex-environment^
  --self-contained^
  --resource-path=assets^
- -s --toc --verbose --template eisvogel -o book.pdf 
+ -s --toc --verbose --template templates/eisvogel -o book.pdf 
 
  REM HTTPS://learnbyexample.github.io/customizing-pandoc/
  REM HTTPS://github.com/Wandmalfarbe/pandoc-latex-template

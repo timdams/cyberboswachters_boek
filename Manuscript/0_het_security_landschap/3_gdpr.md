@@ -1,7 +1,7 @@
 # GDPR 
 
 De General Data Protection Regulation (2018), of in het Nederlands de *Algemene Verordering Gegevensbescherming* is een Europese richtlijn om de privacy van Europese burgers, eender waar in de wereld, te beschermen. Of zoals de EU zelf op haar website beschrijft "the thoughest privacy and security law in the world" (wat ook effectief zo is: het is de enige wet momenteel die er in slaagt om wereldwijd de regels ervan af te dwingen).
-De wet zelf bestaat uit 99 verschillende artikels die de rechten, personen en verplichtingen van bedrijven die onder de verordering vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doen.
+De wet zelf bestaat uit 99 verschillende artikels die de rechten, personen en verplichtingen van bedrijven die onder de verordering vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doet.
 
 ::: tip
 We gaan in dit hoofdstuk enkel een high-level overzicht geven van GDPR opdat we niet verzanden in de taal der rechters en advocaten, het *legalese*.
@@ -71,7 +71,7 @@ Als er uiteindelijk toch een inbreuk op de GDPR-wetgeving wordt vastgesteld dan 
 * Minder ernstige inbreuken: boete tot € 10 miljoen, of 2% van de wereldwijde jaaromzet van het bedrijf uit het voorgaande boekjaar, afhankelijk van welk bedrag hoger is.
 * Meer ernstige inbreuken (inbreuken die ingaan tegen de principes van het recht op privacy en het recht om te worden vergeten, die de kern vormen van GDPR): boete van maximaal € 20 miljoen, of 4% van de wereldwijde jaaromzet, afhankelijk van welk bedrag hoger is.
 
-Of en hoe groot de boete zal zijn is gebaseerd op een aantal criteria:
+Of en hoe groot de boete zal zijn, is gebaseerd op een aantal criteria:
 
 * Ernst en aard van de overtreding.
 * Intentie: is de datalek het gevolg van een slordigheid of opzettelijk gebrek aan beveiliging?

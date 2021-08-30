@@ -10,7 +10,7 @@ pandoc ^
  --self-contained^
  --resource-path=assets^
  --verbose^
- -s  --template eisvogel -o booktest.pdf
+ -s  --template templates/eisvogel -o booktest.pdf
 
  REM HTTPS://learnbyexample.github.io/customizing-pandoc/
  REM HTTPS://github.com/Wandmalfarbe/pandoc-latex-template

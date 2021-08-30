@@ -32,7 +32,7 @@ de cyberboswachters van de 21e eeuw hebben geen eenvoudige job. Ze was in de vor
 
 * De aanvallers kunnen aan bijna supersonische **snelheid** aanvallen op duizenden, of zelfs miljoenen, systemen starten. 
 * De gemiddelde aanval is duizenden keren **complexer** dan de aanvallen die we circa 20 jaar geleden te verduren kregen. 
-* De tools die aanvallers, van welke aard ook, ter hun beschikking hebben is vaak ongelooflijk **eenvoudig** geworden. Gedaan is de tijd dat een ietwat stevige aanval kon gedaan worden door experts met 10 jaar scrip- en netwerkervaring. Sommige vreeswekkende aanvallen vereisen niet meer dan het IP-adres van het slachtoffer in een invulveld invullen en vervolgens een klik op een grote rode knop "Start attack".
+* De tools die aanvallers, van welke aard ook, ter hun beschikking hebben is vaak ongelooflijk **eenvoudig** geworden. Gedaan is de tijd dat een ietwat stevige aanval kon gedaan worden door experts met 10 jaar script- en netwerkervaring. Sommige vreeswekkende aanvallen vereisen niet meer dan het IP-adres van het slachtoffer in een invulveld invullen en vervolgens een klik op een grote rode knop "Start attack".
 * Aanvallers schuimen *underground* fora af, op zoek naar de nieuwste *zero-day* die ze in hun arsenaal kunnen opnemen. Fabrikanten van besturingssystemen en software kunnen de **snelheid waarmee nieuwe zwakheden** in hun systeem worden gevonden niet volgen. 
 * Door voorgaande snelheid van nieuwe zwakheden, duurt het ook langer en langer voor alles kan **gepatched** worden door de ontwikkelaars van de software.
 * Aanvallers kunnen **gigantische legers van computers en botnets** gebruiken om een ijzingwekkende hoeveelheid aan simultane aanvallen op één enkel slachtoffer uit te voeren.
@@ -53,14 +53,9 @@ Uiteraard houden fabrikanten zich niet aan hun vaste patch-momenten indien er ee
 :::
 
 
-::: tip
-Hier ontbreekt nog vanalles, maar ik was het typen even beu en wilde al wat tekeningetjes maken voor een sectie verderop:)
-:::
-
-
 ## Classificatie van aanvallen
 
-Dit hoofdstuk begon met een definitie, dan moeten we zeker ook eens enkele zaken classificeren. Alles om ietwat wetenschappelijk over te komen niet waar. In dit geval gaan we eens kijken hoe we, algemeen gezien, de typische aanvallen kunnen classificeren die kunnen optreden in de cyber security wereld. Specifiek zullen we steeds met 3 personages werken:
+Dit hoofdstuk begon met een definitie, dan moeten we zeker ook eens enkele zaken classificeren. Alles (moet gedaan worden) om ietwat wetenschappelijk over te komen, niet waar. In dit geval gaan we eens kijken hoe we, algemeen gezien, de typische aanvallen kunnen classificeren die kunnen optreden in de cyber security wereld. Specifiek zullen we steeds met 3 personages werken:
 
 * Alice en Bob: zij zijn de *goeie* en willen op een veilige manier met elkaar communiceren. 
 * Eve: zij is de aanvaller/hacker/crimelord/snoodaard die het leven van Alice en Bob zuur wil maken in haar voordeel. Mogelijk wil ze te weten komen wat Alice en Bob met elkaar afspreken, misschien wil ze ervoor zorgen dat de berichten van Alice niet bij Bob aankomen, etc.
@@ -91,7 +86,7 @@ Eve kan op allerlei manieren *aanvallen* en in de eerste plaats kan dat **actief
 
 ## Wie zijn de aanvallers?
 
-Waar moeten we ons tegen beschermen als cyberboswachter? Het zou verleidelijk zijn om ons te richten op 1 specifieke doelgroep en ons daar volledig te wapenen. Helaas is het niet te voorspellen van wie je last al hebben. Iedere groep aanvallers heeft eigen motivaties en middelen en het is niet altijd evident om tegen ieder iets te doen. Het kan natuurlijk geen kwaad om tenminste te weten welke groepen je mogelijk zal mee geconfronteerd worden:
+Waar moeten we ons tegen beschermen als cyberboswachter? Het zou verleidelijk zijn om ons te richten op 1 specifieke doelgroep en ons daar volledig tegen te wapenen. Helaas is het niet te voorspellen van wie je last zal hebben. Iedere groep aanvallers heeft eigen motivaties en middelen en het is niet altijd evident om tegen ieder iets te doen. Het kan natuurlijk geen kwaad om tenminste te weten met welke groepen je mogelijk zal geconfronteerd worden:
 
 * Hackers
 * Scriptkiddies
@@ -107,7 +102,7 @@ In een volgende editie van deze cursus zullen we deze groepen allemaal onder de 
 
 ## Hoe vallen ze aan
 
-Alhoewel voorgaande groepen van aanvallers allemaal erg specifieke redenen hebben, we kunnen toch hun aanvallen generaliseren in 5 duidelijke stappen:
+Alhoewel voorgaande groepen van aanvallers allemaal erg specifieke redenen hebben, kunnen we toch hun aanvallen generaliseren in 5 duidelijke stappen:
 
 1. Verkennen (*recoinnaissance*).
 2. Scannen.

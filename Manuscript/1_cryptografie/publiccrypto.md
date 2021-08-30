@@ -1,7 +1,7 @@
 ## Asymmetrische encryptie
 
 ### Het probleem met symmetrische encryptie
-Wat als je bij symmetrische encryptie met meerdere mensen wilt communiceren zonder dat iedereen elkaars berichten kan zien? Bob kan onmogelijk dezelfde sleutel gebruiken om met Eve te communiceren die hij reeds gebruikte met Alice. Kortom, je hebt per *eindpunt* een aparte sleutel nodig. Het aantal sleutels dat je nodig hebt, zeker als ook alle gebruiker onderling nog eens willen communiceren wordt erg snel erg groot. Je kan dit berekenen met de formule $n * \frac{(n - 1)}{2}$ waarbij ``n`` het aantal gebruikers voorstelt: 
+Wat als je bij symmetrische encryptie met meerdere mensen wilt communiceren zonder dat iedereen elkaars berichten kan zien? Bob kan onmogelijk dezelfde sleutel gebruiken om met Eve te communiceren die hij reeds gebruikte met Alice. Kortom, je hebt per *eindpunt* een aparte sleutel nodig. Het aantal sleutels dat je nodig hebt, zeker als ook alle gebruikers onderling nog eens willen communiceren wordt erg snel erg groot. Je kan dit berekenen met de formule $n * \frac{(n - 1)}{2}$ waarbij ``n`` het aantal gebruikers voorstelt: 
 
 * 6 gebruikers vereisen 15 sleutels.
 * 7 gebruikers vereisen 21 sleutels.
@@ -47,9 +47,9 @@ We zullen dit concept verderop uitwerken, maar eerst gaan we bekijken hoe publie
 
 Dankzij public crypto hebben we nu een systeem om sleutels op een veilige manier uit te wisselen. Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetric crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Helman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gbruikers sleutels over een onveilig kanaal kunnen uitwisselen op een veilige manier.
 
-Zowel Bob als Alice genereren eerst een publiek/privaat sleutelpaar dat ze voor deze sessie wensen gebruiken ter communicatie. Vervolgens stuurt ieder z'n publieke sleutel naar de ander. De ontvanger zal deze publieke sleutel combineren met de eigen private sleutel wat zal resulteren in een nieuw *shared secret* dat beide nu kennen en kunnen gebruiken, bijvoorbeeld, als de symmetrische sleutel om verdere communicatie te bestendigen.
+Zowel Bob als Alice genereren eerst een publiek/privaat sleutelpaar dat ze voor deze sessie wensen te gebruiken voor communicatie. Vervolgens stuurt ieder z'n publieke sleutel naar de ander. De ontvanger zal deze publieke sleutel combineren met de eigen private sleutel wat zal resulteren in een nieuw *shared secret* dat beide nu kennen en kunnen gebruiken, bijvoorbeeld, als de symmetrische sleutel om verdere communicatie te bestendigen.
 
-De reden dat dit werkt is met dank aan de modulo operator en de eigenschappen ervan. Een voorbeeld:
+De reden dat dit werkt, is met dank aan de modulo operator en de eigenschappen ervan. Een voorbeeld:
 
 
 
@@ -58,9 +58,9 @@ De reden dat dit werkt is met dank aan de modulo operator en de eigenschappen er
 | Stap 1 | Alice kiest een geheim getal A. Ze kiest A= 3   | Bob kiest ook een geheim getal B = 6.          |
 | Stap 2 | Alice berekent $7^A\%11$ => $343\%11 = 2$ , genaamd X | Bob berekent $7^B\%11$ => $11764\%11 = 4$, genaamd Y |
 | Stap 3 | Alice stuurt 2 naar B                           | Bob stuurt 4 naar Alice                        |
-| Stap 4 | Alice berekent $X^A\%11 = 2^3\%11 = 9$             | Bob berekent $Y^B\%11 = 4^6\%11 = 9$               |
+| Stap 4 | Alice berekent $X^A\%11 = 2^4\%11 = 5$             | Bob berekent $Y^B\%11 = 4^2\%11 = 5$               |
 
-Zoals je merkt kunnen nu Alice en Bob het berekende getal ``9`` als gedeeld geheim kennen. Enkel zij 2 kennen dit getal.
+Zoals je merkt kunnen nu Alice en Bob het berekende getal ``5`` als gedeeld geheim kennen. Enkel zij 2 kennen dit getal.
 
 ::: warning
 Uiteraard zullen in de praktijk Bob en Alice véél grotere getallen kiezen dan 3 en 6.
@@ -100,7 +100,7 @@ de sterkte van publieke crypto stoelt dus op het feit dat ontbinden van (grote) 
 
 
 ::: note
-Zonder in detail te treden hoe cryptocoins en blockchains werken, is het nuttig om te vermelden dat bij cryptocoins ook de public crypto concepten worde, gebruikt. Ook hier is je private sleutel uiterst belangrijk: enkel de eigenaar van de private sleutel "bezit" de bijhorende cryptocoins in de chain. Daarom is het uiterst belangrijk dat je NOOIT je private sleutel aan derden geeft, want zo geef je hen toegang tot jouw coins en kunnen ze vervolgens deze stelen door de private sleutel te vervangen.
+Zonder in detail te treden hoe cryptocoins en blockchains werken, is het nuttig om te vermelden dat bij cryptocoins ook de public crypto concepten worden, gebruikt. Ook hier is je private sleutel uiterst belangrijk: enkel de eigenaar van de private sleutel "bezit" de bijhorende cryptocoins in de chain. Daarom is het uiterst belangrijk dat je NOOIT je private sleutel aan derden geeft, want zo geef je hen toegang tot jouw coins en kunnen ze vervolgens deze stelen door de private sleutel te vervangen.
 :::
 
 #### Intermezzo: Hashes
@@ -184,11 +184,11 @@ De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensd
 
 ![](crypto/certcreatie.png)
 
-Voorgaande proces zal plaatsvinden wanneer je browser via een **HTTPS** verbinding surft naar een website en zo wil controleren of wel degelijk met de website wordt gecommuniceerd en niet met een imposter. Indien de browser (of de gebruiker) twijfelt aan de echtheid van de publieke sleutel van de CA die het certificaat van de website ondertekent, dan zla voorgaande proces zich herhalen, maar deze keer om het certificaat van de CA te controleren met behulp van een bovenliggende CA. Op die manier kan het dus zijn dat een keten van CA's ontstaan die telkens CA's onder zich bewijzen. Uiteraard zal er steeds bovenaan zo'n ketting een **root CA** staan. Als je die vertrouwt, dan kan je al de CA's er onder dus ook vertrouwen...maar ook vice versa! 
+Voorgaande proces zal plaatsvinden wanneer je browser via een **HTTPS** verbinding surft naar een website en zo wil controleren of wel degelijk met de website wordt gecommuniceerd en niet met een imposter. Indien de browser (of de gebruiker) twijfelt aan de echtheid van de publieke sleutel van de CA die het certificaat van de website ondertekent, dan zal het voorgaande proces zich herhalen, maar deze keer om het certificaat van de CA te controleren met behulp van een bovenliggende CA. Op die manier kan het dus zijn dat een keten van CA's ontstaan die telkens CA's onder zich bewijzen. Uiteraard zal er steeds bovenaan zo'n ketting een **root CA** staan. Als je die vertrouwt, dan kan je al de CA's er onder dus ook vertrouwen...maar ook vice versa! 
 
 ![](crypto/webcert.png)
 
-Het ergste voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op hun systemen dan bestaat er de kans dat aanvallers de private sleutel van de de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kans bestaat dan is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
+Het ergste dat voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op hun systemen dan bestaat er de kans dat aanvallers de private sleutel van de de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kans bestaat, is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
 
 ![](crypto/chaintrust.png){width=60%}
 
@@ -239,7 +239,7 @@ Zoals reeds eerder vermeld is asymmetrische crypto trager, waardoor het altijd a
 De manier waarop een TLS-verbinding wordt opgezet is vrij uitgebreid. Volgende briljante website ([tls.ulfheim.net/](HTTPS://tls.ulfheim.net/)) visualiseert de berichten die serven en client uitwisselen om zo'n verbiding te starten, onderhouden en eindigen.
 
 ::: warning
-Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naa je te sturen. Ook de website naar waar je surft ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via hun caching overnemen. 
+Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naa je te sturen. Ook de website naar waar je surft, ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via hun caching overnemen. 
 :::
 
 ::: tip
