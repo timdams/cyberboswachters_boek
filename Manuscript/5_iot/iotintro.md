@@ -11,3 +11,5 @@ Het is niet toevallig dat we dit boek afsluiten met het hoofdstuk omtrent IoT Se
 ::: note
 We gaan nogal liberaal om met de term IoT-apparaat, waarbij we ook negeren dat er grote verschillen zijn tussen "Enterprise IoT" en "huis-tuin-en-keuken IoT". Die eerste heeft meestal bijvoorbeeld wel zeer doordachte updatestrategieën en dergelijke, terwijl de slimme koelkast in je huis dat vermoedelijk niet zal hebben
 :::
+
+![Bron Juniper Research](iot/overview.jpg){ width=80% }
