@@ -15,6 +15,7 @@ pandoc ^
  1_cryptografie/publiccrypto.md^
  3_netwerk_security/wifi.md^
  1_cryptografie/authenticatie.md^
+ 5_iot/iotintro.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^

@@ -17,7 +17,7 @@ Algemeen
 ### Honeypots
 ## Dos 
 
-## Iot sec
+## Botnet en zombies
 
 <!---//HTTPS://www.comparitech.com/blog/information-security/iot-data-safety-privacy-hackers/--->
 
