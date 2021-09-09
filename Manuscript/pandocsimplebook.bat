@@ -1,6 +1,6 @@
 pandoc ^
  metadata.yaml^
- 0_het_security_landschap/2_basicsec.md^
+ 5_iot/iotintro.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^
