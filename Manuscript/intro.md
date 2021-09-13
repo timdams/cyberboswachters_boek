@@ -23,12 +23,15 @@ Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel onde
 * Op doelwitten (denk aan servers, webpagina's, gebruikers, etc.) waar jij de eigenaar van bent.
 * Op doelwitten waar je geen eigenaar van bent, maar waar je wel expliciete toestemming van hebt gekregen.
 
-::: tip
+
+## Opletten met experimenten
+
 Indien je van plan bent om met bepaalde tools te experimenteren hou dan rekening met volgende tips:
 
 * Werk zoveel mogelijk met virtuele machines.
 * Hou er rekening mee dat bepaalde tools permanente "gaten" slagen in je systemen. Deze kunnen dus na (of tijdens!) je experimenten door digitale stropers misbruikt worden. 
-:::
+
+
 
 ## Waarschuwing over dit handboek
 

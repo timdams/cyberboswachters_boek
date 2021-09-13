@@ -96,6 +96,7 @@ Dit soort aanval heet een **supply chain attack**: de aanvallers richten zich op
 
 
 ![Bron dynatrace.com](iot/supchain.png){ width=75% }
+
 :::
 
 ### Onvoldoende privacy bescherming
@@ -106,10 +107,16 @@ Ook IoT-fabrikanten moeten natuurlijk op een veilige, GDPR-compliant, manier omg
 
 Herinner je de McCumber kubus aan de start van dit handboek? Er werd toen benadrukt dat C.I.A. toepassen op je data geen nut heeft als je geen rekening houdt met alle vormen waarin de data zal voorkomen. Als je enkel encryptie gebruikt tijdens het versturen van data, maar niet tijdens het verwerken en bewaren ervan, dan kan je even goed ook de transmissie beter ongeëncrypteerd doen (zodat we geen *false sense of security* aan de gebruiker geven).
 
-We vallen in herhaling, maar dus zeker bij IoT-systemen die binnen een groot ecosysteem werken, met tal van *thirdparty* modules en bibliotheken, is het uitermate belangrijk dat ten allen tijde de IoT-data in al z'n vormen, op alle momenten, aan *confidentialiteit, integriteit en beschikbaarheid*  doet.
+We vallen in herhaling, maar dus zeker bij IoT-systemen die binnen een groot ecosysteem werken, met tal van *thirdparty* modules en bibliotheken, is het uitermate belangrijk dat ten allen tijde de IoT-data in al z'n vormen, op alle momenten, aan *confidentialiteit, integriteit en beschikbaarheid* doet.
 
 ### Gebrek aan apparaat management
 
+*In de volgende versie zal dit uitgelegd worden. Stay tuned!*
+
 ### Onveilige standaard instellingen
 
+*In de volgende versie zal dit uitgelegd worden. Stay tuned!*
+
 ### Gebrek aan fysieke *hardening*
+
+*In de volgende versie zal dit uitgelegd worden. Stay tuned!*

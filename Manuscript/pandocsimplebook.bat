@@ -1,7 +1,6 @@
 pandoc ^
  metadata.yaml^
- 5_iot/iotintro.md^
- dank.md^
+ intro.md^
  --variable toc-own-page=true^
  --variable book=true^
  --top-level-division=chapter^
