@@ -50,8 +50,10 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog
 
-**Dit is versie 0.2.0** (1/9/21)
+**Dit is versie 0.3.0** (9/9/21)
 
+* 0.3.0
+  * Eerste deel IoT security
 * 0.2.0
   * Opmerkingen collega Horsmans verwerkt
 * 0.1.3

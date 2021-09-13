@@ -2,7 +2,7 @@
 
 ## Introductie
 
-We spraken in het eerste hoofdstuk al over de problemen die inherent zijn bij Internet-of-Things (IoT) apparaten en netwerken. Zo had je in 2016 het Mirai-botnet dat aantoonde hoe krachtig een botnet van IoT-apparaten kan zijn, puur door de grote hoeveelheid potentiëhle zombies.
+We spraken in het eerste hoofdstuk al over de problemen die inherent zijn bij Internet-of-Things (IoT) apparaten en netwerken. Zo had je in 2016 het Mirai-botnet dat aantoonde hoe krachtig een botnet van IoT-apparaten kan zijn, puur door de grote hoeveelheid potentiële zombies.
 
 Het is niet toevallig dat we dit boek afsluiten met het hoofdstuk omtrent IoT Security: alles (en meer) wat je in de voorgaande hoofdstukken hebt geleerd heb je namelijk nodig om IoT-netwerken te beveiligen. Er zijn zoveel potentiele manier voor digitale stropers om misbruik te maken van een slecht beveiligd IoT apparaat of netwerk dat het complexe probleem van netwerken beveiligen nog ingewikkelder is geworden door de eigenschappen van IoT apparaten, namelijk:
 
@@ -56,7 +56,7 @@ Een IoT-apparaat bestaat niet alleen: meestal maakt het deel uit van een verzame
 
 ![Een voorbeeld van de complexiteit van ecosystemen. In dit geval een vereenvoudigde voorstelling van die van Apple, Google en Microsoft. Bron van deze afbeelding is helaas onbekend](iot/ecos.jpg)
 
-Gebruikers vergeten ook vaak met welke externe diensten ze hun apparaten hebben gekoppeld. Het gebeurt vaak dat een gebruiker "even iets wil testen" (denk maar de nuttige website ["If this then that"](https://ifttt.com/) dat toelaat om services en apparaten te koppelen die iets moeten doen gegeven zelfgekozen triggers en regels) maar nadien wel vergeet deze koppeling uit te zetten. Dit geldt ook voor de vele third-arty websites en services die bijvoorbeeld toegang tot uw google of facebook-accounts wensen. Veel gebruikers kijken dit nooit na en hebben mogelijk tien jaar geleden al toegang gegeven aan een service die ondertussen al geregeld door digitale stropers is gecomprommiteerd. 
+Gebruikers vergeten ook vaak met welke externe diensten ze hun apparaten hebben gekoppeld. Het gebeurt vaak dat een gebruiker "even iets wil testen" (denk maar de nuttige website ["If this then that"](https://ifttt.com/) dat toelaat om services en apparaten te koppelen die iets moeten doen gegeven zelfgekozen triggers en regels) maar nadien wel vergeet deze koppeling uit te zetten. Dit geldt ook voor de vele third-party websites en services die bijvoorbeeld toegang tot uw google of facebook-accounts wensen. Veel gebruikers kijken dit nooit na en hebben mogelijk tien jaar geleden al toegang gegeven aan een service die ondertussen al geregeld door digitale stropers is gecomprommiteerd. 
 
 ::: tip
 Je moet maar eens google'n naar bijvoorbeeld "google ecosystem" of eender welk ander grote silicon valley bedrijf. Je zal versteld staan van de complexiteit en grootte ervan.
@@ -77,7 +77,7 @@ Vaak zijn we afhankelijk van de fabriekanten om beveiligingslekken te dichten in
 
 Of wat te denken als er een kritieke bug wordt gevonden in een chip die ontelbare apparaten gebruiken. Wie moet dan de patch voorzien: de fabriekant van het IoT-apparaat, of die van de chip?
 
-In september 2021 verscheen een nieuwe Bluetooth kwetsbaarheid, getiteld **BrakTooth** die potentiëel op miljarden IoT-apparaten kan misbruikt worden. De bug zelf bevindt zich in de bleutooth-chip van de apparaten. Aardig wat fabriekanten van dergelijke chips hebben al beloofd een patch uit te brengen, maar er zijn er ook die simpelweg zeggen "we zullen enkel patchen als er genoeg vraag naar is", nochtans kan de kwetsbaarheid eg veel schade aanbrengen (DoS-aanvallen en *arbitrary code execution (ACE)*)
+In september 2021 verscheen een nieuwe Bluetooth kwetsbaarheid, getiteld **BrakTooth** die mogelijk op miljarden IoT-apparaten kan misbruikt worden. De bug zelf bevindt zich in de Bluetooth-chip van de apparaten. Aardig wat fabriekanten van dergelijke chips hebben al beloofd een patch uit te brengen, maar er zijn er ook die simpelweg zeggen "we zullen enkel patchen als er genoeg vraag naar is", nochtans kan de kwetsbaarheid eg veel schade aanbrengen (DoS-aanvallen en *arbitrary code execution (ACE)*)
 
 [Meer informatie](https://screenrant.com/braktooth-security-exploit-what-is-it/)
 
@@ -85,9 +85,28 @@ In september 2021 verscheen een nieuwe Bluetooth kwetsbaarheid, getiteld **BrakT
 
 ### Oude of onveilige componenten
 
+Het voorgaande voorbeeld i.v.m. BrakTooth kan ook in deze sectie gebruikt worden. Een IoT-apparaat is en blijft een combinatie van tientallen, soms honderden harware-onderdelen. De kans dat al deze onderdelen van de IoT-fabrikant zijn is onbestaande. Gooi eender welke smartphone of digitale horloge open en je zal tal van onderdelen vinden van een andere fabrikant. De IoT-fabrikant moet er dus vanuit gaan dat deze componenten voldoen aan de veiligheidseisen die hij van z'n eigen product verwacht. Dat is geen evidentie. 
+
+Een zelfde fenomeen zien we enkele lagen hoger in de OSI-stack: ook op software niveau gebeurt het zelden dat de IoT-ontwikkelaars alle bibliotheken en protocols  *van scratch* hebben ontwikkeld (en dus ook zelf kunnen instaan voor de robuustheid ervan inzake cyberveiligheid). Wanneer er een bug (of bewuste backdoor) wordt ontdekt in een protocol of bibliotheek, dan heeft dit gevolgen voor alles en iedereen die deze dingen in zijn of haar apparaten gebruikt. 
+
+::: tip
+In 2020 was er veel heisa omtrent de zogenaamde *SolarWinds-hack*. Duizenden grote bedrijven (en Amerikaanse overheidinstellinge) zoals Microsoft gebruiken het Orion Platform van dit bedrijf. Dit platform laat toe om enterprise netwerken te monitoren en managen, iets wat niet evident is op de schaal waarmee de klanten van SolarWinds werken. Deze tool moet natuurlijk waterdicht zijn, wat deze niet bleek te zijn: hackers sloegen er in om de FTP-server van SolarWinds te benaderen (het paswoord was *solarwinds123*...) en konden zo een backdoor in het Orion platform inbouwen. Vervolgens, wanneer de klanten van SolarWinds, hun Orion-installatie update'n, kregen ze onvrijwillig een versie met een bewust ingebouwde backdoor die de hackers vervolgens konden misbruiken.
+
+Dit soort aanval heet een **supply chain attack**: de aanvallers richten zich op de *weakest link* binnen de supply chain om zo finaal tot bij de klant *achteraan* de keten te geraken. 
+
+
+![Bron dynatrace.com](iot/supchain.png){ width=75% }
+:::
+
 ### Onvoldoende privacy bescherming
 
+Ook IoT-fabrikanten moeten natuurlijk op een veilige, GDPR-compliant, manier omgaan met de persoonlijke informatie van hun gebruikers. Helaas wordt dit geregeld over het hoofd gezien. Ook hier hebben we weer het probleem van de vele potentiële manieren waarmee een digitale stroper een IoT-netwerk en apparaat kan misbruiken. De persoonlijke data staat mogelijk wel op een ultra-beveiligde database bij de fabrikant in premise, maar wat baat dat als deze informatie ook als *plaintext* op het apparaat wordt bewaard. Wat ons ook automatisch bij het volgende punt brengt. 
+
 ### Onveilige datatransfer en opslag
+
+Herinner je de McCumber kubus aan de start van dit handboek? Er werd toen benadrukt dat C.I.A. toepassen op je data geen nut heeft als je geen rekening houdt met alle vormen waarin de data zal voorkomen. Als je enkel encryptie gebruikt tijdens het versturen van data, maar niet tijdens het verwerken en bewaren ervan, dan kan je even goed ook de transmissie beter ongeëncrypteerd doen (zodat we geen *false sense of security* aan de gebruiker geven).
+
+We vallen in herhaling, maar dus zeker bij IoT-systemen die binnen een groot ecosysteem werken, met tal van *thirdparty* modules en bibliotheken, is het uitermate belangrijk dat ten allen tijde de IoT-data in al z'n vormen, op alle momenten, aan *confidentialiteit, integriteit en beschikbaarheid*  doet.
 
 ### Gebrek aan apparaat management
 
