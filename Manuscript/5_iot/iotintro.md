@@ -111,12 +111,36 @@ We vallen in herhaling, maar dus zeker bij IoT-systemen die binnen een groot eco
 
 ### Gebrek aan apparaat management
 
-*In de volgende versie zal dit uitgelegd worden. Stay tuned!*
+Spreken over IoT in een enterprise of industriële omgeving is spreken over IoT netweken met honderden tot duizenden apparaten die bediend moeten worden (denk maar aan remote upgrades, instellingen wijzigen, etc.). Er zijn vele factoren waarom een robuust *Iot device management* systeem vereist is:
+
+* De hoeveelheid apparaten: te veel om manueel te bedienen.
+* De locatie: mogelijk bevinden de apparaten zich op moeilijk te bereiken of gevaarlijke plekken.
+* Alarmen benodigd: soms wil je op de hoogte gesteld worden wanneer een bepaalde IoT sensor iets meet of niet goed werkt.
+* Nuttig gebruik van menselijk personeel: personeel enkel naar je IoT apparaten sturen als dat écht nodig is.
+* Deel van *mission critical applicaties*: als je apparaten deel uitmaken van bedrijfskritische systemen is het uitermate belangrijk dat deze apparaten maximaal functioneren, daar iedere downtime of crash in winstverlies of boetes kan resulteren.
+
+Een deftig apparaat management systeem moet natuurlijk zelf ook veilig en robuust zijn. Er zijn meerdere high-end oplossingen beschikbaar maar het spreekt voor zich dat dit soort systemen zelden goedkoop zijn.
 
 ### Onveilige standaard instellingen
 
-*In de volgende versie zal dit uitgelegd worden. Stay tuned!*
+Dit item komt nog steeds voor in alle "10 veiligheidsproblemen die het meeste voorkomen"-lijstjes. Wanneer een apparaat *uit de doos* wordt gehaald is deze ingeladen met een hele hoop standaard instellingen. Instellingen die digitale stropers kunnen opzoeken en misbruiken. Niet alleen het wachtwoord moet ogenblikkelijk aangepast worden, vaak staan ook bepaalde services open zonder dat de gebruiker deze ooit zal gebruiken. Kortom, het is een gezonde gewoonte om, zowel als professional als huis-tuin-en-keuken Iot-gebruiker, steeds alle instellingen van je vers geïnstalleerde apparaat te controleren.
+
+::: note
+
+Er gaat een *urban legend* de ronde dat je nooit je computer aan het internet mocht hangen wanneer je Windows XP aan het installeren was. Deed je dat wel dan bestond er de kans dat je computer *gepwnd* werd nog voor je goed en wel de hele installatie had doorlopen.
+
+**Disclaimer:** dit is nooit bevestigd geweest. Lezers die een artikel vinden die deze legende kunnen staven mogen me altijd hierover contacteren!
+
+:::
 
 ### Gebrek aan fysieke *hardening*
 
-*In de volgende versie zal dit uitgelegd worden. Stay tuned!*
+IoT apparaten liggen meestal verspreid over grote gebieden, ruimtes of gebouwen. De kans dat ze op publiek toegankelijk plekken operationeel zijn is groot, daardoor ook de kans dat digitale stropers toegang tot de apparaten krijgen. Het is daarom belangrijk dat de apparaat ook op fysiek niveau *gehardened* zijn zodat de apparaten niet als een open boek uitgelezen of aangepast kunnen worden. Het is natuurlijk niet evident om dit te voorkomen, net vanwege de aard van het beestje. IoT apparaten werken dagen, weken, maanden zonder dat er iemand naar om ziet. Computers en telefoons maken deel uit van onze dagelijkse aandacht en daar is het dus veel moeilijker voor aanvallers om ongezien, fysieke, toegang tot de krijgen.
+
+Computers zijn tegenwoordig goed beschermd tegen aanvallers die een laptop stelen en trachten op in te breken: moderne beschermingen zoals Secure Boot (hoofdzakelijk om rootkits tegen te gaan) en *Trusted Platform Module* (TPM) voorkomen toegang door niet geautoriseerde gebruikers tot de data op het toestel. Dit soort systemen zitten zelden in kleine, goedkope, Iot apparaten waardoor inbreken op dit soort apparaten dus vaak erg eenvoudig is. Zeker als het apparaat op de koop toe een UART of andere onbeveiligde interface heeft die vaak door de fabrikant worden gebruikt om problemen op te lossen. Ook aanvallers kunnen deze hardware interfaces natuurlijk gebruiken om bijvoorbeeld hun eigen firmware op het apparaat te plaatsen.
+
+::: tip
+Er is gelukkig een trend gaande waarbij de TPM-chip (of alternatief) steeds meer z'n weg vindt in nieuwe IoT apparaten. De initiële kost ervan vergaat meestal in het niets in vergelijking met de schade die kan opgelopen worden wanneer onbeveiligde toestal worden gecompromitteerd. 
+:::
+
+De Mccumber kubus in gedachte nemende spreekt het natuurlijk voor zich dat ook de data geëncrypteerd op het Iot apparaat moet bewaard worden.

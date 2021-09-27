@@ -184,7 +184,7 @@ Een nadeel van deze groep is dat het om een fysiek object gaat dat je kan verlie
 
 Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef* een eigen crypto-algoritme te ontwikkelen. De kans dat je fouten met verstrekkende gevolgen maakt is te groot. Ook bij het omgaan van login-data van gebruikers en hou je ze authenticeert is het aangeraden om even te bezinnen voor je er zelf aan begint. Dankzij het concept **federation** hoef je niet wakker te liggen hoe je je gebruikerspaswoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app),de *service provider*, kunnen inloggen waarbij een *thirdparty* -die jij en je gebruiker vertrouwt- voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single-sign on* (sso)authenticatie.
 
-![](auth/mfa.png){}
+![](auth/sso.png){}
 
 ::: tip
 Federation via sso is een onderdeel van *federated identity management*, een grote groep technologiën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt.

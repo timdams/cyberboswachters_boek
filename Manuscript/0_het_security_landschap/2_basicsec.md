@@ -124,3 +124,8 @@ Wat en wie je wilt verdedigen in de cyberwereld kan erg gevarieerd zijn. Toch ku
 * *Obscurity*: dit is een subtiele. Ga niet aan de grote klok hangen hoe jouw verdediging is opgebouwd. Echter, let op met deze leuze. Obscurity wil niet zeggen dat je zelf een of ander vaag crypto-algoritme zelf gaat ontwikkelen en angstvallig gaat geheim houden. Gebruik standaarden en vertrouwde producten in je beveiliging. Eén van de eerste regels in security is "ga niet zelf het wiel heruitvinden"!
 * *Simplicity*: *keep it simple, stupid*. Al het voorgaande lijkt te doen uitschijnen dat je complexe systemen moet bouwen die als het ware een doolhof voor de aanvallers maken. Op zich is daar iets van aan, maar zorg er wel voor dat je niet zelf in je doolhof verdwaalt en daardoor fouten introduceert zonder het te beseffen. Soms is *less more* en dat geldt ook bij beveiliging. 
 
+::: tip
+
+Soms zal je digitale stropers horen spreken over "Ik heb dat systeem gepwnd", uitgesproken als *gepowned*. De term "to pwn" is hackerslang voor "to own" om aan te geven dat je in een systeem bent binnengeraakt en nu controle over het systeem hebt. Volgens de [urbandictionary.com](https://www.urbandictionary.com/define.php?term=pwnd) is de enige reden dat de o een p werd het gevolg van een typfout, daar beide letter vlak naast elkaar staan op een toetsenbord.
+
+:::
