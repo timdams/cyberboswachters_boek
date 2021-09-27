@@ -1,6 +1,6 @@
 # Introductie
 
-Dit handboek (in opbouw) wordt gebruikt als basis-cursus binnen de opleidingen elektronica-ict en toegepaste informatie van de AP Hogeschool. Het heeft als doel een breed overzicht te geven van de *cybersecuritywereld*. Het doel is niet alomvattend te zijn, maar vooral om mensen zin te geven om meer te weten te komen over de belangrijke én boeiende wereld. Dit boek tracht ervan uit te gaan dat de lezer minimale voorkennis heeft inzake ICT, toch wordt verwacht dat een basiscursus netwerk-technologie gekend is (zaken zoals IP-adressering, routering en switching dient gekend te zijn).
+Dit handboek (in opbouw) wordt gebruikt als basis-cursus binnen de opleidingen elektronica-ict en toegepaste informatie van de AP Hogeschool. Het heeft als doel een breed overzicht te geven van de *wereld van de cybersecurity*. Het doel is niet alomvattend te zijn, maar vooral om mensen zin te geven om meer te weten te komen over de belangrijke én boeiende wereld. Dit boek tracht ervan uit te gaan dat de lezer minimale voorkennis heeft inzake ICT, toch wordt verwacht dat een basiscursus netwerk-technologie gekend is (zaken zoals IP-adressering, routering en switching dient gekend te zijn).
 
 ## Boswachters en stropers
 
@@ -57,6 +57,7 @@ Alle feedback is in deze fase zéér welkom:
 
 * 0.4.0
   *  Iot Sectie vervolledigd
+  *  Spellingcheck eens opgezet
 * 0.3.0
   * Eerste deel IoT security
 * 0.2.0

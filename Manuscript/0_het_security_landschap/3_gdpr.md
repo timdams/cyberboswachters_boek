@@ -35,7 +35,7 @@ De GDPR wet zorgt ervoor dat bedrijven veel bewuster met gebruikersdata omgaan. 
  
 ## Meldplicht datalekken
 
-Bedrijven die onder de GDRP-wetgeving vallen (alle bedrijven die data van Europese burgers bewaren vallen hier onder, ongeacht hun locatie in de wereld) hebben een meldplicht indien zij een datalek hebben. 
+Bedrijven die onder de GDPR-wetgeving vallen (alle bedrijven die data van Europese burgers bewaren vallen hier onder, ongeacht hun locatie in de wereld) hebben een meldplicht indien zij een datalek hebben. 
 
 ::: note
 Onder een datalek verstaan we *"Een inbreuk op de beveiliging die per ongeluk, of op onrechtmatige wijze leidt tot de vernietiging, het verlies, de wijziging of de ongeoorloofde verstrekking van of de ongeoorloofde toegang tot doorgezonden, opgeslagen of anderszins verwerkte gegevens."*

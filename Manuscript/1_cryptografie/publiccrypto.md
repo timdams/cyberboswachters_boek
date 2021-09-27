@@ -45,7 +45,7 @@ We zullen dit concept verderop uitwerken, maar eerst gaan we bekijken hoe publie
 
 ### Diffie-Hellman sleutel uitwisseling
 
-Dankzij public crypto hebben we nu een systeem om sleutels op een veilige manier uit te wisselen. Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetric crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Helman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gbruikers sleutels over een onveilig kanaal kunnen uitwisselen op een veilige manier.
+Dankzij public crypto hebben we nu een systeem om sleutels op een veilige manier uit te wisselen. Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetric crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Helman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gebruikers sleutels over een onveilig kanaal kunnen uitwisselen op een veilige manier.
 
 Zowel Bob als Alice genereren eerst een publiek/privaat sleutelpaar dat ze voor deze sessie wensen te gebruiken voor communicatie. Vervolgens stuurt ieder z'n publieke sleutel naar de ander. De ontvanger zal deze publieke sleutel combineren met de eigen private sleutel wat zal resulteren in een nieuw *shared secret* dat beide nu kennen en kunnen gebruiken, bijvoorbeeld, als de symmetrische sleutel om verdere communicatie te bestendigen.
 
@@ -132,7 +132,7 @@ Een digitale handtekening wordt als extra bericht achteraan de te versturen bood
 
 ![](crypto/signover.png)
 
-Om een digitale handtekening te berekenen moeten we eerst een hash van het bericht berekenen. We gebruiken hier bijvoorbeeld MD5 of één van de SHA-algorithmes voor. Deze hash gaan we nu "verpakken" met de private sleutel. 
+Om een digitale handtekening te berekenen moeten we eerst een hash van het bericht berekenen. We gebruiken hier bijvoorbeeld MD5 of één van de SHA-algoritmes voor. Deze hash gaan we nu "verpakken" met de private sleutel. 
 
 Stel dat de hash ``35`` is en we hebben volgende sleutelpaar:
 
@@ -199,13 +199,13 @@ Het ergste dat voor een CA dat kan voorvallen is dat de betrouwbaarheid van de C
 
 In iedere moderne browser kan je snel bekijken hoe zo'n certificaat er juist uitziet. Als je via een HTTPS verbinding naar een website surft dan op het slotje naast de URL n de adresbalk klikt kan je doorklikken om het certificaat te openen. Als je naar *HTTPS://www.belgium.be* surft en dit doet dan krijg je eerst wat samenvattende informatie:
 
-Zo zien we onder andere de geldigheidsduur, alsook de CA die dit certificaat heeft gegenereerd.  Onder details kunnen we onder andere de publieke sleutel zien van de website alsook de gebruikte algorithmes voor de hash, e.d.
+Zo zien we onder andere de geldigheidsduur, alsook de CA die dit certificaat heeft gegenereerd.  Onder details kunnen we onder andere de publieke sleutel zien van de website alsook de gebruikte algoritmes voor de hash, e.d.
 
 En op de laatste tab, Certificeringspad, zien we de chain of trust. We kunnen vervolgens hier de bovenliggende certificaten bekijken.
 
 ![](crypto/belcert0.png)
 
-Het certificaat van Sectigo is uiteraard een **selfsigned certificate**, daar zij "bovenaan de hiërarchie staan". Als we Sectigo niet vertrouwen dan kunnen we ook de communcatie met *belgium.be* niet vertrouwen daar.
+Het certificaat van Sectigo is uiteraard een **selfsigned certificate**, daar zij "bovenaan de hiërarchie staan". Als we Sectigo niet vertrouwen dan kunnen we ook de communicatie met *belgium.be* niet vertrouwen daar.
  
 ![Sectigo heeft een self-signed certificaat wat je herkent aan het feit dat de velden *Verleend aan* en *Verleend door* dezelfde waarde hebben.](crypto/belcert3.png){width=50%}
 
@@ -220,7 +220,7 @@ Als je in Windows 10 een applicatie of installer probeert uit te voeren dan zal 
 
 ## HTTPS en TLS
 
-Certifcaten vormen het hart van een veilige manier van surfen. HTTPS, "http-secure", zorgt ervoor dat de communicatie tussen je browser ende website via een beveiligde, geëncrypteerde tunnel gebeurt. Tegenwoordig is HTTPS de default manier om een website te benaderen, maar dat is maar recent. Vroeger gebeurde alles via http, waardoor iedereen die jouw trafiek kon sniffen, kon zien welke informatie je met de website uitwisselde. 
+Certificaten vormen het hart van een veilige manier van surfen. HTTPS, "http-secure", zorgt ervoor dat de communicatie tussen je browser ende website via een beveiligde, geëncrypteerde tunnel gebeurt. Tegenwoordig is HTTPS de default manier om een website te benaderen, maar dat is maar recent. Vroeger gebeurde alles via http, waardoor iedereen die jouw trafiek kon sniffen, kon zien welke informatie je met de website uitwisselde. 
 
 HTTPS is een protocol dat een zogenaamde beveiligde tunnel opzet tussen jou en de website waarover vervolgens gewoon http-verkeer kan verlopen (dit gebeurt over poort 443 in plaat van de klassieke poort 80 waarover http verloopt). Deze tunnel wordt opgezet door het **TLS**-protocol, het *Transport Layer Security* protocol, dat de opvolger is van **SSL** (*Secure Sockets Layer*). TLS gebruikt certificaten om te vergewissen dat de website aan de andere zijde wel degelijk de website is die de gebruiker verwacht. Het doet dit door de publieke sleutel van de website eerst te controleren voor het vervolgens deze sleutel gebruikt om een gemeenschappelijke sleutel af te spreken die zal dienst doen als de encryptie-sleutel voor de gemeenschappelijke tunnel. Vanaf dit punt kunnen derden de trafiek van en naar de website niet meer sniffen.
 
@@ -228,7 +228,7 @@ HTTPS is een protocol dat een zogenaamde beveiligde tunnel opzet tussen jou en d
 
 Samengevat zal dus TLS 2 zaken doen:
 
-* Door middel van een certificaat (assymmetrische crypto) wordt de identiteit (de publieke sleutel) van de website gecontroleerd.
+* Door middel van een certificaat (asymmetrische crypto) wordt de identiteit (de publieke sleutel) van de website gecontroleerd.
 * Door middel van deze sleutel wordt een *Diffie-Hellman sleutel uitwisseling* (zie RSA) gedaan, gebruik makend van de publieke sleutel, opdat er een gemeenschappelijk sleutel kan worden afgesproken die gebruikt wordt voor een symmetrische crypto verbinding.
 
 

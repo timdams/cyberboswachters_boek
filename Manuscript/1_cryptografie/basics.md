@@ -371,7 +371,7 @@ k = S[ (S[1]+S[97])%256 ] => k = S[ (1 + 0) % 256]
 we outputten de waarde die op S[1] staat
 ```
 
-Finaal zal deze *geoutputte* waarde ``k`` ge-xor'd worden met het huidige karakter van de plaintext.
+Finaal zal de output, de waarde ``k``, ge-xor'd worden met het huidige karakter van de plaintext.
 
 ::: note
 Zo, dat viel nog mee he? Zoals al gezegd, een belangrijke motivatie van dit boek is aantonen dat je niet bang hoeft te zijn van wat er achter de schermen van de cyberwereld gebeurt. De hoeveelheid wiskunde die we bijvoorbeeld nodig hadden, is beperkt gebleven tot onze trouwe modulo (%)-operator en meer niet. Wanneer we zo meteen een block ciphers gaan uitkleden, zal je ook daar ontdekken dat je best in staat bent schijnbaar complexe technologieën te begrijpen. Hop naar de blockciphers dus!
