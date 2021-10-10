@@ -1,4 +1,4 @@
-# Wordt het erger?
+# H1: Wordt het erger?
 
 De laatste 10 jaar is de (cyber)security wereld erg veranderd. Ze doet dit niet omdat ze daar zin in heeft, maar wel als antwoord op wat er gebeurt in de wereld in zake cyberaanvallen, geopolitieke situaties, etc. 
 

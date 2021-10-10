@@ -1,4 +1,4 @@
-# De fundamenten van cybersecurity
+# H2: De fundamenten van cybersecurity
 
 "Iedere goede film begint met een zwart scherm", dixit Batman in de "The Lego Batman Movie" &trade; film. Wel, en iedere goed hoofdstuk begint met een definitie, dixit Tim Dams.
 

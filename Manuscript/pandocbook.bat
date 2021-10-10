@@ -10,12 +10,12 @@ pandoc ^
  intro.md^
  0_het_security_landschap/les1_wordtheterger.md^
  0_het_security_landschap/2_basicsec.md^
- 0_het_security_landschap/3_gdpr.md^
  1_cryptografie/basics.md^
  1_cryptografie/publiccrypto.md^
  3_netwerk_security/wifi.md^
  1_cryptografie/authenticatie.md^
  5_iot/iotintro.md^
+ 0_het_security_landschap/3_gdpr.md^
  dank.md^
  --variable toc-own-page=true^
  --variable book=true^

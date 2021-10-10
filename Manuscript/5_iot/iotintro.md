@@ -1,4 +1,4 @@
-# IoT Security
+# H6: IoT Security
 
 ## Introductie
 
