@@ -229,7 +229,7 @@ Er is echter nog een vijfde fout die de voorgaande 4 als het ware nog versterkt:
 
 Hierdoor heeft de aanvaller dus vrij spel en kan hij draadloze netwerk als een soort experimenteertuin gebruiken en duizenden pakketjes te pas en te pas onpas heruitzenden. We zullen nu de eerste 4 grote problemen beschrijven. De *replay proection* behandelen we niet apart maar zullen we geregeld bij de andere problemen zien opduiken.
 
-#### Probleem 1: RC4
+### Probleem 1: RC4
 
 De meeste problemen met WEP komen van een verkeerd gebruik van het RC4 algoritme. RC4 wordt in erg veel moderne beveiligingsappaten toegepast omdat het een sterk én efficient algoritme is (het verbruikt weinig energie omdat er geen dure vermenigvuldiginsoperaties in voorkomen). Echter, stream ciphers in het algemeen, RC4 specifiek, zijn eigenlijk geen goede keuze voor datagramnetwerken waarin transmissies onbetrouwbaar zijn. 
 
@@ -240,14 +240,14 @@ In een datagramnetwerk worden pakketjes vaak opnieuw verstuurd wanneer er een fo
 
 Laten we die 2 eigenschappen eens bekijken en welke cascade van problemen ze met zich meebrengen.
 
-##### RC4 heeft geen random access mogelijkheden
+#### RC4 heeft geen random access mogelijkheden
 
 Deze eigenschap is niet zo zeer een probleem vanuit beveiligingsperspectief, maar wel vanuit performantieperspectief. RC4 had eigenlijk nooit gekozen mogen worden door het IEEE om in WEP gebruikt te worden. Het verlies van één bit van de datastroom zalervoor zorgen dat alle bits erna met RC4 ook verloren zijn, daar we met een stream cipher werken waarbij de synchronisatie van de stroom bits tussen verzender (encryptie) en ontvanger (decryptie) gelijk moet blijven. Bij het minste dataverlies moeten beide zijden hun *RC4-motortje* resetten en opnieuw beginnen.
 
 AES bijvoorbeeld heeft wél die random access mogelijkheid: hierdoor kan steeds herbegonnen worden aan het punt van dataverlies en niet helemaal opnieuw, wat natuurlijk veel efficiënter is (daar we werken in een datagram omgeving waar bitverlies bijna continue voorkomt). 
 
 
-##### RC4 staat geen sleutelhergebruik toe
+#### RC4 staat geen sleutelhergebruik toe
 
 Stream ciphers hebben een tweede erg belangrijke eigenschap: **het is uiterst onveilig om een zelfde sleutel twee keer te gebruiken!**
 
@@ -265,11 +265,11 @@ Of in andere woorden, wanneer we de beide ciphertexts met elkaar XOR'n krijgen w
 
 Kortom, stream ciphers zijn niet veilig in een datagram omgeving indien er geen vorm van sleutelmanagement bestaat die de sleutels kan vervangen voor ze herbruikt worden.  WEP probeert dit gebrek aan sleutelmanagement te omzeilen door met een IV te werken zodat er geen collisions zoals eerder beschreven kunnen optreden...maar ook dat zal een resem problemen met zich meebrengen. 
 
-#### Probleem 2: IV
+### Probleem 2: IV
 
 Het IEEE had dus weet van voorgaand probleem met RC4 en introduceerde daarom het IV. Vanuit cryptografisch standpunt is dit een solide oplossing. Echter, door het gebrek aan replay protection krijgen we helaas een hoop fouten met de IV.
 
-##### De IV veroorzaakt weak keys
+#### De IV veroorzaakt weak keys
 
 In een paper van 2001 door Scott Fluhrer, Itsik Mantin en Adi Shamir werd aangetoond dat het key scheduling algoritme (KSA) van RC4 een hiaat bevat: 
 
@@ -301,7 +301,7 @@ We hebben zo ook deel 1 van de FMS in onze handen en kunnen nu het algoritme de 
 De FMS aanval is geïmplmenteerd in volgende 2 erg populaire Linux tools: Airsnort & WEPCrack. Beide kunnen dus gebruikt worden om de WEP-sleutel van een draadloos netwerk te achterhalen.
 :::
 
-##### IV collisions treden op
+#### IV collisions treden op
 
 Op zich is de FMS aanval al dramatisch, maar helaas stopt het hier niet. Doordat de IV maar 24 bit groot is, treden er veel sneller collisions op dan intuïtief wordt verwacht. Van zodra 2 pakketjes met dezelfde IV zijn verstuurd, treedt er een collision op, en die zijn erg interessant voor aanvallers. Pakketjes met dezelfde IV zijn pakketjes waarvan de payload met dezelfde keystream werd geëncrypteerd.
 
@@ -346,7 +346,7 @@ Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol
 
 ![](wifi/inject.png)
 
-##### Keystreams groeien
+#### Keystreams groeien
 
 Wanneer een aanvaller met voorgaande IV colissions keystreams kan capteren kan hij in principe data op het netwerk beginnen plaatsen (aangezien het netwerk ervan uitgaat dat het gebruiken van geldige keystreams, wil zeggen dat de gebruiker geauthenticeerd is omdat hij de bijhorende WEP-sleutel heeft). De aanvaller kan nu plaintext XOR'n met deze gevonden keystream en op het netwerk zetten. Echter, hij is beperkt tot pakketten die even lang zijn als de keystream die gevangen werd. Het zou véél nuttiger zijn als de aanvaller als het ware een bibliotheekje heeft van geldige keystreams van allerlei lengtes.
 
@@ -364,7 +364,7 @@ Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n
 We hebben bij deze aanval 1 belangrijk concept genegeert waardoor deze aanval op eerste zich niet mogelijk is: het aanpassen van een payload resulteert ook in een nieuwe CRC. Deze is echter mee geënrypteerd waardoor het niet duidelijk is hoe we dit kunnen omzeilen. Wacht nog even tot we aan de bitflip aanval komen en alles zal duidelijk worden (dat dit dus geen probleem is).
 :::
 
-##### IV selectie 
+#### IV selectie 
 
 De vierde fout met de Initialisatie Vectoren is de manier waarop de selectie ervan moet gebeuren in de hardware. De 802.11 gaf enkel aan dat het IV *"geregeld moest geupdate"* worden. Dat is uiteraard te vaag en heeft ervoor gezorgd dat fabrikanten zelf moesten bepalen welke IV selectie strategie ze in hun hardware zouden implementeren. Hierdoor waren er 3 strategiën die hun weg in de verschillende apparaten vonden:
 
@@ -381,7 +381,7 @@ Beeld je nu in dat in plaats van mensen, je honderden pakketten hebt, niet met e
 :::
 
 
-#### Probleem 3: CRC
+### Probleem 3: CRC
 
 WEP gebruikt een *integrity checksum field* om te voorkomen dat een pakket wordt aangepast tijdens tranmissie, namelijk een CRC-32 checksum. Dit was niet zo'n wijze keuze: CRCs zijn in het algemeen vooral bedoeld om random transmissiefouten te detecteren, niet bewuste aanpassingen. Daarnaast heeft de CRC-32 ook nefaste gevolgen in combinatie met RC4 waardoor bitflipaanvallen mogelijk zijn.
 
@@ -392,7 +392,7 @@ $CRC (boodschap_1) \oplus CRC (message_2) = CRC (message_1 \oplus message_2)$
 Door deze eigenschap kunnen we gecontroleerd aanpassingen aan paketten doen, zonder daarmee de CRC te breken. Welgekome, bitflip aanval.
 
 
-##### Bitflip aanval
+#### Bitflip aanval
 
 Om een bitflip aanval te doen heeft de aanvaller enkel 1 geldig WEP frame nodig. Hij hoeft zelfs niette weten wat de inhoud ervan is, zolang het maar een geldig frame is. 
 
