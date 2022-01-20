@@ -16,7 +16,7 @@ We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven
 
 ![](wifi/afstand.jpg){ width=60% }
 
-Al gauw werd een nieuwe sport uitgevonden door hobbyist hackers en professionele cybercriminelen: **wardriving**. De idee is eenvoudig: rijdt rond in de stad en laat de laptop naast je in de auto scannen naar alle netwerken, met extra aandacht voor die netwerken die geen of zwakke beveiliging hadden.
+Al gauw werd een nieuwe sport uitgevonden door hobbyist hackers en professionele cybercriminelen: **wardriving**. De idee is eenvoudig: je rijdt rond in de stad en laat de laptop naast je in de auto scannen naar alle netwerken, met extra aandacht voor die netwerken die geen of zwakke beveiliging hadden.
 
 ::: note
 
@@ -74,9 +74,10 @@ Dit resulteerde in onder andere volgende scenario's:
 ![](wifi/mitmwifi.png){ width=60% }
 
 ::: tip
-De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd success heeft (vanuit het standpunt van de hacker) is een fake Telenet Wifree hotspot op te zetten. Hierbij zal je eerst de login pagina van Telenet  Wifree kopieren en via een lokale webserver aanbieden aan de gebruikers die op jouw access point met de naam "Telenet Wi-Free" verbinden. Je kan nu van iedere gebruiker de gebruikersnaam en paswoord stelen telkens deze die informatie op jouw fake pagina invoert.
-:::
+De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd success had tot enkele jaren geleden (vanuit het standpunt van de hacker) was een fake Telenet Wifree hotspot op te zetten. Hierbij werd eerst de login pagina van Telenet  Wifree door de hacker gecloned en via een lokale webserver aangeboden aan de gebruikers die op het fake access point met de naam "Telenet Wi-Free" verbonden. Vervolgens kon de stroper nu van iedere gebruiker de gebruikersnaam en paswoord stelen telkens deze die informatie op de fake loginpagina invoerde.
 
+Nu dat Telenet Wifree is overgeschakeld op WPA-Enterprise (zie verder) kan deze aanval gelukkig niet meer zo eenvoudig uitgevoerd worden.
+:::
 
 
 
@@ -92,7 +93,7 @@ Voor we dat kleine hoofdstuk gaan openbreken -en ontdekken hoe WEP in de eerste 
 
 ### Verbinden met een netwerk
 
-Voor aanvallers actieve aanvallen kunnen starten op een netwerk dienen ze verbinding te maken met het netwerk. Dit proces bestaat uit 4 stappen die doorloppen moeten worden voor legale en illegale gebruiker effectief gebruik kunnen maken van het netwerk en *higher-layer* datatraffiek kunnen verwerken.
+Voor aanvallers actieve aanvallen kunnen starten op een netwerk dienen ze verbinding te maken met het netwerk. Dit proces bestaat uit 4 stappen die doorlopen moeten worden voor legale en illegale gebruikers effectief gebruik kunnen maken van het netwerk en *higher-layer* datatrafiek kunnen verwerken.
 
 1.	**Scannen**: Passief of actief zoeken naar de netwerken in de buurt.
 2.	**Verbinden (*joining*)**: Kiezen met welk netwerk zal verbonden worden.
@@ -165,7 +166,7 @@ Vanaf dit punt kan de gebruiker dus de bronnen van het netwerk beginnen gebruike
 
 ### WEP
 
-Om potentiële aanvallers ervan te weerhouden dat ze traffiek kunnen sniffen (of zelf op het netwerk zetten) voorziet de 802.11 vanaf de associatie de optie om encryptie te voorzien. Dit gebeurt aan de hand van **WEP**, wat staat voor *wired equivalent privacy*. Een naam die veel beloofde maar niet zo goed was: de idee was dat WEP even veilig zou zijn als een bedraad netwerk. 
+Om potentiële aanvallers ervan te weerhouden dat ze trafiek kunnen sniffen (of zelf op het netwerk zetten) voorziet de 802.11 vanaf de associatie de optie om encryptie te voorzien. Dit gebeurt aan de hand van **WEP**, wat staat voor *wired equivalent privacy*. Een naam die veel beloofde maar niet zo goed was: de idee was dat WEP even veilig zou zijn als een bedraad netwerk. 
 
 ::: note
 
@@ -215,10 +216,10 @@ Finaal krijgen we dus de volgende werking, encryptie en decryptie, als volgt:
 
 ## Hoe WEP faalde
 
-Het leek een verbonden vat: hoe populairde wifi werd over de hele wereld, hoe meer papers er verschenen die fouten identificeerden in WEP. Al vrij snel werd duidelijk dat WEP hoegenaamd géén CIA kon aanbieden. De meeste fouten die werden gevonden kunnen gegroepeerd worden in volgende 4 zaken:
+Het leek een verbonden vat: hoe populairder wifi werd over de hele wereld, hoe meer papers er verschenen die fouten identificeerden in WEP. Al vrij snel werd duidelijk dat WEP hoegenaamd géén CIA kon aanbieden. De meeste fouten die werden gevonden kunnen gegroepeerd worden in volgende 4 zaken:
 
-1. Het **RC4 algorithme** is helemaal niet gemaakt voor een datagramnetwerk zoals wifi.
-2. De manier waarop de **IV** in de standaard is beschreven is ontoerijkend en verhoogt de kans op foute implementaties door fabrikanten.
+1. Het **RC4 algoritme** is helemaal niet gemaakt voor een datagramnetwerk zoals wifi.
+2. De manier waarop de **IV** in de standaard is beschreven is ontoereikend en verhoogt de kans op foute implementaties door fabrikanten.
 3. **CRC-32** kan omzeilt worden en kan dus geen integriteit van frames garanderen.
 4. Er is **geen sleutel-management systeem**. 
 
@@ -231,7 +232,7 @@ Hierdoor heeft de aanvaller dus vrij spel en kan hij draadloze netwerk als een s
 
 ### Probleem 1: RC4
 
-De meeste problemen met WEP komen van een verkeerd gebruik van het RC4 algoritme. RC4 wordt in erg veel moderne beveiligingsappaten toegepast omdat het een sterk én efficient algoritme is (het verbruikt weinig energie omdat er geen dure vermenigvuldiginsoperaties in voorkomen). Echter, stream ciphers in het algemeen, RC4 specifiek, zijn eigenlijk geen goede keuze voor datagramnetwerken waarin transmissies onbetrouwbaar zijn. 
+De meeste problemen met WEP komen van een verkeerd gebruik van het RC4 algoritme. RC4 wordt in erg veel moderne beveiligingsapparaten toegepast omdat het een sterk én efficient algoritme is (het verbruikt weinig energie omdat er geen dure vermenigvuldiginsoperaties in voorkomen). Echter, stream ciphers in het algemeen, RC4 specifiek, zijn eigenlijk geen goede keuze voor datagramnetwerken waarin transmissies onbetrouwbaar zijn. 
 
 In een datagramnetwerk worden pakketjes vaak opnieuw verstuurd wanneer er een fout optrad en de ontvanger voor een *retransmission* vraagt (dit gebeurt voor ongeveer 20% van de verstuurde data). Dit is volledig normaal gedrag in zowel bedrade als draadloze netwerken, echter voor een stream cipher is dit nefast. Specifiek 2 eigenschappen van stream ciphers (en dus ook RC4) zorgen voor stevige gebreken in het WEP-protocol inzake confidentiality:
 
@@ -242,7 +243,7 @@ Laten we die 2 eigenschappen eens bekijken en welke cascade van problemen ze met
 
 #### RC4 heeft geen random access mogelijkheden
 
-Deze eigenschap is niet zo zeer een probleem vanuit beveiligingsperspectief, maar wel vanuit performantieperspectief. RC4 had eigenlijk nooit gekozen mogen worden door het IEEE om in WEP gebruikt te worden. Het verlies van één bit van de datastroom zalervoor zorgen dat alle bits erna met RC4 ook verloren zijn, daar we met een stream cipher werken waarbij de synchronisatie van de stroom bits tussen verzender (encryptie) en ontvanger (decryptie) gelijk moet blijven. Bij het minste dataverlies moeten beide zijden hun *RC4-motortje* resetten en opnieuw beginnen.
+Deze eigenschap is niet zo zeer een probleem vanuit beveiligingsperspectief, maar wel vanuit performantieperspectief. RC4 had eigenlijk nooit gekozen mogen worden door het IEEE om in WEP gebruikt te worden. Het verlies van één bit van de datastroom zal er voor zorgen dat alle bits erna met RC4 ook verloren zijn, daar we met een stream cipher werken waarbij de synchronisatie van de stroom bits tussen verzender (encryptie) en ontvanger (decryptie) gelijk moet blijven. Bij het minste dataverlies moeten beide zijden hun *RC4-motortje* resetten en opnieuw beginnen.
 
 AES bijvoorbeeld heeft wél die random access mogelijkheid: hierdoor kan steeds herbegonnen worden aan het punt van dataverlies en niet helemaal opnieuw, wat natuurlijk veel efficiënter is (daar we werken in een datagram omgeving waar bitverlies bijna continue voorkomt). 
 
@@ -251,7 +252,7 @@ AES bijvoorbeeld heeft wél die random access mogelijkheid: hierdoor kan steeds 
 
 Stream ciphers hebben een tweede erg belangrijke eigenschap: **het is uiterst onveilig om een zelfde sleutel twee keer te gebruiken!**
 
-Stel dat je volgende 2 plaintext byte squenties hebt:  $p_1,p_2,p_3,…$ en $q_1,q_2,q_3,…$. Beide worden met dezelfde keystream $k_1,k_2,k_3,…$ geëncrypteerd. Dit geeft ons vervolgens volgende 2 ciphertext sequenties:
+Stel dat je volgende 2 plaintext byte sequenties hebt:  $p_1,p_2,p_3,…$ en $q_1,q_2,q_3,…$. Beide worden met dezelfde keystream $k_1,k_2,k_3,…$ geëncrypteerd. Dit geeft ons vervolgens volgende 2 ciphertext sequenties:
 
 $p_1 \oplus k_1, p_2 \oplus k_2, p_3 \oplus k_3$ 
 
@@ -308,7 +309,7 @@ Op zich is de FMS aanval al dramatisch, maar helaas stopt het hier niet. Doordat
 Een 24-bit IV kan $2^{24}$ oftewel 16 777 216 mogelijke waarden hebben. Een kleine berekening toont hoe snel collisions optreden:
 
 
-*Gegeven: een eerste generatie AP die aan een miezerige 11 Mbps werkt en cotinue 1.500-byte frames uitzendt:*
+*Gegeven: een eerste generatie AP die aan een miezerige 11 Mbps werkt en continue 1.500-byte frames uitzendt:*
 
 * $\frac{11\;Mbps}{(1500\; bytes/pakket)* 8\;bits/byte} =  916.67\;pakketjes/seconde$
 * $\frac{16.777.216\;IVs}{916.67\;pakketjes/seconde} \approx  18302 \;seconden$
@@ -319,11 +320,11 @@ Deze fout kunnen aanvallers op 2 manieren misbruiken: met een passieve of met ee
 
 **Passieve IV aanval**
 
-Een aanvaller kan passief meeluisteren (*eavesdropping*) en stilletjes alle traffiek onderscheppen tot er een IV collision optreedt. Door twee pakketjes met eenzelfde IV te XOR'n verkrijgt de aanvaller een pakket dat bestaat uit de XOR van beide plaintext'n van de gecapteerde pakketten. Als dus één van beide plaintexten gekend is, is de inhoud van het andere pakket ook gekend.
+Een aanvaller kan passief meeluisteren (*eavesdropping*) en stilletjes alle trafiek onderscheppen tot er een IV collision optreedt. Door twee pakketjes met eenzelfde IV te XOR'n verkrijgt de aanvaller een pakket dat bestaat uit de XOR van beide plaintext'n van de gecapteerde pakketten. Als dus één van beide plaintexten gekend is, is de inhoud van het andere pakket ook gekend.
 
-IP traffiek is vaak erg voorspelbaar en bevat aardig wat redundantie (om fouten op te vangen). Hierdoor wordt het makkelijker voor een aanvaller om via cryptanalysis te achterhalen wat de inhoud, of een deel, van het pakket bevat. Een voorbeeld hiervan toonden we bij de FMS aanval waarbij steeds de LLC header gekend was van de meeste pakketten.
+IP trafiek is vaak erg voorspelbaar en bevat aardig wat redundantie (om fouten op te vangen). Hierdoor wordt het makkelijker voor een aanvaller om via cryptanalysis te achterhalen wat de inhoud, of een deel, van het pakket bevat. Een voorbeeld hiervan toonden we bij de FMS aanval waarbij steeds de LLC header gekend was van de meeste pakketten.
 
-Omdat colissions redelijk snel optreden (vergeet niet dat het voorbeeld hierboven maar sprak over één client en één AP. Als er dus meerdere clients acitef zijn in een netwerk treden colissions véél sneller op) is het voor een aanvaller dus maar een kwestie van lang genoeg te sniffen om zo een grote hoeveelheid pakketten met gelijke IV's op te vangen, waardoor de cryptanalys ongelooflijk vereenvoudigd wordt.
+Omdat collisions redelijk snel optreden (vergeet niet dat het voorbeeld hierboven maar sprak over één client en één AP. Als er dus meerdere clients acitef zijn in een netwerk treden collisions véél sneller op) is het voor een aanvaller dus maar een kwestie van lang genoeg te sniffen om zo een grote hoeveelheid pakketten met gelijke IV's op te vangen, waardoor de cryptanalys ongelooflijk vereenvoudigd wordt.
 
 ::: note
 In al deze voorbeelden gaan we er vanuit dat de gebruiker geen encryptie toepast op de hogere lagen waar z'n data vandaan komt. Uiteraard wordt cryptanalyse een pak moeilijker als de payload van gecapteerde pakketten geëncrypteerd blijkt te zijn.
@@ -334,10 +335,10 @@ In al deze voorbeelden gaan we er vanuit dat de gebruiker geen encryptie toepast
 
 De passieve aanval heeft als nadeel dat we als aanvaller:
 
-1. moeten wachten op colissions, en dus bijgevolg op traffiek over het netwerk.
+1. moeten wachten op collisions, en dus bijgevolg op trafiek over het netwerk.
 2. we enkel door weloverwogen gokken (cryptanalyse) kunnen proberen te weten te komen wat de originele plaintext juist is.
 
-Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol te gaan spelen. Doordat een AP braaf alle traffiek encrypteerdt dat het van het bedrade netwerk krijgt om naar een client te sturen, is het voor een aanvaller een kwestie van "gekende" plaintext van buitenuit naar het slachtoffer te sturen. Als volgt:
+Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol te gaan spelen. Doordat een AP braaf alle trafiek encrypteert dat het van het bedrade netwerk krijgt om naar een client te sturen, is het voor een aanvaller een kwestie van "gekende" plaintext van buitenuit naar het slachtoffer te sturen. Als volgt:
 
 1. Een gekende plaintext boodschap (bijvoorbeeld een emailbericht of ping) wordt naar het AP gestuurd (via het internet bijvoorbeeld), dat vervolgens door de aanvaller in het oog wordt gehouden. Noot: als de aanvaller enkel het draadloze netwerk ter beschikking heeft (en niet het internet) dan zal een bitflip-aanval moeten gebruikt worden, wat we verderop zullen uitleggen.
 2. De aanvaller blijft sniffen tot het de ciphertext ziet passeren waarin (vermoedelijk) z'n gestuurde plaintext zit.
@@ -348,7 +349,7 @@ Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol
 
 #### Keystreams groeien
 
-Wanneer een aanvaller met voorgaande IV colissions keystreams kan capteren kan hij in principe data op het netwerk beginnen plaatsen (aangezien het netwerk ervan uitgaat dat het gebruiken van geldige keystreams, wil zeggen dat de gebruiker geauthenticeerd is omdat hij de bijhorende WEP-sleutel heeft). De aanvaller kan nu plaintext XOR'n met deze gevonden keystream en op het netwerk zetten. Echter, hij is beperkt tot pakketten die even lang zijn als de keystream die gevangen werd. Het zou véél nuttiger zijn als de aanvaller als het ware een bibliotheekje heeft van geldige keystreams van allerlei lengtes.
+Wanneer een aanvaller met voorgaande IV collisions keystreams kan capteren kan hij in principe data op het netwerk beginnen plaatsen (aangezien het netwerk ervan uitgaat dat het gebruiken van geldige keystreams, wil zeggen dat de gebruiker geauthenticeerd is omdat hij de bijhorende WEP-sleutel heeft). De aanvaller kan nu plaintext XOR'n met deze gevonden keystream en op het netwerk zetten. Echter, hij is beperkt tot pakketten die even lang zijn als de keystream die gevangen werd. Het zou véél nuttiger zijn als de aanvaller als het ware een bibliotheekje heeft van geldige keystreams van allerlei lengtes.
 
 Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n gecapteerde keystreams doen *groeien* en zo byte per byte een langere keystream genereren. Dit gaat als volgt te werk:
 
@@ -361,7 +362,7 @@ Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n
 ![](wifi/grow.png)
 
 ::: warning
-We hebben bij deze aanval 1 belangrijk concept genegeert waardoor deze aanval op eerste zich niet mogelijk is: het aanpassen van een payload resulteert ook in een nieuwe CRC. Deze is echter mee geënrypteerd waardoor het niet duidelijk is hoe we dit kunnen omzeilen. Wacht nog even tot we aan de bitflip aanval komen en alles zal duidelijk worden (dat dit dus geen probleem is).
+We hebben bij deze aanval 1 belangrijk concept genegeerd waardoor deze aanval op eerste zich niet mogelijk is: het aanpassen van een payload resulteert ook in een nieuwe CRC. Deze is echter mee geënrypteerd waardoor het niet duidelijk is hoe we dit kunnen omzeilen. Wacht nog even tot we aan de bitflip aanval komen en alles zal duidelijk worden (dat dit dus geen probleem is).
 :::
 
 #### IV selectie 
@@ -369,7 +370,7 @@ We hebben bij deze aanval 1 belangrijk concept genegeert waardoor deze aanval op
 De vierde fout met de Initialisatie Vectoren is de manier waarop de selectie ervan moet gebeuren in de hardware. De 802.11 gaf enkel aan dat het IV *"geregeld moest geupdate"* worden. Dat is uiteraard te vaag en heeft ervoor gezorgd dat fabrikanten zelf moesten bepalen welke IV selectie strategie ze in hun hardware zouden implementeren. Hierdoor waren er 3 strategiën die hun weg in de verschillende apparaten vonden:
 
 * **Vast IV**: Sommige fabrikanten hadden geen flauw benul wat het doel van de IV was vanuit cryptografisch standpunt en kozen daarom zelfs gewoon om alle pakketten steeds met het zelfde IV te versturen. 
-* **Willekeurig IV**: Andere fabrikanten verkozen het om hun hardware bij ieder pakketje een willekeurig IV te laten selecteren. Alhoewel dit uiteraard veel veiliger is dan een "vaste IV"-strategie, treden er toch veel sneller collisions op dan verwacht. Dit valt te verklaren door het zogenaamde **verjaardagenparadox** (zie kader verder) dat verklaart waarom er reeds 50% kans op een colissions is na 4823 pakketjes. Dat wil dus zeggen dat al na enkele seconden er meestal collisions optreden.
+* **Willekeurig IV**: Andere fabrikanten verkozen het om hun hardware bij ieder pakketje een willekeurig IV te laten selecteren. Alhoewel dit uiteraard veel veiliger is dan een "vaste IV"-strategie, treden er toch veel sneller collisions op dan verwacht. Dit valt te verklaren door het zogenaamde **verjaardagenparadox** (zie kader verder) dat verklaart waarom er reeds 50% kans op een collisions is na 4823 pakketjes. Dat wil dus zeggen dat al na enkele seconden er meestal collisions optreden.
 * **Incrementele IV**: In deze strategie wordt een circulaire teller gebruikt waarbij het IV telkens met 1 wordt verhoogd wanneer een pakket moet worden verstuurd. Meestal begint deze teller op een vaste waarde. Dit zal er dan ook voor zorgen dat er een collisions optreedt van zodra een tweede apparaat zich op het netwerk begeeft en dus begint uit te zenden met het IV gelijk aan het IV van het allereerste pakketje dat het eerste apparaat gebruikte.
 
 Kortom, een 24-bit *salt* is véél te klein in een omgeving met erg hoge data-rates zoals een draadloos netwerk. Dit probleem zou nog beperkt kunnen worden indien de originele WEP geregeld sleutels kon verversen, maar door het gebrek aan enig key management was dat dus uit den boze (want herinner je: de enige reden dat we IV's nodig hadden was omdat anders steeds dezelfde WEP-sleutel als seed werd gebruikt en dus alle keystreams gelijk zouden zijn. Door geregeld een andere sleutel te gebruiken zou onze kleine IV-lengte minder precair zijn, als we maar tijdig de sleutels verversen).
@@ -377,7 +378,7 @@ Kortom, een 24-bit *salt* is véél te klein in een omgeving met erg hoge data-r
 ::: note
 Volgende tekst uit Wikipedia legt de **verjaardagenparadox** uit: "De verjaardagenparadox is een paradox uit de kansrekening, die een resultaat toont dat tegen de verwachting ingaat. Het gaat om de vraag hoe groot de kans is dat in een groep willekeurig gekozen mensen er (minstens) twee dezelfde verjaardag hebben. Het blijkt dat, onder enkele lichte veronderstellingen, deze kans al meer dan 50% is voor een groep van maar 23 mensen. Bij 57 mensen is de kans zelfs meer dan 99%."
 
-Beeld je nu in dat in plaats van mensen, je honderden pakketten hebt, niet met een verjaardag maar met een eigen IV: de kans op colissions, ook al is de IV 24 bit, wordt dus 50% bij reeds een 5000 tal pakketten.
+Beeld je nu in dat in plaats van mensen, je honderden pakketten hebt, niet met een verjaardag maar met een eigen IV: de kans op collisions, ook al is de IV 24 bit, wordt dus 50% bij reeds een 5000 tal pakketten.
 :::
 
 
@@ -385,7 +386,9 @@ Beeld je nu in dat in plaats van mensen, je honderden pakketten hebt, niet met e
 
 WEP gebruikt een *integrity checksum field* om te voorkomen dat een pakket wordt aangepast tijdens tranmissie, namelijk een CRC-32 checksum. Dit was niet zo'n wijze keuze: CRCs zijn in het algemeen vooral bedoeld om random transmissiefouten te detecteren, niet bewuste aanpassingen. Daarnaast heeft de CRC-32 ook nefaste gevolgen in combinatie met RC4 waardoor bitflipaanvallen mogelijk zijn.
 
-CRC-32 is een zogenaamde lineaire functie. Zonder in detail hierover in te gaan volstaat hete te begrijpen dat als gevolg hiervan het volgende hebben: De CRC van 1 boodschap geXOR'd met de CRC van een andere boodschap is hetzelfde als de CRC nemen nadat beide boodschapen samen werden geXOR'd. Of beter gezegd:
+CRC-32 is een zogenaamde lineaire functie. Zonder in detail hierover in te gaan volstaat het te begrijpen dat we als gevolg hiervan het volgende hebben: *De CRC van 1 boodschap geXOR'd met de CRC van een andere boodschap is hetzelfde als de CRC nemen nadat beide boodschapen samen werden geXOR'd*. 
+
+Of beter gezegd:
 
 $CRC (boodschap_1) \oplus CRC (message_2) = CRC (message_1 \oplus message_2)$
 
@@ -394,13 +397,11 @@ Door deze eigenschap kunnen we gecontroleerd aanpassingen aan paketten doen, zon
 
 #### Bitflip aanval
 
-Om een bitflip aanval te doen heeft de aanvaller enkel 1 geldig WEP frame nodig. Hij hoeft zelfs niette weten wat de inhoud ervan is, zolang het maar een geldig frame is. 
+Om een bitflip aanval te doen heeft de aanvaller enkel 1 geldig WEP frame nodig. Hij hoeft zelfs niet te weten wat de inhoud ervan is, zolang het maar een geldig frame is. 
 
 Vervolgens maakt de aanvaller een bitflip masker: dit bestaat uit een reeks 0'n, met 1 of 2 bits op 1. Dit zijn de bits die geflipt zullen worden in de volgende stap: de XOR nemen het bitflip masker met het payload gedeelte van het oorspronkelijke pakket. Welke bits geflipt worden doet er niet toe, integendeel: we willen net een geldig WEP-frame maken mét een foute data, zoals we zo meteen zullen zien. Deze nieuwe payload willen we nu in een geldig frame plaatsen, en dus hebben we een geldige ICV nodig. We doen dit door de ICV van de nieuwe payload te berekenen en deze te XOR'n met de, geëncrypteerde originele ICV. Het resultaat is een geldig, geencrypteerde ICV voor de nieuwe payload. Bijgevolg hebben we een geldig frame kunnen maken dat door access points op het netwerk aanvaard zullen worden.
 
 ![](wifi/bitflip.png)
-
-The attacker can now send a forged frame that is considered genuine by the receiver. The receiver (AP) dutifully decapsulates the bit flipped data and the LLC discovers that the data is 'gibberish'. Yet, since the ICV was valid, the receiver simply thinks some higher layer CRC error has occurred and thus sends an encrypted error-message to the attacker.
 
 Wanneer een AP dergelijk pakket krijgt zal het dit pakket braaf naar de volgende laag sturen, ook al bevat de inhoud *rommel*,, dankzij de geldige ICV. Op de volgende laag komt nu een pakket aan dat duidelijk stuk is, en deze laag zal bijgevolg een foutboodschap genereren en terugsturen. De aanvaller krijgt deze boodschap in een WEP-frame aan. En alhoewel dit pakket geencrypteerd is, weet de aanvaller de inhoud van dit pakket (daar hij heeft opgezocht wat de foutboodschap zal bevatten op de volgende laag volgens de standaard van die laag) en kan dus een geldige keystream te pakken krijgen:
 
@@ -422,7 +423,7 @@ Het moge duidelijk zijn: cosntant dezelfde WEP-sleutel gebruiken, op meerdere ap
 ## Hoe WEP oplossen?
 
 ::: note
-Bart Preneel van de KUL/Cosic, één van Belgiës meest vooraanstaande crypto-experts, zei ooit over WEP dat het het perfecte schoolvoorbeeld is van wat er allemaal kan fout lopen wanneer je beslist om zelf een nieuw crypto-algoritme te ontwikkelen. 
+Bart Preneel van de KUL/Cosic, één van België's meest vooraanstaande crypto-experts, zei ooit over WEP dat het het perfecte schoolvoorbeeld is van wat er allemaal kan fout lopen wanneer je beslist om zelf een nieuw crypto-algoritme te ontwikkelen. 
 :::
 
 Rond 2001, nog geen 2 jaar nadat de eerste wifi-standaard de wereld "het wonder van draadloze netwerken" bracht, werd duidelijk dat er dringend een oplossing moest verschijnen voor de vele veiligheidsproblemen. Wifi was alomtegenwoordig, zowel bij particulieren als in bedrijven, en dus moest een oplossing gezocht worden voor al die duizenden bestaande apparaten reeds in huizen en gebouwen. Het IEEE kon moeilijk een nieuwe standaard uitschrijven die alle bestaande gebruikers in de kou zette. Er werd daarom besloten om 2 pistes uit te werken:
@@ -431,7 +432,7 @@ Rond 2001, nog geen 2 jaar nadat de eerste wifi-standaard de wereld "het wonder 
 2. WPA2: de "ultieme oplossing" die een volledig nieuwe suite aan veiligheidsprotocollen zou bevatten voor toekomstige Wifi-producten, maar die niet compatibel zou zijn met bestaande apparatuur.
 
 ::: tip
-WPA staat voor Wi-Fi protected standard.
+WPA staat voor Wi-Fi Protected Access standard.
 :::
 
 
@@ -505,7 +506,7 @@ De voorgaande figuur toont de typische uitwisseling van boodschappen die plaatsv
 In wifi-netwerken met 802.1X  worden 2 sets van sleutels aangmaakt:
 
 * Sessie sleutels, ook wel "*pairwise keys*" genoemd: deze is uniek per client en is enkel gekend door die client en het AP.
-* Groepsleutels, ook wel "*group keys*" genoemd: deze wordt tussen alle clienten van hetzelfde AP gedeeld en worden gebruikt voor multi-cast traffiek.
+* Groepsleutels, ook wel "*group keys*" genoemd: deze wordt tussen alle clienten van hetzelfde AP gedeeld en worden gebruikt voor multi-cast trafiek.
 
 Indien het *dynamic key exhange* is geconfigureerd dan zal de authenticatie de sessiesleutels eenmalig aanmaken en doorsturen. Daarna zullen specifieke encryptie-sleutels gegenereerd worden bij de client en AP gebaseerd op deze sessiesleutel. De client (en AP) kan dan zelf, automatisch, op gepaste momenen en nieuwe enceyptie-sleutel genereren.
 
@@ -595,7 +596,12 @@ Toen WPA2 uitkwam ontdekte men dat toch aardig wat bestaande hardware kon gepatc
 
 ### Encryptie en MIC creatie
 
-CCMP gebruikt, net als TKIP, een 48-bit IV die *packet number* (PN) werd genoemd. Deze PN wordt, samen met andere informatie, gebruikt om de AES encryptie van een seed te voorzien. Hierbij wordt het frame (en de header) in blokken van 128 bit verdeeld en zo blok per blok verwerkt. De encryptie gebeurt parallel met het berekenen van de MIC (de ICV in WEP) die finaal achteraan als een laatste blok ook mee wordt geëncrypteerd. Ook nu wordt met een tijdelijke sleutel gewerkt die gebaseerd is op de hoofdsleutel verkregen via 802.11X (enterprise mode) of de passphrase (in personal mode)
+CCMP gebruikt, net als TKIP, een 48-bit IV die *packet number* (PN) werd genoemd. Deze PN wordt, samen met andere informatie, gebruikt om de AES encryptie van een seed te voorzien. Hierbij wordt het frame (en de header) in blokken van 128 bit verdeeld en zo blok per blok verwerkt. De encryptie gebeurt parallel met het berekenen van de MIC (de ICV in WEP) die finaal achteraan als een laatste blok ook mee wordt geëncrypteerd. Ook nu wordt met een tijdelijke sleutel gewerkt die gebaseerd is op de hoofdsleutel verkregen via 802.11X (enterprise mode) of de passphrase (in personal mode).
+
+:::warning
+Die laatste zin impliceert een ander belangrijk veiligheidsverschil tussen enterprise en personal mode: in personal modus wordt een passphrase sleutel gedeeld met alle gebruikers op het netwerk. Hierdoor kan iemand die in het bezit is van deze passphrase ook de data decrypteren van de andere gebruikers, iets wat onmogelijk is in enterprise modus.
+:::
+
 
 ![](wifi/ccmp.png)
 
@@ -606,6 +612,11 @@ Om de payload te encrypteren (*merk op dat de header niét geëncrypteerd wordt,
 ### Helaas, aan alles komt een einde
 
 Tot 2017 ging alles goed. De AES standaard was al jaren een robuuste standaard gebleken en werd op vele plekken nog steeds gebruikt. En dit zou ook bij Wifi zou zijn geweest, waren het niet dat in mei 2017 een Belgische onderzoeker, Mathy Vanhoef, de bevindingen van z'n onderzoek publiceerde. Hij had helaas een belangrijke fout gevonden in de WPA2 standaard. Deze had niets te maken met AES - dat blijft een stevige standaard zijn- maar wel de manier waarop een bepaalde uitwisseling van berichten tijdens de intiële handshake tijdens de authenticatie plaatsvinden tijdens de *sleutel reinstallatie fase*. Deze aanvallen worden beschreven én gedemonstreerd op [krackattacks.com](HTTPS://www.krackattacks.com/) en verplichtten de IEEE om te beginnen werken aan een opvolger voor WPA2.
+
+::: tip
+Een lek zoals krackattack vereist natuurlijk een snelle reactie van de vendors. Hoe sneller zij een patch uitbrengen, hoe sneller de lek kan gedicht worden. Maar wat als je een wifi-kaart hebt die al vele jaren oud is en waarvan de fabrikant misschien niet meer bestaat? Dit probleem zien we geregeld opduiken en wordt nog groter wanneer we beseffen dat ook de interne elektronica (de chips) soms gepatched moeten worden. In het hoofdstuk rond IoT Security gaan we hier dieper op in.
+:::
+
 
 ##  WPA 3 ("Wifi 6")
 
@@ -624,6 +635,6 @@ Ook in WPA3 werden 2 modes voorzien: een personal en een enterprise mode. Enkele
 * Resistant tegen offline dictionary attacks: iets waar zowel WPA1 en WPA2 last van hadden voor aanvallers met geduld.
 * *Forward secrecy*: zelfs als de aanvaller de wifi-sleutel van oude gecapteerde paketten vind zal hij deze toch niet kunnen decrypteren. Het aloude "safe now, decrypt later" is dus niet van toepassing op WPA3.
 * *Wifi easy connect*: een gebruiksvriendelijke manier om internet-of-things apparaten met het netwerk te verbinden.
-* *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de STarbuck zetten om zo prive-traffiek van omstaanders te sniffen.
+* *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de STarbuck zetten om zo prive-trafiek van omstaanders te sniffen.
 * *Geauthenticeerde encryptie* gebruik maken van *"256-bit Galois/Counter Mode Protocol (GCMP-256)"* een cryptocipher dat we hier niet uit de doeken gaan doen.
 * Gebruikt de meest secure authenticatie en sleuteldistributie methoden mogelijk binnen 802.1X (HMAC, HMAC-SHA384 en ECDH)

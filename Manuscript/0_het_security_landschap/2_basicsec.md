@@ -2,7 +2,7 @@
 
 "Iedere goede film begint met een zwart scherm", dixit Batman in de "The Lego Batman Movie" &trade; film. Wel, en iedere goed hoofdstuk begint met een definitie, dixit Tim Dams.
 
-Laten we daarom eerst eens een definitie van cyber security neerpennen die het *Cisco* gebruikt: 
+Laten we daarom eerst eens een definitie van cybersecurity neerpennen dat netwerkbedrijf *Cisco* gebruikt: 
 
 *"Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. These cyberattacks are usually aimed at accessing, changing, or destroying sensitive information; extorting money from users; or interrupting normal business processes.*
 
@@ -31,7 +31,7 @@ De McCumber kubus is een mooi concept, maar het is ook niet meer dan dat: een th
 de cyberboswachters van de 21e eeuw hebben geen eenvoudige job. Ze was in de vorige eeuw al pittig, de laatste is de wapenwedloop er helaas alleen maar grimmigier op geworden.
 
 * De aanvallers kunnen aan bijna supersonische **snelheid** aanvallen op duizenden, of zelfs miljoenen, systemen starten. 
-* De gemiddelde aanval is duizenden keren **complexer** dan de aanvallen die we circa 20 jaar geleden te verduren kregen. 
+* "Alles is verbonden": onze huidige IT-netwerken zijn vele malen groter en complexer dan circa 20 jaar geleden. Hierdoor is ook de zogenaamde **attack surface** steeds groter. Gedaan zijn de tijden dat een middelgroot tot groot bedrijf genoeg had aan 1 cyberboswachters. Er zijn nu zelfs bedrijven die kunnen ingehuurd worden om bij problemen (of slimmer: vooraf als audit) te komen helpen om de boel te blussen.
 * De tools die aanvallers, van welke aard ook, ter hun beschikking hebben is vaak ongelooflijk **eenvoudig** geworden. Gedaan is de tijd dat een ietwat stevige aanval kon gedaan worden door experts met 10 jaar script- en netwerkervaring. Sommige vreeswekkende aanvallen vereisen niet meer dan het IP-adres van het slachtoffer in een invulveld invullen en vervolgens een klik op een grote rode knop "Start attack".
 * Aanvallers schuimen *underground* fora af, op zoek naar de nieuwste *zero-day* die ze in hun arsenaal kunnen opnemen. Fabrikanten van besturingssystemen en software kunnen de **snelheid waarmee nieuwe zwakheden** in hun systeem worden gevonden niet volgen. 
 * Door voorgaande snelheid van nieuwe zwakheden, duurt het ook langer en langer voor alles kan **gepatcht** worden door de ontwikkelaars van de software.
@@ -47,9 +47,10 @@ Een zero day zal quasi gegarandeerd blijven werken tot de ontwikkelaars een nieu
 De meeste fabrikanten van besturingssystemen (Apple, Microsoft, etc.) en veelgebruikte softwarepaketten (Adobe, Microsoft, etc.) brengen patches op welbepaalde dagen uit. Dit zorgt er bijvoorbeeld voor dat systeembeheerders hier rekening mee kunnen houden in hun wekelijkse planning. Voor gebruikers van zero days is dit ook nuttig: er ontstaat een zogenaamde **window of vulnerability**. Dit is de periode tussen het "ontdekken en in gebruik nemen van een zero day" en de moment waarop de patch tegen de zero day wordt verspreid. In dit *window* heeft de aanvaller vrij spel daar geen enkel systeem al kan gepatcht zijn. 
 
 ::: tip
-Dit verklaart ook waarom bijvoorbeeld veel zero days die Microsoft Windows besturingssystemen als doelwit hebben verschijnen op maandag of dinsdag. Microsoft brengt niet-kritische patches uit op *patch tuesday*. Wil een zero days gebruiker dus maximaal profiteren (een grotere *window of vulnerability* hebben) dan neemt hij de zero day rond *patch tuesday* in gebruikt. Zo voorkomt hij dat z'n zero day al na enkele dagen, op *patch tuesday*, onbruikbaar wordt gemaakt.
+In 2021 verscheen "How they tell me the world ends" van New York times journaliste Nicole Perlroth. Dit boek is erg ontluisterend en geeft een griezelig inzicht in hoe het er momenteel aan toe gaat in de schimmige wereld van zero days, offensieve cybersecurity, etc. Bekijk bijvoorbeeld maar eens de twitter-account van Chaouki Bekrar ([@cbekrar](twitter.com/cbekrar), oprichter van Zerodium, een zero-days *broker* en huiver bij de gigantische prijzen die zero days waard kunnen zijn (soms meer dan 1 miljoen dollar...).
 
-Uiteraard houden fabrikanten zich niet aan hun vaste patch-momenten indien er een kritisch patch sneller moet verspreid worden.
+![](intro/zerodium.png){ width=70% }
+
 :::
 
 
@@ -84,17 +85,17 @@ Eve kan op allerlei manieren *aanvallen* en in de eerste plaats kan dat **actief
 
 ![Actieve aanval, type 1: denial-of-service aanval](intro/dos.png){ width=70% }
 
-## Wie zijn de aanvallers?
+## Wie zijn de stropers?
 
 Waar moeten we ons tegen beschermen als cyberboswachter? Het zou verleidelijk zijn om ons te richten op 1 specifieke doelgroep en ons daar volledig tegen te wapenen. Helaas is het niet te voorspellen van wie je last zal hebben. Iedere groep aanvallers heeft eigen motivaties en middelen en het is niet altijd evident om tegen ieder iets te doen. Het kan natuurlijk geen kwaad om tenminste te weten met welke groepen je mogelijk zal geconfronteerd worden:
 
-* Hackers
-* Scriptkiddies
-* Spionnen
-* Werknemers
-* Cybercriminelen
-* Cyberterroristen
-* Overheden (of door overheden gesponsord)
+* Hackers: waarbij we een onderscheid moeten maken tussen white, black en grey hat hackers uiteraard.
+* Scriptkiddies: een groep die soms te laat beseft dat ook zij dingen doen die erg strafbaar zijn.
+* Werknemers: een vaak over het hoofd gekeken, maar oh zo veel voorkomende groep.
+* Cybercriminelen: dé grootste plaag, nog steeds.
+* Cyberterroristen: rebel, vrijheidsstrijders, *it's all in the eye of the beholder* uiteraard.
+* Overheden (of door overheden gesponsord:  een probleem dat steeds groter blijkt te worden.
+* Spionnen : *James Bond of the WWW*.
 
 ::: note
 In een volgende editie van deze cursus zullen we deze groepen allemaal onder de microscoop leggen en bespreken.
@@ -104,8 +105,8 @@ In een volgende editie van deze cursus zullen we deze groepen allemaal onder de 
 
 Alhoewel voorgaande groepen van aanvallers allemaal erg specifieke redenen hebben, kunnen we toch hun aanvallen generaliseren in 5 duidelijke stappen:
 
-1. Verkennen (*reconnaissance*).
-2. Scannen.
+1. Verkennen: passieve *reconnaissance*.
+2. Scannen: actieve  *reconnaissance*.
 3. Toegang verkrijgen.
 4. Toegang bestendigen.
 5. Sporen wissen.
@@ -116,16 +117,21 @@ Ook deze sectie zal grondiger ontleed worden in een volgende editie.
 
 ## Hoe verdedigen
 
-Wat en wie je wilt verdedigen in de cyberwereld kan erg gevarieerd zijn. Toch kunnen we alles herleiden tot 5 fundamentele principes die je best hanteert indien je een systeem van welke vorm ook wenst te beschermen tegen cyberstropers. Deze zijn:
+Wat en wie je wilt verdedigen in de cyberwereld kan erg gevarieerd zijn. Toch kunnen we alles herleiden tot 4 +1 fundamentele principes die je best hanteert indien je een systeem van welke vorm ook wenst te beschermen tegen cyberstropers. Deze zijn:
 
-* *Layering*: bouw je beveiliging zoals de lagen van een ui rondom je te beschermen data, gebruikers en services. Hoe meer lagen hoe beter, op voorwaarde dat ze natuurlijk verschillend zijn. Het nadeel van met meerdere lagen werken is evident: indien 1 laag om welke reden dan ook gecompromitteerd raakt, zijn er nog steeds de andere lagen die als verdediging werken. 
-* *Limiting*: beperkt steeds maximaal wat iedereen binnen je systeem kan. Zorg ervoor dat gebruikers en services enkel die zaken kunnen doen waartoe ze recht hebben volgens hun rol. Geef dus niet iedereen admin-rechten, zet je firewall niet op *allow all*, etc.
+* *Layering*: bouw je beveiliging zoals de lagen van een ui rondom je te beschermen data, gebruikers en services. Hoe meer lagen hoe beter, op voorwaarde dat ze natuurlijk verschillend zijn. Het voordeel van met meerdere lagen werken is evident: indien 1 laag om welke reden dan ook gecompromitteerd raakt, zijn er nog steeds de andere lagen die als verdediging werken. 
+* *Limiting*: beperk steeds maximaal wat iedereen binnen je systeem kan. Zorg ervoor dat gebruikers en services enkel die zaken kunnen doen waartoe ze recht hebben volgens hun rol. Geef dus niet iedereen admin-rechten, zet je firewall niet op *allow all*, etc.
 * *Diversity*: Zorg ervoor dat je een verscheidenheid aan beveiligingen hebt. Op die manier voorkomen we, net als bij layering, dat het falen van één systeem niet je hele verdediging neerhaalt.
-* *Obscurity*: dit is een subtiele. Ga niet aan de grote klok hangen hoe jouw verdediging is opgebouwd. Echter, let op met deze leuze. Obscurity wil niet zeggen dat je zelf een of ander vaag crypto-algoritme zelf gaat ontwikkelen en angstvallig gaat geheim houden. Gebruik standaarden en vertrouwde producten in je beveiliging. Eén van de eerste regels in security is "ga niet zelf het wiel heruitvinden"!
 * *Simplicity*: *keep it simple, stupid*. Al het voorgaande lijkt te doen uitschijnen dat je complexe systemen moet bouwen die als het ware een doolhof voor de aanvallers maken. Op zich is daar iets van aan, maar zorg er wel voor dat je niet zelf in je doolhof verdwaalt en daardoor fouten introduceert zonder het te beseffen. Soms is *less more* en dat geldt ook bij beveiliging. 
+
+::: caution
+Het vijfde fundamentele principe krijgt een eigen kadertje omdat deze voor discussie vatbaar is én geregeld voor de nodige controverse kan zorgen. Als je dus, om welke reden dan ook, niet genoeg tijd of budget hebt om alle principes toe te passen, probeer dan de volgende als laatste "oplossing" te gebruiken:
+
+* *Obscurity*: Ga niet aan de grote klok hangen hoe jouw verdediging is opgebouwd. Echter, let op met deze leuze. Obscurity wil niet zeggen dat je zelf een of ander vaag crypto-algoritme zelf gaat ontwikkelen en angstvallig gaat geheim houden. Gebruik standaarden en vertrouwde producten in je beveiliging. Eén van de eerste regels in security is "ga niet zelf het wiel heruitvinden"!
+:::
+
 
 ::: tip
 
-Soms zal je digitale stropers horen spreken over "Ik heb dat systeem gepwnd", uitgesproken als *gepowned*. De term "to pwn" is hackerslang voor "to own" om aan te geven dat je in een systeem bent binnengeraakt en nu controle over het systeem hebt. Volgens de [urbandictionary.com](https://www.urbandictionary.com/define.php?term=pwnd) is de enige reden dat de o een p werd het gevolg van een typfout, daar beide letter vlak naast elkaar staan op een toetsenbord.
-
+Soms zal je digitale stropers horen spreken over "Ik heb dat systeem gepwnd", uitgesproken als *gepowned*. De term "to pwn" is hackerslang voor "to own" om aan te geven dat je in een systeem bent binnengeraakt en nu controle over het systeem hebt. Volgens de [urbandictionary.com](https://www.urbandictionary.com/define.php?term=pwnd) is de enige reden dat de *o* een *p* werd het gevolg van een typfout, daar beide letters vlak naast elkaar staan op een toetsenbord.
 :::

@@ -12,16 +12,16 @@ Een oprechte dank aan Stefaan Somerling (RealDolmen) voor de feedback op het hoo
 
 Dank aan eerstejaars Dimitriy Vassilchenko om als externe spellingchecker aardig wat (genante) typos te ontdekken!
 
-Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Serge Horsmans!
+Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Michael Boeynaems en Serge Horsmans!
 
 # Waarschuwingen
 
-Dit brengt ons automatisch bij een erg belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die erg verregaande gevolgen kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken aangaande de beste cyberboswachters zijn de digitale stropers. Het is erg belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechterlijke gevolgen kunnen hebben, inclusief grote boetes tot jarenlange opsluiten.
+Dit brengt ons automatisch bij een erg belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die erg verregaande gevolgen kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken aangaande de beste cyberboswachters zijn de digitale stropers. Het is erg belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechterlijke gevolgen kunnen hebben, inclusief grote boetes tot jarenlange opsluiting.
 
 Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel onder volgende voorwaarden:
 
 * Op doelwitten (denk aan servers, webpagina's, gebruikers, etc.) waar jij de eigenaar van bent.
-* Op doelwitten waar je geen eigenaar van bent, maar waar je wel expliciete toestemming van hebt gekregen.
+* Op doelwitten waar je geen eigenaar van bent, maar waar je wel expliciete toestemming voor hebt gekregen.
 
 
 ## Opletten met experimenten
@@ -53,8 +53,11 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog
 
-**Dit is versie 0.4.0** (27/9/21)
+**Dit is versie 0.4.1** (20/1/22)
 
+* 0.4.1
+  * Remarks collega Boeynames verwerkt
+  * Nuttige links appendix toegevoegd
 * 0.4.0
   *  Iot Sectie vervolledigd
   *  Spellingcheck eens opgezet

@@ -1,4 +1,4 @@
-# Appendix: GDPR 
+# Appendix 1: GDPR 
 
 De General Data Protection Regulation (2018), of in het Nederlands de *Algemene Verordering Gegevensbescherming* is een Europese richtlijn om de privacy van Europese burgers, eender waar in de wereld, te beschermen. Of zoals de EU zelf op haar website beschrijft "the thoughest privacy and security law in the world" (wat ook effectief zo is: het is de enige wet momenteel die er in slaagt om wereldwijd de regels ervan af te dwingen).
 De wet zelf bestaat uit 99 verschillende artikels die de rechten, personen en verplichtingen van bedrijven die onder de verordering vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doet.
@@ -8,6 +8,7 @@ We gaan in dit hoofdstuk enkel een high-level overzicht geven van GDPR opdat we 
 :::
 
 ## Wat omvat GDPR
+
 
 *Het recht om persoonlijke gegevens te wissen of het recht om vergeten te worden.* GDPR laat je toe, als EU-burger om eender welke site die 'jou kent' te verplichten alle, of specifieke, informatie over je te verwijderen. Als je dus vindt dat Google niet moet weten waar je huisadres is, dan heb je het recht google te verplichten deze informatie te verwijderen. 
 
@@ -21,7 +22,7 @@ Een ander belangrijk aspect van GDPR is het zogenaamde **recht op overdraagbaarh
 De voorganger van de GDPR was de DPD (Data Protection Directive). Dit was geen Europese wet (verodering) maar een aanbeveling en was een stap in de goede richting maar nog niet ver genoeg. GDPR heeft ervoor gezorgd dat individuele burgers geen speelbal meer zijn van de grote bedrijven die de data van burgers als het nieuwe goud verzamelen en ermee doen wat ze zelf willen. 
 :::
 
-## Wat beschermd GDPR
+## Wat beschermt GDPR
 
 De GDPR wet zorgt ervoor dat bedrijven veel bewuster met gebruikersdata omgaan. Ze kunnen namelijk verantwoordelijk gehouden worden indien gebruikersdata gestolen of gelekt wordt. De GDPR is een privacy-wetgeving in de eerste plaats: het wil de privacy van het individu beschermen. Volgende data valt dan ook onder de GDPR-wetgeving:
 

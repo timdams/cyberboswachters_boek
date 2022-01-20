@@ -52,15 +52,14 @@ Zowel Bob als Alice genereren eerst een publiek/privaat sleutelpaar dat ze voor 
 De reden dat dit werkt, is met dank aan de modulo operator en de eigenschappen ervan. Een voorbeeld:
 
 
-
-|        | Alice                                           | Bob                                            |
+|   Stap     | Alice                                           | Bob                                            |
 | ------ | ----------------------------------------------- | ---------------------------------------------- |
-| Stap 1 | Alice kiest een geheim getal A. Ze kiest A= 3   | Bob kiest ook een geheim getal B = 6.          |
-| Stap 2 | Alice berekent $7^A\%11$ => $343\%11 = 2$ , genaamd X | Bob berekent $7^B\%11$ => $11764\%11 = 4$, genaamd Y |
-| Stap 3 | Alice stuurt 2 naar B                           | Bob stuurt 4 naar Alice                        |
-| Stap 4 | Alice berekent $X^A\%11 = 2^4\%11 = 5$             | Bob berekent $Y^B\%11 = 4^2\%11 = 5$               |
+| 1 | Alice kiest een geheim getal A. Ze kiest A= 3   | Bob kiest ook een geheim getal B = 6.          |
+| 2 | Alice berekent $7^A\%11$ => $343\%11 = 2$ , genaamd X | Bob berekent $7^B\%11$ => $11764\%11 = 4$, genaamd Y |
+| 3 | Alice stuurt X=2 naar Bob                           | Bob stuurt Y=4 naar Alice                        |
+| 4 | Alice berekent $Y^A\%11 = 4^3\%11 = 9$             | Bob berekent $X^B\%11 = 2^6\%11 = 9$               |
 
-Zoals je merkt kunnen nu Alice en Bob het berekende getal ``5`` als gedeeld geheim kennen. Enkel zij 2 kennen dit getal.
+Zoals je merkt kunnen nu Alice en Bob het berekende getal **9** als gedeeld geheim kennen. Enkel zij kennen dit getal.
 
 ::: warning
 Uiteraard zullen in de praktijk Bob en Alice véél grotere getallen kiezen dan 3 en 6.
@@ -93,7 +92,7 @@ Iedereen die nu naar Bob iets wilt sturen kan dit via z'n publieke sleutel (``N`
 Enkel Bob zal deze ciphertext met zijn private sleutel ``d`` kunnen decrypteren door $C^d(\%N)$ te doen, oftewel $11^{23}\%187$ wat terug de plaintext ``88`` geeft!
 
 ::: tip
-de sterkte van publieke crypto stoelt dus op het feit dat ontbinden van (grote) getallen in factoren computationeel veel moeilijker is dan de omgekeerde stap, namelijk 2 getallen met elkaar vermenigvuldigen.
+De sterkte van publieke crypto stoelt dus op het feit dat ontbinden van (grote) getallen in factoren computationeel veel moeilijker is dan de omgekeerde stap, namelijk 2 getallen met elkaar vermenigvuldigen.
 
 15621 in z'n factoren ontbinden is veel moeilijker dan de getallen 123 en 127 vermenigvuldigen (wat dus ook 15621 zal geven). 
 :::
@@ -120,7 +119,7 @@ Er bestaan veel verschillende hash-functies. Enkele van de bekendere zijn:
 * MD5, oftewel Message Digest 5: deze zal een 128-bit hashwaarde genereren. 
 * SHA-X, oftewel Secure Hash Algorithms. Zo is er SHA-256 wat een 256 bits hash zal genereren.
 
-De sterkte van een hash algoritme zit hem in de grootte van de kans waarop hash colisions kunnen optreden. Zo zijn er bij MD5 al veel meer collisions gevonden dan bijvoorbeeld bij het recenter gepubliceerde SHA3-512 algoritme.
+De sterkte van een hash algoritme zit hem in de grootte van de kans waarop hash collisions kunnen optreden. Zo zijn er bij MD5 al veel meer collisions gevonden dan bijvoorbeeld bij het recenter gepubliceerde SHA3-512 algoritme.
 
 ### Boodschappen ondertekenen
 
@@ -164,13 +163,13 @@ Kortom, we hebben een manier nodig om de **identiteit van de eigenaar** van een 
 
 ## Digitale certificaten
 
-Een certificaat is een (digitaal) document dat de identiteit van een gebruiker bindt aan een publiek sleutel. Dit document werd digitaal ondertekent door een vertrouwde derde partij (**trusted third party**) zodat bij twijfel van de echtheid van het certificaat men altijd bij deze derde partij terecht kan. Uiteraard is het belangrijk dat we deze derde partij kunnen vertrouwen, anders kunnen we ook niet de het certificaat vertrouwen dat zijn onderschrijven. 
+Een certificaat is een (digitaal) document dat de identiteit van een gebruiker bindt aan een publieke sleutel. Dit document werd digitaal ondertekent door een vertrouwde derde partij (**trusted third party**) zodat bij twijfel van de echtheid van het certificaat men altijd bij deze derde partij terecht kan. Uiteraard is het belangrijk dat we deze derde partij kunnen vertrouwen, anders kunnen we ook niet de het certificaat vertrouwen dat zijn onderschrijven. 
 
 ::: tip
 Certificaten worden beschreven in de **X.509** standaard.
 :::
 
-Om een certificaat aan te maken dient Bob naar een **Registration authority** (RA) gaan die zijn identiteit zal verifiëren. Dit gebeurt aan de hand van de typische documenten die ook buiten het  Internet worden gebruik om iemands identiteit te bewijzen: identiteitskaart, paspoort, rijbewijs, etc. In sommige gevallen zal de RA zelfs eisen dat Bob zich naar een fysiek kantoor begeeft om daar z'n identiteit *in te flesh* te bewijzen. Indien de RA de identiteit heeft bevestigd zal deze de aanvraag van Bob doorsturen naar een **Certification authority** (CA), inclusief Bobs publieke sleutel. 
+Om een certificaat aan te maken dient Bob naar een **Registration authority** (RA) gaan die zijn identiteit zal verifiëren. Dit gebeurt aan de hand van de typische documenten die ook buiten het Internet worden gebruik om iemands identiteit te bewijzen: identiteitskaart, paspoort, rijbewijs, etc. In sommige gevallen zal de RA zelfs eisen dat Bob zich naar een fysiek kantoor begeeft om daar z'n identiteit *in the flesh* te bewijzen. Indien de RA de identiteit heeft bevestigd zal deze de aanvraag van Bob doorsturen naar een **Certification authority** (CA), inclusief Bobs publieke sleutel. 
 ![](crypto/certreg.png)
 
 ::: tip
@@ -184,6 +183,7 @@ De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensd
 
 ![](crypto/certcreatie.png)
 
+
 Voorgaande proces zal plaatsvinden wanneer je browser via een **HTTPS** verbinding surft naar een website en zo wil controleren of wel degelijk met de website wordt gecommuniceerd en niet met een imposter. Indien de browser (of de gebruiker) twijfelt aan de echtheid van de publieke sleutel van de CA die het certificaat van de website ondertekent, dan zal het voorgaande proces zich herhalen, maar deze keer om het certificaat van de CA te controleren met behulp van een bovenliggende CA. Op die manier kan het dus zijn dat een keten van CA's ontstaan die telkens CA's onder zich bewijzen. Uiteraard zal er steeds bovenaan zo'n ketting een **root CA** staan. Als je die vertrouwt, dan kan je al de CA's er onder dus ook vertrouwen...maar ook vice versa! 
 
 ![](crypto/webcert.png)
@@ -193,7 +193,13 @@ Het ergste dat voor een CA dat kan voorvallen is dat de betrouwbaarheid van de C
 ![](crypto/chaintrust.png){width=60%}
 
 
+::: note
+Alhoewel het **HTTPS** al sinds 1995 bestond, werd het tot voor kort amper door websites aangeboden. Nochtans geeft HTTPS een extra defensielaag tijdens de communicatie van jouw computer met die waar een website op *gehost* staat. HTTPS zal namelijk je communicatie versleutelen zodat enkel zender en ontvanger kunnen lezen wat er gezegd wordt. Met http is dat niet: al je communicatie kan door eender wie gelezen worden die zich tussen jouw computer en je eindbestemming nestelt. Het helpt echter niet dat je data versleuteld wordt als je niet kan bevestigen dat de ontvangende website ook effectie diegene is die je nodig hebt, vandaar dat dus certifcaten en https in tandem werken om gebruikers een veiliger internet aan te bieden.
 
+Pas in 2017 boden meer dan de helft van de website wereldwijd HTTPS aan. In 2021 gebruikt ongeveer 70% van alle website HTTPS als standaard communicatiemiddel aan (vroeger waren er al websites met HTTPS, maar http was de standaard oplossing).
+
+
+:::
 
 ### Certificaten bekijken
 
@@ -229,22 +235,26 @@ HTTPS is een protocol dat een zogenaamde beveiligde tunnel opzet tussen jou en d
 Samengevat zal dus TLS 2 zaken doen:
 
 * Door middel van een certificaat (asymmetrische crypto) wordt de identiteit (de publieke sleutel) van de website gecontroleerd.
-* Door middel van deze sleutel wordt een *Diffie-Hellman sleutel uitwisseling* (zie RSA) gedaan, gebruik makend van de publieke sleutel, opdat er een gemeenschappelijk sleutel kan worden afgesproken die gebruikt wordt voor een symmetrische crypto verbinding.
+* Door middel van een afgesproken algoritme (Diffie-Hellman, Forward Secrecy, Elliptic Curve, etc.) een gemeenschappelijke sleutel(s) afspreken en uitwisselen.
 
 
 ::: tip
 Zoals reeds eerder vermeld is asymmetrische crypto trager, waardoor het altijd aanbevolen is om de trafiek tussen 2 punten finaal via een symmetrische crypto verbinding te laten plaatsvinden. TLS/HTTPS combineert met andere woorden de sterkes van beide soorten crypto om zo de zwaktes van beide te neutraliseren.
 :::
 
-De manier waarop een TLS-verbinding wordt opgezet is vrij uitgebreid. Volgende briljante website ([tls.ulfheim.net/](HTTPS://tls.ulfheim.net/)) visualiseert de berichten die serven en client uitwisselen om zo'n verbiding te starten, onderhouden en eindigen.
+De manier waarop een TLS-verbinding wordt opgezet is vrij uitgebreid. Volgende briljante website ([tls.ulfheim.net/](HTTPS://tls.ulfheim.net/)) visualiseert de berichten die server en client uitwisselen om zo'n verbinding te starten, onderhouden en eindigen.
 
 ::: warning
-Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naa je te sturen. Ook de website naar waar je surft, ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via hun caching overnemen. 
+Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naar je te sturen. Ook de website naar waar je surft, ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via hun caching overnemen. 
 :::
 
 ::: tip
-*mitmproxy* is een krachtige linux-tool die een man-in-the-middle aanval op HTTPS toelaat. Het zal ervoor zorgen dat een aanvaller zich tussen jou en het internet kan nestelen en vervolgens doen alsof al je HTTPS-verbinding veilig blijven. In de praktijk zorgt mitmproxy ervoor dat alle HTTPS-verbinding van de client naar de aanvaller gebeuren, die op zijn beurt tls-tunnels zal opzetten met de website waar het slachtoffer naar surft...
+*mitmproxy* is een krachtige linux-tool die een man-in-the-middle aanval op HTTPS toelaat. Het zal ervoor zorgen dat een aanvaller zich tussen jou en het internet kan nestelen en vervolgens doen alsof al je HTTPS-verbinding veilig blijven. In de praktijk zorgt mitmproxy ervoor dat alle HTTPS-verbinding van de client naar de aanvaller gebeuren, die op zijn beurt TLS-tunnels zal opzetten met de website waar het slachtoffer naar surft.
 
 ![](crypto/mitmproxy.png){width=80%}
+
+De aanvaller zal echter nog steeds geen geldige certificaten kunnen genereren waardoor moderne browsers normaal gezien hier een waarschuwing zouden moeten geven.
+
+![De waarschuwing die chrome genereert wanneer het een, potentiële, mitm-aanval detecteert](crypto/mitmbrowser.png){}
 
 :::
