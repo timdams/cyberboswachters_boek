@@ -14,6 +14,9 @@ De smaak te pakken? Volgende online bronnen beveel ik aan om te volgen zodat je 
 
 * [ Darknet Diaries](https://darknetdiaries.com/): waargebeurde "horror-verhalen" over het darknet, met boeiende, in-depth interviews met slachtoffers én aanvallers. Ik kan deze podcast niet genoeg aanbevelen!
 
+## Tutorials
 
+* [Hacksplaining](https://www.hacksplaining.com/lessons)
+* [HackTricks book](https://book.hacktricks.xyz/)
 
 

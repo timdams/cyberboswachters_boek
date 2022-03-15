@@ -55,12 +55,16 @@ Alle feedback is in deze fase zéér welkom:
 
 **Dit is versie 0.4.1** (20/1/22)
 
+
+* 0.4.2
+  * Secties in hoofdstuk 1 ("Wie zijn de stropers?", "Je verdediging ontwerpen", "Social engineering", etc.) uitgeschreven
+  * Mimikatz in hoofdstuk Authenticatie.
 * 0.4.1
-  * Remarks collega Boeynames verwerkt
-  * Nuttige links appendix toegevoegd
+  * Eerste batch remarks collega Boeynaems verwerkt
+  * "Nuttige links" appendix toegevoegd
 * 0.4.0
-  *  Iot Sectie vervolledigd
-  *  Spellingcheck eens opgezet
+  * Iot Sectie vervolledigd
+  * Spellingcheck eens opgezet
 * 0.3.0
   * Eerste deel IoT security
 * 0.2.0

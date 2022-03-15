@@ -2,16 +2,14 @@ Iso 27001 vermelden https://www.nen.nl/ict/digitale-ehtiek-en-veiligheid/cyber-p
 
 netwerk security uitwerken
 
-social eng
-
 internet sec basics
 
 iot security basics
 
-basis security: verschillende aanvaler types beschrijven.
 basis security: hoe vallen ze aan.
+basic security: hw/sw bassed attacks
 
-basis security: slatzer en schroeder principe
+
 todo: scytale remark "Ik vind dit stukje iets moeilijker om te volgen. Een figuur van een scytale (indien mogelijk) zou nuttig zijn. Ook wordt hier de 'known plain-text' aanval geintroduceerd. Ik veronderstel dat de andere aanvallen (chosen plaintext, etc.) dan verder nog aan bod komen?"
 
 crypto: 
@@ -64,7 +62,7 @@ top! thx
 ECC uitleggen
 
 
-https://www.varonis.com/blog/what-is-mimikatz/
-
 
 gdpr: Deze, en de volgende (recht op overdraagbaarheid) is IMO niet het belangrijkste van GDPR. Deze rechten zijn trouwens niet absoluut. De kern van GDPR is transparantie, fairness, en rechtmatigheid (en er zijn 6 rechtmatigheidsgronden). 
+
+

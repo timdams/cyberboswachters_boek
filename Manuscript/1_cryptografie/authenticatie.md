@@ -16,9 +16,8 @@ Ongeacht de veiligheden die we inbouwen als cyberboswachter, veel blijft afhange
 Trouwens, herinner je de McCumber kubus waarin we benadrukten dat technologie maar één aspect is om C.I.A. toe te passen op je data in z'n 3 primaire vormen? Het zal je niet verbazen dat cybercriminelen niet altijd gaan proberen databanken aan te vallen om paswoorden van gebruikers te pakken te krijgen. Als zij een specifiek doelwit hebben dan gaan we vaak op andere manieren te werk:
 
 * **Password spraying**: hierbij gaat de hacker een (beperkte) lijst van veelgebruikte paswoorden testen op een grote groep *useraccounts* van een bepaalde website, in de hoop een *hit* te hebben (*"spray and pray"*).
-* **(Spear) phishing**: bij phishing hanteert de aanvaller de goedgelovigheid of onoplettendheid van de gebruiker om een ogenschijnlijk betrouwbare mail of bericht te sturen met daarin een link naar een pagina die malware installeert of een fake login scherm toont. Bij spear phishing gebruikt de aanvaller geen massmail, maar gaat hij juist gericht één specifiek doelwit een op maat gemaakte mail of bericht sturen. Spear phishing is heden ten dage een van dé **social engineering** aanvallen bij uitstek.
+* **(Spear) phishing**: bij phishing hanteert de aanvaller de goedgelovigheid of onoplettendheid van de gebruiker om een ogenschijnlijk betrouwbare mail of bericht te sturen met daarin een link naar een pagina die malware installeert of een fake login scherm toont. Bij spear phishing gebruikt de aanvaller geen massmail, maar gaat hij juist gericht één specifiek doelwit een op maat gemaakte mail of bericht sturen. Spear phishing is heden ten dage een van dé **social engineering** aanval bij uitstek.
 * **Key loggers**: als de aanvaller toegang heeft tot de computer (wat uiteraard van over het netwerk kan) dan kan hij een permanente key logger installeren die continue alle toetsaanslagen op het systeem opneemt. Nadien kan de aanvallers deze logs dan analyseren in de hoop zo ook het paswoord of andere gevoelige informatie terug te vinden.
-
 
 
 ## Hoe paswoorden opslaan
@@ -103,6 +102,22 @@ In de database bewaren we dus nu volgende informatie:
 
 ::: warning
 Merk op dat ook nu we nog steeds niet beschermd zijn tegen pash-the-hash aanvallen.
+:::
+
+### Mimikatz   
+
+Mimikatz werd origineel ontwikkeld als demo om aan te tonen dat de authenticatie protocols van Microsoft onveilig waren. Helaas is de totaal, uiteraard, erg snel opgenomen in het arsenaal van digitale stropers. De tool laat toe om *authentication tickets* te tonen en hergebruiken. Wanneer de tool wordt losgelaten op een Microsoft Windows OS zal het deze tickets op het systeem zoeken zodat de aanvaller vervolgens zonder login-gegevens toch kan inloggen door technieken zoals:
+
+* Pass-the-hash: vroeger werden Windows paswoorden als hash (NTML) bewaard op het systeem waardoor deze techniek erg eenvoudig was.
+* Pass-the-ticket: zoals zonet beschreven, maar dan met het Kerberos ticket (zie ook hierna)
+* Kerberos Golden Ticket: **Kerberos** is een van de meest gebruikte authenticatieprotocols. Veel systemen die Kerberos gebruiken hebben echter een verborgen account (*KRBTGT* genaamd) wiens ticket domain admin rechten geeft én dat niet vervalt. Kortom, een gouden ticket!
+* Kerberos Silver Ticket: soms zal Window een *TGS* ticket toewijzen aan gebruikers die willen inloggen op services op het netwerk. Echter: Microsoft controleert dit ticket niet altijd, waardoor het een handig ticket is om langs bepaalde security-mechanismen te glippen.
+* Pass-the-Cashe: identiek aan pass-the-ticket maar deze aanval werkt ook met login data dat dat op zowel Mac, Unix én Linux wordt gevonden. Kortom, dit is natuurlijk de *motherload*, daar deze niet meer afhankelijk is van enkel Microsoft Windows operating systems.
+
+Het nadeel van Mimikatz, voor ons als boswachters, is dat de tool erg goed werkt én kan geautomatiseerd worden. In 2017 onderging Oekraïne een stevige ransomware aanval van (zo goed als zeker) Russische makkelijke, genaamd **NotPetya** (een variant op de WannaCry ransomware). NotPetya gebruikte een aangepaste versie van Mimikatz zodat de ransomware zichzelf kon verspreiden over het netwerk en op andere systemen in het domein kon inloggen met hashes en tickets dat de Mimikatz variant aantrof.
+
+::: info
+De oorsprong van Petya en NotPetya werd getraceerd en is vermoedelijk het resultaat van een Russische hackinggroep genaamd *Sandworm* die onder de GRU werken, de Russische militaire inlichtingendienst.
 :::
 
 ## CRAM en SCRAM
