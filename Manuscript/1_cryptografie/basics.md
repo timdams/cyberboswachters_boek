@@ -203,7 +203,7 @@ Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalyst aut
 
 Er zijn 2 soorten encryptiesystemen als we kijken naar het aantal sleutels. Symmetrische systemen zijn systemen waarbij maar 1 sleutel nodig is: zowel ontvanger als verzender gebruiken dezelfde sleutel.  De term symmetrisch verwijst naar het feit dat het algoritme exact hetzelfde doet aan beide zijden. Het enige verschil is dat bij de verzender de plaintext in het systeem wordt gestoken, wat resulteert in een ciphertext. Terwijl de ontvanger de ciphertext in het systeem plaatst om een plaintext te krijgen.
 
-![](crypto/basicencrypt.png)
+![Het basismodel van symmmetrische encryptie](crypto/basicencrypt.png)
 
 * De symmetrische encryptiesystemen zijn de oudste vorm: alle klassieke algoritmes waren van dit principe. Asymmetrische systemen zijn pas in de 20e eeuw ontwikkeld (circa 1970).
 
@@ -232,7 +232,7 @@ De werking van een symmetrisch stream cipher is verrassend eenvoudig en bestaat 
 * Een pseudorandom keystream generator: deze zal de sleutel als het ware expanderen naar een sleutel met de zelfde lengte als de stream, genaamd een **keystream**. Daar we met een stream werken zal deze generator teken per teken genereren. Hoe dit gebeurt, leggen we verderop uit.
 * De **xor** of "exclusieve of" functie: deze zal de plaintext naar een ciphertext omzetten door de plaintext met de keystream samen te voegen.
 
-![](crypto/stream.png)
+![Het streamcipher proces](crypto/stream.png)
 
 Aan de ontvangerzijde gebeurt exact hetzelfde. **Enkel indien de ontvanger dezelfde sleutel gebruikt, zal deze dezelfde keystream kunnen genereren, en bijgevolg enkel dan de originele plaintext verkrijgen.**
 
@@ -275,7 +275,7 @@ Laten we eens één van de meest gebruikte streamciphers bekijken, het RC4 ciphe
 
 RC4 werkt zoals we eerder verklaarden hoe een stream cipher werkt: het heeft een keystreamgenerator en zal de keystream vervolgens XOR'n met de plaintext. Eerst zal de ingevoerde sleutel (die 40 tot 2048 bits lang mag zijn) omgezet worden naar een compatibele werksleutel met behulp van een **Key scheduling algorithm** (KSA). Deze werksleutel zal dan als seed gebruikt worden om een keystream in het **Pseudo-random generator algorithm** (PRGA) te maken.
 
-![](crypto/rc4.png)
+![RC4 tot op het bot](crypto/rc4.png)
 
 ##### KSA
 
@@ -411,7 +411,7 @@ Je kan de DES standaard [hier](HTTPS://web.archive.org/web/20040410171758/http:/
 ##### Versleuteling
 Volgende schema toont de encryptie bestaande uit 16 rondes:
 
-![](crypto/des1.png)
+![DES](crypto/des1.png)
 
 De data wordt blok per blok doorheen dit gedeelte gestuurd. Eerst gebeurt er een zogenaamde *Initiële permutatie* (*IP* in de figuur) waarbij iedere bit naar een andere plek wordt gestuurd volgens een vast patroon. Achteraan gebeurt dit nogmaals in een *Finale permutatie* (*FP*).
 
@@ -472,7 +472,7 @@ Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES
 
 De werking van 3DES (*tripple DES*) is verrassend eenvoudig: ieder blok data wordt 3 keer doorheen een DES-cipher gestuurd. Hierbij wordt steeds een andere sleutel gebruikt. Om de bestaande DES hardware te gebruiken, wordt hierbij de data eerst door de encryptie gestuurd, dan doorheen de decryptie en terug door de encryptie. Daar we in iedere fase een andere sleutel gebruiken heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we dus effectief 3 maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvanger zijde gebeurt dan het omgekeerde: decryptie, encryptie, decryptie én dit dus allemaal met de bestaande DES hardware!
 
-![](crypto/3des.png){ width=60% }
+![3DES](crypto/3des.png){ width=60% }
 
 ::: tip
 3DES laat dus ook (single) DES encryptie toe. Het enige dat je hiervoor moet doen is de subsleutels K2 en K3 gelijkstellen waardoor de tweede en derde fase tijdens de encryptie (en decryptie) eigenlijk niets doet, daar het gewoon de data encrypteert in ronde 2 en dan ogenblikkelijk in ronde 3 terug decrypteert.

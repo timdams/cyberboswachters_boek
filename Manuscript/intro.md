@@ -53,12 +53,12 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog
 
-**Dit is versie 0.4.1** (20/1/22)
-
+**Dit is versie 0.4.2** (22/1/22)
 
 * 0.4.2
   * Secties in hoofdstuk 1 ("Wie zijn de stropers?", "Je verdediging ontwerpen", "Social engineering", etc.) uitgeschreven
-  * Mimikatz in hoofdstuk Authenticatie.
+  * Mimikatz in hoofdstuk Authenticatie
+  * Issue/todo lijst aangemaakt [github](https://github.com/timdams/cyberboswachters_boek/issues)
 * 0.4.1
   * Eerste batch remarks collega Boeynaems verwerkt
   * "Nuttige links" appendix toegevoegd

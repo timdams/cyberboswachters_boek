@@ -14,13 +14,13 @@ Alhoewel dit hoofdstuk integraal na het crypto hoofdstuk komt, is het toch inter
 
 We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven inbeelden. De opkomst van de IEEE 802.11b standaard (spreek IEEE uit als *"Ai-trippel-i"*) in 1999 veroorzaakte een kleine revolutie in de manier waarop bedrijven en privégebruikers konden werken. Plots kon je met een laptop van overal in het gebouw - en zelfs er buiten- op het netwerk geraken. Die vrijheid voor de gebruikers betekende wel een nachtmerrie voor de cyberboswachters. Een netwerkkabel heeft een intrinsieke extra beveiliging: enkel daar waar de kabel ligt kunnen gebruikers aan het netwerk geraken. Zolang je dus geen netwerkkabel bijvoorbeeld naar de publieke parking brengt kan niemand van daar illegaal het netwerk benaderen. Met wifi leek het alsof plotseling het hele netwerk in een straal van tientallen meters rond het gebouw beschikbaar was, met alle gevolgen van dien.
 
-![](wifi/afstand.jpg){ width=60% }
+![Een oud voorbeeld van hoe wifi signalen "uit" een gebouw veel verder geraken dan verwacht (bron van de afbeelding: onbekend)](wifi/afstand.jpg){ width=60% }
 
 Al gauw werd een nieuwe sport uitgevonden door hobbyist hackers en professionele cybercriminelen: **wardriving**. De idee is eenvoudig: je rijdt rond in de stad en laat de laptop naast je in de auto scannen naar alle netwerken, met extra aandacht voor die netwerken die geen of zwakke beveiliging hadden.
 
 ::: note
 
-![](wifi/wargames.png){ width=10% }
+![Wargames: een cultklassieker uit 1983](wifi/wargames.png){ width=10% }
 
 De term wardriving komt van de term *wardialing* die op zijn beurt gebaseerd is op de  klassieke cyber-cult film "Wargames" uit 1983. Voor de geschiedkundigen onder ons, wardialing was het opbellen van willekeurige telefoonnummers met je modem in de hoop een zogenaamd *bulletin board system* oftewel **BBS** (een pre-internet forum zeg maar) te vinden.
 :::
@@ -66,12 +66,12 @@ Dit resulteerde in onder andere volgende scenario's:
 * Een hacker kan legale gebruikers DoS'n door constant zogenaamde *disassociation* naar hen te sturen. Dit frame, gebruikt door access points, geeft aan clients de opdracht dat ze het netwerk moeten verlaten. De hacker kan zo'n frame uitsturen en daarbij het "source" veld instellen op het MAC-adres van het access points. Dit spoofing kan ongecontroleerd, waardoor legale gebruikers dit frame altijd zullen aanvaarden én vervolgens uitvoeren: de gebruiker kan niet meer verbinden met het netwerk zolang de disassociation frames blijven verstuurd worden (**disassociation flooding**)
 * **Identity spoofing** was ook eenvoudig daar de hacker eender welk veld in de frames kan aanpassen. Van zodra hij een legale gebruiker met voorgaande techniek van het netwerk heeft geschopt, kan hij vervolgens zichzelf voordoen als deze gebruiker. Hiervoor moet hij gewoon het MAC-adres spoofing van de legale gebruikers tijdens de communicatie met het access point.
 
-![](wifi/spoofwifi.png){ width=60% }
+![Eve gebruikt spoofing om de wifi-sessie van Alice ongemerkt over te nemen](wifi/spoofwifi.png){ width=60% }
 
-* En *last but not least* laten de onbeveiligde management frames toe dat we eenvoudig een  access point kunt nabootsen (**impersonation**). Vervolgens kunnen we een  **man-in-the-middle aanval** uitvoeren daar een hacker zich kan plaatsen tussen de gebruiker en het internet en zo informatie kan ontfutselen. 
+* En *last but not least* laten de onbeveiligde management frames toe dat we eenvoudig een access point kunnen nabootsen (**impersonation**). Vervolgens kunnen we een  **man-in-the-middle aanval** uitvoeren daar een hacker zich kan plaatsen tussen de gebruiker en het internet en zo informatie kan ontfutselen. 
   
 
-![](wifi/mitmwifi.png){ width=60% }
+![Een fake access point opzetten met dank aan de onbeveiligde managementframes](wifi/mitmwifi.png){ width=60% }
 
 ::: tip
 De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd success had tot enkele jaren geleden (vanuit het standpunt van de hacker) was een fake Telenet Wifree hotspot op te zetten. Hierbij werd eerst de login pagina van Telenet  Wifree door de hacker gecloned en via een lokale webserver aangeboden aan de gebruikers die op het fake access point met de naam "Telenet Wi-Free" verbonden. Vervolgens kon de stroper nu van iedere gebruiker de gebruikersnaam en paswoord stelen telkens deze die informatie op de fake loginpagina invoerde.
@@ -152,7 +152,7 @@ In deze modus moet je bewijzen dat je in het bezit bent van een geldige WEP-sleu
 2. De client encrypteert deze string met z'n WEP-sleutel en stuurt dit terug naar het AP (de *response*).
 3. Het AP zal nu de response decrypteren met z'n eigen WEP-sleutel en het resultaat vergelijken met de challenge-string. Als beide gelijk zijn weet het AP dat de client een geldige WEP-sleutel heeft en dus toegelaten mag worden op het netwerk.
 
-![](wifi/sharedkey.png)
+![De shared-key authentication aan de start van de verbinding](wifi/sharedkey.png)
 
 ::: tip
 Merk op dat stap 1 en 2 ervoor zorgen dat aanvallers die deze *handshake* sniffen 2 interessante frames zien passeren. Eerst zien ze een plaintext, ogenblikkelijk gevolgd door de bijhorende ciphertext ervan (indien ze een gebruiker sniffen met een geldige WEP-sleutel). Dit zal interessante informatie blijken verderop in dit horror-verhaal waarin we zullen tonen waarom WEP niet zo veilig bleek te zijn als gehoopt.
@@ -172,7 +172,7 @@ Om potentiële aanvallers ervan te weerhouden dat ze trafiek kunnen sniffen (of 
 
 WEP is optioneel en bevindt zich vlak voor frames naar de fysische laag (*PHY*) worden gestuurd die de frames "in de lucht" zal sturen. Het IEEE werkt met lagen die ongeveer overeen komen met de OSI-lagen maar met iets andere namen. In volgende figuur zie je waar WEP, optioneel, zich bevindt ten opzichte van de onderliggen en bovenliggende lagen.
 
-![](wifi/osimac.png){ width=60% }
+![De 802.11 stack (rechts) ten opzichte van de OSI stack](wifi/osimac.png){ width=60% }
 
 :::
 
@@ -345,7 +345,7 @@ Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol
 3. Vervolgens kan de aanvaller een keystream te pakken krijgen door z'n plaintext te XOR'n met de gecapteerde ciperhtext: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$.
 
 
-![](wifi/inject.png)
+![Known plaintext in het wifi-netwerk krijgen](wifi/inject.png)
 
 #### Keystreams groeien
 
@@ -359,7 +359,7 @@ Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n
 4. Indien de aanvaller in stap 2 de juiste byte gekozen heeft dan zal er een reactie op de ping volgen (daar het pakket werd gedecrypteerd door het AP en dan hoger in de OSI-stack door het netwerk werd gestuurd). Als de keystream fout is zal er geen reactie komen daar het AP het pakketje als foutief heeft weggegooid en dus heeft genegeerd.
 5. Als een verkeerde byte werd gekozen in stap 2 dan zal de gebruiker dit proces onieuw starten en nu een andere byte-waarde kiezen. Hij zal dit blijven herhalen tot hij in stap 4 reactie krijgt en dus weet dat hij nu z'n keystream met succes heeft doen groeien met 1 byte.
 
-![](wifi/grow.png)
+![Keystreams byte per byte groeien](wifi/grow.png)
 
 ::: warning
 We hebben bij deze aanval 1 belangrijk concept genegeerd waardoor deze aanval op eerste zich niet mogelijk is: het aanpassen van een payload resulteert ook in een nieuwe CRC. Deze is echter mee geënrypteerd waardoor het niet duidelijk is hoe we dit kunnen omzeilen. Wacht nog even tot we aan de bitflip aanval komen en alles zal duidelijk worden (dat dit dus geen probleem is).
@@ -401,13 +401,13 @@ Om een bitflip aanval te doen heeft de aanvaller enkel 1 geldig WEP frame nodig.
 
 Vervolgens maakt de aanvaller een bitflip masker: dit bestaat uit een reeks 0'n, met 1 of 2 bits op 1. Dit zijn de bits die geflipt zullen worden in de volgende stap: de XOR nemen het bitflip masker met het payload gedeelte van het oorspronkelijke pakket. Welke bits geflipt worden doet er niet toe, integendeel: we willen net een geldig WEP-frame maken mét een foute data, zoals we zo meteen zullen zien. Deze nieuwe payload willen we nu in een geldig frame plaatsen, en dus hebben we een geldige ICV nodig. We doen dit door de ICV van de nieuwe payload te berekenen en deze te XOR'n met de, geëncrypteerde originele ICV. Het resultaat is een geldig, geencrypteerde ICV voor de nieuwe payload. Bijgevolg hebben we een geldig frame kunnen maken dat door access points op het netwerk aanvaard zullen worden.
 
-![](wifi/bitflip.png)
+![De bitflip aanval](wifi/bitflip.png)
 
 Wanneer een AP dergelijk pakket krijgt zal het dit pakket braaf naar de volgende laag sturen, ook al bevat de inhoud *rommel*,, dankzij de geldige ICV. Op de volgende laag komt nu een pakket aan dat duidelijk stuk is, en deze laag zal bijgevolg een foutboodschap genereren en terugsturen. De aanvaller krijgt deze boodschap in een WEP-frame aan. En alhoewel dit pakket geencrypteerd is, weet de aanvaller de inhoud van dit pakket (daar hij heeft opgezocht wat de foutboodschap zal bevatten op de volgende laag volgens de standaard van die laag) en kan dus een geldige keystream te pakken krijgen:
 
 $c = k \oplus p \Leftrightarrow k = c \oplus p$
 
-![](wifi/respat.png)
+![Layer 3 misbruiken door corrupte, geblitflipte pakketjes, een gekende foutboodschap te laten genereren](wifi/respat.png)
 
 Dankzij de bitflip aanval kan de aanvaller dus zonder problemen keystreams groeien zoals eerder uitgelegd.
 
@@ -479,12 +479,12 @@ De IEEE 802.1X standaard is, ondertussen, een veelgebruikte standaard in veel dr
 We gaan de volledige werking van de 802.1X standaard hier niet uit de doeken doen, dat zou ons te ver brengen. Het is echter nuttig om te begrijpen dat deze standaard werd gekozen omdat hij ervoor zorgt dat de AP niet meer zelf de authenticatie moeten doen, maar dat ze gebruik maken van de bestaande authenticatie-infrastructuur van het bedrijf. De APs zullen gewoon als een doorgeefluik aan de start tussen gebruiker en de authenticatie-server optreden en de boodschappen tussen beiden uitwisselen. Enkel wanneer het AP toestemming krijgt van de authenticatieserver (meestal een RADIUS server) zal het AP de eindgebruiker toegang tot het draadloze netwerk verschaffen.
 
 
-![](wifi/port.png)
+![Port-based authenticatie met 802.1X](wifi/port.png)
 
 802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algorithme. Integendeel: het is een **framework** waar binnen andere algorithmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft-en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticiate- boodschappen tussen enerzijds het netwerkprotocol (bv Ethernet, Wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
 
 
-![](wifi/8021x.png){ width=60% }
+![De modulariteit van het 802.1X framework](wifi/8021x.png){ width=60% }
 
 EAP oftewel *Extensible Authentication Protocol* is, zoals de naam doet vermoeden, een uitbreidbaar protocol van te gebruiken authenticatie-methoden. Afhankelijk van de keuze van het bedrijf kan voor een bepaald EAP-protocol gekozen worden, het enige is gebruiksvriendelijker en of veiliger dan het andere. Uiteraard dienen zowel de client als de netwerkinfrastructuur compatibel te zijn met de gekozen EAP-methoden van het netwerk. Koop je dus een AP dat WPA2-Enterprise compatibel is, moet je nog steeds controleren of het AP compatibel is met de gekozen EAP-methode van het bedrijf.
 
@@ -493,7 +493,7 @@ De meest gebruikte EAP-methoden zijn:
 * **EAP-TLS**: gebruikt een TLS-tunnel om op een beveiligde manier te communiceren (we zagen TLS ook reeds aan het einde van crypto waar het gebruikt werd om HTTPS-trafiek te beveiligen). Hierbij gebeurt een certificaat-gebaseerde authenticatie.
 * **EAP-TTLS** (*Tunneled TLS*): Omdat niet alle eindgebruikers zich kunnen authenticeren aan de hand van een certificaat, voorziet PEAP authenticatie met behulp van een username/paswoord login, waarbij wel nog steeds een TLS tunnel wordt gebruikt voor veilige communicatie. Ter info: EAP-TTLS is quasi hetzelde als *Protected EAP* (PEAP) een ander EAP-protocol dat je soms zal zien passeren.
 
-![](wifi/8021X2.png){ width=60% }
+![Het authenticatie-proces op een wifi-netwerk met 802.1X (Enterprise-mode)](wifi/8021X2.png){ width=60% }
 
 De voorgaande figuur toont de typische uitwisseling van boodschappen die plaatsvinden wanneer een client voor het eerst verbinding wil maken op een WPA1 of WPA2 Enterprise netwerk:
 
@@ -534,7 +534,7 @@ In de literatuur wordt meestal gesproken over "Message authentication codes" of 
 
 "Michael" berekent de MIC van een payload maar gebruikt hierbij ook de authenticatie sleutel, het adres van de verzender én ontvanger. Hierdoor wordt het voor een aanvaller veel moeilijker om een dergelijke MIC na te bootsen, laat staat te *replayen*.
 
-![](wifi/michael.png){ width=60% }
+![Het aanmaken van een MIC met Michael](wifi/michael.png){ width=60% }
 
 Wanneer TKIP een 2 foute MICs na elkaar detecteert gaat het er van uit dat er een aanval bezig is. Volgende stappen worden dan ogenblikkelijk uitgevoerd door de client:
 
@@ -558,7 +558,7 @@ Het mixen van de sleutel gebeurt in twee fases, waarbij iedere fase een specifie
 * Fase 1: zorgt ervoor dat alle clients een eigen sleutel hebben doordat het verzender adres (TA, *transmitter address*) wordt toegevoegd aan de basis sleutel.
 * Fase 2: zorgt voor een 'per-pakket' sleutel waarbij kennis van de IV niet meer door de aanvallers kan misbruikt worden.
 
-![](wifi/mixing.png)
+![Het mengen van de verschillende sleutels naar een sleutel die ieder pakketje verandert](wifi/mixing.png)
 
 **Fase 1 mix**
 
@@ -573,7 +573,7 @@ In deze fase wordt de TSC (de pakket-teller, uitgelegd in de "IV selectie verbet
 
 Finaal kunnen we vervolgens WPA1 visualiseren, waarbij duidelijk is dat we vooral een wrapper rond WEP hebben verkregen, maar dat WEP nog steeds het hart van het systeem is.
 
-![](wifi/wpa1.png)
+![WPA1 in volle glorie](wifi/wpa1.png)
 
 In 2009 verschenen er al enkele exploits die WPA1-Personal misbruikten waardoor aanvallers de WPA passphrase (de PSK) konden achterhalen door de handshake aan de start van een sessie te capteren.
 
@@ -603,7 +603,7 @@ Die laatste zin impliceert een ander belangrijk veiligheidsverschil tussen enter
 :::
 
 
-![](wifi/ccmp.png)
+![CCMP: confidentiality en integrity in 1](wifi/ccmp.png)
 
 In de figuur zie je duidelijk de elegantie van het systeem en hoe de integriteit in parallel wordt berekend met de encryptie. De MIC wordt berekend met behulp van CBC-MAC, wat staat voor **cipherblock chaining - message authentication code**, een veelzeggende naam. Zoals we uit het hoofdstuk crypto weten, zal er bij CBC een keten van encrypties starten, waarbij de encryptie van het huidige blok geXOR'd wordt met het resultaat van de encryptie van het vorige blok. Het finale geencrypteerde cipherblock zal daarbij dienstdoens als MIC. Bij de minste bitfout ergens in de payload of header zal een totaal andere MIC gegenereerd worden.
 

@@ -24,7 +24,7 @@ De publieke sleutel kan iedereen, vrij, gebruiken om versleutelde berichten mee 
 
 De techniek werd in de jaren 70 door Diffie en Hellman ontwikkeld en had een grote impact op de manier waarop beveiligde communicatie op het internet mogelijk maakt. 
 
-![](crypto/public.png)
+![Publieke crypto](crypto/public.png)
 
 ::: tip
 
@@ -39,7 +39,7 @@ Enkele van de bekendere publieke cryptosystemen zijn onder andere RSA, DSS en El
 
 Asymmetrische crypto zal niet alleen het sleutel-probleem oplossen, het heeft als extra eigenschap dat het publiekprivate sleutelpaar ook dienst kan doen als **digitale handtekening** om te controleren of een boodschap wel degelijk afkomstig is van een specifiek persoon. Hierbij zal een private sleutel gebruikt worden om het digitale bericht te ondertekenen. Daar de ondertekenaar de enige persoon kan zijn die deze private sleutel in z'n bezit heeft, kan men zijn identiteit bevestigen door de bijhorende publieke sleutel te gebruiken. Enkel de bijhorende publieke sleutel zal hiervoor gebruikt kunnen worden en zo hebben we een vorm van integriteit of data authenticatie.
 
-![](crypto/sign.png)
+![Het ondertekenen van een document met behulp van je private sleutel](crypto/sign.png)
 
 We zullen dit concept verderop uitwerken, maar eerst gaan we bekijken hoe publieke crypto juist werkt.
 
@@ -106,7 +106,7 @@ Zonder in detail te treden hoe cryptocoins en blockchains werken, is het nuttig 
 
 Een zogenaamde hash is een concept uit de informatica die we gebruiken om te controleren of een digitaal stuk tekst werd aangepast of niet. Door de tekst in een hashfuntie te steken wordt een hash aangemaakt. Deze hash is een stuk code met een vaste lengte, ongeacht de originele input. Wanneer 1 bit of meer wordt aangepast in de originele boodschap dan zal deze in een totaal andere hash resulteren. Enkel dus wanneer een identiek stuk tekst als invoer (tot op bitniveau identiek) wordt gebruikt zullen twee hashen gelijk zijn.
 
-![](crypto/hash.png)
+![Het hash proces](crypto/hash.png)
 
 ::: note
 Voorgaande is uiteraard onmogelijk: daar een hash meestal veel korter is dan de originele boodschap, is het mathematisch mogelijk dat 2 totaal verschillende teksten toch dezelfde hash geven. Het is de opdracht van een goede hashfunctie om dit soort **hash collisions** zo klein mogelijk te houden!
@@ -129,7 +129,7 @@ Onder andere RSA laat toe om een digitale handtekening (**digital signature**) t
 
 Een digitale handtekening wordt als extra bericht achteraan de te versturen boodschap geplaatst. De signature is als het ware een hash berekend aan de hand van de private sleutel. De ontvanger zal nu met de bijhorende publieke sleutel van de verzender kunnen verifiëren of de bijhorende private sleutel werd gebruikt om de handtekening te genereren.
 
-![](crypto/signover.png)
+![Boodschappen ondertekenen met je private sleutel](crypto/signover.png)
 
 Om een digitale handtekening te berekenen moeten we eerst een hash van het bericht berekenen. We gebruiken hier bijvoorbeeld MD5 of één van de SHA-algoritmes voor. Deze hash gaan we nu "verpakken" met de private sleutel. 
 
@@ -148,7 +148,7 @@ De ontvanger kan nu controleren of de ontvangen boodschap ``35`` dezelfde handte
 [Getallen voorbeeld komt van hier](HTTPS://crypto.stackexchange.com/questions/11117/simple-digital-signature-example-with-number)
 :::
 
-![](crypto/signaturesend.png)
+![Het volledig proces bij een digitale handtekening](crypto/signaturesend.png)
 
 
 #### Het probleem met digitale handtekeningen
@@ -157,7 +157,7 @@ We hebben echter een probleem. Hoe weet je eigenlijk dat je wel de juiste publie
 
 We kunnen daarom als kwaadwillig persoon bijvoorbeeld een legaal bericht onderscheppen, aanpassen en dan vervolgens ondertekenen met onze eigen handtekening. Als we vervolgens aan de ontvanger kunnen wijsmaken dat jouw publieke sleutel zogezegd bij de originele verzender hoort, dan zal de ontvanger jouw aangepaste bericht "geloven". 
 
-![](crypto/signfout.png)
+![Eve misbruikt het vertrouwen dat zit ingebouwd in het digitale handtekening proces](crypto/signfout.png)
 
 Kortom, we hebben een manier nodig om de **identiteit van de eigenaar** van een publieke sleutel te verifiëren. Kom binnen: **certificaten**.
 
@@ -170,7 +170,8 @@ Certificaten worden beschreven in de **X.509** standaard.
 :::
 
 Om een certificaat aan te maken dient Bob naar een **Registration authority** (RA) gaan die zijn identiteit zal verifiëren. Dit gebeurt aan de hand van de typische documenten die ook buiten het Internet worden gebruik om iemands identiteit te bewijzen: identiteitskaart, paspoort, rijbewijs, etc. In sommige gevallen zal de RA zelfs eisen dat Bob zich naar een fysiek kantoor begeeft om daar z'n identiteit *in the flesh* te bewijzen. Indien de RA de identiteit heeft bevestigd zal deze de aanvraag van Bob doorsturen naar een **Certification authority** (CA), inclusief Bobs publieke sleutel. 
-![](crypto/certreg.png)
+
+![Een certificaat registreren](crypto/certreg.png)
 
 ::: tip
 Het gehele systeem van CA's, RA's, etc. dat bestaat om certificaten uit te geven, beheren en bewijzen heet een **public key infrastructure** (**PKI**).
@@ -181,16 +182,16 @@ De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensd
 * Het certificaat is een geëncrypteerde hash van Bobs publieke sleutel, informatie over de CA en over Bob. De encryptie van de hash gebeurt aan de hand van de private sleutel van de CA.
 * Om later de echtheid van een certificaat te testen voldoet het om dezelfde hash te genereren (publieke sleutel, info over Bob en CA) en deze te vergelijken met het certificaat na decryptie met de publieke sleutel van de CA. Als deze gelijk zijn weten we dat het certificaat door de gegeven CA werd ondertekend (enkel hun private/publiek sleutel paar zal terug de originele hash geven).
 
-![](crypto/certcreatie.png)
+![Een certificaat aanmaken](crypto/certcreatie.png)
 
 
 Voorgaande proces zal plaatsvinden wanneer je browser via een **HTTPS** verbinding surft naar een website en zo wil controleren of wel degelijk met de website wordt gecommuniceerd en niet met een imposter. Indien de browser (of de gebruiker) twijfelt aan de echtheid van de publieke sleutel van de CA die het certificaat van de website ondertekent, dan zal het voorgaande proces zich herhalen, maar deze keer om het certificaat van de CA te controleren met behulp van een bovenliggende CA. Op die manier kan het dus zijn dat een keten van CA's ontstaan die telkens CA's onder zich bewijzen. Uiteraard zal er steeds bovenaan zo'n ketting een **root CA** staan. Als je die vertrouwt, dan kan je al de CA's er onder dus ook vertrouwen...maar ook vice versa! 
 
-![](crypto/webcert.png)
+![Het certificaat tijdens het surven](crypto/webcert.png)
 
 Het ergste dat voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op hun systemen dan bestaat er de kans dat aanvallers de private sleutel van de de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kans bestaat, is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
 
-![](crypto/chaintrust.png){width=60%}
+![De chain-of-trust: oh zo belangrijk bij digitale certificaten](crypto/chaintrust.png){width=60%}
 
 
 ::: note
@@ -209,7 +210,7 @@ Zo zien we onder andere de geldigheidsduur, alsook de CA die dit certificaat hee
 
 En op de laatste tab, Certificeringspad, zien we de chain of trust. We kunnen vervolgens hier de bovenliggende certificaten bekijken.
 
-![](crypto/belcert0.png)
+![Het certificaat van België](crypto/belcert0.png)
 
 Het certificaat van Sectigo is uiteraard een **selfsigned certificate**, daar zij "bovenaan de hiërarchie staan". Als we Sectigo niet vertrouwen dan kunnen we ook de communicatie met *belgium.be* niet vertrouwen daar.
  
@@ -221,7 +222,8 @@ Naast certificaten voor webserver (zogenaamde **SSL certificaten**) kan je ook e
 
 Als je in Windows 10 een applicatie of installer probeert uit te voeren dan zal de ingebouwde *SmartScreen* service ogenblikkelijk de echtheid (of ontbreken van) het certificaat controleren, net zoals dit ook in de browser zou gebeuren.
 
-![](crypto/smartscreen.png){width=40%}
+![Windows 10 Smartscreen beschermd je van niet digitaal ondertekende software](crypto/smartscreen.png){width=40%}
+
 :::
 
 ## HTTPS en TLS
@@ -230,7 +232,7 @@ Certificaten vormen het hart van een veilige manier van surfen. HTTPS, "http-sec
 
 HTTPS is een protocol dat een zogenaamde beveiligde tunnel opzet tussen jou en de website waarover vervolgens gewoon http-verkeer kan verlopen (dit gebeurt over poort 443 in plaat van de klassieke poort 80 waarover http verloopt). Deze tunnel wordt opgezet door het **TLS**-protocol, het *Transport Layer Security* protocol, dat de opvolger is van **SSL** (*Secure Sockets Layer*). TLS gebruikt certificaten om te vergewissen dat de website aan de andere zijde wel degelijk de website is die de gebruiker verwacht. Het doet dit door de publieke sleutel van de website eerst te controleren voor het vervolgens deze sleutel gebruikt om een gemeenschappelijke sleutel af te spreken die zal dienst doen als de encryptie-sleutel voor de gemeenschappelijke tunnel. Vanaf dit punt kunnen derden de trafiek van en naar de website niet meer sniffen.
 
-![](crypto/tlshttp.png){}
+![De erg belangrijke TLS tunnel tijdens het surfen met HTTPS](crypto/tlshttp.png){}
 
 Samengevat zal dus TLS 2 zaken doen:
 
@@ -251,7 +253,7 @@ Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (In
 ::: tip
 *mitmproxy* is een krachtige linux-tool die een man-in-the-middle aanval op HTTPS toelaat. Het zal ervoor zorgen dat een aanvaller zich tussen jou en het internet kan nestelen en vervolgens doen alsof al je HTTPS-verbinding veilig blijven. In de praktijk zorgt mitmproxy ervoor dat alle HTTPS-verbinding van de client naar de aanvaller gebeuren, die op zijn beurt TLS-tunnels zal opzetten met de website waar het slachtoffer naar surft.
 
-![](crypto/mitmproxy.png){width=80%}
+![Een man-in-the-middle aanval met TLS](crypto/mitmproxy.png){width=80%}
 
 De aanvaller zal echter nog steeds geen geldige certificaten kunnen genereren waardoor moderne browsers normaal gezien hier een waarschuwing zouden moeten geven.
 

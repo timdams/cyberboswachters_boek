@@ -81,7 +81,7 @@ Het is ook essentiëel dat je je als cyberboswachter abonneert op de juiste info
 
 ::: warning
 
-![](iot/brak.jpg){ width=30% }
+![BrakTooth: de zoveelste Bluetooth kwetsbaarheid](iot/brak.jpg){ width=30% }
 
 Vaak zijn we afhankelijk van de fabrikanten om beveiligingslekken te dichten in onze software en hardware. Uiteraard zijn er fabrikanten die maar *x* aantal jaren patches uitbrengen, en er zijn ook al tal van IoT-apparaten op de markt waarvan de fabrikant al jaren niet meer bestaat.
 

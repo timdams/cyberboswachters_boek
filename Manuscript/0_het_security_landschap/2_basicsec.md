@@ -49,7 +49,7 @@ De meeste fabrikanten van besturingssystemen (Apple, Microsoft, etc.) en veelgeb
 ::: tip
 In 2021 verscheen "How they tell me the world ends" van New York Times journaliste Nicole Perlroth. Dit boek is erg ontluisterend en geeft een griezelig inzicht in hoe het er momenteel aan toe gaat in de schimmige wereld van zero days, offensieve cybersecurity, etc. Bekijk bijvoorbeeld maar eens de twitter-account van Chaouki Bekrar ([twitter.com/cbekrar](https://twitter.com/cbekrar)), oprichter van Zerodium, een zero-days *broker* en huiver bij de gigantische prijzen die zero days waard kunnen zijn (soms meer dan 1 miljoen dollar...).
 
-![](intro/zerodium.png){ width=70% }
+![Een bericht van Zerodium in 2021](intro/zerodium.png){ width=70% }
 
 :::
 

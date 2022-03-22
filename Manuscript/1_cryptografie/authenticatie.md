@@ -92,7 +92,7 @@ Om bestand te zijn tegen de rainbow attack dienen we de set van mogelijke paswoo
 
 Wel nu, dit concept kan je ook toepassen bij wachtwoorden en heet **salting**. Een salt is een extra stuk dat je toevoegt aan het paswoord **voor je de hash** berekent. Dit extra stukje is een willekeurig getal dat je uiteraard zal mee moeten opslaan in de database. Wanneer twee gebruikers hetzelfde paswoorden zouden hebben, dan zouden ze , dankzij hun unieke salt, toch beide totaal verschillende hashes genereren. Niet alleen dat, maar de salt zorgt er dus ook voor dat de set van mogelijk paswoorden véél groter wordt. 
 
-![](auth/salting.png){ width=70% }
+![Het salting proces](auth/salting.png){ width=70% }
 
 In de database bewaren we dus nu volgende informatie:
 
@@ -124,7 +124,7 @@ De oorsprong van Petya en NotPetya werd getraceerd en is vermoedelijk het result
 
 Om iemand te authenticeren spraken we totnogtoe enkel over een username/paswoord systeem. Echter,er zijn vele andere manieren om iemand te authenticeren. We spreken over "**challenge-response authentication (SCRAM)** wanneer de gebruiker een vraag gesteld krijgt (de *challenge*) en hij hierop een geldig antwoord (de *response*) moet geven voor hij wordt toegelaten. Authenticeren met een paswoord is dus een vorm van CRAM. Er zijn er echter nog vele andere denk maar aan de gehekelde CAPTCHAs -de ambetante vraag om te bewijzen dat je geen robot bent door alle boten in een afbeeldingen aan te duiden- of inloggen met behulp van je iris-scan.
 
-![](auth/cram.png){}
+![CRAM](auth/cram.png){}
 
 Om het probleem van *pass-the-hash* op te lossen kan je gebruiken maken van een **SCRAM**, een *salted challenge response authentication mechanism*. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted paswoord loging van daarnet. Met dit systeem zorgen we ervoor dat 
 
@@ -139,7 +139,7 @@ Het mechanisme werkt als volgt:
 4. De client stuurt deze hash, de response, terug naar de server.
 5. De server vergelijkt of zijn gegenereerde response hash dezelfde is als die van de gebruiker.
 
-![](auth/scram.png){}
+![SCRAM](auth/scram.png){}
 
 ::: tip
 Merk op dat we ook hier nog steeds met een salted paswoord kunnen werken. Het enige dat dan verandert is dat de server naast de challenge, ook de te gebruiken salt doorstuurt die reeds in de database bewaard werd samen met de salted hash van de gebruiker.
@@ -209,11 +209,11 @@ Er zijn twee grote families van hardware-gebaseerde authenticatie-vormen:
 
 Een nadeel van deze groep is dat het om een fysiek object gaat dat je kan verliezen of dat stuk kan gaan.
 
-## Federation en single-sign on (SSO)
+## Federation en single sign-on (SSO)
 
-Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef* een eigen crypto-algoritme te ontwikkelen. De kans dat je fouten met verstrekkende gevolgen maakt is te groot. Ook bij het omgaan van login-data van gebruikers en hou je ze authenticeert is het aangeraden om even te bezinnen voor je er zelf aan begint. Dankzij het concept **federation** hoef je niet wakker te liggen hoe je je gebruikerspaswoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app),de *service provider*, kunnen inloggen waarbij een *thirdparty* -die jij en je gebruiker vertrouwt- voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single-sign on* (sso)authenticatie.
+Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef* een eigen crypto-algoritme te ontwikkelen. De kans dat je fouten met verstrekkende gevolgen maakt is te groot. Ook bij het omgaan van login-data van gebruikers en hou je ze authenticeert is het aangeraden om even te bezinnen voor je er zelf aan begint. Dankzij het concept **federation** hoef je niet wakker te liggen hoe je je gebruikerspaswoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app),de *service provider*, kunnen inloggen waarbij een *thirdparty* -die jij en je gebruiker vertrouwt- voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single sign-on* (sso)authenticatie.
 
-![](auth/sso.png){}
+![Een vereenvoudig single sign-on proces](auth/sso.png){}
 
 ::: tip
 Federation via sso is een onderdeel van *federated identity management*, een grote groep technologieën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt.
