@@ -74,16 +74,18 @@ De modulo operator (%) is erg nuttig bij substitutie-algoritmes zoals bij Caesar
 Je kan de operator gebruiken om snel te weten wat de waarde van een teken wordt bij Caesar-encryptie als volgt:
 
 
-``teken % sleutel => nieuw teken``
+``(teken + sleutel) % alfabetLengte => nieuw teken``
+
+De alfabetLengte is bij Caesar 26, namelijk alle letters van A tot en met Z.
+
+Als je dus een sleutel hebt met waarde 7 en je wilt weten wat de waarde van ``Y`` (element 24, daar we vanaf 0 tellen) wordt dan schrijf je:
 
 
-Als je dus een sleutel hebt met waarde 7 en je wilt weten wat de waarde van ``Y`` (element 25) wordt dan schrijf je:
+``(24 + 7) % 26 => 5``
 
 
-``25 % 7``
+Dit zal dus 5 worden, oftewel een ``E``.
 
-
-Dit zal dus 4 worden, oftewel een ``D``.
 :::
 
 Het Caesercipher wordt ook wel kortweg *Rot* genoemd, naar het woord *rotatie*. Een cijfer erachter geeft dan aan welk de te gebruiken sleutel is. Rot4 wil dus zeggen dat alle elementen 4 plaatsen opgeschoven moeten worden.

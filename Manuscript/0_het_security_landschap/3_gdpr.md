@@ -1,7 +1,8 @@
 # Appendix 1: GDPR 
 
 De General Data Protection Regulation (2018), of in het Nederlands de *Algemene Verordering Gegevensbescherming* is een Europese richtlijn om de privacy van Europese burgers, eender waar in de wereld, te beschermen. Of zoals de EU zelf op haar website beschrijft "the thoughest privacy and security law in the world" (wat ook effectief zo is: het is de enige wet momenteel die er in slaagt om wereldwijd de regels ervan af te dwingen).
-De wet zelf bestaat uit 99 verschillende artikels die de rechten, personen en verplichtingen van bedrijven die onder de verordering vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doet.
+
+De wet zelf bestaat uit 99 verschillende artikels die de rechten, personen en verplichtingen van bedrijven die onder de verordering vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doet. GDPR gaat dus niet over de rechten van de personen, wel om die van de bedrijven, namelijk ter bescherming van personen. 
 
 ::: tip
 We gaan in dit hoofdstuk enkel een high-level overzicht geven van GDPR opdat we niet verzanden in de taal der rechters en advocaten, het *legalese*.
@@ -10,17 +11,19 @@ We gaan in dit hoofdstuk enkel een high-level overzicht geven van GDPR opdat we 
 ## Wat omvat GDPR
 
 
-*Het recht om persoonlijke gegevens te wissen of het recht om vergeten te worden.* GDPR laat je toe, als EU-burger om eender welke site die 'jou kent' te verplichten alle, of specifieke, informatie over je te verwijderen. Als je dus vindt dat Google niet moet weten waar je huisadres is, dan heb je het recht google te verplichten deze informatie te verwijderen. 
+**Het recht om persoonlijke gegevens te wissen of het recht om vergeten te worden.** GDPR laat je toe, als EU-burger om eender welke site die 'jou kent' te verplichten alle, of specifieke, informatie over je te verwijderen. Als je dus vindt dat Google niet moet weten waar je huisadres is, dan heb je het recht google te verplichten deze informatie te verwijderen. 
 
 ::: note
 Google kreeg een tijd terug een zeer stevige boete omdat het niet inging op de vraag van een EU-burger om *vergeten te worden*.  Sindsdien zijn ze een pak behulpzamer in het naleven van de GDPR-wetgeving.
 :::
 
-Een ander belangrijk aspect van GDPR is het zogenaamde **recht op overdraagbaarheid van gegevens.** Voor GDPR bestond was het soms een helse opdracht om bijvoorbeeld van internetprovider te veranderen. Iedere provider werkte met eigen dataformaten waarin de klantengegevens werden bewaard. Bij een overdracht moest dit dan altijd omgezet worden naar het formaat van de nieuwe provider. GDPR verplicht dat dit soort data overdrachten van persoonsgegevens nu volgens een vast formaat moeten gebeuren. En belangrijker: deze overdracht moet zo transparant én zo geautomatiseerd mogelijk gebeuren. Hierdoor kan de data quasi ogenblikellijk in de de database van de ontvanger geïntegreerd worden en zal jij als klant dus veel sneller de overstap kunnen maken zonder alle bijhorende administratieve rompslomp en vertragingen.
+Een ander belangrijk aspect van GDPR is het zogenaamde **recht op overdraagbaarheid van gegevens.** Voor GDPR bestond was het soms een helse opdracht om bijvoorbeeld van internetprovider te veranderen. Iedere provider werkte met eigen dataformaten waarin de klantengegevens werden bewaard. Bij een overdracht moest dit dan altijd omgezet worden naar het formaat van de nieuwe provider. GDPR verplicht dat dit soort data overdrachten van persoonsgegevens nu volgens een vast formaat moeten gebeuren. En belangrijker: deze overdracht moet zo transparant én zo geautomatiseerd mogelijk gebeuren. Hierdoor kan de data quasi ogenblikkelijk in de de database van de ontvanger geïntegreerd worden en zal jij als klant dus veel sneller de overstap kunnen maken zonder alle bijhorende administratieve rompslomp en vertragingen.
 
 ::: note
 De voorganger van de GDPR was de DPD (Data Protection Directive). Dit was geen Europese wet (verodering) maar een aanbeveling en was een stap in de goede richting maar nog niet ver genoeg. GDPR heeft ervoor gezorgd dat individuele burgers geen speelbal meer zijn van de grote bedrijven die de data van burgers als het nieuwe goud verzamelen en ermee doen wat ze zelf willen. 
 :::
+
+Als derde belangrijke aspect voorziet GDPR **de plicht om niet noodzakelijke gegevens te laten wissen**. 
 
 ## Wat beschermt GDPR
 
@@ -33,6 +36,12 @@ De GDPR wet zorgt ervoor dat bedrijven veel bewuster met gebruikersdata omgaan. 
 * Raciale en/of etnische gegevens.
 * Politieke meningen.
 * Seksuele geaardheid.
+
+## Persoonlijke data buiten EU
+
+::: note
+Hier komt de flowchart om te bepalen wat er moet gebeuren mindien EU-personen data buiten de EU wordt bewaard.
+:::
  
 ## Meldplicht datalekken
 

@@ -53,8 +53,10 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog
 
-**Dit is versie 0.4.2** (22/1/22)
+**Dit is versie 0.4.2.1** (25/4/22)
 
+* 0.4.2.1
+  * Modulo-operator uitleg in H2 verbeterd.
 * 0.4.2
   * Secties in hoofdstuk 1 ("Wie zijn de stropers?", "Je verdediging ontwerpen", "Social engineering", etc.) uitgeschreven
   * Mimikatz in hoofdstuk Authenticatie
