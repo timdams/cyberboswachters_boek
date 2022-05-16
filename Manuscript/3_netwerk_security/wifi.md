@@ -105,7 +105,7 @@ Voor aanvallers actieve aanvallen kunnen starten op een netwerk dienen ze verbin
 
 In deze stap zal de client ontdekken welke netwerk er in de omgeving zijn. Oftewel zoekt de client specifiek naar een netwerk, oftewel wil hij gewoon een oplijsting van alle aanwezige netwerken. Ieder draadloze netwerk heeft een netwerknaam, de **SSID** (*service set identifier*) die bestaat uit een 32 byte ASCII character string, en zal deze op geregeld tijdstip broadcasten voor iedereen die hier nood aan heeft (we merkten al eerder op dat dit broadcasten kan uitgezet worden, maar dat dat een vals gevoel van veiligheid zal geven). Naast het SSID zal ieder netwerk ook meerdere fysische parameters uitsturen die de client in de volgende stap zal nodig hebben. 
 
-Er zijn meerdere kanalen beschikbaar in het spectrum waar binnen een netwerk mag werken. De client zal bij het scannen daarom steeds enkele milliseconden op een bepaald kanaal luisteren om potentiële SSID boradcasts op te vangen, om dan naar het volgende kanaal hetzelfde te doen. 
+Er zijn meerdere kanalen beschikbaar in het spectrum waar binnen een netwerk mag werken. De client zal bij het scannen daarom steeds enkele milliseconden op een bepaald kanaal luisteren om potentiële SSID broadcasts op te vangen, om dan naar het volgende kanaal hetzelfde te doen. 
 
 #### Verbinden
 
@@ -137,7 +137,7 @@ Deze vorm van authenticatie werd eerst gezien als de "er is geen authenticatie n
 
 In netwerken met deze modus om te authenticeren worden er exact 2 frames tussen client en AP uitgewisseld:
 
-1. Eerst vraagt de de client aan het AP toegang.
+1. Eerst vraagt de client aan het AP toegang.
 2. Vervolgens stuurt het AP naar de client een "Welkom" frame.
 
 Meer gebeurt er niet in deze modus.
@@ -342,7 +342,7 @@ Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol
 
 1. Een gekende plaintext boodschap (bijvoorbeeld een emailbericht of ping) wordt naar het AP gestuurd (via het internet bijvoorbeeld), dat vervolgens door de aanvaller in het oog wordt gehouden. Noot: als de aanvaller enkel het draadloze netwerk ter beschikking heeft (en niet het internet) dan zal een bitflip-aanval moeten gebruikt worden, wat we verderop zullen uitleggen.
 2. De aanvaller blijft sniffen tot het de ciphertext ziet passeren waarin (vermoedelijk) z'n gestuurde plaintext zit.
-3. Vervolgens kan de aanvaller een keystream te pakken krijgen door z'n plaintext te XOR'n met de gecapteerde ciperhtext: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$.
+3. Vervolgens kan de aanvaller een keystream te pakken krijgen door z'n plaintext te XOR'n met de gecapteerde cipherhtext: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$.
 
 
 ![Known plaintext in het wifi-netwerk krijgen](wifi/inject.png)
