@@ -53,8 +53,10 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog
 
-**Dit is versie 0.4.2.1** (25/4/22)
+**Dit is versie 0.4.2.2** (16/5/22)
 
+* 0.4.2.2
+  * Typos
 * 0.4.2.1
   * Modulo-operator uitleg in H2 verbeterd.
 * 0.4.2
