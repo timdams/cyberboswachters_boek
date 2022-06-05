@@ -355,7 +355,7 @@ Omdat er geen replay protection aanwezig is, kan de aanvaller heel eenvoudig z'n
 
 1. De aanvaller maakt een plaintext pakketje aan dat 1 byte langer is dan de keytstream die hij al heeft. Het ping-commando (ICMP) kan je met de "-l" optie bijvoorbeeld een ping van eender welke bytesize laten genereren. Het voordeel van het ping-commando gebruiken is ook dat we exact weten wat voor response er kan verwacht worden.
 2.	De aanvaller plakt nu 1 byte achter de gecapteerde keystream. Hij kiest hierbij een willekeurige waarde en heeft dus 1 kans op 256 om de juiste te kiezen. 
-3. De aanvaller XOR'r deze keystream met het commando uit stap 1 en stuurt dit op het netwerk. 
+3. De aanvaller XOR'd deze keystream met het commando uit stap 1 en stuurt dit op het netwerk. 
 4. Indien de aanvaller in stap 2 de juiste byte gekozen heeft dan zal er een reactie op de ping volgen (daar het pakket werd gedecrypteerd door het AP en dan hoger in de OSI-stack door het netwerk werd gestuurd). Als de keystream fout is zal er geen reactie komen daar het AP het pakketje als foutief heeft weggegooid en dus heeft genegeerd.
 5. Als een verkeerde byte werd gekozen in stap 2 dan zal de gebruiker dit proces onieuw starten en nu een andere byte-waarde kiezen. Hij zal dit blijven herhalen tot hij in stap 4 reactie krijgt en dus weet dat hij nu z'n keystream met succes heeft doen groeien met 1 byte.
 
@@ -390,7 +390,7 @@ CRC-32 is een zogenaamde lineaire functie. Zonder in detail hierover in te gaan 
 
 Of beter gezegd:
 
-$CRC (boodschap_1) \oplus CRC (message_2) = CRC (message_1 \oplus message_2)$
+$CRC (boodschap_1) \oplus CRC (boodschap_2) = CRC (boodschap_1 \oplus boodschap_2)$
 
 Door deze eigenschap kunnen we gecontroleerd aanpassingen aan paketten doen, zonder daarmee de CRC te breken. Welgekome, bitflip aanval.
 
@@ -399,11 +399,11 @@ Door deze eigenschap kunnen we gecontroleerd aanpassingen aan paketten doen, zon
 
 Om een bitflip aanval te doen heeft de aanvaller enkel 1 geldig WEP frame nodig. Hij hoeft zelfs niet te weten wat de inhoud ervan is, zolang het maar een geldig frame is. 
 
-Vervolgens maakt de aanvaller een bitflip masker: dit bestaat uit een reeks 0'n, met 1 of 2 bits op 1. Dit zijn de bits die geflipt zullen worden in de volgende stap: de XOR nemen het bitflip masker met het payload gedeelte van het oorspronkelijke pakket. Welke bits geflipt worden doet er niet toe, integendeel: we willen net een geldig WEP-frame maken mét een foute data, zoals we zo meteen zullen zien. Deze nieuwe payload willen we nu in een geldig frame plaatsen, en dus hebben we een geldige ICV nodig. We doen dit door de ICV van de nieuwe payload te berekenen en deze te XOR'n met de, geëncrypteerde originele ICV. Het resultaat is een geldig, geencrypteerde ICV voor de nieuwe payload. Bijgevolg hebben we een geldig frame kunnen maken dat door access points op het netwerk aanvaard zullen worden.
+Vervolgens maakt de aanvaller een bitflip masker: dit bestaat uit een reeks 0'n, met 1 of 2 bits op 1. Dit zijn de bits die geflipt zullen worden in de volgende stap: de XOR nemen het bitflip masker met het payload gedeelte van het oorspronkelijke pakket. Welke bits geflipt worden doet er niet toe, integendeel: we willen net een geldig WEP-frame maken mét een foute data, zoals we zo meteen zullen zien. Deze nieuwe payload willen we nu in een geldig frame plaatsen, en dus hebben we een geldige ICV nodig. We doen dit door de ICV van de nieuwe payload te berekenen en deze te XOR'n met de, geëncrypteerde originele ICV. Het resultaat is een geldig, geencrypteerde ICV voor de nieuwe payload. Bijgevolg hebben we een geldig frame kunnen maken dat door access points op het netwerk aanvaard zal worden.
 
 ![De bitflip aanval](wifi/bitflip.png)
 
-Wanneer een AP dergelijk pakket krijgt zal het dit pakket braaf naar de volgende laag sturen, ook al bevat de inhoud *rommel*,, dankzij de geldige ICV. Op de volgende laag komt nu een pakket aan dat duidelijk stuk is, en deze laag zal bijgevolg een foutboodschap genereren en terugsturen. De aanvaller krijgt deze boodschap in een WEP-frame aan. En alhoewel dit pakket geencrypteerd is, weet de aanvaller de inhoud van dit pakket (daar hij heeft opgezocht wat de foutboodschap zal bevatten op de volgende laag volgens de standaard van die laag) en kan dus een geldige keystream te pakken krijgen:
+Wanneer een AP dergelijk pakket krijgt zal het dit pakket braaf naar de volgende laag sturen, ook al bevat de inhoud *rommel*, dankzij de geldige ICV. Op de volgende laag komt nu een pakket aan dat duidelijk stuk is, en deze laag zal bijgevolg een foutboodschap genereren en terugsturen. De aanvaller krijgt deze boodschap in een WEP-frame aan. En alhoewel dit pakket geencrypteerd is, weet de aanvaller de inhoud van dit pakket (daar hij heeft opgezocht wat de foutboodschap zal bevatten op de volgende laag volgens de standaard van die laag) en kan dus een geldige keystream te pakken krijgen:
 
 $c = k \oplus p \Leftrightarrow k = c \oplus p$
 
@@ -414,10 +414,10 @@ Dankzij de bitflip aanval kan de aanvaller dus zonder problemen keystreams groei
 
 ### Probleem 4: Sleutelmanagement
 
-Het moge duidelijk zijn: cosntant dezelfde WEP-sleutel gebruiken, op meerdere apparaten, gedurende meerdere dagen, is vragen om problemen. Werknemers die ontslagen worden kunnen een potentiële sleutel-lekkage veroorzaken met alle gevolgen van dien. Administrators moeten manueel nieuwe sleutels in voeren bij de werkgevers, etc. Kortom, 2 belangrijke oorzaken zorgen voor een nog lagere beveligingsgraad van WEP dan er al was ten gevolge van de voorbije 3 problemen (IV, RC4, CRC):
+Het moge duidelijk zijn: constant dezelfde WEP-sleutel gebruiken, op meerdere apparaten, gedurende meerdere dagen, is vragen om problemen. Werknemers die ontslagen worden kunnen een potentiële sleutel-lekkage veroorzaken met alle gevolgen van dien. Administrators moeten manueel nieuwe sleutels invoeren bij de werkgevers, etc. Kortom, 2 belangrijke oorzaken zorgen voor een nog lagere beveiligingsgraad van WEP dan er al was ten gevolge van de voorbije 3 problemen (IV, RC4, CRC):
 
-1. Er is **geen geautomatiseerd sleutel verversmechanisme**: idealiter worden de sleutels binnen 1 sessie vervangen voor dat de poole van mogelijke IV's is opgeraakt.
-2. Er is **geen gecentraliseerd sleutelmanagementsystee**m.
+1. Er is **geen geautomatiseerd sleutel verversmechanisme**: idealiter worden de sleutels binnen 1 sessie vervangen voor dat de verzameling van mogelijke IV's is opgeraakt.
+2. Er is **geen gecentraliseerd sleutelmanagementsysteem**.
 
 
 ## Hoe WEP oplossen?
@@ -460,10 +460,10 @@ Ondertussen bestaat er ook WPA3, die we op het einde van dit hoofdstuk zullen be
 
 ## WPA1
 
-Voor de tijdelijke oplossing, WPA1n werden volgende beperkingen geïdentificeerd:
+Voor de tijdelijke oplossing, WPA1 werden volgende beperkingen geïdentificeerd:
 
 * Zoals verteld, miljoenen WEP-gebaseerde apparaten waren reeds  in gebruik. Deze apparaten zouden met behulp van een firmware upgrade gepatcht moeten kunnen worden naar de tussendtijdse oplossing.
-* De meeste AP's werkten met processoren die reeds quasi volcontinue tegen hun maximum capaciteit werkten. De extra algorithmes die het AP moesten draaien mocht dus maar een beperkte overhead creëren.
+* De meeste AP's werkten met processoren die reeds quasi volcontinue tegen hun maximum capaciteit werkten. De extra algorithmes die het AP moest draaien mocht dus maar een beperkte overhead creëren.
 * Delen van de RC4 encryptie zijn *hardwired* voor een deel in de hardware van de AP. Hierdoor kunnen bepaalde delen van WEP onmogelijk 'omzeilt' worden en hangen we dus inherent vast aan WEP.
 
 

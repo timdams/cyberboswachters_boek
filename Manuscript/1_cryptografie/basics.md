@@ -22,9 +22,9 @@ Alle bestaande cryptografische systemen kunnen op verschillende manieren gekarak
 
 * De **acties** die op de data wordt uitgevoerd om deze te encrypteren:
   * Substitutie: een teken door een ander teken vervangen.
-  * Transpositie: een teken naar op een andere plek in de tekst zetten.
+  * Transpositie: een teken op een andere plek in de tekst zetten.
   * Product: een combinatie van meerdere substituties en transposities.
-* Het **aantal sleutels** dat nodig is:
+* Het **aantal sleutels** dat nodig zijn:
   * 1 sleutel, ook wel "private encryption" genoemd.
   * 2 sleutels, ook wel "public encryption" genoemd.
 * De **manier** waarop de data wordt verwerkt:
@@ -55,7 +55,7 @@ Stel dat je een sleutel hebt die bestaat uit 8 karakters. Een karakter is een le
 
 ## De eerste algoritmes
 
-Het doel van ieder encryptie-algoritme is dus om data zodanig te versleutelen zodat enkel eigenaars van de gebruikte sleutel de originele tekst kunnen terugvinden. We vertelden net dat encryptiealgoritmes kunnen onderverdeeld volgens de actie die ze uitvoeren: substitutie, transpositie of een combinatie. We tonen van iedere variant nu een historisch voorbeeld.
+Het doel van ieder encryptie-algoritme is dus om data zodanig te versleutelen zodat enkel eigenaars van de gebruikte sleutel de originele tekst kunnen terugvinden. We vertelden net dat encryptiealgoritmes kunnen onderverdeeld worden volgens de actie die ze uitvoeren: substitutie, transpositie of een combinatie. We tonen van iedere variant nu een historisch voorbeeld.
 
 ::: tip
 Volgende tool, speciaal gemaakt om crypto te leren, is een erg handig iets om de verschillende cryptografische systemen te visualiseren én testen: [link](HTTPS://www.cryptool.org/en/ct2/)
@@ -107,7 +107,7 @@ Het principe van Caesar-encryptie, de substitutie, blijft echter overeind staan 
 
 ### Transpositie: scytale encryptie
 
-Bij transpositie-algoritmen gaan we de positie van de karakters veranderen. De sleutel kan hierbij bepalen op welke manier dit moet gebeuren. De Oude Grieken gebruikten een zogenaamde scytale om aan transpositie-encryptie te doen. Een scytale was een lange stok bestaande uit 3 of meerdere lange zijden. De boodschap werd op een lang lint geschreven en dit lint werd dan over de skytale gedraaid. De sleutel gaf aan uit hoeveel vlakken de te gebruiken scytale moest bestaan. Ieder karakter van de plaintext (het lint) kwam op een andere zijde te liggen. Vervolgens werden alle letters op 1 zijde achter elkaar gezet, en dit werd herhaald voor iedere zijde: dit werd de ciphertext die werd doorgestuurd.
+Bij transpositie-algoritmen gaan we de positie van de karakters veranderen. De sleutel kan hierbij bepalen op welke manier dit moet gebeuren. De Oude Grieken gebruikten een zogenaamde scytale om aan transpositie-encryptie te doen. Een scytale was een lange stok bestaande uit 3 of meerdere lange zijden. De boodschap werd op een lang lint geschreven en dit lint werd dan over de scytale gedraaid. De sleutel gaf aan uit hoeveel vlakken de te gebruiken scytale moest bestaan. Ieder karakter van de plaintext (het lint) kwam op een andere zijde te liggen. Vervolgens werden alle letters op 1 zijde achter elkaar gezet, en dit werd herhaald voor iedere zijde: dit werd de ciphertext die werd doorgestuurd.
 
 Om nu de ciphertext te decrypteren werd een onbeschreven lint over de juiste scytale gelegd. Vervolgens werd de verkregen ciphertext op dit lint, zijde per zijde, overgeschreven. Als de ontvanger dan het lint ontrolde kreeg hij terug de originele tekst te zien.
 
@@ -135,7 +135,7 @@ Doel van dit hoofdstuk is ook aantonen dat je geen wiskundig wondertalent moet z
 
 ## Cryptanalyse
 
-De term cryptanalyse is nu al enkele keren nu gevallen: de wereld van de cryptologie bestaat uit 2 delen, die elkaars tegengestelden zijn:
+De term cryptanalyse is nu al enkele keren gevallen: de wereld van de cryptologie bestaat uit 2 delen, die elkaars tegengestelden zijn:
 
 1. Cryptografie: de wetenschap van het versleutelen van informatie.
 2. Cryptanalyse: de wetenschap van het ontcijferen van versleutelde informatie, zonder kennis van de gebruikte sleutel.
@@ -143,6 +143,8 @@ De term cryptanalyse is nu al enkele keren nu gevallen: de wereld van de cryptol
 We gaan in dit boek niet te veel tijd aan de wondere wereld van cryptanalyse spenderen, daar dit ons te ver zou brengen. We vatten echter even de belangrijkste concepten hier samen.
 
 ### Sleutellengtes en brute forcen
+
+De term *bruteforce* is al enkele keren gepasseerd. Maar we hebben deze term nooit verklaard. Dat lossen we nu op! De naam dekt de lading erg goed, en als je het letterlijk vertaald dan weet je genoeg: met brute kracht forceren. Kortom, je gebruikt het wanneer je niet weet wat doen en gewoonweg de minst efficiënte manier mogelijk zal toepassen, maar waarvan wel geweten is dat ze altijd zal werken. Namelijk iedere mogelijke sleutel testen die het cipher toelaat. 
 
 Zoals je je kan inbeelden is de sleutellengte evenredig met de tijd die cryptanalysten  nodig hebben om je sleutel te bruteforcen. De maximale tijd die nodig is alle sleutels van een bepaalde lengte te berekenen kan je als volgt vinden: 
 
@@ -183,6 +185,31 @@ Per extra GeForce-kaart die de aanvaller zou gebruiken halveert de tijd in deze 
 Om bovenstaande gigantische getallen wat te duiden: de leeftijd van ons universum wordt op 13,8 miljard jaar geschat, oftewel $13,8*10^{9}$ jaren. Onze mooie blauwe planeet is ongeveer 4,5 miljard jaar oud. De Tyrannosaurus Rex liep ongeveer 70 miljoen jaar geleden rond, oftewel $70*10^{6}$ jaren geleden. 
 :::
 
+#### Dictionary attack
+
+Wanneer de cryptanalyst vermoed dat de te zoeken sleutel iets anders is dan volledig willekeurige tekens dan kan hij de bruteforce aanval verbeteren. In plaats van alle mogelijke combinaties (permutaties) van de sleutel te testen, zal hij een woordenboek (**dictionary**) gebruiken met daarin alle mogelijke sleutels en woorden die mogelijk de originele sleutel bevatten.
+
+Tools zoals John The Ripper kan je *voeden* met een dergelijk woordenboek en dan vragen om sleutels te testen die gebaseerd zijn op zaken uit die woordenboek, inclusief bijvoorbeeld door er tekens voor en na te zetten. Als in het woorden het woord *god* staat, dan kan Jack The Ripper bijvoorbeeld ook alle sleutels testen zoals *god1*, *god2*, etc. 
+
+Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest gebruikte wachtwoorden die cryptanalysten (en dus ook de digitale stropers) kunnen gebruiken om (sneller) de sleutel te vinden. Het kan geen kwaad om zeker geen paswoorden (of permutaties ervan) te gebruiken die in deze lijsten voorkomen: [https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials)
+
+:::tip
+Dit waren in 2020 de 10 meest gebruikte paswoorden:
+
+123456
+password
+12345678
+qwerty
+123456789
+12345
+1234
+111111
+1234567
+dragon
+
+Dit soort lijsten worden opgesteld door gekende datalekken te analyseren op welke paswoorden er in voorkomen.
+:::
+
 ### Soorten cryptanalytische aanvallen
 
 Geregeld zullen we in dit boek bepaalde zwakheden beschrijven die in algoritmes misbruikt kunnen worden door een bepaald type cryptanalytische aanval. Deze aanvallen zijn afhankelijk van de informatie die de cryptanalysist bezit:
@@ -197,9 +224,26 @@ Er zijn nog enkele meer gespecialiseerde types, maar voor deze cursus zullen we 
 :::
 
 ::: note
-Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalyst automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van: Enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden. Anderzijds,ze helpen ons in tijden van oorlog om (hopelijk) de boodschappen van vijanden te onderscheppen en lezen.
+Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalyst automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van: enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden. Anderzijds, helpen ze ons in tijden van oorlog om de boodschappen van vijanden te onderscheppen en proberen lezen.
 :::
 
+
+### En wat met quantumcomputers?
+
+Al jaren houdt de crypto-wereld angstvallig de ontwikkelingen in de quantum-computer wereld in het oog. Alhoewel we nog maar in de babyfase van quantum-computers zijn, is het toch best mogelijk dat binnen afzienbare tijd (20, 30 jaar?) we effectief zodanig sterke quantum-computers zullen hebben die alle bestaande cryptografische systemen in een handomdraai kunnen "kraken". 
+
+Hoe dit zal gebeuren snapt de auteur ook (nog) niet en zal dus niet verder uitgewerkt worden in dit handboek. Besef gewoon dat quantum-computers van de toekomst potentiëel bruteforce aanvallen drastisch zullen kunnen versnellen. 
+
+Het is om deze reden dat er nu reeds onderzoek wordt gedaan naar cryptografische ciphers die bestand zullen zijn tegen de computers van de toekomst. Dit soort ciphers worden *post-quantum cryptografische ciphers* genoemd en zullen niet in dit boek besproken worden. 
+
+::: note
+Trouwens, ook andere systemen die gebruik maken van cryptografische concepten zullen in één klap hun nut verliezen. Of zoals [dit artikel](https://www.uclftr.com/post/what-does-the-rise-of-quantum-computers-mean-for-encryption-technology) zegt *"And encryption is everywhere in modern day life, from e-commerce, to online payments, to passwords, everything will be vulnerable!"* 
+
+Denk daarbij bijvoorbeeld aan *cryptocurrencies* zoals Ethereum en Bitcoin:
+
+*Cybersecurity specialist Itan Barmes led the vulnerability study of the Bitcoin blockchain. He found the level of exposure that a large enough quantum computer would have on the Bitcoin blockchain presents a systemic risk. “If [4 million] coins are eventually stolen in this way, then trust in the system will be lost and the value of Bitcoin will probably go to zero,” he says.* [Bron](https://www.investmentmonitor.ai/tech/quantum-computing-bitcoins-crypto-encryption)
+
+:::
 
 ## Symmetrische encryptie
 
@@ -211,7 +255,7 @@ Er zijn 2 soorten encryptiesystemen als we kijken naar het aantal sleutels. Symm
 
 * Voorbeelden van bestaande symmetrische encryptiesystemen zijn: AES, DES, IDEA, RC4, Blowfish, etc.
 
-Dit type encryptie is nog steeds het meest gebruikt en wordt overal gebruikt waar data op een veilige  (confidentiality) moet bewaard, verstuurd of verwerkt worden.
+Dit type encryptie is nog steeds het meest gebruikt en wordt overal gebruikt waar data op een veilige manier (confidentiality) moet bewaard, verstuurd of verwerkt worden.
 
 ### Sleuteloverdracht
 
@@ -232,13 +276,13 @@ Er zijn 2 soorten symmetrische encryptieciphers als we kijken naar de manier waa
 De werking van een symmetrisch stream cipher is verrassend eenvoudig en bestaat uit 2 delen:
 
 * Een pseudorandom keystream generator: deze zal de sleutel als het ware expanderen naar een sleutel met de zelfde lengte als de stream, genaamd een **keystream**. Daar we met een stream werken zal deze generator teken per teken genereren. Hoe dit gebeurt, leggen we verderop uit.
-* De **xor** of "exclusieve of" functie: deze zal de plaintext naar een ciphertext omzetten door de plaintext met de keystream samen te voegen.
+* De **XOR** of "exclusieve of" functie: deze zal de plaintext naar een ciphertext omzetten door de plaintext met de keystream samen te voegen.
 
 ![Het streamcipher proces](crypto/stream.png)
 
 Aan de ontvangerzijde gebeurt exact hetzelfde. **Enkel indien de ontvanger dezelfde sleutel gebruikt, zal deze dezelfde keystream kunnen genereren, en bijgevolg enkel dan de originele plaintext verkrijgen.**
 
-Het hart van een symmetrisch streamcipher is dus enerzijds de xor-functie én, belangrijker, de manier waarop de keystream wordt gemaakt. 
+Het hart van een symmetrisch streamcipher is dus enerzijds de XOR-functie én, belangrijker, de manier waarop de keystream wordt gemaakt. 
 
 #### De XOR functie
 
@@ -251,11 +295,11 @@ De waarheidstabel van de XOR-functie is de volgende:
 | 0               | 0               | 0                 |
 | 1               | 1               | 0                 |
 
-De xor-functie wordt in schema's aangeduid door een cirkel met een plusje in: $\oplus$
+De XOR-functie wordt in schema's aangeduid door een cirkel met een plusje in: $\oplus$
 
 De XOR-functie heeft de fijne eigenschap dat je deze dus voor encryptie kan gebruiken. 
 
-Beeld je in dat we het bericht `1010` willen versleutelen, en we hebben een gegenereerde keystream `1101`. Als we deze *XOR'n* dan geeft dit `0111`. Dit is dus de ciphertext. Als de ontvanger dezelfde keystream kan genereren en deze xor'd met de verkregen ciphertext, dan krijgt deze terug de originele plaintext.
+Beeld je in dat we het bericht `1010` willen versleutelen, en we hebben een gegenereerde keystream `1101`. Als we deze *XOR'n* dan geeft dit `0111`. Dit is dus de ciphertext. Als de ontvanger dezelfde keystream kan genereren en deze XOR'd met de verkregen ciphertext, dan krijgt deze terug de originele plaintext.
 
 
 
@@ -378,7 +422,7 @@ k = S[ (S[1]+S[97])%256 ] => k = S[ (1 + 0) % 256]
 we outputten de waarde die op S[1] staat
 ```
 
-Finaal zal de output, de waarde ``k``, ge-xor'd worden met het huidige karakter van de plaintext.
+Finaal zal de output, de waarde ``k``, ge-XOR'd worden met het huidige karakter van de plaintext.
 
 ::: note
 Zo, dat viel nog mee he? Zoals al gezegd, een belangrijke motivatie van dit boek is aantonen dat je niet bang hoeft te zijn van wat er achter de schermen van de cyberwereld gebeurt. De hoeveelheid wiskunde die we bijvoorbeeld nodig hadden, is beperkt gebleven tot onze trouwe modulo (%)-operator en meer niet. Wanneer we zo meteen een block ciphers gaan uitkleden, zal je ook daar ontdekken dat je best in staat bent schijnbaar complexe technologieën te begrijpen. Hop naar de blockciphers dus!
@@ -389,7 +433,7 @@ Zo, dat viel nog mee he? Zoals al gezegd, een belangrijke motivatie van dit boek
 Blockciphers, de naam zegt het al, zal eerst de plaintext in blokken karakters opdelen (bv 128 bits) en vervolgens blok per blok encrypteren. 
 
 #### Feistel structuren
-Ook hier zullen we dezelfde soorten operaties (XOR, substituties en transposities) zien terugkomen. Echter, ook zogenaamde **Feistel**-structuren worden hier gebruikt: in deze operatie zal steeds de data in 2 helften worden gesplitst en wordt steeds een specifieke operatie (aangeduid met *F* van functie in de figuur), zoals een substitutie, op 1 helft uitgevoerd dat dan wordt ge-xor'd met de andere helft. Dit wordt meerdere keren herhaald, waarbij de linker (*L*) en rechterzijde (*R*) steeds afwisselend door de specifieke encryptie-operatie gaan. Net zoals bij RC4 zullen we ook vaak met een zogenaamd key scheduling algoritme werken zodat de sleutel niet constant doorheen het hele proces dezelfde is en we dus met **subkeys** werken (*K* in onderstaande figuur)
+Ook hier zullen we dezelfde soorten operaties (XOR, substituties en transposities) zien terugkomen. Echter, ook zogenaamde **Feistel**-structuren worden hier gebruikt: in deze operatie zal steeds de data in 2 helften worden gesplitst en wordt steeds een specifieke operatie (aangeduid met *F* van functie in de figuur), zoals een substitutie, op 1 helft uitgevoerd dat dan wordt ge-XOR'd met de andere helft. Dit wordt meerdere keren herhaald, waarbij de linker (*L*) en rechterzijde (*R*) steeds afwisselend door de specifieke encryptie-operatie gaan. Net zoals bij RC4 zullen we ook vaak met een zogenaamd key scheduling algoritme werken zodat de sleutel niet constant doorheen het hele proces dezelfde is en we dus met **subkeys** werken (*K* in onderstaande figuur)
 
 ![Bron wikipedia](crypto/feistel.png){ width=60% }
 
@@ -419,7 +463,7 @@ De data wordt blok per blok doorheen dit gedeelte gestuurd. Eerst gebeurt er een
 
 ![De Initiële permutatie](crypto/des2.png){ width=60% }
 
-Na de *IP* gaat de data door 16 feistel structuren die telkens het zelfde doen. De data wordt in 2 helften gesplitst waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-xor'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
+Na de *IP* gaat de data door 16 feistel structuren die telkens het zelfde doen. De data wordt in 2 helften gesplitst waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-XOR'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
 
 ![Binnenin de F-operatie](crypto/des3.png){ width=60% }
 
@@ -427,7 +471,7 @@ In het F-blok wordt eerst het 32-bit block uitgebreid (*E* in de figuur, van exp
 
 ![De expansie van 32 naar 48 bits](crypto/des4.png){ width=60% }
 
-Nu worden deze 48 bits ge-xor'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst. 
+Nu worden deze 48 bits ge-XOR'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst. 
 
 ![Waarheidstabel van het S5-blok (Bron wikipedia)](crypto/des5.png){ width=60% }
 

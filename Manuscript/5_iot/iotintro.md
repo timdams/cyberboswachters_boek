@@ -66,7 +66,7 @@ Een IoT-apparaat bestaat niet alleen: meestal maakt het deel uit van een verzame
 Gebruikers vergeten ook vaak met welke externe diensten ze hun apparaten hebben gekoppeld. Het gebeurt vaak dat een gebruiker "even iets wil testen" (denk maar de nuttige website ["If this then that"](https://ifttt.com/) dat toelaat om services en apparaten te koppelen die iets moeten doen gegeven zelfgekozen triggers en regels) maar nadien wel vergeet deze koppeling uit te zetten. Dit geldt ook voor de vele third-party websites en services die bijvoorbeeld toegang tot uw google of facebook-accounts wensen. Veel gebruikers kijken dit nooit na en hebben mogelijk tien jaar geleden al toegang gegeven aan een service die ondertussen al geregeld door digitale stropers is gecompromitteerd. 
 
 ::: tip
-Je moet maar eens google'n naar bijvoorbeeld "google ecosystem" of eender welk ander grote silicon valley bedrijf. Je zal versteld staan van de complexiteit en grootte ervan.
+Je moet maar eens google'n naar bijvoorbeeld "google ecosystem" of eender welk ander grote silicon valley bedrijf en dan bij afbeeldingen kijken. Je zal versteld staan van de complexiteit en grootte ervan.
 :::
 
 ### Geen of onveilig updatemechanisme

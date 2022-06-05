@@ -10,7 +10,7 @@ De subtitel,*"De beste digitale stropers zijn ook de beste cyberboswachters"*, v
 
 Een oprechte dank aan Stefaan Somerling (RealDolmen) voor de feedback op het hoofdstuk omtrent GDPR. Geef gerust een sein als u, conform de GDPR wetgeving, liever uw naam niet in dit document ziet staan ;)
 
-Dank aan eerstejaars Dimitriy Vassilchenko om als externe spellingchecker aardig wat (genante) typos te ontdekken!
+Dank aan eerstejaars Ernie De Machtige,  Dimitriy Vassilchenko & Jasper Van Meel om als externe spellingchecker aardig wat (genante) typos te ontdekken!
 
 Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Michael Boeynaems en Serge Horsmans!
 
@@ -53,10 +53,16 @@ Alle feedback is in deze fase zéér welkom:
 
 ## Changelog
 
-**Dit is versie 0.4.2.2** (16/5/22)
+**Dit is versie 0.4.3** (26/5/22)
 
+* 0.4.3
+  * Dit is de finale editie van academiejaar 2021-2022.
+  * [Closed issue 8: XOR'n uniformiteit](https://github.com/timdams/cyberboswachters_boek/issues/8)
+  * [Closed issue 9: Noot omtrent quantum computers](https://github.com/timdams/cyberboswachters_boek/issues/8): toegevoegd in hoofdstuk 3, vlak voor symmetrische encryptie.
+  * [Closed issue 10: cryptanalytic attacks vs bruteforce Bruteforce vs dictattack](https://github.com/timdams/cyberboswachters_boek/issues/10)
+  * Typos (bedankt Jasper Van Meel)
 * 0.4.2.2
-  * Typos
+  * Typos 
 * 0.4.2.1
   * Modulo-operator uitleg in H2 verbeterd.
 * 0.4.2
