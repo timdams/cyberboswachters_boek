@@ -10,13 +10,13 @@ De subtitel,*"De beste digitale stropers zijn ook de beste cyberboswachters"*, v
 
 Een oprechte dank aan Stefaan Somerling (RealDolmen) voor de feedback op het hoofdstuk omtrent GDPR. Geef gerust een sein als u, conform de GDPR wetgeving, liever uw naam niet in dit document ziet staan ;)
 
-Dank aan eerstejaars Ernie De Machtige,  Dimitriy Vassilchenko & Jasper Van Meel om als externe spellingcheckers aardig wat (genante) typos te ontdekken!
+Dank aan eerstejaars Ernie de Magtige,  Dimitriy Vassilchenko & Jasper Van Meel om als externe spellingcheckers aardig wat (gênante) typos te ontdekken!
 
 Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Michael Boeynaems en Serge Horsmans!
 
 # Waarschuwingen
 
-Dit brengt ons automatisch bij een erg belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die erg verregaande gevolgen kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken aangaande de beste cyberboswachters zijn de digitale stropers. Het is erg belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechterlijke gevolgen kunnen hebben, inclusief grote boetes tot jarenlange opsluiting.
+Dit brengt ons automatisch bij een erg belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die erg verregaande gevolgen kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken aangaande de beste cyberboswachters zijn de digitale stropers. Het is erg belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechtelijke gevolgen kunnen hebben, inclusief grote boetes tot jarenlange opsluiting.
 
 Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel onder volgende voorwaarden:
 
@@ -38,7 +38,7 @@ Indien je van plan bent om met bepaalde tools te experimenteren hou dan rekening
 Deze cursus is nog erg in opbouw en is het resultaat van naarstig schrijven tijdens de laatste 2 lockdowns. Zo zal je zien dat:
 
 * Sommige teksten nog niet zijn nagelezen qua inhoud én spelling.
-* Sommige hoofdsukken nog niet compleet zijn, of gewoon onbestaande zijn.
+* Sommige hoofdstukken nog niet compleet zijn, of gewoon onbestaande zijn.
 * Enkele afbeeldingen nog niet gecleared zijn om gebruikt te worden qua rechten.
 
 
