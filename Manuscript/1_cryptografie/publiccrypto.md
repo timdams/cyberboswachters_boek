@@ -222,8 +222,14 @@ Naast certificaten voor webserver (zogenaamde **SSL certificaten**) kan je ook e
 
 Als je in Windows 10 een applicatie of installer probeert uit te voeren dan zal de ingebouwde *SmartScreen* service ogenblikkelijk de echtheid (of ontbreken van) het certificaat controleren, net zoals dit ook in de browser zou gebeuren.
 
-![Windows 10 Smartscreen beschermd je van niet digitaal ondertekende software](crypto/smartscreen.png){width=40%}
+![Windows 10 Smartscreen beschermd je van niet digitaal ondertekende software.](crypto/smartscreen.png){width=40%}
 
+:::
+
+::: tip
+Je kan via de Certification Manager van Windows bekijken welke certificaten je lokaal hebt geïnstalleerd, welke worden vertrouwd, etc. Je kan de GUI-versie van deze tool opstarten door "certlm.msc" uit te voeren.
+
+![Let er altijd op welke informatie je deelt via screenshots.](crypto/certlm.png){width=40%}
 :::
 
 ## HTTPS en TLS
