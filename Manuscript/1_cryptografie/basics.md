@@ -158,7 +158,7 @@ $MaximaleTijd = \frac{26^{8}}{30000000}$
 
 Oftewel ongeveer 6960 seconden, wat neerkomt op ongeveer 1,9 uur tijd benodigd om alle mogelijke sleutels te testen (herinner je eraan dat deze tijd gehalveerd moet worden om te weten hoe lang het gemiddeld zal duren om de juiste sleutel terug te vinden.
 
-Volgende tabel ([bron](HTTPS://uwnthesis.wordpress.com/2020/07/01/brute-force-password-how-long-will-it-take-to-brute-force-a-password/)) toont nog voorbeelden waarbij telkens dezelfde GeForce GTX kaart werd gebruikt. Het getal tussen haakjes geeft aan hoeveel mogelijke tekens er in dit type mogelijk zijn:
+Volgende tabel ([bron](HTTPS://uwnthesis.wordpress.com/2020/07/01/brute-force-password-how-long-will-it-take-to-brute-force-a-password/)) toont nog voorbeelden waarbij telkens dezelfde GeForce 1080 GTX kaart werd gebruikt. Het getal tussen haakjes geeft aan hoeveel mogelijke tekens er in dit type mogelijk zijn:
 
 | # tekens  | enkel nummers (10)  | kleine letters (26)  | grote & kleine letters & nummers (62)  | eender welk teken (95)   |   
 |---|---|---|---|---|
@@ -189,7 +189,7 @@ Om bovenstaande gigantische getallen wat te duiden: de leeftijd van ons universu
 
 Wanneer de cryptanalyst vermoed dat de te zoeken sleutel iets anders is dan volledig willekeurige tekens dan kan hij de bruteforce aanval verbeteren. In plaats van alle mogelijke combinaties (permutaties) van de sleutel te testen, zal hij een woordenboek (**dictionary**) gebruiken met daarin alle mogelijke sleutels en woorden die mogelijk de originele sleutel bevatten.
 
-Tools zoals John The Ripper kan je *voeden* met een dergelijk woordenboek en dan vragen om sleutels te testen die gebaseerd zijn op zaken uit die woordenboek, inclusief bijvoorbeeld door er tekens voor en na te zetten. Als in het woorden het woord *god* staat, dan kan Jack The Ripper bijvoorbeeld ook alle sleutels testen zoals *god1*, *god2*, etc. 
+Tools zoals John The Ripper kan je *voeden* met een dergelijk woordenboek en dan vragen om sleutels te testen die gebaseerd zijn op zaken uit die woordenboek, inclusief bijvoorbeeld door er tekens voor en na te zetten. Als in het woordenboek het woord *god* staat, dan kan Jack The Ripper bijvoorbeeld ook alle sleutels testen zoals *god1*, *god2*, etc. 
 
 Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest gebruikte wachtwoorden die cryptanalysten (en dus ook de digitale stropers) kunnen gebruiken om (sneller) de sleutel te vinden. Het kan geen kwaad om zeker geen paswoorden (of permutaties ervan) te gebruiken die in deze lijsten voorkomen: [https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials)
 
@@ -540,7 +540,8 @@ Door pakketten te sniffen zou de aanvaller kunnen achterhalen wat de mogelijke i
 
 Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren, noemen we de **Electronic Codebook (ECB)** modus. Alhoewel deze modus dus duidelijk een veiligheidsprobleem met zich mee draagt, heeft deze modus ook één voordeel:
 
-* Ieder blok wordt onafhankelijk van andere blokken gedecrypteerd. Als er dus een blok door wat voor fout niet gedecrypteerd worden, dan heeft dat geen invloed op de daaropvolgende. Dit is dus voor streaming-situaties nuttig: beeld je in dat je decryptie faalt halverwege het binnenkrijgen van een film die je aan het bekijken bent. Je zou helemaal opnieuw moeten beginnen.
+* Ieder blok wordt onafhankelijk van andere blokken gedecrypteerd. Als er 
+dus een blok niet gedecrypteerd kon worden door een fout, dan heeft dat geen invloed op de daaropvolgende. Dit is dus voor streaming-situaties nuttig: beeld je in dat je decryptie faalt halverwege het binnenkrijgen van een film die je aan het bekijken bent. Je zou helemaal opnieuw moeten beginnen.
 
 ![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia)](crypto/ecbfail.png){ width=60% }
 
@@ -563,7 +564,7 @@ Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebrui
 :::
 
 ::: note
-[De wikipediapagina over block cipher]HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation modes geeft een zeer goed overzicht (én vergelijking).
+[De wikipediapagina over block ciphers](HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) modes geeft een zeer goed overzicht (én vergelijking).
 :::
 
 #### AES

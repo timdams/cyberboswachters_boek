@@ -268,7 +268,7 @@ Kortom, stream ciphers zijn niet veilig in een datagram omgeving indien er geen 
 
 ### Probleem 2: IV
 
-Het IEEE had dus weet van voorgaand probleem met RC4 en introduceerde daarom het IV. Vanuit cryptografisch standpunt is dit een solide oplossing. Echter, door het gebrek aan replay protection krijgen we helaas een hoop fouten met de IV.
+Het IEEE had dus weet van voorgaand probleem met RC4 en introduceerde daarom de IV. Vanuit cryptografisch standpunt is dit een solide oplossing. Echter, door het gebrek aan replay protection krijgen we helaas een hoop fouten met de IV.
 
 #### De IV veroorzaakt weak keys
 
@@ -367,11 +367,11 @@ We hebben bij deze aanval 1 belangrijk concept genegeerd waardoor deze aanval op
 
 #### IV selectie 
 
-De vierde fout met de Initialisatie Vectoren is de manier waarop de selectie ervan moet gebeuren in de hardware. De 802.11 gaf enkel aan dat het IV *"geregeld moest geupdate"* worden. Dat is uiteraard te vaag en heeft ervoor gezorgd dat fabrikanten zelf moesten bepalen welke IV selectie strategie ze in hun hardware zouden implementeren. Hierdoor waren er 3 strategiën die hun weg in de verschillende apparaten vonden:
+De vierde fout met de Initialisatie Vectoren is de manier waarop de selectie ervan moet gebeuren in de hardware. De 802.11 gaf enkel aan dat de IV *"geregeld moest geupdate"* worden. Dat is uiteraard te vaag en heeft ervoor gezorgd dat fabrikanten zelf moesten bepalen welke IV selectie strategie ze in hun hardware zouden implementeren. Hierdoor waren er 3 strategiën die hun weg in de verschillende apparaten vonden:
 
 * **Vast IV**: Sommige fabrikanten hadden geen flauw benul wat het doel van de IV was vanuit cryptografisch standpunt en kozen daarom zelfs gewoon om alle pakketten steeds met het zelfde IV te versturen. 
 * **Willekeurig IV**: Andere fabrikanten verkozen het om hun hardware bij ieder pakketje een willekeurig IV te laten selecteren. Alhoewel dit uiteraard veel veiliger is dan een "vaste IV"-strategie, treden er toch veel sneller collisions op dan verwacht. Dit valt te verklaren door het zogenaamde **verjaardagenparadox** (zie kader verder) dat verklaart waarom er reeds 50% kans op een collisions is na 4823 pakketjes. Dat wil dus zeggen dat al na enkele seconden er meestal collisions optreden.
-* **Incrementele IV**: In deze strategie wordt een circulaire teller gebruikt waarbij het IV telkens met 1 wordt verhoogd wanneer een pakket moet worden verstuurd. Meestal begint deze teller op een vaste waarde. Dit zal er dan ook voor zorgen dat er een collisions optreedt van zodra een tweede apparaat zich op het netwerk begeeft en dus begint uit te zenden met het IV gelijk aan het IV van het allereerste pakketje dat het eerste apparaat gebruikte.
+* **Incrementele IV**: In deze strategie wordt een circulaire teller gebruikt waarbij de IV telkens met 1 wordt verhoogd wanneer een pakket moet worden verstuurd. Meestal begint deze teller op een vaste waarde. Dit zal er dan ook voor zorgen dat er een collisions optreedt van zodra een tweede apparaat zich op het netwerk begeeft en dus begint uit te zenden met de IV gelijk aan de IV van het allereerste pakketje dat het eerste apparaat gebruikte.
 
 Kortom, een 24-bit *salt* is véél te klein in een omgeving met erg hoge data-rates zoals een draadloos netwerk. Dit probleem zou nog beperkt kunnen worden indien de originele WEP geregeld sleutels kon verversen, maar door het gebrek aan enig key management was dat dus uit den boze (want herinner je: de enige reden dat we IV's nodig hadden was omdat anders steeds dezelfde WEP-sleutel als seed werd gebruikt en dus alle keystreams gelijk zouden zijn. Door geregeld een andere sleutel te gebruiken zou onze kleine IV-lengte minder precair zijn, als we maar tijdig de sleutels verversen).
 
@@ -463,7 +463,7 @@ Ondertussen bestaat er ook WPA3, die we op het einde van dit hoofdstuk zullen be
 Voor de tijdelijke oplossing, WPA1 werden volgende beperkingen geïdentificeerd:
 
 * Zoals verteld, miljoenen WEP-gebaseerde apparaten waren reeds  in gebruik. Deze apparaten zouden met behulp van een firmware upgrade gepatcht moeten kunnen worden naar de tussendtijdse oplossing.
-* De meeste AP's werkten met processoren die reeds quasi volcontinue tegen hun maximum capaciteit werkten. De extra algorithmes die het AP moest draaien mocht dus maar een beperkte overhead creëren.
+* De meeste AP's werkten met processoren die reeds quasi volcontinue tegen hun maximum capaciteit werkten. De extra algoritmes die het AP moest draaien mocht dus maar een beperkte overhead creëren.
 * Delen van de RC4 encryptie zijn *hardwired* voor een deel in de hardware van de AP. Hierdoor kunnen bepaalde delen van WEP onmogelijk 'omzeilt' worden en hangen we dus inherent vast aan WEP.
 
 
@@ -481,7 +481,7 @@ We gaan de volledige werking van de 802.1X standaard hier niet uit de doeken doe
 
 ![Port-based authenticatie met 802.1X](wifi/port.png)
 
-802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algorithme. Integendeel: het is een **framework** waar binnen andere algorithmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft-en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticiate- boodschappen tussen enerzijds het netwerkprotocol (bv Ethernet, Wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
+802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algoritme. Integendeel: het is een **framework** waar binnen andere algoritmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft-en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticiate- boodschappen tussen enerzijds het netwerkprotocol (bv Ethernet, Wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
 
 
 ![De modulariteit van het 802.1X framework](wifi/8021x.png){ width=60% }
@@ -518,7 +518,7 @@ TKIP omhult WEP met volgende zaken:
 
 1. Een nieuwe **integrity check genaamd Michael** dat een *message integrity code* (MIC) genereert die wél bestand is tegen bitflip aanvallen.
 2. Een nieuwe manier van **IV selectie** die replay aanvallen voorkomt.
-3. Een **per-pakket sleutel mixing** algorithme dat het probleem met *weak keys* in RC4 oplost.
+3. Een **per-pakket sleutel mixing** algoritme dat het probleem met *weak keys* in RC4 oplost.
 4. Een *re-keying* mechanisme dat ongeveer elke 10000 pakketjes een nieuwe sleutel doet genereren.
 
 
@@ -545,9 +545,9 @@ Wanneer TKIP een 2 foute MICs na elkaar detecteert gaat het er van uit dat er ee
 
 #### IV selectie verbetering
 
-Om te voorkomen dat fabrikanten weer naïeve oplossingen voor de IV-selectie implementeerden, legde WPA1 nu de regels op. Een ontvangen pakket zal pas aanvaard worden indien het IV van het pakket op het IV van het vorige pakket volgt. Uiteraard zit er een kleine marge om hertransmissies toe te staan, maar een pakket met IV 12933 zal nooit aanvaard worden als het AP vlak ervoor een pakket met IV 4 heeft aangekregen.
+Om te voorkomen dat fabrikanten weer naïeve oplossingen voor de IV-selectie implementeerden, legde WPA1 nu de regels op. Een ontvangen pakket zal pas aanvaard worden indien de IV van het pakket op de IV van het vorige pakket volgt. Uiteraard zit er een kleine marge om hertransmissies toe te staan, maar een pakket met IV 12933 zal nooit aanvaard worden als het AP vlak ervoor een pakket met IV 4 heeft aangekregen.
 
-Daarnaast wordt ook het IV gevoelig vergroot. TKIP hanteert namelijk een 48-bit IV genaamd de *TKIP sequence counter* (TSC). Deze wordt opgebouwd door de eerste en tweede byte van de originele WEP IV te combineren met 4 bytes van een speciaal gegenereerde *extended IV*. 
+Daarnaast wordt ook de IV gevoelig vergroot. TKIP hanteert namelijk een 48-bit IV genaamd de *TKIP sequence counter* (TSC). Deze wordt opgebouwd door de eerste en tweede byte van de originele WEP IV te combineren met 4 bytes van een speciaal gegenereerde *extended IV*. 
 
 #### Key mixing en re-keying
 
@@ -565,7 +565,7 @@ Het mixen van de sleutel gebeurt in twee fases, waarbij iedere fase een specifie
 
 Het MAC address van de client wordt ge-XOR'd met de basissleutel (zijnde ofwel de PSK sleutel in Personal modus of de *temporal* sleutel verkregen van 802.1X tijdens de authenticatie). Dit resultaat wordt door een S-box (substitie) gestuurd, resulterend in een tussentijdse (*intermediate*) sleutel. 
 
-**Phase 2 mixing**
+**Fase 2 mixing**
 
 In deze fase wordt de TSC (de pakket-teller, uitgelegd in de "IV selectie verbetering" sectie) geëncrypteerd samen met de tussentijdse sleutel. De encryptie gebeurt door middel van een kleine Feistel-structuur (zie hoofdstuk crypto) en resulteert in een 128-bit per-pakket sleutel. Vervolgens wordt deze sleutel, samen met delen van de TSC als "WEP-sleutel" en IV aan het originele WEP-gedeelte aangeboden. Hierbij wordt ervoor gezorgd dat er geen RC4 weak keys meer mogelijk zijn omdat die IV worden weggefilterd voor ze aan de hardware worden aangeboden.
 
@@ -631,10 +631,10 @@ De Wifi Alliance is in het leven geroepen als een organisatie die ervoor zorgde 
 
 Ook in WPA3 werden 2 modes voorzien: een personal en een enterprise mode. Enkele van de interessantste verbeteren zijn:
 
-* *Simultaneous Authentication of Equals (SAE)*: een nieuw cryptografisch concept waarbij in de personal mode authenticatie veel veiliger kan plaatsvinden dan voorgeen.
+* *Simultaneous Authentication of Equals (SAE)*: een nieuw cryptografisch concept waarbij in de personal mode authenticatie veel veiliger kan plaatsvinden dan voorheen.
 * Resistant tegen offline dictionary attacks: iets waar zowel WPA1 en WPA2 last van hadden voor aanvallers met geduld.
-* *Forward secrecy*: zelfs als de aanvaller de wifi-sleutel van oude gecapteerde paketten vind zal hij deze toch niet kunnen decrypteren. Het aloude "safe now, decrypt later" is dus niet van toepassing op WPA3.
+* *Forward secrecy*: zelfs als de aanvaller de wifi-sleutel van oude gecapteerde paketten vindt zal hij deze toch niet kunnen decrypteren. Het aloude "store now, decrypt later" is dus niet van toepassing op WPA3.
 * *Wifi easy connect*: een gebruiksvriendelijke manier om internet-of-things apparaten met het netwerk te verbinden.
-* *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de STarbuck zetten om zo prive-trafiek van omstaanders te sniffen.
-* *Geauthenticeerde encryptie* gebruik maken van *"256-bit Galois/Counter Mode Protocol (GCMP-256)"* een cryptocipher dat we hier niet uit de doeken gaan doen.
-* Gebruikt de meest secure authenticatie en sleuteldistributie methoden mogelijk binnen 802.1X (HMAC, HMAC-SHA384 en ECDH)
+* *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de Starbuck zetten om zo prive-trafiek van omstaanders te sniffen.
+* *Geauthenticeerde encryptie* gebruik makend van *"256-bit Galois/Counter Mode Protocol (GCMP-256)"* een cryptocipher dat we hier niet uit de doeken gaan doen.
+* Gebruikt de meest veilige authenticatie- en sleuteldistributiemethoden mogelijk binnen 802.1X (HMAC, HMAC-SHA384 en ECDH)
