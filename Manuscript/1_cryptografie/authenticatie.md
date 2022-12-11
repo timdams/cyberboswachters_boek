@@ -104,7 +104,7 @@ In de database bewaren we dus nu volgende informatie:
 Merk op dat ook nu we nog steeds niet beschermd zijn tegen pash-the-hash aanvallen.
 :::
 
-### Mimikatz   
+#### Mimikatz   
 
 Mimikatz werd origineel ontwikkeld als demo om aan te tonen dat de authenticatie protocols van Microsoft onveilig waren. Helaas is de totaal, uiteraard, erg snel opgenomen in het arsenaal van digitale stropers. De tool laat toe om *authentication tickets* te tonen en hergebruiken. Wanneer de tool wordt losgelaten op een Microsoft Windows OS zal het deze tickets op het systeem zoeken zodat de aanvaller vervolgens zonder login-gegevens toch kan inloggen door technieken zoals:
 
@@ -160,7 +160,7 @@ We zien meer en meer systemen verschijnen die aan zogenaamde *multifactor authen
 
 Systemen die MFA aanbieden doen dit vaak op een gecontroleerde manier: afhankelijk van de gebeurtenissen zal het systeem beslissen of meerdere factoren moeten getest worden of niet. Als je bijvoorbeeld woont in België, maar Google zit plots dat iemand met jouw paswoord probeert in te loggen vanuit een IP-adres op de Azoren, dan zal Google beslissen dat "iets wat je weet" (het paswoord) niet genoeg controle is en extra informatie vragen.
 
-### Iets wat je weet: paswoorden 
+### Iets wat je weet: Paswoorden 
 
 Deze factor hebben reeds uitvoerig behandeld doorheen deze cursus. Het grote probleem met dingen weten is dat
 
@@ -169,7 +169,7 @@ Deze factor hebben reeds uitvoerig behandeld doorheen deze cursus. Het grote pro
 
 Kortom, alhoewel deze factor vaak vanuit technologisch standpunt het eenvoudigst te implementeren is, is dat ook de minst veilige vanuit een social engineering standpunt. Biometrics en hardware zijn moeilijker door een digitale stroper te stelen dan het paswoord en we hoeven niet bij een fingerprint niet te vrezen dat de gebruiker een "zwakke vingerafdruk" kiest, iets wat bij paswoorden vaak hét primaire probleem is.
 
-### Iets wat je bent: biometrics
+### Iets wat je bent: Biometrics
 
 "We zijn allemaal uniek". Iedere mens heeft een hele hoop eigenschappen die uniek zijn per persoon. Zelfs als bepaalde van onze eigenschappen gelijkaardig zijn met andere personen dan zal zeker een combinatie van 2 of meerdere eigenschappen dat niet zijn. Door dus menselijke eigenschappen van je te gebruiken als authenticatie hebben we een factor gevonden die zeer moeilijk na te bootsen valt: op voorwaarde dat je een echt unieke eigenschap kiest én deze op deze juiste manier meet.
 
@@ -198,7 +198,7 @@ Voorts moet er rekening mee gehouden worden dat het "registreren" van een biomet
 Biometrische eigenschappen kunnen niet alleen dienst doen als een extra factor bij het authenticeren,ze zijn uiteraard ook erg handig voor identificatie. In principe kan iemand nog steeds de gebruikersnaam van een ander persoon gebruiken (*impersonation*). Als de biometrische eigenschappen als identificatie dienen kunnen aanvallers dat niet meer doen: ze kunnen onmogelijk aan het systeem zeggen *"ik ben persoon x"* terwijl de vingerafdrukscanner duidelijk een vingerafdruk registreert van *persoon y*.
 :::
 
-### Iets wat je hebt: hardware 
+### Iets wat je hebt: Hardware 
 
 Een fysiek object, zeker als het complex is, kan moeilijk nagemaakt worden en is dus een ideale factor. De elektronica van de 21e eeuw behoort tot de meest complexe dingen ooit die de mensheid heeft kunnen vervaardigen. Het is dan ook logisch dat we deze elektronica gebruiken als extra authenticatiefactor. In essentie zal dit stuk hardware nog steeds gewoon een paswoord bevatten, maar dit zal echter ongelooflijk veel langer (en dus sterker) zijn dan het gemiddelde paswoord dat een standaard gebruiker kan onthouden.
 

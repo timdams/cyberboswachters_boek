@@ -1,10 +1,11 @@
 # Introductie
 
-Dit handboek (in opbouw) wordt gebruikt als basis-cursus binnen de opleidingen elektronica-ict en toegepaste informatie van de AP Hogeschool. Het heeft als doel een breed overzicht te geven van de *wereld van de cybersecurity*. Het doel is niet alomvattend te zijn, maar vooral om mensen zin te geven om meer te weten te komen over de belangrijke én boeiende wereld. Dit boek tracht ervan uit te gaan dat de lezer minimale voorkennis heeft inzake ICT, toch wordt verwacht dat een basiscursus netwerk-technologie gekend is (zaken zoals IP-adressering, routering en switching dient gekend te zijn).
+Dit handboek ( wordt gebruikt als basis-cursus binnen de opleidingen elektronica-ict en toegepaste informatica van de AP Hogeschool. Het heeft als doel een breed overzicht te geven van de *wereld van de cybersecurity*. Het doel is niet alomvattend te zijn, maar vooral om mensen zin te geven om meer te weten te komen over deze belangrijke én boeiende wereld. Dit boek gaat ervan uit dat de lezer minimale voorkennis heeft inzake ICT, toch wordt verwacht dat een basiskenis netwerk-technologie aanwezig is (denk aan termen zoals IP-adressering, routering en firewalls).
+
 
 ## Boswachters en stropers
 
-De subtitel,*"De beste digitale stropers zijn ook de beste cyberboswachters"*, van dit handboek verdient een extra woordje uitleg. Dit boek zal zeker niet de obscure wereld van de hackers en cybercriminelen verheerlijken, integendeel. We willen echter wel tonen hoe de stropers, de slechterikken in dit boek, te werk gaan, opdat het zo ons een beter beeld geeft waar we ons tegen moeten beschermen als goede cyberboswachters. 
+De subtitel,*"De beste digitale stropers zijn ook de beste cyberboswachters"*, van dit handboek verdient een extra woordje uitleg. Dit boek zal zeker niet de obscure wereld van de hackers en cybercriminelen verheerlijken, integendeel. We willen echter wel tonen hoe de stropers, de slechterikken in dit boek, te werk gaan, opdat het ons zo een beter beeld geeft waar we ons tegen moeten beschermen als goede cyberboswachters. 
 
 ## Dankwoord
 
@@ -16,7 +17,7 @@ Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebb
 
 # Waarschuwingen
 
-Dit brengt ons automatisch bij een erg belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die erg verregaande gevolgen kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken aangaande de beste cyberboswachters zijn de digitale stropers. Het is erg belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechtelijke gevolgen kunnen hebben, inclusief grote boetes tot jarenlange opsluiting.
+Dit brengt ons automatisch bij een belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die verregaande gevolgen voor derden én jezelf kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken: digitale stropers zijn de beste cyberboswacters. Het is belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechtelijke gevolgen kunnen hebben, inclusief boetes tot zelfs jarenlange opsluiting.
 
 Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel onder volgende voorwaarden:
 
@@ -28,33 +29,25 @@ Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel onde
 
 Indien je van plan bent om met bepaalde tools te experimenteren hou dan rekening met volgende tips:
 
-* Werk zoveel mogelijk met virtuele machines.
+* Werk zoveel mogelijk met virtuele machines. En test nooit op een *live systeem* indien daar geen erge goede reden voor is.
 * Hou er rekening mee dat bepaalde tools permanente "gaten" slagen in je systemen. Deze kunnen dus na (of tijdens!) je experimenten door digitale stropers misbruikt worden. 
 
 
 
-## Waarschuwing over dit handboek
-
-Deze cursus is nog erg in opbouw en is het resultaat van naarstig schrijven tijdens de laatste 2 lockdowns. Zo zal je zien dat:
-
-* Sommige teksten nog niet zijn nagelezen qua inhoud én spelling.
-* Sommige hoofdstukken nog niet compleet zijn, of gewoon onbestaande zijn.
-* Enkele afbeeldingen nog niet gecleared zijn om gebruikt te worden qua rechten.
-
-
-Alle feedback is in deze fase zéér welkom:
-
-* Schrijffouten.
-* Zinnen die onduidelijk zijn.
-* Paragrafen die je niet begrijpt.
-* Essentiële informatie/teksten die prioritair moet worden geschreven (in jouw opinie).
-* Zaken die ZEKER niet meer aangepast mogen worden omdat ze geniaal zijn.
-
 
 ## Changelog
 
-**Dit is versie 0.4.3** (26/5/22)
+**Dit is versie 0.6.0** (9/12/22)
 
+* 0.6.0
+  * Voorbereiden voor volgende semester. Aardig wat verbeteringen overal aangebracht.
+  * Printversie nagekeken.
+* 0.5.1
+  * Zoek niet naar de logica in deze versioning.
+  * [Closed issue 5: Basic security: Software based attacks](https://github.com/timdams/cyberboswachters_boek/issues/5)
+  * [Closed issue 16: Certs: waar OS cert bewaard](https://github.com/timdams/cyberboswachters_boek/issues/16)
+  * [Closed issue 21: ALGEMEEN: Typo feedback Jasper](https://github.com/timdams/cyberboswachters_boek/issues/21)
+  * Hoop typos (bedankt Ernie De Magtige)
 * 0.4.3
   * Dit is de finale editie van academiejaar 2021-2022.
   * [Closed issue 8: XOR'n uniformiteit](https://github.com/timdams/cyberboswachters_boek/issues/8)
@@ -92,11 +85,11 @@ Alle feedback is in deze fase zéér welkom:
   * Hoofdstuk Wifi volledig vertaald
   * Eerste helft van hoofdstuk "Authenticatie" beschreven
 * 0.0.8
-  * Uitleg en tekeningen certificaten toegevoegd. Hiermee kan hoofdstuk crypto (voorlopig) als afgerond beschouw worden.
+  * Uitleg en tekeningen certificaten toegevoegd. Hiermee kan hoofdstuk crypto (voorlopig) als afgerond beschouwd worden.
 * 0.0.7
   * Aantal tekeningen omgezet 
 * 0.0.6
-  * Wifi hoofdstuk vervolledigd (deels Engelstalig) Afbeeldingen moeten nog goed gezet worden.
+  * Wifi hoofdstuk vervolledigd (deels Engelstalig). Afbeeldingen moeten nog goed gezet worden.
 * 0.0.5
   * Hoofdstuk 1 en 2 aangevuld en op schrijffouten verbeterd.
 
