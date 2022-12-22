@@ -37,11 +37,12 @@ Indien je van plan bent om met bepaalde tools te experimenteren hou dan rekening
 
 ## Changelog
 
-**Dit is versie 0.6.0** (9/12/22)
+**Dit is versie 0.6.0** (22/12/22)
 
 * 0.6.0
-  * Voorbereiden voor volgende semester. Aardig wat verbeteringen overal aangebracht.
+  * Voorbereiden voor volgende semester. Aardig wat verbeteringen en aanvullingen overal aangebracht.
   * Printversie nagekeken.
+  * Meerdere issues afgesloten.
 * 0.5.1
   * Zoek niet naar de logica in deze versioning.
   * [Closed issue 5: Basic security: Software based attacks](https://github.com/timdams/cyberboswachters_boek/issues/5)

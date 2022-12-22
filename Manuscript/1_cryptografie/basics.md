@@ -1,5 +1,6 @@
 # H3: Cryptografie
 
+In dit hoofdstuk duiken we de boeiende wereld van de cryptografie in: het versleutelen van informatie zodat enkel zender en ontvanger het bericht kunnen lezen. 
 
 ## Encryptie en decryptie
 
