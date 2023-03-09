@@ -163,7 +163,7 @@ Om potentiële aanvallers ervan te weerhouden dat ze trafiek kunnen sniffen (of 
 
 WEP is optioneel en bevindt zich vlak voor frames naar de fysische laag (*PHY*) worden gestuurd die de frames "in de lucht" zal sturen. Het IEEE werkt met lagen die ongeveer overeen komen met de OSI-lagen maar met iets andere namen. In volgende figuur zie je waar WEP, optioneel, zich bevindt ten opzichte van de onderliggen en bovenliggende lagen.
 
-![De 802.11 stack (rechts) ten opzichte van de OSI stack](wifi/osimac.png){ width=60% }
+![De 802.11 stack (rechts) ten opzichte van de OSI stack](wifi/osimac.png){ width=40% }
 
 :::
 

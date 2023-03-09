@@ -16,11 +16,11 @@ We zullen geregeld terug in de tijd gaan om te bekijken hoe bepaalde cyberverded
 
 ### Voor 2010
 
+![De Tuin van Eden door Jan Brueghel (de Oude). Duidelijk gebaseerd op een wereld van voor 2010.](intro/eden.jpg)
+
 Voor het ontdekken van Stuxnet in 2010 leek de cyberbeveiligingswereld wel een wereld van (relatieve) peis en vree. Het ergste dat kon gebeuren was dat je computer een virusje opdeed waardoor je mogelijk wat data, en vooral veel werkuren, kwijt raakte. Virussen, wormen en spam waren alomtegenwoordig maar waren eigenlijk niet meer dan luizen in de pels van de eindgebruikers. Tuurlijk, er werd een grondig gevloekt als een virus je foto's verwijderde of wanneer een worm zichzelf verspreidde naar je contacten - denk maar aan het *ILOVEYOU* virus dat als een soort *social engineer* mensen deed geloven dat ze een potentiële liefdesmatch hadden waarop ze vol spanning de bijlage openden en zo de worm *in huis haalden*. Of wat te denken van de *Conficker* worm die in 2008 meer dan 3 miljoen systemen kon besmetten en telkens de update-services van het Windows toestel uitschakelde. Uiteraard, dat was irritant, maar menig mens zou maar al te graag terug naar die tijd willen gaan als daarmee ransomware, botnets en door overheden gesponsorde cyberaanvallen onbestaande zouden zijn.
 
 
-![De Tuin van Eden door Jan Brueghel (de Oude). Duidelijk gebaseerd op een wereld van voor 2010](intro/eden.jpg)
-<!---TODO: jan g vragen voor beschrijving over hoe het op bedrijven was--->
 
 :::note
 De termen worm, virus en malware zullen geregeld door elkaar worden gebruikt in deze cursus. Alle drie betekenen net niet hetzelfde, maar  toch:
@@ -180,7 +180,7 @@ In december 2022 was Digipolis, de IT-backbone van de stad Antwerpen, het slacht
 De opmerkelijkste gebeurtenis in 2021 was de lek in de **Log4J** Java-bibliotheek. Deze ogenschijnlijk onschuldige bibliotheek wordt al bijna 2 decennia  in miljoenen Java-applicaties én servers (waaronder de Apache webservers!) gebruikt om loginformatie weg te schrijven. Tot in November 2021 onderzoekers een kritische bug ontdekten waardoor al deze servers en applicaties plots erg kwetsbaar werden. Het voorval toonde nog maar eens aan hoe afhankelijk we zijn geworden van onze code én netwerkinfrastructuur die vaak al jaren oud is en zo goed als zeker nog ongekende bugs bevatten die misbruikt kunnen worden. In 2012 zagen we al eens wat de gevolgen kunnen zijn van "een kleine bug" in een veel gebruikte bibliotheek. OpenSLL werd toen al door ontelbare websites en routers gebruikt om een beveiligde TLS-tunnel (zie hoofdstuk 3) op te zetten wanneer HTTPS werd gebruikt. De bug resulteerde in de **Heartbleed**-lek die aanvallers konden gebruiken om data van servers te stelen die de OpenSLL-bibliotheek gebruikten.
 
 ::: note
-De Log4j-episode heeft veel bedrijven doen inzien dat ze kritischer moeten nadenken over hoe ze omgaan met het gebruik van open-source bibliotheken. De updates van dergelijke bilbiotheken worden vaak zonder nadenken gedownload en geïntegreerd in de eigen software. Veel bedrijven beginnen daarom nu *policies* op te stellen omtrent het gebruik van publiekelijk beschikbare stukken software.
+De Log4j-episode heeft veel bedrijven doen inzien dat ze kritischer moeten nadenken over hoe ze omgaan met het gebruik van open-source bibliotheken. De updates van dergelijke bibliotheken worden vaak zonder nadenken gedownload en geïntegreerd in de eigen software. Veel bedrijven beginnen daarom nu *policies* op te stellen omtrent het gebruik van publiekelijk beschikbare stukken software.
 :::
 
 ::: tip
@@ -216,13 +216,13 @@ Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren
 ::: tip
 Sinds de oorlog in Oekraïne is uitgebroken zien we ook terug verregaande cyberactiviteit vanuit Rusland. De eerste weken van de oorlog (februari 2022) was het opvallend stil en leek het alsof *de angst voor Russische cyberoorlog* ongegrond was. Ondertussen zijn we bijna een jaar verder en verschijnen er meer en meer verhalen, zoals verwacht, van Russische cyber-inmenging. [Volgende artikel geeft een heldere tijdslijn hiervan.](https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2022)733549)
 
-![Een stuk van de zonet beschreven tijdslijn uit het door het Europese parlement gepubliceerde rapport.](intro/rusukr.jpg)
+![Een stuk van de zonet beschreven tijdslijn uit het door het Europese parlement gepubliceerde rapport.](intro/rusukr.jpg){ width=70% }
 :::
 
 ::: note
 Mirosoft monitort al geruime tijd de vele fake news bronnen die Rusland rijk is. Er wordt zelfs een **Russian Propaganda Index** (RPI) bijgehouden die aangeeft hoe actief de Russische trolls momenteel zijn in het verspreiden van bewezen onwaarheden (o.a. ivm de oorlog in Oekraïne, binnenlands beleid van andere mogendheden, COVID-19 vaccins, etc.)
 
-![Zoals verwacht zag de RPI-grafiek een stevige stijging aan de start van de illegitieme invasie van Oekraïne door Rusland. Bron: https://www.microsoft.com/en-us/security/business/microsoft-digital-defense-report-2022-cyber-influence-operations](intro/rpi.jpg)
+![Zoals verwacht zag de RPI-grafiek een stevige stijging aan de start van de illegitieme invasie van Oekraïne door Rusland. Bron: https://www.microsoft.com/en-us/security/business/microsoft-digital-defense-report-2022-cyber-influence-operations](intro/rpi.jpg){ width=70% }
 :::
 
 

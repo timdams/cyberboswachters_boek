@@ -142,7 +142,7 @@ Dit hoofdstuk begon met een definitie, dan moeten we zeker ook eens enkele zaken
 * Alice en Bob: zij zijn de *goeie* en willen op een veilige manier met elkaar communiceren. 
 * Eve: zij is de aanvaller/hacker/crimelord/snoodaard die het leven van Alice en Bob zuur wil maken in haar voordeel. Mogelijk wil ze te weten komen wat Alice en Bob met elkaar afspreken, misschien wil ze ervoor zorgen dat de berichten van Alice niet bij Bob aankomen, etc.
 
-![Meet the crew.](crypto/cast.png)
+![Meet the crew.](crypto/cast.png){ width=70% }
 
 ::: warning
 Herinner je even aan de McCumber-kubus: Alice en Bob zijn eender welk start-en eindpunt van onze informatie, in welke vorm dan ook. Als je bijvoorbeeld C.I.A. vereist in een computer dan is Alice bijvoorbeeld je CPU en Bob het RAM-geheugen (om maar iets te zeggen).  Kortom, probeer altijd al deze informatie breed genoeg te plaatsen en niet aan het klassieke "netwerkcommunicatie"-systeem waarin Alice over een netwerk een boodschap naar Bob stuurt. 
@@ -150,7 +150,7 @@ Herinner je even aan de McCumber-kubus: Alice en Bob zijn eender welk start-en e
 
 Eve kan op allerlei manieren *aanvallen* en in de eerste plaats kan dat **actief** of **passief** zijn: bij passieve aanvallen zal Eve enkel *luisteren* (en wachten) op de communicatie tussen Alice en Bob. Hierdoor zijn passieve aanvallen veel moeilijker om te detecteren (soms zelfs onmogelijk), maar uiteraard is Eve 100% afhankelijk van wat Bob en Eve doen, daar ze geen dwingende hand heeft in hun communicatie. Bij actieve aanvallen is dat omgekeerd: de pakkans is groter (en afhankelijk van het type aanval), maar ze kan ook mogelijk de communicatie tussen Bob en Alice sturen in de richting die zij nodig heeft om haar aanval uit te voeren.
 
-![Passieve vs actieve aanvallen](intro/pasact.png){ width=70% }
+![Passieve vs actieve aanvallen](intro/pasact.png){ width=80% }
 
 ### Passieve aanvallen
 
@@ -292,7 +292,7 @@ Een virus is een beetje zoals een giftige vis op het droge: het ligt maar wat in
 
 Als bijkomende handigheid zullen wormen ook vaak zichzelf veranderen zodat ze moeilijker door virusscanners kunnen gedetecteerd worden. Voorts hebben wormen geef *hostfile* nodig wat virussen wel hebben. En als laatste verschil met de virusjes is dat wormen zichzelf ook kunnen verspreiden zonder dat de gebruiker een (on)bewuste handeling moet doen. Kortom, wormen zijn een pittig probleem, vooral vanwege de snelheid (en eenvoud) waarmee ze zich verspreiden. 
 
-![Worm propagation model. Bron: Network Eye: End-to-End Computer Security Visualization - Scientific Figure on ResearchGate.](intro/wormprop.png)
+![Worm propagation model. Bron: Network Eye: End-to-End Computer Security Visualization - Scientific Figure on ResearchGate.](intro/wormprop.png){ width=70% }
 
 Bovenstaande afbeelding toont het *worm propagation model*. Dit model toont hoe snel een worm zich kan verspreiden en hoe belangrijk het is om een nieuwe worm zo snel mogelijk te detecteren, in de hoop voldoende systemen vervolgens te beschermen tegen besmettingen ervan. Naarmate een worm meer systemen kan besmetten, die op hun beurt dan ook als uitvalsbasis van de worm dienen, merk je een exponentiële groei van besmette systemen. Deze groei bereikt een plateau wanneer quasi alle systemen besmet zijn die konden besmet worden. 
 
@@ -331,7 +331,7 @@ Een virus zal zich nestelen op "gebruikersniveau", terwijl een rootkit zich veel
 
 De plaag van de laatste jaren! Het einddoel van cybercriminelen is natuurlijk centjes. Als je virus al je bestanden verwijderd dan heeft een digitale stroper weinig *leverage* om nog geld van z'n slachtoffer te pakken te krijgen. Ransomware lost dit probleem op voor de stropers: het zal de data letterlijk gijzelen en losgeld (*ransom*) vragen aan de gebruiker. Wanneer een ransomware op een systeem geraakt (via bijvoorbeeld een trojan of worm) zal het de data van de gebruiker versleutelen met een sleutel die enkel de maker van de malware kent. Vervolgens verschijnt er een bericht op de computer met daarin wat de gebruiker moet doen (betalen) indien deze z'n data terug wenst. Meestal zal de ransomware betalingen in crypto-coins vragen zodat het geld niet kan getraceerd worden.
 
-![Voorbeeld van een typisch ransomware scherm dat het slachtoffer te zien krijgt. Bron: wikipedia](intro/ransom.jpg)
+![Voorbeeld van een typisch ransomware scherm dat het slachtoffer te zien krijgt. Bron: wikipedia](intro/ransom.jpg){ width=70% }
 
 Ransomware heeft aangetoond dat data-backups erg belangrijk zijn. Maar ook HOE en WAAR je backup'd zal invloed hebben op hoe ransomware-gevoelig je bent. Indien je backups maakt op hetzelfde systeem als waar de originele data staat, dan bestaat de kans dat de ransomware ook de backup zal *gijzelen*. Indien je niet op geregelde tijdstippen een backup neemt kan het zijn dat je dagen of weken aan data kwijt bent moest je het slachtoffer van een ransomware-aanval zijn. We gaan niet verder in op backup-strategieën, maar het mogelijk duidelijk zijn dat deze *skillset* een essentieel onderdeel vormt van het *security-beleid* van een bedrijf.
 

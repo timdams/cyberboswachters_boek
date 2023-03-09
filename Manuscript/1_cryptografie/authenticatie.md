@@ -219,7 +219,7 @@ Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef*
 Federation via sso is een onderdeel van *federated identity management*, een grote groep technologieën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt.
 :::
 
-![Enkele van de vele typische SSO knoppen die je geregeld zal tegenkomen.](auth/ssoexamples.png){}
+![Enkele van de vele typische SSO knoppen die je geregeld zal tegenkomen.](auth/ssoexamples.png){ width=40% }
 
 ::: tip
 **OAuth** (*open authorization*) is een gestandaardiseerde manier om aan authenticatie te doen.
