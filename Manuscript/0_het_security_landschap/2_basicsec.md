@@ -27,6 +27,13 @@ Om ons doel te bereiken (C.I.A.) moeten we ervoor zorgen dat we dit toepassen op
 
 ![De McCumber kubus](crypto/secmodel.png){ width=70% }
 
+::: warning
+
+De wereld van de cyberboswachters houdt van afkortingen, protocols en vreemd klinkende standaarden. De wereldwijd gebruikte **ISO 27001** standaard (of norm) is er zo eentje, maar wel een erg belangrijke om te kennen. Wanneer een bedrijf of organisatie wil aantonen dat ze informatiebeveiliging hoog in het vaandel dragen, dan zullen ze deze norm trachten te behalen. Om als *ISO 27001 bedrijf* door het leven te mogen gaan moeten ze aan een hele hoop strenge eisen voldoen (die alle dimensies van de McCumber kubus omvatten, zou je kunnen zeggen) die in de standaard beschreven staan. Hierbij zal een externe auditor vervolgens controleren of je hier aan voldoet als bedrijf (en moet je dit elke 3 jaar opnieuw doen). 
+
+:::
+
+
 ## Waarom cyberboswachters het zo moeilijk hebben
 
 De McCumber kubus is een mooi concept, maar het is ook niet meer dan dat: een theoretisch framework. Het is ideaal om vanuit een high-level perspectief je ervan te vergewissen dat je aan alles hebt gedacht, maar in de praktijk komt er uiteraard bij alle aspecten van deze kubus aardig wat kijken.
