@@ -4,7 +4,7 @@ REM 1.Python: https://www.python.org/downloads/release/python-396/
 REM 2.Then:  pip install pandoc-latex-environment 
 REM 3.MikTex: https://miktex.org/download
 REM 4. Make sure to update all packages using "miktex console" once before running
-
+REM Eisvogel manual at https://repo.telematika.org/project/wandmalfarbe_pandoc-latex-template/
 pandoc ^
  metadata.yaml^
  intro.md^
@@ -21,11 +21,10 @@ pandoc ^
  --variable toc-own-page=true^
  --variable book=true^
  --top-level-division=chapter^
- --top-level-division=chapter^
  --filter pandoc-latex-environment^
  --self-contained^
  --resource-path=assets^
- -s --toc --verbose --template templates/eisvogel -o book.pdf 
+ -s --toc --verbose --template templates/eisvogel  --number-sections -o book.pdf 
 
  REM HTTPS://learnbyexample.github.io/customizing-pandoc/
  REM HTTPS://github.com/Wandmalfarbe/pandoc-latex-template
