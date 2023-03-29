@@ -1,8 +1,10 @@
 
 ## Changelog
 
-**Dit is versie 0.6.0** (22/12/22)
-
+**Dit is versie 0.6.1** (21/03/23)
+* 0.6.1
+  * Hoop typos weggehaald. 
+  * Geprepped voor printversie 2.
 * 0.6.0
   * Voorbereiden voor volgende semester. Aardig wat verbeteringen en aanvullingen overal aangebracht.
   * Printversie nagekeken.
@@ -31,7 +33,7 @@
   * Eerste batch remarks collega Boeynaems verwerkt
   * "Nuttige links" appendix toegevoegd
 * 0.4.0
-  * Iot Sectie vervolledigd
+  * IoT Sectie vervolledigd
   * Spellingcheck eens opgezet
 * 0.3.0
   * Eerste deel IoT security
