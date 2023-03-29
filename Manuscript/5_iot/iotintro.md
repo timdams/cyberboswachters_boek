@@ -152,7 +152,9 @@ De Mccumber kubus in gedachte nemende spreekt het natuurlijk voor zich dat ook d
 En zo hebben we het einde van het prille begin der cyberboswachters bereikt. Zoals je vermoedelijk ook zelf al aanvoelt, hebben we enkel maar het tipje van de ijsberg besproken. Als we er echter gezamenlijk in slagen om dit tipje alvast en zelf toe te passen én aan anderen aan te leren, dan maken we het de digitale stropers al een pak moeilijker. Beschouw dit een beetje als een toepassing van de wet van *diminishing returns.* De primaire, eenvoudige veiligheidstechnieken en gewoonten (goede paswoorden, geen default instellingen, kiss, etc.) gaan de grootste impact hebben op je algemene veiligheid. Alle daaropvolgende stappen, hoe belangrijk en nuttig ook, zullen steeds een kleiner stuk van de potentiële problemen voorkomen. 
 
 *Wees veiligheid en verspreid het woord! ;)*
+
 *Tim Dams*
+
 *2023*
 
 ![](gotopolice.png)

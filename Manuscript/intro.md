@@ -15,7 +15,7 @@ Dank aan eerstejaars Ernie de Magtige,  Dimitriy Vassilchenko & Jasper Van Meel 
 
 Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Michael Boeynaems en Serge Horsmans!
 
-# Waarschuwingen
+## Waarschuwingen
 
 Dit brengt ons automatisch bij een belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die verregaande gevolgen voor derden én jezelf kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken: digitale stropers zijn de beste cyberboswachters. Het is belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechtelijke gevolgen kunnen hebben, inclusief boetes tot zelfs jarenlange opsluiting.
 
@@ -25,7 +25,7 @@ Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel onde
 * Op doelwitten waar je geen eigenaar van bent, maar waar je wel expliciete toestemming voor hebt gekregen.
 
 
-## Opletten met experimenten
+### Opletten met experimenten
 
 Indien je van plan bent om met bepaalde tools te experimenteren hou dan rekening met volgende tips:
 

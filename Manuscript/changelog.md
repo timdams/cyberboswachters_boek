@@ -5,6 +5,7 @@
 * 0.6.1
   * Hoop typos weggehaald. 
   * Geprepped voor printversie 2.
+  * Hires afbeeldingen
 * 0.6.0
   * Voorbereiden voor volgende semester. Aardig wat verbeteringen en aanvullingen overal aangebracht.
   * Printversie nagekeken.
