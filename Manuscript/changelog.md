@@ -1,7 +1,7 @@
 
 ## Changelog
 
-**Dit is versie 0.6.1** (21/03/23)
+**Dit is versie 0.6.1** (29/03/23)
 * 0.6.1
   * Hoop typos weggehaald. 
   * Geprepped voor printversie 2.

@@ -3,5 +3,11 @@
         "editor.tabSize": 4,
         "editor.wrappingIndent": "same",
         "editor.cursorSurroundingLines": 0
-    }
+    },
+    "cSpell.words": [
+        "backdoor",
+        "Masquerading",
+        "traffiek",
+        "vulnerability"
+    ]
 }
