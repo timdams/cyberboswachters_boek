@@ -1,4 +1,4 @@
-# H2: De fundamenten van cybersecurity
+# De fundamenten van cybersecurity
 
 "Iedere goede film begint met een zwart scherm", zegt Batman in de "The Lego Batman Movie" &trade; film. Wel, ik vul dit aan met "...en ieder goed hoofdstuk begint met een definitie."
 
@@ -25,7 +25,7 @@ De zogenaamde McCumber kubus, ontwikkeld door John McCumber in 1991, geeft een g
 
 Om ons doel te bereiken (C.I.A.) moeten we ervoor zorgen dat we dit toepassen op alle vormen die onze data kan hebben (opslag, verzenden, verwerken). Dit kunnen we bewerkstelligen door technologische oplossingen (zoals encryptie wat in het volgende hoofdstuk wordt uitgespit), maar een niet onbelangrijke factor zijn ook de mensen die met de data moeten werken. Als zij zich niet aan de afspraken (procedures) houden en hun paswoorden gewoon op post-its aan hun scherm hangen, dan mag je een nog zo'n dure firewall hebben, het zal niet baten. 
 
-![De McCumber kubus](crypto/secmodel.png){ width=70% }
+![De McCumber kubus.](crypto/secmodel.png){ width=70% }
 
 ::: warning
 
@@ -59,8 +59,6 @@ De meeste fabrikanten van besturingssystemen (Apple, Microsoft, etc.) en veelgeb
 ::: tip
 In 2021 verscheen "How they tell me the world ends" van New York Times journaliste Nicole Perlroth. Dit boek is erg ontluisterend en geeft een griezelig inzicht in hoe het er momenteel aan toe gaat in de schimmige wereld van zero days, offensieve cybersecurity, etc. Bekijk bijvoorbeeld maar eens de twitter-account van Chaouki Bekrar ([twitter.com/cbekrar](https://twitter.com/cbekrar)), oprichter van Zerodium, een zero-days *broker* en huiver bij de gigantische prijzen die zero days waard kunnen zijn (soms meer dan één miljoen dollar...).
 
-![Een bericht van Zerodium in 2021](intro/zerodium.png){ width=70% }
-
 :::
 
 
@@ -91,7 +89,7 @@ Iemand die weinig tot niets kent van cybersecurity maar toch bestaande tools uit
 ::: tip
 Low Orbit Ion Cannon is zo'n typische scriptkiddie tool: eenvoudig in gebruik, met potentieel grote gevolgen voor het slachtoffer. Deze tool, wanneer meerdere gebruikers hem samen gebruiken, voert DDOS-aanvallen op het doelwit uit. In 2010 werd de tool bijvoorbeeld gebruikt om de servers van Visa, MasterCard en Paypal uren lang lam te leggen als wraak op het feit dat deze betalingsdiensten geen betalingen voor WikiLeaks meer aanvaardden. [Meer informatie](https://www.smh.com.au/technology/the-aussie-who-blitzed-visa-mastercard-and-paypal-with-the-low-orbit-ion-cannon-20101209-18qr1.html).
 
-![Low Orbit Ion Cannon UI (Bron Wikipedia)](intro/ioncan.jpg){ width=70% }
+![Low Orbit Ion Cannon UI (Bron Wikipedia).](intro/ioncan.jpg){ width=70% }
 :::
 
 
@@ -115,11 +113,11 @@ De laatste tien jaar heeft het **Bring your own device (BYOD)**-concept in bedri
 
 Cybercriminaliteit wordt soms wel eens de motor van de cybersecurity genoemd omdat ze steeds blijven innoveren en zoeken naar nog betere manieren om onschuldige slachtoffer hun centjes te stelen. Hierdoor moeten ook de boswachters steeds blijven vernieuwen. 
 
-Cybercriminaliteit is nu zelfs zo ver geëvolueerd dat ze heuse moderne bedrijfsconcepten overnemen en hun zaakje als echte bedrijven runnen. Moderne ransomware criminelen hebben zelfs helpdesks die je kan bellen om je te helpen om de betaling (de *ransom*) te regelen. Of wat te denken van website die botnets verhuren als waren het legale services. Hier en daar zie je nu zelfs het "-as a service" zinnetje verschijnen waarbij bijvoorbeeld "ransomware as a service" ([RaaS](https://zvelo.com/raas-ransomware-as-a-service/)) of "spam as a service" kan gehuurd worden. Het doel hierbij is natuurlijk om de strafbare feiten zoveel mogelijk te verleggen naar de persoon die de services inhuurt, en niet naar de aanbieder ervan.
+Cybercriminaliteit is nu zelfs zo ver geëvolueerd dat ze heuse moderne bedrijfsconcepten overnemen en hun zaakje als echte bedrijven runnen. Moderne ransomware criminelen hebben zelfs helpdesks die je kan bellen om je te helpen om de betaling (de *ransom*) te regelen. Of wat te denken van website die botnets verhuren als waren het legale services. Hier en daar zie je nu zelfs het "-as a service" zinnetje verschijnen waarbij bijvoorbeeld "Ransomware as a Service" ([RaaS](https://zvelo.com/raas-ransomware-as-a-service/)) of "spam as a service" kan gehuurd worden. Het doel hierbij is natuurlijk om de strafbare feiten zoveel mogelijk te verleggen naar de persoon die de services inhuurt, en niet naar de aanbieder ervan.
 
 ### Cyberterroristen, spionnen en overheden
 
-De laatste drie groepen bespreken we samen, ook al omdat de termen soms overvloeien afhankelijk aan wie je vraagt om iets of iemand met dit label te bestempelen. Zoals reeds in het eerste hoofdstuk aangehaald is de cyberwereld tegenwoordig ook een belangrijk terrein waar geopolitieke ruzies op worden uitgevochten. Er bereiken ons steeds meer berichten van de exploten die hier doorgaan. De financiële en technische middelen die deze groep voorhanden heeft voor zowel offensieve als defensieve cyberacties is meestal immens groter dan van alle andere stropers in dit overzicht. We zagen ooit een presentatie (bron ontbreekt. Als je deze vindt, laat me iets weten aub) waarin een cybersecurity expert ietwat lachend sprak over het "Mossad / Non-Mossad verdedigingsprincipe" (Mossad is een Israëlische geheime dienst en staat in de top van *strafste* cybersecurity expertise). Het principe gaat uit van de manier waarop je je beveiliging opbouwt: ga er van uit dat de Mossad in je systemen zal geraken, ongeacht hoeveel geld en personeel je tegen het probleem aan gooit. Het is met andere woorden efficiënter dat je een realistische inschatting maakt van je tegenstanders (qua expertise en middelen) en daar specifiek je op richt, waarbij je natuurlijk het  *low hanging fruit* niet over het hoofd ziet. 
+De laatste drie groepen bespreken we samen, ook al omdat de termen soms overvloeien afhankelijk aan wie je vraagt om iets of iemand met dit label te bestempelen. Zoals reeds in het eerste hoofdstuk aangehaald is de cyberwereld tegenwoordig ook een belangrijk terrein waar geopolitieke ruzies op worden uitgevochten. Er bereiken ons steeds meer berichten van de exploten die hier doorgaan. De financiële en technische middelen die deze groep voorhanden heeft voor zowel offensieve als defensieve cyberacties is meestal immens groter dan van alle andere stropers in dit overzicht. We zagen ooit een presentatie waarin een cybersecurity expert ietwat lachend sprak over het "Mossad / Non-Mossad verdedigingsprincipe" (Mossad is een Israëlische geheime dienst en staat in de top van *strafste* cybersecurity expertise). Het principe gaat uit van de manier waarop je je beveiliging opbouwt: ga er van uit dat de Mossad in je systemen zal geraken, ongeacht hoeveel geld en personeel je tegen het probleem aan gooit. Het is met andere woorden efficiënter dat je een realistische inschatting maakt van je tegenstanders (qua expertise en middelen) en daar specifiek je op richt, waarbij je natuurlijk het  *low hanging fruit* niet over het hoofd ziet. 
 
 ## Hoe vallen ze aan
 
@@ -149,7 +147,7 @@ Dit hoofdstuk begon met een definitie, dan moeten we zeker ook eens enkele zaken
 * Alice en Bob: zij zijn de *goeie* en willen op een veilige manier met elkaar communiceren. 
 * Eve: zij is de aanvaller/hacker/crimelord/snoodaard die het leven van Alice en Bob zuur wil maken in haar voordeel. Mogelijk wil ze te weten komen wat Alice en Bob met elkaar afspreken, misschien wil ze ervoor zorgen dat de berichten van Alice niet bij Bob aankomen, etc.
 
-![Meet the crew.](crypto/cast.png){ width=70% }
+![Meet the crew.](crypto/cast.png){ width=75% }
 
 ::: warning
 Herinner je even aan de McCumber-kubus: Alice en Bob zijn eender welk start-en eindpunt van onze informatie, in welke vorm dan ook. Als je bijvoorbeeld C.I.A. vereist in een computer dan is Alice bijvoorbeeld je CPU en Bob het RAM-geheugen (om maar iets te zeggen).  Kortom, probeer altijd al deze informatie breed genoeg te plaatsen en niet aan het klassieke "netwerkcommunicatie"-systeem waarin Alice over een netwerk een boodschap naar Bob stuurt. 
@@ -157,17 +155,17 @@ Herinner je even aan de McCumber-kubus: Alice en Bob zijn eender welk start-en e
 
 Eve kan op allerlei manieren *aanvallen* en in de eerste plaats kan dat **actief** of **passief** zijn: bij passieve aanvallen zal Eve enkel *luisteren* (en wachten) op de communicatie tussen Alice en Bob. Hierdoor zijn passieve aanvallen veel moeilijker om te detecteren (soms zelfs onmogelijk), maar uiteraard is Eve 100% afhankelijk van wat Bob en Eve doen, daar ze geen dwingende hand heeft in hun communicatie. Bij actieve aanvallen is dat omgekeerd: de pakkans is groter (en afhankelijk van het type aanval), maar ze kan ook mogelijk de communicatie tussen Bob en Alice sturen in de richting die zij nodig heeft om haar aanval uit te voeren.
 
-![Passieve vs actieve aanvallen](intro/pasact.png){ width=80% }
+![Passieve vs actieve aanvallen.](intro/pasact.png){ width=100% }
 
 ### Passieve aanvallen
 
-Bij een **sniffing** aanval gebruikt Eve een *sniffer* (bijvoorbeeld Wireshark indien ze netwerk-traffiek wenst te meten) om alle communicatie tussen twee eindpunten te zien. Alhoewel data steeds vaker geëncrypteerd wordt, zal Eve toch vaak erg nuttige informatie uit deze moeilijk te detecteren aanval kunnen halen. Denk maar aan MAC-adressen,algemene gebruikersinfo, etc. We staan er niet altijd bij stil hoeveel netwerk-traffiek tegenwoordig constant over netwerken over en weer vliegt. Daarbij komt ook een iets recenter fenomeen: de minder veilige third-party apps van bekende merken. Applicaties gemaakt door derden volgen mogelijk niet altijd de strenge beveiligingscriteria van het bedrijf waarvoor ze een app hebben gemaakt. Hierdoor bestaat er de kans dat sommige apps zelfs flagrante fouten maken en bijvoorbeeld user credentials onbeveiligd opslaan, of erger, of over het netwerk sturen.  Dit soort apps maken het werk voor Eve die aan het sniffen is dan ook erg gemakkelijk.
+Bij een **sniffing** aanval gebruikt Eve een *sniffer* (bijvoorbeeld Wireshark indien ze netwerk-traffiek wenst te meten) om alle communicatie tussen twee eindpunten te zien. Alhoewel data steeds vaker geëncrypteerd wordt, zal Eve toch vaak erg nuttige informatie uit deze moeilijk te detecteren aanval kunnen halen. Denk maar aan MAC-adressen, algemene gebruikersinfo, etc. We staan er niet altijd bij stil hoeveel netwerk-traffiek tegenwoordig constant over netwerken over en weer vliegt. Daarbij komt ook een iets recenter fenomeen: de minder veilige third-party apps van bekende merken. Applicaties gemaakt door derden volgen mogelijk niet altijd de strenge beveiligingscriteria van het bedrijf waarvoor ze een app hebben gemaakt. Hierdoor bestaat er de kans dat sommige apps zelfs flagrante fouten maken en bijvoorbeeld user credentials onbeveiligd opslaan, of erger, of over het netwerk sturen.  Dit soort apps maken het werk voor Eve die aan het sniffen is dan ook erg gemakkelijk.
 
-![Passieve aanval, type 1: sniffing](intro/sniffing.png){ width=70% }
+![Passieve aanval, type 1: sniffing.](intro/sniffing.png){ width=70% }
 
 Soms is geen traffiek kunnen sniffen ook nuttig voor Eve. Later behandelen we nog side-channel aanvallen, maar we bespreken nu toch al deze vaak vergeten broer van de sniffing-aanval: de **trafiek analyse**. Door het registreren wanneer en hoe een doel communiceert kan Eve ook erg veel informatie op een passieve manier te pakken krijgen. In de eerste plaats laat het de stroper toe om te weten wanneer een gebruiker actief is en wanneer niet. Sommige systemen laten een alarm afgaan als ze zien dat een legale gebruiker op een onverwacht moment actief is, iets waar Eve nu rekening mee kan houden. Voorts laat het Eve ook toe om te ontdekken wat voor activiteiten het slachtoffer gebruikt (zijn er veel email-gerelateerde berichten? OF net veel VoIP-calls?). 
 
-![Passieve aanval, type 2: trafiek analyse](intro/trafanaly.png){ width=70% }
+![Passieve aanval, type 2: trafiek analyse.](intro/trafanaly.png){ width=70% }
 
 ### Actieve aanvallen
 
@@ -176,19 +174,19 @@ Het domein van de actieve aanvallen is natuurlijk het domein waar Eve de meeste 
 1. Het zal de daaropvolgende aanvallen moeilijker kunnen linken aan Eve, daar ze onder een pseudoniem actief is.
 2. Het zal Eve mogelijk toegang verschaffen tot bronnen waar ze onder haar eigen *identiteit* niet de juiste rechten toe heeft.
 
-![Actieve aanval, type 1: Masquerading](intro/maske.png){ width=70% }
+![Actieve aanval, type 1: Masquerading.](intro/maske.png){ width=70% }
 
 Het tweede type actieve aanvallen zijn **replay**-attacks. Hierbij zal de stroper eerder bewaarde, legitieme, communicatie heruitzenden in de hoop dat de ontvanger er zich geen vragen bijstelt. Beeld je in dat Eve een login-pakket heeft gesnift van een erg zwak beveiligd systeem: als Eve de volgende dag wil inloggen onder de naam van haar slachtoffer dan hoeft ze enkel dat bewaarde pakket opnieuw te versturen. 
 
-![Actieve aanval, type 2:Replay attack](intro/replay.png){ width=70% }
+![Actieve aanval, type 2:Replay attack.](intro/replay.png){ width=70% }
 
 Type 3 is vanuit het standpunt van de aanvaller de interessantste: de **man-in-the-middle** of **MitM**-aanval. Hierbij zal Eve zich tussenin de communicatie van Bob en Alice nestelen met als doel op een onzichtbare manier hun communicatie te lezen, aanpassen of blokkeren. Het laat Eve toe als een soort *puppetmaster* de volledige communicatie te bepalen en beïnvloeden. Deze aanval is erg krachtig, maar vereist ook vaak een stevige technische opbouw door Eve daar ze nu twee eindpunten heeft die ze met behulp van onder andere masquerading moet aanvallen. 
 
-![Actieve aanval, type 3: Man-in-the-middle aanval](intro/mitm.png){ width=70% }
+![Actieve aanval, type 3: Man-in-the-middle aanval.](intro/mitm.png){ width=70% }
 
 Als laatste de meest voorkomende aanval: de **Denial-of-Service** (DoS). Deze aanval heeft als doel om een systeem of gebruiker *lam te leggen* zodat deze niet meer voor andere gebruikers of systemen bereikbaar is. De reden om een DoS uit te voeren zijn velerlei en de manier waarop deze uitgevoerd kan worden is ook quasi eindeloos: de stekker uittrekken, gigantische hoeveelheden communicatie versturen, of het signaal verstoren met een microgolf-oven. Alles is mogelijk en het hangt vooral van de creativiteit van de aanvaller af hoe effectief de aanval is. 
 
-![Actieve aanval, type 4: denial-of-service aanval](intro/dos.png){ width=70% }
+![Actieve aanval, type 4: denial-of-service aanval.](intro/dos.png){ width=70% }
 
 
 ## Hoe verdedigen
@@ -266,7 +264,7 @@ Enkele nuttige technieken die worden toegepast:
 
 Het **OSINT Framework** (via [osintframework.com](https://osintframework.com/)) is ontwikkeld om mensen er op te wijzen hoeveel publieke informatie social engineers (en anderen) over iemand te weten kunnen. Het is een griezelig uitgebreide hoeveelheid online bronnen die mooi gecategoriseerd zijn. Hierbij is het op de koop toe belangrijk te beseffen dat enkel open source bronnen worden gebruikt. Digitale stropers zullen zich uiteraard niet beperken tot enkel opensource bronnen en ook vaak betaalde of illegaal verkregen bronnen raadplegen.
 
-![Voorbeeld van het OSINT framework in actie](intro/osint.png){ width=70% }
+![Voorbeeld van het OSINT framework in actie.](intro/osint.png){ width=70% }
 
 ## Soorten aanvallen
 
@@ -275,7 +273,7 @@ Het **OSINT Framework** (via [osintframework.com](https://osintframework.com/)) 
 Software-gebaseerde aanvallen zijn de aanvallen die je in het nieuws geregeld hoort. In deze groep vinden we de virussen, wormen, backdoors, trojan en alle andere **malware** terug. De term malware dekt de lading erg goed: *"any kind of malicious software designed to damage or harm a computer system."* Het doel van malware is altijd geld, macht (denk aan blackmailen) of pestgedrag.  De verschillende malware-types hebben soms overlappende eigenschappen en het is dus niet altijd mogelijk om een specifiek stuk malware onder één categorie te plaatsen. Wat ze allemaal gemeen hebben is dat ze bepaalde gekende of ongekende (*zerodays*) fouten of bugs (*kwetsbaarheden* of *vulnerabilities*) misbruiken in software om zo toegang tot een systeem, data of stuk hardware te verkrijgen. 
 
 ::: tip
-CVE oftewel "Common Vulnerabilities and Exposures" is een publiek beschikbare lijst waarin alle gekende security kwetsbaarheden opgelijst staan. Het laat cyberboswachters toe om duidelijk te communiceren over problemen en oplossingen. Volgens een [rapport](https://www.cisa.gov/uscert/ncas/alerts/aa20-133a) van de Amerikaanse "Cybersecurity & Infrastructure Security Agency" (CISA) was de meest misbruikte CVE tussen 2016 en 2019 een kwetsbaarheid (CVE-2017-11882) in Microsoft Office 2013 die samengevat: *"allow an attacker to run arbitrary code in the context of the current user by failing to properly handle objects in memory, aka 'Microsoft Office Memory Corruption Vulnerability'."*
+**CVE oftewel "Common Vulnerabilities and Exposures"** is een publiek beschikbare lijst waarin alle gekende security kwetsbaarheden opgelijst staan. Het laat cyberboswachters toe om duidelijk te communiceren over problemen en oplossingen. Volgens een [rapport](https://www.cisa.gov/uscert/ncas/alerts/aa20-133a) van de Amerikaanse "Cybersecurity & Infrastructure Security Agency" (CISA) was de meest misbruikte CVE tussen 2016 en 2019 een kwetsbaarheid (CVE-2017-11882) in Microsoft Office 2013 die samengevat: *"allow an attacker to run arbitrary code in the context of the current user by failing to properly handle objects in memory, aka 'Microsoft Office Memory Corruption Vulnerability'."*
 :::
 
 We overlopen nu de belangrijkste vormen van malware.
@@ -304,7 +302,7 @@ Bovenstaande afbeelding toont het *worm propagation model*. Dit model toont hoe 
 
 Trojans zijn malware die zich verstoppen binnenin een legaal, al dan niet nuttige, applicatie die de gebruiker bewust installeert of download. Van zodra de gebruiker deze host-applicatie installeert of start zal de onderliggende trojan zijn aanval op het systeem beginnen. Die aanval kan velerlei zijn, denk maar aan het installeren van een backdoor, de computer veranderen in een zombie (zie botnet verderop) of een keylogger activeren. 
 
-![De naam Trojan is gebaseerd op de legende van Het Paard van Troje uit de Aeneid van Vergilius. De afbeelding toont een detail van het doek "The Procession of the Trojan Horse in Troy" door Domenico Tiepolo (1773)](intro/trojan.jpg){ width=60% }
+![De naam Trojan is gebaseerd op de legende van Het Paard van Troje uit de Aeneid van Vergilius. De afbeelding toont een detail van het doek "The Procession of the Trojan Horse in Troy" door Domenico Tiepolo (1773).](intro/trojan.jpg){ width=75% }
 
 #### Spyware
 
@@ -323,7 +321,7 @@ Daar waar spyware soms door adverteerders wordt gebruikt om "het doelwit beter t
 Een bijkomend probleem van sommige malware is dat ze *rootkit*-achtige (zie hierna) technieken gebruiken waardoor ze erg moeilijk te verwijderen zijn en je moet opletten dat je niet essentiële bestanden van je computer verminkt of verwijderd.
 :::
 
-![Een wat overdreven voorstelling van het soort browsers vol adware die de auteur soms te zien kreeg toen hij computers ging repareren die "nogal traag waren". Bron: https://www.digitalseattle.com/newsletter-content/71-disabling-those-pesky-browser-toolbars.html](intro/adware.jpg){ width=40% }
+![Een wat overdreven voorstelling van het soort browsers vol adware die de auteur soms te zien kreeg toen hij computers ging repareren die "nogal traag waren". Bron: https://www.digitalseattle.com/newsletter-content/71-disabling-those-pesky-browser-toolbars.html .](intro/adware.jpg){ width=40% }
 
 #### Rootkit
 
@@ -333,7 +331,7 @@ Een virus zal zich nestelen op "gebruikersniveau", terwijl een rootkit zich veel
 
 De plaag van de laatste jaren! Het einddoel van cybercriminelen is natuurlijk centjes. Als je virus al je bestanden verwijderd dan heeft een digitale stroper weinig *leverage* om nog geld van z'n slachtoffer te pakken te krijgen. Ransomware lost dit probleem op voor de stropers: het zal de data letterlijk gijzelen en losgeld (*ransom*) vragen aan de gebruiker. Wanneer een ransomware op een systeem geraakt (via bijvoorbeeld een trojan of worm) zal het de data van de gebruiker versleutelen met een sleutel die enkel de maker van de malware kent. Vervolgens verschijnt er een bericht op de computer met daarin wat de gebruiker moet doen (betalen) indien deze z'n data terug wenst. Meestal zal de ransomware betalingen in crypto-coins vragen zodat het geld niet kan getraceerd worden.
 
-![Voorbeeld van een typisch ransomware scherm dat het slachtoffer te zien krijgt. Bron: wikipedia](intro/ransom.jpg){ width=70% }
+![Voorbeeld van een typisch ransomware scherm dat het slachtoffer te zien krijgt (Bron: wikipedia).](intro/ransom.jpg){ width=70% }
 
 Ransomware heeft aangetoond dat data-backups erg belangrijk zijn. Maar ook HOE en WAAR je backup'd zal invloed hebben op hoe ransomware-gevoelig je bent. Indien je backups maakt op hetzelfde systeem als waar de originele data staat, dan bestaat de kans dat de ransomware ook de backup zal *gijzelen*. Indien je niet op geregelde tijdstippen een backup neemt kan het zijn dat je dagen of weken aan data kwijt bent moest je het slachtoffer van een ransomware-aanval zijn. We gaan niet verder in op backup-strategieën, maar het mogelijk duidelijk zijn dat deze *skillset* een essentieel onderdeel vormt van het *security-beleid* van een bedrijf.
 
@@ -388,10 +386,13 @@ Enkele voorbeelden:
 * Onderzoekers zijn er in geslaagd om data uit een computer te krijgen door de *power consumption* op te meten.
 * Rowhammer, spectre (en ook drammer en rampage) is een recente techniek waarbij de informatie uit het geheugen kan gelezen worden waar de stroper eigenlijk geen rechten toe heeft. 
 * Heartbleed: deze bespraken we al kort in het eerste hoofdstuk. Deze inventieve techniek maakt gebruik van het feit dat computers altijd braaf antwoorden als je ze vragen stelt. Maar stropers ontdekten dat de snelheid van antwoorden afhing van de vraag. 
-![De briljante xkcd.com heeft legt perfect uit hoe Heartbleed werkt](intro/heartbleed.png)
 
 ::: note
 Wist je dat een oud liedje van Janet Jackson kan gebruikt worden om (oude) laptops te doen crashen door het gewoon af te spelen?  Over een side-channel DoS aanval gesproken. De aanval heeft zelfs een CVE-nummer  toegewezen gekregen! Lees hier hoe de aanval werkt:[https://www.bleepingcomputer.com/news/security/janet-jacksons-music-video-is-now-a-vulnerability-for-crashing-hard-disks/](https://www.bleepingcomputer.com/news/security/janet-jacksons-music-video-is-now-a-vulnerability-for-crashing-hard-disks/)
 :::
+
+
+![De briljante xkcd.com heeft legt perfect uit hoe Heartbleed werkt.](intro/heartbleed.png)
+
 
 

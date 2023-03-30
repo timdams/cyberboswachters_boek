@@ -1,4 +1,4 @@
-# H3: Cryptografie
+# Cryptografie
 
 In dit hoofdstuk duiken we de boeiende wereld van de cryptografie in: het versleutelen van informatie zodat enkel zender en ontvanger het bericht kunnen lezen. 
 
@@ -10,7 +10,7 @@ Herinner je dat we in het vorige hoofdstuk de termen CIA aanhaalden en de McCumb
 
 Er zijn al veel encryptie algoritmes de revue gepasseerd doorheen de geschiedenis van de mens. Al van in de tijd van de Romeinen werd er aan cryptografie gedaan. Mensen hebben altijd gevoelige data gehad waar vertrouwelijk mee moest om gesprongen worden. Naarmate de **cryptanalyse** (dat is het proberen ontcijferen van een ciphertext zonder dat je de geheime sleutel hebt) evolueerde, moesten ook de cryptografische algoritmes verbeteren.  Ook hier zien we weer diezelfde wedloop tussen digitale stropers en cyberboswachters. Hoe sterker onze computers worden (met dank aan de wet van Moore), hoe krachtiger onze algoritmes moeten worden. De eenvoudigste vorm van cryptanalyse, *bruteforcing*, is rechtstreeks afhankelijk van de snelheid van de computer. Hoe meer sleutels per seconde een computer kan testen, hoe sneller de originele sleutel kan gevonden worden. 
 
-![Alice gebruikt encryptie om een beveiligd bericht naar Bob te sturen, zodat Eve deze niet kan lezen.](crypto/basicencrypt.png)
+![Alice gebruikt encryptie om een beveiligd bericht naar Bob te sturen, zodat Eve deze niet kan lezen.](crypto/basicencrypt.png){ width=90% }
 
 ::: tip
 De volledige geschiedenis van de cryptografie hier vertellen zou ongeveer 1200 pagina's vereisen. Het briljante boek "The Codebreakers" van David Kahn is een aanrader voor eenieder die meer willen weten over deze boeiende geschiedenis. Laat de 1200 pagina's je niet afschrikken, het boek leest als een echte thriller.
@@ -39,13 +39,14 @@ We zagen reeds dat *Security through obscurity* een dubbel snijdend zwaard binne
 
 **Finaal draait alles op het geheimhouden van je sleutel, iets dat we telkens weer in dit boek zullen herhalen!**
 
-::: caution
+### Sleutellengte en bruteforcing
+
 Let op encryptiesystemen die zichzelf verkopen met zinnen zoals *"10 jaar nodig op een gewone laptop om alle sleutels te testen"*. Dit zou kunnen doen vermoeden dat je dus voor minstens tien jaar goed zit (we gaan er even vanuit dat de gemiddelde cryptanalist maar toegang heeft tot één laptop, wat uiteraard in de echte wereld niet zo is). De gemiddelde tijd van voorgaande systeem om te bruteforcen is echter vijf jaar, de helft.
 
 Stel dat je een sleutel hebt die bestaat uit 8 karakters. Een karakter is een letter van a tot z (geen onderscheid tussen hoofd en kleine letters en geen getallen of speciale tekens). Er zijn $26^8$ mogelijke sleutels (we gaan ervan uit dat de sleutel exact 8 karakters moet bevatten). Een computer kan één miljoen sleutels per seconde testen. De duur om alle mogelijke sleutels te testen is dus $\frac{(26^8)}{1 000 000}$, oftewel 208 827 seconden, pakweg 58 uur. Intuïtief zou je kunnen denken dat je dus meer dan twee dagen "veilig" zit, wat niet zo is. De kans dat de eerste sleutel die je test reeds de juiste is, is even groot als dat het de laatste sleutel is. Kortom, gemiddeld gezien zal de sleutel in de helft van de maximum tijd gevonden worden, oftewel 29 uur. 
 
 Zouden we de lengte van de sleutel met één karakter verhogen, naar 9. Dan stijgt de totale duur naar pakweg 1500 uur, oftewel 62 dagen. Eén karakter extra heeft dus wel degelijk een gigantische impact op de veiligheid van een sleutel!
-:::
+
 
 
 ## De eerste algoritmes
@@ -64,7 +65,28 @@ De Caesar encryptie (naar Julius Caesar) bestaat uit een eenvoudig substitutie a
 * Als de sleutel het getal 3 is, dan zal nu iedere letter A in de tekst vervangen worden door het teken 1+3, dus D. Iedere B wordt een E, enzovoort.
 * Indien er een "overflow" is achteraan komen we uiteraard terug naar voor in het alfabet. Iedere Z wordt dus een C, iedere Y een B, enzovoort.
 
-::: tip
+Het Caesarcipher wordt ook wel kortweg *Rot* genoemd, naar het woord *rotatie*. Een cijfer erachter geeft dan aan welk de te gebruiken sleutel is. Rot4 wil dus zeggen dat alle elementen vier plaatsen opgeschoven moeten worden. Merk op dat Rot13 (ook wel *Caesaralfabet* genoemd) een speciale sleutel is. Als je namelijk twee maal na elkaar Rot13 toepast op een tekst (eerst op de plaintext, dan op de resulterende ciphertext) dan verkrijgt men terug de originele tekst.
+
+
+
+
+
+
+
+Uiteraard kan iedere weldenkende mens in de 21e eeuw een Caesar-encryptie bruteforcen. Het aantal mogelijk sleutels beperkt zich tot 25 mogelijkheden (sleutels 0, 26, etc. zullen resulteren in géén encryptie: je plaintext en ciphertext zullen identiek zijn) en je kan dit dus snel testen.  
+
+Door **frequentieanalyse** op de ciphertext toe te passen kan men ook de plaintext terugvinden zonder te moeten bruteforcen. Indien de plaintext een tekst in, bijvoorbeeld, het Nederlands is, dan kunnen we gebruik maken van de statistische eigenschappen van een taal. Zo weten we dat bepaalde letters in een standaard Nederlandstalige tekst meer of minder vaak voorkomen. De letter `e` komt bijvoorbeeld veel vaker voor dan de `v`. Daar iedere letter in de encryptie door een andere wordt vervangen, is het dus voldoende om te ontdekken (a.d.h.v. frequentieanalyse) welke letter(s) het meest of minst voorkomen om je zo een vermoeden te geven van de originele letter. 
+
+![De frequentie-analyse van een typisch Nederlandstalige tekst. Merk op dat de letterscore bij het bordspel Scrabble omgekeerd evenredig is met de frequentie dat de letter gemiddeld voorkomt. Dit verklaar ook waarom er per taal een eigen Scrabble-editie bestaat met eigen letterscores (Bron: Wikipedia).](crypto/freqNL.jpg)
+
+
+Dit verklaart ook waarom je best je te encrypteren berichten zo kort mogelijk houdt. Hoe minder tekens, hoe minder frequentieanalyse zal werken. Een andere veelgebruikte fout (in klassiekere encryptie) was dat de verzender bijvoorbeeld voorspelbare tekst ging encrypteren. Als je weet dat de verzender altijd begint met "Geachte" in z'n berichten, dan is de kans groot dat de eerste 7 tekens in de ciphertext deze plaintext voorstellen.
+
+Het principe van Caesar-encryptie, de substitutie, blijft echter overeind staan en zal je nog zien terugkomen in de komende algoritmes. 
+
+
+
+#### Over de modulo operator
 De modulo operator (%) is nuttig bij substitutie-algoritmes zoals bij Caesar encryptie. De modulo operator geeft de rest weer wanneer de linkse door de rechtse operator zouden delen. 19%5 geeft dus 4 als resultaat.
 
 Je kan de operator gebruiken om snel te weten wat de waarde van een teken wordt bij Caesar-encryptie als volgt:
@@ -79,25 +101,7 @@ Als je dus een sleutel hebt met waarde 7 en je wilt weten wat de waarde van ``Y`
 
 Dit zal dus 5 worden, oftewel een ``F``.
 
-:::
 
-Het Caesercipher wordt ook wel kortweg *Rot* genoemd, naar het woord *rotatie*. Een cijfer erachter geeft dan aan welk de te gebruiken sleutel is. Rot4 wil dus zeggen dat alle elementen vier plaatsen opgeschoven moeten worden.
-
-::: tip
-Merk op dat Rot13 (ook wel *Caesaralfabet* genoemd) een speciale sleutel is. Als je namelijk twee maal na elkaar Rot13 toepast op een tekst (eerst op de plaintext, dan op de resulterende ciphertext) dan verkrijgt men terug de originele tekst.
-:::
-
-Uiteraard kan iedere weldenkende mens in de 21e eeuw een Caesar-encryptie bruteforcen. Het aantal mogelijk sleutels beperkt zich tot 25 mogelijkheden (sleutels 0, 26, etc. zullen resulteren in géén encryptie: je plaintext en ciphertext zullen identiek zijn) en je kan dit dus snel testen.  
-
-Door **frequentieanalyse** op de ciphertext toe te passen kan men ook de plaintext terugvinden zonder te moeten bruteforcen. Indien de plaintext een tekst in, bijvoorbeeld, het Nederlands is, dan kunnen we gebruik maken van de statistische eigenschappen van een taal. Zo weten we dat bepaalde letters in een standaard Nederlandstalige tekst meer of minder vaak voorkomen. De letter `e` komt bijvoorbeeld veel vaker voor dan de `v`. Daar iedere letter in de encryptie door een andere wordt vervangen, is het dus voldoende om te ontdekken (a.d.h.v. frequentieanalyse) welke letter(s) het meest of minst voorkomen om je zo een vermoeden te geven van de originele letter. 
-
-::: tip
-Dit verklaart ook waarom je best je te encrypteren berichten zo kort mogelijk houdt. Hoe minder tekens, hoe minder frequentieanalyse zal werken. Een andere veelgebruikte fout (in klassiekere encryptie) was dat de verzender bijvoorbeeld voorspelbare tekst ging encrypteren. Als je weet dat de verzender altijd begint met "Geachte" in z'n berichten, dan is de kans groot dat de eerste 7 tekens in de ciphertext deze plaintext voorstellen.
-:::
-
-Het principe van Caesar-encryptie, de substitutie, blijft echter overeind staan en zal je nog zien terugkomen in de komende algoritmes. 
-
-![De frequentie-analyse van een typisch Nederlandstalige tekst. Merk op dat de letterscore bij het bordspel Scrabble omgekeerd evenredig is met de frequentie dat de letter gemiddeld voorkomt. Dit verklaar ook waarom er per taal een eigen Scrabble-editie bestaat met eigen letterscores. Bron Wikipedia](crypto/freqNL.jpg)
 
 ### Transpositie: scytale encryptie
 
@@ -105,22 +109,17 @@ Bij transpositie-algoritmen gaan we de positie van de karakters veranderen. De s
 
 Om nu de ciphertext te decrypteren werd een onbeschreven lint over de juiste scytale gelegd. Vervolgens werd de verkregen ciphertext op dit lint, zijde per zijde, overgeschreven. Als de ontvanger dan het lint ontrolde kreeg hij terug de originele tekst te zien.
 
-![Een authentieke scytale. Bron Wikipedia](crypto/skytale.png){ width=50% }
+![Een authentieke scytale (Bron: Wikipedia).](crypto/skytale.png){ width=50% }
 
 Stel dat we de tekst "De perzen komen er nu aan" (bron: wikipedia) over een scytale met vier zijden wikkelen, dan krijgen we:
 
-```
-_____________________________________________________________
-       |   |   |   |   |   |  |
-       | d | e | p | e | r |  |
-     __| z | e | n | k | o |__|
-    |  | m | e | n | e | r |
-    |  | n | u | a | a | n |
-    |  |   |   |   |   |   |
-_____________________________________________________________
-```
 
-De ciphertext die we vervolgens vesturen (wanneer we het lint afwikkelen) wordt: "dzmneeeupnnaekearorn".
+![Tijd om de 300 in te roepen!](crypto/skypre.png){ width=100% }
+
+
+De ciphertext die we vervolgens versturen (wanneer we het lint afwikkelen) wordt:
+
+![Dit gaat Xerxes nooit kunnen lezen...Zeker niet omdat de Nederlandse taal toen nog niet bestond. Muhahahaha!](crypto/skyna.png){ width=100% }
 
 Uiteraard zijn er tal van varianten mogelijk om transpositie te doen. Eerst kan je beslissen om je plaintext in een bepaalde vorm te plaatsen: bijvoorbeeld in tien kolommen. Vervolgens kan je dan, gebaseerd op de sleutel, beslissen in welke volgorde je de kolommen achter elkaar plaatst om de originele tekst te krijgen. Dit is een zogenaamd *route cipher* wat onder andere werd gebruikt tijdens de Amerikaanse Burgeroorlog. 
 
@@ -131,7 +130,7 @@ Het spreekt voor zich dat een combinatie van een transpositiecipher en een subst
 
 De **Advanced Encryption Standard (AES)** is in de 21e eeuw zo'n beetje de de facto standaard als het aankomt op symmetrische encryptie (d.w.z. encryptie waar maar één sleutel voor nodig is, verder meer hierover). Als we echter eens het algoritme opengooien en een enkele *encryption round* bekijken (AES bestaat uit een sequentie van deze rondes) dan zien we dat de bits die bovenaan binnenkomen (*state*) vervolgens een combinatie van substituties (*sub*) en transposities (*mixcolumns* en *shiftrows*) ondergaan.
 
-![Bron Wikipedia](crypto/aesprev.png)
+![Bron Wikipedia.](crypto/aesprev.png){width=110%}
 
 We gaan AES nog terug zien opduiken wanneer we gaan bekijken hoe draadloze netwerken worden beveiligd. Als Belg mogen we trouwens erg fier zijn op deze wereldwijd gebruikte Amerikaanse standaard. Je zal later ontdekken waarom dat zo is!
 
@@ -180,7 +179,7 @@ Volgende tabel ([bron](HTTPS://uwnthesis.wordpress.com/2020/07/01/brute-force-pa
 | 13  | 3,9 dagen | $2,6*10^{3}$ jaren  |  $2,1*10^{8}$ jaren  | $5,4*10^{10}$ jaren  |    
 | 14  | 39 dagen |$6,8*10^{4}$ jaren | $1,3*10^{10}$ jaren  | $5,1*10^{12}$ jaren  |     
 | 15  | 1,1 jaar |$1,8*10^{6}$ jaren | $8,1*10^{11}$ jaren  | $4,9*10^{14}$ jaren  |     
-| 16  |  11jaar |$4,6*10^{7}$ jaren | $5*10^{13}$ jaren  |$4,7*10^{16}$ jaren   |     
+| 16  |  11 jaar |$4,6*10^{7}$ jaren | $5*10^{13}$ jaren  |$4,7*10^{16}$ jaren   |     
 
 ::: tip
 Per extra GeForce-kaart die de aanvaller zou gebruiken halveert de tijd in deze tabel.
@@ -253,7 +252,7 @@ Denk daarbij bijvoorbeeld aan *cryptocurrencies* zoals Ethereum en Bitcoin:
 
 Er zijn twee soorten encryptiesystemen als we kijken naar het aantal sleutels. Symmetrische systemen zijn systemen waarbij maar één sleutel nodig is: zowel ontvanger als verzender gebruiken dezelfde sleutel.  De term symmetrisch verwijst naar het feit dat het algoritme exact hetzelfde doet aan beide zijden. Het enige verschil is dat bij de verzender de plaintext in het systeem wordt gestoken, wat resulteert in een ciphertext. Terwijl de ontvanger de ciphertext in het systeem plaatst om een plaintext te krijgen.
 
-![Het basismodel van symmmetrische encryptie](crypto/basicencrypt.png)
+![Het basismodel van symmetrische encryptie.](crypto/basicencrypt.png)
 
 * De symmetrische encryptiesystemen zijn de oudste vorm: alle klassieke algoritmes waren van dit principe. Asymmetrische systemen zijn pas in de 20e eeuw ontwikkeld (circa 1970).
 
@@ -282,7 +281,7 @@ De werking van een symmetrisch stream cipher is verrassend eenvoudig en bestaat 
 * Een **pseudorandom keystream generator**: deze zal de sleutel als het ware expanderen naar een sleutel met de zelfde lengte als de stream, genaamd een **keystream**. Als je 400 bytes aan data wenst te encrypteren, zal je een keystream van 400 bytes moeten genereren. Daar we met een stream werken zal deze generator teken per teken genereren. Hoe dit gebeurt, leggen we verderop uit.
 * De **XOR** of "exclusieve of" functie: deze zal de plaintext naar een ciphertext omzetten door de plaintext met de keystream samen te voegen. Deze stap is de feitelijke encryptie!
 
-![Het streamcipher proces](crypto/stream.png)
+![Het streamcipher proces.](crypto/stream.png)
 
 Aan de ontvangerzijde gebeurt exact hetzelfde. **Enkel indien de ontvanger dezelfde sleutel gebruikt, zal deze dezelfde keystream kunnen genereren, en bijgevolg enkel dan de originele plaintext verkrijgen.**
 
@@ -328,7 +327,7 @@ Opgelet: het RC4 protocol is ondertussen al wat verouderd en wordt niet meer aan
 
 RC4 werkt zoals we eerder verklaarden hoe een stream cipher werkt: het heeft een keystreamgenerator en zal de keystream vervolgens XOR'n met de plaintext. Eerst zal de ingevoerde sleutel (die 40 tot 2048 bits lang mag zijn) omgezet worden naar een compatibele werksleutel met behulp van een **Key scheduling algorithm** (KSA). Deze werksleutel zal dan als seed gebruikt worden om een keystream in het **Pseudo-random generator algorithm** (PRGA) te maken.
 
-![RC4 tot op het bot](crypto/rc4.png)
+![RC4 tot op het bot.](crypto/rc4.png)
 
 ##### KSA
 
@@ -338,7 +337,7 @@ De **KSA** heeft als doel om de ingevoerde 40 tot 2k-bit sleutel  om te zetten n
 
 **Stap 2**: Maak een array (**S**) aan, ook van 256 karakters, en plaats er de waarden 0 tot en met 255 in.
 
-**Stap 3**: permuteer (*transpositie*) de elementen in de array ``S`` met behulp van de array ``T`` als volgt:
+**Stap 3**: Permuteer (*transpositie*) de elementen in de array ``S`` met behulp van de array ``T`` als volgt:
 
 ```pseudocode
 j = 0
@@ -446,7 +445,7 @@ Indien het aantal te encrypteren bytes aan data geen exact veelvoud is van de bl
 #### Feistel structuren
 Ook hier zullen we dezelfde soorten operaties (XOR, substituties en transposities) zien terugkomen. Echter, ook **Feistel**-structuren worden hier gebruikt: in deze operatie zal  de data steeds in twee helften worden gesplitst en wordt steeds een specifieke operatie (aangeduid met *F* van functie in de figuur), zoals een substitutie, op één helft uitgevoerd dat dan wordt ge-XOR'd met de andere helft. Dit wordt meerdere keren herhaald, waarbij de linker (*L*) en rechterzijde (*R*) steeds afwisselend door de specifieke encryptie-operatie gaan. 
 
-![Een enkele Feistel structuur](crypto/feistelunit.png){ width=40% }
+![Een enkele Feistel structuur.](crypto/feistelunit.png){ width=40% }
 
 Net zoals bij RC4 zullen we ook vaak met een zogenaamd key scheduling algoritme werken zodat de sleutel niet constant doorheen het hele proces dezelfde is en we met **subkeys** of *round keys* werken.
 
@@ -472,21 +471,21 @@ Volgende schema toont de encryptie bestaande uit 16 rondes:
 
 ![DES encryptie. 16 feistel structuren na elkaar.](crypto/des1.png)
 
-De data wordt blok per blok doorheen dit gedeelte gestuurd. Eerst gebeurt er een *Initiële permutatie* (*IP* in de figuur) waarbij iedere bit naar een andere plek wordt gestuurd volgens een vast patroon. Achteraan gebeurt dit nogmaals in een *Finale permutatie* (*FP*).
+De data wordt blok per blok doorheen dit gedeelte gestuurd. Eerst gebeurt er een *Initiële Permutatie* (*IP* in de figuur) waarbij iedere bit naar een andere plek wordt gestuurd volgens een vast patroon. Achteraan gebeurt dit nogmaals in een *Finale Permutatie* (*FP*).
 
-![De Initiële permutatie](crypto/des2.png){ width=90% }
+![De Initiële Permutatie.](crypto/des2.png){ width=90% }
 
 Na de *IP* gaat de data door 16 feistel structuren die telkens het zelfde doen. De data wordt in twee helften gesplitst waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-XOR'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
 
-![Binnenin de F-operatie](crypto/des3.png){ width=60% }
+![Binnenin de F-operatie.](crypto/des3.png){ width=60% }
 
 In het F-blok wordt eerst het 32-bit blok uitgebreid (*E* in de figuur, van expansie) naar een 48 bit blok zodat deze even lang is als de subkey voor deze ronde. De expansie gebeurt, net als de initiële permutatie, volgens een vast patroon:
 
-![De expansie van 32 naar 48 bits](crypto/des4.png){ width=60% }
+![De expansie van 32 naar 48 bits.](crypto/des4.png){ width=70% }
 
 Nu worden deze 48 bits ge-XOR'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst. 
 
-![Waarheidstabel van het S5-blok (Bron wikipedia)](crypto/des5.png){ width=60% }
+![Waarheidstabel van het S5-blok (Bron wikipedia).](crypto/des5.png){ width=70% }
 
 Na 16 rondes krijgen we terug een 32 bit datablok dat nog een *Finale permutatie* ondergaat die weer de bits van plaats verandert en de output hiervan is een geëncrypteerd blok data dat kan doorgestuurd worden naar de ontvanger.
 
@@ -500,7 +499,7 @@ Iedere ronde wordt de helft van de sleutel 2 bits *geshift* (in ronde 1,2, 9 en 
 
 De *compressie P-box* doet al vermoeden wat er gebeurt:
 
-* Compressie: een aantal bits zullen wegvallen (er komt 56 bits in, maar we hebben maar 48 bits nodig)
+* Compressie: een aantal bits zullen wegvallen (er komt 56 bits in, maar we hebben maar 48 bits nodig).
 * P-box: een permutatie oftewel transpositie dat alle bits van plek zal veranderen.
 
 ![Er zijn drie types P-Boxes, afhankelijk van wat ze met de data doen.](crypto/pboxex.png){ width=100%}
@@ -515,7 +514,7 @@ Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES
 
 De werking van 3DES (*tripple DES*) is verrassend eenvoudig: ieder blok data wordt drie keer doorheen een DES-cipher gestuurd. Hierbij wordt steeds een andere sleutel gebruikt. Om de bestaande DES hardware te gebruiken, wordt hierbij de data eerst door de encryptie gestuurd, dan doorheen de decryptie en terug door de encryptie. Daar we in iedere fase een andere sleutel gebruiken heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we dus effectief drie maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvanger zijde gebeurt dan het omgekeerde: decryptie, encryptie, decryptie én dit dus allemaal met de bestaande DES hardware!
 
-![3DES](crypto/3des.png){ width=60% }
+![3DES.](crypto/3des.png){ width=60% }
 
 ::: tip
 3DES laat dus ook (single) DES encryptie toe. Het enige dat je hiervoor moet doen is de subsleutels K2 en K3 gelijkstellen waardoor de tweede en derde fase tijdens de encryptie (en decryptie) eigenlijk niets doet, daar het gewoon de data encrypteert in ronde twee en dan ogenblikkelijk in ronde drie terug decrypteert.
@@ -531,7 +530,7 @@ Tot hiertoe gingen we data steeds blok per blok in het encryptiecipher sturen en
 
 Stel dat we een afbeelding van Tux De Pingiun opsplitsen in ongeveer 100 bij 100 datablokken. Als we nu ieder blok individueel met een block cipher encrypten en zouden visualiseren dan krijgen we iets dat mogelijks toch nog wat informatie van Tux *doorlekt* (zie de tweede afbeelding) daar blokken van de afbeelding met exact dezelfde informatie ook dezelfde ciperblock zullen genereren. Vergelijk dit met de derde afbeelding waarin we een andere modus gebruiken (die we zo meteen gaan uitleggen) waarin repetities in de plaintext geen invloed hebben op repetities in de ciphertext.
 
-![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia)](crypto/ecbfail.png){ width=60% }
+![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia).](crypto/ecbfail.png){ width=75% }
 
 ::: tip
 Door pakketten te sniffen zou de aanvaller kunnen achterhalen wat de mogelijke inhoud van een pakket is. Ieder netwerkprotocol volgt de standaarden die er voor beschreven zijn en zo kan dus de aanvaller heel veel informatie ontdekken over een ciphertext gewoon ten opzichte van wanneer een pakket wordt verstuurd tegenover de andere. Als het bijvoorbeeld het eerste pakket is dat verstuurd wordt, dan is de kans groot dat dit pakket de typische *"ik wil een verbinding opzetten"*-request is.
@@ -549,7 +548,7 @@ ECB is een niet zo veilige manier om een block cipher toe te passen. Veel intere
 * Output feedback (OFB): het block cipher wordt als een stream cipher gebruikt.
 * Counter-mode (CTR): een extra teller wordt gebruikt als input, genaamd een *Initialisatie vector*, bij de encryptie van een blok. Deze teller wordt steeds verhoogd. Eén van de meest gebruikte modes (in onder andere WPA2 en IPSEC).
 
-![CBC encryptie (Bron wikipedia)](crypto/cbc.png){ width=80% }
+![CBC encryptie (Bron wikipedia).](crypto/cbc.png){ width=80% }
 
 Alle modes uit de doeken doen is hier niet aan de orde maar het moge duidelijk zijn dat ECB de minst veilige mode voorhanden is en deze wordt dan ook best vermeden.
 
@@ -559,14 +558,14 @@ Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebrui
 :::
 
 ::: note
-[De wikipediapagina over block ciphers](HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) modes geeft een zeer goed overzicht (én vergelijking).
+[De wikipediapagina over block ciphers.](HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) modes geeft een zeer goed overzicht (én vergelijking).
 :::
 
 #### AES
 
 Alhoewel 3DES een verbetering op DES was, was er toch nood aan een nieuwe encryptie-standaard die langere tijd kon bestaan. In 2001 werd daarom de **Advanced Encryption Standard (AES)** onder het doopvont gehouden als de nieuwe de facto encryptiestandaard wereldwijd. Deze Amerikaanse standaard is gebaseerd op het **Rijndael**-algoritme waar we als Belgen fier op mogen zijn: Rijndael is ontwikkeld door twee Belgische KUL-cryptografen Vincent Rijmen en Joan Daemen.
 
-![AES encryptie. (Bron wikipedia)](crypto/aes.png){ width=80% }
+![AES encryptie (Bron wikipedia).](crypto/aes.png){ width=80% }
 
 AES is een symmetrisch block cipher dat data in blokken van 128 bits zal opsplitsen en sleutels tot 256 bits lang toelaat. De volledige werking van AES gaan we hier niet uit de doeken doen, het voldoet te begrijpen dat in grote lijnen hetzelfde soort stappen worden doorlopen als DES en andere symmetrische ciphers:
 

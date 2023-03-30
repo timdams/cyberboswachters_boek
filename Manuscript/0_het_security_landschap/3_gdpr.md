@@ -38,9 +38,9 @@ De GDPR wet zorgt ervoor dat bedrijven veel bewuster met gebruikersdata omgaan. 
 
 ## Persoonlijke data buiten EU
 
-Volgende flowchart van [privacy.ucsd.edu/gdpr/index.html](https://privacy.ucsd.edu/gdpr/index.html) toont wat bedrijven, binnen en buiten de EU, met gebruikersdata mogen doen.
+Volgende flowchart toont wat bedrijven, binnen en buiten de EU, met gebruikersdata mogen doen.
 
-![](gdpr/gdprflow.jpg)
+![Bron: privacy.ucsd.edu/gdpr/](gdpr/gdprflow.jpg)
  
 ## Meldplicht datalekken
 

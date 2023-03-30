@@ -1,4 +1,4 @@
-# H6: IoT Security
+# IoT Security
 
 ## Introductie
 
@@ -30,7 +30,7 @@ Bekijk zeker ook eens het IoT Goat project via [github.com/OWASP/IoTGoat/](https
 Om de wel erg algemene term "IoT" wat duidelijker te maken, zullen er hier en daar merknamen en producten worden vermeld. Dit is hoegenaamd geen verdoken reclame (of kritiek) voor deze producten, maar gewoon een poging om de lezer een duidelijkere context te geven.
 :::
 
-![Versie 2018, bron (owasp.org))](iot/top10.jpg)
+![Versie 2018 (Bron owasp.org).](iot/top10.jpg)
 
 ### Paswoorden
 
@@ -80,7 +80,7 @@ Of wat te denken als er een kritieke bug wordt gevonden in een chip die ontelbar
 
 In september 2021 verscheen een nieuwe Bluetooth kwetsbaarheid, getiteld **BrakTooth** die mogelijk op miljoenen IoT-apparaten kan misbruikt worden. De bug zelf bevindt zich in de Bluetooth-chip van de apparaten. Aardig wat fabrikanten van dergelijke chips hebben al beloofd een patch uit te brengen, maar er zijn er ook die simpelweg zeggen "we zullen enkel patchen als er genoeg vraag naar is", nochtans kan de kwetsbaarheid eg veel schade aanbrengen (DoS-aanvallen en *arbitrary code execution (ACE)*)
 
-![BrakTooth: de zoveelste Bluetooth kwetsbaarheid](iot/brak.jpg){ width=30% }
+![BrakTooth: de zoveelste Bluetooth kwetsbaarheid.](iot/brak.jpg){ width=30% }
 :::
 
 ### Oude of onveilige componenten

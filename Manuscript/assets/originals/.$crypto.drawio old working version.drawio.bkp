@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-03-29T13:16:02.128Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.8.16 Chrome/106.0.5249.199 Electron/21.4.0 Safari/537.36" etag="H1ANGoto9_GAu9AwFYWb" compressed="false" version="20.8.16" type="device" pages="11">
+<mxfile host="Electron" modified="2023-03-29T13:27:32.166Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.8.16 Chrome/106.0.5249.199 Electron/21.4.0 Safari/537.36" etag="h3ro6WmczhiipCC55_XY" compressed="false" version="20.8.16" type="device" pages="11">
   <diagram id="9PMUojbOyOgYJuxRUxG1" name="basics">
     <mxGraphModel dx="4097" dy="2389" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -4634,7 +4634,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="lYVZtozUdXj3iElniI6f" name="wifi">
-    <mxGraphModel dx="4924" dy="2389" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3695" dy="1672" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="eyZerQLasxePgHhkHTnS-0" />
         <mxCell id="eyZerQLasxePgHhkHTnS-1" parent="eyZerQLasxePgHhkHTnS-0" />
@@ -5491,7 +5491,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="dXsd7JRCp_CgNiKOOM2J" name="wifi2">
-    <mxGraphModel dx="6343" dy="4180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2758" dy="2090" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="x0QTKfB3T8kxHJ5Bd1Kk-0" />
         <mxCell id="x0QTKfB3T8kxHJ5Bd1Kk-1" parent="x0QTKfB3T8kxHJ5Bd1Kk-0" />

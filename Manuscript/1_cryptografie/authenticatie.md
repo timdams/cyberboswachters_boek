@@ -1,4 +1,4 @@
-# H5: Authenticatie
+# Authenticatie
 
 Bewijzen wie je bent om toegang te krijgen tot een website of applicatie heet **authenticatie**. Vervolgens, afhankelijk van wie je bent, zal je bepaalde rechten toegewezen krijgen die bepalen wat je wel en niet kunt doen op de website of applicatie, dit heet **autorisatie**. In dit hoofdstuk gaan we ons toespitsen op het eerste deel van dit proces: de authenticatie. Hierbij gaan we vooral kijken hoe we op een veilige manier moeten omgaan als web-of applicatiebeheerders met de login-informatie van gebruikers.
 
@@ -62,7 +62,7 @@ De aanvaller zit dus met het dilemma (tijd versus geheugen) tussen hashen bereke
 
 Een rainbow table is een tabel van precomputed hashes, maar waarvan we ze niet allemaal moeten bewaren om toch een grotere set dan die dat in de tabel bewaard worden. Je zou het kunnen vergelijken met een gecomprimeerde lijst van de getallen van 1 tot en met 101, waarbij we enkel het start(1) en eindgetal (101) bewaren, en dan erbij zeggen dat ieder volgend getal het vorige +2 is.
 
-![Ieder paswoord mapt naar exact één hash](auth/rainbow0.png){ width=70% }
+![Ieder paswoord mapt naar exact één hash.](auth/rainbow0.png){ width=70% }
 
 Een rainbow table stel je als volgt op:
 
@@ -74,13 +74,13 @@ Een rainbow table stel je als volgt op:
 Als reductiefunctie zou je bijvoorbeeld kunnen beslissen om de hash om te zetten naar een getal (bv. door de som van de ASCII-waarden van de letters van de hash te nemen) en dit getal dan te gebruiken als index die bepaalt welke paswoord je uit de paswoordenset gaat kiezen).
 :::
 
-![Van de hash via de reductie functie terug naar een ander paswoord](auth/rainbow1.png){ width=70% }
+![Van de hash via de reductie functie terug naar een ander paswoord.](auth/rainbow1.png){ width=70% }
 
 * Van dit nieuwe paswoord genereert je weer en hash en pas je weer de reduction functie toe.
 * Die combinatie hash+reductie blijf je X aantal keer herhalen tot je een lange lijst hebt (een zogenaamde *chain* van bijvoorbeeld 10000 elementen).
 * Finaal hou je nu van deze lijst enkel het startpunt bij (het gekozen paswoord uit de set) en de allerlaatste gegenereerde hash.
 
-![Voorbeeld van een lijst opeenvolgende paswoorden en hun hashes](auth/rainbow2.png){ width=70% }
+![Voorbeeld van een lijst opeenvolgende paswoorden en hun hashes.](auth/rainbow2.png){ width=70% }
 
 Wanneer de aanvaller nu van een gestolen hash terug het paswoord te pakken wil krijgen dan zal hij:
 
@@ -89,7 +89,7 @@ Wanneer de aanvaller nu van een gestolen hash terug het paswoord te pakken wil k
 3. De aanvaller zal vervolgens het startpunt van deze lijst nemen (een paswoord) en weer de combinatie hash+reductie toepassen hierop (als het ware terug een rainbow table generen) en op gegeven zal hij terug op de gestolen hash uitkomen. 
 4. Als hij dan één stapje terug kijkt dan zal hij daar het paswoord zien die bij deze gestolen hash hoort.
 
-![Ieder paswoord mapt naar exact één hash](auth/rainbow3.png){ width=70% }
+![Ieder paswoord mapt naar exact één hash.](auth/rainbow3.png){ width=70% }
 
 
 ### Salting
@@ -98,7 +98,7 @@ Om bestand te zijn tegen de rainbow attack dienen we de set van mogelijke paswoo
 
 Wel nu, dit concept kan je ook toepassen bij wachtwoorden en heet **salting**. Een salt is een extra stuk dat je toevoegt aan het paswoord **voor je de hash** berekent. Dit extra stukje is een willekeurig getal dat je uiteraard mee zal moeten opslaan in de database. Wanneer twee gebruikers hetzelfde paswoorden zouden hebben, dan zouden ze (dankzij hun unieke salt) toch beide totaal verschillende hashes genereren. Niet alleen dat, maar de salt zorgt er dus ook voor dat de set van mogelijk paswoorden véél groter wordt. 
 
-![Het salting proces](auth/salting.png){ width=90% }
+![Het salting proces.](auth/salting.png){ width=90% }
 
 In de database bewaren we nu volgende informatie:
 
@@ -129,7 +129,7 @@ De oorsprong van Petya en NotPetya werd getraceerd en is vermoedelijk het result
 
 Om iemand te authenticeren spraken we tot nog toe enkel over een username/paswoord systeem. Echter, er zijn vele andere manieren om iemand te authenticeren. We spreken over "**challenge-response authentication (CRAM)** wanneer de gebruiker een vraag gesteld krijgt (de *challenge*) en hij hierop een geldig antwoord (de *response*) moet geven voor hij wordt toegelaten. Authenticeren met een paswoord is dus een vorm van CRAM. Er zijn er echter nog vele andere, denk maar aan de gehekelde CAPTCHAs -de ambetante vraag om te bewijzen dat je geen robot bent door alle boten in een afbeeldingen aan te duiden- of inloggen met behulp van je iris-scan.
 
-![CRAM](auth/cram.png){}
+![CRAM.](auth/cram.png){}
 
 Om het probleem van *pass-the-hash* op te lossen kan je gebruiken maken van een **SCRAM**, een *salted challenge response authentication mechanism*. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted paswoord login van daarnet. Met dit systeem zorgen we ervoor dat :
 
@@ -144,7 +144,7 @@ Het mechanisme werkt als volgt:
 4. De client stuurt deze hash, de response, terug naar de server.
 5. De server vergelijkt of zijn gegenereerde response hash dezelfde is als die van de gebruiker.
 
-![SCRAM](auth/scram.png){}
+![SCRAM.](auth/scram.png){}
 
 ::: tip
 Merk op dat we ook hier nog steeds met een salted paswoord kunnen werken. Het enige dat dan verandert is dat de server naast de challenge, ook de te gebruiken salt doorstuurt die reeds in de database bewaard werd samen met de salted hash van de gebruiker.
@@ -159,7 +159,7 @@ We hebben enkel nog maar over paswoorden gesproken in dit hoofdstuk, maar uitera
 * Iets wat je **hebt**: een stuk hardware zoals een smartphone, USBkey, etc.
 * **Waar** of **wanneer** je bent: je IP-adres , het moment van de dag dat je probeert in te loggen.
 
-![Multifactor authenticatie factoren](auth/mfa.png){}
+![Multifactor authenticatie factoren.](auth/mfa.png){}
 
 We zien meer en meer systemen verschijnen die aan zogenaamde **multifactor authentication (MFA)** doen waarbij het systeem minstens twee factoren (*2FA*) wil controleren voor je toegelaten wordt. Hoe meer verschillende factoren er worden gebruikt bij de authenticatie hoe veiliger het systeem is, maar ook hoe minder gebruiksvriendelijk het wordt. Het blijft dus een afweging tussen die twee eigenschappen om in te schatten wat de ideale hoeveelheid veiligheid en gebruiksvriendelijkheid je wenst te hebben.
 
@@ -215,13 +215,16 @@ Een nadeel van deze groep is dat het om een fysiek object gaat dat je kan verlie
 
 ## Federation en single sign-on (SSO)
 
-Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef* een eigen crypto-algoritme te ontwikkelen. De kans dat je fouten met verstrekkende gevolgen maakt is te groot. Ook bij het omgaan van logindata van gebruikers en hoe je ze authenticeert is het aangeraden om even te bezinnen voor je er zelf aan begint. Dankzij het concept **federation** hoef je niet wakker te liggen hoe je je gebruikerspaswoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app),de *service provider*, kunnen inloggen waarbij een *thirdparty* -die jij en je gebruiker vertrouwt- voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single sign-on* (sso)authenticatie.
+Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef* een eigen crypto-algoritme te ontwikkelen. De kans dat je fouten met verstrekkende gevolgen maakt is te groot. Ook bij het omgaan van logindata van gebruikers en hoe je ze authenticeert is het aangeraden om even te bezinnen voor je er zelf aan begint. 
 
-![Een vereenvoudig single sign-on proces](auth/sso.png){}
+Dankzij het concept **federation** hoef je niet wakker te liggen hoe je je gebruikerspaswoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app),de *service provider*, kunnen inloggen waarbij een *thirdparty* -die jij en je gebruiker vertrouwt- voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single sign-on* (**sso**) authenticatie.
 
-::: tip
-Federation via sso is een onderdeel van *federated identity management*, een groep technologieën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt.
-:::
+![Een vereenvoudig single sign-on proces.](auth/sso.png){}
+
+
+Federation via sso is een onderdeel van *federated identity management*, een groep technologieën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt. Je zal de termen **delegation** en **federation** soms door elkaar zien tegenkomen wanneer je meer informatie over SSO opzoekt.
+
+Samengevat gaan we bij *delegation* een gebruiker verplichten in te loggen met een bepaalde third-party die dit ondersteunt (bv inloggen met je Facebook account). Bij *federation* gaat het breder: je website zal éénder welke third-party account aanvaarden, zolang deze maar compatibel is met het authenticatie systeem van je website (een voorbeeld hiervan is OpenID).
 
 ![Enkele van de vele typische SSO knoppen die je geregeld zal tegenkomen.](auth/ssoexamples.png){ width=40% }
 
@@ -229,11 +232,4 @@ Federation via sso is een onderdeel van *federated identity management*, een gro
 **OAuth** (*open authorization*) is een gestandaardiseerde manier om aan authenticatie te doen.
 :::
 
-::: warning
-Je zal de termen **delegation** en **federation** soms door elkaar zien tegenkomen wanneer je meer informatie over SSO opzoekt.
-Samengevat gaan we bij *delegation* een gebruiker verplichten in te loggen met een bepaalde third-party die dit ondersteunt (bv inloggen met je Facebook account). Bij *federation* gaat het breder: je website zal éénder welke third-party account aanvaarden, zolang deze maar compatibel is met het authenticatie systeem van je website (een voorbeeld hiervan is OpenID).
-:::
-
-::: warning
-Uiteraard moeten we bij federatie benadrukken dat ook hier **privacy** een belangrijk aspect wordt. De vraag is dan ook in hoeverre je een bedrijf zoals Google of Facebook/Meta vertrouwt met jouw (login)data. 
-:::
+Uiteraard moeten we bij federatie benadrukken dat ook hier **privacy** een belangrijk aspect wordt. De vraag is dan ook in hoeverre je een bedrijf zoals Google of Facebook/Meta vertrouwt met jouw (login)data.
