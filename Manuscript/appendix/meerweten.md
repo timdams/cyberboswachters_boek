@@ -8,7 +8,7 @@ De smaak te pakken? Volgende online bronnen beveel ik aan om te volgen zodat je 
 * [Fox It](https://blog.fox-it.com/): zeer in-depth en technisch.
 * [Graham Cluley blog](https://grahamcluley.com/)
 * [Krebs on Security](https://krebsonsecurity.com/)
-* [Troy Hunt](https://www.troyhunt.com/): De blog van "Have I been pwnd"-oprichter Troy Hunt.
+* [Troy Hunt](https://www.troyhunt.com/): de blog van "Have I been pwnd"-oprichter Troy Hunt.
 
 ## Podcasts
 

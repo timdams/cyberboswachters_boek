@@ -1,6 +1,6 @@
 # Appendix 1: GDPR 
 
-De General Data Protection Regulation (2018), of in het Nederlands de *Algemene Verordening Gegevensbescherming* is een Europese richtlijn om de privacy van Europese burgers, eender waar in de wereld, te beschermen. Of zoals de EU zelf op haar website beschrijft "the thoughest privacy and security law in the world" (wat ook effectief zo is: het is de enige wet momenteel die erin slaagt om wereldwijd de regels ervan af te dwingen).
+De General Data Protection Regulation (2018), of in het Nederlands de *Algemene Verordening Gegevensbescherming* is een Europese richtlijn om de privacy van Europese burgers, eender waar in de wereld, te beschermen. Of zoals de EU zelf op haar website beschrijft: "the thoughest privacy and security law in the world" (wat ook effectief zo is: het is de enige wet momenteel die erin slaagt om wereldwijd de regels ervan af te dwingen).
 
 De wet zelf bestaat uit 99 verschillende artikels die de rechten, personen en verplichtingen van bedrijven die onder de verordening vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doet. GDPR gaat dus niet over de rechten van de personen, wel om die van de bedrijven, namelijk ter bescherming van personen. 
 
@@ -8,7 +8,7 @@ De wet zelf bestaat uit 99 verschillende artikels die de rechten, personen en ve
 We gaan in dit hoofdstuk enkel een high-level overzicht geven van GDPR opdat we niet verzanden in de taal der rechters en advocaten, het *legalese*.
 :::
 
-## Wat omvat GDPR
+## Wat omvat GDPR?
 
 **Het recht om persoonlijke gegevens te wissen of het recht om vergeten te worden.** GDPR laat je toe, als EU-burger om eender welke site die 'jou kent' te verplichten alle, of specifieke, informatie over je te verwijderen. Als je dus vindt dat Google niet moet weten waar je huisadres is, dan heb je het recht google te verplichten deze informatie te verwijderen. 
 
@@ -24,11 +24,11 @@ De voorganger van de GDPR was de DPD (Data Protection Directive). Dit was geen E
 
 Als derde belangrijke aspect voorziet GDPR **de plicht om niet noodzakelijke gegevens te laten wissen**. 
 
-## Wat beschermt GDPR
+## Wat beschermt GDPR?
 
 De GDPR wet zorgt ervoor dat bedrijven veel bewuster met gebruikersdata omgaan. Ze kunnen namelijk verantwoordelijk gehouden worden indien gebruikersdata gestolen of gelekt wordt. De GDPR is een privacy-wetgeving in de eerste plaats: het wil de privacy van het individu beschermen. Volgende data valt dan ook onder de GDPR-wetgeving:
 
-* Persoonlijke identificeerbare informatie: namen, adressen, geboortedatum en rijksregisternummer.
+* Persoonlijke identificeerbare informatie: namen, adressen, geboortedatums en rijksregisternummers.
 * Op internet gebaseerde gegevens: zoals gebruikerslocatie, IP-adres en cookies.
 * Gezondheids- en genetische gegevens.
 * Biometrische gegevens (denk maar aan je irisscan of vingerafdruk).
@@ -52,11 +52,11 @@ Onder een datalek verstaan we *"Een inbreuk op de beveiliging die per ongeluk, o
 
 Van zodra het bedrijf weet heeft van een (mogelijk) datalek dienen zij dit ogenblikkelijk te melden:
 
-* Aan de **toezichthoudende autoriteit**: Ieder land heeft z'n eigen autoriteit en in België is dat de **CBPL**, de *Commissie voor de bescherming van de persoonlijke levenssfeer*. Deze commissie zal iedere datalek *case-by-case* beoordelen om te zien of het bedrijf een GDPR-overtreding heeft begaan of niet.
+* Aan de **toezichthoudende autoriteit**: ieder land heeft z'n eigen autoriteit en in België is dat de **CBPL**, de *Commissie voor de Bescherming van de Persoonlijke Levenssfeer*. Deze commissie zal iedere datalek *case-by-case* beoordelen om te zien of het bedrijf een GDPR-overtreding heeft begaan of niet.
 * Aan **ieder individu waar de data betrekking op had**: als de gelekte data ook maar op één manier kan gelinkt worden aan een individu, dan dient deze van de lek op de hoogte gebracht te worden.
 * Dit dient **binnen de 72 uur na ontdekking van het datalek te gebeuren**. 
 
-Merk op dat tegenwoordig een datalek zelden zo snel wordt ontdekt, dat beseft GDPR ook. Daarom is de regel dat 72 uur ingaan vanaf het moment dat het bedrijf weet heeft van het datalek. Het is dus perfect mogelijk dat de datalek reeds maanden eerder plaatsvond maar dat het bedrijf het nu pas ontdekt.
+Merk op dat tegenwoordig een datalek zelden zo snel wordt ontdekt, dat beseft de GDPR ook. Daarom is de regel dat 72 uur ingaan vanaf het moment dat het bedrijf weet heeft van het datalek. Het is dus perfect mogelijk dat de datalek reeds maanden eerder plaatsvond maar dat het bedrijf het nu pas ontdekt.
 
 ### Uitzonderingen meldplicht individu
 

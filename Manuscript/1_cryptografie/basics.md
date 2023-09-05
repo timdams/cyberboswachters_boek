@@ -4,7 +4,7 @@ In dit hoofdstuk duiken we de boeiende wereld van de cryptografie in: het versle
 
 ## Encryptie en decryptie
 
-Herinner je dat we in het vorige hoofdstuk de termen CIA aanhaalden en de McCumber kubus. Een grote pijler van CIA, confidentiality, wordt opgelost met behulp van encryptie, namelijk het versleutelen van onze data met behulp van een geheime sleutel. Door deze te versleutelen wordt deze onleesbaar voor personen die de geheime sleutel niet hebben (en bijgevolg niet geautoriseerd zijn om de data te mogen lezen). De moeilijkheid van een goed cryptografisch systeem is dat de data op een zodanige manier moet versleuteld worden dat het quasi onmogelijk is om zonder sleutel de originele data terug te vinden. We spreken hierbij over de originele data als de **plaintext** en de geëncrypteerde data als **ciphertext**. De ontvanger van een ciphertext moet deze, als hij de juiste sleutel heeft, terug kunnen omzetten naar de originele plaintext.
+Herinner je dat we in het vorige hoofdstuk de termen CIA aanhaalden en de McCumber kubus? Een grote pijler van CIA, confidentiality, wordt opgelost met behulp van encryptie, namelijk het versleutelen van onze data met behulp van een geheime sleutel. Door deze te versleutelen wordt deze onleesbaar voor personen die de geheime sleutel niet hebben (en bijgevolg niet geautoriseerd zijn om de data te mogen lezen). De moeilijkheid van een goed cryptografisch systeem is dat de data op een zodanige manier moet versleuteld worden dat het quasi onmogelijk is om zonder sleutel de originele data terug te vinden. We spreken hierbij over de originele data als de **plaintext** en de geëncrypteerde data als **ciphertext**. De ontvanger van een ciphertext moet deze, als hij de juiste sleutel heeft, terug kunnen omzetten naar de originele plaintext.
 
 
 
@@ -31,7 +31,7 @@ Alle bestaande cryptografische systemen kunnen op verschillende manieren gekarak
 
 ## Kerckhoffs principe
 
-We gaan zo meteen bekijken hoe encryptie effectief gebeurt, maar we willen al even een mythe onderuit halen. Binnen encryptie heb je de *principes van Kerckhoff*, zes regels die in de 19e eeuw werden vastgelegd waarin encryptie-algoritmes moeten voldoen om als veilig beschouwd te worden. Sommige principes zijn, onder ander door onze steeds krachtigere computers, niet meer relevant, maar één principe blijft ongelooflijk belangrijk: *"Het kennen van het gebruikte encryptiealgoritme door de tegenstander is geen probleem, het is enkel de geheime sleutel die ten allen tijde uit de handen van de tegenstander moet blijven."*
+We gaan zo meteen bekijken hoe encryptie effectief gebeurt, maar we willen al even een mythe onderuit halen. Binnen encryptie heb je de *principes van Kerckhoff*, zes regels die in de 19e eeuw werden vastgelegd waarin encryptie-algoritmes moeten voldoen om als veilig beschouwd te worden. Sommige principes zijn, onder ander door onze steeds krachtigere computers, niet meer relevant, maar één principe blijft ongelooflijk belangrijk: *"Het kennen van het gebruikte encryptie-algoritme door de tegenstander is geen probleem, het is enkel de geheime sleutel die ten allen tijde uit de handen van de tegenstander moet blijven."*
 
 Dit ogenschijnlijk eenvoudige zinnetje betekent heel veel: **je sleutel (of paswoord) is wat je het beste moet beschermen. Zonder kennis van de sleutel zou iemand nooit toegang mogen krijgen tot versleutelde data, ongeacht dat geweten is met welk systeem de data werd vercijferd.** 
 
@@ -51,7 +51,7 @@ Zouden we de lengte van de sleutel met één karakter verhogen, naar 9. Dan stij
 
 ## De eerste algoritmes
 
-Het doel van ieder encryptie-algoritme is om data zodanig te versleutelen zodat enkel eigenaars van de gebruikte sleutel de originele tekst kunnen terugvinden. We vertelden net dat encryptiealgoritmes kunnen onderverdeeld worden volgens de actie die ze uitvoeren: substitutie, transpositie of een combinatie. We tonen van iedere variant nu een historisch voorbeeld.
+Het doel van ieder encryptie-algoritme is om data zodanig te versleutelen zodat enkel eigenaars van de gebruikte sleutel de originele tekst kunnen terugvinden. We vertelden net dat encryptie-algoritmes kunnen onderverdeeld worden volgens de actie die ze uitvoeren: substitutie, transpositie of een combinatie. We tonen van iedere variant nu een historisch voorbeeld.
 
 ::: tip
 Volgende tool, speciaal gemaakt om crypto te leren, is een erg handig iets om de verschillende cryptografische systemen te visualiseren én testen: [link](HTTPS://www.cryptool.org/en/ct2/)
@@ -114,12 +114,12 @@ Om nu de ciphertext te decrypteren werd een onbeschreven lint over de juiste scy
 Stel dat we de tekst "De perzen komen er nu aan" (bron: wikipedia) over een scytale met vier zijden wikkelen, dan krijgen we:
 
 
-![Tijd om de 300 in te roepen!](crypto/skypre.png){ width=100% }
+![Tijd om de 300 in te roepen!](crypto/skypre.png){ width=40% }
 
 
 De ciphertext die we vervolgens versturen (wanneer we het lint afwikkelen) wordt:
 
-![Dit gaat Xerxes nooit kunnen lezen...Zeker niet omdat de Nederlandse taal toen nog niet bestond. Muhahahaha!](crypto/skyna.png){ width=100% }
+![Dit gaat Xerxes nooit kunnen lezen...Zeker niet omdat de Nederlandse taal toen nog niet bestond. Muhahahaha!](crypto/skyna.png){ width=70% }
 
 Uiteraard zijn er tal van varianten mogelijk om transpositie te doen. Eerst kan je beslissen om je plaintext in een bepaalde vorm te plaatsen: bijvoorbeeld in tien kolommen. Vervolgens kan je dan, gebaseerd op de sleutel, beslissen in welke volgorde je de kolommen achter elkaar plaatst om de originele tekst te krijgen. Dit is een zogenaamd *route cipher* wat onder andere werd gebruikt tijdens de Amerikaanse Burgeroorlog. 
 
@@ -182,7 +182,7 @@ Volgende tabel ([bron](HTTPS://uwnthesis.wordpress.com/2020/07/01/brute-force-pa
 | 16  |  11 jaar |$4,6*10^{7}$ jaren | $5*10^{13}$ jaren  |$4,7*10^{16}$ jaren   |     
 
 ::: tip
-Per extra GeForce-kaart die de aanvaller zou gebruiken halveert de tijd in deze tabel.
+Per extra GeForce-kaart die de aanvaller zou gebruiken, halveert de tijd in deze tabel.
 :::
 
 ::: note
@@ -195,7 +195,7 @@ Wanneer de cryptanalist vermoedt dat de te zoeken sleutel iets anders is dan vol
 
 Tools zoals John The Ripper kan je *voeden* met een dergelijk woordenboek en dan vragen om sleutels te testen die gebaseerd zijn op zaken uit die woordenboek, inclusief bijvoorbeeld door er tekens voor en na te zetten. Als in het woordenboek het woord *god* staat, dan kan Jack The Ripper bijvoorbeeld ook alle sleutels testen zoals *god1*, *god2*, etc. 
 
-Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest gebruikte wachtwoorden die cryptanalisten (en dus ook de digitale stropers) kunnen gebruiken om de sleutel sneller te vinden. Het is aangeraden om zeker geen paswoorden (of permutaties ervan) te gebruiken die in volgende  lijsten voorkomen: [https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials)
+Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest gebruikte paswoorden die cryptanalisten (en dus ook de digitale stropers) kunnen gebruiken om de sleutel sneller te vinden. Het is aangeraden om zeker geen paswoorden (of permutaties ervan) te gebruiken die in volgende  lijsten voorkomen: [https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials)
 
 :::tip
 Dit waren in 2020 de 10 meest gebruikte paswoorden:
@@ -219,7 +219,7 @@ Dit soort lijsten worden opgesteld door gekende datalekken te analyseren op welk
 Geregeld zullen we in dit boek bepaalde zwakheden beschrijven die in algoritmes misbruikt kunnen worden door een bepaald type cryptanalytische aanval. Deze aanvallen zijn afhankelijk van de informatie die de cryptanalist bezit:
 
 * Enkel de ciphertext: vanuit het standpunt van de cyberboswachters is dit het beste soort informatie dat de aanvaller bezit. Hij heeft enkel een hoop geëncrypteerde informatie en moet proberen daar de originele plaintext uit te krijgen. Vanuit het standpunt van de cryptanalist is dit dus de minst goede situatie om vanuit te starten.
-* Gekende plaintext: de cryptanalist heeft éénof meerdere stukken informatie waarvan zowel de ciphertext als de bijhorende plaintext gekend is.
+* Gekende plaintext: de cryptanalist heeft één of meerdere stukken informatie waarvan zowel de ciphertext als de bijhorende plaintext gekend is.
 * Gekozen plaintext: de cryptanalist kan zelf plaintext kiezen waarvan de bijhorende ciphertext moet gemaakt worden. Dit zorgt ervoor dat de cryptanalist als het ware kan experimenteren.
 * Gekozen ciphertext: het zelfde concept als *gekozen plaintext* maar deze keer kiest de cryptanalist de ciphertext waarvan hij de bijhorende plaintext wil genereren.
 
@@ -309,9 +309,9 @@ De keystream generator heeft dus als doel om voor iedere karakter dat moet geën
 
 De kracht (en zwakte) van een symmetrisch streamcipher ligt in de implementatie van de manier waarom deze keystreamgenerator werkt. Mogelijke zwakheden kunnen bijvoorbeeld zijn dat de gegenereerde stroom informatie van de sleutel "lekt" naar de keystream (wat desastreuze gevolgen bleek te hebben bij de originele wifi-security (WEP), waarover later meer) of een voorspelbare "randomiteit" van de keystream.
 
-Om aan encryptie te kunnen doen, hebben we systemen nodig die onvoorspelbaar zijn. Als de aanvaller kan voorspellen wat de uitvoer van een onderdeel van de encryptie zal zijn, dan kunnen we geen confidentiality en/integrity voorzien. Kortom, we hebben algoritmes nodig die willekeurige getallen kunnen generen die 100% onvoorspelbaar zijn. Net zoals het werpen van een dobbelsteen niet voorspeld kan worden, zo ook moeten onze algoritmes een (digitale) dobbelsteen hebben.
+Om aan encryptie te kunnen doen, hebben we systemen nodig die onvoorspelbaar zijn. Als de aanvaller kan voorspellen wat de uitvoer van een onderdeel van de encryptie zal zijn, dan kunnen we geen confidentiality en integrity voorzien. Kortom, we hebben algoritmes nodig die willekeurige getallen kunnen generen die 100% onvoorspelbaar zijn. Net zoals het werpen van een dobbelsteen niet voorspeld kan worden, zo ook moeten onze algoritmes een (digitale) dobbelsteen hebben.
 
-Digitale systemen die perfect willekeurige getallen genereren noemt men **random number generator** (RNG). Uiteraard moet een RNG geprogrammeerd kunnen worden: dat behelst dus een algoritme. Een algoritme is per definitie "voorspelbaar". Alles hangt daarom af van de invoer die het algoritme gebruikt om random getallen te beginnen genereren. We spreken dan van een **pseudo random number generator** (PRNG), pseudo (**schijnbaar**) omdat de uitvoer afhankelijk is van het startgetal, de zogenaamde **seed**. Die seed kan bijvoorbeeld de encryptiesleutel zijn: enkel met dié sleutel zal het algoritme dezelfde reeks getallen generen. Er zijn echt ook systemen die bijvoorbeeld de huidige tijd of de staat van een flipflop als startpunt gebruiken (wanneer je een flipflop aanzet kan je niet voorspellen of deze op 1 of 0 zal staan, daar deze staat beïnvloed wordt door de elektromagnetische straling). Uiteraard is een dergelijke seed voor een keystreamgenerator nutteloos, daar zowel verzender én ontvanger dezelfde reeks getallen moeten kunnen genereren.
+Digitale systemen die perfect willekeurige getallen genereren noemt men **random number generators** (RNG). Uiteraard moet een RNG geprogrammeerd kunnen worden: dat behelst dus een algoritme. Een algoritme is per definitie "voorspelbaar". Alles hangt daarom af van de invoer die het algoritme gebruikt om random getallen te beginnen genereren. We spreken dan van een **pseudo random number generator** (PRNG), pseudo (**schijnbaar**) omdat de uitvoer afhankelijk is van het startgetal, de zogenaamde **seed**. Die seed kan bijvoorbeeld de encryptiesleutel zijn: enkel met dié sleutel zal het algoritme dezelfde reeks getallen generen. Er zijn echt ook systemen die bijvoorbeeld de huidige tijd of de staat van een flipflop als startpunt gebruiken (wanneer je een flipflop aanzet kan je niet voorspellen of deze op 1 of 0 zal staan, daar deze staat beïnvloed wordt door de elektromagnetische straling). Uiteraard is een dergelijke seed voor een keystreamgenerator nutteloos, daar zowel verzender én ontvanger dezelfde reeks getallen moeten kunnen genereren.
 
 #### RC4 tot op het bot
 
@@ -335,9 +335,9 @@ De **KSA** heeft als doel om de ingevoerde 40 tot 2k-bit sleutel  om te zetten n
 
 **Stap 1**: plaats de ingevoerde sleutel in een array (**T**) van 256 karakters. Herhaal de sleutel indien nodig.
 
-**Stap 2**: Maak een array (**S**) aan, ook van 256 karakters, en plaats er de waarden 0 tot en met 255 in.
+**Stap 2**: maak een array (**S**) aan, ook van 256 karakters, en plaats er de waarden 0 tot en met 255 in.
 
-**Stap 3**: Permuteer (*transpositie*) de elementen in de array ``S`` met behulp van de array ``T`` als volgt:
+**Stap 3**: permuteer (*transpositie*) de elementen in de array ``S`` met behulp van de array ``T`` als volgt:
 
 ```pseudocode
 j = 0
@@ -348,9 +348,9 @@ for i = 0 tot 255
 }
 ```
 
-Deze stap zal dus de elementen in de sleutelarray S naar nieuwe posities in de S array plaatsen en deze ook de hele tijd van plek wisselen. De index j is afhankelijk van de sleutelwaarde en zorgt er dus voor dat iedere sleutel een unieke array T zal opleveren.
+Deze stap zal dus de elementen in de sleutelarray ``S`` naar nieuwe posities in diezelfde array plaatsen en deze ook de hele tijd van plek wisselen. De index ``j`` is afhankelijk van de sleutelwaarde en zorgt er dus voor dat iedere sleutel een unieke array ``T`` zal opleveren.
 
-###### Uitgewerkt voorbeeld van KSA
+**Uitgewerkt voorbeeld van KSA**
 
 Stel dat onze sleutel "ab" is. De decimale ASCII-waarden van a en b zijn 97 en 98 respectievelijk. Onze array T zal dus bestaan uit 128 keer de waarden 97 en 98 na elkaar aan de start:
 
@@ -361,14 +361,7 @@ Stel dat onze sleutel "ab" is. De decimale ASCII-waarden van a en b zijn 97 en 9
 | T[2]  | 97     |
 | etc.  |        |
 
-Stap twee genereert de tabel `S`:
-
-| Index | Waarde |
-| ----- | ------ |
-| S[0]  | 0      |
-| S[1]  | 1      |
-| S[2]  | 2      |
-| etc.  |        |
+Stap twee genereert de tabel `S` die gewoon de waarden 0 tot en met 255 heeft in de 255 plekjes van de array (de waarde is dus in deze fase gewoon ook de index van het element)
 
 Als we dan stap drie toepassen dan krijgen we na de eerste iteratie van de loop (``i=0``):
 
@@ -391,7 +384,7 @@ De eerste wissel die in `S` zal plaatsvinden is dan ``Verwissel(S[0],S[97])``
 | S[97] | 0      |
 | etc.  |        |
 
-En dit herhalen we nog 255 keer.
+En dit herhalen we nog 255 keer. **Finaal hebben we nu in tabel `S` een sleutel die bestaat uit de getallen 0 tot en met 255 verdeeld over willekeurige plekken in de array.** Indien we een andere initiële sleutel zouden hebben gebruikt dan zou deze tabel er totaal anders uitzien.
 
 ##### PRGA
 
@@ -410,14 +403,14 @@ Herhaal telkens keystream karakter nodig is
 }
 ```
 
-Zoals je ziet zal dus de array S de hele tijd van "gedaante" blijven veranderen (hij blijft bestaan uit de getallen 0 tot en 255 maar al lang niet meer in volgorde) en telkens zal het algoritme één specifieke waarden (tussen 0 en 255) uit de array teruggeven als keystream karakter.
+Telkens zal het algoritme één specifieke waarden (tussen 0 en 255) uit de array teruggeven als keystream karakter `k`. Zoals je ziet zal  de array `S`voorts de hele tijd van "gedaante" blijven veranderen. Telkens we een element `k` uitsturen zal ook de tabel `S` weer wat zijn veranderd daar we de waarden van ``S[i]`` en ``S[j]`` onderling verwisselen.
+
+
 
 ##### Uitgewerkt voorbeeld van PRGA
 
-Als we verder werken met de tabel `S` van het vorige uitgewerkte KSA voorbeeld, dan krijgen we dus bij iteratie één van de PRGA.
+Als we verder werken met de tabel ``S`` van het vorige uitgewerkte KSA voorbeeld en de waarden ervan gebruiken na één iteratie dan krijgen we onderstaande berekeningen (*We veronderstellen even dat we de KSA niet verder hebben uitgevoerd en de tabel ``S`` dus dezelfde is gebleven als op het einde van het voorbeeld, wat in het echt niet zal zijn.*):
 
-::: warning
-We veronderstellen even dat we de KSA niet verder hebben uitgevoerd en de tabel `S` dus dezelfde is gebleven als op het einde van het voorbeeld wat in het echt niet zal zijn.
 :::
 
 ```
@@ -428,7 +421,7 @@ k = S[ (S[1]+S[97])%256 ] => k = S[ (0 + 1) % 256]
 we outputten de waarde die op S[1] staat
 ```
 
-Finaal zal de output, de waarde ``k``, ge-XOR'd worden met het huidige karakter van de plaintext.
+Finaal zal de output, de waarde ``k``, ge-XOR'd worden met het huidige karakter van de plaintext stream.
 
 ::: note
 Zo, dat viel nog mee he? Zoals al gezegd, een belangrijke motivatie van dit boek is aantonen dat je niet bang hoeft te zijn van wat er achter de schermen van de cyberwereld gebeurt. De hoeveelheid wiskunde die we bijvoorbeeld nodig hadden, is beperkt gebleven tot onze trouwe modulo (%)-operator en meer niet. Wanneer we zo meteen een block cipher gaan uitkleden, zal je ook daar ontdekken dat je best in staat bent schijnbaar complexe technologieën te begrijpen. Hop naar de blockciphers dus!
@@ -439,55 +432,57 @@ Zo, dat viel nog mee he? Zoals al gezegd, een belangrijke motivatie van dit boek
 Blockciphers, de naam zegt het al, zal eerst de plaintext in blokken karakters opdelen (bv. 128 bits) en vervolgens blok per blok encrypteren. 
 
 :::note
-Indien het aantal te encrypteren bytes aan data geen exact veelvoud is van de blokgrootte dient er **padding** te gebeuren. Hierbij zal het laatste blok opgevuld (*gepad*) worden met extra bytes tot het blok terug de juiste blokgrootte heeft. De manier waarop de padding gebeurt is afhankelijk van het cipher dat gehanteerd worden.
+Indien het aantal te encrypteren bytes aan data geen exact veelvoud is van de blokgrootte dient er **padding** te gebeuren. Hierbij zal het laatste blok opgevuld (*gepad*) worden met extra bytes tot het blok terug de juiste blokgrootte heeft. De manier waarop de padding gebeurt, is afhankelijk van het cipher dat gehanteerd worden.
 :::
 
 #### Feistel structuren
 Ook hier zullen we dezelfde soorten operaties (XOR, substituties en transposities) zien terugkomen. Echter, ook **Feistel**-structuren worden hier gebruikt: in deze operatie zal  de data steeds in twee helften worden gesplitst en wordt steeds een specifieke operatie (aangeduid met *F* van functie in de figuur), zoals een substitutie, op één helft uitgevoerd dat dan wordt ge-XOR'd met de andere helft. Dit wordt meerdere keren herhaald, waarbij de linker (*L*) en rechterzijde (*R*) steeds afwisselend door de specifieke encryptie-operatie gaan. 
 
-![Een enkele Feistel structuur.](crypto/feistelunit.png){ width=40% }
+![Een enkele Feistel structuur.](crypto/feistelunit.png){ width=30% }
 
 Net zoals bij RC4 zullen we ook vaak met een zogenaamd key scheduling algoritme werken zodat de sleutel niet constant doorheen het hele proces dezelfde is en we met **subkeys** of *round keys* werken.
 
 #### DES tot op het bot
 
-Een van de oudste block ciphers is **DES** oftewel **Data Encryption Standard**. Deze standaard werd in 1977 geboren en vereiste toen blokken van 64 bits data en gebruikte een 56bit sleutel. Ondertussen is dit cipher zeer outdated, maar we gaan hem toch bekijken omdat deze enerzijds erg belangrijk was voor de wereld - grote delen van het bankwezen beschermden er hun financiële transacties mee (en nadien met de opvolger 3DES, zie verder)- en de standaard is erg duidelijk om een goed inzicht in block ciphers te verkrijgen.
+Een van de oudste block ciphers is **DES** oftewel **Data Encryption Standard**. Deze standaard werd in 1977 geboren en vereiste toen blokken van 64 bits data en gebruikte een 56bit sleutel. Ondertussen is dit cipher zeer outdated, maar we gaan hem toch bekijken omdat deze enerzijds erg belangrijk was voor de wereld - grote delen van het bankwezen beschermden er hun financiële transacties mee (en nadien met de opvolger 3DES, zie verder) - en de standaard is erg duidelijk om een goed inzicht in block ciphers te verkrijgen.
 
-::: tip
-Er was veel controverse rond deze standaard (gebaseerd op het door IBM ontwikkelde Lucifer cipher) omdat de originele versie (genaamd Lucifer) werkte met een dubbel zo grootte sleutel (128 bit) en bijgevolg dus veiliger was op lange(re) termijn. De Amerikaanse veiligheidsdienst, NSA, was niet zo happig om een dergelijk goed beveiligd algoritme commercieel te maken en zorgden er daarom voor dat de sleutellengte gehalveerd werd.
-:::
+Er was wel veel controverse rond deze standaard (gebaseerd op het door IBM ontwikkelde Lucifer cipher) omdat de originele versie (genaamd Lucifer) werkte met een dubbel zo grootte sleutel (128 bit) en bijgevolg dus veiliger was op lange(re) termijn. De Amerikaanse veiligheidsdienst, NSA, was niet zo happig om een dergelijk goed beveiligd algoritme commercieel te maken en zorgde er daarom voor dat de sleutellengte gehalveerd werd.
+
 
 Data met DES encrypteren (en bijgevolg ook decrypteren daar het een symmetrisch cipher is) bestaat uit twee onderdelen:
 
-1. **Versleuteling**: Een reeks Feistel-structuren na elkaar (**16 rondes**) die de data blok per blok versleutelen.
-2. **Subkeys maken**: Een key scheduling algoritme dat 16 subkeys genereert (één voor iedere encryptieronde), gebaseerd op de 56 bit sleutel.
-
-::: tip
-Je kan de DES standaard [hier](HTTPS://web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm) nalezen en ontdekken dat deze niet zo lang is zoals je zou verwachten van een wereldwijd geadopteerde standaard.
-:::
+1. **Versleuteling**: een reeks Feistel-structuren na elkaar (**16 rondes**) die de data blok per blok versleutelen.
+2. **Subkeys maken**: een key scheduling algoritme dat 16 subkeys genereert (één voor iedere encryptieronde), gebaseerd op de 56 bit sleutel.
 
 ##### Versleuteling
+
 Volgende schema toont de encryptie bestaande uit 16 rondes:
 
-![DES encryptie. 16 feistel structuren na elkaar.](crypto/des1.png)
+![DES encryptie. 16 feistel structuren na elkaar.](crypto/des1.png){width=80%}
 
 De data wordt blok per blok doorheen dit gedeelte gestuurd. Eerst gebeurt er een *Initiële Permutatie* (*IP* in de figuur) waarbij iedere bit naar een andere plek wordt gestuurd volgens een vast patroon. Achteraan gebeurt dit nogmaals in een *Finale Permutatie* (*FP*).
 
 ![De Initiële Permutatie.](crypto/des2.png){ width=90% }
 
-Na de *IP* gaat de data door 16 feistel structuren die telkens het zelfde doen. De data wordt in twee helften gesplitst waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-XOR'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
+Na de *IP* gaat de data door 16 feistel structuren die telkens hetzelfde doen. De data wordt in twee helften gesplitst waarbij de rechterzijde door de F-operatie gaat (die we zo meteen toelichten), het resultaat hiervan wordt ge-XOR'd met de linkerhelft van de data. Het resultaat van deze XOR, een 32 bit blok, wordt nu het rechterblok in de volgende ronde en omgekeerd.
+
+
 
 ![Binnenin de F-operatie.](crypto/des3.png){ width=60% }
 
 In het F-blok wordt eerst het 32-bit blok uitgebreid (*E* in de figuur, van expansie) naar een 48 bit blok zodat deze even lang is als de subkey voor deze ronde. De expansie gebeurt, net als de initiële permutatie, volgens een vast patroon:
 
-![De expansie van 32 naar 48 bits.](crypto/des4.png){ width=70% }
+![De expansie van 32 naar 48 bits.](crypto/des4.png){ width=90% }
 
 Nu worden deze 48 bits ge-XOR'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst. 
 
-![Waarheidstabel van het S5-blok (Bron wikipedia).](crypto/des5.png){ width=70% }
+![Waarheidstabel van het S5-blok (Bron wikipedia).](crypto/des5.png){ width=100% }
 
 Na 16 rondes krijgen we terug een 32 bit datablok dat nog een *Finale permutatie* ondergaat die weer de bits van plaats verandert en de output hiervan is een geëncrypteerd blok data dat kan doorgestuurd worden naar de ontvanger.
+
+::: tip
+Je kan de DES standaard [hier](HTTPS://web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm) nalezen en ontdekken dat deze niet zo lang is zoals je zou verwachten van een wereldwijd geadopteerde standaard.
+:::
 
 ##### Subkeys maken
 
@@ -528,13 +523,15 @@ Het bankwezen gebruikt 3DES nog steeds (of varianten die erop gebaseerd) zijn om
 
 Tot hiertoe gingen we data steeds blok per blok in het encryptiecipher sturen en het resultaat ervan doorsturen. Klaar.  Oplettende mensen hebben hier mogelijk al een hiaat in gezien: wat als twee blokken exact dezelfde data bevatten? Beide zullen dezelfde ciphertext als resultaat genereren, daar we telkens dezelfde sleutel (en dus subkeys) gebruiken. Twee ciphertexts die identiek zijn, willen we vermijden daar het potentiële informatie over de plaintext zichtbaar maakt. Voorts laat dit soort werking ook replay attacks toe: de aanvaller kan een geëncrypteerd pakket bewaren en op een later moment terug opsturen, zonder dat hij moet weten wat de plaintext bevat.
 
-Stel dat we een afbeelding van Tux De Pingiun opsplitsen in ongeveer 100 bij 100 datablokken. Als we nu ieder blok individueel met een block cipher encrypten en zouden visualiseren dan krijgen we iets dat mogelijks toch nog wat informatie van Tux *doorlekt* (zie de tweede afbeelding) daar blokken van de afbeelding met exact dezelfde informatie ook dezelfde ciperblock zullen genereren. Vergelijk dit met de derde afbeelding waarin we een andere modus gebruiken (die we zo meteen gaan uitleggen) waarin repetities in de plaintext geen invloed hebben op repetities in de ciphertext.
+Stel dat we een afbeelding van Tux De Pinguïn opsplitsen in ongeveer 100 bij 100 datablokken. Als we nu ieder blok individueel met een block cipher encrypten en zouden visualiseren dan krijgen we iets dat mogelijks toch nog wat informatie van Tux *doorlekt* (zie de tweede afbeelding) daar blokken van de afbeelding met exact dezelfde informatie ook dezelfde ciperblock zullen genereren. Vergelijk dit met de derde afbeelding waarin we een andere modus gebruiken (die we zo meteen gaan uitleggen) waarin repetities in de plaintext geen invloed hebben op repetities in de ciphertext.
 
-![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia).](crypto/ecbfail.png){ width=75% }
 
 ::: tip
 Door pakketten te sniffen zou de aanvaller kunnen achterhalen wat de mogelijke inhoud van een pakket is. Ieder netwerkprotocol volgt de standaarden die er voor beschreven zijn en zo kan dus de aanvaller heel veel informatie ontdekken over een ciphertext gewoon ten opzichte van wanneer een pakket wordt verstuurd tegenover de andere. Als het bijvoorbeeld het eerste pakket is dat verstuurd wordt, dan is de kans groot dat dit pakket de typische *"ik wil een verbinding opzetten"*-request is.
 :::
+
+![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia).](crypto/ecbfail.png){ width=75% }
+
 
 Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren, noemen we de **Electronic Codebook (ECB)** modus. Alhoewel deze modus dus duidelijk een veiligheidsprobleem met zich mee draagt, heeft deze modus ook één voordeel:
 
@@ -554,7 +551,7 @@ Alle modes uit de doeken doen is hier niet aan de orde maar het moge duidelijk z
 
 ::: tip
 Het concept **Initialisatie Vector (IV)** zal je veel zien terugkomen in ciphers. Een IV is een getal dat men als extra seed meegeeft tijdens de encryptie, naast de sleutel. Op deze manier voorkomen we dat steeds enkel de sleutel als seed wordt gebruikt en we dus effectief steeds met een *andere* sleutel werken. Uiteraard zal ook de andere zijde over dezelfde IV moeten beschikken en zal deze dus doorgestuurd moeten worden. Dit gebeurt meestal via de header van het bijhorende pakketje en is ongeëncrypteerd. Dit lijkt contra-intuïtief - de IV onbeveiligd doorsturen - maar is geen probleem.
-Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebruikt dat bepaald hoe steeds het volgende IV moet worden berekend (bv steeds met 1 verhogen, een willekeurig, etc.).
+Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebruikt dat bepaalt hoe steeds het volgende IV moet worden berekend (bv steeds met 1 verhogen, een willekeurig, etc.).
 :::
 
 ::: note
@@ -574,6 +571,6 @@ AES is een symmetrisch block cipher dat data in blokken van 128 bits zal opsplit
 * Iedere ronde gebeuren er zaken zoals substituties en transposities, zowel van bytes als van hele rijen of kolommen data.
 * Finaal vindt er een XOR-encryptie plaats.
 
-Merk op dat ook hier, onderaan, de XOR-functie nog steeds dienst zal doen als de feitelijke encryptie van de data. Zonder deze functie zou al het voorgaande enkel maar resulteren in data die wat van plek verandert volgens een patroon waar de geheime sleutel niet bij van te pas komt.
+Merk op dat ook hier, onderaan, de XOR-functie nog steeds dienst zal doen als de feitelijke encryptie van de data. Zonder deze XOR-functie zou al het voorgaande enkel maar resulteren in data die van plek verandert, volgens een patroon waar de geheime sleutel niet bij van te pas komt.
 
 

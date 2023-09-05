@@ -9,27 +9,28 @@ De subtitel,*"De beste digitale stropers zijn ook de beste cyberboswachters"*, v
 
 ## Dankwoord
 
+
+Dank aan Ernie de Magtige,  Dimitriy Vassilchenko & Jasper Van Meel om als externe spellingcheckers aardig wat (gênante) typos te ontdekken.
+
 Een oprechte dank aan Stefaan Somerling (RealDolmen) voor de feedback op het hoofdstuk omtrent GDPR. Geef gerust een sein als u, conform de GDPR wetgeving, liever uw naam niet in dit document ziet staan ;)
 
-Dank aan eerstejaars Ernie de Magtige,  Dimitriy Vassilchenko & Jasper Van Meel om als externe spellingcheckers aardig wat (gênante) typos te ontdekken!
-
-Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Michael Boeynaems en Serge Horsmans!
+Een dikke fist bump voor collega en *brother from another mother* Koen Van Eyken, die een deel van z'n paasvakantie opofferde om met een kritische blik door dit boek te gaan!  Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Michael Boeynaems en Serge Horsmans.
 
 ## Waarschuwingen
 
 Dit brengt ons automatisch bij een belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die verregaande gevolgen voor derden én jezelf kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken: digitale stropers zijn de beste cyberboswachters. Het is belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechtelijke gevolgen kunnen hebben, inclusief boetes tot zelfs jarenlange opsluiting.
 
-Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel onder volgende voorwaarden:
+Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel op volgende doelwitten:
 
-* Op doelwitten (denk aan servers, webpagina's, gebruikers, etc.) waar jij de eigenaar van bent.
+* Zaken waar jij de eigenaar van bent. Denk aan servers, webpagina's, gebruikers, etc.
 * Op doelwitten waar je geen eigenaar van bent, maar waar je wel expliciete toestemming voor hebt gekregen.
 
 
 ### Opletten met experimenten
 
-Indien je van plan bent om met bepaalde tools te experimenteren hou dan rekening met volgende tips:
+Indien je van plan bent om met bepaalde tools te experimenteren, hou dan rekening met volgende tips:
 
-* Werk zoveel mogelijk met virtuele machines. En test nooit op een *live systeem* indien daar geen erge goede reden voor is.
+* Werk zoveel mogelijk met virtuele machines en test nooit op een *live systeem* indien daar geen erg goede reden voor is.
 * Hou er rekening mee dat bepaalde tools permanente "gaten" slagen in je systemen. Deze kunnen dus na (of tijdens!) je experimenten door digitale stropers misbruikt worden. 
 
 

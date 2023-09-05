@@ -8,7 +8,7 @@ Wat als je bij symmetrische encryptie met meerdere mensen wilt communiceren zond
 * 10 gebruikers vereisen er al 45.
 * 100 gebruikers vereisen er 4950!
 
-![Bij 6 gebruikers zijn er al 15 sleutels nodig.](crypto/keyprob.png){ width=60% }
+![Bij 6 gebruikers zijn er al 15 sleutels nodig.](crypto/keyprob.png){ width=20% }
 
 Symmetrische encryptie heeft dus een *key distribution problem* wanneer er encryptie op een grote schaal nodig is. Zeker als we spreken over online communicatie, over het internet, wordt de schaal ogenblikkelijk gigantisch groot en wordt het *sleutelmanagement* problematisch. Een andere oplossing is dus aan de orde.
 
@@ -42,7 +42,7 @@ Asymmetrische crypto zal niet alleen het sleutel-probleem oplossen, het heeft al
 
 We zullen dit concept verderop uitwerken, maar eerst gaan we bekijken hoe publieke crypto juist werkt.
 
-### Diffie-Hellman sleutel uitwisseling
+### Diffie-Hellman sleuteluitwisseling
 
 Dankzij public crypto hebben we nu een systeem om sleutels op een veilige manier uit te wisselen. Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetric crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Helman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gebruikers sleutels over een onveilig kanaal kunnen uitwisselen op een veilige manier.
 
@@ -71,9 +71,9 @@ Dat Bob en Alice de waarden X en Y naar elkaar kunnen sturen is dankzij de eigen
 
 Eén van de oudste, maar nog steeds populairste, publieke cryptosystemen is het in 1977 ontwikkelde RSA algoritme. RSA, wat staat voor de achternamen van de drie ontwikkelaars (Rivest, Shamis en Adleman) gebruikt sleutels van 1536 tot 4096 bits lang. Het systeem is vrij traag maar heeft als voordeel dat het veilige sleuteltransmissie toestaat over een onveilig kanaal: we zien daarom vaak RSA gebruikt worden om eerst sessiesleutels uit te wisselen, vervolgens wordt overgeschakeld op een sneller symmetrisch cipher.
 
-De exacte berekeningen die gebeuren tijdens encryptie en decryptie nemen ons iets te ver, maar volgend voorbeeld toont een vereenvoudigde wijze waarop RSA wordt toegepast:
+De exacte berekeningen die gebeuren tijdens encryptie en decryptie leiden ons iets te ver, maar volgend voorbeeld toont een vereenvoudigde wijze waarop RSA wordt toegepast:
 
-Data encrypteren met behulp van asymmetrische versleuteling gebeurt op bijna dezelfde wijze als de Diffie-Hellman sleutel uitwisseling. Ook nu zullen beide zijde rekenen op de eigenschappen van de modulo-operator om over een onveilig kanaal veilige communicatie te kunnen doen.
+Data encrypteren met behulp van asymmetrische versleuteling gebeurt op bijna dezelfde wijze als de Diffie-Hellman sleutel uitwisseling. Ook nu zullen beide zijden rekenen op de eigenschappen van de modulo-operator om over een onveilig kanaal veilige communicatie te kunnen doen.
 
 Eerst dient een publieke sleutel aangemaakt te worden:
 
@@ -92,7 +92,7 @@ Bob heeft dus nu:
 * Publieke sleutel bestaande uit $N=187$ en $e=$.
 * Private sleutel $d=23$.
 
-Iedereen die nu naar Bob iets wilt sturen kan dit via z'n publieke sleutel (``N`` en ``e``). 
+Iedereen die nu naar Bob iets wilt sturen, kan dit via z'n publieke sleutel (``N`` en ``e``). 
 
 Stel dat Alice het ASCII-karakter X naar Bob wil sturen:
 
@@ -114,7 +114,7 @@ Zonder in detail te treden hoe cryptocoins en blockchains werken, is het nuttig 
 
 #### Intermezzo: Hashes
 
-We gaan nu even een zijtak inslaan om het concept "hash" te bespreken. Een hash is een concept uit de informatica die we gebruiken om te controleren of een digitaal stuk tekst werd aangepast of niet. Door de tekst in een hashfuntie te steken wordt een hash aangemaakt. Deze hash is een stuk code met een vaste lengte, ongeacht de originele input. Wanneer 1 bit of meer wordt aangepast in de originele boodschap dan zal deze in een totaal andere hash resulteren. Enkel dus wanneer een identiek stuk tekst als invoer (tot op bitniveau identiek) wordt gebruikt zullen twee hashen gelijk zijn.
+We gaan nu even een zijtak inslaan om het concept "hash" te bespreken. Een hash is een concept uit de informatica die we gebruiken om te controleren of een digitaal stuk tekst werd aangepast of niet. Door de tekst in een hashfuntie te steken wordt een hash aangemaakt. Deze hash is een stuk code met een vaste lengte, ongeacht de originele input. Wanneer 1 bit of meer wordt aangepast in de originele boodschap dan zal deze in een totaal andere hash resulteren. Enkel dus wanneer een identiek stuk tekst als invoer (tot op bitniveau identiek) wordt gebruikt, zullen twee hashen gelijk zijn.
 
 ::: note
 Voorgaande is uiteraard onmogelijk: daar een hash meestal veel korter is dan de originele boodschap, is het mathematisch mogelijk dat twee totaal verschillende teksten toch dezelfde hash geven. Het is de opdracht van een goede hashfunctie om dit soort **hash collisions** zo klein mogelijk te houden.
@@ -156,13 +156,13 @@ De handtekening wordt berekend door: $s=m^d\%n$ oftewel $s=35^{29}\%91$ wat ``42
 
 We versturen dus naar de ontvanger de boodschap zelf en de bijhorende handtekening: ``35,42``.
 
-De ontvanger kan nu controleren of de ontvangen boodschap klopt of niet. Hij zal zijn eigen hash genereren van de ontvangen boodschap. Als deze overeen komt met de ontvangen, gedrypteerde hash, is alles in orde. Hij om de handtekening te decrypteren gebruikt de ontvanger ``e`` en berekent: $42^e == 35^n$, als dit overeenkomt dan weet de ontvanger dat hij het bericht kan vertrouwen.
+De ontvanger kan nu controleren of de ontvangen boodschap klopt of niet. Hij zal zijn eigen hash genereren van de ontvangen boodschap. Als deze overeen komt met de hash die bij de boodschap zat, is alles in orde. Om de handtekening te decrypteren gebruikt de ontvanger ``e`` en berekent: $42^e == 35^n$, als dit overeenkomt dan weet de ontvanger dat hij het bericht kan vertrouwen.
 
 ![Het volledig proces bij een digitale handtekening.](crypto/signaturesend.png){width=80%}
 
 #### Het probleem met digitale handtekeningen
 
-We hebben echter een probleem. Hoe weet je eigenlijk dat je wel de juiste publieke sleutel gebruikt. Publieke sleutels zijn, wel, publiek. Iedereen kan jou een publieke sleutel geven en zeggen *"Dit is de sleutel van persoon X"* zonder dat jij kan controleren of dat zo is. 
+We hebben echter een probleem. Hoe weet je eigenlijk dat je wel de juiste publieke sleutel gebruikt? Publieke sleutels zijn, wel, publiek. Iedereen kan jou een publieke sleutel geven en zeggen *"Dit is de sleutel van persoon X"* zonder dat jij kan controleren of dat zo is. 
 
 We kunnen daarom als kwaadwillig persoon bijvoorbeeld een legaal bericht onderscheppen, aanpassen en dan vervolgens ondertekenen met onze eigen handtekening. Als we vervolgens aan de ontvanger kunnen wijsmaken dat jouw publieke sleutel zogezegd bij de originele verzender hoort, dan zal de ontvanger jouw aangepaste bericht "geloven". 
 
@@ -183,7 +183,7 @@ Om een certificaat aan te maken dient Bob naar een **Registration authority** (R
 ![Een certificaat registreren.](crypto/certreg.png)
 
 ::: tip
-Het gehele systeem van CA's, RA's, etc. dat bestaat om certificaten uit te geven, beheren en bewijzen heet een **public key infrastructure** (**PKI**).
+Het gehele systeem van CA's, RA's, etc. dat bestaat om certificaten uit te geven, beheren en bewijzen heet een **Public Key Infrastructure** (**PKI**).
 :::
 
 De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensduur, te genereren. Hierbij zal de echtheid van de CA achter af bewezen kunnen worden door de CA:
@@ -203,7 +203,7 @@ Alhoewel **HTTPS** al sinds 1995 bestond, werd het tot voor kort amper door webs
 Pas in 2017 boden meer dan de helft van de websites wereldwijd HTTPS aan. In 2021 gebruikt ongeveer 70% van alle websites HTTPS als standaard communicatiemiddel aan (vroeger waren er al websites met HTTPS, maar HTTP was de standaard oplossing).
 :::
 
-Het ergste dat voor een CA dat kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op hun systemen dan bestaat er de kans dat aanvallers de private sleutel van de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kans bestaat, is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
+Het ergste dat voor een CA kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op zijn systemen dan bestaat er de kans dat aanvallers de private sleutel van de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kans bestaat, is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
 
 ![De chain-of-trust: oh zo belangrijk bij digitale certificaten.](crypto/chaintrust.png){width=60%}
 
@@ -225,11 +225,11 @@ Het certificaat van Sectigo is uiteraard een **selfsigned certificate**, daar zi
 
 ### Persoonlijke certificaten
 
-Naast certificaten voor webserver (zogenaamde **SSL certificaten**) kan je ook een persoonlijk certificaat aankopen om je eigen identiteit aan derden te bewijzen tijdens bijvoorbeeld email-communicatie. Voorts heb je ook **code signing** certificaten die de echtheid van een applicatie bewijzen zodat je zeker bent dat je geen malware installeert als je programma X hebt gedownload. 
+Naast certificaten voor webserver (zogenaamde **SSL certificaten**) kan je ook een persoonlijk certificaat aankopen om je eigen identiteit aan derden te bewijzen tijdens bijvoorbeeld e-mail-communicatie. Voorts heb je ook **code signing** certificaten die de echtheid van een applicatie bewijzen zodat je zeker bent dat je geen malware installeert als je programma X hebt gedownload. 
 
 Als je in Windows 10 of nieuwer een applicatie of installer probeert uit te voeren dan zal de ingebouwde *SmartScreen* service ogenblikkelijk de echtheid (of ontbreken van) het certificaat controleren, net zoals dit ook in de browser zou gebeuren.
 
-![Windows 10 Smartscreen beschermd je van niet digitaal ondertekende software.](crypto/smartscreen.png){width=40%}
+![Windows 10 Smartscreen beschermt je van niet digitaal ondertekende software.](crypto/smartscreen.png){width=40%}
 
 
 
@@ -264,15 +264,15 @@ Zoals reeds eerder vermeld is asymmetrische crypto trager, waardoor het altijd a
 De manier waarop een TLS-verbinding wordt opgezet is vrij uitgebreid. Volgende briljante website ([tls.ulfheim.net/](HTTPS://tls.ulfheim.net/)) visualiseert de berichten die server en client uitwisselen om zo'n verbinding te starten, onderhouden en eindigen.
 
 ::: warning
-Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naar je te sturen. Ook de website naar waar je surft, ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via hun caching overnemen. 
+Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naar je te sturen. Ook de website naar waar je surft, ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via zijn caching overnemen. 
 :::
 
 ### Mitmproxy
 
-*mitmproxy* is een krachtige linux-tool die een man-in-the-middle aanval op HTTPS toelaat. Het zal ervoor zorgen dat een aanvaller zich tussen jou en het internet kan nestelen en vervolgens doen alsof al je HTTPS-verbinding veilig blijven. In de praktijk zorgt mitmproxy ervoor dat alle HTTPS-verbinding van de client naar de aanvaller gebeuren, die op zijn beurt TLS-tunnels zal opzetten met de website waar het slachtoffer naar surft. Hierdoor kan de aanvaller enerzijds alle trafiek lezen, maar bijvoorbeeld ook ongezien aanpassen.
+*Mitmproxy* is een krachtige linux-tool die een man-in-the-middle aanval op HTTPS toelaat. Het zal ervoor zorgen dat een aanvaller zich tussen jou en het internet kan nestelen en vervolgens doen alsof al je HTTPS-verbindingen veilig blijven. In de praktijk zorgt mitmproxy ervoor dat alle HTTPS-verbindingen van de client naar de aanvaller gebeuren, die op zijn beurt TLS-tunnels zal opzetten met de website waar het slachtoffer naar surft. Hierdoor kan de aanvaller enerzijds alle trafiek lezen, maar bijvoorbeeld ook ongezien aanpassen.
 
-![Een man-in-the-middle aanval met TLS.](crypto/mitmproxy.png){width=80%}
+![Een man-in-the-middle aanval met TLS.](crypto/mitmproxy.png){width=90%}
 
 De aanvaller zal echter nog steeds geen geldige certificaten kunnen genereren waardoor moderne browsers normaal gezien hier een waarschuwing zouden moeten geven.
 
-![De waarschuwing die Chrome genereert wanneer het een, potentiële, mitm-aanval detecteert.](crypto/mitmbrowser.png){width=60%}
+![De waarschuwing die Chrome genereert wanneer het een, potentiële, mitm-aanval detecteert.](crypto/mitmbrowser.png){width=70%}

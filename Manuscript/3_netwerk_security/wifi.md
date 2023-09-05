@@ -1,8 +1,8 @@
 # Wifi security
 
-## De problemen van Wifi
+## De problemen van wifi
 
-We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven wegdenken. De opkomst van de IEEE 802.11b standaard (spreek IEEE uit als *"Ai-trippel-i"*) in 1999 veroorzaakte een kleine revolutie in de manier waarop bedrijven en privégebruikers konden werken. Plots kon je met een laptop van overal in het gebouw - en zelfs er buiten- op het netwerk geraken. Die vrijheid voor de gebruikers betekende wel een nachtmerrie voor de cyberboswachters. Een netwerkkabel heeft een intrinsieke extra beveiliging: enkel daar waar de kabel ligt kunnen gebruikers op het netwerk geraken. Zolang je dus geen netwerkkabel naar de publieke parking brengt kan niemand van daar illegaal het netwerk benaderen. Met wifi leek het alsof plotseling het hele bedrijfsnetwerk in een straal van tientallen meters rond het gebouw beschikbaar was, met alle gevolgen van dien.
+We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven wegdenken. De opkomst van de IEEE 802.11b standaard (spreek IEEE uit als *"Ai-trippel-i"*) in 1999 veroorzaakte een kleine revolutie in de manier waarop bedrijven en privégebruikers konden werken. Plots kon je met een laptop van overal in het gebouw - en zelfs er buiten - op het netwerk geraken. Die vrijheid voor de gebruikers betekende wel een nachtmerrie voor de cyberboswachters. Een netwerkkabel heeft een intrinsieke extra beveiliging: enkel daar waar de kabel ligt kunnen gebruikers op het netwerk geraken. Zolang je dus geen netwerkkabel naar de publieke parking brengt kan niemand van daar illegaal het netwerk benaderen. Met wifi leek het alsof plotseling het hele bedrijfsnetwerk in een straal van tientallen meters rond het gebouw beschikbaar was, met alle gevolgen van dien.
 
 ![Een oud voorbeeld van hoe wifi signalen "uit" een gebouw veel verder geraken dan verwacht (bron van de afbeelding: onbekend)](wifi/afstand.jpg){ width=75% }
 
@@ -24,7 +24,7 @@ Draadloze netwerken die gevonden worden hebben dan ook een schare aan problemen:
 
 ![Een rogue access point is de ideale manier om binnen te geraken voor hackers.](wifi/rogue.png){ width=70% }
 
-* **Denial-of-service op fysiek niveau**: om een gebruiker toegang tot een bedraad netwerk te ontzeggen op fysiek niveau dien je de kabel door te knippen. Bij wifi is dit nog eenvoudiger: de "kabel" bij wifi zijn de frequentiebanden in de lucht waarbinnen de apparaten mogen werken (circa 2.4 Ghz bij de oudere wifi apparaten, nu meestal rond de 5 Ghz band). De wifi-apparaten kunnen enkel met elkaar communiceren indien zij een signaal naar elkaar over die frequentieband kunnen sturen op een moment dat niemand anders in de buurt die band gebruikt (zie note hierna). Als een malafide gebruiker die frequentieband continue vult met andere signalen, dan zullen de legale gebruikers nooit iets kunnen uitsturen. Wil je dus een wifi netwerk *Dos'n*, koop dan een signaalgenerator die op de juiste frequentieband de nodige ruist uitzendt en klaar is kees.
+* **Denial-of-service op fysiek niveau**: om een gebruiker toegang tot een bedraad netwerk te ontzeggen op fysiek niveau dien je de kabel door te knippen. Bij wifi is dit nog eenvoudiger: de "kabel" bij wifi zijn de frequentiebanden in de lucht waarbinnen de apparaten mogen werken (circa 2.4 Ghz bij de oudere wifi apparaten, nu meestal rond de 5 Ghz band). De wifi-apparaten kunnen enkel met elkaar communiceren indien zij een signaal naar elkaar over die frequentieband kunnen sturen op een moment dat niemand anders in de buurt die band gebruikt (zie note hierna). Als een malafide gebruiker die frequentieband continue vult met andere signalen, dan zullen de legale gebruikers nooit iets kunnen uitsturen. Wil je dus een wifi netwerk *DoS'n*, koop dan een signaalgenerator die op de juiste frequentieband de nodige ruist uitzendt en klaar is kees.
 
 ::: note
 Bedrade netwerktoestellen werken volgens het CSMA/CD (Carrier Sense Multiple Access / Collision Detection) om met elkaar over de draad te communiceren, hierbij detecteren ze wanneer er 'botsingen' tussen signalen voordoen en de informatie dus opnieuw moet uitgestuurd worden. Bij draadloze netwerken is het echter onmogelijk om *botsingen in de lucht* te detecteren, daarom werken ze met een variant: **CSMA/CA** , oftewel CSMA/ **Collision Avoidance**. Een wifi-apparaat dat iets wil uitsturen zal eerst controleren of de frequentieband waarop ze werken vrij is. Vervolgens zal het apparaat broadcasten dat het iets gaat versturen, gevolgd door de effectieve informatie.
@@ -45,7 +45,7 @@ Net zoals bij bedrade netwerken, koos men bij de IEEE wifi standaard om deze man
 
 Dit resulteerde in onder andere volgende scenario's:
 
-* **Disassociation flooding**: Een hacker kan legale gebruikers DoS'n door constant zogenaamde *disassociation frames* naar hen te sturen. Dit frame, gebruikt door access points, geeft aan clients de opdracht dat ze het netwerk moeten verlaten. De hacker kan zo'n frame uitsturen en daarbij het "source" veld instellen op het MAC-adres van het access points. Deze vorm van spoofing kan ongecontroleerd gebeuren, waardoor legale gebruikers dit frame altijd zullen aanvaarden én vervolgens uitvoeren: de gebruiker kan niet meer verbinden met het netwerk zolang de disassociation frames blijven verstuurd worden.
+* **Disassociation flooding**: een hacker kan legale gebruikers DoS'n door constant zogenaamde *disassociation frames* naar hen te sturen. Dit frame, gebruikt door access points, geeft aan clients de opdracht dat ze het netwerk moeten verlaten. De hacker kan zo'n frame uitsturen en daarbij het "source" veld instellen op het MAC-adres van het access points. Deze vorm van spoofing kan ongecontroleerd gebeuren, waardoor legale gebruikers dit frame altijd zullen aanvaarden én vervolgens uitvoeren: de gebruiker kan niet meer verbinden met het netwerk zolang de disassociation frames blijven verstuurd worden.
 * **Identity spoofing** was ook eenvoudig daar de hacker eender welk veld in de frames kan aanpassen. Van zodra hij een legale gebruiker met voorgaande techniek van het netwerk heeft geschopt, kan hij vervolgens zichzelf voordoen als deze gebruiker. Hiervoor moet hij gewoon het MAC-adres spoofen van de legale gebruikers tijdens de communicatie met het access point.
 
 ![Eve gebruikt spoofing om de wifi-sessie van Alice ongemerkt over te nemen.](wifi/spoofwifi.png){ width=80% }
@@ -56,9 +56,9 @@ Dit resulteerde in onder andere volgende scenario's:
 ![Een fake access point opzetten met dank aan de onbeveiligde managementframes.](wifi/mitmwifi.png){ width=70% }
 
 ::: tip
-De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd succes had tot enkele jaren geleden (vanuit het standpunt van de hacker) was een fake Telenet Wifree hotspot op te zetten. Hierbij werd eerst de inlogpagina van Telenet  Wifree door de hacker gecloned en via een lokale webserver aangeboden aan de gebruikers die op het fake access point met de naam "Telenet Wi-Free" verbonden. Vervolgens kon de stroper nu van iedere gebruiker de gebruikersnaam en paswoord stelen telkens deze die informatie op de fake loginpagina invoerde.
+De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd succes had tot enkele jaren geleden (vanuit het standpunt van de hacker) was een fake Telenet Wi-Free hotspot op te zetten. Hierbij werd eerst de inlogpagina van Telenet Wi-Free door de hacker gecloned en via een lokale webserver aangeboden aan de gebruikers die op het fake access point met de naam "Telenet Wi-Free" verbonden. Vervolgens kon de stroper nu van iedere gebruiker de gebruikersnaam en paswoord stelen telkens deze die informatie op de fake loginpagina invoerde.
 
-Nu dat Telenet Wifree is overgeschakeld op WPA-Enterprise (zie verder) kan deze aanval gelukkig niet meer zo eenvoudig uitgevoerd worden.
+Nu dat Telenet Wi-Free is overgeschakeld op WPA-Enterprise (zie verder) kan deze aanval gelukkig niet meer zo eenvoudig uitgevoerd worden.
 :::
 
 
@@ -66,10 +66,10 @@ Nu dat Telenet Wifree is overgeschakeld op WPA-Enterprise (zie verder) kan deze 
 
 *Om de huidige, en betere, beveiliging van wifi te appreciëren gaan we terug in de tijd om te kijken hoe de originele IEEE wifi standaard de beveiliging beschreef. Het zal een ietwat horror-achtige tocht worden waarin we gaan ontdekken dat enkele stevige hiaten ervoor gezorgd hebben dat illegale toegang tot bijna ieder wifi netwerk rond de eeuwwisseling binnen enkele minuten kon gebeuren. Lees verder en huiver mee.*
 
-De originele "ANSI/IEEE Std. 802.11" die de wifi specificaties beschrijft werd geschreven in 1999. Het had als doel *"to develop a medium access control (MAC) and physical layer (PHY) specification for wireless connectivity for fixed, portable, and moving station within a local area."* Hoofdstuk 8 van deze standaard had als titel "Authentication and privacy" en was maar tien pagina's lang, in vergelijking de totale grootte van het document (528 pagina's) was dit misschien wel een voorbode hoe weinig aandacht er aan beveiliging zou worden gegeven. 
+De originele "ANSI/IEEE Std. 802.11" die de wifi specificaties beschrijft, werd geschreven in 1999. Het had als doel *"to develop a medium access control (MAC) and physical layer (PHY) specification for wireless connectivity for fixed, portable, and moving station within a local area."* Hoofdstuk 8 van deze standaard had als titel "Authentication and privacy" en was maar tien pagina's lang, in vergelijking met de totale grootte van het document (528 pagina's) was dit misschien wel een voorbode hoe weinig aandacht er aan beveiliging zou worden gegeven. 
 
 
-Voor we dat kleine hoofdstuk gaan openbreken -en ontdekken hoe WEP in de eerste generatie wifi-apparaten een navenante beveiliging aanbood- zullen we eerst bekijken hoe gebruikers met een draadloos netwerk effectief kunnen verbinden. Zoals reeds vermeld gebeurt dit gebruik makende van de onbeveiligde management frames.
+Voor we dat kleine hoofdstuk gaan openbreken - en ontdekken hoe WEP in de eerste generatie wifi-apparaten een navenante beveiliging aanbood - zullen we eerst bekijken hoe gebruikers met een draadloos netwerk effectief kunnen verbinden. Zoals reeds vermeld, gebeurt dit gebruik makende van de onbeveiligde management frames.
 
 
 ### Verbinden met een netwerk
@@ -78,16 +78,16 @@ Voor we dat kleine hoofdstuk gaan openbreken -en ontdekken hoe WEP in de eerste 
 Vanaf nu zullen we geregeld het woord access point afkorten naar **AP**. In deze tekst kan een AP zowel een eenvoudig access point zijn als een complexe draadloze router of modem.
 :::
 
-Voor digitale stropers actieve aanvallen kunnen starten op een netwerk dienen ze verbinding te maken met het netwerk. Dit proces bestaat uit vier stappen die doorlopen moeten worden voor legale en illegale gebruikers effectief gebruik kunnen maken van het netwerk en *higher-layer* datatrafiek kunnen verwerken.
+Voor digitale stropers actieve aanvallen kunnen starten op een netwerk, dienen ze verbinding te maken met het netwerk. Dit proces bestaat uit vier stappen die doorlopen moeten worden voor legale en illegale gebruikers effectief gebruik kunnen maken van het netwerk en *higher-layer* datatrafiek kunnen verwerken.
 
-1.  **Scannen**: Passief of actief zoeken naar de netwerken in de buurt.
-2.  **Verbinden (*joining*)**: Kiezen met welk netwerk zal verbonden worden.
-3.  **Authenticatie**: Bewijzen dat de gebruiker toegang heeft tot het netwerk. 
-4.  **Associatie (*association*)**: Bijhouden met welk AP de gebruiker verbonden is van het netwerk. Pas vanaf deze stap kan het netwerk gebruikt en misbruikt worden.
+1.  **Scannen**: passief of actief zoeken naar de netwerken in de buurt.
+2.  **Verbinden (*joining*)**: kiezen met welk netwerk zal verbonden worden.
+3.  **Authenticatie**: bewijzen dat de gebruiker toegang heeft tot het netwerk. 
+4.  **Associatie (*association*)**: bijhouden met welk AP de gebruiker verbonden is van het netwerk. Pas vanaf deze stap kan het netwerk gebruikt en misbruikt worden.
 
 #### Scannen
 
-In deze stap zal de client ontdekken welke netwerken er in de omgeving zijn. Oftewel zoekt de client specifiek naar een netwerk, oftewel wil hij gewoon een oplijsting van alle aanwezige netwerken. Ieder draadloze netwerk heeft een netwerknaam, de **SSID** (*service set identifier*) die bestaat uit een 32 byte ASCII karakter string, en zal deze op geregeld tijdstip broadcasten voor iedereen die hier nood aan heeft. Naast het SSID zal ieder netwerk ook fysische parameters uitsturen die de client in de volgende stap zal nodig hebben. 
+In deze stap zal de client ontdekken welke netwerken er in de omgeving zijn. Oftewel zoekt de client specifiek naar een netwerk, oftewel wil hij gewoon een oplijsting van alle aanwezige netwerken. Ieder draadloze netwerk heeft een netwerknaam, de **SSID** (*service set identifier*) die bestaat uit een 32 byte ASCII karakter string, en zal deze op geregeld tijdstip broadcasten voor iedereen die hier nood aan heeft. Naast het SSID zal ieder netwerk ook fysieke parameters uitsturen die de client in de volgende stap zal nodig hebben. 
 
 Er zijn meerdere kanalen beschikbaar in het spectrum waar binnen een netwerk mag werken. De client zal bij het scannen daarom steeds enkele milliseconden op een bepaald kanaal luisteren om potentiële SSID broadcasts op te vangen, om dan op het volgende kanaal hetzelfde te doen. 
 
@@ -97,7 +97,7 @@ Sommige gebruikers schakelen het broadcasten van hun netwerknaam (het zogenaamde
 
 #### Verbinden
 
-Wanneer de gebruiker gekozen heeft met welk SSID er moet verbonden worden zal in deze stap de wifi-netwerkkaart ingesteld worden op de juiste fysische parameters (frequentie kanaal, snelheid, etc.) zodat als het ware AP en client synchroon lopen (en dus op de juiste moment iets tegen elkaar kunnen zeggen zonder elkaars signalen te storen). In de scan-stap keken we als het ware goed rond, in deze stap richten we onze blik nu op een bepaald netwerk.
+Wanneer de gebruiker gekozen heeft met welk SSID er moet verbonden worden zal in deze stap de wifi-netwerkkaart ingesteld worden op de juiste fysieke parameters (frequentie kanaal, snelheid, etc.) zodat als het ware AP en client synchroon lopen (en dus op de juiste moment iets tegen elkaar kunnen zeggen zonder elkaars signalen te storen). In de scan-stap keken we als het ware goed rond, in deze stap richten we onze blik nu op een bepaald netwerk.
 
 #### Authenticatie
 
@@ -105,7 +105,7 @@ Wanneer de gebruiker gekozen heeft met welk SSID er moet verbonden worden zal in
 Deze en de voorgaande stappen gebeuren volledig automatisch indien de gebruiker eerder heeft geopteerd om automatisch met een netwerk te verbinden.
 :::
 
-In een bedraad netwerk zit authenticatie impliciet vervat in het fysisch aspect: wanneer je de kabel in je laptop kan steken dan is de kans groot dat je een legale gebruiker bent in het gebouw en dus is er geen extra authenticatie nodig (kort door de bocht gezien, weliswaar). Dat is niet zo met draadloze netwerken die voorbije de grenzen van het gebouw hun signaal uitsturen. Er is daarom een extra stap nodig voor we het netwerk kunnen betreden.
+In een bedraad netwerk zit authenticatie impliciet vervat in het fysiek aspect: wanneer je de kabel in je laptop kan steken dan is de kans groot dat je een legale gebruiker bent in het gebouw en dus is er geen extra authenticatie nodig (kort door de bocht gezien, weliswaar). Dat is niet zo met draadloze netwerken die voorbije de grenzen van het gebouw hun signaal uitsturen. Er is daarom een extra stap nodig voor we het netwerk kunnen betreden.
 
 In de 802.11 standaard staan twee mogelijke authenticatie-methoden beschreven (die we verderop zullen toelichten):
 
@@ -131,7 +131,7 @@ Meer gebeurt er niet in deze modus.
 
 Als er in dit soort netwerk geen encryptie wordt toegepast dan kan dus eender welk apparaat in de omgeving verbinding maken met dit netwerk. Als er wél WEP encryptie wordt gebruikt, dan zal het bezit van de WEP-sleutel als een soort toegangscontrole werken: je kan namelijk wel authenticeren (daar het AP iedereen toelaat in deze authenticatie-fase) maar vervolgens kan je geen data lezen en versturen tenzij je een geldige WEP-sleutel hebt (zie verder).
 
-Verderop zullen we ontdekken dat -oh ironie- deze authenticatie-methode veiliger is dan de shared-key authentication die we zo meteen gaan uitleggen.
+Verderop zullen we ontdekken dat - oh ironie - deze authenticatie-methode veiliger is dan de shared-key authentication die we zo meteen gaan uitleggen.
 
 **Shared-key authentication**
 
@@ -157,13 +157,9 @@ Vanaf dit punt kan de gebruiker dus de bronnen van het netwerk beginnen gebruike
 
 Om potentiële aanvallers ervan te weerhouden dat ze trafiek kunnen sniffen (of zelf op het netwerk zetten) voorziet de 802.11 vanaf de associatie de optie om encryptie te voorzien. Dit gebeurt aan de hand van **WEP**, wat staat voor *wired equivalent privacy*. Een naam die veel beloofde maar niet zo goed was: de idee was dat WEP even veilig zou zijn als een bedraad netwerk. 
 
-::: note
-
-WEP is optioneel en bevindt zich vlak voor frames naar de fysische laag (*PHY*) worden gestuurd (die de frames "in de lucht" zal sturen). Het IEEE werkt met lagen die ongeveer overeen komen met de OSI-lagen maar met iets andere namen. In volgende figuur zie je waar WEP, optioneel, zich bevindt.
+WEP is optioneel en bevindt zich vlak voor frames naar de fysieke laag (*PHY*) worden gestuurd (die de frames "in de lucht" zal sturen). Het IEEE werkt met lagen die ongeveer overeen komen met de OSI-lagen maar met iets andere namen. In volgende figuur zie je waar WEP, optioneel, zich bevindt.
 
 ![De 802.11 stack (rechts) ten opzichte van de OSI stack.](wifi/osimac.png){ width=50% }
-
-:::
 
 #### Hoe werkt WEP?
 
@@ -177,7 +173,7 @@ Confidentiality en integriteit worden tegelijkertijd afgehandeld in WEP. Vlak vo
 
 Finaal verkrijgen we dus volgende WEP-frame dat kan verstuurd worden:
 
-![WEP frame layout.](wifi/wepframe.png){ width=70% }
+![WEP frame lay-out.](wifi/wepframe.png){ width=70% }
 
 ::: note 
 In de originele standaard zat de mogelijkheid om tot vier WEP-sleutels in een netwerk te gebruiken. Via de *keyid* kon een client of AP dan aangeven met welk van de geïnstalleerde sleutels een frame werd geëncrypteerd. 
@@ -185,7 +181,7 @@ In de originele standaard zat de mogelijkheid om tot vier WEP-sleutels in een ne
 
 #### Sleutellengte en de IV
 
-Origineel ondersteunde WEP enkel 40-bit WEP sleutels. Ondertussen is dat opgetrokken maar toen de standaard werd geschreven besefte men al dat er sowieso een probleem met de sleutel zou zijn als die zo zou gebruikt worden: ieder frame dat met dezelfde sleutel wordt geëncrypteerd zal dezelfde keystream hebben gebruikt. Dat was natuurlijk geen optie. Om die reden werd gekozen om te werken met een **initialisatie vector (IV)** van 24-bit. Deze IV werd mee als seed aan RC4 gegeven. Door ieder frame een andere IV te kiezen zorgden men er zo voor dat ieder frame een andere keystream gebruikte (**WEP-sleutel+IV werd de nieuwe seed per frame**). In de originele standaard werd echter niet beschreven hoe deze IV moest veranderen wat nefaste gevolgen zal hebben verderop. 
+Origineel ondersteunde WEP enkel 40-bit WEP sleutels. Ondertussen is dat opgetrokken maar toen de standaard werd geschreven besefte men al dat er sowieso een probleem met de sleutel zou zijn als die zo zou gebruikt worden: ieder frame dat met dezelfde sleutel wordt geëncrypteerd zal dezelfde keystream hebben gebruikt. Dat was natuurlijk geen optie. Om die reden werd gekozen om te werken met een **initialisatie vector (IV)** van 24-bit. Deze IV werd mee als seed aan RC4 gegeven. Door ieder frame een andere IV te kiezen zorgden men er zo voor dat ieder frame een andere keystream gebruikte (**WEP-sleutel+IV werd de nieuwe seed per frame**). In de originele standaard werd echter niet beschreven hoe deze IV moest veranderen, wat nefaste gevolgen zal hebben verderop. 
 
 Omdat ook de ontvanger dezelfde keystream moet kunnen genereren tijdens decryptie is het natuurlijk belangrijk dat de IV ook bij de ontvanger gekend is. De enige manier om dit op te lossen is door de IV mee in de header van het frame te plaatsen en door te sturen. Uiteraard moet deze IV als plaintext door het leven gaan. 
 
@@ -267,7 +263,7 @@ Een gevolg van die weak keys is dat, indien de eerste 2 bytes van genoeg keystre
 De FMS aanval werkt indien:
 
 1. We ongeveer 60 keystreams kunnen capteren waarvan geweten is dat ze *weak* zijn.
-2. We de eerste 2 bytes van de plaintext van de bijhorende frames kennen die met deze weak keystreams zijn geencrypteerd.
+2. We de eerste 2 bytes van de plaintext van de bijhorende frames kennen die met deze weak keystreams zijn geëncrypteerd.
 
 Dat tweede is geen probleem, met dank aan de netwerkspecificaties:  de payload van een met WEP geëncrypteerd pakket bevat de LLC header (de header van de logical link layer). Volgens de standaard (RFC 2684) moeten *"IP datagram pakketten altijd zichzelf in de header identificeren via de SNAP header"* En laten de eerste 2 bytes van die header toch wel niet altijd starten met 0xAA. Kortom, quasi alle frames die over een WEP-netwerk vliegen zullen altijd met de hexadecimale waarde AA starten. Nu volstaat het om de bijhorende keystream te achterhalen aangezien we de plaintext kennen, kunnen we ook de eerste 2 bytes van de keystream kennen daar we weten dat:
 
@@ -303,7 +299,7 @@ Deze fout kunnen aanvallers op twee manieren misbruiken: met een passieve of met
 
 **Passieve IV aanval**
 
-Een aanvaller kan passief meeluisteren en stilletjes alle trafiek onderscheppen tot er een IV collision optreedt. Door twee pakketjes met eenzelfde IV te XOR'n verkrijgt de aanvaller een pakket dat bestaat uit de XOR van beide plaintext'n van de gecapteerde pakketten. Als dus één van beide plaintexten gekend is, is de inhoud van het andere pakket ook gekend.
+Een aanvaller kan passief meeluisteren en stilletjes alle trafiek onderscheppen tot er een IV collision optreedt. Door twee pakketjes met eenzelfde IV te XOR'n verkrijgt de aanvaller een pakket dat bestaat uit de XOR van beide plaintexten van de gecapteerde pakketten. Als dus één van beide plaintexten gekend is, is de inhoud van het andere pakket ook gekend.
 
 IP trafiek is vaak voorspelbaar en bevat aardig wat redundantie (om fouten op te vangen). Hierdoor wordt het makkelijker voor een aanvaller om via cryptanalyse te achterhalen wat de inhoud, of een deel, van het pakket bevat. Een voorbeeld hiervan toonden we bij de FMS aanval waarbij steeds de LLC header gekend was van de meeste pakketten.
 
@@ -322,7 +318,7 @@ De passieve aanval heeft als nadeel dat we als aanvaller:
 
 Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol te gaan spelen. Doordat een AP braaf alle trafiek encrypteert dat het van het bedrade netwerk krijgt om naar een client te sturen, is het voor een aanvaller een kwestie van "gekende" plaintext van buitenuit naar het slachtoffer te sturen. Als volgt:
 
-1. Een gekende plaintext boodschap (bijvoorbeeld een emailbericht of ping) wordt naar het AP gestuurd (via het internet bijvoorbeeld), dat vervolgens door de aanvaller in het oog wordt gehouden. Noot: als de aanvaller enkel het draadloze netwerk ter beschikking heeft (en niet het internet) dan zal een bitflip-aanval moeten gebruikt worden, wat we verderop zullen uitleggen.
+1. Een gekende plaintext boodschap (bijvoorbeeld een e-mailbericht of ping) wordt naar het AP gestuurd (via het internet bijvoorbeeld), dat vervolgens door de aanvaller in het oog wordt gehouden. Noot: als de aanvaller enkel het draadloze netwerk ter beschikking heeft (en niet het internet) dan zal een bitflip-aanval moeten gebruikt worden, wat we verderop zullen uitleggen.
 2. De aanvaller blijft sniffen tot het de ciphertext ziet passeren waarin (vermoedelijk) z'n gestuurde plaintext zit.
 3. Vervolgens kan de aanvaller een keystream te pakken krijgen door z'n plaintext te XOR'n met de gecapteerde cipherhtext: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$.
 
@@ -350,9 +346,9 @@ We hebben bij deze aanval één belangrijk concept genegeerd waardoor deze aanva
 
 De vierde fout met de Initialisatie Vectoren is de manier waarop de selectie ervan moet gebeuren in de hardware. De 802.11 standaard gaf enkel aan dat de IV *"geregeld moest geupdate"* worden. Dat is uiteraard te vaag en heeft ervoor gezorgd dat fabrikanten zelf moesten bepalen welke IV selectie strategie ze in hun hardware zouden implementeren. Hierdoor waren er drie strategieën die hun weg in de verschillende apparaten vonden:
 
-* **Vast IV**: Sommige fabrikanten hadden geen flauw benul wat het doel van de IV was vanuit cryptografisch standpunt en kozen daarom zelfs gewoon om alle pakketten steeds met het zelfde IV te versturen. Hierdoor treden er dus collisions op van zodra er een tweede pakketje de lucht wordt ingestuurd.
-* **Willekeurig IV**: Andere fabrikanten verkozen het om hun hardware bij ieder pakketje een willekeurig IV te laten selecteren. Alhoewel dit uiteraard veel veiliger is dan een "vaste IV"-strategie, treden er toch veel sneller collisions op dan verwacht. Dit valt te verklaren door het zogenaamde **verjaardagenparadox** (zie kader verder) dat verklaart waarom er reeds 50% kans op een collision is na 4823 pakketjes. Dat wil dus zeggen dat al na enkele seconden er meestal collisions optreden.
-* **Incrementele IV**: In deze strategie wordt een circulaire teller gebruikt waarbij de IV telkens met 1 wordt verhoogd wanneer een pakket moet worden verstuurd. Meestal begint deze teller op een vaste waarde. Dit zal er dan ook voor zorgen dat er een collisions optreedt van zodra een tweede apparaat zich op het netwerk begeeft en dus begint uit te zenden met de IV gelijk aan de IV van het allereerste pakketje dat het eerste apparaat gebruikte.
+* **Vast IV**: sommige fabrikanten hadden geen flauw benul wat het doel van de IV was vanuit cryptografisch standpunt en kozen daarom zelfs gewoon om alle pakketten steeds met het zelfde IV te versturen. Hierdoor treden er dus collisions op van zodra er een tweede pakketje de lucht wordt ingestuurd.
+* **Willekeurig IV**: andere fabrikanten verkozen het om hun hardware bij ieder pakketje een willekeurig IV te laten selecteren. Alhoewel dit uiteraard veel veiliger is dan een "vaste IV"-strategie, treden er toch veel sneller collisions op dan verwacht. Dit valt te verklaren door het zogenaamde **verjaardagenparadox** (zie kader verder) dat verklaart waarom er reeds 50% kans op een collision is na 4823 pakketjes. Dat wil dus zeggen dat al na enkele seconden er meestal collisions optreden.
+* **Incrementele IV**: in deze strategie wordt een circulaire teller gebruikt waarbij de IV telkens met 1 wordt verhoogd wanneer een pakket moet worden verstuurd. Meestal begint deze teller op een vaste waarde. Dit zal er dan ook voor zorgen dat er een collisions optreedt van zodra een tweede apparaat zich op het netwerk begeeft en dus begint uit te zenden met de IV gelijk aan de IV van het allereerste pakketje dat het eerste apparaat gebruikte.
 
 Kortom, een 24-bit *salt* is véél te klein in een omgeving met erg hoge data-rates zoals een draadloos netwerk. Dit probleem zou nog beperkt kunnen worden indien de originele WEP geregeld sleutels kon verversen, maar door het gebrek aan enig key management was dat dus uit den boze (want herinner je: de enige reden dat we IV's nodig hadden was omdat anders steeds dezelfde WEP-sleutel als seed werd gebruikt en dus alle keystreams gelijk zouden zijn. Door geregeld een andere sleutel te gebruiken zou onze kleine IV-lengte minder precair zijn, als we maar tijdig de sleutels verversen).
 
@@ -366,7 +362,7 @@ Beeld je nu in dat in plaats van mensen, je honderden pakketten hebt, niet met e
 
 WEP gebruikt een *integrity checksum field* om te voorkomen dat een pakket wordt aangepast tijdens transmissie, namelijk een CRC-32 checksum. Dit was niet zo'n wijze keuze: CRCs zijn in het algemeen vooral bedoeld om random transmissiefouten te detecteren, niet bewuste aanpassingen. Daarnaast heeft de CRC-32 ook nefaste gevolgen in combinatie met RC4 waardoor bitflipaanvallen mogelijk zijn.
 
-CRC-32 is een zogenaamde lineaire functie. Zonder in detail hierover in te gaan volstaat het te begrijpen dat we als gevolg hiervan het volgende hebben: *De CRC van een boodschap geXOR'd met de CRC van een andere boodschap is hetzelfde als de CRC nemen nadat beide boodschappen samen werden geXOR'd*. 
+CRC-32 is een zogenaamde lineaire functie. Zonder in detail hierover in te gaan volstaat het te begrijpen dat we als gevolg hiervan het volgende hebben: *De CRC van een boodschap ge-XOR'd met de CRC van een andere boodschap is hetzelfde als de CRC nemen nadat beide boodschappen samen werden ge-XOR'd*. 
 
 Of beter gezegd:
 
@@ -383,13 +379,13 @@ Door deze eigenschap kunnen we gecontroleerd aanpassingen aan paketten doen, zon
 
 ![De bitflip aanval.](wifi/bitflip.png)
 
-Wanneer een AP dergelijk pakket krijgt zal het dit pakket braaf naar de volgende laag sturen aangezien het pakket een geldig ICV heeft, ook al bevat de inhoud *rommel*. Op de volgende laag komt nu een pakket aan dat duidelijk stuk is, en deze laag zal bijgevolg een foutboodschap genereren en terugsturen. De aanvaller krijgt deze boodschap in een WEP-frame aan. En alhoewel dit pakket geencrypteerd is, weet de aanvaller de inhoud van dit pakket (daar hij heeft opgezocht wat de foutboodschap zal bevatten op de volgende laag volgens de standaard van die laag) en kan dus een geldige keystream te pakken krijgen:
+Wanneer een AP dergelijk pakket krijgt, zal het dit pakket braaf naar de volgende laag sturen aangezien het pakket een geldig ICV heeft, ook al bevat de inhoud *rommel*. Op de volgende laag komt nu een pakket aan dat duidelijk stuk is, en deze laag zal bijgevolg een foutboodschap genereren en terugsturen. De aanvaller krijgt deze boodschap in een WEP-frame aan. En alhoewel dit pakket geëncrypteerd is, weet de aanvaller de inhoud van dit pakket (daar hij heeft opgezocht wat de foutboodschap zal bevatten op de volgende laag volgens de standaard van die laag) en kan hij dus een geldige keystream te pakken krijgen:
 
 $c = k \oplus p \Leftrightarrow k = c \oplus p$
 
 ![Layer 3 misbruiken door corrupte, geblitflipte pakketjes, een gekende foutboodschap te laten genereren.](wifi/respat.png)
 
-Dankzij de bitflip aanval kan de aanvaller dus zonder problemen keystreams groeien zoals eerder uitgelegd.
+Dankzij de bitflip aanval kan de aanvaller dus zonder problemen keystreams laten groeien zoals eerder uitgelegd.
 
 ### Probleem 4: Sleutelmanagement
 
@@ -407,15 +403,15 @@ Bart Preneel van de KUL/Cosic, één van België's meest vooraanstaande crypto-e
 Rond 2001, nog geen twee jaar nadat de eerste wifi-standaard de wereld "het wonder van draadloze netwerken" bracht, werd duidelijk dat er dringend een oplossing moest verschijnen voor de vele veiligheidsproblemen. Wifi was alomtegenwoordig, zowel bij particulieren als in bedrijven, en dus moest een oplossing gezocht worden voor al die honderdduizenden bestaande apparaten die reeds in gebruikt waren. Het IEEE kon moeilijk een nieuwe standaard uitschrijven die alle bestaande gebruikers in de kou zette. Er werd daarom besloten om twee pistes uit te werken:
 
 * **WPA1**: een (tijdelijke) oplossing voor bestaande apparaten, rekening houdend met enkele duidelijke beperkingen.
-* **WPA2**: de "ultieme oplossing" die een volledig nieuwe suite aan veiligheidsprotocollen zou bevatten voor toekomstige Wifi-producten, maar die niet compatibel zou zijn met bestaande apparatuur.
+* **WPA2**: de "ultieme oplossing" die een volledig nieuwe suite aan veiligheidsprotocollen zou bevatten voor toekomstige wifi-producten, maar die niet compatibel zou zijn met bestaande apparatuur.
 
 ::: tip
-WPA staat voor Wi-Fi Protected Access standard.
+WPA staat voor WiFi Protected Access standard.
 :::
 
 De beide oplossingen zouden ook de IEEE 802.1X standaard omarmen. Deze standaard zou sleutelmanagement en gebruikersauthenticatie voorzien in combinatie met de nieuwe encryptie en integriteits-oplossingen van WPA1 of WPA2.
 
-Omdat sleutelmanagement én de bijhorende 802.1X infrastructuur redelijk overkill kon zijn voor huis-tuin-en keukengebruikers van wifi, besloot het IEEE om twee versies van zowel WPA1 en WPA2 te maken:
+Omdat sleutelmanagement én de bijhorende 802.1X infrastructuur redelijk overkill konden zijn voor huis-tuin-en keukengebruikers van wifi, besloot het IEEE om twee versies van zowel WPA1 en WPA2 te maken:
 
 * **Personal**: de thuisversie voor gewone gebruikers waarbij met een gedeelde sleutel of passphrase wordt gewerkt (een zogenaamde **PSK** oftewel *pre-shared key*). Hierbij wordt géén 802.1X gebruikt.
 * **Enterprise**: de versie voor (grote) bedrijven waar sleutelmanagement belangrijk is en dus 802.1X wordt gebruikt
@@ -440,7 +436,7 @@ WPA1 (de tussentijdse oplossing) werd ontwikkeld waarbij rekening werd gehouden 
 
 * Zoals verteld, miljoenen WEP-gebaseerde apparaten waren reeds in gebruik. Deze apparaten zouden met behulp van een firmware upgrade gepatcht moeten kunnen worden naar WPA1.
 * De meeste AP's werkten met processoren die reeds quasi volcontinue tegen hun maximum capaciteit werkten. De extra algoritmes (van WPA1) die het AP moest draaien mocht maar een beperkte overhead creëren.
-* De RC4 encryptie is deels *hardwired* in de hardware van het AP. Hierdoor kunnen bepaalde delen van WEP onmogelijk 'omzeilt' worden en hangen we dus inherent vast aan WEP.
+* De RC4 encryptie is deels *hardwired* in de hardware van het AP. Hierdoor kunnen bepaalde delen van WEP onmogelijk 'omzeild' worden en hangen we dus inherent vast aan WEP.
 
 ### 802.1X
 
@@ -450,11 +446,11 @@ De IEEE 802.1X standaard is, ondertussen, een veelgebruikte standaard in veel dr
 * Een **centraal user management** systeem.
 * Een **veilige manier om geheime sleutels uit te wisselen**.
 
-We gaan de volledige werking van de 802.1X standaard hier niet uit de doeken doen, dat zou ons te ver brengen. Het is echter nuttig om te begrijpen dat deze standaard werd gekozen omdat hij ervoor zorgt dat de AP niet meer zelf de authenticatie moeten doen, maar dat ze gebruik maken van de bestaande (bedrade) authenticatie-infrastructuur van het bedrijf. De APs zullen gewoon als een doorgeefluik aan de start tussen gebruiker en de authenticatie-server optreden en de boodschappen tussen beiden uitwisselen. Enkel wanneer het AP toestemming krijgt van de authenticatieserver (meestal een RADIUS server) zal het AP de eindgebruiker toegang tot het draadloze netwerk verschaffen.
+We gaan de volledige werking van de 802.1X standaard hier niet uit de doeken doen, dat zou ons te ver brengen. Het is echter nuttig om te begrijpen dat deze standaard werd gekozen omdat hij ervoor zorgt dat de AP's niet meer zelf de authenticatie moeten doen, maar dat ze gebruik maken van de bestaande (bedrade) authenticatie-infrastructuur van het bedrijf. De AP's zullen gewoon als een doorgeefluik aan de start tussen gebruiker en de authenticatie-server optreden en de boodschappen tussen beiden uitwisselen. Enkel wanneer het AP toestemming krijgt van de authenticatieserver (meestal een RADIUS server) zal het AP de eindgebruiker toegang tot het draadloze netwerk verschaffen.
 
 ![Port-based authenticatie met 802.1X.](wifi/port.png){width=80%}
 
-802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algoritme. Integendeel: het is een **framework** waar binnen andere algoritmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft- en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticatie-boodschappen tussen enerzijds het netwerkprotocol (bv Ethernet, Wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
+802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algoritme. Integendeel: het is een **framework** waar binnen andere algoritmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft- en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticatie-boodschappen tussen enerzijds het netwerkprotocol (bv Ethernet, wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
 
 ![De modulariteit van het 802.1X framework.](wifi/8021x.png){ width=50% }
 
@@ -463,7 +459,7 @@ EAP oftewel *Extensible Authentication Protocol* is, zoals de naam doet vermoede
 De meest gebruikte EAP-methoden zijn:
 
 * **EAP-TLS**: gebruikt een TLS-tunnel om op een beveiligde manier te communiceren (we zagen TLS ook reeds aan het einde van crypto waar het gebruikt werd om HTTPS-trafiek te beveiligen). Hierbij gebeurt een certificaat-gebaseerde authenticatie.
-* **EAP-TTLS** (*Tunneled TLS*): Omdat niet alle eindgebruikers zich kunnen authenticeren aan de hand van een certificaat, voorziet TTLS authenticatie met behulp van een username/paswoord login, waarbij wel nog steeds een TLS tunnel wordt gebruikt voor veilige communicatie. Ter info: EAP-TTLS is quasi hetzelfde als *Protected EAP* (PEAP) een ander EAP-protocol dat je soms zal zien passeren.
+* **EAP-TTLS** (*Tunneled TLS*): omdat niet alle eindgebruikers zich kunnen authenticeren aan de hand van een certificaat, voorziet TTLS authenticatie met behulp van een username/paswoord login. Hierbij wordt wel nog steeds een TLS tunnel gebruikt voor veilige communicatie, maar de gebruiker moet geen eigen certificaat bezitten. Ter info: EAP-TTLS is quasi hetzelfde als *Protected EAP* (PEAP), een ander EAP-protocol dat je soms zal zien passeren.
 
 ![Het authenticatie-proces op een wifi-netwerk met 802.1X (Enterprise-mode).](wifi/8021X2.png){ width=75% }
 
@@ -471,20 +467,20 @@ De voorgaande figuur toont de typische uitwisseling van boodschappen die plaatsv
 
 1. Client en access zoeken samen welke EAP-methoden zij beide kunnen gebruiken om de authenticatie te starten. Enkel indien ze samen tot één keuze kunnen komen wordt overgegaan naar stap 2.
 2. Vanaf nu zal het AP enkel dienst doen als doorgeefluik tussen de client en de authenticatie-server.
-3. Als de server genoeg bewijs heeft om de client te authenticeren zal de server de nodige sleutels genereren en deze aan het AP geven.
+3. Als de server genoeg bewijs heeft om de client te authenticeren, zal de server de nodige sleutels genereren en deze aan het AP geven.
 4. Het AP zal vanaf nu instaan voor het verdere sleutelbeheer en wanneer nodig de sleutels verversen tijdens de sessie.
-5. Wanneer de sleutels tussen client en AP zijn verwerkt krijgt de client toegang tot het netwerk.
+5. Wanneer de sleutels tussen client en AP zijn verwerkt, krijgt de client toegang tot het netwerk.
 
 In wifi-netwerken met 802.1X  worden twee sets van sleutels aangemaakt:
 
-* Sessie sleutels, ook wel "*pairwise keys*" genoemd: deze is uniek per client en is enkel gekend door die client en het AP. Zoals de naam doet vermoeden zijn deze sleutel enkel geldig tijdens de net opgezette sessie.
-* Groepsleutels, ook wel "*group keys*" genoemd: deze wordt tussen alle cliënten van hetzelfde AP gedeeld en worden gebruikt voor multi-cast trafiek.
+* **Sessie sleutels**, ook wel "*pairwise keys*" genoemd: deze zijn uniek per client en zijn enkel gekend door die client en het AP. Zoals de naam doet vermoeden zijn deze sleutels enkel geldig tijdens de net opgezette sessie.
+* **Groepsleutels**, ook wel "*group keys*" genoemd: deze worden tussen alle cliënten van hetzelfde AP gedeeld en worden gebruikt voor multi-cast trafiek.
 
 Indien het *dynamic key exhange protocol* is geconfigureerd dan zal de authenticatie de sessiesleutels eenmalig aanmaken en doorsturen. Daarna zullen specifieke encryptie-sleutels gegenereerd worden bij de client en AP gebaseerd op deze sessiesleutel. De client (en AP) kan dan zelf, automatisch, op gepaste momenten nieuwe encryptie-sleutels genereren.
 
 ### TKIP
 
-Bij WPA1, wanneer de nodige sleutels zijn uitgewisseld is het tijd om data te encrypteren. Dit gebeurt door middel van het **Temporal Key Integrity Protocol** (TKIP), wat een suite van algoritmes is dat als een wrapper rond WEP wordt gelegd om zo encryptie aan te bieden en daarbij de fouten van WEP minimaliseert.
+Bij WPA1, wanneer de nodige sleutels zijn uitgewisseld, is het tijd om data te encrypteren. Dit gebeurt door middel van het **Temporal Key Integrity Protocol** (TKIP), wat een suite van algoritmes is dat als een wrapper rond WEP wordt gelegd om zo encryptie aan te bieden en daarbij de fouten van WEP minimaliseert.
 
 TKIP omhult WEP met volgende zaken:
 
@@ -498,14 +494,14 @@ TKIP omhult WEP met volgende zaken:
 Om bewuste aanpassingen aan de payload van een frame te detecteren gebruikt WPA1 een *message integrity check* (**MIC**). Dit is een cryptografisch sterker concept dan de originele CRC checks en wordt verzorgd door het "Michael" algoritme.
 
 ::: note
-In de literatuur wordt meestal gesproken over "Message authentication codes" of MAC's. Echter, in de IEEE 802 standaarden wordt MAC reeds gebruikt voor *message access control* en werd dus gekozen voor MIC.
+In de literatuur wordt meestal gesproken over "Message authentication codes" of MAC's. Echter, in de IEEE 802 standaarden wordt MAC reeds gebruikt voor *message access control* en werd er dus gekozen voor MIC.
 :::
 
-"Michael" berekent de MIC van een payload maar gebruikt hierbij ook de authenticatie sleutel, het adres van de verzender én ontvanger. Hierdoor wordt het voor een aanvaller veel moeilijker om een dergelijke MIC na te bootsen, laat staat te *replayen* (vergelijk dit met de originele CRC-32 die enkel de payload gebruikt om de checksum te berekenen).
+"Michael" berekent de MIC van een payload maar gebruikt hierbij ook de authenticatie-sleutel, het adres van de verzender én ontvanger. Hierdoor wordt het voor een aanvaller veel moeilijker om een dergelijke MIC na te bootsen, laat staat te *replayen* (vergelijk dit met de originele CRC-32 die enkel de payload gebruikt om de checksum te berekenen).
 
 ![Het aanmaken van een MIC met Michael.](wifi/michael.png){ width=60% }
 
-Wanneer TKIP twee foute MICs na elkaar detecteert gaat het er van uit dat er een aanval bezig is. Volgende stappen worden dan ogenblikkelijk uitgevoerd door de client:
+Wanneer TKIP twee foute MICs na elkaar detecteert, gaat het er van uit dat er een aanval bezig is. Volgende stappen worden dan ogenblikkelijk uitgevoerd door de client:
 
 1. Alle huidige sleutels worden verwijderd.
 2. De client verbreekt de verbinding.
@@ -534,7 +530,7 @@ Het MAC adres van de client wordt ge-XOR'd met de basissleutel (zijnde ofwel de 
 
 **Fase 2 mixing**
 
-In deze fase wordt de TSC (de pakket-teller, uitgelegd in de "IV selectie verbetering" sectie) geëncrypteerd samen met de tussentijdse sleutel. De encryptie gebeurt door middel van een kleine Feistel-structuur (zie hoofdstuk crypto) en resulteert in een 128-bit per-pakket sleutel. Vervolgens wordt deze sleutel, samen met delen van de TSC als "WEP-sleutel" en IV aan het originele WEP-gedeelte aangeboden. Hierbij wordt ervoor gezorgd dat er geen RC4 weak keys meer mogelijk zijn omdat die IV worden weg gefilterd voor ze aan de hardware worden aangeboden.
+In deze fase wordt de TSC (de pakket-teller, uitgelegd in de "IV selectie verbetering" sectie) geëncrypteerd samen met de tussentijdse sleutel. De encryptie gebeurt door middel van een kleine Feistel-structuur (zie hoofdstuk crypto) en resulteert in een 128-bit per-pakket sleutel. Vervolgens wordt deze sleutel, samen met delen van de TSC als "WEP-sleutel" en IV aan het originele WEP-gedeelte aangeboden. Hierbij wordt ervoor gezorgd dat er geen RC4 weak keys meer mogelijk zijn omdat die IV worden weggefilterd voor ze aan de hardware worden aangeboden.
 
 ### Alle blokjes samen
 
@@ -560,7 +556,7 @@ Samen wordt dit encryptieproces **CCMP** genoemd, wat staat voor *"Counter Mode 
 Voor de sleuteldistributie en management werd, zoals vermeld, gebruik gemaakt van de 802.1X standaard.
 
 ::: tip
-Toen WPA2 uitkwam ontdekte men dat toch aardig wat bestaande hardware kon gepatch'd worden om ook WPA2-compatibel te zijn. Dit was een opsteker voor velen, daar de originele premise van WPA2 net was dat ze geen rekening zouden houden met de bestaande hardware die reeds op de markt was.
+Toen WPA2 uitkwam ontdekte men dat toch aardig wat bestaande hardware kon gepatcht worden om ook WPA2-compatibel te zijn. Dit was een opsteker voor velen, daar de originele premise van WPA2 net was dat ze geen rekening zouden houden met de bestaande hardware die reeds op de markt was.
 :::
 
 ### Encryptie en MIC creatie d.m.v. CCMP
@@ -571,22 +567,22 @@ CCMP gebruikt, net als TKIP, een 48-bit IV die *packet number* (PN) werd genoemd
 Die laatste zin impliceert een ander belangrijk veiligheidsverschil tussen enterprise en personal mode: in personal modus wordt een passphrase sleutel gedeeld met alle gebruikers op het netwerk. Hierdoor kan iemand die in het bezit is van deze passphrase ook de data decrypteren van de andere gebruikers, iets wat onmogelijk is in enterprise modus.
 :::
 
-![CCMP: confidentiality en integrity in 1](wifi/ccmp.png)
+![CCMP: confidentiality en integrity in één.](wifi/ccmp.png)
 
-In de figuur zie je duidelijk de elegantie van het systeem en hoe de integriteit in parallel wordt berekend met de encryptie. De MIC wordt berekend met behulp van CBC-MAC, wat staat voor **cipherblock chaining - message authentication code**, een veelzeggende naam. Zoals we uit het hoofdstuk crypto weten, zal er bij CBC een keten van encrypties starten, waarbij de encryptie van het huidige blok geXOR'd wordt met het resultaat van de encryptie van het vorige blok. Het finale geencrypteerde cipherblock zal daarbij dienst doen als MIC. Bij de minste bitfout ergens in de payload of header zal een totaal andere MIC gegenereerd worden.
+In de figuur zie je duidelijk de elegantie van het systeem en hoe de integriteit in parallel wordt berekend met de encryptie. De MIC wordt berekend met behulp van CBC-MAC, wat staat voor **cipherblock chaining - message authentication code**, een veelzeggende naam. Zoals we uit het hoofdstuk crypto weten, zal er bij CBC een keten van encrypties starten, waarbij de encryptie van het huidige blok ge-XOR'd wordt met het resultaat van de encryptie van het vorige blok. Het finale geëncrypteerde cipherblock zal daarbij dienst doen als MIC. Bij de minste bitfout ergens in de payload of header zal een totaal andere MIC gegenereerd worden.
 
-Om de payload te encrypteren (*merk op dat de header niét geëncrypteerd wordt, het wordt enkel mee betrokken om de MIC te berekenen*) wordt de **counter mode** van AES gebruikt. Hierbij worden de blokken onafhankelijk van de andere blokken geëncrypteerd en zal een *payload counter* (PC) telkens met 1 verhoogd worden en als extra seed voor de AES-motor van het huidige blok dienen (samen met de te gebruiken sleutel).
+Om de payload te encrypteren (*merk op dat de header niét geëncrypteerd wordt, het wordt enkel mee betrokken om de MIC te berekenen*) wordt de **counter mode** van AES gebruikt. Hierbij worden de blokken onafhankelijk van de andere blokken geëncrypteerd en zal een *payload counter* (PC) telkens met één verhoogd worden en als extra seed voor de AES-motor van het huidige blok dienen (samen met de te gebruiken sleutel).
 
 ### Helaas, aan alles komt een einde
 
-Tot 2017 ging alles goed. De AES standaard was al jaren een robuuste standaard gebleken en werd op vele plekken nog steeds gebruikt. En dit zou ook bij Wifi zou zijn geweest, waren het niet dat in mei 2017 een Belgische onderzoeker, Mathy Vanhoef, de bevindingen van z'n onderzoek publiceerde. Hij had helaas een belangrijke fout gevonden in de WPA2 standaard. Deze had niets te maken met AES - dat blijft een stevige standaard zijn- maar wel de manier waarop een bepaalde uitwisseling van bepaalde berichten tijdens de initiële handshake gebeuren.. Deze aanvallen worden beschreven én gedemonstreerd op [krackattacks.com](HTTPS://www.krackattacks.com/) en verplichtten de IEEE om te beginnen werken aan een opvolger voor WPA2.
+Tot 2017 ging alles goed. De AES standaard was al jaren een robuuste standaard gebleken en werd op vele plekken nog steeds gebruikt. En dit zou ook bij wifi zou zijn geweest, waren het niet dat in mei 2017 een Belgische onderzoeker, Mathy Vanhoef, de bevindingen van z'n onderzoek publiceerde. Hij had helaas een belangrijke fout gevonden in de WPA2 standaard. Deze had niets te maken met AES - dat blijft een stevige standaard zijn - maar wel de manier waarop een bepaalde uitwisseling van bepaalde berichten tijdens de initiële handshake gebeuren. Deze aanvallen worden beschreven én gedemonstreerd op [krackattacks.com](HTTPS://www.krackattacks.com/) en verplichtten de IEEE om te beginnen werken aan een opvolger voor WPA2.
 
 ::: tip
-Een lek zoals krackattack vereist natuurlijk een snelle reactie van de vendors. Hoe sneller zij een patch uitbrengen, hoe sneller de lek kan gedicht worden. Maar wat als je een wifi-kaart hebt die al vele jaren oud is en waarvan de fabrikant misschien niet meer bestaat? Dit probleem zien we geregeld opduiken en wordt nog groter wanneer we beseffen dat ook de interne elektronica (de chips) soms gepatched moeten worden. In het hoofdstuk rond IoT Security gaan we hier dieper op in.
+Een lek zoals krackattack vereist natuurlijk een snelle reactie van de vendors. Hoe sneller zij een patch uitbrengen, hoe sneller de lek kan gedicht worden. Maar wat als je een wifi-kaart hebt die al vele jaren oud is en waarvan de fabrikant misschien niet meer bestaat? Dit probleem zien we geregeld opduiken en wordt nog groter wanneer we beseffen dat ook de interne elektronica (de chips) soms gepatcht moeten worden. In het hoofdstuk rond IoT Security gaan we hier dieper op in.
 :::
 
 ::: tip
-De personal mode van WPA1 en WPA2 zal altijd gevoelig zijn voor dictionary aanvallen. Aangezien de gedeelde sleutel (de pre-shared key) een gedeeld geheim is, kunnen andere gebruikers proberen dit te achterhalen. Het is dus belangrijk dat, indien je in personal modus WPA hanteert, je een sleutel kiest die voldoet aan de typische vereisten van een goed wachtwoord. 
+De personal mode van WPA1 en WPA2 zal altijd gevoelig zijn voor dictionary aanvallen. Aangezien de gedeelde sleutel (de pre-shared key) een gedeeld geheim is, kunnen andere gebruikers proberen dit te achterhalen. Het is dus belangrijk dat, indien je in personal modus WPA hanteert, je een sleutel kiest die voldoet aan de typische vereisten van een goed paswoord. 
 :::
 
 ##  WPA 3 ("Wifi 6")
@@ -603,7 +599,7 @@ De Wifi Alliance is in het leven geroepen als een organisatie die ervoor zorgde 
 Ook in WPA3 werden twee modes voorzien: een personal en een enterprise mode. Enkele van de interessantste verbeteren zijn:
 
 * *Simultaneous Authentication of Equals (SAE)*: een nieuw cryptografisch concept waarbij in de personal mode authenticatie veel veiliger kan plaatsvinden dan voorheen.
-* Resistent tegen offline dictionary attacks: iets waar zowel WPA1 en WPA2 last van hadden voor aanvallers met geduld.
+* Resistent tegen offline dictionary attacks.
 * *Forward secrecy*: zelfs als de aanvaller de wifi-sleutel van oude gecapteerde paketten vindt zal hij deze toch niet kunnen decrypteren. Het aloude "store now, decrypt later" is dus niet van toepassing op WPA3.
 * *Wifi easy connect*: een gebruiksvriendelijke manier om internet-of-things apparaten met het netwerk te verbinden.
 * *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de Starbucks zetten om zo privé-trafiek van omstaanders te sniffen.

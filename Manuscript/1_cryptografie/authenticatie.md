@@ -5,14 +5,14 @@ Bewijzen wie je bent om toegang te krijgen tot een website of applicatie heet **
 We weten al dat je geheime sleutel een belangrijk onderdeel is in heel veel aspecten van cybersecurity. Het **weten van de geheime sleutel** is een eerste vorm van authenticatie (maar uiteraard niet de beste). Je logingegevens die je gebruikt om toegang te krijgen tot een website bestaan in primaire vorm meestal uit een combinatie van gebruikersnaam en paswoord. Het paswoord in dit verhaal is kortom gewoon een ander woord voor je geheime sleutel. Als beheerder is het dan ook essentieel dat we uitermate veilig omgaan met de paswoorden van gebruiker. We zouden niet willen dat alle login gegevens van onze gebruikers in verkeerde handen vallen.
 
 ## Veilige paswoorden
-Ongeacht de veiligheden die we inbouwen als cyberboswachter, veel blijft afhangen van de manier waarop eindgebruikers omgaan met hun paswoorden. Volgende regels worden continue niét gehanteerd, met alle gevolgen van dien:
+Ongeacht de veiligheden die we inbouwen als cyberboswachter, veel blijft afhangen van de manier waarop eindgebruikers omgaan met hun paswoorden. Volgende regels worden continu niét gehanteerd, met alle gevolgen van dien:
 
-* Hergebruik nooit een wachtwoord. In principe heb je één wachtwoord pér service (applicatie, website, etc.).
-* Gebruik geen wachtwoorden die in *dictionaries* staan. Maar overweeg volledig random gegenereerde wachtwoorden.
-* Zorg ervoor dat je wachtwoorden lang genoeg zijn (minimum 16 tekens).
-* Zorg ervoor dat je wachtwoorden steeds een combinatie van cijfers, letters (grote én kleine) en leestekens zijn.
+* Hergebruik nooit een paswoord. In principe heb je één paswoord pér service (applicatie, website, etc.).
+* Gebruik geen paswoorden die in *dictionaries* staan. Maar overweeg volledig random gegenereerde paswoorden.
+* Zorg ervoor dat je paswoorden lang genoeg zijn (minimum 16 tekens).
+* Zorg ervoor dat je paswoorden steeds een combinatie van cijfers, letters (grote én kleine) en leestekens zijn.
 
-Trouwens, herinner je de McCumber kubus waarin we benadrukten dat technologie maar één aspect is om C.I.A. toe te passen op je data in z'n drie primaire vormen? Het zal je niet verbazen dat cybercriminelen niet altijd gaan proberen databanken aan te vallen om paswoorden van gebruikers te pakken te krijgen. Als zij een specifiek doelwit hebben dan gaan ze vaak op andere manieren te werk:
+Trouwens, herinner je de McCumber kubus waarin we benadrukten dat technologie maar één aspect is om CIA toe te passen op je data in z'n drie primaire vormen? Het zal je niet verbazen dat cybercriminelen niet altijd gaan proberen databanken aan te vallen om paswoorden van gebruikers te pakken te krijgen. Als zij een specifiek doelwit hebben dan gaan ze vaak op andere manieren te werk:
 
 * **Password spraying**: hierbij gaat de hacker een (beperkte) lijst van veelgebruikte paswoorden testen op een grote groep *useraccounts* van een bepaalde website, in de hoop een *hit* te hebben (*"spray and pray"*).
 * **(Spear) phishing**: bij phishing hanteert de aanvaller de goedgelovigheid of onoplettendheid van de gebruiker om een ogenschijnlijk betrouwbare mail of bericht te sturen met daarin een link naar een pagina die malware installeert of een fake login scherm toont. Bij spear phishing gebruikt de aanvaller geen massmail, maar gaat hij juist gericht één specifiek doelwit een op maat gemaakte mail of bericht sturen. Spear phishing is heden ten dage één van dé **social engineering** aanvallen bij uitstek.
@@ -33,7 +33,7 @@ De paswoorden in kolom 2 stonden er zoals ze waren. Als een gebruiker wilde inlo
 
 **Paswoorden mogen nooit in onbeveiligde, leesbare vorm in een databank staan!** Wanneer dit wel zo is dan kan je beter ogenblikkelijk je account bij die service deleten. Want alhoewel deze aanpak al lang bestaat en al bijna even lang van geweten is dat deze erg onveilig is, toch zijn er nog steeds ontelbare websites en applicaties die hieraan zondigen. Als ze dus jouw paswoord zo behandelen, dan is de kans reëel dat ook hun andere veiligheidsdiensten niet om over naar huis te schrijven zijn. 
 
-Een goede manier om te weten of een service op deze manier werkt is gebruik maken van de *"Ik ben m'n wachtwoord vergeten"*-knop. Als je deze knop gebruikt en je krijgt een email met daarin jouw originele paswoord, dan kan je er zeker van zijn dat de service jouw paswoord op deze manier bewaard. In principe zou een service NOOIT jouw wachtwoord moeten kunnen zien. We gaan zelfs zien dat **jouw wachtwoord nooit je computer mag verlaten**, laat staan dat deze beschikbaar is als plaintext in een database.
+Een goede manier om te weten of een service op deze manier werkt is gebruik maken van de *"Ik ben m'n paswoord vergeten"*-knop. Als je deze knop gebruikt en je krijgt een e-mail met daarin jouw originele paswoord, dan kan je er zeker van zijn dat de service jouw paswoord op deze manier bewaart. In principe zou een service NOOIT jouw paswoord moeten kunnen zien. We gaan zelfs zien dat **jouw paswoord nooit je computer mag verlaten**, laat staan dat deze beschikbaar is als plaintext in een database.
 
 ### Paswoord hashing
 
@@ -42,7 +42,7 @@ Door een paswoord te hashen kunnen we de paswoorden al iets veiliger bewaren. Ee
 We versturen dus niet meer het paswoord over het netwerk, maar we zijn nu wel vatbaar voor een **pass-the-hash** aanval. Het volstaat om een geldige combinatie van gebruikersnaam en hash te capteren en deze vervolgens te gebruiken om ergens in te loggen. De aanvaller heeft hierbij geen kennis nodig van het originele paswoord.
 
 ::: tip
-Door een secure hash van een paswoord te genereren creëren we een stuk tekst die niet terug naar het originele paswoord kan omgezet worden. In praktijk zal ieder paswoord een andere hash creëren uiteraard kunnen er toch twee zaken zich voordoen:
+Door een secure hash van een paswoord te genereren creëren we een stuk tekst die niet terug naar het originele paswoord kan omgezet worden. In praktijk zal ieder paswoord een andere hash creëren. Uiteraard kunnen er toch twee zaken zich voordoen:
 
 1. Twee totaal verschillende paswoorden genereren dezelfde hash, een zogenaamde *collision*.
 2. Twee mensen kiezen hetzelfde paswoord en zullen dus ook dezelfde hash genereren.
@@ -71,10 +71,10 @@ Een rainbow table stel je als volgt op:
 * Je past nu op deze hash een *reduction* functie toe. Dit is een zelfgekozen mapping van de verkregen hash terug naar een paswoord uit de set van mogelijk paswoorden. 
 
 :::tip
-Als reductiefunctie zou je bijvoorbeeld kunnen beslissen om de hash om te zetten naar een getal (bv. door de som van de ASCII-waarden van de letters van de hash te nemen) en dit getal dan te gebruiken als index die bepaalt welke paswoord je uit de paswoordenset gaat kiezen).
+Als reductiefunctie zou je bijvoorbeeld kunnen beslissen om de hash om te zetten naar een getal (bv. door de som van de ASCII-waarden van de letters van de hash te nemen) en dit getal dan te gebruiken als index die bepaalt welk paswoord je uit de paswoordenset gaat kiezen).
 :::
 
-![Van de hash via de reductie functie terug naar een ander paswoord.](auth/rainbow1.png){ width=70% }
+![Van de hash via de reductiefunctie terug naar een ander paswoord.](auth/rainbow1.png){ width=70% }
 
 * Van dit nieuwe paswoord genereert je weer en hash en pas je weer de reduction functie toe.
 * Die combinatie hash+reductie blijf je X aantal keer herhalen tot je een lange lijst hebt (een zogenaamde *chain* van bijvoorbeeld 10000 elementen).
@@ -94,9 +94,9 @@ Wanneer de aanvaller nu van een gestolen hash terug het paswoord te pakken wil k
 
 ### Salting
 
-Om bestand te zijn tegen de rainbow attack dienen we de set van mogelijke paswoorden gevoelig te vergroten waardoor het niet meer realistisch is om voor die set rainbow tables te genereren. We kunnen helaas niet verwachten van de eindgebruiker dat zij met véél langere, meer willekeurige, paswoorden op de proppen komen en zullen dus een 'oude' truc moeten gebruiken die we ook al bij Wifi hebben gezien. Bij wifi hanteerden we een initialisatie vector (IV) om de WEP-sleutel met 24 bits te verlengen zodat zelfs bij dezelfde sleutel, iedere IV eigenlijk zorgt voor een unieke seed.
+Om bestand te zijn tegen de rainbow attack dienen we de set van mogelijke paswoorden gevoelig te vergroten waardoor het niet meer realistisch is om voor die set rainbow tables te genereren. We kunnen helaas niet verwachten van de eindgebruiker dat zij met véél langere, meer willekeurige, paswoorden op de proppen komen en zullen dus een 'oude' truc moeten gebruiken die we ook al bij wifi hebben gezien. Bij wifi hanteerden we een initialisatie vector (IV) om de WEP-sleutel met 24 bits te verlengen zodat zelfs bij dezelfde sleutel, iedere IV eigenlijk zorgt voor een unieke seed.
 
-Wel nu, dit concept kan je ook toepassen bij wachtwoorden en heet **salting**. Een salt is een extra stuk dat je toevoegt aan het paswoord **voor je de hash** berekent. Dit extra stukje is een willekeurig getal dat je uiteraard mee zal moeten opslaan in de database. Wanneer twee gebruikers hetzelfde paswoorden zouden hebben, dan zouden ze (dankzij hun unieke salt) toch beide totaal verschillende hashes genereren. Niet alleen dat, maar de salt zorgt er dus ook voor dat de set van mogelijk paswoorden véél groter wordt. 
+Wel nu, dit concept kan je ook toepassen bij paswoorden en heet **salting**. Een salt is een extra stuk dat je toevoegt aan het paswoord **voor je de hash** berekent. Dit extra stukje is een willekeurig getal dat je uiteraard mee zal moeten opslaan in de database. Wanneer twee gebruikers hetzelfde paswoorden zouden hebben, dan zouden ze (dankzij hun unieke salt) toch beide totaal verschillende hashes genereren. Niet alleen dat, maar de salt zorgt er dus ook voor dat de set van mogelijk paswoorden véél groter wordt. 
 
 ![Het salting proces.](auth/salting.png){ width=90% }
 
@@ -117,7 +117,7 @@ Mimikatz werd origineel ontwikkeld als demo om aan te tonen dat de authenticatie
 * Pass-the-hash: vroeger werden Windows paswoorden als hash (NTML) bewaard op het systeem waardoor deze techniek erg eenvoudig was.
 * Pass-the-ticket: zoals zonet beschreven, maar dan met het Kerberos ticket (zie ook hierna)
 * Kerberos Golden Ticket: **Kerberos** is een van de meest gebruikte authenticatieprotocols. Veel systemen die Kerberos gebruiken hebben echter een verborgen account (*KRBTGT* genaamd) wiens ticket domain admin rechten geeft én dat niet vervalt. Kortom, een gouden ticket!
-* Pass-the-Cashe: identiek aan pass-the-ticket maar deze aanval werkt ook met login data die zowel op Mac, Unix én Linux kan worden gevonden. Kortom, dit is natuurlijk de *motherload*, daar deze niet meer afhankelijk is van enkel Microsoft Windows besturingssystemen.
+* Pass-the-cash: identiek aan pass-the-ticket maar deze aanval werkt ook met login data die zowel op Mac, Unix én Linux kan worden gevonden. Kortom, dit is natuurlijk de *motherload*, daar deze niet meer afhankelijk is van enkel Microsoft Windows besturingssystemen.
 
 Het nadeel van Mimikatz, voor ons als boswachters, is dat de tool erg goed werkt én kan geautomatiseerd worden. In 2017 onderging Oekraïne een stevige ransomware aanval van (zo goed als zeker) Russische makkelijke, genaamd **NotPetya** (een variant op de WannaCry ransomware). NotPetya gebruikte een aangepaste versie van Mimikatz zodat de ransomware zichzelf kon verspreiden over het netwerk en op andere systemen in het domein kon inloggen met hashes en tickets dat de Mimikatz variant aantrof.
 
@@ -127,11 +127,11 @@ De oorsprong van Petya en NotPetya werd getraceerd en is vermoedelijk het result
 
 ## CRAM en SCRAM
 
-Om iemand te authenticeren spraken we tot nog toe enkel over een username/paswoord systeem. Echter, er zijn vele andere manieren om iemand te authenticeren. We spreken over "**challenge-response authentication (CRAM)** wanneer de gebruiker een vraag gesteld krijgt (de *challenge*) en hij hierop een geldig antwoord (de *response*) moet geven voor hij wordt toegelaten. Authenticeren met een paswoord is dus een vorm van CRAM. Er zijn er echter nog vele andere, denk maar aan de gehekelde CAPTCHAs -de ambetante vraag om te bewijzen dat je geen robot bent door alle boten in een afbeeldingen aan te duiden- of inloggen met behulp van je iris-scan.
+Om iemand te authenticeren spraken we tot nog toe enkel over een username/paswoord systeem. Echter, er zijn vele andere manieren om iemand te authenticeren. We spreken over "**Challenge-Response Authentication Mechanism (CRAM)** wanneer de gebruiker een vraag gesteld krijgt (de *challenge*) en hij hierop een geldig antwoord (de *response*) moet geven voor hij wordt toegelaten. Authenticeren met een paswoord is dus een vorm van CRAM. Er zijn er echter nog vele andere, denk maar aan de gehekelde CAPTCHA's - de ambetante vraag om te bewijzen dat je geen robot bent door alle boten in een afbeeldingen aan te duiden - of inloggen met behulp van je iris-scan.
 
 ![CRAM.](auth/cram.png){}
 
-Om het probleem van *pass-the-hash* op te lossen kan je gebruiken maken van een **SCRAM**, een *salted challenge response authentication mechanism*. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted paswoord login van daarnet. Met dit systeem zorgen we ervoor dat :
+Om het probleem van *pass-the-hash* op te lossen kan je gebruiken maken van een **SCRAM**, een **Salted Challenge Response Authentication Mechanism**. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted paswoord login van daarnet. Met dit systeem zorgen we ervoor dat :
 
 1. De salted hash van de gebruiker NOOIT moet verzonden worden.
 2. Geen replay aanval m.b.v. pass-the-hash mogelijk is.
@@ -190,13 +190,12 @@ Maar ook andere metrieken kunnen erg interessant zijn zoals de manier waarop je 
 ::: warning
 Paswoorden van miljoenen mensen opslaan is één ding. De biometrische gegevens is een heel ander verhaal waarbij ook **privacy** plots een erg heikel punt wordt (beeld je even in dat Hitler en zijn trawanten 80 jaar geleden toegang hadden tot biometrische data waarmee met een bepaalde zekerheid kon vastgesteld worden of iemand van Joodse origine was of niet.)
 
-In India is de Aadhaar (Indiaas voor "basis"), hun rijksregisternummer zeg maar, een unieke code die gebaseerd is op *onder andere de iris-scan en vingerafdrukken* (alle 10!) van de burger. Deze gigantische database werd in 2018 nog gehacked waardoor mogelijk de informatie van 1.1 miljard geregistreerde burgers werd gestolen. [Meer informatie kan je hier terug vinden.](https://www.moneylife.in/article/aadhaar-data-breach-largest-in-the-world-says-wefs-global-risk-report-and-avast/56384.html)
-
+In India is de Aadhaar (Indiaas voor "basis"), hun rijksregisternummer zeg maar, een unieke code die gebaseerd is op *onder andere de iris-scan en vingerafdrukken* (alle 10!) van de burger. Deze gigantische database werd in 2018 nog gehackt waardoor mogelijk de informatie van 1.1 miljard geregistreerde burgers werd gestolen. 
 :::
 
 Om een biometriek in de paswoord database te bewaren hebben we een manier nodig om deze te digitaliseren op een zodanige manier dat de unieke aspecten ervan bewaard worden. Voorts moet er rekening mee gehouden worden dat het "registreren" van een biometrische eigenschap nooit 100% accuraat kan. Denk maar aan een tijdelijk krasje op je vinger, je baard die anders geschoren is, etc. 
 
-De zogenaamde *feature points* van een biometrische eigenschap worden in de database bewaard: dit zijn de unieke waarden waarvan geweten is dat deze per persoon anders zijn. We gaan deze niet per biometrische eigenschap bespreken, het volstaat te begrijpen dat in de gebruikersdatabase meestal een korte sequentie van getallen (of letters, denk maar aan een DNA-sample)  wordt bewaard die als het ware jouw unieke paswoord voorstel voor die specifieke biometrische eigenschap van je. Enkel wanneer je bij het opnieuw inloggen (quasi) dezelfde feature points genereert bij de registratie zal deze factor aanvaardt worden als correct.
+De zogenaamde *feature points* van een biometrische eigenschap worden in de database bewaard: dit zijn de unieke waarden waarvan geweten is dat deze per persoon anders zijn. We gaan deze niet per biometrische eigenschap bespreken, het volstaat te begrijpen dat in de gebruikersdatabase meestal een korte sequentie van getallen (of letters, denk maar aan een DNA-sample)  wordt bewaard die als het ware jouw unieke paswoord voorstel voor die specifieke biometrische eigenschap van je. Enkel wanneer je bij het opnieuw inloggen (quasi) dezelfde feature points genereert bij de registratie zal deze factor aanvaard worden als correct.
 
 ::: tip
 Biometrische eigenschappen kunnen niet alleen dienst doen als een extra factor bij het authenticeren, ze zijn uiteraard ook erg handig voor identificatie. In principe kan iemand nog steeds de gebruikersnaam van een ander persoon gebruiken. Als de biometrische eigenschappen als identificatie dienen kunnen aanvallers dat niet meer doen: ze kunnen onmogelijk aan het systeem zeggen *"ik ben persoon x"* terwijl de vingerafdrukscanner duidelijk een vingerafdruk registreert van *persoon y*.
@@ -209,20 +208,20 @@ Een fysiek object, zeker als het complex is, kan moeilijk nagemaakt worden en is
 Er zijn twee grote families van hardware-gebaseerde authenticatie-vormen:
 
 * Een smartphone, met daarop een *authenticator* app.
-* Een USB sleutel
+* Een USB sleutel.
 
 Een nadeel van deze groep is dat het om een fysiek object gaat dat je kan verliezen of dat stuk kan gaan.
 
-## Federation en single sign-on (SSO)
+## Federation en Single Sign-On (SSO)
 
 Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef* een eigen crypto-algoritme te ontwikkelen. De kans dat je fouten met verstrekkende gevolgen maakt is te groot. Ook bij het omgaan van logindata van gebruikers en hoe je ze authenticeert is het aangeraden om even te bezinnen voor je er zelf aan begint. 
 
-Dankzij het concept **federation** hoef je niet wakker te liggen hoe je je gebruikerspaswoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app),de *service provider*, kunnen inloggen waarbij een *thirdparty* -die jij en je gebruiker vertrouwt- voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single sign-on* (**sso**) authenticatie.
+Dankzij het concept **federation** hoef je niet wakker te liggen van hoe je je gebruikerspaswoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app),de *service provider*, kunnen inloggen waarbij een *thirdparty* - die jij en je gebruiker vertrouwen - voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single sign-on* (**sso**) authenticatie.
 
-![Een vereenvoudig single sign-on proces.](auth/sso.png){}
+![Een vereenvoudigd single sign-on proces.](auth/sso.png){}
 
 
-Federation via sso is een onderdeel van *federated identity management*, een groep technologieën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt. Je zal de termen **delegation** en **federation** soms door elkaar zien tegenkomen wanneer je meer informatie over SSO opzoekt.
+Federation via SSO is een onderdeel van *federated identity management*, een groep technologieën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt. Je zal de termen **delegation** en **federation** soms door elkaar zien tegenkomen wanneer je meer informatie over SSO opzoekt.
 
 Samengevat gaan we bij *delegation* een gebruiker verplichten in te loggen met een bepaalde third-party die dit ondersteunt (bv inloggen met je Facebook account). Bij *federation* gaat het breder: je website zal éénder welke third-party account aanvaarden, zolang deze maar compatibel is met het authenticatie systeem van je website (een voorbeeld hiervan is OpenID).
 

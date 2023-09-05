@@ -1,7 +1,9 @@
 
 ## Changelog
 
-**Dit is versie 0.6.1** (29/03/23)
+**Dit is versie 0.6.2** (29/03/23)
+* 0.6.2
+  * Opmerkingen Koen Van Eyken verwerkt.
 * 0.6.1
   * Hoop typos weggehaald. 
   * Geprepped voor printversie 2.
@@ -50,7 +52,7 @@
   * Eerste deel sectie "cryptanalyse" geschreven.
   * Sectie HTTPS/TLS beschreven in hoofdstuk public crypto.
 * 0.0.9
-  * Hoofdstuk Wifi volledig vertaald
+  * Hoofdstuk wifi volledig vertaald
   * Eerste helft van hoofdstuk "Authenticatie" beschreven
 * 0.0.8
   * Uitleg en tekeningen certificaten toegevoegd. Hiermee kan hoofdstuk crypto (voorlopig) als afgerond beschouwd worden.

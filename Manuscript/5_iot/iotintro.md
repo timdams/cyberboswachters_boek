@@ -8,19 +8,18 @@ Het is niet toevallig dat we dit boek afsluiten met het hoofdstuk omtrent IoT Se
 
 * Van nature werken IoT-apparaten op **low-power**, daar ze vele dagen of weken moeten voortkunnen zonder te veel verbruik. Ingebouwde security protocols mogen dus geen grote percentages van het vermogen opsouperen, zeker niet als dat ten koste is van de hoofdbestaansreden van het apparaat.
 * Meestal, ook weer om een laag energieverbruik te behouden, hebben ze ook een **beperkte bandbreedte** ter beschikking (daarbij: beeld je de miserie op een wifi-netwerk in wanneer honderden kleine sensoren aan hoge bandbreedtes het netwek mee gebruiken).
-* Zowel de fysieke dimensies, en bovenstaande twee eigenschappen, zorgen er ook voor dat IoT-apparaten meestal maar een **beperkt aantal zaken kunnen**. Het heeft niet altijd de netwerkverbindingsmogelijkheden die je nodig hebt (meestal heeft een apparaat een draadloze -Wifi, Zigbee,LoRaWAN,etc.- of bedrade aansluiting, maar zelden beide) en ook qua opslag en processormogelijkheden zijn de apparaten uiteraard vaak veel beperkter dan de kracht van computers en mobiele telefoons. Het grootste probleem echter hiervan is dat IoT-apparaten *by nature* vaak **niet evident zijn om te updaten**. Sommige apparaten kunnen bijvoorbeeld enkel geüpdatet worden door fysiek met het apparaat te zijn verbonden (en dan door de firmware te flashen bijvoorbeeld). Vanuit een fysieke beveiligingsconcept is dat goed, maar niet als je honderden apparaten een kritieke beveiligingslek hebben die dringend gepatcht moet worden.
+* Zowel de fysieke dimensies, en bovenstaande twee eigenschappen, zorgen er ook voor dat IoT-apparaten meestal maar een **beperkt aantal zaken kunnen**. Het heeft niet altijd de netwerkverbindingsmogelijkheden die je nodig hebt (meestal heeft een apparaat een draadloze - wifi, Zigbee,LoRaWAN,etc. - of bedrade aansluiting, maar zelden beide) en ook qua opslag en processormogelijkheden zijn de apparaten uiteraard vaak veel beperkter dan de kracht van computers en mobiele telefoons. Het grootste probleem echter hiervan is dat IoT-apparaten *by nature* vaak **niet evident zijn om te updaten**. Sommige apparaten kunnen bijvoorbeeld enkel geüpdatet worden door fysiek met het apparaat te zijn verbonden (en dan door de firmware te flashen bijvoorbeeld). Vanuit een fysieke beveiligingsconcept is dat goed, maar niet als je honderden apparaten een kritieke beveiligingslek hebben die dringend gepatcht moet worden.
 * Vaak bevinden IoT-apparaten zich op de koop toe op **onbeschermde locaties** die maar moeilijk fysiek te beveiligen zijn. Hierdoor kunnen digitale stropers, zonder schrik om betrapt te worden, ongezien aan de apparaten knoeien (*tamperen*).
 
 ::: note
-We gaan nogal vrij om met de term IoT-apparaat, waarbij we ook negeren dat er grote verschillen zijn tussen "Enterprise IoT" en "huis-tuin-en-keuken IoT". Die eerste heeft meestal bijvoorbeeld wel zeer doordachte updatestrategieën en dergelijke, terwijl de slimme koelkast in je huis dat vermoedelijk niet zal hebben
+We gaan nogal vrij om met de term IoT-apparaat, waarbij we ook negeren dat er grote verschillen zijn tussen "Enterprise IoT" en "huis-tuin-en-keuken IoT". Die eerste heeft meestal bijvoorbeeld wel zeer doordachte updatestrategieën en dergelijke, terwijl de slimme koelkast in je huis dat vermoedelijk niet zal hebben.
 :::
 
 ## OWASP IoT Top 10
 
-Het Open Web Application Security Project (**OWASP**) is een open source-project rond computerbeveiliging. Individuen, scholen en bedrijven delen via dit platform informatie en technieken. Ook de Belgische tak van OWASP is erg actief en een interessante organisatie indien je van plan bent om een carrière binnen de cybersecurity wereld op te bouwen. Ze organiseren geregeld (meestal gratis) workshops en evenementen.
+Het Open Web Application Security Project (**OWASP**) is een open-source-project rond computerbeveiliging. Individuen, scholen en bedrijven delen via dit platform informatie en technieken. Ook de Belgische tak van OWASP is erg actief en een interessante organisatie indien je van plan bent om een carrière binnen de cybersecurity wereld op te bouwen. Ze organiseren geregeld (meestal gratis) workshops en evenementen.
 
-Het OWASP heeft tal van erg interessante "Top 10" overzichten zoals de meest voorkomende webapp zwakheden, etc. Deze projecten bestaan meestal uit een reeks tools, *best practices* en gidsen en zijn dus de ideale manier om je te verdiepen binnen een specifiek cybersecurity domein. Eén van de actieve projecten is het "OWASP Internet of Things
-" project (beschikbaar via [owasp.org/www-project-internet-of-things/](https://owasp.org/www-project-internet-of-things/)) waarvan we de Top 10 hier zullen bespreken, gerangschikt van meest voorkomend (en dus belangrijkste om aan te pakken) naar minder.
+Het OWASP heeft tal van erg interessante "Top 10" overzichten zoals de meest voorkomende webapp zwakheden, etc. Deze projecten bestaan meestal uit een reeks tools, *best practices* en gidsen en zijn dus de ideale manier om je te verdiepen binnen een specifiek cybersecurity domein. Eén van de actieve projecten is het "OWASP Internet of Things" project (beschikbaar via [owasp.org/www-project-internet-of-things/](https://owasp.org/www-project-internet-of-things/)) waarvan we de Top 10 hier zullen bespreken, gerangschikt van meest voorkomend (en dus belangrijkste om aan te pakken) naar minder.
 
 ::: tip
 Bekijk zeker ook eens het IoT Goat project via [github.com/OWASP/IoTGoat/](https://github.com/OWASP/IoTGoat/) dat is een *"insecure firmware based on OpenWrt and maintained by OWASP as a platform to educate software developers and security professionals with testing commonly found vulnerabilities in IoT devices. The vulnerability challenges are based on the OWASP IoT Top 10, as well as 'easter eggs' from project contributors."*
@@ -34,7 +33,7 @@ Om de wel erg algemene term "IoT" wat duidelijker te maken, zullen er hier en da
 
 ### Paswoorden
 
-Ook bij IoT begint veiligheid  bij het hebben van goede, complexe, moeilijk te raden wachtwoorden. Bij IoT-apparaten komt echter een stevige drempel, zeker voor huis-tuin-en-keuken gebruikers: het aanpassen van sommige IoT-apparaten is soms erg omslachtig. Niet alle apparaten hebben een webpagina waarlangs de gebruiker paswoorden kan aanpassen en moet dit via ofwel omslachtige, vreemde tools, oftewel (gruwel) door fysiek het apparaat te bedienen. Deze apparaten zijn natuurlijk niet gemaakt om complexe paswoorden eenvoudig in te voeren. Denk maar aan een digitale weegschaal: die heeft vaak een eenvoudig LED-scherm waarop je gewicht wordt getoond. Sommige weegschalen kan je vervolgens "bedienen" door links of rechts op de schaal te klikken, afhankelijk van wat je wilt doen. De auteur kan je garanderen: je paswoord zal niet lang zijn, als je een goed paswoord wilt invoeren zal je na enkele minuten in het zweet staan van de tapdans die je moet uitvoeren op je weegschaal. 
+Ook bij IoT begint veiligheid  bij het hebben van goede, complexe, moeilijk te raden paswoorden. Bij IoT-apparaten komt echter een stevige drempel, zeker voor huis-tuin-en-keuken gebruikers: het aanpassen van sommige IoT-apparaten is soms erg omslachtig. Niet alle apparaten hebben een webpagina waarlangs de gebruiker paswoorden kan aanpassen en moet dit via ofwel omslachtige, vreemde tools, oftewel (gruwel) door fysiek het apparaat te bedienen. Deze apparaten zijn natuurlijk niet gemaakt om complexe paswoorden eenvoudig in te voeren. Denk maar aan een digitale weegschaal: die heeft vaak een eenvoudig LED-scherm waarop je gewicht wordt getoond. Sommige weegschalen kan je vervolgens "bedienen" door links of rechts op de schaal te klikken, afhankelijk van wat je wilt doen. De auteur kan je garanderen: je paswoord zal niet lang zijn, als je een goed paswoord wilt invoeren zal je na enkele minuten in het zweet staan van de tapdans die je moet uitvoeren op je weegschaal. 
 
 Omdat het aanpassen van die paswoorden vaak omslachtig is, zullen gebruikers meestal opteren om het *default paswoord* te gebruiken. Ze redeneren dat **toch niemand dit simpele IoT-apparaat zal willen hacken**. "Wat kan een hacker nu doen met toegang tot mijn digitale thermometer." Wat echter vergeten wordt is dat cyberstropers altijd op zoek gaan naar de *weakest link*, om die vervolgens te misbruiken om tot het eigenlijk doel te geraken. Kortom, ieder IoT-apparaat in je omgeving is een potentiële toegangspoort tot de rest van je netwerk!
 
@@ -60,7 +59,7 @@ In 2017 was er een grayhat hacker die vermoedelijk 150.000 printers vanop afstan
 
 Een IoT-apparaat bestaat niet alleen: meestal maakt het deel uit van een verzameling apparaten en diensten die de gebruiker via online dashboards en apps kan bedienen. Denk maar aan de verschillende Google Nest producten (thermostaat, deurbel, maar ook de Hub, etc.) of lichten van Philips (*Hue*) die ook met behulp van andere toestellen kunnen bediend worden (bijvoorbeeld drukknoppen van Niko of Ikea). Kortom, IoT-apparaten maken meestal deel uit van een heus ecosysteem en dus de mate van veiligheid van die externe zaken bepaald ook die van het IoT-apparaat. Als bijvoorbeeld de dashboards van fitbit.com zouden gecompromitteerd worden bestaat de kans dat de digitale stropers ook toegang tot je gegevens of apparaten krijgen die gebruik maken van het fitbit-portaal.
 
-Gebruikers vergeten ook met welke externe diensten ze hun apparaten hebben gekoppeld. Het gebeurt vaak dat een gebruiker "even iets wil testen" (denk maar de nuttige website ["If this then that" (ifttt.com)](https://ifttt.com/) dat toelaat om services en apparaten te koppelen die iets moeten doen gegeven zelfgekozen triggers en regels) maar nadien wel vergeet deze koppeling uit te zetten. Dit geldt ook voor de vele third-party websites en services die toegang tot uw google of facebook-accounts wensen. Gebruikers kijken dit zelden na en hebben mogelijk tien jaar geleden al toegang gegeven aan een service die ondertussen al door digitale stropers is gecompromitteerd. 
+Gebruikers vergeten ook met welke externe diensten ze hun apparaten hebben gekoppeld. Het gebeurt vaak dat een gebruiker "even iets wil testen" (denk maar de nuttige website ["If this then that" (ifttt.com)](https://ifttt.com/) dat toelaat om services en apparaten te koppelen die iets moeten doen gegeven zelfgekozen triggers en regels) maar nadien wel vergeet deze koppeling uit te zetten. Dit geldt ook voor de vele third-party websites en services die toegang tot uw Google of Facebook/Meta-accounts wensen. Gebruikers kijken dit zelden na en hebben mogelijk tien jaar geleden al toegang gegeven aan een service die ondertussen al door digitale stropers is gecompromitteerd. 
 
 ### Geen of onveilig updatemechanisme
 
@@ -78,7 +77,7 @@ Of wat te denken als er een kritieke bug wordt gevonden in een chip die ontelbar
 
 ::: tip
 
-In september 2021 verscheen een nieuwe Bluetooth kwetsbaarheid, getiteld **BrakTooth** die mogelijk op miljoenen IoT-apparaten kan misbruikt worden. De bug zelf bevindt zich in de Bluetooth-chip van de apparaten. Aardig wat fabrikanten van dergelijke chips hebben al beloofd een patch uit te brengen, maar er zijn er ook die simpelweg zeggen "we zullen enkel patchen als er genoeg vraag naar is", nochtans kan de kwetsbaarheid eg veel schade aanbrengen (DoS-aanvallen en *arbitrary code execution (ACE)*)
+In september 2021 verscheen een nieuwe Bluetooth kwetsbaarheid, getiteld **BrakTooth** die mogelijk op miljoenen IoT-apparaten kan misbruikt worden. De bug zelf bevindt zich in de Bluetooth-chip van de apparaten. Aardig wat fabrikanten van dergelijke chips hebben al beloofd een patch uit te brengen, maar er zijn er ook die simpelweg zeggen "we zullen enkel patchen als er genoeg vraag naar is", nochtans kan de kwetsbaarheid erg veel schade aanbrengen (DoS-aanvallen en *arbitrary code execution (ACE)*)
 
 ![BrakTooth: de zoveelste Bluetooth kwetsbaarheid.](iot/brak.jpg){ width=30% }
 :::
@@ -106,11 +105,11 @@ Ook IoT-fabrikanten moeten natuurlijk op een veilige, GDPR-compliant, manier omg
 
 Herinner je de McCumber kubus aan de start van dit handboek? Er werd toen benadrukt dat C.I.A. toepassen op je data geen nut heeft als je geen rekening houdt met alle vormen waarin de data zal voorkomen. Als je enkel encryptie gebruikt tijdens het versturen van data, maar niet tijdens het verwerken en bewaren ervan, dan kan je even goed ook de transmissie beter ongeëncrypteerd doen (zodat we geen *false sense of security* aan de gebruiker geven).
 
-We vallen in herhaling, maar dus zeker bij IoT-systemen die binnen een groot ecosysteem werken, met tal van *thirdparty* modules en bibliotheken, is het uitermate belangrijk dat ten allen tijde de IoT-data in al z'n vormen, op alle momenten, aan *confidentialiteit, integriteit en beschikbaarheid* doet.
+We vallen in herhaling, maar dus zeker bij IoT-systemen die binnen een groot ecosysteem werken, met tal van *third-party* modules en bibliotheken, is het uitermate belangrijk dat ten allen tijde de IoT-data in al z'n vormen, op alle momenten, aan *confidentialiteit, integriteit en beschikbaarheid* doet.
 
 ### Gebrek aan apparaat management
 
-Spreken over IoT in een enterprise of industriële omgeving is spreken over IoT netweken met honderden tot duizenden apparaten die bediend moeten worden (denk maar aan remote upgrades, instellingen wijzigen, etc.). Er zijn vele factoren waarom een robuust *IoT device management* systeem vereist is:
+Spreken over IoT in een enterprise of industriële omgeving is spreken over IoT netwerken met honderden tot duizenden apparaten die bediend moeten worden (denk maar aan remote upgrades, instellingen wijzigen, etc.). Er zijn vele factoren waarom een robuust *IoT device management* systeem vereist is:
 
 * De hoeveelheid apparaten: te veel om manueel te bedienen.
 * De locatie: mogelijk bevinden de apparaten zich op moeilijk te bereiken of gevaarlijke plekken.
@@ -122,13 +121,11 @@ Een deftig apparaat management systeem moet natuurlijk zelf ook veilig en robuus
 
 ### Onveilige standaard instellingen
 
-Dit item komt nog steeds voor in alle "10 veiligheidsproblemen die het meeste voorkomen"-lijstjes. Wanneer een apparaat *uit de doos* wordt gehaald is deze ingeladen met een hele hoop standaard instellingen. Instellingen die digitale stropers kunnen opzoeken en misbruiken. Niet alleen het wachtwoord moet ogenblikkelijk aangepast worden, vaak staan ook bepaalde services open zonder dat de gebruiker deze ooit zal gebruiken. Kortom, het is een gezonde gewoonte om, zowel als professional als huis-tuin-en-keuken IoT-gebruiker, steeds alle instellingen van je vers geïnstalleerde apparaat te controleren.
+Dit item komt nog steeds voor in alle "10 veiligheidsproblemen die het meeste voorkomen"-lijstjes. Wanneer een apparaat *uit de doos* wordt gehaald is deze ingeladen met een hele hoop standaard instellingen. Instellingen die digitale stropers kunnen opzoeken en misbruiken. Niet alleen het paswoord moet ogenblikkelijk aangepast worden, vaak staan ook bepaalde services open zonder dat de gebruiker deze ooit zal gebruiken. Kortom, het is een gezonde gewoonte om, zowel als professional als huis-tuin-en-keuken IoT-gebruiker, steeds alle instellingen van je vers geïnstalleerde apparaat te controleren.
 
 ::: note
 
-Er gaat een *urban legend* de ronde dat je nooit je computer aan het internet mocht hangen wanneer je Windows XP aan het installeren was. Deed je dat wel dan bestond er de kans dat je computer *gepwnd* werd nog voor je goed en wel de hele installatie had doorlopen.
-
-**Disclaimer:** dit is nooit bevestigd geweest. Lezers die een artikel vinden die deze legende kan staven mogen me altijd hierover contacteren.
+Er gaat een *urban legend* de ronde dat je nooit je computer aan het internet mocht hangen wanneer je Windows XP aan het installeren was. Deed je dat wel dan bestond er de kans dat je computer *gepwnd* werd nog voor je goed en wel de hele installatie had doorlopen. **Disclaimer:** dit is nooit bevestigd geweest. Lezers die een artikel vinden dat deze legende kan staven mogen me hierover altijd contacteren.
 :::
 
 ### Gebrek aan fysieke *hardening*
@@ -145,9 +142,9 @@ De Mccumber kubus in gedachte nemende spreekt het natuurlijk voor zich dat ook d
 
 # Besluit
 
-En zo hebben we het einde van het prille begin der cyberboswachters bereikt. Zoals je vermoedelijk ook zelf al aanvoelt, hebben we enkel maar het tipje van de ijsberg besproken. Als we er echter gezamenlijk in slagen om dit tipje alvast en zelf toe te passen én aan anderen aan te leren, dan maken we het de digitale stropers al een pak moeilijker. Beschouw dit een beetje als een toepassing van de wet van *diminishing returns.* De primaire, eenvoudige veiligheidstechnieken en gewoonten (goede paswoorden, geen default instellingen, kiss, etc.) gaan de grootste impact hebben op je algemene veiligheid. Alle daaropvolgende stappen, hoe belangrijk en nuttig ook, zullen steeds een kleiner stuk van de potentiële problemen voorkomen. 
+En zo hebben we het einde van het prille begin der cyberboswachters bereikt. Zoals je vermoedelijk ook zelf al aanvoelt, hebben we enkel maar het tipje van de ijsberg besproken. Als we er echter gezamenlijk in slagen om dit tipje alvast en zelf toe te passen én aan anderen aan te leren, dan maken we het de digitale stropers al een pak moeilijker. Beschouw dit een beetje als een toepassing van de wet van *diminishing returns.* De primaire, eenvoudige veiligheidstechnieken en gewoonten (goede paswoorden, geen default instellingen, KISS, etc.) gaan de grootste impact hebben op je algemene veiligheid. Alle daaropvolgende stappen, hoe belangrijk en nuttig ook, zullen steeds een kleiner stuk van de potentiële problemen voorkomen. 
 
-*Wees veiligheid en verspreid het woord! ;)*
+*Wees veilig en verspreid het woord! ;)*
 
 *Tim Dams*
 
