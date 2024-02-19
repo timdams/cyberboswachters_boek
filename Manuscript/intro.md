@@ -10,7 +10,7 @@ De subtitel,*"De beste digitale stropers zijn ook de beste cyberboswachters"*, v
 ## Dankwoord
 
 
-Dank aan Ernie de Magtige,  Dimitriy Vassilchenko & Jasper Van Meel om als externe spellingcheckers aardig wat (gênante) typos te ontdekken.
+Dank aan (soms al oud-)studenten Ernie de Magtige,  Dimitriy Vassilchenko, Jasper Van Meel en Erik Van Dyck om als externe spellingcheckers aardig wat (gênante) typos te ontdekken.
 
 Een oprechte dank aan Stefaan Somerling (RealDolmen) voor de feedback op het hoofdstuk omtrent GDPR. Geef gerust een sein als u, conform de GDPR wetgeving, liever uw naam niet in dit document ziet staan ;)
 
