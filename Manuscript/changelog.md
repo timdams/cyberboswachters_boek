@@ -1,8 +1,9 @@
 
 ## Changelog
 
-**Dit is versie 0.6.3** (19/02/24)
+**Dit is versie 0.6.3** (5/03/24)
 * 0.6.3
+  * Kort tekstje over Red/green/bluehat hackers toegevoegd.
   * Typos blijven komen. (bedankt Erik Van Dyck)
 * 0.6.2
   * Opmerkingen Koen Van Eyken verwerkt.
