@@ -5,6 +5,7 @@ REM 2.Then:  pip install pandoc-latex-environment
 REM 3.MikTex: https://miktex.org/download
 REM 4. Make sure to update all packages using "miktex console" once before running
 REM Eisvogel manual at https://repo.telematika.org/project/wandmalfarbe_pandoc-latex-template/
+REM Actual usefull (aka the script) stuff starts now:
 pandoc ^
  metadata.yaml^
  intro.md^

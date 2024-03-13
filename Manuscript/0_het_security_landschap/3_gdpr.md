@@ -16,7 +16,7 @@ We gaan in dit hoofdstuk enkel een high-level overzicht geven van GDPR opdat we 
 Google kreeg een tijd terug een zeer stevige boete omdat het niet inging op de vraag van een EU-burger om *vergeten te worden*.  Sindsdien zijn ze een pak behulpzamer in het naleven van de GDPR-wetgeving.
 :::
 
-Een ander belangrijk aspect van GDPR is het zogenaamde **recht op overdraagbaarheid van gegevens.** Voor GDPR bestond was het soms een helse opdracht om bijvoorbeeld van internetprovider te veranderen. Iedere provider werkte met eigen dataformaten waarin de klantengegevens werden bewaard. Bij een overdracht moest dit dan altijd omgezet worden naar het formaat van de nieuwe provider. GDPR verplicht dat dit soort data overdrachten van persoonsgegevens nu volgens een vast formaat moeten gebeuren. En belangrijker: deze overdracht moet zo transparant én zo geautomatiseerd mogelijk gebeuren. Hierdoor kan de data quasi ogenblikkelijk in de database van de ontvanger geïntegreerd worden en zal jij als klant dus veel sneller de overstap kunnen maken zonder alle bijhorende administratieve rompslomp en vertragingen.
+Een ander belangrijk aspect van GDPR is het zogenaamde **recht op overdraagbaarheid van gegevens.** Voor GDPR bestond was het soms een helse opdracht om bijvoorbeeld van Internetprovider te veranderen. Iedere provider werkte met eigen dataformaten waarin de klantengegevens werden bewaard. Bij een overdracht moest dit dan altijd omgezet worden naar het formaat van de nieuwe provider. GDPR verplicht dat dit soort data overdrachten van persoonsgegevens nu volgens een vast formaat moeten gebeuren. En belangrijker: deze overdracht moet zo transparant én zo geautomatiseerd mogelijk gebeuren. Hierdoor kan de data quasi ogenblikkelijk in de database van de ontvanger geïntegreerd worden en zal jij als klant dus veel sneller de overstap kunnen maken zonder alle bijhorende administratieve rompslomp en vertragingen.
 
 ::: note
 De voorganger van de GDPR was de DPD (Data Protection Directive). Dit was geen Europese wet (verordening) maar een aanbeveling en was een stap in de goede richting maar nog niet ver genoeg. GDPR heeft ervoor gezorgd dat individuele burgers geen speelbal meer zijn van de grote bedrijven die de data van burgers als het nieuwe goud verzamelen en ermee doen wat ze zelf willen. 
@@ -29,7 +29,7 @@ Als derde belangrijke aspect voorziet GDPR **de plicht om niet noodzakelijke geg
 De GDPR wet zorgt ervoor dat bedrijven veel bewuster met gebruikersdata omgaan. Ze kunnen namelijk verantwoordelijk gehouden worden indien gebruikersdata gestolen of gelekt wordt. De GDPR is een privacy-wetgeving in de eerste plaats: het wil de privacy van het individu beschermen. Volgende data valt dan ook onder de GDPR-wetgeving:
 
 * Persoonlijke identificeerbare informatie: namen, adressen, geboortedatums en rijksregisternummers.
-* Op internet gebaseerde gegevens: zoals gebruikerslocatie, IP-adres en cookies.
+* Op Internet gebaseerde gegevens: zoals gebruikerslocatie, IP-adres en cookies.
 * Gezondheids- en genetische gegevens.
 * Biometrische gegevens (denk maar aan je irisscan of vingerafdruk).
 * Raciale en/of etnische gegevens.

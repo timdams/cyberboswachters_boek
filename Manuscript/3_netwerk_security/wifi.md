@@ -12,7 +12,7 @@ Al gauw werd een nieuwe sport uitgevonden door hobbyist hackers en professionele
 
 ![Wargames: een cultklassieker uit 1983.](wifi/wargames.png){ width=30% }
 
-De term wardriving komt van de term *wardialing* die op zijn beurt gebaseerd is op de  klassieke cyber-cult film "Wargames" uit 1983. Voor de geschiedkundigen onder ons, wardialing was het opbellen van willekeurige telefoonnummers met je modem in de hoop een zogenaamd *bulletin board system* oftewel **BBS** (een pre-internet forum zeg maar) te vinden.
+De term wardriving komt van de term *wardialing* die op zijn beurt gebaseerd is op de  klassieke cyber-cult film "Wargames" uit 1983. Voor de geschiedkundigen onder ons, wardialing was het opbellen van willekeurige telefoonnummers met je modem in de hoop een zogenaamd *bulletin board system* oftewel **BBS** (een pre-Internet forum zeg maar) te vinden.
 :::
 
 Draadloze netwerken die gevonden worden hebben dan ook een schare aan problemen:
@@ -50,7 +50,7 @@ Dit resulteerde in onder andere volgende scenario's:
 
 ![Eve gebruikt spoofing om de wifi-sessie van Alice ongemerkt over te nemen.](wifi/spoofwifi.png){ width=80% }
 
-* En *last but not least* laten de onbeveiligde management frames toe dat we eenvoudig een access point kunnen nabootsen (**impersonation**). Vervolgens kunnen we een  **man-in-the-middle aanval** uitvoeren daar een hacker zich kan plaatsen tussen de gebruiker en het internet en zo informatie kan ontfutselen. 
+* En *last but not least* laten de onbeveiligde management frames toe dat we eenvoudig een access point kunnen nabootsen (**impersonation**). Vervolgens kunnen we een  **man-in-the-middle aanval** uitvoeren daar een hacker zich kan plaatsen tussen de gebruiker en het Internet en zo informatie kan ontfutselen. 
   
 
 ![Een fake access point opzetten met dank aan de onbeveiligde managementframes.](wifi/mitmwifi.png){ width=70% }
@@ -212,9 +212,9 @@ Hierdoor heeft de aanvaller dus vrij spel en kan hij een draadloos netwerk als e
 
 ### Probleem 1: RC4
 
-De meeste problemen met WEP komen van een verkeerd gebruik van het RC4 algoritme. RC4 wordt in veel moderne beveiligingsapparaten toegepast omdat het een sterk én efficiënt algoritme is (het verbruikt weinig energie omdat er geen dure vermenigvuldiginsoperaties in voorkomen). Echter, stream ciphers in het algemeen, RC4 specifiek, zijn eigenlijk geen goede keuze voor datagramnetwerken waarin transmissies onbetrouwbaar zijn. 
+De meeste problemen met WEP komen van een verkeerd gebruik van het RC4 algoritme. RC4 wordt in veel moderne beveiligingsapparaten toegepast omdat het een sterk én efficiënt algoritme is (het verbruikt weinig energie omdat er geen dure vermenigvuldiginsoperaties in voorkomen). Echter, streamciphers in het algemeen, RC4 specifiek, zijn eigenlijk geen goede keuze voor datagramnetwerken waarin transmissies onbetrouwbaar zijn. 
 
-In een datagramnetwerk worden pakketjes opnieuw verstuurd wanneer er een fout optrad en de ontvanger om een *retransmission* vraagt (dit gebeurt bij ongeveer 20% van de verstuurde data). Dit is volledig normaal gedrag in zowel bedrade als draadloze netwerken, echter voor een stream cipher is dit nefast. Specifiek twee eigenschappen van stream ciphers (en dus ook RC4) zorgen voor stevige gebreken in het WEP-protocol inzake confidentiality:
+In een datagramnetwerk worden pakketjes opnieuw verstuurd wanneer er een fout optrad en de ontvanger om een *retransmission* vraagt (dit gebeurt bij ongeveer 20% van de verstuurde data). Dit is volledig normaal gedrag in zowel bedrade als draadloze netwerken, echter voor een streamcipher is dit nefast. Specifiek twee eigenschappen van streamciphers (en dus ook RC4) zorgen voor stevige gebreken in het WEP-protocol inzake confidentiality:
 
 1. RC4 heeft **geen *random access* mogelijkheden**.
 2. RC4 staat **geen sleutelhergebruik** toe.
@@ -223,7 +223,7 @@ Laten we die twee eigenschappen eens bekijken en welke cascade van problemen ze 
 
 #### RC4 heeft geen random access mogelijkheden
 
-Deze eigenschap is niet zo zeer een probleem vanuit beveiligingsperspectief, maar wel vanuit performantieperspectief. RC4 had eigenlijk nooit gekozen mogen worden door het IEEE om in WEP gebruikt te worden. Het verlies van één bit van de datastroom zal er voor zorgen dat alle bits erna met RC4 ook verloren zijn, daar we met een stream cipher werken waarbij de synchronisatie van de stroom bits tussen verzender (encryptie) en ontvanger (decryptie) gelijk moet blijven. Bij het minste dataverlies moeten beide zijden hun *"RC4-motortje"* resetten en opnieuw beginnen.
+Deze eigenschap is niet zo zeer een probleem vanuit beveiligingsperspectief, maar wel vanuit performantieperspectief. RC4 had eigenlijk nooit gekozen mogen worden door het IEEE om in WEP gebruikt te worden. Het verlies van één bit van de datastroom zal er voor zorgen dat alle bits erna met RC4 ook verloren zijn, daar we met een streamcipher werken waarbij de synchronisatie van de stroom bits tussen verzender (encryptie) en ontvanger (decryptie) gelijk moet blijven. Bij het minste dataverlies moeten beide zijden hun *"RC4-motortje"* resetten en opnieuw beginnen.
 
 AES bijvoorbeeld heeft wél die random access mogelijkheid: hierdoor kan steeds herbegonnen worden aan het punt van dataverlies en niet helemaal opnieuw, wat natuurlijk veel efficiënter is (daar we werken in een datagram omgeving waar bitverlies bijna continue voorkomt). 
 
@@ -243,7 +243,7 @@ $(p_i \oplus k_i) \oplus (q_i \oplus k_i) = p_i \oplus q_i$
 
 Of in andere woorden, wanneer we de beide ciphertexts met elkaar XOR'n krijgen we een sequentie die **niet afhankelijk is van de gebruikte sleutel**! Een stevige hoeveelheid informatie over beide plaintext wordt zo onthuld. Als één van beide plaintexts gekend is dan volstaat een eenvoudige XOR-operatie om ook de andere plaintext te kennen zonder dat hierbij de gebruikte sleutel moet geweten zijn. Deze fout zullen we verderop misbruiken.
 
-Kortom, stream ciphers zijn niet veilig in een datagram omgeving indien er geen vorm van sleutelmanagement bestaat die de sleutels kan vervangen voor ze herbruikt worden.  WEP probeert dit gebrek aan sleutelmanagement te omzeilen door met een IV te werken zodat er geen collisions zoals eerder beschreven kunnen optreden...maar ook dat zal een resem problemen met zich meebrengen. 
+Kortom, streamciphers zijn niet veilig in een datagram omgeving indien er geen vorm van sleutelmanagement bestaat die de sleutels kan vervangen voor ze herbruikt worden.  WEP probeert dit gebrek aan sleutelmanagement te omzeilen door met een IV te werken zodat er geen collisions zoals eerder beschreven kunnen optreden...maar ook dat zal een resem problemen met zich meebrengen. 
 
 ### Probleem 2: IV
 
@@ -318,7 +318,7 @@ De passieve aanval heeft als nadeel dat we als aanvaller:
 
 Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol te gaan spelen. Doordat een AP braaf alle trafiek encrypteert dat het van het bedrade netwerk krijgt om naar een client te sturen, is het voor een aanvaller een kwestie van "gekende" plaintext van buitenuit naar het slachtoffer te sturen. Als volgt:
 
-1. Een gekende plaintext boodschap (bijvoorbeeld een e-mailbericht of ping) wordt naar het AP gestuurd (via het internet bijvoorbeeld), dat vervolgens door de aanvaller in het oog wordt gehouden. Noot: als de aanvaller enkel het draadloze netwerk ter beschikking heeft (en niet het internet) dan zal een bitflip-aanval moeten gebruikt worden, wat we verderop zullen uitleggen.
+1. Een gekende plaintext boodschap (bijvoorbeeld een e-mailbericht of ping) wordt naar het AP gestuurd (via het Internet bijvoorbeeld), dat vervolgens door de aanvaller in het oog wordt gehouden. Noot: als de aanvaller enkel het draadloze netwerk ter beschikking heeft (en niet het Internet) dan zal een bitflip-aanval moeten gebruikt worden, wat we verderop zullen uitleggen.
 2. De aanvaller blijft sniffen tot het de ciphertext ziet passeren waarin (vermoedelijk) z'n gestuurde plaintext zit.
 3. Vervolgens kan de aanvaller een keystream te pakken krijgen door z'n plaintext te XOR'n met de gecapteerde cipherhtext: $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$.
 
@@ -590,7 +590,7 @@ De personal mode van WPA1 en WPA2 zal altijd gevoelig zijn voor dictionary aanva
 In 2018 kwam de Wifi Alliance uit met de opvolger van WPA2, de titel, je raadt het nooit, was uiteraard WPA3, maar werd ook wel Wifi 6 genoemd. De standaard gaan  we hier niet zo gedetailleerd bespreken, het volstaat te begrijpen dat ze
 
 * op veiligheidsniveau state-of-the-art was.
-* rekening hield met de noden van 21e-eeuwse draadloze netwerken (denk maar aan Internet-of-things apparaten, beveiligde publieke hotspots, etc.).
+* rekening hield met de noden van 21e-eeuwse draadloze netwerken (denk maar aan Internet-of-Things apparaten, beveiligde publieke hotspots, etc.).
 
 ::: tip
 De Wifi Alliance is in het leven geroepen als een organisatie die ervoor zorgde dat producten wel officieel konden claimen dat hun producten conform een IEEE standaard waren. Enkel wanneer hun producten de nodige tests van de Wifi Alliance aflegden kon het product het label van "Wifi Alliance compatibel" product dragen.
@@ -601,7 +601,7 @@ Ook in WPA3 werden twee modes voorzien: een personal en een enterprise mode. Enk
 * *Simultaneous Authentication of Equals (SAE)*: een nieuw cryptografisch concept waarbij in de personal mode authenticatie veel veiliger kan plaatsvinden dan voorheen.
 * Resistent tegen offline dictionary attacks.
 * *Forward secrecy*: zelfs als de aanvaller de wifi-sleutel van oude gecapteerde paketten vindt zal hij deze toch niet kunnen decrypteren. Het aloude "store now, decrypt later" is dus niet van toepassing op WPA3.
-* *Wifi easy connect*: een gebruiksvriendelijke manier om internet-of-things apparaten met het netwerk te verbinden.
+* *Wifi easy connect*: een gebruiksvriendelijke manier om Internet-of-Things apparaten met het netwerk te verbinden.
 * *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de Starbucks zetten om zo privé-trafiek van omstaanders te sniffen.
 * *Geauthenticeerde encryptie* gebruik makend van *"256-bit Galois/Counter Mode Protocol (GCMP-256)"* een cryptocipher dat we hier niet uit de doeken gaan doen (maar geef toe, met zo'n naam klinkt het toch ogenblikkelijk extra veilig!).
 * Gebruikt de meest moderne veilige authenticatie- en sleuteldistributiemethoden mogelijk binnen 802.1X (HMAC, HMAC-SHA384 en ECDH)

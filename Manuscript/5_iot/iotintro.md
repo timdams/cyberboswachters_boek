@@ -19,7 +19,7 @@ We gaan nogal vrij om met de term IoT-apparaat, waarbij we ook negeren dat er gr
 
 Het Open Web Application Security Project (**OWASP**) is een open-source-project rond computerbeveiliging. Individuen, scholen en bedrijven delen via dit platform informatie en technieken. Ook de Belgische tak van OWASP is erg actief en een interessante organisatie indien je van plan bent om een carrière binnen de cybersecurity wereld op te bouwen. Ze organiseren geregeld (meestal gratis) workshops en evenementen.
 
-Het OWASP heeft tal van erg interessante "Top 10" overzichten zoals de meest voorkomende webapp zwakheden, etc. Deze projecten bestaan meestal uit een reeks tools, *best practices* en gidsen en zijn dus de ideale manier om je te verdiepen binnen een specifiek cybersecurity domein. Eén van de actieve projecten is het "OWASP Internet of Things" project (beschikbaar via [owasp.org/www-project-internet-of-things/](https://owasp.org/www-project-internet-of-things/)) waarvan we de Top 10 hier zullen bespreken, gerangschikt van meest voorkomend (en dus belangrijkste om aan te pakken) naar minder.
+Het OWASP heeft tal van erg interessante "Top 10" overzichten zoals de meest voorkomende webapp zwakheden, etc. Deze projecten bestaan meestal uit een reeks tools, *best practices* en gidsen en zijn dus de ideale manier om je te verdiepen binnen een specifiek cybersecurity domein. Eén van de actieve projecten is het "OWASP Internet of Things" project (beschikbaar via [owasp.org/www-project-Internet-of-Things/](https://owasp.org/www-project-Internet-of-Things/)) waarvan we de Top 10 hier zullen bespreken, gerangschikt van meest voorkomend (en dus belangrijkste om aan te pakken) naar minder.
 
 ::: tip
 Bekijk zeker ook eens het IoT Goat project via [github.com/OWASP/IoTGoat/](https://github.com/OWASP/IoTGoat/) dat is een *"insecure firmware based on OpenWrt and maintained by OWASP as a platform to educate software developers and security professionals with testing commonly found vulnerabilities in IoT devices. The vulnerability challenges are based on the OWASP IoT Top 10, as well as 'easter eggs' from project contributors."*
@@ -125,7 +125,7 @@ Dit item komt nog steeds voor in alle "10 veiligheidsproblemen die het meeste vo
 
 ::: note
 
-Er gaat een *urban legend* de ronde dat je nooit je computer aan het internet mocht hangen wanneer je Windows XP aan het installeren was. Deed je dat wel dan bestond er de kans dat je computer *gepwnd* werd nog voor je goed en wel de hele installatie had doorlopen. **Disclaimer:** dit is nooit bevestigd geweest. Lezers die een artikel vinden dat deze legende kan staven mogen me hierover altijd contacteren.
+Er gaat een *urban legend* de ronde dat je nooit je computer aan het Internet mocht hangen wanneer je Windows XP aan het installeren was. Deed je dat wel dan bestond er de kans dat je computer *gepwnd* werd nog voor je goed en wel de hele installatie had doorlopen. **Disclaimer:** dit is nooit bevestigd geweest. Lezers die een artikel vinden dat deze legende kan staven mogen me hierover altijd contacteren.
 :::
 
 ### Gebrek aan fysieke *hardening*

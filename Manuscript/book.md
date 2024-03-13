@@ -13,7 +13,7 @@ ethisch_hacken.md
 1_cryptografie/authenticatie.md
 2_social_engineering/README.md
 3_netwerk_security/README.md
-internet_security/README.md
+Internet_security/README.md
 naughty_software/README.md--->
 
 
