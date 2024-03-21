@@ -51,7 +51,7 @@ Dit probleem gaan we verderop oplossen met behulp van *salting*.
 :::
 
 ::: warning
-Veel websites genereren wel degelijk de hash aan serverzijde. Het verschil hier is echter dat ze eerst een beveiligde TLS-tunnel hebben opgezet waarover het paswoord werd verstuurd. Het laat echter de website/service toe om meer controle te hebben over de hash-generatie.
+Veel websites genereren wel degelijk de hash aan serverzijde. Het verschil hier is echter dat ze eerst een beveiligde TLS tunnel hebben opgezet waarover het paswoord werd verstuurd. Het laat echter de website/service toe om meer controle te hebben over de hash-generatie.
 :::
 
 ### Rainbow table attack
