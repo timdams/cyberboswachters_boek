@@ -1,7 +1,5 @@
 # IoT Security
 
-## Introductie
-
 We spraken in het eerste hoofdstuk al over de problemen die inherent zijn bij Internet-of-Things (IoT) apparaten en netwerken. Zo had je in 2016 het Mirai-botnet dat aantoonde hoe krachtig een botnet van IoT-apparaten kan zijn, puur door de grote hoeveelheid potentiële zombies.
 
 Het is niet toevallig dat we dit boek afsluiten met het hoofdstuk omtrent IoT Security: alles (en meer) wat je in de voorgaande hoofdstukken hebt geleerd heb je namelijk nodig om IoT-netwerken te beveiligen. Er zijn zoveel manieren voor digitale stropers om misbruik te maken van een slecht beveiligd IoT-apparaat of netwerk dat het complexe probleem van netwerken beveiligen nog ingewikkelder is geworden, namelijk:

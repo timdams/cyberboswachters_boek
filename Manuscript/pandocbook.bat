@@ -24,6 +24,7 @@ pandoc ^
  --top-level-division=chapter^
  --filter pandoc-latex-environment^
  --self-contained^
+ --toc-depth=2^
  --resource-path=assets^
  -s --toc --verbose --template templates/eisvogel  --number-sections -o book.pdf 
 

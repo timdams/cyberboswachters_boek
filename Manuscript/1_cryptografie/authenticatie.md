@@ -22,7 +22,7 @@ Trouwens, herinner je de McCumber kubus waarin we benadrukten dat technologie ma
 
 Hoe moet je nu als cyberboswachter de logingegevens van je gebruikers bewaren? We gaan een soort *bottom-up* aanpak hanteren, waarbij we beginnen met de meest naïeve oplossing en telkens verbeteringen zullen aanbrengen.
 
-### Paswoorden als plaintext bewaren
+### Paswoorden als plaintext
 
 In het prille begin van het Internet gebeurde dit quasi overal: de login-databank had twee kolommen:
 

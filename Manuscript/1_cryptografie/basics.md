@@ -39,7 +39,7 @@ We zagen reeds dat *Security through obscurity* een dubbel snijdend zwaard binne
 
 **Finaal draait alles op het geheimhouden van je sleutel, iets dat we telkens weer in dit boek zullen herhalen!**
 
-### Sleutellengte en bruteforcing
+### Opletten met reclame
 
 Let op met encryptiesystemen die zichzelf verkopen met zinnen zoals *"10 jaar nodig op een gewone laptop om alle sleutels te testen"*. Dit zou kunnen doen vermoeden dat je dus voor minstens tien jaar goed zit (we gaan er even vanuit dat de gemiddelde cryptanalist maar toegang heeft tot één laptop, wat uiteraard in de echte wereld niet zo is). De gemiddelde tijd van voorgaande systeem om te bruteforcen is echter vijf jaar, de helft.
 
@@ -130,8 +130,6 @@ Het spreekt voor zich dat een combinatie van een transpositiecipher en een subst
 
 De **Advanced Encryption Standard (AES)** is in de 21e eeuw zo'n beetje de de facto standaard als het aankomt op symmetrische encryptie (d.w.z. encryptie waar maar één sleutel voor nodig is, verder meer hierover). Als we echter eens het algoritme opengooien en een enkele *encryption round* bekijken (AES bestaat uit een sequentie van deze rondes) dan zien we dat de bits die bovenaan binnenkomen (*state*) vervolgens een combinatie van substituties (*sub*) en transposities (*mixcolumns* en *shiftrows*) ondergaan.
 
-![Bron Wikipedia.](crypto/aesprev.png){width=110%}
-
 We gaan AES nog terug zien opduiken wanneer we gaan bekijken hoe draadloze netwerken worden beveiligd. Als Belg mogen we trouwens erg fier zijn op deze wereldwijd gebruikte Amerikaanse standaard. Je zal later ontdekken waarom dat zo is!
 
 ::: tip
@@ -200,16 +198,7 @@ Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest 
 :::tip
 Dit waren in 2020 de 10 meest gebruikte paswoorden:
 
-123456
-password
-12345678
-qwerty
-123456789
-12345
-1234
-111111
-1234567
-dragon
+123456, password, 12345678, qwerty, 123456789, 12345, 1234, 111111, 1234567, dragon
 
 Dit soort lijsten worden opgesteld door gekende datalekken te analyseren op welke paswoorden er in voorkomen.
 :::
@@ -223,12 +212,10 @@ Geregeld zullen we in dit boek bepaalde zwakheden beschrijven die in algoritmes 
 * Gekozen plaintext: de cryptanalist kan zelf plaintext kiezen waarvan de bijhorende ciphertext moet gemaakt worden. Dit zorgt ervoor dat de cryptanalist als het ware kan experimenteren.
 * Gekozen ciphertext: het zelfde concept als *gekozen plaintext* maar deze keer kiest de cryptanalist de ciphertext waarvan hij de bijhorende plaintext wil genereren.
 
-::: note
 Er zijn nog enkele meer gespecialiseerde types, maar voor deze cursus zullen we het bij deze vier basistypes houden.
-:::
 
 ::: note
-Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalist automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van: enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden. Anderzijds helpen ze ons in tijden van oorlog om de boodschappen van vijanden te onderscheppen en proberen lezen.
+Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalist automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van: enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden. Anderzijds helpen ze in tijden van oorlog om boodschappen van vijanden te onderscheppen en proberen lezen.
 :::
 
 ### En wat met quantum-computers?
@@ -267,11 +254,11 @@ De moeilijkheid bij symmetrische systemen is de sleuteloverdracht. Daar ontvange
 * Via een asymmetrisch encryptiesysteem dat wél sleutels op een veilige manier kan uitwisselen (zie verder).
 * Via een ander beveiligd kanaal, in eender welke vorm (bijvoorbeeld fysiek de sleutel aan de andere persoon geven of zeggen, deze opsturen via een reeds opgezet symmetrisch encryptiekanaal, etc.).
 
-### Block en Stream ciphers
+### Block- en streamciphers
 
 Er zijn twee soorten symmetrische encryptieciphers als we kijken naar de manier waarop ze de te encrypteren data verwerken:
 
-* **Streamciphers**: hierbij wordt de data letterlijk als een stream van tekens beschouwd. Waarbij teken per teken individueel geëncrypteerd wordt (het bekendste voorbeeld is RC4). Voor ieder teken dat verwerkt wordt zal er exact één geëncrypteerd teken gegenereerd worden. Dit soort algoritmes zijn over het algemeen sneller dan blockciphers.
+* **Streamciphers**: hierbij wordt de data letterlijk als een stroom (*stream*) van tekens beschouwd. Waarbij teken per teken individueel geëncrypteerd wordt (het bekendste voorbeeld is RC4). Voor ieder teken dat verwerkt wordt zal er exact één geëncrypteerd teken gegenereerd worden. Dit soort algoritmes zijn over het algemeen sneller dan blockciphers.
 * **Blockciphers**: de data wordt in blokken (van bijvoorbeeld 128 tekens) verwerkt. Bekendste voorbeelden die we verderop behandelen zijn  AES, DES, 3DES, etc.
 
 ### Streamciphers
@@ -316,14 +303,6 @@ Digitale systemen die perfect willekeurige getallen genereren noemt men **random
 #### RC4 tot op het bot
 
 Laten we eens één van de meest gebruikte streamciphers bekijken, het RC4 cipher. Dit algoritme, ontwikkeld door Ron Rivest (de afkorting staat trouwens voor *Rons Cipher 4*), wordt gebruikt onder andere om een beveiligde SSL-tunnel (zie later) op te zetten en zit in het hart van veel geëncrypteerde communicatiekanalen. 
-
-:::warning
-Opgelet: het RC4 protocol is ondertussen al wat verouderd en wordt niet meer aangeraden om te gebruiken in moderne oplossingen (zie bijvoorbeeld volgende [IETF waarschuwing omtrent het gebruik van RC4 in TLS](https://datatracker.ietf.org/doc/html/rfc7465)). We kiezen er echter bewust voor om toch RC4 uit de doeken te doen omdat:
-
-1. RC4 relatief begrijpbaar is en zo een goed inzicht geeft in hoe een encryptie-algoritme werkt.
-2. We in het volgende hoofdstuk zullen ontdekken dat RC4 een belangrijk onderdeel vormde in de originele beveiligingsstandaard van wifi (genaamd WEP).
-
-:::
 
 RC4 werkt zoals we eerder verklaarden hoe een streamcipher werkt: het heeft een keystream generator en zal de keystream vervolgens XOR'n met de plaintext. Eerst zal de ingevoerde sleutel (die 40 tot 2048 bits lang mag zijn) omgezet worden naar een compatibele werksleutel met behulp van een **Key scheduling algorithm** (KSA). Deze werksleutel zal dan als seed gebruikt worden om een keystream in het **Pseudo-random generator algorithm** (PRGA) te maken.
 
@@ -479,7 +458,7 @@ Nu worden deze 48 bits ge-XOR'd met de subkey. Het resultaat wordt in blokjes va
 Na 16 rondes krijgen we terug een 32 bit datablok dat nog een *Finale permutatie* ondergaat die weer de bits van plaats verandert en de output hiervan is een geëncrypteerd blok data dat kan doorgestuurd worden naar de ontvanger.
 
 ::: tip
-Je kan de DES standaard [hier](HTTPS://web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm) nalezen en ontdekken dat deze niet zo lang is zoals je zou verwachten van een wereldwijd geadopteerde standaard.
+Je kan de DES standaard op [web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm](HTTPS://web.archive.org/web/20040410171758/http://www.itl.nist.gov/fipspubs/fip46-2.htm) nalezen en ontdekken dat deze niet zo lang is zoals je zou verwachten van een wereldwijd gebruikte standaard.
 :::
 
 ##### Subkeys maken
@@ -552,9 +531,6 @@ Het concept **Initialisatie Vector (IV)** zal je veel zien terugkomen in ciphers
 Uiteraard is het belangrijk dat er een goed *IV selectie algoritme* wordt gebruikt dat bepaalt hoe steeds het volgende IV moet worden berekend (bv steeds met 1 verhogen, een willekeurig, etc.).
 :::
 
-::: note
-[De wikipediapagina over blockciphers](HTTPS://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) modes geeft een zeer goed overzicht (én vergelijking).
-:::
 
 #### AES
 

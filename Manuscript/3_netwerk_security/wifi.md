@@ -159,7 +159,7 @@ Om potentiële aanvallers ervan te weerhouden dat ze trafiek kunnen sniffen (of 
 
 WEP is optioneel en bevindt zich vlak voor frames naar de fysieke laag (*PHY*) worden gestuurd (die de frames "in de lucht" zal sturen). Het IEEE werkt met lagen die ongeveer overeen komen met de OSI-lagen maar met iets andere namen. In volgende figuur zie je waar WEP, optioneel, zich bevindt.
 
-![De 802.11 stack (rechts) ten opzichte van de OSI stack.](wifi/osimac.png){ width=50% }
+![De 802.11 stack (rechts) ten opzichte van de OSI stack.](wifi/osimac.png){ width=75% }
 
 #### Hoe werkt WEP?
 
@@ -173,7 +173,7 @@ Confidentiality en integriteit worden tegelijkertijd afgehandeld in WEP. Vlak vo
 
 Finaal verkrijgen we dus volgende WEP-frame dat kan verstuurd worden:
 
-![WEP frame lay-out.](wifi/wepframe.png){ width=70% }
+![WEP frame lay-out.](wifi/wepframe.png){ width=80% }
 
 ::: note 
 In de originele standaard zat de mogelijkheid om tot vier WEP-sleutels in een netwerk te gebruiken. Via de *keyid* kon een client of AP dan aangeven met welk van de geïnstalleerde sleutels een frame werd geëncrypteerd. 
@@ -559,7 +559,7 @@ Voor de sleuteldistributie en management werd, zoals vermeld, gebruik gemaakt va
 Toen WPA2 uitkwam ontdekte men dat toch aardig wat bestaande hardware kon gepatcht worden om ook WPA2-compatibel te zijn. Dit was een opsteker voor velen, daar de originele premise van WPA2 net was dat ze geen rekening zouden houden met de bestaande hardware die reeds op de markt was.
 :::
 
-### Encryptie en MIC creatie d.m.v. CCMP
+### CCMP
 
 CCMP gebruikt, net als TKIP, een 48-bit IV die *packet number* (PN) werd genoemd. Deze PN wordt, samen met andere informatie, gebruikt om de AES encryptie van een seed te voorzien. Hierbij wordt het frame (en de header) in blokken van 128 bit verdeeld en zo blok per blok verwerkt. De encryptie gebeurt parallel met het berekenen van de MIC (de ICV in WEP) die finaal achteraan als een laatste blok ook mee wordt geëncrypteerd. Ook nu wordt met een tijdelijke sleutel gewerkt die gebaseerd is op de hoofdsleutel verkregen via 802.1X (enterprise mode) of de passphrase (in personal mode).
 
