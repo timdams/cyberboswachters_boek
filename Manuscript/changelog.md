@@ -1,7 +1,14 @@
 
 ## Changelog
 
-**Dit is versie 0.6.3** (5/03/24)
+**Dit is versie 0.7.1** (12/11/23)
+
+* 0.7.1
+  * SCRAM/CRAM tekeningen en tekst juist gezet
+  * Toelichting AI (darkbert) in H1
+  * Typos in afbeelding 5.1
+* 0.7.0 (huidige editie in winkel)
+  * Klaar voor nieuwe print-versie. Layout matig hier en daar iets verandert.
 * 0.6.3
   * Kort tekstje over Red/green/bluehat hackers toegevoegd.
   * Typos blijven komen. (bedankt Erik Van Dyck)

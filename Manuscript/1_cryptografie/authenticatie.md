@@ -131,12 +131,7 @@ Om iemand te authenticeren spraken we tot nog toe enkel over een username/paswoo
 
 ![CRAM.](auth/cram.png){}
 
-Om het probleem van *pass-the-hash* op te lossen kan je gebruiken maken van een **SCRAM**, een **Salted Challenge Response Authentication Mechanism**. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted paswoord login van daarnet. Met dit systeem zorgen we ervoor dat :
-
-1. De salted hash van de gebruiker NOOIT moet verzonden worden.
-2. Geen replay aanval m.b.v. pass-the-hash mogelijk is.
-
-Het mechanisme werkt als volgt:
+Het mechanisme van een CRAM werkt als volgt:
 
 1. De gebruiker stuurt z'n username met de vraag om in te loggen.
 2. De server genereert een random challenge en stuurt deze terug.
@@ -144,11 +139,18 @@ Het mechanisme werkt als volgt:
 4. De client stuurt deze hash, de response, terug naar de server.
 5. De server vergelijkt of zijn gegenereerde response hash dezelfde is als die van de gebruiker.
 
-![SCRAM.](auth/scram.png){}
+![CRAM flow.](auth/cramflow.png){}
 
-::: tip
-Merk op dat we ook hier nog steeds met een salted paswoord kunnen werken. Het enige dat dan verandert is dat de server naast de challenge, ook de te gebruiken salt doorstuurt die reeds in de database bewaard werd samen met de salted hash van de gebruiker.
-:::
+Om het probleem van *pass-the-hash* op te lossen kan je gebruiken maken van een **S**CRAM, een **Salted Challenge Response Authentication Mechanism**. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted paswoord login van daarnet. Met dit systeem zorgen we ervoor dat :
+
+1. De salted hash van de gebruiker NOOIT moet verzonden worden.
+2. Geen replay aanval m.b.v. pass-the-hash mogelijk is.
+
+Zoals je in de afbeelding kunt zien zal in dit systeem de server ook de bewaarde salt naar de client sturen, zodat deze geen gebruik kan maken van een bewaarde password hash die hij niet zelf heeft gemaakt.
+
+![SCRAM.](auth/scramflow.png){}
+
+
 
 ## Multifactor authentication
 

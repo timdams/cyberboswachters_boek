@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-03-21T10:16:07.838Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="Tnd9QGim63iF7qaum6_Y" compressed="false" version="21.2.8" type="device" pages="11">
+<mxfile host="Electron" modified="2024-03-26T14:02:52.622Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="l2q5TRrzdaXfHDTF8lYS" compressed="false" version="21.2.8" type="device" pages="11">
   <diagram id="9PMUojbOyOgYJuxRUxG1" name="basics">
-    <mxGraphModel dx="1548" dy="894" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1418" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="OAwYrJ0av2uxpzJDZ9cQ-0" />
         <mxCell id="OAwYrJ0av2uxpzJDZ9cQ-1" parent="OAwYrJ0av2uxpzJDZ9cQ-0" />
@@ -4673,7 +4673,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="lYVZtozUdXj3iElniI6f" name="wifi">
-    <mxGraphModel dx="5607" dy="3187" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="4878" dy="2343" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="eyZerQLasxePgHhkHTnS-0" />
         <mxCell id="eyZerQLasxePgHhkHTnS-1" parent="eyZerQLasxePgHhkHTnS-0" />
@@ -5520,23 +5520,23 @@
         <mxCell id="hOSoxLETTIe-O7E3Z9I3-14" value="" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.storage;" parent="eyZerQLasxePgHhkHTnS-1" vertex="1">
           <mxGeometry x="1645" y="102" width="50" height="72" as="geometry" />
         </mxCell>
-        <mxCell id="D7ZCMpXDUQF5Tw_KtwFK-0" value="" style="endArrow=none;html=1;rounded=0;fontFamily=Georgia;fontSize=23;strokeWidth=3;" edge="1" parent="eyZerQLasxePgHhkHTnS-1">
+        <mxCell id="D7ZCMpXDUQF5Tw_KtwFK-0" value="" style="endArrow=none;html=1;rounded=0;fontFamily=Georgia;fontSize=23;strokeWidth=3;" parent="eyZerQLasxePgHhkHTnS-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="2340" y="1160" as="sourcePoint" />
             <mxPoint x="2340" y="960" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="D7ZCMpXDUQF5Tw_KtwFK-1" value="NIET OK: &lt;br&gt;frame verwijderd" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;dashed=1;sketch=0;fontSize=17;fontColor=#330000;" vertex="1" parent="eyZerQLasxePgHhkHTnS-1">
+        <mxCell id="D7ZCMpXDUQF5Tw_KtwFK-1" value="NIET OK: &lt;br&gt;frame verwijderd" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;dashed=1;sketch=0;fontSize=17;fontColor=#330000;" parent="eyZerQLasxePgHhkHTnS-1" vertex="1">
           <mxGeometry x="2510" y="1994" width="145" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="D7ZCMpXDUQF5Tw_KtwFK-2" value="OK: payload naar &lt;br&gt;hogere laag" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;dashed=1;sketch=0;fontSize=17;fontColor=#330000;" vertex="1" parent="eyZerQLasxePgHhkHTnS-1">
+        <mxCell id="D7ZCMpXDUQF5Tw_KtwFK-2" value="OK: payload naar &lt;br&gt;hogere laag" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=0;glass=0;dashed=1;sketch=0;fontSize=17;fontColor=#330000;" parent="eyZerQLasxePgHhkHTnS-1" vertex="1">
           <mxGeometry x="2517.5" y="1864" width="145" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="dXsd7JRCp_CgNiKOOM2J" name="wifi2">
-    <mxGraphModel dx="721" dy="894" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="591" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="x0QTKfB3T8kxHJ5Bd1Kk-0" />
         <mxCell id="x0QTKfB3T8kxHJ5Bd1Kk-1" parent="x0QTKfB3T8kxHJ5Bd1Kk-0" />
@@ -6017,7 +6017,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="pKn-OazDcm8u51q2CW4k" name="wpa2">
-    <mxGraphModel dx="6563" dy="4993" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2245" dy="1989" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Z35CUUdXW8skj3cTsxOI-0" />
         <mxCell id="Z35CUUdXW8skj3cTsxOI-1" parent="Z35CUUdXW8skj3cTsxOI-0" />
