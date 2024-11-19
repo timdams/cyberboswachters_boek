@@ -139,7 +139,7 @@ In deze modus moet je bewijzen dat je in het bezit bent van een geldige WEP-sleu
 
 1. Het AP maakt een random string aan, de *challenge*, en stuurt deze in plaintext naar de client.
 2. De client encrypteert deze string met z'n WEP-sleutel en stuurt dit terug naar het AP (de *response*).
-3. Het AP zal nu de response decrypteren met z'n eigen WEP-sleutel en het resultaat vergelijken met de challenge-string. Als beide gelijk zijn weet het AP dat de client een geldige WEP-sleutel heeft en dus toegelaten mag worden op het netwerk.
+3. Het AP zal nu de response decrypteren met z'n eigen WEP-sleutel en het resultaat vergelijken met de challenge-string. Als beiden gelijk zijn weet het AP dat de client een geldige WEP-sleutel heeft en dus toegelaten mag worden op het netwerk.
 
 ![De shared-key authentication aan de start van de verbinding.](wifi/sharedkey.png)
 
@@ -231,7 +231,7 @@ AES bijvoorbeeld heeft wél die random access mogelijkheid: hierdoor kan steeds 
 
 Stream ciphers hebben een tweede belangrijke eigenschap: **het is uiterst onveilig om een zelfde sleutel twee keer te gebruiken!**
 
-Stel dat je volgende twee plaintext byte sequenties hebt:  $p_1,p_2,p_3,…$ en $q_1,q_2,q_3,…$. Beide worden met dezelfde keystream $k_1,k_2,k_3,…$ geëncrypteerd. Dit geeft ons vervolgens volgende twee ciphertext sequenties:
+Stel dat je volgende twee plaintext byte sequenties hebt:  $p_1,p_2,p_3,…$ en $q_1,q_2,q_3,…$. Beiden worden met dezelfde keystream $k_1,k_2,k_3,…$ geëncrypteerd. Dit geeft ons vervolgens volgende twee ciphertext sequenties:
 
 $p_1 \oplus k_1, p_2 \oplus k_2, p_3 \oplus k_3$ 
 
@@ -278,7 +278,7 @@ $c_i = k_i \oplus p_i \Leftrightarrow k_i = c_i \oplus p_i$
 We hebben zo ook deel één van de FMS in onze handen en kunnen nu het algoritme de gebruikte WEP-sleutel laten berekenen (de manier waarop dat gebeurt zou ons te ver brengen).
 
 ::: tip
-De FMS aanval is geïmplementeerd in twee populaire Linux tools: Airsnort & WEPCrack. Beide kunnen dus gebruikt worden om de WEP-sleutel van een draadloos netwerk te achterhalen.
+De FMS aanval is geïmplementeerd in twee populaire Linux tools: Airsnort & WEPCrack. Beiden kunnen dus gebruikt worden om de WEP-sleutel van een draadloos netwerk te achterhalen.
 :::
 
 #### IV collisions treden op
@@ -465,7 +465,7 @@ De meest gebruikte EAP-methoden zijn:
 
 De voorgaande figuur toont de typische uitwisseling van boodschappen die plaatsvinden wanneer een client voor het eerst verbinding wil maken op een WPA1 of WPA2 Enterprise netwerk:
 
-1. Client en access point zoeken samen welke EAP-methoden zij beide kunnen gebruiken om de authenticatie te starten. Enkel indien ze samen tot één keuze kunnen komen wordt overgegaan naar stap 2.
+1. Client en access point zoeken samen welke EAP-methoden zij beiden kunnen gebruiken om de authenticatie te starten. Enkel indien ze samen tot één keuze kunnen komen wordt overgegaan naar stap 2.
 2. Vanaf nu zal het AP enkel dienst doen als doorgeefluik tussen de client en de authenticatie-server.
 3. Als de server genoeg bewijs heeft om de client te authenticeren, zal de server de nodige sleutels genereren en deze aan het AP geven.
 4. Het AP zal vanaf nu instaan voor het verdere sleutelbeheer en wanneer nodig de sleutels verversen tijdens de sessie.

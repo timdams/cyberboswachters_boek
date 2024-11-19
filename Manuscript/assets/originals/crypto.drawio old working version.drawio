@@ -2129,7 +2129,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="QytV0w7zbDWAnVlp9PG5" name="cryptopublic">
-    <mxGraphModel dx="4780" dy="3187" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="oVCJ1SsvMhjQOHAV21M--0" />
         <mxCell id="oVCJ1SsvMhjQOHAV21M--1" parent="oVCJ1SsvMhjQOHAV21M--0" />
@@ -2555,7 +2555,7 @@
             <mxPoint x="900" y="1483.03" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="oebChKE-aDUvPSJwCyAU-52" value="Decrytie algoritme" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Verdana;fontSize=16;labelBorderColor=none;shadow=1;" parent="oVCJ1SsvMhjQOHAV21M--1" vertex="1">
+        <mxCell id="oebChKE-aDUvPSJwCyAU-52" value="Decryptie algoritme" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontFamily=Verdana;fontSize=16;labelBorderColor=none;shadow=1;" parent="oVCJ1SsvMhjQOHAV21M--1" vertex="1">
           <mxGeometry x="697" y="1442.98" width="130" height="80" as="geometry" />
         </mxCell>
         <mxCell id="oebChKE-aDUvPSJwCyAU-53" value="&lt;div style=&quot;text-align: center&quot;&gt;&lt;span&gt;&lt;font face=&quot;verdana&quot;&gt;Originele boodschap&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fontSize=18;" parent="oVCJ1SsvMhjQOHAV21M--1" vertex="1">
@@ -5536,7 +5536,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="dXsd7JRCp_CgNiKOOM2J" name="wifi2">
-    <mxGraphModel dx="591" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1247" dy="1197" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="x0QTKfB3T8kxHJ5Bd1Kk-0" />
         <mxCell id="x0QTKfB3T8kxHJ5Bd1Kk-1" parent="x0QTKfB3T8kxHJ5Bd1Kk-0" />
@@ -5734,10 +5734,10 @@
         <mxCell id="fjyBHRhUsQq-jWlD9L4C-0" value="" style="points=[[0,0.5,0],[0.24,0,0],[0.5,0.28,0],[0.995,0.475,0],[0.5,0.72,0],[0.24,1,0]];verticalLabelPosition=bottom;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.key;rounded=1;shadow=0;fontFamily=Verdana;fontSize=16;fillColor=#FFD966;" parent="x0QTKfB3T8kxHJ5Bd1Kk-1" vertex="1">
           <mxGeometry x="1870" y="780" width="60" height="27" as="geometry" />
         </mxCell>
-        <mxCell id="EbEU42l1arm0B4dXXHso-3" value="4 meest significance biytes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=70;entryDy=80;entryPerimeter=0;strokeColor=#000000;" parent="x0QTKfB3T8kxHJ5Bd1Kk-1" source="yrjmA2py01cwl5ARNZJ4-0" target="qHa-ZAww9Oyy1v8267le-5" edge="1">
+        <mxCell id="EbEU42l1arm0B4dXXHso-3" value="4 meest significance bytes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=70;entryDy=80;entryPerimeter=0;strokeColor=#000000;" parent="x0QTKfB3T8kxHJ5Bd1Kk-1" source="yrjmA2py01cwl5ARNZJ4-0" target="qHa-ZAww9Oyy1v8267le-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EbEU42l1arm0B4dXXHso-7" value="2 minst significante byes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=25.625;entryPerimeter=0;strokeColor=#000000;" parent="x0QTKfB3T8kxHJ5Bd1Kk-1" source="yrjmA2py01cwl5ARNZJ4-0" target="EbEU42l1arm0B4dXXHso-4" edge="1">
+        <mxCell id="EbEU42l1arm0B4dXXHso-7" value="2 minst significante bytes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=25.625;entryPerimeter=0;strokeColor=#000000;" parent="x0QTKfB3T8kxHJ5Bd1Kk-1" source="yrjmA2py01cwl5ARNZJ4-0" target="EbEU42l1arm0B4dXXHso-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="yrjmA2py01cwl5ARNZJ4-0" value="Packet Sequence number (IV)" style="whiteSpace=wrap;html=1;aspect=fixed;rounded=1;strokeWidth=1;fontSize=17;align=center;glass=0;shadow=0;sketch=0;" parent="x0QTKfB3T8kxHJ5Bd1Kk-1" vertex="1">
@@ -6384,7 +6384,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Pfw1oCjHOTLONuglDRhi" name="auth">
-    <mxGraphModel dx="1709" dy="1182" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2074" dy="1197" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Al21WgtvU-EcZACvN15p-0" />
         <mxCell id="Al21WgtvU-EcZACvN15p-1" parent="Al21WgtvU-EcZACvN15p-0" />
