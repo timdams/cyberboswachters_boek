@@ -6409,7 +6409,7 @@
         <mxCell id="Al21WgtvU-EcZACvN15p-11" value="" style="ellipse;whiteSpace=wrap;html=1;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="430" y="100" width="160" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="Al21WgtvU-EcZACvN15p-4" value="Set van mogelijke paswoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
+        <mxCell id="Al21WgtvU-EcZACvN15p-4" value="Set van mogelijke wachtwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="80" y="70" width="190" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Al21WgtvU-EcZACvN15p-5" value="" style="ellipse;whiteSpace=wrap;html=1;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
@@ -6454,7 +6454,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Al21WgtvU-EcZACvN15p-13" value="Set van mogelijke paswoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
+        <mxCell id="Al21WgtvU-EcZACvN15p-13" value="Set van mogelijke wachtwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="65" y="450" width="190" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Al21WgtvU-EcZACvN15p-15" value="Set van hashes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
@@ -6486,7 +6486,7 @@
         <mxCell id="WYyhv33yaPKQpRjx64_j-1" value="2" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;strokeColor=#000000;fillColor=#330000;fontColor=#FFFFFF;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="319.99999999999994" y="500" width="15.44" height="15.75" as="geometry" />
         </mxCell>
-        <mxCell id="WYyhv33yaPKQpRjx64_j-6" value="Set van mogelijke paswoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
+        <mxCell id="WYyhv33yaPKQpRjx64_j-6" value="Set van mogelijke wachtwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="65.22" y="840" width="190" height="20" as="geometry" />
         </mxCell>
         <mxCell id="WYyhv33yaPKQpRjx64_j-7" value="Set van hashes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
@@ -6551,7 +6551,7 @@
         <mxCell id="WYyhv33yaPKQpRjx64_j-21" value="" style="ellipse;whiteSpace=wrap;html=1;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="90" y="1230" width="184" height="270" as="geometry" />
         </mxCell>
-        <mxCell id="WYyhv33yaPKQpRjx64_j-22" value="Set van mogelijke paswoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
+        <mxCell id="WYyhv33yaPKQpRjx64_j-22" value="Set van mogelijke wachtwoorden" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="75.22" y="1200" width="190" height="20" as="geometry" />
         </mxCell>
         <mxCell id="WYyhv33yaPKQpRjx64_j-23" value="Set van hashes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
@@ -6628,7 +6628,7 @@
         <mxCell id="WYyhv33yaPKQpRjx64_j-37" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="190" y="1305" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="WYyhv33yaPKQpRjx64_j-38" value="bijhorend paswoord gevonden!" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
+        <mxCell id="WYyhv33yaPKQpRjx64_j-38" value="bijhorend wachtwoord gevonden!" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">
           <mxGeometry x="154.5" y="1260" width="55" height="20" as="geometry" />
         </mxCell>
         <mxCell id="WYyhv33yaPKQpRjx64_j-39" value="3" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;strokeColor=#000000;fillColor=#330000;fontColor=#FFFFFF;" parent="Al21WgtvU-EcZACvN15p-1" vertex="1">

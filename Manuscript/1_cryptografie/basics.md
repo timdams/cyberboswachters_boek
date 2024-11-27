@@ -33,7 +33,7 @@ Alle bestaande cryptografische systemen kunnen op verschillende manieren gekarak
 
 We gaan zo meteen bekijken hoe encryptie effectief gebeurt, maar we willen al even een mythe onderuit halen. Binnen encryptie heb je de *principes van Kerckhoff*, zes regels die in de 19e eeuw werden vastgelegd waaraan encryptie-algoritmes moeten voldoen om als veilig beschouwd te worden. Sommige principes zijn, onder ander door onze steeds krachtigere computers, niet meer relevant, maar één principe blijft ongelooflijk belangrijk: *"Het kennen van het gebruikte encryptie-algoritme door de tegenstander is geen probleem, het is enkel de geheime sleutel die ten allen tijde uit de handen van de tegenstander moet blijven."*
 
-Dit ogenschijnlijk eenvoudige zinnetje betekent heel veel: **je sleutel (of paswoord) is wat je het beste moet beschermen. Zonder kennis van de sleutel zou iemand nooit toegang mogen krijgen tot versleutelde data, ongeacht dat geweten is met welk systeem de data werd vercijferd.** 
+Dit ogenschijnlijk eenvoudige zinnetje betekent heel veel: **je sleutel (of wachtwoord) is wat je het beste moet beschermen. Zonder kennis van de sleutel zou iemand nooit toegang mogen krijgen tot versleutelde data, ongeacht dat geweten is met welk systeem de data werd vercijferd.** 
 
 We zagen reeds dat *Security through obscurity* een dubbel snijdend zwaard binnen de security wereld is. Enerzijds is het niet aangeraden om met veel tamtam aan te kondigen hoe jij je data beveiligt. Anderzijds geeft het je mogelijk een vals gevoel van veiligheid (*snake's oil*) daar het geheimhouden van je algoritme en systemen geen garantie is dat deze ook effectief veilig zijn. In de 21e eeuw zijn de meest gebruikte encryptie-algoritmes publiek gekende algoritmes die door duizenden experts aan de tand zijn gevoeld. De kans dat er dus (bewuste) fouten in dergelijke standaarden zitten, is véél kleiner dan wanneer je met een zogenaamd proprietary systeem werkt waarvan de werking angstvallig geheim wordt gehouden.
 
@@ -155,7 +155,7 @@ $MaximaleTijd = \frac{AantalMogelijkeTekens^{SleutelLengte}}{pogingen/seconde}$
 
 #### Een bruteforce getalvoorbeeld
 
-Een sleutel (of paswoord) bestaat uit 8 tekens, enkel kleine letters van a tot en met z zijn toegestaan. De berekeningen worden op een GeForce GTX 1080 gedaan die ongeveer 30 miljoen pogingen per seconde kan doen. We krijgen dan:
+Een sleutel (of wachtwoord) bestaat uit 8 tekens, enkel kleine letters van a tot en met z zijn toegestaan. De berekeningen worden op een GeForce GTX 1080 gedaan die ongeveer 30 miljoen pogingen per seconde kan doen. We krijgen dan:
 
 $MaximaleTijd = \frac{26^{8}}{30000000}$
 
@@ -193,14 +193,14 @@ Wanneer de cryptanalist vermoedt dat de te zoeken sleutel iets anders is dan vol
 
 Tools zoals John The Ripper kan je *voeden* met een dergelijk woordenboek en dan vragen om sleutels te testen die gebaseerd zijn op zaken uit dat woordenboek, inclusief bijvoorbeeld door er tekens voor en na te zetten. Als in het woordenboek het woord *god* staat, dan kan Jaohn The Ripper bijvoorbeeld ook alle sleutels testen zoals *god1*, *god2*, etc. 
 
-Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest gebruikte paswoorden die cryptanalisten (en dus ook de digitale stropers) kunnen gebruiken om de sleutel sneller te vinden. Het is aangeraden om zeker geen paswoorden (of permutaties ervan) te gebruiken die in volgende  lijsten voorkomen: [https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials)
+Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest gebruikte wachtwoorden die cryptanalisten (en dus ook de digitale stropers) kunnen gebruiken om de sleutel sneller te vinden. Het is aangeraden om zeker geen wachtwoorden (of permutaties ervan) te gebruiken die in volgende  lijsten voorkomen: [https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials)
 
 :::tip
-Dit waren in 2020 de 10 meest gebruikte paswoorden:
+Dit waren in 2020 de 10 meest gebruikte wachtwoorden:
 
 123456, password, 12345678, qwerty, 123456789, 12345, 1234, 111111, 1234567, dragon
 
-Dit soort lijsten worden opgesteld door gekende datalekken te analyseren op welke paswoorden er in voorkomen.
+Dit soort lijsten worden opgesteld door gekende datalekken te analyseren op welke wachtwoorden er in voorkomen.
 :::
 
 ### Soorten cryptanalytische aanvallen

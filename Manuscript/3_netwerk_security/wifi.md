@@ -56,7 +56,7 @@ Dit resulteerde in onder andere volgende scenario's:
 ![Een fake access point opzetten met dank aan de onbeveiligde managementframes.](wifi/mitmwifi.png){ width=70% }
 
 ::: tip
-De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd succes had tot enkele jaren geleden (vanuit het standpunt van de hacker) was een fake Telenet Wi-Free hotspot op te zetten. Hierbij werd eerst de inlogpagina van Telenet Wi-Free door de hacker gecloned en via een lokale webserver aangeboden aan de gebruikers die op het fake access point met de naam "Telenet Wi-Free" verbonden. Vervolgens kon de stroper nu van iedere gebruiker de gebruikersnaam en het paswoord stelen telkens deze die informatie op de fake loginpagina invoerde.
+De linux tool *AirSnarf* laat toe om fake hotspots (publiek wifi netwerk) op te zetten. Hierbij maakt het gebruikt van de onbeveiligde management frames. Een scenario in België dat gegarandeerd succes had tot enkele jaren geleden (vanuit het standpunt van de hacker) was een fake Telenet Wi-Free hotspot op te zetten. Hierbij werd eerst de inlogpagina van Telenet Wi-Free door de hacker gecloned en via een lokale webserver aangeboden aan de gebruikers die op het fake access point met de naam "Telenet Wi-Free" verbonden. Vervolgens kon de stroper nu van iedere gebruiker de gebruikersnaam en het wachtwoord stelen telkens deze die informatie op de fake loginpagina invoerde.
 
 Nu dat Telenet Wi-Free is overgeschakeld op WPA-Enterprise (zie verder) kan deze aanval gelukkig niet meer zo eenvoudig uitgevoerd worden.
 :::
@@ -186,7 +186,7 @@ Origineel ondersteunde WEP enkel 40-bit WEP sleutels. Ondertussen is dat opgetro
 Omdat ook de ontvanger dezelfde keystream moet kunnen genereren tijdens decryptie is het natuurlijk belangrijk dat de IV ook bij de ontvanger gekend is. De enige manier om dit op te lossen is door de IV mee in de header van het frame te plaatsen en door te sturen. Uiteraard moet deze IV als plaintext door het leven gaan. 
 
 ::: tip
-Dit concept van een sleutel verlengen met een arbitrair getal heet *salting* en zullen we in het hoofdstuk omtrent paswoorden en authenticatie verderop in de cursus nog zien terugkomen.
+Dit concept van een sleutel verlengen met een arbitrair getal heet *salting* en zullen we in het hoofdstuk omtrent wachtwoorden en authenticatie verderop in de cursus nog zien terugkomen.
 :::
 
 Finaal krijgen we dus de volgende werking, encryptie en decryptie, als volgt:
@@ -326,7 +326,7 @@ Beide problemen kunnen we als aanvaller echter te niet doen door een actieve rol
 
 #### Keystreams groeien
 
-Wanneer een aanvaller met voorgaande IV collisions keystreams kan capteren kan hij in principe data op het netwerk beginnen plaatsen: **aangezien het netwerk ervan uitgaat dat het gebruiken van geldige keystreams, wil zeggen dat de gebruiker geauthenticeerd is omdat hij de bijhorende WEP-sleutel heeft.** De aanvaller kan nu plaintext XOR'n met deze gevonden keystream en op het netwerk zetten. Echter, hij is beperkt tot pakketten die maximum even zijn als de keystream die gevangen werd. Het zou véél nuttiger zijn als de aanvaller als het ware een bibliotheekje heeft van geldige keystreams van allerlei lengtes.
+Wanneer een aanvaller met voorgaande IV collisions keystreams kan capteren kan hij in principe data op het netwerk beginnen plaatsen: **aangezien het netwerk ervan uitgaat dat het gebruiken van geldige keystreams, wil zeggen dat de gebruiker geauthenticeerd is omdat hij de bijhorende WEP-sleutel heeft.** De aanvaller kan nu plaintext XOR'n met deze gevonden keystream en op het netwerk zetten. Echter, hij is beperkt tot pakketten die maximum even groot zijn als de keystream die gevangen werd. Het zou véél nuttiger zijn als de aanvaller als het ware een bibliotheekje heeft van geldige keystreams van allerlei lengtes.
 
 Omdat er geen replay protection aanwezig is, kan de aanvaller eenvoudig z'n gecapteerde keystreams doen *groeien* en zo byte per byte een langere keystream genereren. Dit gaat als volgt te werk:
 
@@ -459,7 +459,7 @@ EAP oftewel *Extensible Authentication Protocol* is, zoals de naam doet vermoede
 De meest gebruikte EAP-methoden zijn:
 
 * **EAP-TLS**: gebruikt een TLS tunnel om op een beveiligde manier te communiceren (we zagen TLS ook reeds aan het einde van crypto waar het gebruikt werd om HTTPS-trafiek te beveiligen). Hierbij gebeurt een certificaat-gebaseerde authenticatie.
-* **EAP-TTLS** (*Tunneled TLS*): omdat niet alle eindgebruikers zich kunnen authenticeren aan de hand van een certificaat, voorziet TTLS authenticatie met behulp van een username/paswoord login. Hierbij wordt wel nog steeds een TLS tunnel gebruikt voor veilige communicatie, maar de gebruiker moet geen eigen certificaat bezitten. Ter info: EAP-TTLS is quasi hetzelfde als *Protected EAP* (PEAP), een ander EAP-protocol dat je soms zal zien passeren.
+* **EAP-TTLS** (*Tunneled TLS*): omdat niet alle eindgebruikers zich kunnen authenticeren aan de hand van een certificaat, voorziet TTLS authenticatie met behulp van een username/wachtwoord login. Hierbij wordt wel nog steeds een TLS tunnel gebruikt voor veilige communicatie, maar de gebruiker moet geen eigen certificaat bezitten. Ter info: EAP-TTLS is quasi hetzelfde als *Protected EAP* (PEAP), een ander EAP-protocol dat je soms zal zien passeren.
 
 ![Het authenticatie-proces op een wifi-netwerk met 802.1X (Enterprise-mode).](wifi/8021X2.png){ width=75% }
 
@@ -582,7 +582,7 @@ Een lek zoals krackattack vereist natuurlijk een snelle reactie van de vendors. 
 :::
 
 ::: tip
-De personal mode van WPA1 en WPA2 zal altijd gevoelig zijn voor dictionary aanvallen. Aangezien de gedeelde sleutel (de pre-shared key) een gedeeld geheim is, kunnen andere gebruikers proberen dit te achterhalen. Het is dus belangrijk dat, indien je in personal modus WPA hanteert, je een sleutel kiest die voldoet aan de typische vereisten van een goed paswoord. 
+De personal mode van WPA1 en WPA2 zal altijd gevoelig zijn voor dictionary aanvallen. Aangezien de gedeelde sleutel (de pre-shared key) een gedeeld geheim is, kunnen andere gebruikers proberen dit te achterhalen. Het is dus belangrijk dat, indien je in personal modus WPA hanteert, je een sleutel kiest die voldoet aan de typische vereisten van een goed wachtwoord. 
 :::
 
 ##  WPA 3 ("Wifi 6")
