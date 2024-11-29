@@ -497,7 +497,7 @@ Om bewuste aanpassingen aan de payload van een frame te detecteren gebruikt WPA1
 In de literatuur wordt meestal gesproken over "Message authentication codes" of MAC's. Echter, in de IEEE 802 standaarden wordt MAC reeds gebruikt voor *media access control* en werd er dus gekozen voor MIC.
 :::
 
-"Michael" berekent de MIC van een payload maar gebruikt hierbij ook de authenticatie-sleutel, het adres van de verzender én ontvanger. Hierdoor wordt het voor een aanvaller veel moeilijker om een dergelijke MIC na te bootsen, laat staan te *replayen* (vergelijk dit met de originele CRC-32 die enkel de payload gebruikt om de checksum te berekenen).
+"Michael" berekent de MIC van een payload maar gebruikt hierbij ook de Michael sleutel (een afgeleide van de authenticatie-sleutel), het adres van de verzender én ontvanger. Hierdoor wordt het voor een aanvaller veel moeilijker om een dergelijke MIC na te bootsen, laat staan te *replayen* (vergelijk dit met de originele CRC-32 die enkel de payload gebruikt om de checksum te berekenen).
 
 ![Het aanmaken van een MIC met Michael.](wifi/michael.png){ width=60% }
 
@@ -511,7 +511,7 @@ Wanneer TKIP twee foute MICs na elkaar detecteert, gaat het er van uit dat er ee
 
 Om te voorkomen dat fabrikanten weer naïeve oplossingen voor de IV selectie implementeerden, legde WPA1 nu de regels op. Een ontvangen pakket zal pas aanvaard worden indien de IV van het pakket op de IV van het vorige pakket volgt. Uiteraard zit er een kleine marge om hertransmissies toe te staan, maar een pakket met bijvoorbeeld IV 1110 zal nooit aanvaard worden als het AP vlak ervoor een pakket met IV 3789 heeft aangekregen.
 
-Daarnaast wordt ook de IV lengte gevoelig vergroot. TKIP hanteert namelijk een 48-bit IV, genaamd de *TKIP sequence counter* (TSC). Deze wordt opgebouwd door de eerste en tweede byte van de originele WEP IV te combineren met 4 bytes van een speciaal gegenereerde *extended IV*.  Het gevolg laat zich raden: het duurt veel langer voor er IV collisions optreden.
+Daarnaast wordt ook de IV lengte gevoelig vergroot. TKIP hanteert namelijk een 48-bit IV, genaamd de *TKIP sequence counter* (TSC). Voor de WEP-encryptie worden de drie minst significante bytes van de TSC gebruikt als IV, waardoor deze compatibel blijft met de oorspronkelijke WEP-specificatie. Door de resterende bits van de TSC te benutten voor replay-bescherming en sleutelmanagement, vermindert TKIP significant het risico op IV-collisions, een grote zwakte van WEP.
 
 #### Key mixing en re-keying
 
@@ -519,18 +519,30 @@ Om weak keys te voorkomen gebruikt een TKIP een *key mixing function* dat zal re
 
 Het mixen van de sleutel gebeurt in twee fases, waarbij iedere fase een specifieke zwakte van WEP indijkt:
 
-* Fase 1: zorgt ervoor dat alle clients een eigen sleutel hebben doordat het verzender adres (*transmitter address* (TA). Bronadres in de afbeelding) wordt toegevoegd aan de basissleutel (base key in de de afbeelding).
+* Fase 1: zorgt ervoor dat alle clients een eigen sleutel hebben doordat het verzender adres (transmitter address (TA)). wordt toegevoegd aan de temporal key.
 * Fase 2: zorgt voor een 'per-pakket' sleutel waarbij kennis van de IV niet meer door de aanvallers kan misbruikt worden.
 
 ![Het mengen van de verschillende sleutels naar een sleutel die ieder pakketje verandert.](wifi/mixing.png)
 
 **Fase 1 mix**
 
-Het MAC adres van de client wordt ge-XOR'd met de basissleutel (zijnde ofwel de PSK sleutel in Personal modus of de *temporal* sleutel verkregen van 802.1X tijdens de authenticatie). Dit resultaat wordt door een S-box (substitutie) gestuurd, resulterend in een tussentijdse (*intermediate*) sleutel. 
+Het **transmitter adres** (het MAC-adres van het apparaat dat het pakket uitzendt) wordt gecombineerd met de **Temporal Key**. Deze sleutel is ofwel afgeleid van een PSK-sleutel in de Personal-modus, ofwel afgeleid van een PMK-sleutel die tijdens de authenticatie via 802.1X is verkregen. Daarnaast worden de vier meest significante bytes van de TKIP Sequence Counter (TSC) toegevoegd. Het combineren van deze inputs gebeurt via een iteratief proces dat hashing-achtige technieken toepast, waaronder XOR-operaties, modulaire optellingen en bitverschuivingen. Het resultaat is een intermediate sleutel die dient als input voor de volgende fase van het sleutelbeheerproces.
+
+::: tip
+Bij Michael spraken we over een  destion adres (bron adres) in de afbeelding. Terwijl we nu over een transmitter adres spreken. Dit is geen fout, maar een bewuste keuze:
+
+* TA (Transmitter Address): Verwijst naar het apparaat dat het pakket op dat moment uitzendt.
+* SA (Source Address): Verwijst naar het apparaat dat het pakket oorspronkelijk heeft gemaakt.
+
+
+:::
+
 
 **Fase 2 mixing**
 
-In deze fase wordt de TSC (de pakket-teller, uitgelegd in de "IV selectie verbetering" sectie) geëncrypteerd samen met de tussentijdse sleutel. De encryptie gebeurt door middel van een kleine Feistel-structuur (zie hoofdstuk crypto) en resulteert in een 128-bit per-pakket sleutel. Vervolgens wordt deze sleutel, samen met delen van de TSC als "WEP-sleutel" en IV aan het originele WEP-gedeelte aangeboden. Hierbij wordt ervoor gezorgd dat er geen RC4 weak keys meer mogelijk zijn omdat die IV worden weggefilterd voor ze aan de hardware worden aangeboden.
+De intermediate sleutel, verkregen uit de Phase 1 Key Mixing, wordt gecombineerd met de twee minst significante bytes van de TSC en de Temporal Key. Dit proces is ontworpen om de tijdelijke sleutel verder te versterken en een unieke encryptiesleutel te genereren voor elk datapakket.
+De combinatie van deze inputs wordt uitgevoerd via een iteratief proces dat gebruikmaakt van effectieve cryptografische technieken, zoals XOR-operaties, modulaire optellingen en bitverschuivingen. Het resultaat van deze fase is de definitieve RC4-sleutel, ook wel de WEP-seed genoemd. Deze sleutel wordt samen met de drie minst significante bytes van de TSC (die de verbeterde Initialization Vector vormen) ingevoerd in het RC4-algoritme om de keystream te genereren die nodig is voor encryptie in WEP.
+
 
 ### Alle blokjes samen
 
@@ -538,7 +550,22 @@ Finaal kunnen we vervolgens WPA1 visualiseren, waarbij duidelijk is dat we voora
 
 ![WPA1 in volle glorie.](wifi/wpa1.png)
 
-In 2009 verschenen er al enkele exploits die WPA1-Personal misbruikten waardoor aanvallers de WPA passphrase (de PSK) konden achterhalen door de handshake aan de start van een sessie te capteren.
+
+
+::: note
+
+Het fragmenteren met de TSC is noodzakelijk vanwege de volgende redenen:
+
+*  Wanneer een groot pakket wordt opgesplitst in meerdere fragmenten, moet elk fragment uniek zijn.
+*  De TSC fungeert als een unieke identificatie voor elk fragment omdat het incrementeert bij elke transmissie.
+*  Dit voorkomt verwarring of overlap tussen pakketten en maakt het mogelijk voor de ontvanger om de fragmenten correct terug samen te stellen.
+:::
+
+
+
+### Are we there yet?!
+
+In 2009 verschenen er al enkele exploits die WPA1-Personal misbruikten waardoor aanvallers de WPA passphrase (de PSK) konden achterhalen door de handshake aan de start van een sessie te capteren. Deze aanvallen waren echter niet zo efficiënt als de WEP-aanvallen en vereisten een aanzienlijke hoeveelheid data om de PSK te achterhalen. Het was echter duidelijk dat WPA1-Personal niet de ultieme oplossing was voor het WEP-probleem.
 
 ::: tip
 Bekijk coWPAtty en Aircrack om WPA1-Personal te *hacken*.

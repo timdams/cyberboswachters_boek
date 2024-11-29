@@ -1,8 +1,10 @@
 
 ## Changelog
 
-**Dit is versie 0.7.3** (27/11/23)
+**Dit is versie 0.8.0** (29/11/23)
 
+* 0.8.0
+  * Flex van Ernie! WPA1 verbeterd.
 * 0.7.3
   * Remarks Ernie de Machtige verwerkt (we spreken nu enkel nog over wachtwoorden! Boeh, weg met de leenwoorden!)
 * 0.7.2 
