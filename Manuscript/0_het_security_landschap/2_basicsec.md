@@ -136,12 +136,6 @@ Alhoewel voorgaande groepen van aanvallers allemaal erg specifieke redenen hebbe
 5. **Sporen wissen**: hoe langer de stroper uit het vizier van de boswachters kan blijven, hoe effectiever hij z'n doelen kan behalen. Een behendig stroper zal er dan ook voor zorgen dat zijn sporen ondetecteerbaar blijven door het aanpassen of wissen van logs, het verwijderen van backdoors, etc. 
 
 
-::: tip
-Om de kracht van de tools die stropers voorhanden hebben aan den lijve te ontdekken, is het aangeraden om Kali OS te installeren. Deze Linux-distributie (die je ook virtueel kunt draaien) zit tjokvol pentest-tools die zowel stropers als boswachters constant gebruiken. Dit OS laat je toe om alle stappen van de aanvaller te simuleren. 
-
-Leer zeker ook werken met Metasploit, dat ook in Kali zit. Het Metasploit project is een verzameling erg krachtige pentest tools, inclusief de nieuwste snufjes om bijvoorbeeld malware in een pdf te embedden, etc. 
-:::
-
 ::: note
 Wanneer een netwerk wordt gepentest (legaal) werkt men vaak met twee teams die tegen elkaar strijden. Het *red team* speelt de rol van de digitale stropers, terwijl het *blue team* als boswachters zal proberen de aanvallen te verijdelen.
 :::
@@ -215,24 +209,6 @@ Het vijfde fundamentele principe krijgt een eigen kadertje omdat deze voor discu
 Soms zal je digitale stropers horen spreken over "Ik heb dat systeem gepwnd", uitgesproken als *ge-powned*. De term "to pwn" is *hacker-slang* voor "to own" om aan te geven dat je in een systeem bent binnen geraakt en nu controle over het systeem hebt. Volgens de [urbandictionary.com](https://www.urbandictionary.com/define.php?term=pwnd) is de enige reden dat de *o* een *p* werd het gevolg van een typfout, daar beide letters vlak naast elkaar staan op een toetsenbord.
 :::
 
-### Je verdediging ontwerpen
-
-Er zijn tal van boeken en papers geschreven over hoe je je vervolgens moet verdedigen. De voorgaande 4 + 1 principes zijn een start, maar nog iets te algemeen. Omdat we niet alle design principes kunnen beschrijven bespreken we hier een *gouwe ouwe*: de **Saltzer en Schroeder's design principes** naar twee Amerikaanse computerwetenschappers die in 1975 dit beschreven in een artikel getiteld  *The Protection of Information in Computer Systems*. Het artikel wordt ook wel eens het "meest geciteerde, maar minst gelezen artikel in het domein" genoemd.  
-
-De principes houden nog steeds stand en zijn de volgende ([droog overgenomen van Wikipedia](https://en.wikipedia.org/wiki/Saltzer_and_Schroeder%27s_design_principles)...want ook wij hebben het originele artikel niet gelezen):
-
-* **Economy of mechanism**: Keep the design as simple and small as possible.
-* **Fail-safe defaults**: Base access decisions on permission rather than exclusion.
-* **Complete mediation**: Every access to every object must be checked for authority.
-* **Open design**: The design should not be secret.
-* **Separation of privilege**: Where feasible, a protection mechanism that requires two keys to unlock it is more robust and flexible than one that allows access to the presenter of only a single key.
-* **Least privilege**: Every program and every user of the system should operate using the least set of privileges necessary to complete the job.
-* **Least common mechanism**: Minimize the amount of mechanism common to more than one user and depended on by all users.
-* **Psychological acceptability**: It is essential that the human interface be designed for ease of use, so that users routinely and automatically apply the protection mechanisms correctly.
-* **Work factor**: Compare the cost of circumventing the mechanism with the resources of a potential attacker.
-* **Compromise recording**: It is sometimes suggested that mechanisms that reliably record that a compromise of information has occurred can be used in place of more elaborate mechanisms that completely prevent loss.
-
-
 ## Social Engineering
 
 In het eerste hoofdstuk kwam de term "Social engineering" al enkele keren voor. We zagen ook bij de McCumber kubus dat we niet enkel op technologie mogen rekenen wanneer we onze verdediging opzetten, maar dat we ook een heel belangrijke schakel moeten trainen en opvolgen: de mensen. Mensen zijn meestal de zwakste schakel in ons securitymodel en dus daarom ook een interessante "aanvalsvector" voor digitale stropers. 
@@ -254,9 +230,7 @@ Uiteraard hoeven social engineers zich niet te beperken tot *fysiek* contact. Ze
 De term *phishing* is afgeleid van *fishing* oftewel vissen/hengelen naar iets. Vroeger had je het concept *phreaking* dat werd toegepast door hackers om op telefooncentrales in te breken door de 2600 hertz fluittonen die telefoons gebruiken te imiteren.
 :::
 
-### SET
 
-Een veel gebruikte tool die social engineers hanteren is de **Social Engineering Toolkit** (beschikbaar via Kali en [github](https://github.com/trustedsec/social-engineer-toolkit)) en zal je helpen om (spear) phishing attacks op te zetten, fake websites (door bestaande te clonen) te hosten, malware in afbeeldingen te injecteren, etc. Het kan op de koop toe geïntegreerd samenwerken met Metasploit waardoor stropers erg complexe aanvallen kunnen opzetten.
 
 ### OSINT
 
@@ -277,9 +251,7 @@ Het **OSINT Framework** (via [osintframework.com](https://osintframework.com/)) 
 
 Software-gebaseerde aanvallen zijn de aanvallen die je in het nieuws geregeld hoort. In deze groep vinden we de virussen, wormen, backdoors, trojans en alle andere **malware** terug. De term malware dekt de lading erg goed: *"any kind of malicious software designed to damage or harm a computer system."* Het doel van malware is altijd geld, macht (denk aan blackmailen) of pestgedrag.  De verschillende malware-types hebben soms overlappende eigenschappen en het is dus niet altijd mogelijk om een specifiek stuk malware onder één categorie te plaatsen. Wat ze allemaal gemeen hebben is dat ze bepaalde gekende of ongekende (*zerodays*) fouten of bugs (*kwetsbaarheden* of *vulnerabilities*) misbruiken in software om zo toegang tot een systeem, data of stuk hardware te verkrijgen. 
 
-::: tip
-**CVE oftewel "Common Vulnerabilities and Exposures"** is een publiek beschikbare lijst waarin alle gekende security kwetsbaarheden opgelijst staan. Het laat cyberboswachters toe om duidelijk te communiceren over problemen en oplossingen. Volgens een [rapport](https://www.cisa.gov/uscert/ncas/alerts/aa20-133a) van de Amerikaanse "Cybersecurity & Infrastructure Security Agency" (CISA) was de meest misbruikte CVE tussen 2016 en 2019 een kwetsbaarheid (CVE-2017-11882) in Microsoft Office 2013 die samengevat: *"allow an attacker to run arbitrary code in the context of the current user by failing to properly handle objects in memory, aka 'Microsoft Office Memory Corruption Vulnerability'."*
-:::
+
 
 We overlopen nu de belangrijkste vormen van malware.
 

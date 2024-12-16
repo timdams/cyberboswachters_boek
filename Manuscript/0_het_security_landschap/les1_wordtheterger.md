@@ -54,7 +54,7 @@ Wens je meer te weten over Stuxnet? Dan raden we je de uitstekende, in 2016 vers
 
 ### 2013: Onze privacy te grabbel gegooid
 
-Surfen op het Internet was altijd een risico. We wisten in 2013 al lang dat onze datapakketjes over tientallen apparaten doorheen het Internet worden getransporteerd om zo tot bij hun doel te geraken. Cookies volgden al geregeld onze stappen en ook de aanbevelingen van Amazon waren soms akelig accuraat. Dat was de prijs die we moesten betalen om de ontelbare bronnen van het Internet te kunnen gebruiken. En als je echt wat meer privacy nodig had, dan schakelde je de "incognito" modus in van je browser. Maar ook dan was je je ervan bewust dat zelfs je ISP (*Internet service provider*) en je doel konden meekijken. Hoe erg kan dat zijn?
+Surfen op het Internet was altijd een risico. We wisten in 2013 al lang dat onze datapakketjes over tientallen apparaten doorheen het Internet worden getransporteerd om zo tot bij hun doel te geraken. Cookies volgden al geregeld onze stappen en ook de aanbevelingen van Amazon waren soms akelig accuraat. Dat was de prijs die we moesten betalen om de ontelbare bronnen van het Internet te kunnen gebruiken. En als je echt wat meer privacy nodig had, dan schakelde je de "incognito" modus in van je browser. Maar ook dan was je je ervan bewust dat zelfs je ISP (*Internet service provider*, zoals Telenet of Proximus) en je doel konden meekijken. Hoe erg kan dat zijn?
 
 Die gedachte leefde bij veel mensen tot dan: het Internet was een nuttige tool en je wist dat er kon meegekeken worden door *derden* als ze dat echt wilden. Maar zou dit nu echt consequent en op grote schaal gebeuren? Neen toch?!
 
@@ -124,7 +124,7 @@ Enkele jaren later, in februari 2021, zou het trouwens weer bijna prijs zijn. Ee
 
 ### 2015: Scheidingen en zelfmoord
 
-In 2015 wordt de schaal van cyberaanvallen steeds groter. De hoeveelheden informatie die hackers van bedrijven kunnen bemachtigen kunnen al lang niet meer op één A4'tje afgedrukt worden. Wanneer hackers toegang krijgen tot de privé-servers van hun doelwit kunnen ze vlotjes ettelijke gigabytes, tot zelfs terabytes, aan privé informatie stelen. Tegenwoordig hebben we in Europa de GDPR wetgeving die probeert bedrijven duidelijk te maken dat zij verantwoordelijk zijn om onze data op een veilige manier te bewaren (zie appendix) en hen ook te straffen indien ze dit niet doen. In 2015 was dat veel minder. De datalekken in die tijd spraken boekdelen: van zodra cybercriminelen toegang hadden tot de privéservers konden ze de data zonder problemen lezen. Paswoorden, kredietkaartgegeven, rijksregisternummers, alles stond vaak onbeveiligd (*ongeëncrypteerd*) op de systemen.
+In 2015 wordt de schaal van cyberaanvallen steeds groter. De hoeveelheden informatie die hackers van bedrijven kunnen bemachtigen kunnen al lang niet meer op één A4'tje afgedrukt worden. Wanneer hackers toegang krijgen tot de privé-servers van hun doelwit kunnen ze vlotjes ettelijke gigabytes, tot zelfs terabytes, aan privé informatie stelen. Tegenwoordig hebben we in Europa de GDPR wetgeving die probeert bedrijven duidelijk te maken dat zij verantwoordelijk zijn om onze data op een veilige manier te bewaren en hen ook te straffen indien ze dit niet doen. In 2015 was dat veel minder. De datalekken in die tijd spraken boekdelen: van zodra cybercriminelen toegang hadden tot de privéservers konden ze de data zonder problemen lezen. Paswoorden, kredietkaartgegeven, rijksregisternummers, alles stond vaak onbeveiligd (*ongeëncrypteerd*) op de systemen.
 
 De Ashley Madison website was Tinder voor mensen die een relatie wilden naast hun "officiële relatie". Kortom, de site hielp mensen aan een affaire. Hun leuze, *"Life is short. Have an affair"*, wond er geen doekjes rond. En met hun meer dan 20 miljoen "klanten" was het duidelijk dat ze een lucratief idee hadden. Dat ze tegenwind zouden krijgen was te verwachten...
 
@@ -186,22 +186,11 @@ Het gevolg van die *datahoarding* is echter ook dat datalekken ook steeds nefast
 Twee boeken, die lezen als rasechte thrillers, gaan dieper in op de zonet beschreven gebeurtenissen: "Sandworm -  A New Era of Cyberwar and the Hunt for the Kremlin's Most Dangerous Hackers" van Andy Greenberg en "How they tell me the world ends" van Nicole Perlroth..
 ::: 
 
-### 2021: Oude bibliotheken, nieuwe problemen
-
-De opmerkelijkste gebeurtenis in 2021 was de lek in de **Log4J** Java-bibliotheek. Deze ogenschijnlijk onschuldige bibliotheek wordt al bijna twee decennia  in miljoenen Java-applicaties én servers (waaronder de Apache webservers!) gebruikt om loginformatie weg te schrijven. Tot in November 2021 onderzoekers een kritische bug ontdekten waardoor al deze servers en applicaties plots erg kwetsbaar werden. Het voorval toonde nog maar eens aan hoe afhankelijk we zijn geworden van onze code én netwerkinfrastructuur die vaak al jaren oud is en zo goed als zeker nog ongekende bugs bevatten die misbruikt kunnen worden. In 2012 zagen we al eens wat de gevolgen kunnen zijn van "een kleine bug" in een veel gebruikte bibliotheek. OpenSSL werd toen al door ontelbare websites en routers gebruikt om een beveiligde TLS tunnel (zie hoofdstuk 3) op te zetten wanneer HTTPS werd gebruikt. De bug resulteerde in de **Heartbleed**-lek die aanvallers konden gebruiken om data van servers te stelen die de OpenSSL-bibliotheek gebruikten.
-
-::: note
-De Log4j-episode heeft veel bedrijven doen inzien dat ze kritischer moeten nadenken over hoe ze omgaan met het gebruik van open-source bibliotheken. De updates van dergelijke bibliotheken worden vaak zonder nadenken gedownload en geïntegreerd in de eigen software. Veel bedrijven beginnen daarom nu *policies* op te stellen omtrent het gebruik van publiekelijk beschikbare stukken software.
-:::
-
-::: tip
-Om de kracht én het gevaar van open-source bibliotheken te bevatten, lees zeker eens [volgende artikel](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) waarin de maker van een populaire NPM bibliotheek (*colors*) het beu was dat grote bedrijven al jaren zijn bibliotheek(jes) gebruikten zonder hem er ooit voor te bedanken of betalen (merk op dat zij dit niet moesten doen: de bibliotheken waren als open-source met de juiste licentie verspreid). Van de één op de andere dag bracht de maker een update uit die de bibliotheken "willekeurige output" liet genereren in de host-applicatie. Wetende dat zijn bibliotheek wekelijks 20 miljoen keer gedownload wordt, kan je wel inbeelden dat aardig wat ontwikkelaars, groot en klein, plots met de handen in het haar zaten.
-:::
 
 
 
 
-## En de toekomst? 
+## 2022: Oorlog en AI 
 
 Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren. Zoals gezegd gaan bedrijven uit van *when* in plaats van *if* als het gaat over de vraag of ze al dan niet ooit gehackt zullen worden. Daarnaast zien we dat hoogtechnologische producten meer en meer ingeburgerd geraken in het cybercrime-milieu. Deep fakes video van bekenden zijn nu nog "grappig", maar de realistische beelden (afbeeldingen, video én nu zelfs ook spraak) die ze kunnen produceren zijn al even niet meer te onderscheiden van het echte en zullen dus meer en meer kunnen gebruikt worden voor sextortion en soortgelijke schandalen. Dit soort trends zullen nog jaren *fake news* hoogtij laten vieren waardoor ook toekomstige verkiezingen interessante doelen blijven voor andere mogendheden om hun stempel te drukken op geopolitieke tegenstanders.  
 
@@ -229,7 +218,4 @@ Aan de andere kant heeft de wapenwedloop er wel voor gezorgd dat onze infrastruc
 
 Maar laten we deze cyberstropers geen vrij spel geven! Laten we leren van hun technieken om zo zelf onze systemen en personeel te *hardenen* en te beschermen tegen wat niet anders dan het "wilde westen van het Internet" (dixit komiek Steven Wright) kan genoemd worden.
 
-::: tip
-In de appendix achteraan dit boek vind je tal van boeiende en nuttige bronnen om op de hoogte te blijven over het reilen en zeilen in de schimmige wereld van de defensieve én offensieve cybersecurity wereld.
-:::
 

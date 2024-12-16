@@ -1,6 +1,8 @@
 # Introductie
 
-Dit handboek wordt gebruikt als basis-cursus binnen de opleidingen elektronica-ict en toegepaste informatica van de AP Hogeschool. Het heeft als doel een breed overzicht te geven van de *wereld van de cybersecurity*. Het doel is niet alomvattend te zijn, maar vooral om mensen zin te geven om meer te weten te komen over deze belangrijke én boeiende wereld. Dit boek gaat ervan uit dat de lezer minimale voorkennis heeft inzake ICT, zo wordt er verwacht dat een basiskenis netwerk-technologie aanwezig is (denk aan termen zoals IP-adressering, routering en firewalls).
+Dit  is de *light* versie van het handboek dat wordt gebruikt als basis-cursus binnen de opleidingen elektronica-ict en toegepaste informatica van de AP Hogeschool. Het heeft als doel een breed overzicht te geven van de *wereld van de cybersecurity*. Het doel is niet alomvattend te zijn, maar vooral om mensen zin te geven om meer te weten te komen over deze belangrijke én boeiende wereld. In tegenstelling tot de *volledige editie* gaat deze  versie er niet eat de lezer minimale voorkennis heeft inzake ICT, netwerken, etc.
+
+Merk op dat dit de prille eerste  editie van de *light* versie is. Hij is dus ook verre van compleet. Opmerkingen en feedback zijn dus zeker welkom! Interesse in het volledige handboek? Je kan [deze hier kopen](https://www.bravenewbooks.nl/site/?r=userwebsite/bookdetails&id=316461).
 
 
 ## Boswachters en stropers
