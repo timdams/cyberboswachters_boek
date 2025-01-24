@@ -1,4 +1,4 @@
-# Appendix 2: Meer weten
+# Appendix 1: Meer weten
 
 De smaak te pakken? Volgende online bronnen beveel ik aan om te volgen zodat je op de hoogte blijft van wat er allemaal gebeurt in de wereld van digitale stropers en boswachters.
 

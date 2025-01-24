@@ -13,7 +13,6 @@ pandoc ^
  0_het_security_landschap/2_basicsec.md^
  0_het_security_landschap/3_gdpr.md^
  appendix/meerweten.md^
- bronnen.md^
  --variable toc-own-page=true^
  --variable book=true^
  --top-level-division=chapter^
