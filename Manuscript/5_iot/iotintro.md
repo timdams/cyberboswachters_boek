@@ -127,8 +127,8 @@ Er ging lang een *urban legend* de ronde dat je nooit je computer aan het Intern
 
 Ik heb nog geen 100% bewijs hiervan gekregen, maar volgende artikels lijken toch te bevestigen dat het om een effectief probleem gaat:
 
-* **theregister.com/2004/08/19/infected_in20_minutes/*
-* **joeykelly.net/hacks/windows/Windows_XP---Surviving_The_First_Day.pdf
+* **theregister.com/2004/08/19/infected_in20_minutes/**
+* **joeykelly.net/hacks/windows/Windows_XP---Surviving_The_First_Day.pdf**
 
 :::
 
@@ -152,7 +152,7 @@ En zo hebben we het einde van het prille begin der cyberboswachters bereikt. Zoa
 
 *Tim Dams*
 
-*2023*
+*2025*
 
 ![](gotopolice.png)
 

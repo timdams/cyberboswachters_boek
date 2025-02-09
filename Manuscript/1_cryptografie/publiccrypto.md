@@ -207,6 +207,7 @@ Het ergste dat voor een CA kan voorvallen is dat de betrouwbaarheid van de CA in
 
 
 
+
 ### Certificaten bekijken
 
 In iedere moderne browser kan je snel bekijken hoe zo'n certificaat er juist uitziet. Als je via een HTTPS verbinding naar een website surft, dan op het slotje naast de URL in de adresbalk klikt kan je doorklikken om het certificaat te openen. Als je naar *HTTPS://www.belgium.be* surft en dit doet dan krijg je eerst wat samenvattende informatie:
@@ -233,12 +234,13 @@ Als je in Windows 10 of nieuwer een applicatie of installer probeert uit te voer
 
 Wil dat dan zeggen dat je applicaties niet kunt vertrouwen die door Smart Screen als onveilig worden aangeduid? Neen, dat niet. Je mag niet vergeten dat een certificaat geld kost en dat niet alle software-ontwikkelaars de middelen hebben om een officieel certificaat te kopen. Het loont dus altijd om extra waakzaam te zijn wanneer Smart Screen een waarschuwing geeft, maar het is dus niet zo dat de software automatisch als onveilig moet gehanteerd worden.
 
-
 ::: tip
 Je kan via de Certification Manager van Windows bekijken welke certificaten je lokaal hebt geïnstalleerd, welke worden vertrouwd, etc. Je kan de GUI-versie van deze tool opstarten door "certlm.msc" uit te voeren.
 
-![Let er altijd op welke informatie je deelt via screenshots.](crypto/certlm.png){width=40%}
+![Let er altijd op welke informatie je deelt via screenshots.](crypto/certlm.jpg){width=40%}
+
 :::
+
 
 ## HTTPS en TLS
 

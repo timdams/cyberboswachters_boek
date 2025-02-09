@@ -9,8 +9,8 @@ keywords: [cybersecurity, cryptografie, beveiliging, wifi, stuxnet, hacking]
 colorlinks: true
 titlepage-background: "assets/cover.png"
 lang: "nl"
-# geometry: paperheight=9.5in,paperwidth=6.7in,margin=1in
-# fontsize: 10pt
+geometry: paperheight=9.5in,paperwidth=6.7in,margin=0.7in
+fontsize: 10pt
 titlepage: true
 header-includes:
 - |

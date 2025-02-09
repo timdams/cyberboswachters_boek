@@ -234,3 +234,57 @@ Samengevat gaan we bij *delegation* een gebruiker verplichten in te loggen met e
 :::
 
 Uiteraard moeten we bij federatie benadrukken dat ook hier **privacy** een belangrijk aspect wordt. De vraag is dan ook in hoeverre je een bedrijf zoals Google of Facebook/Meta vertrouwt met jouw (login)data.
+
+##  WebAuthn en passkeys
+
+Een nieuwe technologie die in opmars is, is **WebAuthn**. Deze technologie laat toe om in te loggen op websites zonder dat je een wachtwoord moet ingeven. In plaats daarvan gebruik je een *authenticator* die je bij je hebt, zoals een USB-sleutel of je smartphone. Deze authenticator zal een digitale handtekening genereren die de website kan controleren.
+
+Passkeys combineren de kracht van **asymmetrische/public-key crypto en hardware authenticatie**, met als grootste pluspunt dat gebruikers geen complexe wachtwoorden meer moeten onthouden.  
+
+Zonder in de ontstaansgeschiedenis te duiken, is het toch nuttig even enkele termen in vet te zetten die je zeker zal tegenkomen als je meer over passkeys wilt leren:
+
+* **FIDO Alliance**: de organisatie die de standaarden voor WebAuthn en U2F beheert. FIDO staat voor *Fast IDentity Online*.
+* **WebAuthn** (*Web Authentication API*): een API die websites toelaat om met authenticators te communiceren.
+* **FIDO2**: een standaard die WebAuthn ondersteunt, ontwikkel door de FIDO Alliance.
+* **U2F** (*Universal 2nd Factor)*: een oudere standaard die ook door WebAuthn wordt ondersteund.
+
+::: tip
+
+Op [youtu.be/cEhc6vMFTh4](https://youtu.be/cEhc6vMFTh4) vind je een heel duidelijk overzicht van passkeys, inclusief de technische zijde ervan.
+
+:::
+
+
+### Een Passkey aanmaken: de registratie
+
+Een passkey aanmaken is een eenvoudig proces. Je hebt een authenticator nodig, zoals een USB-sleutel of je smartphone. De authenticator zal een paar sleutels genereren: een *public key* en een *private key*. De public key wordt naar de website gestuurd, terwijl de private key (het wachtwoord met andere woorden) op de authenticator blijft.
+
+Wanneer je dus als gebruiker registreert op een website of app, dan zal de passkey generatie van start gaan, als volgt:
+
+1. Bij het registreren kiest de gebruiker ervoor om een passkey te gebruiken (i.p.v. het klassieke wachtwoord).
+2. De gebruiker zal op zijn eigen toestel zichzelf nu eerst moeten identificeren. Dat kan op verschillende manieren: fingerprint scan, een PIN-code, een hardwaresleutel (denk aan bijvoorbeeld aan YubiKey), etc.
+3. Het toestel van de gebruiker genereert een sleutelpaar. De private sleutel blijft op het toestel en wordt veilig bewaard, de public sleutel wordt naar de website gestuurd.
+
+
+Stap 3 gaan we even verder uit de doeken doen: we gaan natuurlijk deze sleutel niet zomaar *over den draad* versturen. We gaan natuurlijk onze kennis van certificaten gebruiken, die ons toelaten om te bewijzen dat de publieke wel degelijk de onze. De gebruiker zal zijn publieke sleutel verpakken in een *attestation object*: de publieke sleutel, samen met een *signed challenge* (zie verder), een *credential ID* en een certificaat. Dit attestation object wordt naar de andere zijde gestuurd, die deze zal bewaren.
+
+De tegenpartij, bijvoorbeeld de website waar je wilt registreren, heeft uiteraard nog bewijs nodig dat het jouw attestation object wel kan vertrouwen. Tijdens stap 1 van de registratie zal de server daarom een challenge sturen, die de gebruiker mee in het attestation object moet plaatsen.
+
+In dit hele proces heeft de website nooit toegang tot de private sleutel van de gebruiker. De website kan enkel de public sleutel zien en gebruiken. Het concept "het wachtwoord verlaat nooit het apparaat" wordt hier dus erg letterlijk genomen.
+
+
+::: warning
+
+Doordat deze private sleutels niet meer op de website worden bewaard, wordt het gebruik van password managers nog belangrijker. De private sleutels worden immers opgeslagen op de authenticator, en als je die lange, complexe stukken data verliest, ben je al je accounts kwijt. 
+
+Een password manager kan je helpen om je accounts te beheren en je private sleutels (je passkeys, in dit geval zijn dit **synced passkeys**, een concept dat ook mee in WebAuthn is ingebouwd) veilig te bewaren én te synchroniseren naar je andere apparaten. I
+
+:::
+
+### Inloggen met een Passkey
+
+Het inloggen met een passkey is gebaseerd op wat we weten uit public key crypto: je publieke sleutel kan je aan iedereen geven, enkel de houder van de bijhorende private sleutel zal de data kunnen lezen die met deze publieke sleutel werd geëncrypteerd.
+
+De login-fase is dan ook bijna het zelfde als de registratie. Ook nu zal de gebruiker een challenge krijgen. Deze challenge zal de gebruiker nu encrypteren met z'n private sleutel. Wanneer de server deze geëncrypteerde challenge kan decrypteren met de bewaarde publieke sleutel van de gebruiker, weet deze dat de gebruiker mag toegelaten worden.
+
+![Het login proces met een passkey](auth/passkey.png)

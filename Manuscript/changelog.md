@@ -1,8 +1,11 @@
 
 ## Changelog
 
-**Dit is versie 0.8.0** (29/11/23)
+**Dit is versie 0.8.1** (9/2/25)
 
+* 0.8.1
+  * [Closed issue 44: passkeys bij chapter authentication toegevoegd, alsook verwijzing ernaar bij crypto](https://github.com/timdams/cyberboswachters_boek/issues/44).
+  * MEer nadruk op de opkomst van AI in hoofdstuk 1.
 * 0.8.0
   * Flex van Ernie! WPA1 verbeterd.
 * 0.7.3
