@@ -2,7 +2,7 @@
 
 De General Data Protection Regulation (2018), of in het Nederlands de *Algemene Verordening Gegevensbescherming* is een Europese richtlijn om de privacy van Europese burgers, eender waar in de wereld, te beschermen. Of zoals de EU zelf op haar website beschrijft: "the thoughest privacy and security law in the world" (wat ook effectief zo is: het is de enige wet momenteel die erin slaagt om wereldwijd de regels ervan af te dwingen).
 
-De wet zelf bestaat uit 99 verschillende artikels waarinde rechten, personen en verplichtingen van bedrijven die onder de verordening vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doet. GDPR gaat dus niet over de verplichtingen van de personen, wel om die van de bedrijven, namelijk ter bescherming van personen. 
+De wet zelf bestaat uit 99 verschillende artikels waarin de rechten, personen en verplichtingen van bedrijven die onder de verordening vallen, worden uitgelegd. Ieder bedrijf, eender waar in de wereld, die data bijhoudt van EU-burgers dient zich aan deze wet te houden op risico van een boete als ze dit niet doet. GDPR gaat dus niet over de verplichtingen van de personen, wel om die van de bedrijven, namelijk ter bescherming van personen. 
 
 ::: tip
 We gaan in dit hoofdstuk enkel een high-level overzicht geven van GDPR opdat we niet verzanden in de taal der rechters en advocaten, het *legalese*.
@@ -23,6 +23,20 @@ De voorganger van de GDPR was de DPD (Data Protection Directive). Dit was geen E
 :::
 
 Als derde belangrijke aspect voorziet GDPR **de plicht om niet noodzakelijke gegevens te laten wissen**. 
+
+## Hoe beschermt GDPR mij als burger?
+
+Zoals je uit voorgaande 3 aspecten al merkt staat de (Europese) burger voorop, niet het bedrijf. GDPR is er om de burger te beschermen tegen de bedrijven die data van hen verzamelen. Het stopt echter niet bij deze 3 aspecten. Volgende rechten worden door GDPR beschermd en zijn minstens even belangrijk:
+
+
+* Recht op **inzage** (*transparantie*): je hebt het recht om te weten welke data een bedrijf over jou heeft.
+* Recht op **rectificatie**: je hebt het recht om foute data te laten corrigeren.
+* Recht op **beperking** van verwerking: je hebt het recht om te eisen dat een bedrijf stopt met het verwerken van jouw data. Ook mogen bedrijven je persoonsgegevens niet oneindig lang bewaren. En moeten er duidelijke richtlijnen zijn over hoe lang ze de data mogen bewaren.
+* Recht op **verzet**: je hebt het recht om je te verzetten tegen het verwerken van je data. Uiteraard is een bedrijf niet verplicht om jou dan gebruik te laten maken van hun diensten.
+* Recht op **geautomatiseerde besluitvorming**: je hebt het recht om te weten wanneer een bedrijf beslissingen neemt op basis van geautomatiseerde processen.
+* Recht op **gegevensportabiliteit**: je hebt het recht om je data in een leesbaar formaat te ontvangen.
+* Recht op **gegevensminimalisatie**: bedrijven mogen enkel de data bewaren die ze nodig hebben voor hun dienstverlening.
+
 
 ## Wat beschermt GDPR?
 
@@ -101,4 +115,8 @@ Merk dus op dat het schenden van de GDPR wetgeving niet automatisch in een boete
 De voorbije jaren (mei 2018 tot eind 2020) werden reeds 272 miljoen euro aan boetes geïnd ten gevolge van GDPR overtredingen. De wet is zo effectief, dat ze ook ondertussen dient als inspiratie wereldwijd wanneer landen of groeperingen nieuwe privacy-wetgevingen willen construeren.
 :::
 
+## Conclusie
 
+We kunnen dus stellen dat GDPR een zeer mooi waardevol initiatief is, dat ook verder gaat dan "niet toegepaste wetten". De manier waarop Europese burgers hun data momenteel wordt beschermd is een voorbeeld voor de rest van de wereld. Het is een wet die de privacy van de burger voorop stelt en bedrijven verplicht om hiermee rekening te houden. 
+
+Het is nu vooral uitkijken of Europa een soortgelijk voorbeeld kan stellen met de Digital Services Act (DSA) en de Digital Markets Act (DMA) die momenteel in de maak zijn. Deze wetten zullen de macht van de grote techbedrijven zoals Google, Facebook en Amazon moeten inperken en de privacy van de Europese burger nog verder moeten beschermen. Ook de wereld van artificiële intelligentie zal hierdoor grondig veranderen: de AI Act die sinds augustus 2024 gefaseerd wordt ingevoerd zal de manier waarop AI wordt gebruikt in Europa grondig veranderen. Uiteraard, en dat geldt voor alle wetgevingen, is het de uitvoering en de handhaving van de wetten die het verschil zullen maken én wat de impact ervan zal zijn in de concurrentie met de rest van de wereld. 
