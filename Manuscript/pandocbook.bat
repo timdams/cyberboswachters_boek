@@ -14,6 +14,7 @@ pandoc ^
  0_het_security_landschap/3_gdpr.md^
  appendix/meerweten.md^
  appendix/darkweb.md^
+ appendix/awareness.md^
  --variable toc-own-page=true^
  --variable book=true^
  --top-level-division=chapter^
