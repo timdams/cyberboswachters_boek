@@ -24,6 +24,8 @@ Draadloze netwerken die gevonden worden hebben dan ook een schare aan problemen:
 
 ![Een rogue access point is de ideale manier om binnen te geraken voor hackers.](wifi/rogue.png){ width=70% }
 
+![Het kan iedereen overkomen...](wifi/backmaga.png){ width=70% }
+
 * **Denial-of-service op fysiek niveau**: om een gebruiker toegang tot een bedraad netwerk te ontzeggen op fysiek niveau dien je de kabel door te knippen. Bij wifi is dit nog eenvoudiger: de "kabel" bij wifi zijn de frequentiebanden in de lucht waarbinnen de apparaten mogen werken (circa 2.4 Ghz bij de oudere wifi-apparaten, nu meestal rond de 5 Ghz band). De wifi-apparaten kunnen enkel met elkaar communiceren indien zij een signaal naar elkaar over die frequentieband kunnen sturen op een moment dat niemand anders in de buurt die band gebruikt (zie note hierna). Als een malafide gebruiker die frequentieband continue vult met andere signalen, dan zullen de legale gebruikers nooit iets kunnen uitsturen. Wil je dus een wifi netwerk *DoS'n*, koop dan een signaalgenerator die op de juiste frequentieband de nodige ruist uitzendt en klaar is kees.
 
 ::: note

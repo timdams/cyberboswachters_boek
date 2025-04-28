@@ -18,9 +18,9 @@ pandoc ^
  5_iot/iotintro.md^
  0_het_security_landschap/3_gdpr.md^
  appendix/meerweten.md^
- bronnen.md^
   appendix/darkweb.md^
  appendix/awareness.md^
+  bronnen.md^
  --variable toc-own-page=true^
  --variable book=true^
  --top-level-division=chapter^

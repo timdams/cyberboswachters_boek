@@ -1,4 +1,4 @@
-# Appendix 3: Dark web
+# Appendix 2: Dark web
 
 
 Het internet is vergelijkbaar met de echte wereld: het heeft goed verlichte plekken die iedereen kan zien, maar ook verborgen achterbuurten. Het Darkweb is zo'n verborgen gedeelte van het internet. Het maakt deel uit van het zogenaamde "Deep Web", dat gedeelte van het internet dat niet via standaard zoekmachines zoals Google te vinden is. Denk hierbij aan databanken, afgeschermde websites en persoonlijke accounts die niet publiek toegankelijk zijn.
