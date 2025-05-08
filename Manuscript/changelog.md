@@ -1,8 +1,10 @@
 
 ## Changelog
 
-**Dit is versie 0.9.0** (24/4/25)
+**Dit is versie 0.9.1** (8/5/25)
 
+* 0.9.1
+  * Social engineering tekst bij Awareness hoofdstuk toegevoegd.  
 * 0.9.0
   * Darkweb hoofdstuk toegevoegd.
   * Awareness hoofdstuk toegevoegd.

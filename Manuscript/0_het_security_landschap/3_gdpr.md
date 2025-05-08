@@ -115,6 +115,10 @@ Merk dus op dat het schenden van de GDPR wetgeving niet automatisch in een boete
 De voorbije jaren (mei 2018 tot eind 2020) werden reeds 272 miljoen euro aan boetes geïnd ten gevolge van GDPR overtredingen. De wet is zo effectief, dat ze ook ondertussen dient als inspiratie wereldwijd wanneer landen of groeperingen nieuwe privacy-wetgevingen willen construeren.
 :::
 
+::: tip
+In de lente van 2025 kreeg TikTok een boete van 530 miljoen opgelegd voor het overtreden van de GDPR-wetgeving. Het bedrijf kon bijvoorbeeld niet aantonen dat de data van de Europese gebruikers adequaat beveiligd werd op de servers in China. We moeten er wel bij vertellen dat de boete gebaseerd is op de situatie voor 2023. Vermoedelijk én hopelijk heeft TikTok ondertussen zijn beveiliging op orde.
+:::
+
 ## Conclusie
 
 We kunnen dus stellen dat GDPR een zeer mooi waardevol initiatief is, dat ook verder gaat dan "niet toegepaste wetten". De manier waarop Europese burgers hun data momenteel wordt beschermd is een voorbeeld voor de rest van de wereld. Het is een wet die de privacy van de burger voorop stelt en bedrijven verplicht om hiermee rekening te houden. 
