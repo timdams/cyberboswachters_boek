@@ -144,6 +144,7 @@ Omdat het leuk is om lijstjes te maken, hebben we hier een lijstje met de meest 
 * **Quid Pro Quo**: 'Voor wat hoort wat'. De aanvaller zal een iets aanbieden (*bait*) maar dat enkel geven in ruil voor iets anders. Om bijvoorbeeld de bait te krijgen moet je eerst een vragenlijst invullen, maar in de vragenlijst staan ook vragen die je gevoelige informatie zullen ontfutselen ("Hoe heette je eerste huisdier"). Dit kan ook door bijvoorbeeld een gratis softwarepakket aan te bieden in ruil voor je e-mailadres of andere persoonlijke informatie.
 
 Het is niet altijd eenvoudig om social engineering-aanvallen te herkennen, maar er zijn een aantal signalen waar je op kunt letten. Dit zijn enkele tips om verdachte e-mails of telefoontjes te herkennen:
+
 * Controleer altijd het e-mailadres of telefoonnummer van de afzender. Dit kan je doen door het e-mailadres of telefoonnummer te vergelijken met eerdere communicatie of door het op te zoeken op de website van het bedrijf.
 * Let op verdachte links of bijlagen in e-mails. Dit kan je doen door de muisaanwijzer boven de link te houden zonder erop te klikken. Dit toont je waar de link naartoe leidt. Als de link er verdacht uitziet, klik er dan niet op.
 * Wees voorzichtig met het delen van persoonlijke informatie. Dit kan je doen door altijd te vragen waarom de informatie nodig is en hoe deze zal worden gebruikt. Als je twijfelt, deel de informatie dan niet.
