@@ -1,8 +1,10 @@
 
 ## Changelog
 
-**Dit is versie 0.9.1** (8/5/25)
+**Dit is versie 0.9.2** (19/8/25)
 
+* 0.9.2
+  * Extra details over WannayCry (hoofdstuk Wordt het erger)
 * 0.9.1
   * Social engineering tekst bij Awareness hoofdstuk toegevoegd.  
 * 0.9.0

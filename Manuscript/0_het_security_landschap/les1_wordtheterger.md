@@ -168,17 +168,38 @@ Een dubieuze (deels betalende) site, **shodan.io**,  heeft als enige doel alle I
 
 ### 2017: Ransomware wordt gemeengoed
 
-De virussen in de vorige eeuw durfden al eens je data te verwijderen. Lastig, maar erg duidelijk: je data was je kwijt, tenzij je ergens een back-up had liggen. De nieuwe virussen gingen echter een stapje verder: ze versleutelden al je data (vaak ook je back-ups als je zo dom was geweest deze op het zelfde apparaat te hebben) én vroegen vervolgens losgeld in ruil voor je data. De naam *ransomware* kon, helaas, niet beter gekozen zijn. Menig particulier betaalde ogenblikkelijk om de eenvoudige reden dat de ransomware de gebruiker nog een uitweg aanbood daar ransomware vaak werd "binnengehaald" door een gênante actie (bv illegale software downloaden, op reclame voor vage pornosites klikken, etc.). 
+De virussen in de vorige eeuw durfden al eens je data te verwijderen. Lastig, maar erg duidelijk: je data was je kwijt, tenzij je ergens een back-up had liggen. De nieuwe virussen gingen echter een stapje verder: ze versleutelden al je data (vaak ook je back-ups als je zo dom was geweest deze op het zelfde apparaat te hebben) én vroegen vervolgens losgeld in ruil voor je data. De naam *ransomware* kon, helaas, niet beter gekozen zijn. Menig particulier betaalde ogenblikkelijk om de eenvoudige reden dat de ransomware de gebruiker nog een uitweg aanbood daar ransomware vaak werd "binnengehaald" door een gênante actie (bv. illegale software downloaden, op reclame voor vage pornosites klikken, etc.). 
 
 Voor particulieren was ransomware vooralsnog irritant. Maar wat als de ransomware bedrijfskritische data begon te encrypteren? Dit is exact wat er gebeurde in 2017 met de WannaCry en Petya ransomwares. Deze malwares sloegen er in om banken, hospitalen, havenbedrijven en menig ander groot (en klein) bedrijf te besmetten. De economische schade werd geschat op bijna 4 miljard dollar vanwege het lamleggen van de productie (of in het geval van enkele ziekenhuizen: het redden van mensenlevens).
 
-De schade én de losgeldbedragen werden ook steeds groter. Zo was er het voorval met Garmin in de zomer van 2020 dat niet alleen de populaire sport-tracking diensten gedurende meerdere dagen uit de lucht haalde, maar er ook voor zorgde dat menig vliegtuig niet mocht vliegen omdat de Garmin Pilot apps niet werkten waardoor de piloten geen up-to-date aeronautische plannen voorhanden hadden. Het is nooit geweten of Garmin het losgeld (10 miljoen dollar!) wel of niet heeft betaald, vast staat wel dat ransomware tegenwoordig een, helaas, erg lucratieve handel is geworden voor cybercriminelen. 
+De schade én de losgeldbedragen werden ook steeds groter. Zo was er het voorval met Garmin in de zomer van 2020 dat niet alleen de populaire sport-tracking diensten gedurende meerdere dagen uit de lucht haalde, maar er ook voor zorgde dat menig vliegtuig niet mocht vliegen omdat de Garmin Pilot apps niet werkten waardoor de piloten geen up-to-date aeronautische plannen voorhanden hadden. Het is nooit geweten of Garmin het losgeld (10 miljoen dollar!) wel of niet heeft betaald, vast staat wel dat ransomware tegenwoordig een, helaas, erg lucratieve handel is geworden voor cybercriminelen.
 
 ::: note
 In december 2022 was Digipolis, de IT-backbone van de stad Antwerpen, het slachtoffer van een zeer impacterende ransomware aanval door hackercollectief Play (een soort spin-off van Conti, een Russische hackersgroep). Quasi alle online-diensten van de stad Antwerpen zijn meerdere dagen onklaar gemaakt, inclusief politie, brandweer, bibliotheken, zwembaden, stadsloketten, stedelijke scholen, etc. Quasi iedere burger heeft in meer of mindere mate last ondervonden van deze gigantische aanval. Het toont vooral ook weer aan hoe gevoelig ons digitale leven is en dat er altijd een keerzijde is de digitalisering.
 :::
 
-## 2020:  De macht van sociale media
+De WannaCry-ransomware maakt gebruik van een kwetsbaarheid in Windows (EternalBlue) die oorspronkelijk werd ontwikkeld als hackingtool door de NSA. In 2017 werd deze exploit gelekt door het hackerscollectief **The Shadow Brokers**. Hoewel Microsoft kort daarna een beveiligingspatch uitbracht, hadden veel organisaties deze nog niet toegepast. Zo konden criminelen WannaCry inzetten met gebruik van een NSA-wapen, met wereldwijd miljoenen dollars schade tot gevolg ... ironisch genoeg ook bij Amerikaanse bedrijven die de NSA net hoort te beschermen.
+
+::: note 
+Ondertussen weten we vrij zeker (uiteraard in de cyberwereld zal attributie nooit 100% bewezen kunnen worden) dat The Shadow Brokers Russische staatshackers waren.
+:::
+
+::: note
+
+WannaCry was de eerste **wormable ransomware**. Tot dan verspreidde ransomware zich voornamelijk via botnets of phishing mails. 
+De ransomware werkte trouwens *te goed*. Het encrypteerde vaak ook essentiële bestanden waardoor de besmette computers niet meer opstartten. Hierdoor kregen de slachtoffers niet de mogelijkheid om terug te betalen, en kunnen we dus stellen dat de tool veel minder efficiënt werkte (vanuit het standpunt van de makers) dan verhoopt. 
+
+::: 
+
+In mei 2025 verschenen gelekte interne chatlogs van de ransomwaregroep LockBit, wat ongezien inzicht gaf in hun professionele werkwijze. De groep opereert als een Ransomware-as-a-Service-bedrijf met hiërarchie, *klantenservice*-achtige onderhandelingen en strikte deadlines. Van de 208 bekeken gesprekken leidde slechts 18 tot effectieve betalingen, vaak na forse kortingen, wat aangeeft dat ook cybercriminelen winstoptimalisatie en reputatie hoog in het vaandel dragen. 
+
+Het lek toont tegelijk de kwetsbaarheid van organisaties: betalingen gebeurden omdat back-ups onbruikbaar waren, besluitvorming traag verliep of verzekeringen verkeerd werden ingezet. 
+
+![Een screenshot van één van de chats uit de lek.](intro/bitlock.png){ width=70% }
+
+
+
+### 2020:  De macht van sociale media
 
 2016 ging er een schokgolf doorheen de wereld. Tegen alle verwachtingen in won Donald J. Trump de presidentsverkiezingen na een bitsige strijd tegen Hillary Clinton. Dat social media een belangrijke rol zouden spelen dit decennium was al lang voorspeld. Facebook, Twitter, Google en konsoorten hadden miljarden gebruikers die met plezier hun privacy te grabbel  gooiden in ruil voor dagelijkse dopamine-shots dankzij *likes* en *retweets*. Met dank aan gigantische *troll farms* (organisaties die duizenden fake social media accounts aanmaken en zo mee de social media algoritmes beïnvloeden om bepaalde informatie te *nudgen* in de gewenste politieke richting) kon Trump honderdduizenden potentiële twijfelaars doen inzien dat hij het juiste antwoord was tijdens de verkiezingen. 
 

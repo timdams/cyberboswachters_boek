@@ -452,7 +452,7 @@ We gaan de volledige werking van de 802.1X standaard hier niet uit de doeken doe
 
 ![Port-based authenticatie met 802.1X.](wifi/port.png){width=80%}
 
-802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algoritme. Integendeel: het is een **framework** waar binnen andere algoritmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft- en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticatie-boodschappen tussen enerzijds het netwerkprotocol (bv Ethernet, wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
+802.1X zelf beschrijft niet hoe de authenticatie moet plaatsvinden: het is geen algoritme. Integendeel: het is een **framework** waar binnen andere algoritmen en standaarden, op maat van het bedrijf, kunnen ingeplugd worden. Hierdoor ontstaat een flexibel concept dat bedrijven (of diehard eindgebruikers) niet verplicht om een bepaalde manier van authenticatie (en bijhorende soft- en hardware) te omarmen.  802.1X zorgt voor de vertaling van de authenticatie-boodschappen tussen enerzijds het netwerkprotocol (bv. Ethernet, wifi, maar ook Token Ring, etc.) en de *methode laag*. De methode-laag bevat het te gebruiken authenticatie-protocol en dient **EAP**-compatibel zijn.
 
 ![De modulariteit van het 802.1X framework.](wifi/8021x.png){ width=50% }
 
