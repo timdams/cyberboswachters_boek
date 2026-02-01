@@ -42,60 +42,48 @@ def clean_and_prepare_dir():
     os.makedirs(SITE_DIR)
     
     # Copy assets to site_source/assets
-    # This places assets at the root of the site structure
     assets_dst = os.path.join(SITE_DIR, "assets")
     if os.path.exists(ASSETS_DIR):
         shutil.copytree(ASSETS_DIR, assets_dst)
 
-def fix_image_paths(content, file_relative_path):
+def fix_image_paths(content, dest_relative_path):
     """
-    Pandoc allows --resource-path. MkDocs doesn't.
-    If a markdown file refers to 'crypto/img.png' and it's actually in 'assets/crypto/img.png',
-    we need to rewrite the link to point to the assets folder using relative paths.
-    
-    file_relative_path: e.g. "1_cryptografie/basics.md"
+    dest_relative_path: path relative to SITE_DIR (e.g. "cryptografie/index.md")
     """
-    
     # Calculate depth to know how many ../ to add
-    # "intro.md" -> 0 depth -> ./assets/...
-    # "folder/file.md" -> 1 depth -> ../assets/...
-    depth = file_relative_path.count('/') + file_relative_path.count('\\')
-    prefix = "../" * depth + "assets/"
+    # "index.md" -> 0 depth -> ./assets/...
+    # "folder/index.md" -> 1 depth -> ../assets/...
+    
+    # Normalize slashes
+    dest_relative_path = dest_relative_path.replace('\\', '/')
+    depth = dest_relative_path.count('/')
+    
+    if depth == 0:
+        prefix = "assets/"
+    else:
+        prefix = "../" * depth + "assets/"
     
     def replace_link(match):
         alt_text = match.group(1)
         original_path = match.group(2)
         
-        # skip absolute or web links
         if original_path.startswith(('http', 'https', '/', 'mailto:')):
             return match.group(0)
             
-        # check if it looks like an asset path (user provides 'crypto/image.png')
-        # We assume if it's not a local sibling, it's in assets.
-        # Actually, let's just check if the file exists in assets.
+        # Check against source ASSETS_DIR to see if it's a valid asset
         asset_check_path = os.path.join(ASSETS_DIR, original_path)
-        
-        # Normalize slashes
         asset_check_path = os.path.normpath(asset_check_path)
         
         if os.path.exists(asset_check_path):
-            # It maps to an asset! rewrite.
             new_path = prefix + original_path
-            # Special case for windows paths in python strings, ensure forward slashes for web
             new_path = new_path.replace('\\', '/')
             return f"![{alt_text}]({new_path})"
             
         return match.group(0)
 
-    # Markdown image regex: ![alt](url)
-    # Also handles { width=... } attributes standard in Pandoc
-    # We might need to keep the attributes or move them? 
-    # MkDocs material supports attr_list extension: {: .class_name width="300" } or similar
-    # But Pandoc uses { width=90% }. standard markdown ignores it.
-    # Let's just fix the path first.
     return re.sub(r'!\[(.*?)\]\((.*?)\)', replace_link, content)
 
-def convert_markdown(src_path, relative_path):
+def convert_markdown(src_path, dest_relative_path):
     with open(src_path, "r", encoding="utf-8") as f:
         content = f.read()
 
@@ -122,98 +110,88 @@ def convert_markdown(src_path, relative_path):
     content = '\n'.join(new_lines)
     
     # 2. Fix Image Paths
-    content = fix_image_paths(content, relative_path)
+    content = fix_image_paths(content, dest_relative_path)
     
     return content
 
 def slugify(value):
-    """
-    Normalizes string, converts to lowercase, removes non-alpha characters,
-    and converts spaces to hyphens.
-    This mimics Python-Markdown's default slugify.
-    """
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
     value = re.sub(r'[^\w\s-]', '', value.lower())
     return re.sub(r'[-\s]+', '-', value).strip('-')
 
 def get_headers(path):
-    """
-    Returns a list of (level, title) tuples using strict regex to match CommonMark headers.
-    """
     headers = []
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
-            # CommonMark ATX headers: sequence of 1-6 # characters, optional spaces/tabs, then content
             match = re.match(r'^(#{1,6})\s+(.*)', line.strip())
             if match:
                 level = len(match.group(1))
                 title = match.group(2).strip()
-                if level <= 2: # Keep logic simple: H1 and H2
+                if level <= 2:
                     headers.append((level, title))
     return headers
 
 def process_files():
     nav = []
     current_section_list = None
+    current_folder = "" # Slug of the current H1
     
-    # We must maintain the order of FILES.
-    # Logic:
-    # 1. Iterate files.
-    # 2. Parse headers.
-    # 3. Build Nav tree based on H1 > H2 structure.
-    # 4. Ignore directories, utilize H1 as grouping sections.
+    # "intro.md" is special: it MUST be index.md at root to be the homepage.
+    # We will handle it in the loop but force its destination.
     
     for filename in FILES:
         src_path = os.path.join(SOURCE_DIR, filename)
+        headers = get_headers(src_path)
         
-        # Determine dest path
-        if filename == "intro.md":
-            dest_name = "index.md"
-            dest_path = os.path.join(SITE_DIR, dest_name)
-            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-            converted_content = convert_markdown(src_path, filename)
-            with open(dest_path, "w", encoding="utf-8") as f:
-                f.write(converted_content)
+        # Check if file has H1 -> Start of new Section
+        h1_title = None
+        for level, title in headers:
+            if level == 1:
+                h1_title = title
+                break
+        
+        if h1_title:
+            # Start new section
+            if filename == "intro.md":
+                dest_relative = "index.md"
+                current_folder = ""
+            else:
+                current_folder = slugify(h1_title)
+                dest_relative = f"{current_folder}/index.md"
             
-            nav.append({"Home": "index.md"})
-            continue
+            # Create Section in Nav
+            current_section_list = []
+            nav.append({h1_title: current_section_list})
+            
+            # Add the index page (It will be hidden due to navigation.indexes)
+            # Use same title key, doesn't matter much as it is hidden
+            current_section_list.append({h1_title: dest_relative})
             
         else:
-            dest_name = filename.replace('\\', '/')
-            dest_path = os.path.join(SITE_DIR, dest_name)
-            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-            
-            converted_content = convert_markdown(src_path, filename)
-            with open(dest_path, "w", encoding="utf-8") as f:
-                f.write(converted_content)
-            
-            # Extract headers for Navigation
-            headers = get_headers(src_path)
-            
-            for level, title in headers:
-                anchor = slugify(title)
-                
-                if level == 1:
-                    # Start new Site Section (Top Level Navigation Key)
-                    current_section_list = []
-                    nav.append({title: current_section_list})
-                    
-                    # Add current file as the "Index" for this section.
-                    # With navigation.indexes, this item becomes the link for the Section Name
-                    # and is hidden from the dropdown list.
-                    current_section_list.append({title: dest_name})
-                    
-                elif level == 2:
-                    # Add Item to current Section
-                    if current_section_list is not None:
-                        # Link to specific anchor in the file
-                        current_section_list.append({title: f"{dest_name}#{anchor}"})
-                    else:
-                        # Fallback: orphan H2 (shouldn't happen if structure is correct)
-                        # Maybe append to root? Or ignore?
-                        # Let's append to root for safety but it acts weird in MkDocs if mixed.
-                        pass
+            # Continues previous section
+            # dest is inside current_folder
+            base_name = os.path.splitext(os.path.basename(filename))[0] + ".md"
+            if current_folder:
+                dest_relative = f"{current_folder}/{base_name}"
+            else:
+                dest_relative = base_name # Should not happen if first file starts with H1
 
+        # Write file
+        dest_path = os.path.join(SITE_DIR, dest_relative)
+        os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+        
+        converted = convert_markdown(src_path, dest_relative)
+        with open(dest_path, "w", encoding="utf-8") as f:
+            f.write(converted)
+            
+        # Add H2 links
+        for level, title in headers:
+            if level == 2:
+                anchor = slugify(title)
+                link = f"{dest_relative}#{anchor}"
+                if current_section_list is not None:
+                     current_section_list.append({title: link})
+                     
     return nav
 
 def create_mkdocs_yml(nav):
@@ -223,7 +201,7 @@ def create_mkdocs_yml(nav):
         "docs_dir": "site_source",
         "theme": {
             "name": "material",
-            "features": ["navigation.sections", "toc.integrate", "navigation.expand", "navigation.indexes"],
+            "features": ["navigation.sections", "navigation.expand", "navigation.indexes"],
             "palette": {
                 "scheme": "default",
                 "primary": "teal",
