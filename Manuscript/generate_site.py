@@ -223,7 +223,7 @@ def create_mkdocs_yml(nav):
         "docs_dir": "site_source",
         "theme": {
             "name": "material",
-            "features": ["navigation.sections", "toc.integrate"],
+            "features": ["navigation.sections", "toc.integrate", "navigation.expand"],
             "palette": {
                 "scheme": "default",
                 "primary": "teal",
