@@ -47,9 +47,6 @@ def clean_and_prepare_dir():
         shutil.copytree(ASSETS_DIR, assets_dst)
 
 def fix_image_paths(content, dest_relative_path):
-    """
-    dest_relative_path: path relative to SITE_DIR (e.g. "cryptografie/index.md")
-    """
     # Normalize slashes
     dest_relative_path = dest_relative_path.replace('\\', '/')
     depth = dest_relative_path.count('/')
@@ -111,11 +108,6 @@ def convert_markdown(src_path, dest_relative_path):
     return content
 
 def slugify(value):
-    # Mimic Python-Markdown's default slugify:
-    # 1. Normalize
-    # 2. Convert to lowercase
-    # 3. Replace spaces with hyphens
-    # 4. Remove all other non-alphanumeric characters (except hyphens)
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
     value = value.lower()
     value = re.sub(r'[^\w\s-]', '', value)
@@ -164,12 +156,14 @@ def process_files():
             current_section_list = []
             nav.append({nav_label: current_section_list})
             
-            # Add index page (Hidden via navigation.indexes in mkdocs.yml)
+            # Add index page
+            # With navigation.indexes removed, this page will appear in sidebar.
+            # We can use "Overzicht" or reuse the Title.
+            # Using Title ensures search consistency.
             current_section_list.append({nav_label: dest_relative})
             
         else:
-            # File without H1 (sub-page)
-            # Find title (First H2 or filename)
+            # Sub-page
             first_h2 = next((title for lvl, title in headers if lvl == 2), None)
             page_title = first_h2 if first_h2 else os.path.basename(filename)
             
@@ -179,22 +173,15 @@ def process_files():
             else:
                  dest_relative = os.path.basename(filename)
             
-            # Add to list
+            # Add a sub-list for the page to allow children
             if current_section_list is not None:
-                # We need to restructure this to allow children for THIS page
-                # If we just append {Title: Dest}, it's a leaf.
-                # We want {Title: [ {Title: Dest}, {Header: Link}, ... ]}
-                # This makes "Title" a folder/expandable item.
-                
                 new_sub_list = []
-                new_sub_list.append({page_title: dest_relative}) # The page link itself
+                new_sub_list.append({page_title: dest_relative}) 
                 current_section_list.append({page_title: new_sub_list})
 
         # Write File
         dest_path = os.path.join(SITE_DIR, dest_relative)
         os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-        convert_markdown(src_path, dest_relative) # Reading content happens inside
-        # Actually convert_markdown returns content, we definitely need to write it
         converted = convert_markdown(src_path, dest_relative)
         with open(dest_path, "w", encoding="utf-8") as f:
             f.write(converted)
@@ -206,16 +193,13 @@ def process_files():
                 link = f"{dest_relative}#{anchor}"
                 
                 if h1_title:
-                    # Is index page -> Add directly to current_section_list
+                    # Index Page
                      if current_section_list is not None:
                         current_section_list.append({title: link})
                 else:
-                    # Is sub-page -> Add to the last item's list
+                    # Sub Page
                     if current_section_list is not None:
-                        # Last item is {Title: [List]}
                          last_item = current_section_list[-1]
-                         # We know the key is page_title (calculated above)
-                         # To be safe, get the value of the only key
                          sub_list = list(last_item.values())[0]
                          sub_list.append({title: link})
 
@@ -230,8 +214,8 @@ def create_mkdocs_yml(nav):
             "name": "material",
             "features": [
                 "navigation.sections", 
-                "navigation.expand", 
-                "navigation.indexes" 
+                "navigation.expand"
+                # Removed navigation.indexes to fix anchor linking
             ],
             "palette": {
                 "scheme": "default",
