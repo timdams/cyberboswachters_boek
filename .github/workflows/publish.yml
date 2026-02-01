@@ -21,16 +21,21 @@ jobs:
       - name: Install dependencies
         run: |
           apk add --no-cache python3 py3-pip bash
-          pip install pandoc-latex-environment --break-system-packages
+          pip install pandoc-latex-environment mkdocs mkdocs-material --break-system-packages
 
-      - name: Build Book
+      - name: Build PDF
         run: |
           bash Manuscript/build.sh
+
+      - name: Build Website
+        run: |
+          python3 Manuscript/generate_site.py
+          cp Manuscript/book.pdf site/book.pdf
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Manuscript/
+          path: site/
 
   deploy:
     environment:
