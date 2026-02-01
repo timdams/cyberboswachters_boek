@@ -6,6 +6,9 @@ REM 3.MikTex: https://miktex.org/download
 REM 4. Make sure to update all packages using "miktex console" once before running
 REM Eisvogel manual at https://repo.telematika.org/project/wandmalfarbe_pandoc-latex-template/
 REM Actual usefull (aka the script) stuff starts now:
+REM: NOG STEEDS pandoc-latex-environment not found? doe: python -m site --user-base . Ga naar dit path.
+REM: zoek binnen die dir het /Scripts folder
+REM: voeg het volledige path naar dit scriptfolder toe aan je ENV PATH.
 pandoc ^
  metadata.yaml^
  intro.md^

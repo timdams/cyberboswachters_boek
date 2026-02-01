@@ -1,8 +1,10 @@
 
 ## Changelog
 
-**Dit is versie 0.9.2** (19/8/25)
+**Dit is versie 0.9.3** (1/2/26)
 
+* 0.9.3
+  * Extra incidenten toegevoegd in hoofdstuk 1 (Wordt het erger?)
 * 0.9.2
   * Extra details over WannayCry (hoofdstuk Wordt het erger)
 * 0.9.1

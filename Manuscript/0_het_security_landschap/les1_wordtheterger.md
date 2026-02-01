@@ -224,25 +224,60 @@ Twee boeken, die lezen als rasechte thrillers, gaan dieper in op de zonet beschr
 De opmerkelijkste gebeurtenis in 2021 was de lek in de **Log4J** Java-bibliotheek. Deze ogenschijnlijk onschuldige bibliotheek wordt al bijna twee decennia  in miljoenen Java-applicaties én servers (waaronder de Apache webservers!) gebruikt om loginformatie weg te schrijven. Tot in November 2021 onderzoekers een kritische bug ontdekten waardoor al deze servers en applicaties plots erg kwetsbaar werden. Het voorval toonde nog maar eens aan hoe afhankelijk we zijn geworden van onze code én netwerkinfrastructuur die vaak al jaren oud is en zo goed als zeker nog ongekende bugs bevatten die misbruikt kunnen worden. In 2012 zagen we al eens wat de gevolgen kunnen zijn van "een kleine bug" in een veel gebruikte bibliotheek. OpenSSL werd toen al door ontelbare websites en routers gebruikt om een beveiligde TLS tunnel (zie hoofdstuk 3) op te zetten wanneer HTTPS werd gebruikt. De bug resulteerde in de **Heartbleed**-lek die aanvallers konden gebruiken om data van servers te stelen die de OpenSSL-bibliotheek gebruikten.
 
 ::: note
+
 De Log4j-episode heeft veel bedrijven doen inzien dat ze kritischer moeten nadenken over hoe ze omgaan met het gebruik van open-source bibliotheken. De updates van dergelijke bibliotheken worden vaak zonder nadenken gedownload en geïntegreerd in de eigen software. Veel bedrijven beginnen daarom nu *policies* op te stellen omtrent het gebruik van publiekelijk beschikbare stukken software.
 :::
 
 ::: tip
+
 Om de kracht én het gevaar van open-source bibliotheken te bevatten, lees zeker eens [volgende artikel](https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/) waarin de maker van een populaire NPM bibliotheek (*colors*) het beu was dat grote bedrijven al jaren zijn bibliotheek(jes) gebruikten zonder hem er ooit voor te bedanken of betalen (merk op dat zij dit niet moesten doen: de bibliotheken waren als open-source met de juiste licentie verspreid). Van de één op de andere dag bracht de maker een update uit die de bibliotheken "willekeurige output" liet genereren in de host-applicatie. Wetende dat zijn bibliotheek wekelijks 20 miljoen keer gedownload wordt, kan je wel inbeelden dat aardig wat ontwikkelaars, groot en klein, plots met de handen in het haar zaten.
 :::
 
 
 
 
+### 2022-2024: De mens en de bijna-catastrofe
+
+Waar de voorgaande jaren vooral in het teken stonden van ransomware, zagen we in deze periode twee opvallende trends: de terugkeer naar *social engineering* om geavanceerde beveiliging te omzeilen én een wonderbaarlijke ontsnapping aan een wereldwijde IT-ramp.
+
+In 2022 en 2023 bewees de hackersgroep **Lapsus$** (bestaande uit tieners!) dat peperdure beveiliging nutteloos is als je de mens kunt manipuleren. Ze braken in bij giganten als Uber, Microsoft en Rockstar Games (waar ze beelden van GTA VI lekten). Hun tactiek? **MFA Fatigue**. Ze spamden werknemers 's nachts met honderden aanmelding-notificaties op hun telefoon, tot het slachtoffer uit frustratie of vermoeidheid op "Accepteren" duwde. 
+
+Nog bonter maakte de **Scattered Spider** groep het in september 2023. Ze legden het **MGM Resorts** imperium in Las Vegas plat door simpelweg naar de helpdesk te bellen, zich voor te doen als een werknemer, en het wachtwoord te resetten. Gevolg: gokkasten op zwart, sleutelkaarten van hotelkamers werkten niet meer en liften stonden stil. Schade: meer dan 100 miljoen dollar. Het toonde aan dat *vishing* (voice phishing) in combinatie met een zwakke helpdesk-procedure dodelijker kan zijn dan de meest geavanceerde malware.
+
+
+### 2024: CrowdStrike en de fragiele verbondenheid
+
+In juli 2024 werd de wereld opgeschrikt door een grootschalige uitval van Windows-systemen na een foutieve update van beveiligingssoftware **CrowdStrike**. Dit was weliswaar geen cybersecurityincident, maar had het wel kunnen zijn. Het voorval toonde pijnlijk aan hoe gevoelig onze digitale infrastructuur is vanwege de enorme verbondenheid: één zwakke schakel in de keten kan wereldwijd miljoenen systemen platleggen. Het incident geldt als een ernstige waarschuwing voor de potentiële impact van toekomstige *supply chain attacks*.
+
+::: tip
+
+Bij een **supply chain attack** of ketenaanval richt een aanvaller zich niet rechtstreeks op het einddoel (bijvoorbeeld een groot bedrijf), maar op een zwakke schakel in de leveranciersketen, zoals een softwareleverancier of een externe dienstverlener. Door beveiligde software van de leverancier te compromitteren (bijvoorbeeld door malware toe te voegen aan een update), kan de aanvaller ongemerkt toegang krijgen tot de systemen van alle klanten die deze software gebruiken.
+
+Bekende voorbeelden:
+*   **SolarWinds (2020)**: Hackers infiltreerden het netwerkbeheersysteem Orion, waardoor duizenden organisaties wereldwijd, waaronder de Amerikaanse overheid, werden getroffen.
+*   **Kaseya (2021)**: Via beheersoftware voor IT-dienstverleners werd ransomware verspreid naar duizenden bedrijven.
+
+:::
+
+Begin 2024 ontsnapte de wereld aan een digitale ramp dankzij... een oplettende Microsoft-ingenieur die vond dat zijn systemen "een halve seconde te traag reageerden". Hij ontdekte dat in **XZ Utils**, een stukje software dat in bijna elke Linux-server ter wereld zit, een achterdeurtje (*backdoor*) was ingebouwd. Jarenlang had een hacker het vertrouwen gewonnen van de eenzame beheerder van dit open-source project, om vervolgens stiekem de backdoor toe te voegen. Was dit niet ontdekt, dan hadden aanvallers toegang gehad tot miljoenen servers wereldwijd. Het was de ultieme, langlopende *supply chain attack* die mislukte op de valreep.
+
+## 2025: A.I. is here to stay
+
+
+Sinds de winter van 2022 worden we constant overspoeld met nieuwe (generatieve) AI toepassingen die zo krachtig zijn dat er zelfs in maart 2023 werd voorgesteld om alle AI onderzoek "even te pauzeren", zodat wij, als gemeenschap, kunnen reflecteren (én bijbenen) over hoe we onze toekomst met AI willen opbouwen. Onze glazen bol is niet perfect, maar wees er maar van overtuigd dat we de komende jaren onvoorspelbaar, bizarre, krachtige cyberaanvallen gaan tegenkomen die door AI worden ondersteund. Een eerste voorbeeld hiervan zagen we reeds recent in de zomer van 2023 genaamd **DarkBert**, een broertje van ChatGPT dat was getraind op DarkWeb data en dus de ideale chatpartner is voor conversaties die het daglicht niet mogen zien.
+
+
+Andere voorbeelden van AI-gedreven incidenten die we recent zagen opduiken:
+
+* **Deepfake CFO (2024)**: Een multinational in Hong Kong verloor 25 miljoen dollar nadat een werknemer geld overmaakte na een videocall met wat leek op de CFO en andere collega's. Iedereen in de call, behalve het slachtoffer, was een deepfake.
+* **WormGPT & FraudGPT**: Dit zijn kwaadaardige varianten van ChatGPT, specifiek getraind om malware te schrijven, phishing mails op te stellen en kwetsbaarheden te vinden, zonder de ethische beperkingen die commerciële modellen hebben.
+* **AI-gestuurde Social Engineering**: Aanvallers gebruiken AI om in *real-time* stemmen van bekenden na te bootsen (vishing) om zo slachtoffers te overtuigen vertrouwelijke gegevens te delen of geld over te maken.
+
 ## En de toekomst? AI will rule the world
 
 Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren. Zoals gezegd gaan bedrijven uit van *when* in plaats van *if* als het gaat over de vraag of ze al dan niet ooit gehackt zullen worden. Daarnaast zien we dat hoogtechnologische producten meer en meer ingeburgerd geraken in het cybercrime-milieu. Zeker door de AI golf die ons nu al enkele jaren overspoelt aan een razend tempo: deep fakes video van bekenden zijn nu nog "grappig", maar de realistische beelden (afbeeldingen, video én nu zelfs ook spraak) die ze kunnen produceren zijn al even niet meer te onderscheiden van het echte en zullen dus meer en meer kunnen gebruikt worden voor sextortion, spear phishing en soortgelijke aanvallen. 
 
 Dit soort trends zullen nog jaren *fake news* hoogtij laten vieren waardoor ook toekomstige verkiezingen interessante doelen blijven voor andere mogendheden om hun stempel te drukken op geopolitieke tegenstanders.  Er gaan zelfs stemmen op dat we leven in een tijdperk van het "dead internet": een tijdperk waarin we niet meer kunnen vertrouwen op de informatie die we online vinden. En waarin bots met bots communiceren op sociale media en nieuwe narratieven creëren die de publieke opinie beïnvloeden.
-
-
-Sinds de winter van 2022 worden we constant overspoeld met nieuwe (generatieve) AI toepassingen die zo krachtig zijn dat er zelfs in maart 2023 werd voorgesteld om alle AI onderzoek "even te pauzeren", zodat wij, als gemeenschap, kunnen reflecteren (én bijbenen) over hoe we onze toekomst met AI willen opbouwen. Onze glazen bol is niet perfect, maar wees er maar van overtuigd dat we de komende jaren onvoorspelbaar, bizarre, krachtige cyberaanvallen gaan tegenkomen die door AI worden ondersteund. Een eerste voorbeeld hiervan zagen we reeds recent in de zomer van 2023 genaamd **DarkBert**, een broertje van ChatGPT dat was getraind op DarkWeb data en dus de ideale chatpartner is voor conversaties die het daglicht niet mogen zien.
-
 
 ## Het is erger, maar...
 
