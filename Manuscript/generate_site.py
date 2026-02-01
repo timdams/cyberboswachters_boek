@@ -126,7 +126,7 @@ def process_and_convert_markdown(src_path, dest_relative_path):
                 # Rewrite line with explicit ID
                 # This guarantees that the anchor on the page is EXACTLY 'slug'
                 # Markdown extension 'attr_list' needed in mkdocs.yml
-                new_line = f"{'#' * level} {title_clean} {{: #{slug} }}"
+                new_line = f"{'#' * level} {title_clean} {{#{slug}}}"
                 new_lines.append(new_line)
             else:
                 new_lines.append(line) # Keep H3+ as is
