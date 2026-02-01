@@ -129,6 +129,7 @@ def create_mkdocs_yml(nav):
     config = {
         "site_name": "Cyberboswachters",
         "site_url": "",
+        "docs_dir": "site_source",
         "theme": {
             "name": "material",
             "features": ["navigation.sections", "toc.integrate"],
