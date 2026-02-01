@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apk add --no-cache python3 py3-pip
+          apk add --no-cache python3 py3-pip bash
           pip install pandoc-latex-environment --break-system-packages
 
       - name: Build Book
