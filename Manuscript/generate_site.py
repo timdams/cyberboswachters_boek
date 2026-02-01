@@ -111,8 +111,14 @@ def convert_markdown(src_path, dest_relative_path):
     return content
 
 def slugify(value):
+    # Mimic Python-Markdown's default slugify:
+    # 1. Normalize
+    # 2. Convert to lowercase
+    # 3. Replace spaces with hyphens
+    # 4. Remove all other non-alphanumeric characters (except hyphens)
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
-    value = re.sub(r'[^\w\s-]', '', value.lower())
+    value = value.lower()
+    value = re.sub(r'[^\w\s-]', '', value)
     return re.sub(r'[-\s]+', '-', value).strip('-')
 
 def get_headers(path):
@@ -136,61 +142,83 @@ def process_files():
         src_path = os.path.join(SOURCE_DIR, filename)
         headers = get_headers(src_path)
         
-        # Determine H1 title if present
+        # Identify H1
         h1_title = None
-        first_h2_title = None
-        
         for level, title in headers:
             if level == 1:
                 h1_title = title
                 break
-            if level == 2 and not first_h2_title:
-                first_h2_title = title
-
+        
         if h1_title:
-            # Start new section
+            # New Section
             if filename == "intro.md":
                 dest_relative = "index.md"
                 current_folder = ""
-                # Special case: nav label
                 nav_label = "Introductie"
             else:
                 current_folder = slugify(h1_title)
                 dest_relative = f"{current_folder}/index.md"
                 nav_label = h1_title
             
-            # Create Section list
+            # Start nav section
             current_section_list = []
             nav.append({nav_label: current_section_list})
             
-            # Add file as index page
-            # With navigation.indexes, this page becomes the Section link.
-            # toc.integrate will show this page's TOC under the section.
+            # Add index page (Hidden via navigation.indexes in mkdocs.yml)
             current_section_list.append({nav_label: dest_relative})
             
         else:
-            # Continues previous section (subsection in separate file)
-            # Use First H2 as title or filename fallback
-            page_title = first_h2_title if first_h2_title else os.path.basename(filename)
+            # File without H1 (sub-page)
+            # Find title (First H2 or filename)
+            first_h2 = next((title for lvl, title in headers if lvl == 2), None)
+            page_title = first_h2 if first_h2 else os.path.basename(filename)
             
-            base_name = os.path.splitext(os.path.basename(filename))[0] + ".md"
             if current_folder:
-                dest_relative = f"{current_folder}/{base_name}"
+                 base_name = os.path.splitext(os.path.basename(filename))[0] + ".md"
+                 dest_relative = f"{current_folder}/{base_name}"
             else:
-                dest_relative = base_name
-
-            # Add to nav as a Page
+                 dest_relative = os.path.basename(filename)
+            
+            # Add to list
             if current_section_list is not None:
-                current_section_list.append({page_title: dest_relative})
+                # We need to restructure this to allow children for THIS page
+                # If we just append {Title: Dest}, it's a leaf.
+                # We want {Title: [ {Title: Dest}, {Header: Link}, ... ]}
+                # This makes "Title" a folder/expandable item.
+                
+                new_sub_list = []
+                new_sub_list.append({page_title: dest_relative}) # The page link itself
+                current_section_list.append({page_title: new_sub_list})
 
-        # Write file
+        # Write File
         dest_path = os.path.join(SITE_DIR, dest_relative)
         os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-        
+        convert_markdown(src_path, dest_relative) # Reading content happens inside
+        # Actually convert_markdown returns content, we definitely need to write it
         converted = convert_markdown(src_path, dest_relative)
         with open(dest_path, "w", encoding="utf-8") as f:
             f.write(converted)
             
+        # Add Anchor links
+        for level, title in headers:
+            if level == 2:
+                anchor = slugify(title)
+                link = f"{dest_relative}#{anchor}"
+                
+                if h1_title:
+                    # Is index page -> Add directly to current_section_list
+                     if current_section_list is not None:
+                        current_section_list.append({title: link})
+                else:
+                    # Is sub-page -> Add to the last item's list
+                    if current_section_list is not None:
+                        # Last item is {Title: [List]}
+                         last_item = current_section_list[-1]
+                         # We know the key is page_title (calculated above)
+                         # To be safe, get the value of the only key
+                         sub_list = list(last_item.values())[0]
+                         sub_list.append({title: link})
+
     return nav
 
 def create_mkdocs_yml(nav):
@@ -202,9 +230,8 @@ def create_mkdocs_yml(nav):
             "name": "material",
             "features": [
                 "navigation.sections", 
-                "toc.integrate",        # Restored for single-sidebar layout
                 "navigation.expand", 
-                "navigation.indexes"
+                "navigation.indexes" 
             ],
             "palette": {
                 "scheme": "default",
