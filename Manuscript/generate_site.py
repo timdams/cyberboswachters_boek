@@ -15,12 +15,12 @@ FILES = [
     "intro.md",
     "0_het_security_landschap/les1_wordtheterger.md",
     "0_het_security_landschap/2_basicsec.md",
-    "0_het_security_landschap/3_gdpr.md",
     "1_cryptografie/basics.md",
     "1_cryptografie/publiccrypto.md",
-    "1_cryptografie/authenticatie.md",
     "3_netwerk_security/wifi.md",
+    "1_cryptografie/authenticatie.md",
     "5_iot/iotintro.md",
+    "0_het_security_landschap/3_gdpr.md",
     "appendix/meerweten.md",
     "appendix/darkweb.md",
     "appendix/awareness.md",
@@ -130,12 +130,16 @@ def get_title_from_file(path):
         for line in f:
             if line.startswith("# "):
                 return line[2:].strip()
+            # Fallback to H2 if H1 is missing (e.g. publiccrypto.md)
+            if line.startswith("## "):
+                return line[3:].strip()
     return os.path.basename(path)
 
 def get_readable_dir_name(dirname):
     # "0_het_security_landschap" -> "Het Security Landschap"
     # Remove leading numbers and underscores
-    name = re.sub(r'^\d+_', '', dirname) # Remove 0_
+    # Handle potentially nested or multiple numbers (though simpler regex is usually enough)
+    name = re.sub(r'^\d+_', '', dirname) # Remove 0_ at start
     name = name.replace('_', ' ')
     return name.title() # Title Case
 
