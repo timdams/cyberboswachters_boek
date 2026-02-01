@@ -25,8 +25,7 @@ jobs:
 
       - name: Build Book
         run: |
-          chmod +x Manuscript/build.sh
-          ./Manuscript/build.sh
+          bash Manuscript/build.sh
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
