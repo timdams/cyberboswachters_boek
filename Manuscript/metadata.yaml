@@ -16,6 +16,9 @@ header-includes:
 - |
   ```{=latex}
   \usepackage{awesomebox}
+  \usepackage{calc}
+  \newcounter{none}
+  \providecommand{\pandocbounded}[1]{#1}
   ```
 pandoc-latex-environment:
   noteblock: [note]
