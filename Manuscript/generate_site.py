@@ -33,7 +33,7 @@ ADMONITION_MAP = {
     "tip": "tip",
     "warning": "warning",
     "caution": "failure",
-    "important": "important" 
+    "important": "important"
 }
 
 def clean_and_prepare_dir():
@@ -76,7 +76,20 @@ def fix_image_paths(content, dest_relative_path):
 
     return re.sub(r'!\[(.*?)\]\((.*?)\)', replace_link, content)
 
-def convert_markdown(src_path, dest_relative_path):
+def slugify(value):
+    # Robust slugify
+    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+    value = value.lower()
+    value = re.sub(r'[^\w\s-]', '', value)
+    return re.sub(r'[-\s]+', '-', value).strip('-')
+
+def process_and_convert_markdown(src_path, dest_relative_path):
+    """
+    Reads markdown, converts it (admonitions, images), 
+    AND rewrites H2 headers with explicit attributes {: #slug }
+    Returns: (converted_content, list_of_headers)
+    list_of_headers: [(level, title, slug), ...]
+    """
     with open(src_path, "r", encoding="utf-8") as f:
         content = f.read()
 
@@ -85,13 +98,43 @@ def convert_markdown(src_path, dest_relative_path):
     
     lines = content.split('\n')
     new_lines = []
+    headers = []
+    
     in_block = False
     
     for line in lines:
-        if line.strip().startswith('!!!'):
+        stripped = line.strip()
+        
+        # Check for headers
+        # We only care about H1 and H2 for navigation
+        # But we need to inject IDs for H2 to ensure links work
+        header_match = re.match(r'^(#{1,6})\s+(.*)', stripped)
+        
+        if header_match:
+            level = len(header_match.group(1))
+            title_text = header_match.group(2).strip()
+            
+            # Remove any existing attribute list if present (e.g. {#id}) to avoid duplication
+            # Simple check: ends with }
+            title_clean = re.sub(r'\s*\{.*?\}\s*$', '', title_text)
+            
+            if level <= 2:
+                # Generate Slug
+                slug = slugify(title_clean)
+                headers.append((level, title_clean, slug))
+                
+                # Rewrite line with explicit ID
+                # This guarantees that the anchor on the page is EXACTLY 'slug'
+                # Markdown extension 'attr_list' needed in mkdocs.yml
+                new_line = f"{'#' * level} {title_clean} {{: #{slug} }}"
+                new_lines.append(new_line)
+            else:
+                new_lines.append(line) # Keep H3+ as is
+                
+        elif stripped.startswith('!!!'):
             in_block = True
             new_lines.append(line)
-        elif line.strip() == ':::':
+        elif stripped == ':::':
             in_block = False
             new_lines.append('') 
         else:
@@ -105,25 +148,7 @@ def convert_markdown(src_path, dest_relative_path):
     # 2. Fix Image Paths
     content = fix_image_paths(content, dest_relative_path)
     
-    return content
-
-def slugify(value):
-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
-    value = value.lower()
-    value = re.sub(r'[^\w\s-]', '', value)
-    return re.sub(r'[-\s]+', '-', value).strip('-')
-
-def get_headers(path):
-    headers = []
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            match = re.match(r'^(#{1,6})\s+(.*)', line.strip())
-            if match:
-                level = len(match.group(1))
-                title = match.group(2).strip()
-                if level <= 2:
-                    headers.append((level, title))
-    return headers
+    return content, headers
 
 def process_files():
     nav = []
@@ -132,77 +157,80 @@ def process_files():
     
     for filename in FILES:
         src_path = os.path.join(SOURCE_DIR, filename)
-        headers = get_headers(src_path)
         
-        # Identify H1
-        h1_title = None
-        for level, title in headers:
-            if level == 1:
-                h1_title = title
-                break
+        # Determine destination first (guessing H1, but we need to READ file to get H1)
+        # We can read file temporarily or just update the logic to read once.
+        # Let's read once. BUT we need to know where to save it.
+        # Chicken and egg: to know folder, we need H1.
+        # Let's read H1 from raw file quickly.
+        temp_headers = []
+        with open(src_path, "r", encoding="utf-8") as f:
+             for line in f:
+                 m = re.match(r'^#\s+(.*)', line.strip())
+                 if m:
+                     temp_headers.append(m.group(1).strip())
+                     break
+        h1_raw = temp_headers[0] if temp_headers else None
         
-        if h1_title:
-            # New Section
-            if filename == "intro.md":
+        # Calculate paths
+        if h1_raw:
+             if filename == "intro.md":
                 dest_relative = "index.md"
                 current_folder = ""
                 nav_label = "Introductie"
-            else:
-                current_folder = slugify(h1_title)
+             else:
+                current_folder = slugify(h1_raw)
                 dest_relative = f"{current_folder}/index.md"
-                nav_label = h1_title
-            
-            # Start nav section
-            current_section_list = []
-            nav.append({nav_label: current_section_list})
-            
-            # Add index page
-            # With navigation.indexes removed, this page will appear in sidebar.
-            # We can use "Overzicht" or reuse the Title.
-            # Using Title ensures search consistency.
-            current_section_list.append({nav_label: dest_relative})
-            
+                nav_label = h1_raw
         else:
-            # Sub-page
-            first_h2 = next((title for lvl, title in headers if lvl == 2), None)
-            page_title = first_h2 if first_h2 else os.path.basename(filename)
-            
-            if current_folder:
-                 base_name = os.path.splitext(os.path.basename(filename))[0] + ".md"
+             base_name = os.path.splitext(os.path.basename(filename))[0] + ".md"
+             if current_folder:
                  dest_relative = f"{current_folder}/{base_name}"
-            else:
+             else:
                  dest_relative = os.path.basename(filename)
-            
-            # Add a sub-list for the page to allow children
-            if current_section_list is not None:
-                new_sub_list = []
-                new_sub_list.append({page_title: dest_relative}) 
-                current_section_list.append({page_title: new_sub_list})
 
-        # Write File
+        # Process Content & Get precise headers/slugs
+        converted_content, headers = process_and_convert_markdown(src_path, dest_relative)
+        
+        # Create Output Dir
         dest_path = os.path.join(SITE_DIR, dest_relative)
         os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-        converted = convert_markdown(src_path, dest_relative)
+        
+        # Write Content
         with open(dest_path, "w", encoding="utf-8") as f:
-            f.write(converted)
+            f.write(converted_content)
+        
+        # Build Navigation using the headers/slugs we just generated/injected
+        
+        # 1. Handle Section / Page setup
+        if h1_raw: # New Section
+            current_section_list = []
+            nav.append({nav_label: current_section_list})
+            current_section_list.append({nav_label: dest_relative})
+        else: # Sub Page
+            # Find Title (First H2 or fallback)
+            first_h2 = next((title for lvl, title, slug in headers if lvl == 2), None)
+            page_title = first_h2 if first_h2 else os.path.basename(filename)
             
-        # Add Anchor links
-        for level, title in headers:
-            if level == 2:
-                anchor = slugify(title)
-                link = f"{dest_relative}#{anchor}"
-                
-                if h1_title:
-                    # Index Page
+            if current_section_list is not None:
+                new_sub_list = []
+                new_sub_list.append({page_title: dest_relative})
+                current_section_list.append({page_title: new_sub_list})
+
+        # 2. Add H2 Links
+        for lvl, title, slug in headers:
+            if lvl == 2:
+                link = f"{dest_relative}#{slug}"
+                if h1_raw: # Index Page
                      if current_section_list is not None:
                         current_section_list.append({title: link})
-                else:
-                    # Sub Page
-                    if current_section_list is not None:
-                         last_item = current_section_list[-1]
+                else: # Sub Page
+                     if current_section_list is not None:
+                         # Append to last item's sublist
+                         last_item = current_section_list[-1] # {page_title: [list]}
                          sub_list = list(last_item.values())[0]
                          sub_list.append({title: link})
-
+                         
     return nav
 
 def create_mkdocs_yml(nav):
@@ -215,7 +243,6 @@ def create_mkdocs_yml(nav):
             "features": [
                 "navigation.sections", 
                 "navigation.expand"
-                # Removed navigation.indexes to fix anchor linking
             ],
             "palette": {
                 "scheme": "default",
@@ -234,7 +261,7 @@ def create_mkdocs_yml(nav):
             "pymdownx.details",
             "pymdownx.superfences",
             "toc",
-            "attr_list" 
+            "attr_list" # CRITICAL for {: #slug } support
         ],
         "nav": nav
     }
