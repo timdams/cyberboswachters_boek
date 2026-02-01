@@ -21,9 +21,9 @@ FILES = [
     "1_cryptografie/authenticatie.md",
     "5_iot/iotintro.md",
     "0_het_security_landschap/3_gdpr.md",
-    "appendix/meerweten.md",
     "appendix/darkweb.md",
     "appendix/awareness.md",
+    "appendix/meerweten.md",
     "bronnen.md"
 ]
 

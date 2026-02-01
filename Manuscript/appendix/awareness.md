@@ -1,4 +1,4 @@
-# Appendix 4: Cybersecurity Awareness creëren
+# Appendix 3: Cybersecurity Awareness creëren
 
 In dit hoofdstuk bekijken we de belangrijke rol die **cybersecurity-awareness** speelt binnen organisaties. Als cybersecrurity-professionals zijn we ons bewust van de risico's, maar hoe zorgen we ervoor dat ook onze collega's deze risico's begrijpen en ernaar handelen? Dit hoofdstuk biedt inzicht in de noodzaak van awareness, de rol van medewerkers, en praktische tips om een cultuur van cybersecurity te bevorderen.
 
