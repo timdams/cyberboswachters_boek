@@ -50,10 +50,6 @@ def fix_image_paths(content, dest_relative_path):
     """
     dest_relative_path: path relative to SITE_DIR (e.g. "cryptografie/index.md")
     """
-    # Calculate depth to know how many ../ to add
-    # "index.md" -> 0 depth -> ./assets/...
-    # "folder/index.md" -> 1 depth -> ../assets/...
-    
     # Normalize slashes
     dest_relative_path = dest_relative_path.replace('\\', '/')
     depth = dest_relative_path.count('/')
@@ -134,47 +130,58 @@ def get_headers(path):
 def process_files():
     nav = []
     current_section_list = None
-    current_folder = "" # Slug of the current H1
-    
-    # "intro.md" is special: it MUST be index.md at root to be the homepage.
-    # We will handle it in the loop but force its destination.
+    current_folder = ""
     
     for filename in FILES:
         src_path = os.path.join(SOURCE_DIR, filename)
         headers = get_headers(src_path)
         
-        # Check if file has H1 -> Start of new Section
+        # Determine H1 title if present
         h1_title = None
+        first_h2_title = None
+        
         for level, title in headers:
             if level == 1:
                 h1_title = title
                 break
-        
+            if level == 2 and not first_h2_title:
+                first_h2_title = title
+
         if h1_title:
             # Start new section
             if filename == "intro.md":
                 dest_relative = "index.md"
                 current_folder = ""
+                # Special case: nav label
+                nav_label = "Introductie"
             else:
                 current_folder = slugify(h1_title)
                 dest_relative = f"{current_folder}/index.md"
+                nav_label = h1_title
             
-            # Create Section in Nav
+            # Create Section list
             current_section_list = []
-            nav.append({h1_title: current_section_list})
+            nav.append({nav_label: current_section_list})
             
-            # Add the index page (It will be hidden due to navigation.indexes)
-            # Use same title key, doesn't matter much as it is hidden
-            current_section_list.append({h1_title: dest_relative})
+            # Add file as index page
+            # With navigation.indexes, this page becomes the Section link.
+            # toc.integrate will show this page's TOC under the section.
+            current_section_list.append({nav_label: dest_relative})
             
         else:
-            # Continues previous section
-            # dest is inside current_folder
+            # Continues previous section (subsection in separate file)
+            # Use First H2 as title or filename fallback
+            page_title = first_h2_title if first_h2_title else os.path.basename(filename)
+            
             base_name = os.path.splitext(os.path.basename(filename))[0] + ".md"
             if current_folder:
                 dest_relative = f"{current_folder}/{base_name}"
             else:
-                dest_relative = base_name # Should not happen if first file starts with H1
+                dest_relative = base_name
+
+            # Add to nav as a Page
+            if current_section_list is not None:
+                current_section_list.append({page_title: dest_relative})
 
         # Write file
         dest_path = os.path.join(SITE_DIR, dest_relative)
@@ -184,14 +191,6 @@ def process_files():
         with open(dest_path, "w", encoding="utf-8") as f:
             f.write(converted)
             
-        # Add H2 links
-        for level, title in headers:
-            if level == 2:
-                anchor = slugify(title)
-                link = f"{dest_relative}#{anchor}"
-                if current_section_list is not None:
-                     current_section_list.append({title: link})
-                     
     return nav
 
 def create_mkdocs_yml(nav):
@@ -201,7 +200,12 @@ def create_mkdocs_yml(nav):
         "docs_dir": "site_source",
         "theme": {
             "name": "material",
-            "features": ["navigation.sections", "navigation.expand", "navigation.indexes"],
+            "features": [
+                "navigation.sections", 
+                "toc.integrate",        # Restored for single-sidebar layout
+                "navigation.expand", 
+                "navigation.indexes"
+            ],
             "palette": {
                 "scheme": "default",
                 "primary": "teal",

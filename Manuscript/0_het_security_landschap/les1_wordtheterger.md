@@ -261,7 +261,7 @@ Bekende voorbeelden:
 
 Begin 2024 ontsnapte de wereld aan een digitale ramp dankzij... een oplettende Microsoft-ingenieur die vond dat zijn systemen "een halve seconde te traag reageerden". Hij ontdekte dat in **XZ Utils**, een stukje software dat in bijna elke Linux-server ter wereld zit, een achterdeurtje (*backdoor*) was ingebouwd. Jarenlang had een hacker het vertrouwen gewonnen van de eenzame beheerder van dit open-source project, om vervolgens stiekem de backdoor toe te voegen. Was dit niet ontdekt, dan hadden aanvallers toegang gehad tot miljoenen servers wereldwijd. Het was de ultieme, langlopende *supply chain attack* die mislukte op de valreep.
 
-## 2025: A.I. is here to stay
+### 2025: A.I. is here to stay
 
 
 Sinds de winter van 2022 worden we constant overspoeld met nieuwe (generatieve) AI toepassingen die zo krachtig zijn dat er zelfs in maart 2023 werd voorgesteld om alle AI onderzoek "even te pauzeren", zodat wij, als gemeenschap, kunnen reflecteren (én bijbenen) over hoe we onze toekomst met AI willen opbouwen. Onze glazen bol is niet perfect, maar wees er maar van overtuigd dat we de komende jaren onvoorspelbaar, bizarre, krachtige cyberaanvallen gaan tegenkomen die door AI worden ondersteund. Een eerste voorbeeld hiervan zagen we reeds recent in de zomer van 2023 genaamd **DarkBert**, een broertje van ChatGPT dat was getraind op DarkWeb data en dus de ideale chatpartner is voor conversaties die het daglicht niet mogen zien.
@@ -273,7 +273,7 @@ Andere voorbeelden van AI-gedreven incidenten die we recent zagen opduiken:
 * **WormGPT & FraudGPT**: Dit zijn kwaadaardige varianten van ChatGPT, specifiek getraind om malware te schrijven, phishing mails op te stellen en kwetsbaarheden te vinden, zonder de ethische beperkingen die commerciële modellen hebben.
 * **AI-gestuurde Social Engineering**: Aanvallers gebruiken AI om in *real-time* stemmen van bekenden na te bootsen (vishing) om zo slachtoffers te overtuigen vertrouwelijke gegevens te delen of geld over te maken.
 
-## En de toekomst? AI will rule the world
+### En de toekomst? AI will rule the world
 
 Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren. Zoals gezegd gaan bedrijven uit van *when* in plaats van *if* als het gaat over de vraag of ze al dan niet ooit gehackt zullen worden. Daarnaast zien we dat hoogtechnologische producten meer en meer ingeburgerd geraken in het cybercrime-milieu. Zeker door de AI golf die ons nu al enkele jaren overspoelt aan een razend tempo: deep fakes video van bekenden zijn nu nog "grappig", maar de realistische beelden (afbeeldingen, video én nu zelfs ook spraak) die ze kunnen produceren zijn al even niet meer te onderscheiden van het echte en zullen dus meer en meer kunnen gebruikt worden voor sextortion, spear phishing en soortgelijke aanvallen. 
 
