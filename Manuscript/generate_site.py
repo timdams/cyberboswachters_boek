@@ -3,6 +3,7 @@ import shutil
 import re
 import subprocess
 import yaml
+import unicodedata
 
 # Configuration
 SOURCE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -125,94 +126,93 @@ def convert_markdown(src_path, relative_path):
     
     return content
 
-def get_title_from_file(path):
+def slugify(value):
+    """
+    Normalizes string, converts to lowercase, removes non-alpha characters,
+    and converts spaces to hyphens.
+    This mimics Python-Markdown's default slugify.
+    """
+    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+    value = re.sub(r'[^\w\s-]', '', value.lower())
+    return re.sub(r'[-\s]+', '-', value).strip('-')
+
+def get_headers(path):
+    """
+    Returns a list of (level, title) tuples using strict regex to match CommonMark headers.
+    """
+    headers = []
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
-            if line.startswith("# "):
-                return line[2:].strip()
-            # Fallback to H2 if H1 is missing (e.g. publiccrypto.md)
-            if line.startswith("## "):
-                return line[3:].strip()
-    return os.path.basename(path)
-
-def get_readable_dir_name(dirname):
-    # "0_het_security_landschap" -> "Het Security Landschap"
-    # Remove leading numbers and underscores
-    # Handle potentially nested or multiple numbers (though simpler regex is usually enough)
-    name = re.sub(r'^\d+_', '', dirname) # Remove 0_ at start
-    name = name.replace('_', ' ')
-    return name.title() # Title Case
+            # CommonMark ATX headers: sequence of 1-6 # characters, optional spaces/tabs, then content
+            match = re.match(r'^(#{1,6})\s+(.*)', line.strip())
+            if match:
+                level = len(match.group(1))
+                title = match.group(2).strip()
+                if level <= 2: # Keep logic simple: H1 and H2
+                    headers.append((level, title))
+    return headers
 
 def process_files():
     nav = []
-    # Structure to hold sections: {"Section Name": [{"Page 1": "path"}, ...]}
-    # We use a helper logic since nav needs to be ordered as per FILES list
+    current_section_list = None
     
     # We must maintain the order of FILES.
-    # If a file is in a directory, we group it under that directory's section in Nav.
-    # If it's a new directory, start a new section.
+    # Logic:
+    # 1. Iterate files.
+    # 2. Parse headers.
+    # 3. Build Nav tree based on H1 > H2 structure.
+    # 4. Ignore directories, utilize H1 as grouping sections.
     
-    current_section = None
-    section_items = []    
-
     for filename in FILES:
         src_path = os.path.join(SOURCE_DIR, filename)
         
         # Determine dest path
         if filename == "intro.md":
             dest_name = "index.md"
-        else:
-            dest_name = filename
+            dest_path = os.path.join(SITE_DIR, dest_name)
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+            converted_content = convert_markdown(src_path, filename)
+            with open(dest_path, "w", encoding="utf-8") as f:
+                f.write(converted_content)
             
-        dest_path = os.path.join(SITE_DIR, dest_name)
-        os.makedirs(os.path.dirname(dest_path), exist_ok=True)
-        
-        # Convert content
-        converted_content = convert_markdown(src_path, filename)
-        with open(dest_path, "w", encoding="utf-8") as f:
-            f.write(converted_content)
-        
-        # --- Navigation Logic ---
-        
-        # Extract title
-        title = get_title_from_file(src_path)
-        
-        # Special case for Home
-        if filename == "intro.md":
             nav.append({"Home": "index.md"})
             continue
             
-        # Get directory name
-        dirname = os.path.dirname(filename)
-        
-        if not dirname:
-            # Root file (e.g. bronnen.md) -> Add to top level
-            # If we were in a section, flush it first
-            if current_section:
-                nav.append({current_section: section_items})
-                current_section = None
-                section_items = []
-            nav.append({title: dest_name})
         else:
-            # It's in a subdirectory
-            section_name = get_readable_dir_name(dirname)
+            dest_name = filename.replace('\\', '/')
+            dest_path = os.path.join(SITE_DIR, dest_name)
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
             
-            if section_name != current_section:
-                # New section detected!
-                # Flush previous section if exists
-                if current_section:
-                    nav.append({current_section: section_items})
+            converted_content = convert_markdown(src_path, filename)
+            with open(dest_path, "w", encoding="utf-8") as f:
+                f.write(converted_content)
+            
+            # Extract headers for Navigation
+            headers = get_headers(src_path)
+            
+            for level, title in headers:
+                anchor = slugify(title)
                 
-                # Start new section
-                current_section = section_name
-                section_items = []
-            
-            # Add item to current section
-            section_items.append({title: dest_name})
-            
-    # Flush last section
-    if current_section:
-        nav.append({current_section: section_items})
+                if level == 1:
+                    # Start new Site Section (Top Level Navigation Key)
+                    current_section_list = []
+                    nav.append({title: current_section_list})
+                    
+                    # Add current file as the "Index" for this section.
+                    # With navigation.indexes, this item becomes the link for the Section Name
+                    # and is hidden from the dropdown list.
+                    current_section_list.append({title: dest_name})
+                    
+                elif level == 2:
+                    # Add Item to current Section
+                    if current_section_list is not None:
+                        # Link to specific anchor in the file
+                        current_section_list.append({title: f"{dest_name}#{anchor}"})
+                    else:
+                        # Fallback: orphan H2 (shouldn't happen if structure is correct)
+                        # Maybe append to root? Or ignore?
+                        # Let's append to root for safety but it acts weird in MkDocs if mixed.
+                        pass
 
     return nav
 
@@ -223,7 +223,7 @@ def create_mkdocs_yml(nav):
         "docs_dir": "site_source",
         "theme": {
             "name": "material",
-            "features": ["navigation.sections", "toc.integrate", "navigation.expand"],
+            "features": ["navigation.sections", "toc.integrate", "navigation.expand", "navigation.indexes"],
             "palette": {
                 "scheme": "default",
                 "primary": "teal",
