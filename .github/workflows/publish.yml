@@ -13,29 +13,20 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: pandoc/extra
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          apk add --no-cache python3 py3-pip bash
-          pip install pandoc-latex-environment mkdocs mkdocs-material --break-system-packages
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Build PDF
-        run: |
-          bash Manuscript/build.sh
-
-      - name: Build Website
-        run: |
-          python3 Manuscript/generate_site.py
-          cp Manuscript/book.pdf site/book.pdf
+      - name: Render Quarto website
+        run: quarto render cyberboswachters/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/
+          path: cyberboswachters/build/
 
   deploy:
     environment:
