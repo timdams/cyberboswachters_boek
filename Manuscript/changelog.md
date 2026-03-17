@@ -3,6 +3,9 @@
 
 **Dit is versie 0.9.3** (1/2/26)
 
+* 0.9.4
+  * LLM prompt injection toegevoegd in hoofdstuk 1 (Wordt het erger?)
+  * Korte tip ivm GEO (Generative Search Optimisation) toegevoegd in hoofdstuk 1 (Wordt het erger?)
 * 0.9.3
   * Extra incidenten toegevoegd in hoofdstuk 1 (Wordt het erger?)
 * 0.9.2
