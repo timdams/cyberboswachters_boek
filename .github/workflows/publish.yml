@@ -20,8 +20,11 @@ jobs:
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render Quarto website
+      - name: Render Quarto book
         run: quarto render cyberboswachters/
+
+      - name: Render slides
+        run: quarto render cyberboswachters/slides/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,14 @@
+project:
+  type: website
+  output-dir: ../build/slides
+
+website:
+  title: "Cyberboswachters – Slides"
+
+format:
+  revealjs:
+    theme: dark
+    lang: nl
+    slide-number: true
+    logo: ../cover.png
+    transition: slide
