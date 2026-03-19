@@ -1,0 +1,228 @@
+---
+title: "Cybersecurity Awareness creëren"
+subtitle: "Cyberboswachters"
+author: "Tim Dams"
+format:
+  revealjs:
+    theme: [default, _extensions/grantmcdermott/clean/clean.scss]
+    lang: nl
+    slide-number: true
+    transition: slide
+    logo: ../cover.png
+
+---
+
+## Waarom awareness?
+
+- **90% van alle beveiligingsincidenten** wordt veroorzaakt door menselijke fouten
+- Bewust of onbewust: phishing, zwakke wachtwoorden, onveilige wifi
+- Technische maatregelen alleen zijn **niet voldoende**
+- Medewerkers moeten begrijpen *waarom* maatregelen belangrijk zijn
+
+::: {.callout-important}
+Bewustzijn is onmisbaar binnen een robuust beveiligingsbeleid.
+:::
+
+---
+
+## Jouw rol als cybersecurity expert
+
+Je bent meer dan een technisch configurator — je bent een **bewustzijnsambassadeur**:
+
+- Complexe technische info vertalen naar begrijpelijke taal
+- Brug vormen tussen IT en bedrijfsbeleid
+
+**Signalerende rol:**
+
+- Potentiële risico's identificeren
+- Afwijkingen en verdachte gebeurtenissen snel rapporteren
+
+---
+
+## De menselijke dimensie: McCumber Cube
+
+- Vorige hoofdstukken: focus op **technologie** (C.I.A., data-states)
+- Dit hoofdstuk: focus op de **menselijke** dimensie
+- De menselijke factor = de zwakste schakel in de beveiligingsketen
+
+→ Cultuur van cybersecurity-awareness is essentieel
+
+---
+
+## Awareness-campagnes: waarom?
+
+Medewerkers hebben vragen zoals:
+
+- *"Waarom mag ik geen publiek wifi gebruiken?"*
+- *"Waarom moet ik steeds opnieuw inloggen met MFA?"*
+- *"Waarom moet ik mijn laptop vergrendelen?"*
+
+**Doel:** medewerkers zelfstandig antwoorden laten geven — niet door regels op te leggen, maar door **inzicht** te geven.
+
+---
+
+## Effectieve campagnes: wat én waarom
+
+Goede awareness-campagnes leggen niet enkel uit **wat** je moet doen:
+
+- Gebruikers leggen zelfstandig de link tussen risicogedrag en gevolgen
+- Ze maken bewust de keuze voor veilige werkmethoden
+- Veilig handelen wordt een **routine**, intrinsiek gemotiveerd
+
+**Einddoel:** medewerkers herkennen nieuwe risico's zelfstandig en passen geleerde principes toe op onbekende situaties.
+
+---
+
+## Succesvolle awareness-methoden {.smaller}
+
+| Methode | Waarom het werkt |
+|---|---|
+| **Micro-trainingen** | Kort en frequent = beter onthouden |
+| **Phishing-simulaties** | Directe feedback op eigen acties |
+| **Gamification** | Verhoogt motivatie en betrokkenheid |
+| **Posters & nieuwsbrieven** | Visuele reminders in de werkomgeving |
+| **Leiderschap** | Management geeft het goede voorbeeld |
+
+---
+
+## Posters: less is more
+
+![Awareness posters hoeven geen ellenlange teksten te bevatten.](aware/funnyposter.png){width=40%}
+
+- Grappig of uitdagend = sneller opgemerkt en onthouden
+- Goede bronnen: **SANS Institute**, **CISA** (gratis materialen)
+
+---
+
+## Praktische best practices: wachtwoorden & apparaten
+
+**Wachtwoordhygiëne**
+
+- Gebruik sterke, unieke wachtwoorden
+- Gebruik een wachtwoordmanager
+- Zet altijd MFA aan
+
+**Secuur apparaatbeheer**
+
+- Installeer automatische updates
+- Gebruik antivirussoftware
+- Vergrendel je laptop wanneer je weggaat
+
+---
+
+## Praktische best practices: netwerken & alertheid
+
+**Veilig werken met documenten en netwerken**
+
+- Vermijd onbekende USB-sticks en kabels
+- Gebruik enkel vertrouwde wifi-netwerken
+- Maak regelmatig backups (fysiek én digitaal)
+
+**Blijf alert**
+
+- Deel kennis actief binnen je team
+- Blijf bij met nieuwe ontwikkelingen
+
+---
+
+## Incident Response: de cyclus
+
+1. **Prepare** – procedures en trainingen vóór het incident
+2. **Identify** – incidenten snel herkennen via monitoring en rapportage
+3. **Contain** – beperk de schade direct na detectie
+4. **Eradicate** – verwijder het incident volledig
+5. **Recover** – herstel systemen en data
+6. **Follow Up** – analyseer en verbeter processen
+
+![](aware/incident.png){width=70%}
+
+---
+
+## Awareness in Incident Response
+
+Awareness helpt vooral bij de **Identify**-stap:
+
+- Goede meldprocedures zijn cruciaal (wie, wat, hoe snel)
+- Maak meldkanalen **toegankelijk en laagdrempelig**
+- Snelheid van identificatie bepaalt de impact van een incident
+
+::: {.callout-tip}
+Complexe plannen helpen niet als medewerkers niet weten hoe ze deze moeten toepassen.
+:::
+
+---
+
+## Social Engineering: de makkelijkste hack
+
+> Geen tools nodig — enkel een goed verhaal.
+
+Social engineering = mensen manipuleren om vertrouwelijke informatie te verkrijgen of toegang te krijgen tot systemen.
+
+**Meest voorkomende technieken:**
+
+- Pretexting
+- Tailgating
+- Vishing
+- Baiting
+- Quid Pro Quo
+
+---
+
+## Pretexting & Tailgating
+
+**Pretexting**
+- Aanvaller doet zich voor als collega of IT-medewerker
+- Vraagt naar gevoelige info (wachtwoorden, persoonlijke gegevens)
+- Verdediging: stel een **challenge** — verifieer identiteit
+
+**Tailgating**
+- Aanvaller volgt medewerker een beveiligd gebied binnen
+- Verdediging: altijd toegangspas gebruiken, nooit iemand binnenlaten zonder verificatie
+
+---
+
+## Vishing & Baiting
+
+**Vishing** (Voice phishing)
+- Aanvaller doet zich voor als IT- of bankmedewerker via telefoon
+- A.I. maakt stem-imitatie mogelijk → extra waakzaamheid vereist
+- Verdediging: **reverse social engineering** — stel een challenge
+
+**Baiting**
+- Slachtoffer gelokt met iets aantrekkelijks (USB-stick, gratis Spotify)
+- Klassiek voorbeeld: het Paard van Troje
+- Verdediging: nooit onbekende USB-sticks of links aanvaarden
+
+---
+
+## Quid Pro Quo
+
+- "Voor wat hoort wat"
+- Aanvaller biedt iets aan in ruil voor gevoelige informatie
+- Voorbeeld: gratis software in ruil voor je e-mailadres + beveiligingsvragen
+
+**Let op:** beveiligingsvragen zoals *"Hoe heette je eerste huisdier?"* zijn klassieke dataverzameling.
+
+---
+
+## Hoe herken je social engineering?
+
+- Controleer het **e-mailadres of telefoonnummer** van de afzender
+- Hover over links vóór je klikt — controleer de bestemming
+- Wees voorzichtig met het delen van **persoonlijke informatie**
+- Let op verdachte verzoeken of urgentie
+
+::: {.callout-tip}
+Bij twijfel: stel een challenge. En als je nog twijfelt, stel er nog een. Een legitieme partij zal dit begrijpen.
+:::
+
+---
+
+## Samenvatting
+
+- **90%** van incidenten = menselijke fout → awareness is cruciaal
+- Goede campagnes leggen uit **wat én waarom**
+- Methoden: micro-trainingen, phishing-simulaties, gamification, posters
+- Incident response = 6 stappen, awareness helpt bij **Identify**
+- Social engineering: pretexting, tailgating, vishing, baiting, quid pro quo
+- Verdediging: **challenge stellen**, identiteit verifiëren, nooit blindelings vertrouwen

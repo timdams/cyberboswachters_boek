@@ -1,0 +1,342 @@
+---
+title: "Cybersecurity Fundamenten"
+subtitle: "Cyberboswachters"
+author: "Tim Dams"
+format:
+  revealjs:
+    theme: [default, _extensions/grantmcdermott/clean/clean.scss]
+    lang: nl
+    slide-number: true
+    transition: slide
+    logo: ../cover.png
+---
+
+## Wat is cybersecurity?
+
+> *"Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks."*
+> — Cisco
+
+Alles draait rond het **beschermen van informatie** — op een server, in een document, of in iemands hoofd.
+
+Aanvallen zijn gericht op:
+
+- Gevoelige informatie stelen of aanpassen
+- Geld afpersen van gebruikers
+- Normale bedrijfsprocessen verstoren
+
+---
+
+## Het C.I.A.-model
+
+Data moet altijd voldoen aan drie principes:
+
+| Letter | Begriff | Uitleg |
+|---|---|---|
+| **C** | Confidentiality | Enkel bevoegden hebben toegang |
+| **I** | Integrity | Data is onbeschadigd en ongewijzigd |
+| **A** | Availability | Data is bereikbaar voor rechtmatige gebruikers |
+
+Elk van deze pijlers kan aangevallen worden — en moet dus verdedigd worden.
+
+---
+
+## De McCumber Kubus
+
+![](assets/secmodel.png){width=65%}
+
+Drie dimensies: **doelstelling** (C.I.A.) × **datastatus** (opslag, verzending, verwerking) × **beveiligingslaag** (technologie, mensen, procedures)
+
+::: {.callout-important}
+Enkel wanneer we alle dimensies in onze aanpak voorzien, kunnen we hopen C.I.A. te bereiken.
+:::
+
+---
+
+## ISO 27001
+
+- Wereldwijd gebruikte standaard voor informatiebeveiliging
+- Bedrijven die deze norm behalen tonen aan dat beveiliging prioriteit is
+- Vereist externe audit — en moet elke drie jaar hernieuwd worden
+- Dekt alle dimensies van de McCumber Kubus
+
+---
+
+## Een ongelijke strijd
+
+Cyberboswachters hebben het steeds moeilijker:
+
+- Aanvallen starten aan **supersonische snelheid** op miljoenen systemen
+- **Attack surface** groeit door complexere netwerken
+- Tools zijn **kindereenvoudig** geworden — grote rode knop volstaat
+- *Zero-day vulnerabilities* worden sneller gevonden dan gepatcht
+- **Botnets** laten gigantische simultane aanvallen toe
+- **Gebruikers** maken sneller fouten dan ooit
+
+---
+
+## Zero Days & Patching
+
+- Een **zero day** misbruikt een kwetsbaarheid die de fabrikant nog niet kent
+- Gegarandeerd effectief — tot de patch verschijnt
+- Zelfs na een patch: niet elk systeem is meteen gepatcht
+
+**Window of vulnerability:**
+De periode tussen het ontdekken van een zero day en het uitbrengen van de patch — aanvallers hebben vrij spel.
+
+::: {.callout-tip}
+Zero days zijn soms meer dan **één miljoen dollar** waard op de zwarte markt.
+:::
+
+---
+
+## Wie zijn de stropers?
+
+- **Hackers** — white, grey en black hat
+- **Scriptkiddies** — weinig kennis, grote gevolgen
+- **Werknemers** — bewust én onbewust
+- **Cybercriminelen** — geld, geld, geld
+- **Cyberterroristen** — ideologie en destabilisatie
+- **Spionnen** — informatieverzameling
+- **Overheden** — geopolitieke cyberacties
+
+---
+
+## Hackers: de drie hats
+
+| Type | Omschrijving |
+|---|---|
+| **Whitehat** | Legale pentests, bug bounty — met toestemming |
+| **Greyhat** | Goede bedoelingen, niet altijd binnen de wet |
+| **Blackhat** | Illegale aanvallen voor geld, macht of kennis |
+
+Extra types: **Redhat** (vigilantes), **Bluehat** (wraak), **Greenhat** (scriptkiddies)
+
+---
+
+## Scriptkiddies
+
+- Weinig tot geen kennis van cybersecurity
+- Gebruiken kant-en-klare tools zonder te begrijpen wat ze doen
+- **Onderschatten de gevolgen** — maar de wet maakt geen onderscheid
+
+::: {.callout-warning}
+Een inval van zwaar bewapende agenten omdat je "gewoon op een knopje klikte" is een ervaring die lang bijblijft.
+:::
+
+Voorbeeld: **Low Orbit Ion Cannon** — liet iedereen meedoen aan DDOS-aanvallen op Visa, MasterCard en PayPal (2010).
+
+---
+
+## Werknemers als risico
+
+**Bewust:**
+
+- Ontevreden of ontslagen werknemers met insider-kennis
+- Sabotage, datadiefstal, losgeld eisen
+
+**Onbewust:**
+
+- Slordig wachtwoordbeheer
+- Mensen binnenlaten zonder verificatie
+- Ongeautoriseerde wifi-accesspoints installeren
+
+**BYOD** vergroot het aanvalsoppervlak: besmette privétoestellen in het bedrijfsnetwerk.
+
+---
+
+## Cybercriminelen
+
+- Motivatie: **geld**
+- 2021: meer dan **700 miljard dollar** verlies door online criminaliteit
+- Innoveren constant — motor van de cybersecurity-industrie
+
+Moderne aanpak:
+
+- **Ransomware as a Service (RaaS)**
+- **Botnets verhuren**
+- Eigen helpdesks voor slachtoffers om losgeld te betalen
+
+---
+
+## Hoe vallen stropers aan? De 5 fasen
+
+1. **Verkennen** — passieve reconnaissance (zoekmachines, social media, dumpster diving)
+2. **Scannen** — actieve reconnaissance (port scanners, vulnerability scanners)
+3. **Toegang verkrijgen** — kwetsbaarheid exploiteren of phishing
+4. **Toegang bestendigen** — backdoors installeren, andere systemen aanvallen
+5. **Sporen wissen** — logs aanpassen of verwijderen
+
+---
+
+## Passieve aanvallen
+
+**Sniffing**
+
+- Netwerkverkeer afluisteren met tools zoals Wireshark
+- Moeilijk te detecteren — maar levert waardevolle info op
+
+**Verkeersanalyse**
+
+- Registreert *wanneer* en *hoe* een doel communiceert
+- Onthult gebruikspatronen zonder de inhoud te kennen
+
+![](assets/sniffing.png){width=55%}
+
+---
+
+## Actieve aanvallen (1)
+
+**Masquerading / Spoofing**
+
+- Aanvaller neemt de digitale identiteit van een legitieme gebruiker over
+- Doel: anonimiteit én toegang tot afgeschermde bronnen
+
+**Replay attack**
+
+- Eerder onderschept legitiem verkeer wordt heruitgestuurd
+- Voorbeeld: inlogpakket opnieuw verzenden
+
+![](assets/replay.png){width=55%}
+
+---
+
+## Actieve aanvallen (2)
+
+**Man-in-the-Middle (MitM)**
+
+- Aanvaller nestelt zich tussen twee communicatiepartners
+- Kan communicatie lezen, aanpassen of blokkeren
+
+**Denial-of-Service (DoS)**
+
+- Systeem of dienst lamleggen zodat het onbereikbaar wordt
+- Van stekker uittrekken tot gigantisch netwerkverkeer
+
+![](assets/mitm.png){width=55%}
+
+---
+
+## Hoe verdedigen? De 4+1 principes
+
+| Principe | Uitleg |
+|---|---|
+| **Layering** | Meerdere beveiligingslagen, zoals een ui |
+| **Limiting** | Beperk rechten tot wat strikt nodig is |
+| **Diversity** | Verscheidenheid aan beveiligingen voorkomt single point of failure |
+| **Simplicity** | KISS — complexiteit introduceert fouten |
+| **Obscurity** ⚠️ | Verberg je aanpak — maar heruitvind het wiel niet |
+
+---
+
+## Social Engineering
+
+> Het hacken van mensen — geen technische tools nodig.
+
+Aanvallers misbruiken menselijke eigenschappen:
+
+- Vertrouwen, nieuwsgierigheid, hebzucht, angst, onwetendheid
+
+**Voorbeelden:**
+
+- Vermommd als pizzakoerier het bedrijf binnenwandelen
+- Meerokers aan de achterdeur volgen (*piggybacking*)
+- Bellen als "Telenet-technieker" om logingegevens te vragen
+
+---
+
+## Phishing & Spear Phishing
+
+**Phishing**
+
+- Zoveel mogelijk slachtoffers lokken naar een nep-website of document
+- Doel: logingegevens stelen of malware installeren
+
+**Spear Phishing**
+
+- Gericht op één persoon of groep
+- Mail op maat — veel geloofwaardiger
+
+**OSINT** (Open Source Intelligence) helpt aanvallers bij de verkenningsfase: zoekmachines, social media, metadata van bestanden, reverse image search.
+
+---
+
+## Software-aanvallen: malware-overzicht {.smaller}
+
+| Type | Kernkenmerk |
+|---|---|
+| **Virus** | Nestelt zich in uitvoerbare bestanden, verspreidt via menselijke actie |
+| **Worm** | Verspreidt zichzelf automatisch, geen hostfile nodig |
+| **Trojan** | Verborgen in legitieme software |
+| **Spyware** | Verzamelt info zonder medeweten van gebruiker |
+| **Adware** | Toont ongewenste reclame |
+| **Rootkit** | Nestelt zich op kernel-niveau, extreem moeilijk te verwijderen |
+| **Ransomware** | Versleutelt data en eist losgeld |
+| **Botnet** | Legt besmette computers samen als zombie-leger |
+
+---
+
+## Ransomware
+
+- Versleutelt je data met een sleutel die enkel de crimineel kent
+- Betaling via crypto (niet traceerbaar)
+- Back-ups zijn je voornaamste verdediging — maar **hoe en waar** je back-upt telt
+
+![](assets/ransom.jpg){width=55%}
+
+::: {.callout-warning}
+WannaCry en Petya (2017): ziekenhuizen sloten patiënten buiten, containerschepen lagen stil.
+:::
+
+---
+
+## Botnets
+
+- Crimineel besmet duizenden computers met zombie-virus
+- Zombies *bellen terug* naar de **C&C-server** van de herder
+- Herder geeft opdrachten: DDOS, cryptomining, review-fraude...
+
+**Uitschakelen:** niet via de zombies, maar door de **C&C-server** neer te halen.
+
+![](assets/botnet.png){width=55%}
+
+---
+
+## Hardware-gebaseerde aanvallen
+
+- **USB sticks** — malware of letterlijk 220V door je moederbord
+- **BIOS rootkits** — overleven herinstallatie van het OS (bv. Moonbounce)
+- **Raspberry Pi / warshipping** — verstopt in postpakket, belt terug naar aanvaller
+- **Keyloggers** — hardware tussenstuk registreert toetsaanslagen
+- **Juice hacking** — publieke USB-oplaadpunten als aanvalsvector
+- **RFID cloners** — kopiëren toegangsbadges voor een habbekrats
+
+---
+
+## Side-channel aanvallen
+
+Informatie verkrijgen via **onverwachte kanalen** — niet via het protocol zelf.
+
+**Voorbeelden:**
+
+- Militairen deelden workouts op Strava → geheime basis onthuld
+- Data uitlezen via stroomverbruik van een computer
+- **Rowhammer / Spectre** — geheugendata uitlezen zonder toegangsrechten
+- **Heartbleed** — snelheid van antwoorden onthult geheime data
+- Janet Jackson's muziekvideo liet oude laptops crashen — kreeg zelfs een CVE-nummer
+
+::: {.callout-tip}
+Side-channel aanvallen zijn nooit 100% te vermijden — creatief én onverwacht.
+:::
+
+---
+
+## Samenvatting
+
+- **C.I.A.** = Confidentiality, Integrity, Availability — de drie pijlers
+- **McCumber Kubus** = technologie × datastatus × mensen/procedures
+- Aanvallers: hackers, scriptkiddies, werknemers, cybercriminelen, overheden
+- **5 fasen**: verkennen → scannen → toegang → bestendigen → wissen
+- Aanvallen: passief (sniffing) en actief (MitM, DoS, replay)
+- Verdediging: layering, limiting, diversity, simplicity
+- Malware: virus, worm, trojan, ransomware, botnet...
+- Mensen = zwakste schakel → social engineering werkt altijd

@@ -7,7 +7,7 @@ website:
 
 format:
   revealjs:
-    theme: dark
+    theme: [default, _extensions/grantmcdermott/clean/clean.scss]
     lang: nl
     slide-number: true
     logo: ../cover.png
