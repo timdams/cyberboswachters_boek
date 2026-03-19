@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /c/Users/p008465/Koofr/PROGPROJECTS/cursus/NWSecBook/cyberboswachters/*.qmd /c/Users/p008465/Koofr/PROGPROJECTS/cursus/NWSecBook/cyberboswachters/*.md)",
+      "Bash(find /c/Users/p008465/Koofr/PROGPROJECTS/cursus/NWSecBook/cyberboswachters -type d -not -path */build/* -not -path */.quarto/* -not -path */_extensions/*)",
+      "Bash(find C:/Users/p008465/Koofr/PROGPROJECTS/cursus/NWSecBook/cyberboswachters/content -name assets -type d -exec ls {})",
+      "Bash(2)",
+      "Bash(mkdir -p slides/crypto_assets)",
+      "Bash(cp content/1_cryptografie/assets/* slides/crypto_assets/)",
+      "Bash(mkdir -p slides/wifi_assets)",
+      "Bash(cp content/3_netwerk_security/assets/* slides/wifi_assets/)",
+      "Bash(mkdir -p slides/iot_assets)",
+      "Bash(cp content/5_iot/assets/* slides/iot_assets/)",
+      "Bash(cp content/0_het_security_landschap/assets/* slides/assets/)",
+      "Bash(mkdir -p slides/darkweb)",
+      "Bash(cp content/appendix/darkweb/* slides/darkweb/)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(ls -la /c/Users/p008465/Koofr/PROGPROJECTS/cursus/NWSecBook/cyberboswachters/slides/*.qmd)"
+    ]
+  }
+}
