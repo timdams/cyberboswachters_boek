@@ -26,6 +26,7 @@ book:
     - content/appendix/awareness.md
     - content/appendix/meerweten.md
     - content/appendix/bronnen.md
+    - slides/overzicht.qmd
 
 bibliography: references.bib
 
