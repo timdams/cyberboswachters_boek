@@ -8,4 +8,4 @@ Hieronder vind je een overzicht van de beschikbare presentaties bij het handboek
 
 | Hoofdstuk | Presentatie |
 |-----------|-------------|
-| Cryptografie: basisconcepten | [Bekijk slides](crypto_basics.html){target="_blank"} |
+| Cryptografie: deel 1 | [Bekijk slides](crypto_basics.html){target="_blank"} |

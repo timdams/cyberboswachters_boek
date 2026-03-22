@@ -504,19 +504,22 @@ Tot hiertoe gingen we data steeds blok per blok in het encryptiecipher sturen en
 
 Stel dat we een afbeelding van Tux De Pinguïn opsplitsen in ongeveer 100 bij 100 datablokken. Als we nu ieder blok individueel met een blockcipher encrypten en zouden visualiseren dan krijgen we iets dat mogelijks toch nog wat informatie van Tux *doorlekt* (zie de tweede afbeelding) daar blokken van de afbeelding met exact dezelfde informatie ook dezelfde ciperblock zullen genereren. Vergelijk dit met de derde afbeelding waarin we een andere modus gebruiken (die we zo meteen gaan uitleggen) waarin repetities in de plaintext geen invloed hebben op repetities in de ciphertext.
 
-
-::: {.callout-tip}
-Door pakketten te sniffen zou de aanvaller kunnen achterhalen wat de mogelijke inhoud van een pakket is. Ieder netwerkprotocol volgt de standaarden die er voor beschreven zijn en zo kan dus de aanvaller heel veel informatie ontdekken over een ciphertext gewoon ten opzichte van wanneer een pakket wordt verstuurd tegenover de andere. Als het bijvoorbeeld het eerste pakket is dat verstuurd wordt, dan is de kans groot dat dit pakket de typische *"ik wil een verbinding opzetten"*-request is.
-:::
+1
 
 ![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia).](assets/ecbfail.png){ width=75% }
 
 
-Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren, noemen we de **Electronic Codebook (ECB)** modus. Alhoewel deze modus dus duidelijk een veiligheidsprobleem met zich mee draagt, heeft deze modus ook één voordeel:
+Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren, noemen we de **Electronic Codebook (ECB)** modus. 
+
+![ECB mode (Bron wikipedia).](assets/ecb.png){ width=80% }
+
+Alhoewel deze modus dus duidelijk een veiligheidsprobleem met zich mee draagt, heeft deze modus ook één voordeel:
 
 * Ieder blok wordt onafhankelijk van andere blokken gedecrypteerd. Als er dus een blok niet gedecrypteerd kon worden door een fout, dan heeft dat geen invloed op de daaropvolgende blokken. Dit is dus voor streaming-situaties nuttig: beeld je in dat je decryptie faalt halverwege het binnenkrijgen van een film die je aan het bekijken bent. Je zou helemaal opnieuw moeten beginnen.
 
-ECB is een niet zo veilige manier om een blockcipher toe te passen. Veel interessanter (veiliger) wordt het wanneer we extra informatie gebruiken om een blok te encrypteren. **Enkel het huidige blok en dezelfde sleutel gebruiken is namelijk niét veilig.** Er zijn verschillende modes om veiliger te encrypteren dan ECB:
+ECB is een niet zo veilige manier om een blockcipher toe te passen. Veel interessanter (veiliger) wordt het wanneer we extra informatie gebruiken om een blok te encrypteren. **Enkel het huidige blok en dezelfde sleutel gebruiken is namelijk niét veilig.** 
+
+Er zijn verschillende modes om veiliger te encrypteren dan ECB:
 
 * Cipher block chaining (CBC): de output van het vorige blok (de ciphertext) wordt mee als input voor de encryptie van het volgende blok gebruikt.
 * Propagating CBC (PCBC): zelfde als CBC maar bij decryptie van een blok zijn ook alle vorige blokken vereist.

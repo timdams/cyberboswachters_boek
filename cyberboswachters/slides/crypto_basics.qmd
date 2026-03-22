@@ -300,6 +300,8 @@ Ciphertext na afwikkelen:
 graph TD
     A("Encryption/Decryption") --> B("Symmetric: 1-key,<br/>to en- and decrypt")
     A --> C("Asymmetric: 2 keys,<br/>Public key to encrypt<br/>Private key to decrypt")
+
+    style B fill:#ff9900,stroke:#333,color:#000
 ```
 
 ---
@@ -533,20 +535,42 @@ Twee onderdelen:
 2. **16 Feistel-rondes**: splitsen, F-operatie, XOR
 3. **Finale Permutatie** (FP)
 
-![De Initiële Permutatie.](crypto_assets/des2.png){ width=90% }
+---
+
+
+
+## DES: De Initiële Permutatie.
+
+![](crypto_assets/des2.png){ width=90% }
+
+---
+
+
+## DES
+
+![](crypto_assets/des1.png){width=80%}
 
 ---
 
 ## DES: de F-operatie
 
-![Binnenin de F-operatie.](crypto_assets/des3.png){ width=60% }
+:::: {.columns}
 
-1. **Expansie**: 32 bits → 48 bits
+::: {.column width="50%"}
+![Binnenin de F-operatie.](crypto_assets/des3.png){ width=100% }
+:::
+
+::: {.column width="50%"}
+1. **Expansie**: 32 bits → 48 bits 
+![Expansie van 32 naar 48 bits.](crypto_assets/des4.png){ width=100% }
 2. **XOR** met subkey (48 bits)
-3. **S-boxen**: 6 bits → 4 bits (substitutie)
+3. **S-boxen**: 6 bits → 4 bits (substitutie) (zie volgende slide)
 4. **P-box**: permutatie
 
-![Expansie van 32 naar 48 bits.](crypto_assets/des4.png){ width=90% }
+
+:::
+
+::::
 
 ---
 
@@ -555,19 +579,41 @@ Twee onderdelen:
 * 8 S-boxen, elk 6 bits in → 4 bits uit
 * 2 outer bits = rij, 4 inner bits = kolom
 
+Voorbeeld: **0**1101**1** → 1001
+
 ![Waarheidstabel van het S5-blok (Bron: Wikipedia).](crypto_assets/des5.png){ width=100% }
 
 ---
 
+
+## DES
+
+![](crypto_assets/des1.png){width=80%}
+
+
+
+---
+
+
+
 ## DES: subkeys maken
 
+:::: {.columns}
+
+::: {.column width="60%"}
 * 56-bit sleutel → splitsen in 2×28 bits
 * Per ronde: **bit-shift** + **compressie P-box** → 48-bit subkey
 * 16 rondes = 16 unieke subkeys
+:::
 
-![De 16 rondes die telkens 1 subkey maken.](crypto_assets/des6.png){ width=60% }
+::: {.column width="40%"}
+![De 16 rondes die telkens 1 subkey maken.](crypto_assets/des6.png){ width=100% }
+:::
+
+::::
 
 ---
+
 
 ## DES: P-boxen
 
@@ -578,13 +624,14 @@ Twee onderdelen:
 
 ---
 
+
 ## 3DES
 
 * DES sleutel (56 bit) te kort → 3DES (1995)
 * Sleutel tot **168 bits**, compatibel met bestaande DES hardware
 * 3x DES: **Encrypt → Decrypt → Encrypt** (met 3 verschillende sleutels)
+* Verlengde de levensduur van DES, maar is nu ook verouderd
 
-![3DES.](crypto_assets/3des.png){ width=60% }
 
 ::: {.callout-note}
 Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
@@ -592,14 +639,21 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 
 ---
 
-## Block cipher modes: het probleem
+## "Tripple DES"
 
-* Zelfde plaintext-blok + zelfde sleutel = **zelfde ciphertext**
-* Lekt informatie! Maakt **replay attacks** mogelijk
-
-![ECB lekt patronen (Bron: Wikipedia).](crypto_assets/ecbfail.png){ width=75% }
+![3DES.](crypto_assets/3des.png){ width=60% }
 
 ---
+
+## Block cipher modes
+
+* Hoe decryptie toepassen op data groter dan 1 blok?
+* Zelfde plaintext-blok + zelfde sleutel = **zelfde ciphertext**
+* Lekt informatie! Maakt **replay attacks** mogelijk
+* Verschillende **modes of operation** bedenkt om dit probleem te verhelpen.
+
+---
+
 
 ## Block cipher modes: overzicht
 
@@ -611,27 +665,70 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 | **OFB** | Blockcipher als streamcipher |
 | **CTR** | Teller (IV) als extra input (veel gebruikt: WPA2, IPSEC) |
 
+
+
+---
+
+## Block cipher modes: ECB
+
+**Electronic Codebook (ECB)**: elk blok onafhankelijk encrypteren
+
+![](crypto_assets/ecb.png)
+
+---
+
+## Probleem met ECB
+
+
+![ECB lekt patronen (Bron: Wikipedia).](crypto_assets/ecbfail.png){ width=75% }
+
+---
+
+## Block cipher modes: CBC
+
+**Cipher Block Chaining**: output van vorig blok als extra input voor volgende blok
+
 ![CBC encryptie (Bron: Wikipedia).](crypto_assets/cbc.png){ width=80% }
 
 ---
 
-## Initialisatie Vector (IV)
+## CBC werkt met een "Initialisatie Vector" (IV)
 
 * **Extra seed** naast de sleutel → effectief steeds andere sleutel
 * Wordt **ongeëncrypteerd** meegestuurd (in header)
-* Goed IV-selectie algoritme is cruciaal
+* Goede IV-selectie algoritme is cruciaal
+
+---
+
+## Block cipher modes: CTR
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* **Counter (CTR)**: teller (IV) als extra input voor blockcipher ("we encrypten de teller")
+  * Nuttig voor parallelle verwerking (encryptie van blokken onafhankelijk van elkaar)
+  * Gebruikt in WPA2, IPSEC, ... (bv Netflix streaming)
+:::
+
+::: {.column width="50%"}
+![CTR mode (Bron: Wikipedia).](crypto_assets/ctr.png){ width=100% }
+:::
+
+::::
 
 ---
 
 ## AES (Advanced Encryption Standard)
 
+
+* Meest recente en meest gebruikte symmetric block cipher
 * **2001**: nieuwe wereldwijde standaard
 * Gebaseerd op **Rijndael** (Belgisch! Door Vincent Rijmen & Joan Daemen)
 * Blokken van **128 bits**, sleutels tot **256 bits**
 
-![AES encryptie (Bron: Wikipedia).](crypto_assets/aes.png){ width=80% }
 
 ---
+
 
 ## AES: werking in het kort
 
@@ -640,4 +737,23 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
   * Substituties (bytes)
   * Transposities (rijen/kolommen)
   * XOR met round key
-* XOR = de feitelijke encryptie
+* XOR = wederom de feitelijke encryptie
+
+---
+
+
+## AES encryptie
+
+![(Bron: Wikipedia).](crypto_assets/aes.png){ width=80% }
+
+---
+
+## Up next?
+```{mermaid}
+%%{init: {"theme": "base", "flowchart": {"useMaxWidth": true}} }%%
+graph TD
+    A("Encryption/Decryption") --> B("Symmetric: 1-key,<br/>to en- and decrypt")
+    A --> C("Asymmetric: 2 keys,<br/>Public key to encrypt<br/>Private key to decrypt")
+
+    style C fill:#ff9900,stroke:#333,color:#000
+```
