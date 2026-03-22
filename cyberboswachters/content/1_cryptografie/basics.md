@@ -504,7 +504,6 @@ Tot hiertoe gingen we data steeds blok per blok in het encryptiecipher sturen en
 
 Stel dat we een afbeelding van Tux De Pinguïn opsplitsen in ongeveer 100 bij 100 datablokken. Als we nu ieder blok individueel met een blockcipher encrypten en zouden visualiseren dan krijgen we iets dat mogelijks toch nog wat informatie van Tux *doorlekt* (zie de tweede afbeelding) daar blokken van de afbeelding met exact dezelfde informatie ook dezelfde ciperblock zullen genereren. Vergelijk dit met de derde afbeelding waarin we een andere modus gebruiken (die we zo meteen gaan uitleggen) waarin repetities in de plaintext geen invloed hebben op repetities in de ciphertext.
 
-1
 
 ![Het volgend voorbeeld toont een (overdreven) manier waarom ECB minder veilig is dan de modes die we nog gaan behandelen (Bron wikipedia).](assets/ecbfail.png){ width=75% }
 
@@ -517,19 +516,37 @@ Alhoewel deze modus dus duidelijk een veiligheidsprobleem met zich mee draagt, h
 
 * Ieder blok wordt onafhankelijk van andere blokken gedecrypteerd. Als er dus een blok niet gedecrypteerd kon worden door een fout, dan heeft dat geen invloed op de daaropvolgende blokken. Dit is dus voor streaming-situaties nuttig: beeld je in dat je decryptie faalt halverwege het binnenkrijgen van een film die je aan het bekijken bent. Je zou helemaal opnieuw moeten beginnen.
 
-ECB is een niet zo veilige manier om een blockcipher toe te passen. Veel interessanter (veiliger) wordt het wanneer we extra informatie gebruiken om een blok te encrypteren. **Enkel het huidige blok en dezelfde sleutel gebruiken is namelijk niét veilig.** 
+ECB is een niet zo veilige manier om een blockcipher toe te passen. Veel interessanter (veiliger) wordt het wanneer we extra informatie gebruiken om een blok te encrypteren. **Enkel het huidige blok en dezelfde sleutel gebruiken is namelijk niét veilig.**
 
-Er zijn verschillende modes om veiliger te encrypteren dan ECB:
+Er zijn verschillende modes om veiliger te encrypteren dan ECB. We bespreken hieronder de belangrijkste.
 
-* Cipher block chaining (CBC): de output van het vorige blok (de ciphertext) wordt mee als input voor de encryptie van het volgende blok gebruikt.
-* Propagating CBC (PCBC): zelfde als CBC maar bij decryptie van een blok zijn ook alle vorige blokken vereist.
-* Cipher feedback (CFB): ongeveer hetzelfde als CBC alleen wordt het vorige blok iets later in het encryptieproces van het volgende blok gebruikt.
-* Output feedback (OFB): het blockcipher wordt als een streamcipher gebruikt.
-* Counter-mode (CTR): een extra teller wordt gebruikt als input, genaamd een *Initialisatie vector*, bij de encryptie van een blok. Deze teller wordt steeds verhoogd. Eén van de meest gebruikte modes (in onder andere WPA2 en IPSEC).
+##### CBC (Cipher Block Chaining)
+
+Bij CBC wordt de output van het vorige blok (de ciphertext) mee als input voor de encryptie van het volgende blok gebruikt. Concreet wordt de ciphertext van het vorige blok ge-XOR'd met het huidige plaintext-blok, vóór de encryptie plaatsvindt. Hierdoor is de encryptie van elk blok afhankelijk van alle voorgaande blokken, wat patronen in de plaintext verbergt.
 
 ![CBC encryptie (Bron wikipedia).](assets/cbc.png){ width=80% }
 
-Alle modes uit de doeken doen is hier niet aan de orde maar het moge duidelijk zijn dat ECB de minst veilige mode voorhanden is en deze wordt dan ook best vermeden.
+##### CFB (Cipher Feedback)
+
+CFB werkt vergelijkbaar met CBC, maar de ciphertext van het vorige blok wordt iets later in het encryptieproces van het volgende blok gebruikt. Het vorige ciphertext-blok wordt eerst door het blockcipher gestuurd en daarna ge-XOR'd met de plaintext.
+
+##### OFB (Output Feedback)
+
+Bij OFB wordt het blockcipher als een streamcipher gebruikt: de output van het blockcipher wordt telkens opnieuw als input voor het blockcipher gebruikt om een keystream te genereren. Deze keystream wordt vervolgens ge-XOR'd met de plaintext.
+
+##### CTR (Counter Mode)
+
+CTR is één van de meest gebruikte modes en werkt fundamenteel anders dan CBC of CFB. In plaats van blokken aan elkaar te ketenen, wordt een **teller** (counter) als input voor het blockcipher gebruikt. Deze teller bevat een **Initialisatie Vector (IV)** die bij elk volgend blok met 1 wordt verhoogd.
+
+![CTR mode (Bron wikipedia).](assets/ctr.png){ width=80% }
+
+De werking is als volgt: het blockcipher encrypteert niet de plaintext zelf, maar de tellerwaarde. Het resultaat hiervan wordt vervolgens ge-XOR'd met het plaintext-blok om de ciphertext te bekomen. Doordat elk blok een unieke tellerwaarde gebruikt, levert dezelfde plaintext in verschillende blokken steeds andere ciphertext op.
+
+Een groot voordeel van CTR is dat blokken **parallel** verwerkt kunnen worden: de encryptie van blok 5 is volledig onafhankelijk van blok 4, aangezien enkel de tellerwaarde en de sleutel nodig zijn. Dit maakt CTR bijzonder geschikt voor toepassingen waar snelheid belangrijk is, zoals bij het streamen van video (denk aan Netflix). CTR wordt onder andere gebruikt in **WPA2** en **IPSEC**.
+
+##### Overige modes
+
+Naast bovenstaande modes bestaan er nog andere, zoals **Propagating CBC (PCBC)**, waarbij bij decryptie van een blok ook alle vorige blokken vereist zijn. Alle modes uit de doeken doen is hier niet aan de orde, maar het moge duidelijk zijn dat ECB de minst veilige mode is en deze best vermeden wordt.
 
 ::: {.callout-tip}
 Het concept **Initialisatie Vector (IV)** zal je veel zien terugkomen in ciphers. Een IV is een getal dat men als extra seed meegeeft tijdens de encryptie, naast de sleutel. Op deze manier voorkomen we dat steeds enkel de sleutel als seed wordt gebruikt en we dus effectief steeds met een *andere* sleutel werken. Uiteraard zal ook de andere zijde over dezelfde IV moeten beschikken en zal deze dus doorgestuurd moeten worden. Dit gebeurt meestal via de header van het bijhorende pakketje en is ongeëncrypteerd. Dit lijkt contra-intuïtief - de IV onbeveiligd doorsturen - maar is geen probleem.

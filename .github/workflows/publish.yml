@@ -26,6 +26,18 @@ jobs:
       - name: Render slides
         run: quarto render cyberboswachters/slides/
 
+      - name: Install decktape
+        run: npm install -g decktape
+
+      - name: Convert slides to PDF
+        run: |
+          for f in cyberboswachters/build/slides/*.html; do
+            filename=$(basename "$f" .html)
+            if [ "$filename" != "index" ]; then
+              decktape reveal "file://$(pwd)/$f" "cyberboswachters/build/slides/${filename}.pdf" --size 1920x1080 || true
+            fi
+          done
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

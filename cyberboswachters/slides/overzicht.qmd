@@ -6,6 +6,6 @@ Hieronder vind je een overzicht van de beschikbare presentaties bij het handboek
 
 ## Beschikbare presentaties
 
-| Hoofdstuk | Presentatie |
-|-----------|-------------|
-| Cryptografie: deel 1 | [Bekijk slides](crypto_basics.html){target="_blank"} |
+| Hoofdstuk | Presentatie | PDF |
+|-----------|-------------|-----|
+| Cryptografie: deel 1 | [Bekijk slides](crypto_basics.html){target="_blank"} | [Download PDF](crypto_basics.pdf) |
