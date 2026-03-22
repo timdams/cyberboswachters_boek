@@ -13,6 +13,9 @@ format:
 
 ## Het sleutelprobleem bij symmetrische encryptie
 
+:::: {.columns}
+
+::: {.column width="70%"}
 * Per **eindpunt** een aparte sleutel nodig
 * Aantal sleutels: $n \times \frac{(n - 1)}{2}$
 
@@ -21,18 +24,24 @@ format:
 | 6 | 15 |
 | 10 | 45 |
 | 100 | 4950! |
+:::
+
+::: {.column width="30%" .fragment}
+![Bij 6 gebruikers zijn er al 15 sleutels nodig.](crypto_assets/keyprob.png){ width=40% }
+
+:::
+
+::::
+
 
 ::: {.callout-warning .fragment}
 **Key distribution problem**: op grote schaal (Internet) wordt sleutelmanagement onmogelijk!
+
 :::
 
 ---
 
-## Het sleutelprobleem: visueel
 
-![Bij 6 gebruikers zijn er al 15 sleutels nodig.](crypto_assets/keyprob.png){ width=40% }
-
----
 
 ## Asymmetrische encryptie
 
@@ -53,7 +62,7 @@ graph TD
 * **Private sleutel**: enkel de eigenaar kan decrypteren
 
 ::: {.callout-important .fragment}
-**De private sleutel moet altijd geheim blijven!**
+**De private sleutel moet altijd geheim blijven! (cfr Kerkhoff)**
 :::
 
 ---
@@ -70,12 +79,16 @@ graph TD
 ## De kist-metafoor
 
 ::: {.callout-tip}
-De **publieke sleutel** = een openstaande kist. Iedereen kan er een boodschap in leggen en op slot klikken (*encrypteren*). Enkel de eigenaar heeft de **private sleutel** om de kist te openen (*decrypteren*).
+
+
+
+De **publieke sleutel** = een openstaande kist. 
+
+Iedereen kan er een boodschap in leggen en op slot klikken (*encrypteren*). 
+
+Enkel de eigenaar heeft de **private sleutel** om de kist te openen (*decrypteren*).
 :::
 
-::: {.callout-note .fragment}
-Bekende publieke cryptosystemen: **RSA**, DSS en El Gamal.
-:::
 
 ---
 
@@ -186,7 +199,7 @@ $$C = 88^7\%187 = 11$$
 
 **Decryptie** (met private sleutel): $P = C^d\%N$
 
-$$P = 11^{23}\%187 = 88 ✓$$
+$$P = 11^{23}\%187 = 88$$ = ASCII van X → bericht is correct ontvangen!
 
 ---
 
@@ -213,8 +226,8 @@ De sterkte zit in het feit dat **factorisatie** computationeel veel moeilijker i
 ## Intermezzo: Hashes
 
 * **Hashfunctie**: zet data om naar code met **vaste lengte**
-* Ongeacht de grootte van de input
-* **1 bit** wijzigen → **totaal andere hash**
+  * Ongeacht de grootte van de input
+  * **1 bit** wijzigen → **totaal andere hash**
 * Identieke input → identieke hash
 
 ![Het hash proces.](crypto_assets/hash.png){width=60%}
@@ -240,7 +253,7 @@ De sterkte zit in het feit dat **factorisatie** computationeel veel moeilijker i
 | **SHA3-512** | 512 bits | Nieuwste standaard |
 
 ::: {.callout-important .fragment}
-**Een digitale hash is een ideaal middel om boodschappen digitaal te ondertekenen.**
+**Een digitale hash is een ideaal middel om boodschappen digitaal te ondertekenen (integrity).**
 :::
 
 ---
@@ -248,21 +261,34 @@ De sterkte zit in het feit dat **factorisatie** computationeel veel moeilijker i
 ## Digitale handtekeningen
 
 * Probleem: hoe weet je dat een bericht **echt** van de afzender komt?
+
+:::{.fragment}
 * Oplossing: **digital signature** via publieke crypto
   * Private sleutel = bewijs van identiteit
   * Handtekening = hash geëncrypteerd met private sleutel
   * Ontvanger verifieert met bijhorende publieke sleutel
+:::
 
 ---
 
-## Digitale handtekeningen: het proces
+## Digitale handtekeningen
 
 ![Boodschappen ondertekenen met je private sleutel.](crypto_assets/signover.png)
 
 ---
 
+## Digitale handtekeningen: hele process
+
+![](crypto_assets/signaturesend.png){width=80%}
+
+---
+
 ## Digitale handtekeningen: rekenvoorbeeld
 
+
+:::: {.columns}
+
+::: {.column width="50%"}
 Gegeven sleutelpaar:
 
 * Publieke sleutel: $e=5$, $n=91$
@@ -272,19 +298,25 @@ Gegeven sleutelpaar:
 
 $$s = m^d\%n = 35^{29}\%91 = 42$$
 
-Verstuur: boodschap ``35`` + handtekening ``42``
+::: {.fragment}
+**Verstuur**: 
 
----
+boodschap ``35`` + handtekening ``42``
+:::
+:::
 
-## Digitale handtekeningen: verificatie
+::: {.column width="50%" .fragment}
+Ontvanger verifieert met publieke sleutel $e,n$:
 
-Ontvanger verifieert met publieke sleutel:
-
-$$42^e\%n = 42^5\%91 = 35 ✓$$
+$$42^e\%n = 42^5\%91 = 35$$
 
 Hash komt overeen → bericht is **authentiek**!
 
-![Het volledig proces bij een digitale handtekening.](crypto_assets/signaturesend.png){width=80%}
+:::
+
+::::
+
+
 
 ---
 
@@ -301,7 +333,7 @@ Hash komt overeen → bericht is **authentiek**!
 
 ## Man-in-the-middle bij handtekeningen
 
-![Eve misbruikt het vertrouwen dat zit ingebouwd in het digitale handtekening proces.](crypto_assets/signfout.png)
+![Eve misbruikt het impliciete vertrouwen dat zit ingebouwd in het digitale handtekening proces.](crypto_assets/signfout.png)
 
 ::: {.callout-warning .fragment}
 We hebben een manier nodig om de **identiteit van de eigenaar** van een publieke sleutel te verifiëren!
