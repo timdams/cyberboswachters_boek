@@ -1,0 +1,11 @@
+---
+title: "Slides"
+---
+
+Hieronder vind je een overzicht van de beschikbare presentaties bij het handboek. Klik op een onderwerp om de slides te openen.
+
+## Beschikbare presentaties
+
+| Hoofdstuk | Presentatie |
+|-----------|-------------|
+| Cryptografie: basisconcepten | [Bekijk slides](slides/crypto_basics.html){target="_blank"} |

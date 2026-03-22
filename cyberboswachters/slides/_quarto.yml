@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: ../build/slides
+  render:
+    - "*.qmd"
+    - "!overzicht.qmd"
 
 website:
   title: "Cyberboswachters – Slides"
