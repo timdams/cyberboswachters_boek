@@ -1,0 +1,27 @@
+/*-- scss:defaults --*/
+$link-color: #FF0000;
+$link-hover-color: #B30000;
+
+/*-- scss:rules --*/
+
+// Rode streep onder navbar
+.navbar {
+  border-bottom: 3px solid #FF0000 !important;
+}
+
+// Headings in rood
+.content h1, .content h2 {
+  color: #B30000 !important;
+}
+
+// Sidebar actief item
+.sidebar-item-text.active {
+  color: #FF0000 !important;
+  font-weight: 600;
+}
+
+// TOC actief item
+.nav-link.active {
+  color: #FF0000 !important;
+  border-left: 3px solid #FF0000 !important;
+}

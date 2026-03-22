@@ -1,0 +1,11 @@
+color:
+  palette:
+    ap-red: "#FF0000"
+    ap-red-dark: "#B30000"
+    ap-red-light: "#FFE5E5"
+    gray: "#4D4D4D"
+    offwhite: "#f8f9fa"
+  foreground: gray
+  background: offwhite
+  primary: ap-red
+  secondary: ap-red-dark

@@ -7,6 +7,11 @@ lang: nl
 book:
   title: "Cyberboswachters"
   author: "Tim Dams"
+  navbar:
+    background: dark
+    left:
+      - text: "Slides"
+        href: slides/overzicht.qmd
   chapters:
     - index.qmd
     - content/0_het_security_landschap/les1_wordtheterger.md
@@ -15,19 +20,18 @@ book:
     - content/3_netwerk_security/wifi.md
     - content/1_cryptografie/authenticatie.md
     - content/5_iot/iotintro.md
-  appendices:    
+  appendices:
     - content/0_het_security_landschap/3_gdpr.md
     - content/appendix/darkweb.md
     - content/appendix/awareness.md
     - content/appendix/meerweten.md
     - content/appendix/bronnen.md
-    - slides/overzicht.qmd
 
 bibliography: references.bib
 
 format:
   html:
-    theme: [sandstone, brand]
+    theme: [sandstone, brand, custom.scss]
     toc: true
   typst:
     mainfont: "Arial"
