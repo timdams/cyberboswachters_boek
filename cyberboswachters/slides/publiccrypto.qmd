@@ -355,21 +355,28 @@ Certificaten worden beschreven in de **X.509** standaard.
 
 ## Certificaat aanmaken: het proces
 
+:::: {.columns}
+
+::: {.column width="50%"}
 1. Bob gaat naar een **Registration Authority** (RA)
    * Identiteit verifiëren (ID-kaart, paspoort, ...)
    * Soms fysiek kantoor vereist
 2. RA stuurt aanvraag + Bobs publieke sleutel naar **Certification Authority** (CA)
 3. CA maakt certificaat aan én **ondertekent** het
-
-![Een certificaat registreren.](crypto_assets/certreg.png)
-
----
-
-## Public Key Infrastructure (PKI)
-
-::: {.callout-tip}
-Het gehele systeem van CA's, RA's, etc. voor het uitgeven, beheren en bewijzen van certificaten heet een **Public Key Infrastructure** (**PKI**).
 :::
+
+::: {.column width="50%"}
+
+
+![](crypto_assets/certreg.png)
+
+
+:::
+
+::::
+
+
+
 
 ---
 
@@ -380,9 +387,17 @@ Het gehele systeem van CA's, RA's, etc. voor het uitgeven, beheren en bewijzen v
   * Info over Bob en de CA
   * Geëncrypteerd met **private sleutel** van de CA
 
-**Verificatie**: zelfde hash genereren → vergelijken met certificaat na decryptie met **publieke sleutel** van CA
+::: {.callout-tip}
+Het gehele systeem van CA's, RA's, etc. voor het uitgeven, beheren en bewijzen van certificaten heet een **Public Key Infrastructure** (**PKI**).
+:::
 
-![Een certificaat aanmaken.](crypto_assets/certcreatie.png)
+---
+
+## Verificatie van certificaten
+
+Zelfde hash genereren → vergelijken met certificaat na decryptie met **publieke sleutel** van CA
+
+![](crypto_assets/certcreatie.png)
 
 ---
 
@@ -404,18 +419,34 @@ Vertrouw je de root CA? → dan vertrouw je de hele keten. **En vice versa!**
 ![Het certificaat tijdens het surfen.](crypto_assets/webcert.png){width=80%}
 
 ::: {.callout-note .fragment}
-HTTPS + certificaten werken in tandem: encryptie **én** identiteitsverificatie. Pas sinds ~2017 biedt >50% van websites HTTPS aan.
+HTTPS + certificaten werken in tandem: encryptie **én** identiteitsverificatie. 
+
+Pas sinds ~2017 biedt >50% van websites HTTPS aan.
 :::
 
 ---
 
 ## Breach of Trust
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
 * Ergste scenario: **private sleutel van CA** wordt gestolen
 * Aanvallers kunnen dan certificaten genereren **op naam van de CA**
 * **Alle** certificaten van die CA (en sub-CA's!) worden ongeldig
+:::
+
+::: {.column width="50%"}
+
 
 ![De chain-of-trust: oh zo belangrijk bij digitale certificaten.](crypto_assets/chaintrust.png){width=60%}
+
+:::
+
+::::
+
+
 
 ---
 
@@ -431,11 +462,25 @@ HTTPS + certificaten werken in tandem: encryptie **én** identiteitsverificatie.
 
 ## Self-signed certificaten
 
+:::: {.columns}
+
+::: {.column width="50%"}
 * Root CA's hebben een **self-signed certificate**
   * *Verleend aan* == *Verleend door*
 * Als je de root CA niet vertrouwt → hele keten niet te vertrouwen
+:::
+
+::: {.column width="50%"}
+
 
 ![Sectigo heeft een self-signed certificaat.](crypto_assets/belcert3.png){width=40%}
+
+:::
+
+::::
+
+
+
 
 ---
 
@@ -537,3 +582,18 @@ Meer weten? Bekijk de briljante visualisatie op [tls.ulfheim.net](HTTPS://tls.ul
 ::: {.callout-important .fragment}
 **Negeer nooit certificaatwaarschuwingen in je browser!**
 :::
+
+---
+
+## Conclusie
+
+* **Asymmetrische crypto** lost het sleuteldistributieprobleem op
+* Twee sleutels: **publiek** (encryptie) en **privaat** (decryptie + handtekening)
+* **Digitale handtekeningen** + **certificaten** bewijzen identiteit
+* **TLS/HTTPS** combineert asymmetrisch en symmetrisch voor snelle, veilige communicatie
+* De **chain of trust** (CA's) is de ruggengraat van vertrouwen op het Internet
+
+::: {.callout-important}
+Bescherm je **private sleutel**, verifieer **certificaten**, en negeer nooit browserwaarschuwingen!
+:::
+

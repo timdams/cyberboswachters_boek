@@ -73,13 +73,13 @@ Integrity wordt ook vaak opgelost m.b.v. cryptgrafische technieken, zoals **hash
 
 ## Crypto volgens m'n kids
 
-![](crypto_assets/kids1.png){ width=90% }
+![](crypto_assets/kids1.png)
 
 ---
 
 ## Crypto volgens m'n kids, deel 2
 
-![](crypto_assets/kids2.png){ width=90% }
+![](crypto_assets/kids2.png)
 
 ---
 
@@ -502,7 +502,7 @@ graph TD
 :::
 
 ::: {.column width="30%"}
-![Een enkele Feistel-structuur.](crypto_assets/Feistelunit.png){ width=100% }
+![Een enkele Feistel-structuur.](crypto_assets/feistelunit.png){ width=100% }
 :::
 
 ::::
@@ -745,6 +745,20 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 ## AES encryptie
 
 ![(Bron: Wikipedia).](crypto_assets/aes.png){ width=80% }
+
+---
+
+## Conclusie
+
+* **Cryptografie** beschermt vertrouwelijkheid (CIA) via encryptie met geheime sleutels
+* **Kerckhoffs' principe**: de sleutel is het geheim, niet het algoritme
+* **Symmetrische encryptie**: één sleutel, snel, maar sleuteluitwisseling is moeilijk
+* **Stream-** (RC4) vs **blockciphers** (DES, AES) met verschillende modes (ECB, CBC, CTR)
+* **AES** is de huidige standaard — Belgisch en ongebroken!
+
+::: {.callout-important}
+Langere sleutels + sterke algoritmes = betere bescherming. Maar sleuteluitwisseling blijft het grote probleem → **asymmetrische crypto** biedt de oplossing!
+:::
 
 ---
 
