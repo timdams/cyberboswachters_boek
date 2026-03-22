@@ -34,7 +34,7 @@ jobs:
           for f in cyberboswachters/build/slides/*.html; do
             filename=$(basename "$f" .html)
             if [ "$filename" != "index" ]; then
-              decktape reveal "file://$(pwd)/$f" "cyberboswachters/build/slides/${filename}.pdf" --size 1920x1080 || true
+              decktape reveal "file://$(pwd)/$f" "cyberboswachters/build/slides/${filename}.pdf" --size 1920x1080 --chrome-arg=--no-sandbox || true
             fi
           done
 
