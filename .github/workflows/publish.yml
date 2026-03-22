@@ -26,17 +26,56 @@ jobs:
       - name: Render slides
         run: quarto render cyberboswachters/slides/
 
-      - name: Install decktape
-        run: npm install -g decktape
+      - name: Restore cached slide PDFs
+        uses: actions/cache@v4
+        with:
+          path: cached-slide-pdfs
+          key: slide-pdfs-${{ github.sha }}
+          restore-keys: |
+            slide-pdfs-
 
-      - name: Convert slides to PDF
+      - name: Convert changed slides to PDF
         run: |
+          # Copy any cached PDFs into the build directory
+          if [ -d cached-slide-pdfs ]; then
+            cp cached-slide-pdfs/*.pdf cyberboswachters/build/slides/ 2>/dev/null || true
+          fi
+
+          # Check if global slide config changed → rebuild all PDFs
+          REBUILD_ALL=false
+          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qE 'cyberboswachters/slides/(_quarto\.yml|_extensions/)'; then
+            REBUILD_ALL=true
+          fi
+
+          # Find which specific .qmd slide files changed
+          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null -- 'cyberboswachters/slides/*.qmd' | xargs -rI{} basename {} .qmd)
+
+          # Collect slides that need PDF (re)generation
+          TO_CONVERT=""
           for f in cyberboswachters/build/slides/*.html; do
-            filename=$(basename "$f" .html)
-            if [ "$filename" != "index" ]; then
-              decktape reveal "file://$(pwd)/$f" "cyberboswachters/build/slides/${filename}.pdf" --size 1920x1080 --chrome-arg=--no-sandbox || true
+            name=$(basename "$f" .html)
+            [ "$name" = "index" ] && continue
+            pdf="cyberboswachters/build/slides/${name}.pdf"
+            if [ "$REBUILD_ALL" = "true" ] || [ ! -f "$pdf" ] || echo "$CHANGED" | grep -qw "$name"; then
+              TO_CONVERT="$TO_CONVERT $name"
             fi
           done
+
+          if [ -z "$TO_CONVERT" ]; then
+            echo "All slide PDFs are up to date"
+          else
+            npm install -g decktape
+            for name in $TO_CONVERT; do
+              echo "Converting $name to PDF..."
+              decktape reveal "file://$(pwd)/cyberboswachters/build/slides/${name}.html" \
+                "cyberboswachters/build/slides/${name}.pdf" \
+                --size 1920x1080 --chrome-arg=--no-sandbox || true
+            done
+          fi
+
+          # Update cache directory
+          mkdir -p cached-slide-pdfs
+          cp cyberboswachters/build/slides/*.pdf cached-slide-pdfs/ 2>/dev/null || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
