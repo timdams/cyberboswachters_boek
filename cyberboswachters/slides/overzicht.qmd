@@ -8,20 +8,20 @@ Hieronder vind je een overzicht van de beschikbare presentaties bij het handboek
 
 | Hoofdstuk | Presentatie | PDF |
 |-----------|-------------|-----|
-|❌ H1: Wordt het erger? |  |  |
-|❌ H2: Cybersec Fundamenten |  |  |
+|🕒 H1: Wordt het erger? | [Bekijk slides](wordtheterger.html){target="_blank"}  | [Download PDF](wordtheterger.pdf) |
+|🕒 H2: Cybersec Fundamenten | [Bekijk slides](basicsec.html){target="_blank"}  | [Download PDF](basicsec.pdf) |
 |✅ H3: Cryptografie: deel 1 | [Bekijk slides](crypto_basics.html){target="_blank"} | [Download PDF](crypto_basics.pdf) |
 |🕒 H3: Cryptografie: deel 2 | [Bekijk slides](publiccrypto.html){target="_blank"} | [Download PDF](publiccrypto.pdf) |
 |🕒 H4: Wifi Security | [Bekijk slides](wifi.html){target="_blank"} | [Download PDF](wifi.pdf) |
 |🕒 H5: Authenticatie | [Bekijk slides](authenticatie.html){target="_blank"} | [Download PDF](authenticatie.pdf) |
-|❌ H6: IoT Security |  |  |
-|❌ Appendix A: GDPR |  |  |
-|❌ Appendix B: Dark web |  |  |
-|❌ Appendix C: Awareness creëren |  |  |
+|🕒 H6: IoT Security | [Bekijk slides](iotintro.html){target="_blank"}  |  [Download PDF](iotintro.pdf)|
+|🕒 Appendix A: GDPR | [Bekijk slides](gdpr.html){target="_blank"}  | [Download PDF](gdpr.pdf)  |
+|🕒 Appendix B: Dark web | [Bekijk slides](darkweb.html){target="_blank"}  |[Download PDF](darkweb.pdf)  |
+|🕒 Appendix C: Awareness creëren | [Bekijk slides](awareness.html){target="_blank"}  |[Download PDF](awareness.pdf)  |
 
 
 **Legende:**
 
 * ❌: Slides nog niet beschikbaar
 * ✅: Slides beschikbaar
-* 🕒: Slides in ontwikkeling
+* 🕒: Slides in ontwikkeling (mogen niet als leerstof gebruikt worden )
