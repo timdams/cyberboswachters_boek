@@ -430,13 +430,22 @@ Nadeel: fysiek object kan je **verliezen** of het kan **stuk gaan**.
 
 ---
 
-## Federation en Single Sign-On (SSO)
+## Single Sign-On (SSO)
+
+* **SSO** = éénmaal inloggen → toegang tot **meerdere** applicaties
+* Voorbeeld: inloggen bij Google → meteen toegang tot Gmail, YouTube, Drive, ...
+* Authenticatie wordt uitbesteed aan een centrale **identity provider** (IdP)
+* De applicatie = **service provider**, vertrouwt op de bevestiging van de IdP
+
+---
+
+## Federation
 
 * Zelf logindata beheren? → grote **kans op fouten**
-* **Federation**: gebruikers loggen in via bestaand account (Google, Facebook, ...)
+* **Federation**: SSO over de grenzen van organisaties heen
+* Gebruikers loggen in via bestaand account (Google, Facebook, ...)
   * Jouw site = **service provider**
   * Google/Facebook = **identity provider**
-  * Authenticatie via **Single Sign-On** (SSO)
 
 ![Een vereenvoudigd SSO proces.](crypto_assets/sso.png){ width=80% }
 

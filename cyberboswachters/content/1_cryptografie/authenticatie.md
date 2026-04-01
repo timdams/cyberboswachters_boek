@@ -218,10 +218,17 @@ Een nadeel van deze groep is dat het om een fysiek object gaat dat je kan verlie
 
 Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef* een eigen crypto-algoritme te ontwikkelen. De kans dat je fouten met verstrekkende gevolgen maakt is te groot. Ook bij het omgaan van logindata van gebruikers en hoe je ze authenticeert is het aangeraden om even te bezinnen voor je er zelf aan begint. 
 
-Dankzij het concept **federation** hoef je niet wakker te liggen van hoe je je gebruikerswachtwoorden gaat opslaan: gebruikers kunnen inloggen gebruik makend van hun bestaande Google, Facebook en andere accounts. Via federatie zal de gebruiker op jouw site (of app), de *service provider*, kunnen inloggen waarbij een *third-party* - die jij en je gebruiker vertrouwen - voor de eigenlijke authenticatie zorgt (*de identity provider*), gebruik makend van zogenaamde *single sign-on* (**sso**) authenticatie.
+### Wat is Single Sign-On (SSO)?
+
+**Single Sign-On (SSO)** is een authenticatiemethode waarbij een gebruiker zich **éénmaal aanmeldt** en vervolgens automatisch toegang krijgt tot **meerdere applicaties of diensten**, zonder zich bij elk systeem apart te moeten aanmelden. Je kent dit waarschijnlijk al: wanneer je inlogt op je Google-account, heb je meteen ook toegang tot Gmail, YouTube, Google Drive en tientallen andere Google-diensten — zonder telkens opnieuw je wachtwoord in te voeren. Dat is SSO in actie.
+
+Het basisprincipe is eenvoudig: in plaats van dat elke applicatie zelf verantwoordelijk is voor authenticatie, wordt dit uitbesteed aan een centrale **identity provider** (IdP). Die identity provider bevestigt de identiteit van de gebruiker, waarna de applicatie (de **service provider**) de gebruiker vertrouwt op basis van die bevestiging.
+
+### Federation
+
+Dankzij het concept **federation** kan SSO ook werken **over de grenzen van organisaties heen**. Gebruikers kunnen inloggen op jouw site of app (de *service provider*) gebruik makend van hun bestaande Google, Facebook of andere accounts. Een *third-party* — die jij en je gebruiker vertrouwen — zorgt dan voor de eigenlijke authenticatie als *identity provider*. Zo hoef je als ontwikkelaar niet wakker te liggen van hoe je gebruikerswachtwoorden gaat opslaan.
 
 ![Een vereenvoudigd single sign-on proces.](assets/sso.png){}
-
 
 Federation via SSO is een onderdeel van *federated identity management*, een groep technologieën en concepten die ervoor zorgen dat de identiteit van een gebruiker over meerdere, onafhankelijke systemen wordt bewaard en gebruikt. Je zal de termen **delegation** en **federation** soms door elkaar zien tegenkomen wanneer je meer informatie over SSO opzoekt.
 

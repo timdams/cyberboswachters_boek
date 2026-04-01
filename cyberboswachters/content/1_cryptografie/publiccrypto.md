@@ -113,6 +113,30 @@ De sterkte van publieke crypto stoelt dus op het feit dat ontbinden van (grote) 
 
 Zonder in detail te treden hoe cryptocoins en blockchains werken, is het nuttig om te vermelden dat bij cryptocoins ook de public crypto concepten worden gebruikt. Ook hier is je private sleutel uiterst belangrijk: enkel de eigenaar van de private sleutel "bezit" de bijhorende cryptocoins in de *blockchain*. Daarom is het belangrijk dat je **NOOIT** je private sleutel aan derden geeft, want zo geef je hen toegang tot jouw *coins* en kunnen ze vervolgens deze stelen door de private sleutel te vervangen.
 
+### Elliptic Curve Cryptografie (ECC)
+
+RSA baseert zich op de moeilijkheid van het ontbinden van grote getallen in priemfactoren. **Elliptic Curve Cryptografie** (ECC) is een modernere vorm van asymmetrische crypto die zich baseert op de wiskundige eigenschappen van **elliptische krommen over eindige velden**. Het onderliggende wiskundige probleem — het *Elliptic Curve Discrete Logarithm Problem* (ECDLP) — is nóg moeilijker op te lossen dan factorisatie, waardoor ECC met veel kleinere sleutels hetzelfde beveiligingsniveau kan bieden als RSA:
+
+| ECC sleutellengte | RSA equivalent | Beveiligingsniveau |
+|---|---|---|
+| 256 bits | 3072 bits | 128 bits |
+| 384 bits | 7680 bits | 192 bits |
+
+Het **beveiligingsniveau** (*security strength*) drukt uit hoeveel rekenwerk een aanvaller nodig heeft om de encryptie te kraken, uitgedrukt in bits. Een beveiligingsniveau van 128 bits betekent dat een aanvaller $2^{128}$ bewerkingen moet uitvoeren — evenveel als nodig is om een symmetrische sleutel van 128 bits (zoals AES-128) te bruteforcen. Zo kunnen we de sterkte van verschillende cryptosystemen met elkaar vergelijken: een ECC-sleutel van 256 bits en een RSA-sleutel van 3072 bits zijn dus *even moeilijk te kraken*.
+
+Kleinere sleutels betekenen snellere berekeningen, minder dataverkeer en lager energieverbruik. Dat maakt ECC bijzonder geschikt voor toepassingen waar rekenkracht of bandbreedte beperkt is, zoals **mobiele toestellen** en **IoT-apparaten**.
+
+ECC wordt vandaag breed ingezet. De twee belangrijkste toepassingen zijn:
+
+* **ECDH** (*Elliptic Curve Diffie-Hellman*): een variant van de eerder besproken Diffie-Hellman sleuteluitwisseling, maar dan gebaseerd op elliptische krommen.
+* **ECDSA** (*Elliptic Curve Digital Signature Algorithm*): een digitaal handtekening-algoritme dat onder andere door Bitcoin en andere blockchains wordt gebruikt.
+
+Moderne TLS-verbindingen (en dus HTTPS) gebruiken vrijwel altijd ECC-gebaseerde algoritmes voor de sleuteluitwisseling, omdat ze sneller en veiliger zijn dan klassiek RSA bij vergelijkbare sleutellengtes.
+
+::: {.callout-warning}
+Net als RSA is ook ECC kwetsbaar voor toekomstige **quantumcomputers**. Daarom wordt er actief gewerkt aan zogenaamde **post-quantum cryptografie**: nieuwe algoritmes die bestand zijn tegen aanvallen met quantumcomputers. In 2024 publiceerde NIST de eerste standaarden hiervoor.
+:::
+
 #### Intermezzo: Hashes
 
 We gaan nu even een zijtak inslaan om het concept "hash" te bespreken. Een hash is een concept uit de informatica dat we gebruiken om te controleren of een digitaal stuk tekst werd aangepast of niet. Door de tekst in een hashfuntie te steken wordt een hash aangemaakt. Deze hash is een stuk code met een vaste lengte, ongeacht de originele input. Wanneer 1 bit of meer wordt aangepast in de originele boodschap dan zal deze in een totaal andere hash resulteren. Enkel dus wanneer een identiek stuk tekst als invoer (tot op bitniveau identiek) wordt gebruikt, zullen twee hashes gelijk zijn.
@@ -243,6 +267,27 @@ Je kan via de Certification Manager van Windows bekijken welke certificaten je l
 
 :::
 
+
+### Web of Trust: een alternatief voor PKI
+
+Het PKI-model steunt op **gecentraliseerde** Certificate Authorities die de identiteit van sleuteleigenaars garanderen. Er bestaat echter ook een **gedecentraliseerd** alternatief: het **Web of Trust** (WoT), dat bekend werd door **PGP** (Pretty Good Privacy) en de open-source variant **GPG** (GNU Privacy Guard).
+
+In een Web of Trust zijn er geen centrale autoriteiten. In plaats daarvan ondertekenen gebruikers *elkaars* publieke sleutels. Als Alice de publieke sleutel van Bob persoonlijk heeft geverifieerd (bijvoorbeeld door zijn *key fingerprint* te vergelijken tijdens een ontmoeting), kan zij zijn sleutel ondertekenen met haar eigen private sleutel. Hiermee verklaart Alice: *"Ik bevestig dat deze publieke sleutel effectief van Bob is."*
+
+![In een Web of Trust ondertekenen gebruikers elkaars sleutels in plaats van te vertrouwen op een centrale autoriteit.](assets//weboftrust.png){width=60%}
+
+Stel nu dat Carol de sleutel van Bob nodig heeft maar hem niet persoonlijk kent. Als Carol wél Alice vertrouwt en ziet dat Alice de sleutel van Bob heeft ondertekend, dan kan Carol via dat **vertrouwenspad** besluiten om ook Bobs sleutel te aanvaarden. Zo ontstaat een netwerk — een *web* — van onderlinge vertrouwensrelaties.
+
+| Eigenschap           | PKI                                       | Web of Trust                                |
+| -------------------- | ----------------------------------------- | ------------------------------------------- |
+| Vertrouwensmodel     | Hiërarchisch (top-down via CA's)          | Gedecentraliseerd (peer-to-peer)            |
+| Wie valideert?       | Certificate Authorities                   | De gebruikers zelf                          |
+| Zwak punt            | Eén gecompromitteerde CA treft iedereen   | Vergt actieve deelname van gebruikers       |
+| Typisch gebruik      | HTTPS, e-mail (S/MIME), code signing      | PGP/GPG e-mailencryptie, softwarepakketten  |
+
+::: {.callout-note}
+Het Web of Trust werd jarenlang gebruikt door de PGP/GPG-gemeenschap, onder andere via zogenaamde **key signing parties** waar mensen fysiek samenkwamen om elkaars sleutels te verifiëren en te ondertekenen. In de praktijk bleek het model echter moeilijk schaalbaar: het vergt veel moeite van individuele gebruikers en het is lastig om een betrouwbaar vertrouwenspad te vinden naar iemand die je niet kent. Daarom wordt voor de meeste toepassingen op het Internet vandaag het PKI-model met Certificate Authorities gebruikt.
+:::
 
 ## HTTPS en TLS
 

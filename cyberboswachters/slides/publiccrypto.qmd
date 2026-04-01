@@ -228,6 +228,34 @@ De sterkte zit in het feit dat **factorisatie** computationeel veel moeilijker i
 
 ---
 
+## Elliptic Curve Cryptografie (ECC)
+
+* **Modernere** asymmetrische crypto, gebaseerd op **elliptische krommen**
+* Veel **kleinere sleutels** voor hetzelfde beveiligingsniveau:
+
+| ECC | RSA equivalent |
+|---|---|
+| 256 bits | 3072 bits |
+| 384 bits | 7680 bits |
+
+::: {.callout-tip .fragment}
+Kleiner = **sneller**, minder data, minder energie → ideaal voor **mobiel** en **IoT**
+:::
+
+---
+
+## ECC: toepassingen
+
+* **ECDH**: Diffie-Hellman sleuteluitwisseling via elliptische krommen
+* **ECDSA**: digitale handtekeningen (o.a. gebruikt door **Bitcoin**)
+* Moderne **TLS/HTTPS** gebruikt vrijwel altijd ECC voor sleuteluitwisseling
+
+::: {.callout-warning .fragment}
+Net als RSA is ECC kwetsbaar voor **quantumcomputers**. Daarom werkt men aan **post-quantum cryptografie** — NIST publiceerde in 2024 de eerste standaarden.
+:::
+
+---
+
 ## Intermezzo: Hashes
 
 * **Hashfunctie**: zet data om naar code met **vaste lengte**
@@ -518,6 +546,44 @@ Geen certificaat ≠ automatisch onveilig. Certificaten kosten geld — niet all
 Bekijk lokaal geïnstalleerde certificaten via ``certlm.msc``
 
 ![Let er altijd op welke informatie je deelt via screenshots.](crypto_assets/certlm.jpg){width=40%}
+:::
+
+---
+
+## Web of Trust: alternatief voor PKI
+
+* PKI = **gecentraliseerd** (vertrouwen via CA's)
+* **Web of Trust** (WoT) = **gedecentraliseerd** alternatief (bekend van **PGP/GPG**)
+* Geen centrale autoriteiten — gebruikers ondertekenen **elkaars** publieke sleutels
+
+::: {.callout-tip .fragment}
+Alice verifieert Bobs sleutel persoonlijk → ondertekent deze met haar private sleutel → *"Ik bevestig dat deze sleutel van Bob is."*
+:::
+
+---
+
+## Web of Trust: vertrouwenspaden
+
+* Carol kent Bob niet, maar **vertrouwt Alice**
+* Alice heeft Bobs sleutel ondertekend
+* Carol kan via dat **vertrouwenspad** Bobs sleutel aanvaarden
+* Zo ontstaat een **web** van onderlinge vertrouwensrelaties
+
+![In een Web of Trust ondertekenen gebruikers elkaars sleutels.](crypto_assets/weboftrust.png){width=60%}
+
+---
+
+## PKI vs. Web of Trust
+
+| | **PKI** | **Web of Trust** |
+|---|---|---|
+| Vertrouwen | Hiërarchisch (top-down) | Peer-to-peer |
+| Wie valideert? | Certificate Authorities | Gebruikers zelf |
+| Zwak punt | 1 CA gehackt = iedereen getroffen | Vergt actieve deelname |
+| Gebruik | HTTPS, S/MIME, code signing | PGP/GPG e-mail, softwarepakketten |
+
+::: {.callout-note .fragment}
+WoT bleek moeilijk **schaalbaar**: key signing parties, moeilijk vertrouwenspaden vinden. Daarom domineert PKI op het Internet.
 :::
 
 ---
