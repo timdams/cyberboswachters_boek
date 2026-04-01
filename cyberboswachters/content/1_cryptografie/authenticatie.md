@@ -288,3 +288,55 @@ Het inloggen met een passkey is gebaseerd op wat we weten uit public key crypto:
 De login-fase is dan ook bijna het zelfde als de registratie. Ook nu zal de gebruiker een challenge krijgen. Deze challenge zal de gebruiker nu encrypteren met z'n private sleutel. Wanneer de server deze geëncrypteerde challenge kan decrypteren met de bewaarde publieke sleutel van de gebruiker, weet deze dat de gebruiker mag toegelaten worden.
 
 ![Het login proces met een passkey](assets/passkey.png)
+
+## Authenticator apps en TOTP
+
+Wanneer je multifactor authenticatie inschakelt op een website, krijg je vaak de keuze om een **authenticator app** te gebruiken, zoals Google Authenticator, Microsoft Authenticator of Authy. Deze apps genereren om de 30 seconden een nieuwe zescijferige code die je moet invoeren naast je wachtwoord. Maar hoe werkt dit? Hoe kan een app op jouw telefoon, die op dat moment geen internetverbinding nodig heeft, dezelfde code genereren als de server verwacht?
+
+Het antwoord is een slim algoritme genaamd **TOTP**: *Time-based One-Time Password*. 
+
+### De gedeelde geheime sleutel
+
+Het hele systeem steunt, zoals zoveel in cryptografie, op een **gedeelde geheime sleutel** (*shared secret*). Wanneer je een authenticator app koppelt aan een website, gebeurt het volgende:
+
+1. De website genereert een willekeurige geheime sleutel (typisch 160 bits).
+2. Deze sleutel wordt aan jou getoond, meestal in de vorm van een **QR-code** die je scant met je authenticator app.
+3. Zowel de server als jouw app bewaren nu dezelfde geheime sleutel.
+
+Dit is het enige moment waarop de sleutel wordt uitgewisseld. Vanaf nu hoeven jouw telefoon en de server nooit meer rechtstreeks met elkaar te communiceren om geldige codes te genereren.
+
+::: {.callout-warning}
+Omdat de QR-code de volledige geheime sleutel bevat, moet je deze met de nodige voorzichtigheid behandelen. Maak er geen screenshot van die je onbeveiligd bewaart en toon de code niet aan anderen. Wie de geheime sleutel heeft, kan dezelfde codes genereren als jij.
+:::
+
+### Hoe TOTP werkt
+
+TOTP combineert twee ingrediënten om een code te genereren:
+
+1. **De gedeelde geheime sleutel** (die zowel de app als de server kennen).
+2. **De huidige tijd**, afgerond naar blokken van 30 seconden.
+
+Het algoritme werkt als volgt:
+
+1. Neem de huidige Unix-tijd (het aantal seconden sinds 1 januari 1970) en deel deze door 30. Rond af naar beneden. Dit geeft een getal dat we de **tijdstap** (*time step*) noemen. Gedurende diezelfde 30 seconden zullen jouw telefoon én de server exact dezelfde tijdstap berekenen.
+2. Gebruik nu een **HMAC** (Hash-based Message Authentication Code) om de geheime sleutel te combineren met deze tijdstap. Het resultaat is een lange hash.
+3. Uit deze hash wordt via een vaste procedure (*dynamic truncation*) een **zescijferig getal** geëxtraheerd: de code die je op je scherm ziet.
+
+Omdat zowel de server als jouw app dezelfde geheime sleutel en dezelfde tijd gebruiken, genereren ze onafhankelijk van elkaar dezelfde code. Na 30 seconden verandert de tijdstap en krijg je een volledig nieuwe code.
+
+::: {.callout-tip}
+Servers accepteren meestal niet enkel de code van het huidige tijdsblok, maar ook die van het vorige en het volgende blok. Dit geeft een marge van ongeveer 90 seconden en vangt kleine klokverschillen op tussen jouw telefoon en de server.
+:::
+
+### Waarom is TOTP veilig?
+
+TOTP biedt een aantal belangrijke voordelen:
+
+* **Eenmalig**: iedere code is slechts 30 seconden geldig. Zelfs als een aanvaller je code onderschept, is deze tegen de tijd dat hij deze wil gebruiken waarschijnlijk al vervallen.
+* **Geen netwerkverbinding nodig**: de app heeft na de initiële registratie geen internet meer nodig. De tijd is het enige dat de app en server synchroniseert.
+* **Niet voorspelbaar**: zonder kennis van de geheime sleutel is het onmogelijk om toekomstige codes te berekenen, zelfs als je vorige codes hebt gezien.
+
+::: {.callout-warning}
+TOTP is niet onfeilbaar. Een aanvaller die erin slaagt om tegelijkertijd je wachtwoord én een geldige TOTP-code te bemachtigen (bijvoorbeeld via een real-time phishing aanval die als *proxy* fungeert tussen jou en de echte website) kan nog steeds inloggen. Passkeys (zie eerder) zijn in dat opzicht veiliger omdat ze gebonden zijn aan het specifieke domein van de website.
+:::
+

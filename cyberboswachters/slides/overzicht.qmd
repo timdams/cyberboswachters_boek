@@ -11,7 +11,7 @@ Hieronder vind je een overzicht van de beschikbare presentaties bij het handboek
 |🕒 H1: Wordt het erger? | [Bekijk slides](wordtheterger.html){target="_blank"}  | [Download PDF](wordtheterger.pdf) |
 |🕒 H2: Cybersec Fundamenten | [Bekijk slides](basicsec.html){target="_blank"}  | [Download PDF](basicsec.pdf) |
 |✅ H3: Cryptografie: deel 1 | [Bekijk slides](crypto_basics.html){target="_blank"} | [Download PDF](crypto_basics.pdf) |
-|🕒 H3: Cryptografie: deel 2 | [Bekijk slides](publiccrypto.html){target="_blank"} | [Download PDF](publiccrypto.pdf) |
+|✅ H3: Cryptografie: deel 2 | [Bekijk slides](publiccrypto.html){target="_blank"} | [Download PDF](publiccrypto.pdf) |
 |🕒 H4: Wifi Security | [Bekijk slides](wifi.html){target="_blank"} | [Download PDF](wifi.pdf) |
 |🕒 H5: Authenticatie | [Bekijk slides](authenticatie.html){target="_blank"} | [Download PDF](authenticatie.pdf) |
 |🕒 H6: IoT Security | [Bekijk slides](iotintro.html){target="_blank"}  |  [Download PDF](iotintro.pdf)|

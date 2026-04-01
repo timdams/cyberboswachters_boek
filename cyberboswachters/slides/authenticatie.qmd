@@ -317,18 +317,20 @@ Petya en NotPetya werden getraceerd naar **Sandworm**, een Russische hackinggroe
 
 ---
 
-## SCRAM
+## SCRAM: Salted Challenge-Response Authentication Mechanism
 
-**Salted Challenge-Response Authentication Mechanism**
+
+:::: {.columns}
+
+::: {.column width="50%"}
+****
 
 Lost **pass-the-hash** op! Twee garanties:
 
 1. De salted hash wordt **NOOIT** verzonden
 2. **Geen replay** aanval mogelijk
 
-:::: {.columns}
 
-::: {.column width="50%"}
 Server stuurt ook de **bewaarde salt** naar de client → client moet zelf de hash berekenen.
 :::
 
@@ -522,12 +524,82 @@ Gebaseerd op **public key crypto**:
 
 ---
 
+## Authenticator apps en TOTP
+
+* Apps zoals **Google Authenticator**, Microsoft Authenticator, Authy
+* Genereren om de **30 seconden** een nieuwe **zescijferige code**
+* Werken **zonder internetverbinding**!
+
+::: {.callout-note .fragment}
+Hoe kan een app op jouw telefoon dezelfde code genereren als de server verwacht? → **TOTP** (*Time-based One-Time Password*)
+:::
+
+---
+
+## TOTP: de gedeelde geheime sleutel
+
+Bij het koppelen van de authenticator app (**Dit is het enige moment waarop de sleutel wordt uitgewisseld. Daarna communiceren app en server nooit meer rechtstreeks**):
+
+1. Website genereert een **willekeurige geheime sleutel** (typisch 160 bits)
+2. Sleutel wordt getoond als **QR-code** → je scant deze met de app
+3. Zowel server als app bewaren nu **dezelfde sleutel**
+
+
+::: {.callout-warning .fragment}
+De QR-code bevat de **volledige geheime sleutel**. Geen screenshots maken! Wie de sleutel heeft, kan jouw codes genereren.
+:::
+
+---
+
+## TOTP: het algoritme
+
+Twee ingrediënten: **gedeelde sleutel** + **huidige tijd**
+
+1. Neem de **Unix-tijd** (seconden sinds 1 jan 1970), deel door **30**, rond af naar beneden → de **tijdstap**
+2. Bereken **HMAC**(geheime sleutel, tijdstap) → lange hash
+3. Extraheer via *dynamic truncation* een **zescijferig getal** → de code op je scherm
+
+```{mermaid}
+%%{init: {"theme": "base", "flowchart": {"useMaxWidth": true}} }%%
+graph LR
+    A("Geheime sleutel 🔑") --> C("HMAC")
+    B("Unix-tijd ÷ 30 ⏱️") --> C
+    C --> D("Hash")
+    D --> E("Truncation")
+    E --> F("847 293")
+
+    style F fill:#44aa44,stroke:#333,color:#fff
+```
+
+## TOTP: waarom is het veilig?
+
+::: {.callout-tip .fragment}
+Servers accepteren meestal ook de code van het **vorige en volgende** tijdsblok (~90 sec marge) om klokverschillen op te vangen.
+:::
+
+---
+
+## TOTP: waarom is het veilig?
+
+| Eigenschap | Uitleg |
+|---|---|
+| **Eenmalig** | Code is slechts **30 seconden** geldig — onderschepte code is snel vervallen |
+| **Offline** | Na registratie is **geen internet** meer nodig — enkel de tijd synchroniseert |
+| **Onvoorspelbaar** | Zonder de geheime sleutel zijn toekomstige codes **onmogelijk** te berekenen |
+
+::: {.callout-warning .fragment}
+TOTP is **niet onfeilbaar**: een real-time phishing aanval (proxy tussen jou en de echte site) kan wachtwoord + TOTP-code tegelijk onderscheppen. **Passkeys** zijn hiertegen beter beschermd (domeingebonden).
+:::
+
+---
+
 ## Conclusie
 
 * **Authenticatie** = bewijzen wie je bent; **autorisatie** = wat mag je
 * Wachtwoorden: nooit plaintext → **hashing + salting** als minimum
 * **CRAM/SCRAM** beschermen tegen pass-the-hash aanvallen
 * **MFA** combineert meerdere factoren (weten, zijn, hebben, waar/wanneer)
+* **TOTP** (authenticator apps): gedeelde sleutel + tijd → eenmalige codes
 * **Passkeys** (WebAuthn) = de toekomst: asymmetrische crypto zonder wachtwoorden
 
 ::: {.callout-important}

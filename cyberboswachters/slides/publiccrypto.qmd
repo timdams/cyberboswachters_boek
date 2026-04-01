@@ -113,6 +113,7 @@ Private sleutel = uniek voor eigenaar → bewijs van identiteit (**authenticatie
 
 ## Diffie-Hellman sleuteluitwisseling
 
+* Publieke crypto heeft 3 toepassingen: **encryptie**, **digitale handtekeningen**, **key exchange**
 * Symmetrische crypto is **sneller** → beter voor realtime communicatie
 * Maar: sleutelmanagement is problematisch bij grote groepen
 * **Diffie-Hellman** lost dit op: veilige sleuteluitwisseling over een **onveilig kanaal**
@@ -121,10 +122,14 @@ Private sleutel = uniek voor eigenaar → bewijs van identiteit (**authenticatie
 
 ## Diffie-Hellman: werkwijze
 
-1. Alice en Bob genereren elk een **publiek/private sleutelpaar**
-2. Ze sturen hun **publieke sleutel** naar elkaar (mag onbeveiligd)
-3. Elk combineert ontvangen publieke sleutel met eigen private sleutel
+1. Alice en Bob kiezen elk een **geheime waarde** (enkel voor deze sessie)
+2. Ze berekenen elk een **publieke waarde** en sturen die naar de ander (mag onbeveiligd)
+3. Elk combineert ontvangen publieke waarde met eigen geheime waarde
 4. Resultaat: een **shared secret** dat beiden kennen
+
+::: {.callout-note .fragment}
+Deze waarden zijn **geen sleutelparen** zoals bij RSA — ze worden na de uitwisseling weggegooid.
+:::
 
 ---
 
@@ -557,6 +562,32 @@ Meer weten? Bekijk de briljante visualisatie op [tls.ulfheim.net](HTTPS://tls.ul
 * ISP kan **geen caching** meer doen (alles is geëncrypteerd)
 * Website genereert **meer trafiek** (geen tussenliggende cache)
 * Maar: de **veiligheid** weegt ruimschoots op tegen deze nadelen
+:::
+
+---
+
+## E2E encryptie onder druk: Apple en de UK
+
+* **End-to-end encryptie** (E2EE): enkel zender en ontvanger kunnen data lezen
+* 2025: Britse overheid eist **backdoor** in Apple's iCloud-encryptie
+* Apple weigert backdoor → schakelt E2EE (**Advanced Data Protection**) uit in het VK
+* iMessage, FaceTime en iCloud Keychain behouden wel E2EE
+
+::: {.callout-warning .fragment}
+**Een backdoor die enkel voor "de goeden" werkt, bestaat niet.** Een achterpoortje verzwakt de beveiliging voor **alle** gebruikers — in strijd met Kerckhoffs principe.
+:::
+
+---
+
+## Chat Control: ook in de EU
+
+* EU stelde in 2022 de **Child Sexual Abuse Regulation** ("Chat Control") voor
+* Verplicht scannen van **alle** chatberichten — ook E2E-versleutelde
+* Critici: dit is technisch een **backdoor** of *client-side scanning* (spyware)
+* Na jarenlange controverse werd verplicht scannen van E2EE afgezwakt (2025)
+
+::: {.callout-note .fragment}
+Je kan niet tegelijk **echte** E2E-encryptie garanderen én berichten laten meelezen. Of de sleutel is geheim, of hij is het niet.
 :::
 
 ---

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.scworld.com)",
+      "WebSearch",
+      "WebFetch(domain:edri.org)"
+    ]
+  }
+}

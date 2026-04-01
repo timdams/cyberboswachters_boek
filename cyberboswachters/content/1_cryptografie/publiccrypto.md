@@ -44,9 +44,11 @@ We zullen dit concept verderop uitwerken, maar eerst gaan we bekijken hoe publie
 
 ### Diffie-Hellman sleuteluitwisseling
 
-Dankzij public crypto hebben we nu een systeem om sleutels op een veilige manier uit te wisselen. Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetric crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Helman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gebruikers sleutels over een onveilig kanaal kunnen uitwisselen op een veilige manier.
+Publieke cryptografie kan voor drie doeleinden worden ingezet: **asymmetrische encryptie** (zoals RSA), **digitale handtekeningen** en **sleuteluitwisseling** (*key exchange*). We hebben de eerste twee reeds kort aangehaald. Nu bekijken we eerst de sleuteluitwisseling, omdat dit concept mooi illustreert hoe publieke crypto in de praktijk wordt gebruikt.
 
-Zowel Bob als Alice genereren eerst een publiek/private sleutelpaar dat ze voor deze sessie wensen te gebruiken voor communicatie. Vervolgens stuurt ieder z'n publieke sleutel naar de ander (wat kan over een onbeveiligd kanaal). De ontvanger zal deze publieke sleutel combineren met de eigen private sleutel wat zal resulteren in een nieuw *shared secret* dat beiden nu kennen en kunnen gebruiken, bijvoorbeeld, als de symmetrische sleutel om verdere communicatie te bestendigen.
+Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetrische crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Hellman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gebruikers over een onveilig kanaal op een veilige manier een gemeenschappelijk geheim (*shared secret*) afspreken.
+
+Zowel Bob als Alice kiezen eerst elk een **geheime waarde** die ze enkel voor deze sessie gebruiken. Op basis van deze geheime waarde berekenen ze elk een **publieke waarde** die ze naar de ander sturen (wat kan over een onbeveiligd kanaal). De ontvanger zal deze publieke waarde combineren met de eigen geheime waarde wat zal resulteren in een *shared secret* dat beiden nu kennen en kunnen gebruiken, bijvoorbeeld als de symmetrische sleutel om verdere communicatie te beveiligen. De geheime waarden kunnen na de uitwisseling worden weggegooid: ze zijn niet hetzelfde als een publiek/privaat sleutelpaar zoals bij RSA.
 
 De reden dat dit werkt, is met dank aan de modulo operator en de eigenschappen ervan. Een voorbeeld:
 
@@ -265,6 +267,26 @@ De manier waarop een TLS-verbinding wordt opgezet is vrij uitgebreid. Volgende b
 
 ::: {.callout-warning}
 Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (Internet Service Provider, bijvoorbeeld Telenet of Proximus) en de website ook enkele nadelen. Omdat alle informatie geëncrypteerd wordt heeft de ISP geen enkel idee wat voor informatie je aan het uitwisselen bent, waardoor caching ook niet meer mogelijk is. In een normale HTTP-omgeving kan een ISP trafiek over het Internet uitsparen door een reeds bewaarde versie van hetgeen jij nodig hebt uit de cache te halen en naar je te sturen. Ook de website naar waar je surft, ondervindt dit nadeel: het zal met HTTPS veel meer trafiek genereren dan wanneer de tussenliggende ISP een deel van het werk via zijn caching overnemen. 
+:::
+
+### End-to-end encryptie onder druk: Apple en de UK
+
+End-to-end encryptie (E2EE) zorgt ervoor dat enkel de zender en ontvanger de inhoud van berichten of data kunnen lezen — zelfs de dienstverlener (zoals Apple of Google) heeft geen toegang. Dit principe is een directe toepassing van de publieke cryptografie die we in dit hoofdstuk bespraken: data wordt versleuteld met de publieke sleutel van de ontvanger en kan enkel met diens private sleutel worden ontsleuteld.
+
+In 2025 werd Apple door de Britse overheid gedwongen om **Advanced Data Protection** (ADP), de end-to-end encryptie van iCloud-data, uit te schakelen voor alle gebruikers in het Verenigd Koninkrijk. De overheid eiste namelijk een *backdoor*: een manier voor opsporingsdiensten om toegang te krijgen tot versleutelde gegevens. Apple weigerde een backdoor in te bouwen — omdat dit de beveiliging voor **alle** gebruikers zou verzwakken — en koos er in plaats daarvan voor om de E2EE-functionaliteit in het VK volledig te verwijderen. iMessage, FaceTime en iCloud Keychain behielden wel hun end-to-end encryptie.
+
+::: {.callout-warning}
+Dit voorbeeld illustreert een fundamenteel spanningsveld in cryptografie: **een backdoor die enkel voor "de goeden" werkt, bestaat niet**. Zodra er een achterpoortje in een encryptiesysteem zit, is het slechts een kwestie van tijd voordat ook kwaadwillige actoren deze ontdekken of misbruiken. Dit gaat recht in tegen Kerckhoffs principe: de veiligheid van het systeem mag enkel afhangen van de geheimhouding van de sleutel, niet van het verbergen van zwakheden in het systeem zelf.
+:::
+
+#### Chat Control: ook in de EU
+
+Dit debat speelt niet enkel in het Verenigd Koninkrijk. De Europese Commissie stelde in 2022 de **Child Sexual Abuse Regulation** voor, beter bekend als **Chat Control**. Dit voorstel zou chatdiensten zoals WhatsApp en Signal verplichten om berichten van alle gebruikers automatisch te scannen op illegale inhoud — ook berichten die end-to-end versleuteld zijn. Critici, waaronder cryptografen en organisaties als de EFF en EDRi, waarschuwen dat dit technisch neerkomt op het inbouwen van een backdoor of het installeren van *client-side scanning* (spyware op het toestel zelf), wat de facto end-to-end encryptie onmogelijk maakt.
+
+Na jarenlange controverse en tegenstand vanuit het Europees Parlement, werd het meest omstreden onderdeel — het verplicht scannen van versleutelde berichten — in 2025 afgezwakt. Het voorstel wordt echter nog steeds onderhandeld en de uiteindelijke impact op E2EE blijft onzeker.
+
+::: {.callout-note}
+De kern van het probleem is telkens hetzelfde: je kan niet tegelijk **echte** end-to-end encryptie garanderen én een manier voorzien om berichten te lezen. Of de sleutel is geheim, of hij is het niet — er is geen tussenweg.
 :::
 
 ### Mitmproxy
