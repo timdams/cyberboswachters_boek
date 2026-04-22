@@ -5,8 +5,6 @@ Oude slides mappen TODO:
 
 wordt het erger
 inleiding infsec
-crypto
-user uath
 https/tls
 wifi
 gdpr

@@ -63,6 +63,32 @@ Spear phishing is heden ten dage één van **dé** social engineering aanvallen 
 
 ---
 
+## Online vs. offline aanvallen
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Online aanvallen**
+
+* Actief inloggen of wachtwoord bij de bron onderscheppen
+* Password spraying, phishing, keyloggers
+:::
+
+::: {.column width="50%"}
+**Offline aanvallen**
+
+* Aanvaller heeft (read-only) toegang tot de **wachtwoord-databank**
+* Via SQL injection, insider, datalek, ...
+:::
+
+::::
+
+::: {.callout-important .fragment}
+**Ga er van uit dat het gebeurt!** De komende slides tonen hoe we als beheerder de schade bij zo'n lek tot een minimum beperken.
+:::
+
+---
+
 ## Hoe wachtwoorden opslaan?
 
 We gaan **bottom-up**: van naïef naar veilig.
@@ -117,6 +143,20 @@ Een service zou **NOOIT** jouw wachtwoord moeten kunnen zien. Uiteindelijk mag *
 
 ---
 
+## Wie zou nu zo dom zijn?!
+
+**Facebook, 2019**: wachtwoorden van honderden miljoenen gebruikers in **plaintext** bewaard
+
+* **200 – 600 miljoen** gebruikers getroffen
+* ~**20.000** Facebook-medewerkers hadden toegang
+* Jarenlang onopgemerkt gebleven
+
+::: {.callout-warning .fragment}
+Zelfs de grootste techbedrijven vallen in deze klassieke val. [Bron: The Verge (2019)](https://www.theverge.com/2019/3/21/18275837/facebook-plain-text-password-storage-hundreds-millions-users)
+:::
+
+---
+
 ## Stap 2: Paswoord hashing
 
 * Gebruiker genereert **hash** van wachtwoord op lokaal systeem
@@ -158,7 +198,7 @@ Als een database gestolen wordt, moet de aanvaller hashes kraken:
 ::: {.column width="50%"}
 **Optie 1: Ter plekke hashen**
 
-* Algoritmes zoals *bcrypt* en *scrypt* zijn **by design traag**
+* Algoritmes zoals *bcrypt*, *scrypt* en *pbkdf2* zijn **by design traag**
 * → **Timebottleneck**
 :::
 
@@ -174,6 +214,22 @@ Als een database gestolen wordt, moet de aanvaller hashes kraken:
 
 ::: {.callout-note .fragment}
 Een **rainbow table** biedt een compromis tussen beide bottlenecks.
+:::
+
+---
+
+## Even concreet: 8 kleine letters
+
+| Aspect | Waarde |
+|---|---|
+| Mogelijke wachtwoorden | 26⁸ ≈ 2·10¹¹ |
+| Bruteforce @ 1 miljoen/s | ~2,4 dagen |
+| Bruteforce @ 2,8 miljard/s (GPU, 2011) | **minuten** |
+| Opslag alle hashes | ~1,46 TB |
+| Alle Google-servers samen | ~10¹⁵ bytes (1 PB) |
+
+::: {.callout-note .fragment}
+Puur bruteforcen *of* puur precomputen loont nauwelijks. Rainbow tables zoeken bewust een **compromis** tussen beide uitersten.
 :::
 
 ---
@@ -211,6 +267,12 @@ Reductiefunctie: bv. som van ASCII-waarden → index in de wachtwoordenset.
 
 ---
 
+## Meerdere chains met verschillende reducties
+
+![Drie parallelle chains, elk met een eigen reductiefunctie (kleur). Bron: Wikimedia Commons, CC BY-SA 2.5.](crypto_assets/rainbow_chains.svg){ width=90% }
+
+---
+
 ## Rainbow table: kraken
 
 :::: {.columns}
@@ -228,6 +290,12 @@ Reductiefunctie: bv. som van ASCII-waarden → index in de wachtwoordenset.
 :::
 
 ::::
+
+---
+
+## Het volledige zoekproces in één beeld
+
+![Van gestolen hash `re3xes` → eindpunt `linux23` vinden → chain herberekenen vanuit `passwd` → wachtwoord `culture` ligt één stap vóór de gestolen hash. Bron: Wikimedia Commons, CC BY-SA 4.0.](crypto_assets/rainbow_search.svg){ width=95% }
 
 ---
 
@@ -408,6 +476,61 @@ Veelgebruikte biometrieken:
 
 ::: {.callout-tip .fragment}
 Biometrics dienen niet alleen als extra **authenticatie**factor, maar ook als **identificatie**: een aanvaller kan niet zomaar een andere identiteit claimen als een vingerafdrukscanner wordt gebruikt.
+:::
+
+---
+
+## Biometrics: drie fasen
+
+```{mermaid}
+%%{init: {"theme": "base", "flowchart": {"useMaxWidth": true}} }%%
+flowchart LR
+    subgraph ENR["Enrollment (eenmalig)"]
+        E1[Kenmerk] --> E2[Feature<br/>points] --> E3[(DB)]
+    end
+    subgraph VER["Verification — 1-op-1"]
+        V1["Kenmerk +<br/>'ik ben X'"] --> V3{Match<br/>template X?}
+        V3 -->|Ja| V4[Toegang]
+        V3 -->|Nee| V5[Geweigerd]
+    end
+    subgraph IDE["Identification — 1-op-N"]
+        I1[Kenmerk] --> I3{Match met<br/>één van N?}
+        I3 -->|Match k| I4[User k]
+        I3 -->|Geen match| I5[Onbekend]
+    end
+    E3 -.-> V3
+    E3 -.-> I3
+```
+
+::: {.callout-tip .fragment}
+Identification is véél zwaarder: vergelijking met **elke** template in de databank (grenscontrole, forensisch onderzoek).
+:::
+
+---
+
+## Biometrics: kost vs. accuraatheid
+
+```{mermaid}
+%%{init: {"theme": "base"} }%%
+quadrantChart
+    title Biometrics - kost versus accuraatheid
+    x-axis Lage accuraatheid --> Hoge accuraatheid
+    y-axis Lage kost --> Hoge kost
+    quadrant-1 Duur en accuraat
+    quadrant-2 Duur en minder accuraat
+    quadrant-3 Goedkoop en minder accuraat
+    quadrant-4 Goedkoop en accuraat
+    "Iris": [0.95, 0.85]
+    "Retina": [0.80, 0.70]
+    "Vingerafdruk": [0.75, 0.30]
+    "Handvorm": [0.45, 0.65]
+    "Handtekening": [0.35, 0.55]
+    "Gezicht": [0.50, 0.30]
+    "Stem": [0.30, 0.20]
+```
+
+::: {.callout-note .fragment}
+Keuze hangt af van **use case** en **budget**: irisscan aan de grens ≠ gezichtsherkenning via webcam.
 :::
 
 ---
@@ -598,6 +721,20 @@ Servers accepteren meestal ook de code van het **vorige en volgende** tijdsblok 
 
 ::: {.callout-warning .fragment}
 TOTP is **niet onfeilbaar**: een real-time phishing aanval (proxy tussen jou en de echte site) kan wachtwoord + TOTP-code tegelijk onderscheppen. **Passkeys** zijn hiertegen beter beschermd (domeingebonden).
+:::
+
+---
+
+## Drie gouden regels
+
+Alles in dit hoofdstuk valt terug te brengen tot:
+
+1. Het wachtwoord mag nooit **client → server** gestuurd worden
+2. Het wachtwoord mag nooit **server → client** gestuurd worden
+3. Het wachtwoord mag nooit **in leesbare vorm op de server** bewaard worden
+
+::: {.callout-tip .fragment}
+**Passkeys** gaan nog een stap verder: het wachtwoord (de private sleutel) verlaat zelfs de *authenticator* niet!
 :::
 
 ---

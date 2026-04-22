@@ -20,7 +20,7 @@ Trouwens, herinner je je de McCumber kubus waarin we benadrukten dat technologie
 
 ## Hoe wachtwoorden opslaan
 
-Hoe moet je nu als cyberboswachter de login gegevens van je gebruikers bewaren? We gaan een soort *bottom-up* aanpak hanteren, waarbij we beginnen met de meest naïeve oplossing en telkens verbeteringen zullen aanbrengen.
+De aanvallen die we zonet besproken hebben (spraying, phishing, keyloggers) zijn hoofdzakelijk **online aanvallen**: de aanvaller probeert actief in te loggen of onderschept wachtwoorden bij de bron. Daarnaast bestaan er **offline aanvallen**, waarbij de aanvaller — via een SQL injection, een insider of een datalek — (leestoegang tot) de gebruikersdatabank heeft bemachtigd. Vanaf nu plaatsen we ons in de schoenen van de *beheerder* en gaan we uit van het ergste: **ga er van uit dat jouw databank vroeg of laat zal lekken**. Hoe moet je dan als cyberboswachter de login gegevens van je gebruikers bewaren zodat zo'n lek minimale schade oplevert? We gaan een soort *bottom-up* aanpak hanteren, waarbij we beginnen met de meest naïeve oplossing en telkens verbeteringen zullen aanbrengen.
 
 ### Paswoorden als plaintext
 
@@ -34,6 +34,10 @@ De wachtwoorden in kolom 2 stonden er zoals ze waren. Als een gebruiker wilde in
 **Paswoorden mogen nooit in onbeveiligde, leesbare vorm in een databank staan!** Wanneer dit wel zo is dan kan je beter ogenblikkelijk je account bij die service deleten. Want alhoewel deze aanpak al lang bestaat en er al bijna even lang van geweten is dat deze erg onveilig is, toch zijn er nog steeds ontelbare websites en applicaties die hieraan zondigen. Als ze dus jouw wachtwoord zo behandelen, dan is de kans reëel dat ook hun andere veiligheidsdiensten niet om over naar huis te schrijven zijn. 
 
 Een goede manier om te weten of een service op deze manier werkt is gebruik maken van de *"Ik ben m'n wachtwoord vergeten"*-knop. Als je deze knop gebruikt en je krijgt een e-mail met daarin jouw originele wachtwoord, dan kan je er zeker van zijn dat de service jouw wachtwoord op deze manier bewaart. In principe zou een service NOOIT jouw wachtwoord moeten kunnen zien. We gaan zelfs zien dat **jouw wachtwoord nooit je computer mag verlaten**, laat staan dat deze beschikbaar is als plaintext in een database.
+
+::: {.callout-warning}
+**Wie zou nu zo dom zijn?** In 2019 onthulde Facebook dat het jarenlang wachtwoorden van **honderden miljoenen gebruikers** (schattingen tussen 200 en 600 miljoen) gewoon in plaintext had bewaard. De bestanden waren toegankelijk voor zo'n 20.000 Facebook-medewerkers. Zelfs de grootste techbedrijven vallen dus soms in deze klassieke val. Meer lezen: [theverge.com](https://www.theverge.com/2019/3/21/18275837/facebook-plain-text-password-storage-hundreds-millions-users).
+:::
 
 ### Paswoord hashing
 
@@ -56,7 +60,16 @@ Veel websites genereren wel degelijk de hash aan serverzijde. Het verschil hier 
 
 ### Rainbow table attack
 
-Als de database door aanvallers gestolen wordt dan zitten we ook een tikkeltje veiliger als voorheen (de pass-the-hash aanval zal uiteraard nu zeker werken) indien de aanvaller de wachtwoorden van gebruikers nodig heeft (om bijvoorbeeld vervolgens op een ander systeem te gebruiken). De aanvaller zal een bruteforce of dictionary attack moeten uitvoeren om te ontdekken welk wachtwoord resulteert in welke hash. Dit kan een erg tijdrovend proces zijn want enkele veelgebruikte hashing algoritmen (onder andere *scrypt* en *bcrypt*) zijn *by design* zodanig geschreven dat deze erg traag werken. Dit zorgt ervoor dat de tijd om één hash te genereren geen voelbaar verschil geeft, maar wanneer een aanvaller er duizenden per seconden wil kunnen testen, dan zal het algoritme als een stevige ***timebottleneck*** optreden. De aanvaller zou dan in de plaats vooraf alle hashes kunnen *precomputen* als alternatief. Dit heeft dan weer voor gevolg dat zo'n lijst gigantisch groot is en er dus een ***memorybottleneck*** optreedt. 
+Als de database door aanvallers gestolen wordt dan zitten we ook een tikkeltje veiliger als voorheen (de pass-the-hash aanval zal uiteraard nu zeker werken) indien de aanvaller de wachtwoorden van gebruikers nodig heeft (om bijvoorbeeld vervolgens op een ander systeem te gebruiken). De aanvaller zal een bruteforce of dictionary attack moeten uitvoeren om te ontdekken welk wachtwoord resulteert in welke hash. Dit kan een erg tijdrovend proces zijn want enkele veelgebruikte hashing algoritmen (onder andere *scrypt*, *bcrypt* en *pbkdf2*) zijn *by design* zodanig geschreven dat deze erg traag werken. Dit zorgt ervoor dat de tijd om één hash te genereren geen voelbaar verschil geeft, maar wanneer een aanvaller er duizenden per seconden wil kunnen testen, dan zal het algoritme als een stevige ***timebottleneck*** optreden. De aanvaller zou dan in de plaats vooraf alle hashes kunnen *precomputen* als alternatief. Dit heeft dan weer voor gevolg dat zo'n lijst gigantisch groot is en er dus een ***memorybottleneck*** optreedt. 
+
+::: {.callout-tip}
+**Even concreet.** Stel dat gebruikers enkel wachtwoorden van 8 kleine letters mogen kiezen. Dat geeft 26⁸ ≈ 2·10¹¹ mogelijke combinaties.
+
+* Bij 1 miljoen hashes per seconde kost het gemiddeld **2,4 dagen** om de volledige ruimte te doorzoeken — nog te overzien, maar met een moderne GPU gaat het veel sneller (commerciële tools haalden in 2011 al **2,8 miljard** wachtwoordpogingen per seconde).
+* De alternatieve piste — álle hashes vooraf precomputen — vraagt **~1,46 TB** opslag, en dat is nog enkel voor deze beperkte set van 8 kleine letters. Ter vergelijking: alle Google-servers tezamen bewaren in de orde van 10¹⁵ bytes (1 petabyte).
+
+Conclusie: puur bruteforcen *of* puur precomputen loont nauwelijks. Rainbow tables zoeken bewust een **compromis** tussen beide uitersten.
+:::
 
 De aanvaller zit dus met het dilemma (tijd versus geheugen) tussen hashen berekenen ter plekke, wat erg traag zal gaan, oftewel alle mogelijke hashes op voorhand berekenen, wat veel geheugenplek vereist. Via een **rainbow table attack** krijgt de aanvaller echter een handig instrument in handen dat een compromis tussen beide bottlenecks aanbiedt. 
 
@@ -82,6 +95,8 @@ Als reductiefunctie zou je bijvoorbeeld kunnen beslissen om de hash om te zetten
 
 ![Voorbeeld van een lijst opeenvolgende wachtwoorden en hun hashes.](assets/rainbow2.png){ width=70% }
 
+![Drie parallelle chains met telkens een andere reductiefunctie (kleur). Bron: Wikimedia Commons, [Simple_rainbow_table.svg](https://commons.wikimedia.org/wiki/File:Simple_rainbow_table.svg), CC BY-SA 2.5.](assets/rainbow_chains.svg){ width=85% }
+
 Wanneer de aanvaller nu van een gestolen hash terug het wachtwoord te pakken wil krijgen dan zal hij:
 
 1. Deze hash als startpunt gebruiken en hier telkens weer de combinatie reductie+hash op toepassen.
@@ -90,6 +105,8 @@ Wanneer de aanvaller nu van een gestolen hash terug het wachtwoord te pakken wil
 4. Als hij dan één stapje terug kijkt dan zal hij daar het wachtwoord zien die bij deze gestolen hash hoort.
 
 ![Ieder wachtwoord mapt naar exact één hash.](assets/rainbow3.png){ width=70% }
+
+![Het volledige zoekproces: begin bij de gestolen hash (`re3xes`), reduceer en hash tot je een bekend eindpunt (`linux23`) bereikt, herbereken die chain vanuit het startpunt (`passwd`), en lees één stap vóór de gestolen hash het bijhorende wachtwoord (`culture`). Bron: Wikimedia Commons, [Simple_rainbow_search.svg](https://commons.wikimedia.org/wiki/File:Simple_rainbow_search.svg), CC BY-SA 4.0.](assets/rainbow_search.svg){ width=85% }
 
 
 ### Salting
@@ -189,6 +206,28 @@ Enkel veel gebruikte biometrieken als authenticatievorm zijn:
 
 Maar ook andere metrieken kunnen erg interessant zijn zoals de manier waarop je je wachtwoord invoert, de manier waarop je wandelt (*gait*) etc.
 
+Niet elke biometriek is evenwaardig wat betreft accuraatheid en kost. **Iris**-scans staan bovenaan qua accuraatheid maar vereisen dure, gespecialiseerde hardware. **Retina**- en **vingerafdruk**-scanners zijn redelijk accuraat aan een midden- tot lage kost. Aan de goedkope (maar ook minder accurate) kant vind je bijvoorbeeld **stem**herkenning en **gezicht**sherkenning via een gewone webcam. Je keuze van biometriek hangt dus niet alleen af van technische vereisten, maar ook van budget en use case (een irisscan aan de grens is iets heel anders dan gezichtsherkenning om je telefoon te ontgrendelen).
+
+```{mermaid}
+%%| label: fig-biometrics-cost
+%%| fig-cap: "Biometrics: kost versus accuraatheid (indicatief)."
+quadrantChart
+    title Biometrics - kost versus accuraatheid
+    x-axis Lage accuraatheid --> Hoge accuraatheid
+    y-axis Lage kost --> Hoge kost
+    quadrant-1 Duur en accuraat
+    quadrant-2 Duur en minder accuraat
+    quadrant-3 Goedkoop en minder accuraat
+    quadrant-4 Goedkoop en accuraat
+    "Iris": [0.95, 0.85]
+    "Retina": [0.80, 0.70]
+    "Vingerafdruk": [0.75, 0.30]
+    "Handvorm": [0.45, 0.65]
+    "Handtekening": [0.35, 0.55]
+    "Gezicht": [0.50, 0.30]
+    "Stem": [0.30, 0.20]
+```
+
 ::: {.callout-warning}
 Paswoorden van miljoenen mensen opslaan is één ding. De biometrische gegevens is een heel ander verhaal waarbij ook **privacy** plots een erg heikel punt wordt (beeld je even in dat Hitler en zijn trawanten 80 jaar geleden toegang hadden tot biometrische data waarmee met een bepaalde zekerheid kon vastgesteld worden of iemand van Joodse origine was of niet.)
 
@@ -198,6 +237,33 @@ In India is de Aadhaar (Indiaas voor "basis"), hun rijksregisternummer zeg maar,
 Om een biometriek in de wachtwoord database te bewaren hebben we een manier nodig om deze te digitaliseren op een zodanige manier dat de unieke aspecten ervan bewaard worden. Voorts moet er rekening mee gehouden worden dat het "registreren" van een biometrische eigenschap nooit 100% accuraat kan. Denk maar aan een tijdelijk krasje op je vinger, je baard die anders geschoren is, etc. 
 
 De zogenaamde *feature points* van een biometrische eigenschap worden in de database bewaard: dit zijn de unieke waarden waarvan geweten is dat deze per persoon anders zijn. We gaan deze niet per biometrische eigenschap bespreken, het volstaat te begrijpen dat in de gebruikersdatabase meestal een korte sequentie van getallen (of letters, denk maar aan een DNA-sample)  wordt bewaard die als het ware jouw unieke wachtwoord voorstelt voor die specifieke biometrische eigenschap van j. Enkel wanneer je bij het opnieuw inloggen (quasi) dezelfde feature points genereert als bij de registratie zal deze factor aanvaard worden als correct.
+
+Een biometrisch systeem kent drie duidelijk te onderscheiden fasen:
+
+1. **Enrollment (registratie)**: de gebruiker biedt zijn biometrisch kenmerk voor het eerst aan, het systeem extraheert de feature points en bewaart deze in de databank. Dit is het moment waarop de koppeling *user ↔ biometrie* wordt gemaakt.
+2. **Verification (verificatie)**: *"Ben jij wel degelijk user X?"* — de aangeboden feature points worden vergeleken met één specifieke template in de databank (**1-op-1**). Dit is het klassieke inlog-scenario.
+3. **Identification (identificatie)**: *"Wie ben jij?"* — de aangeboden feature points worden vergeleken met álle templates in de databank (**1-op-N**). Dit is een veel zwaardere operatie en wordt typisch ingezet bij bv. grenscontrole of forensisch onderzoek.
+
+```{mermaid}
+%%| label: fig-biometric-phases
+%%| fig-cap: "De drie fasen van een biometrisch systeem en hun interactie met de templatedatabank."
+flowchart LR
+    subgraph ENR["Enrollment (eenmalig)"]
+        E1[Kenmerk<br/>aanbieden] --> E2[Feature points<br/>extraheren] --> E3[(Template-<br/>databank)]
+    end
+    subgraph VER["Verification (1-op-1)"]
+        V1[Kenmerk + claim<br/>'ik ben user X'] --> V2[Feature points<br/>extraheren] --> V3{Match met<br/>template X?}
+        V3 -->|Ja| V4[Toegang]
+        V3 -->|Nee| V5[Geweigerd]
+    end
+    subgraph IDE["Identification (1-op-N)"]
+        I1[Kenmerk<br/>aanbieden] --> I2[Feature points<br/>extraheren] --> I3{Match met<br/>één van N<br/>templates?}
+        I3 -->|Match k| I4[Dit is user k]
+        I3 -->|Geen match| I5[Onbekend]
+    end
+    E3 -.bewaart templates.-> V3
+    E3 -.bewaart templates.-> I3
+```
 
 ::: {.callout-tip}
 Biometrische eigenschappen kunnen niet alleen dienst doen als een extra factor bij het authenticeren, ze zijn uiteraard ook erg handig voor identificatie. In principe kan iemand nog steeds de gebruikersnaam van een ander persoon gebruiken. Als de biometrische eigenschappen als identificatie dienen kunnen aanvallers dat niet meer doen: ze kunnen onmogelijk aan het systeem zeggen *"ik ben persoon x"* terwijl de vingerafdrukscanner duidelijk een vingerafdruk registreert van *persoon y*.
@@ -346,4 +412,14 @@ TOTP biedt een aantal belangrijke voordelen:
 ::: {.callout-warning}
 TOTP is niet onfeilbaar. Een aanvaller die erin slaagt om tegelijkertijd je wachtwoord én een geldige TOTP-code te bemachtigen (bijvoorbeeld via een real-time phishing aanval die als *proxy* fungeert tussen jou en de echte website) kan nog steeds inloggen. Passkeys (zie eerder) zijn in dat opzicht veiliger omdat ze gebonden zijn aan het specifieke domein van de website.
 :::
+
+## Samenvatting: drie gouden regels
+
+We hebben in dit hoofdstuk veel technieken en protocollen behandeld, maar alles valt terug te brengen tot drie kernregels die een goed authenticatiesysteem steeds moet respecteren:
+
+1. Het wachtwoord mag nooit van de **client naar de server** gestuurd worden. *(→ hashing, CRAM, SCRAM)*
+2. Het wachtwoord mag nooit van de **server naar de client** gestuurd worden. *(→ denk aan de "Ik ben m'n wachtwoord vergeten"-test)*
+3. Het wachtwoord mag nooit **in leesbare vorm op de server** bewaard worden. *(→ hashing + salting)*
+
+Moderne protocollen zoals **passkeys** gaan zelfs een stap verder: het wachtwoord (de private sleutel) verlaat zelfs de *authenticator* niet.
 
