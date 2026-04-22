@@ -188,6 +188,19 @@ Gebruik nooit wachtwoorden uit bekende lijsten! Zie: [SecLists](https://github.c
 
 ---
 
+## De beste "cryptanalyse" is géén cryptanalyse
+
+* Veel makkelijker dan sleutels kraken: **vraag** de sleutel gewoon aan de gebruiker
+  * Phishing, helpdesk-scams, post-its onder toetsenbord, ...
+* *"There is no patch for human stupidity"*
+* → Hoofdstuk **Social Engineering** behandelt dit uitgebreid
+
+::: {.callout-important .fragment}
+Cryptografie is **noodzakelijk** maar zelden **voldoende** voor veiligheid.
+:::
+
+---
+
 ## Quantum-computers en crypto
 
 * Quantum-computers kunnen bruteforce **drastisch versnellen**
@@ -251,6 +264,50 @@ Voorbeeld: Y (24) met sleutel 7: ``(24+7) % 26 = 5`` → **F**
   * Meest voorkomende letter in ciphertext → waarschijnlijk `e`
 
 ![Frequentie-analyse Nederlandstalige tekst (Bron: Wikipedia).](crypto_assets/freqNL.jpg)
+
+---
+
+## Vigenère: substitutie 2.0
+
+* Zwakte Caesar: iedere letter → **zelfde** shift → frequentieanalyse werkt
+* **Vigenère** (16e eeuw): gebruik een **sleutelwoord** i.p.v. één getal
+  * Iedere letter van de sleutel = shift voor bijhorende plaintext-letter
+  * Sleutelwoord wordt herhaald over de tekst
+* = "Combinatie van meerdere Caesars na elkaar"
+
+::: {.callout-tip .fragment}
+Eeuwenlang **onkraakbaar** genoemd: *le chiffre indéchiffrable*
+:::
+
+---
+
+## Vigenère: voorbeeld
+
+:::: {.columns}
+
+::: {.column width="55%"}
+Sleutel: `COUNTON`, plaintext: `vigenerecipher`
+
+```
+C O U N T O N C O U N T O N
+v i g e n e r e c i p h e r
+X W A R G S E G Q C C A S E
+```
+
+* `v` + sleutel `C` (shift 2) → `X`
+* Iedere `e` → *andere* letter (R, S, G, S, E)
+* → frequentieanalyse werkt **niet meer**
+:::
+
+::: {.column width="45%"}
+![Tabula recta](crypto_assets/vigenere.png){ width=100% }
+:::
+
+::::
+
+::: {.callout-note .fragment}
+19e eeuw: Kasiski kraakte het. Sleutellengte bekend → meerdere parallelle Caesars.
+:::
 
 ---
 
@@ -396,6 +453,55 @@ Voorbeeld: `1010` $\oplus$ `1101` = `0111` (ciphertext)
 * Onvoorspelbaar voor buitenstaanders
 * Zwakke generator → **kwetsbare encryptie** (bv. WEP!)
 * Gebaseerd op **PRNG** (Pseudo-Random Number Generator)
+
+---
+
+## Middle-square: de eerste PRNG
+
+Von Neumann (1946): eenvoudig maar krachtig idee
+
+1. Start met **seed**
+2. **Kwadrateer**
+3. Neem **middelste cijfers** → nieuw getal
+4. Herhaal
+
+**Voorbeeld** (seed = 1111):
+
+```
+1111² = 01234321  →  2343
+2343² = 05489649  →  4896
+4896² = 23970816  →  9708
+```
+
+Reeks: `2343, 4896, 9708, ...`
+
+::: {.callout-note .fragment}
+Ondertussen onveilig (korte cycli), maar basis van alle moderne PRNGs!
+:::
+
+---
+
+## PRNG in de praktijk: Random() in C#
+
+```csharp
+int key = 666;
+
+Random s = new Random(key);    // Zender
+Random r = new Random(key);    // Ontvanger
+Random e = new Random(123);    // Eve (andere seed)
+```
+
+| Partij | Output (10 getallen) |
+|---|---|
+| Zender | `6337963648` |
+| Ontvanger | `6337963648` |
+| Eve | `9978711226` |
+
+**Zelfde seed → zelfde reeks.** Andere seed → totaal andere reeks.
+
+::: {.callout-warning .fragment}
+C# `Random` is **niet** cryptografisch veilig! Gebruik `RandomNumberGenerator` uit `System.Security.Cryptography`.
+:::
 
 ---
 
@@ -645,6 +751,33 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 
 ---
 
+## DES gekraakt in de praktijk
+
+:::: {.columns}
+
+::: {.column width="55%"}
+* **1998**: *Electronic Frontier Foundation* bouwt **Deep Crack**
+  * Kostprijs: **$250.000**
+  * **1.856 custom chips**
+  * DES-sleutel gekraakt in **dagen**
+  * Later (+distributed.net): **< 24 uur**
+
+* DES is **dood** voor gevoelige data
+* Bevestigt 3DES (1995) als juiste keuze
+:::
+
+::: {.column width="45%"}
+![Deep Crack board (64 van de 1.856 chips). Bron: EFF, CC-BY 3.0.](crypto_assets/deepcrack.jpg){ width=100% }
+:::
+
+::::
+
+::: {.callout-note .fragment}
+Eerste gekraakte bericht (56u): *"It's time for those 128-, 192-, and 256-bit keys."* → 3 jaar later kwam AES er inderdaad.
+:::
+
+---
+
 ## Block cipher modes
 
 * Hoe decryptie toepassen op data groter dan 1 blok?
@@ -697,6 +830,27 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 * **Extra seed** naast de sleutel → effectief steeds andere sleutel
 * Wordt **ongeëncrypteerd** meegestuurd (in header)
 * Goede IV-selectie algoritme is cruciaal
+
+---
+
+## CBC uitgewerkt
+
+Mini-cipher (2 bits/blok): `00→01, 01→10, 10→11, 11→00`
+
+Plaintext: `00 01 10 11`, IV: `10`
+
+| Blok | Plaintext | XOR met | Resultaat | Cipher → |
+|------|-----------|---------|-----------|----------|
+| 1    | `00`      | IV=`10` | `10`      | **`11`** |
+| 2    | `01`      | `11`    | `10`      | **`11`** |
+| 3    | `10`      | `11`    | `01`      | **`10`** |
+| 4    | `11`      | `10`    | `01`      | **`10`** |
+
+Ciphertext: `11 11 10 10`
+
+::: {.callout-tip .fragment}
+4 **verschillende** plaintext-blokken → toch herhalingen in ciphertext. Patronen zijn **doorgeknipt**.
+:::
 
 ---
 

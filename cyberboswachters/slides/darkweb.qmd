@@ -33,6 +33,22 @@ Het **Dark Web** is een klein maar berucht onderdeel van het Deep Web.
 
 ---
 
+## Internet is niet echt anoniem
+
+Op het gewone internet ben je **bijna altijd traceerbaar**:
+
+* via IP-adres, cookies, provider-logs, trackers, ...
+* sommige landen gaan veel verder: **volledige controle** of **blacklisting** van sites
+  * China, Saudi-Arabië, Iran, Egypte, Noord-Korea, Cuba, ...
+
+::: {.callout-note .fragment}
+Onder een **schuilnaam** (*nom-de-plume*) je mening kunnen uiten is belangrijk voor een democratie. Niet iedereen — en zeker niet de overheid — moet weten wat jij legaal in je vrije tijd doet.
+
+Privacy vs opsporing blijft een **moeilijk evenwicht**.
+:::
+
+---
+
 ## Kenmerken van het Dark Web
 
 :::: {.columns}
@@ -87,6 +103,8 @@ Geen centrale autoriteit → moeilijk te censureren of uit de lucht te halen.
 ::: {.callout-important .fragment}
 Het Dark Web is **niet per definitie illegaal** — maar wat je er op doet kan dat wel zijn.
 
+**Anonimiteit ≠ vrijgeleide**: politiediensten traceren ook op het Dark Web. Illegale activiteiten zijn sowieso strafrechterlijk vervolgbaar.
+
 In landen zoals Rusland en China is het gebruik van het Dark Web zelf al strafbaar.
 :::
 
@@ -94,14 +112,28 @@ In landen zoals Rusland en China is het gebruik van het Dark Web zelf al strafba
 
 ## Toegang via TOR
 
+:::: {.columns}
+
+::: {.column width="60%"}
 **TOR** = *The Onion Router*
 
 * Jouw verkeer wordt doorgestuurd via **meerdere relais-servers** wereldwijd
 * Elke server kent enkel de vorige en de volgende stap → niemand kent het volledige pad
 * Dark web-sites zijn herkenbaar aan het **`.onion`** adres
   * Alleen bereikbaar via de TOR-browser
+:::
 
-![Onion routing: lagen van versleuteling tussen jou en je doel.](darkweb/relais.jpg){width=70%}
+::: {.column width="40%"}
+![Onion routing](darkweb/relais.jpg){width=70%}
+
+:::
+
+::::
+
+
+
+
+
 
 ---
 
@@ -136,4 +168,22 @@ Als cyberboswachter kom je het Dark Web onvermijdelijk tegen:
 Bezoek het Dark Web **nooit** vanop een werkapparaat of bedrijfsnetwerk.
 
 Zelfs passief browsen kan je in contact brengen met illegale content of gecompromitteerde servers.
+:::
+
+---
+
+## Zelf verkennen
+
+Vóór je vertrekt — check of je IP effectief beschermd is:
+
+* [moanmyip.com/simple](https://moanmyip.com/simple)
+
+Een goed **vertrekpunt** op het Dark Web zelf:
+
+* **The Hidden Wiki** → [thehidden-wiki.org](https://thehidden-wiki.org/wiki/index.php/Main_Page)
+  * verzameling van introduction points, zoekmachines en interessante onions
+* Extra lijst onions: [k00.fr/l1octcbo](https://k00.fr/l1octcbo)
+
+::: {.callout-warning .fragment}
+Ga op verkenning, maar **klik niet blind door** — veel sites zijn schimmig, illegaal of gecompromitteerd.
 :::

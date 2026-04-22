@@ -16,7 +16,7 @@ Hieronder vind je een overzicht van de beschikbare presentaties bij het handboek
 |🕒 H5: Authenticatie | [Bekijk slides](authenticatie.html){target="_blank"} | [Download PDF](authenticatie.pdf) |
 |🕒 H6: IoT Security | [Bekijk slides](iotintro.html){target="_blank"}  |  [Download PDF](iotintro.pdf)|
 |🕒 Appendix A: GDPR | [Bekijk slides](gdpr.html){target="_blank"}  | [Download PDF](gdpr.pdf)  |
-|🕒 Appendix B: Dark web | [Bekijk slides](darkweb.html){target="_blank"}  |[Download PDF](darkweb.pdf)  |
+|✅ Appendix B: Dark web | [Bekijk slides](darkweb.html){target="_blank"}  |[Download PDF](darkweb.pdf)  |
 |🕒 Appendix C: Awareness creëren | [Bekijk slides](awareness.html){target="_blank"}  |[Download PDF](awareness.pdf)  |
 
 

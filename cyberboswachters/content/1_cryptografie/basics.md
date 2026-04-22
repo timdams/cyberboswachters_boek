@@ -67,6 +67,10 @@ De Caesar encryptie (naar Julius Caesar) bestaat uit een eenvoudig substitutie a
 
 Het Caesarcipher wordt ook wel kortweg *Rot* genoemd, naar het woord *rotatie*. Een cijfer erachter geeft dan aan welk de te gebruiken sleutel is. Rot4 wil dus zeggen dat alle elementen vier plaatsen opgeschoven moeten worden. Merk op dat Rot13 (ook wel *Caesaralfabet* genoemd) een speciale sleutel is. Als je namelijk twee maal na elkaar Rot13 toepast op een tekst (eerst op de plaintext, dan op de resulterende ciphertext) dan verkrijgt men terug de originele tekst.
 
+Een mooie fysieke manier om Caesar te visualiseren is met een **cipher wheel** (of *Caesar-wiel*): twee concentrische schijven die allebei het alfabet langs de rand hebben staan. Door de binnenste schijf een aantal plaatsen te draaien (afhankelijk van je sleutel), kan je voor iedere letter op de buitenste schijf meteen aflezen welke letter eronder staat. Geen pen en papier nodig — gewoon draaien en aflezen. Historisch werden dergelijke wielen letterlijk gebruikt door legers en spionnen om snel in en uit geheimschrift te gaan.
+
+![Een Caesar-wiel: draai de binnenste schijf en lees af.](assets/caesarwheel.png){ width=50% }
+
 
 
 
@@ -100,6 +104,34 @@ Als je dus een sleutel hebt met waarde 7 en je wilt weten wat de waarde van ``Y`
 ``(24 + 7) % 26 => 5``
 
 Dit zal dus 5 worden, oftewel een ``F``.
+
+
+
+### Vigenère: een slimmere substitutie
+
+De grote zwakte van Caesar is dat iedere letter *altijd* op dezelfde manier wordt vervangen: in een tekst vercijferd met sleutel 3 wordt iedere `e` een `h`. Net daarom werkt frequentieanalyse zo goed.
+
+Het **Vigenère-cipher**, vernoemd naar de 16e-eeuwse Fransman Blaise de Vigenère, pakt dit aan met een verrassend eenvoudige truc: in plaats van één vaste shift gebruik je een **sleutelwoord** dat je herhaalt over de plaintext. Iedere letter van het sleutelwoord bepaalt hoeveel de bijhorende plaintext-letter moet opschuiven. Je kan Vigenère dus zien als een rij Caesar-ciphers na elkaar, elk met een eigen shift.
+
+Stel dat onze sleutel `COUNTON` is en de plaintext `vigenerecipher`. We herhalen het sleutelwoord tot het even lang is als de plaintext:
+
+```
+Sleutel:    C O U N T O N C O U N T O N
+Plaintext:  v i g e n e r e c i p h e r
+Ciphertext: X W A R G S E G Q C C A S E
+```
+
+De eerste `v` gecombineerd met sleutel-letter `C` levert `X` op (shift 2). De volgende `i` met `O` geeft `W`. En zo verder. Merk op dat de `e`'s in de plaintext nu telkens door een *andere* letter worden vervangen (respectievelijk `R`, `S`, `G`, `S`, `E`), afhankelijk van welke sleutelletter er op dat moment boven staat.
+
+In de praktijk gebruikte men een *tabula recta* - een tabel met alle 26 Caesar-alfabetten onder elkaar - om snel de juiste substitutie af te lezen. De rij kies je op basis van de sleutelletter, de kolom op basis van de plaintext-letter.
+
+![De Vigenère tabula recta. Rij = sleutelletter, kolom = plaintext-letter (Bron: Wikipedia, publiek domein).](assets/vigenere.png){ width=70% }
+
+**En dát is de kracht van Vigenère**: eenvoudige frequentieanalyse werkt niet meer. Letters die in de plaintext veel voorkomen, zijn niet langer letters die in de ciphertext veel voorkomen.
+
+Vigenère heette eeuwenlang *le chiffre indéchiffrable* — "het onontcijferbare cipher". Pas in de 19e eeuw werd het systematisch gekraakt door Friedrich Kasiski: eens je de sleutellengte kan achterhalen (via het tellen van herhalingen in de ciphertext), herleidt Vigenère zich tot meerdere parallelle Caesar-ciphers die je elk afzonderlijk met frequentieanalyse kan aanvallen.
+
+Het principe van Vigenère - **variatie inbrengen door een sleutel die zelf varieert** - zie je nog steeds terug in moderne algoritmes. De *round keys* in DES en AES die we verderop behandelen, zijn directe nazaten van dit idee.
 
 
 
@@ -218,6 +250,14 @@ Er zijn nog enkele meer gespecialiseerde types, maar voor deze cursus zullen we 
 Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalist automatisch van kwade wil is. De wetenschap van de cryptanalyse is dat uiteraard verre van: enerzijds zorgt het ervoor dat bestaande en nieuwe cryptografische algoritmes op hun sterkte kunnen getest worden. Anderzijds helpen ze in tijden van oorlog om boodschappen van vijanden te onderscheppen en proberen lezen.
 :::
 
+### De menselijke factor: de échte beste "cryptanalyse"
+
+Tijd voor een ongemakkelijke waarheid: de meest effectieve aanval op een cryptografisch systeem is in de praktijk *géén* cryptanalyse. Het is véél goedkoper, sneller en betrouwbaarder om de sleutel gewoon **te vragen aan de gebruiker**. Een welgemikte phishingmail, een vervalste helpdeskoproep, een post-it onder het toetsenbord, of een collega die "even snel" z'n scherm ontgrendelt — dát zijn de aanvallen waar cyberboswachters écht wakker van liggen.
+
+*There is no patch for human stupidity*, is een vaak gehoord cliché in de security-wereld. Hoe sterk je algoritme ook is, hoe lang je sleutel ook, als de gebruiker z'n wachtwoord opschrijft op een briefje of doorgeeft aan wie er "vriendelijk om vraagt", dan valt heel je cryptografische kaartenhuis in elkaar.
+
+Deze categorie aanvallen noemen we **social engineering** en we behandelen ze uitgebreid in een later hoofdstuk. Onthoud voor nu: cryptografie is een noodzakelijke voorwaarde voor veiligheid, maar zelden voldoende.
+
 ### En wat met quantum-computers?
 
 Al jaren houdt de crypto-wereld angstvallig de ontwikkelingen in de quantum-computer wereld in het oog. Alhoewel we nog maar in de babyfase van quantum-computers zijn, is het toch best mogelijk dat binnen afzienbare tijd (20, 30 jaar?) we effectief zodanig sterke quantum-computers zullen hebben die alle bestaande cryptografische systemen in een handomdraai kunnen "kraken". 
@@ -301,6 +341,55 @@ De kracht (en zwakte) van een symmetrisch streamcipher ligt in de implementatie 
 Om aan encryptie te kunnen doen, hebben we systemen nodig die onvoorspelbaar zijn. Als de aanvaller kan voorspellen wat de uitvoer van een onderdeel van de encryptie zal zijn, dan kunnen we geen confidentiality en integrity voorzien. Kortom, we hebben algoritmes nodig die willekeurige getallen kunnen generen die 100% onvoorspelbaar zijn. Net zoals het werpen van een dobbelsteen niet voorspeld kan worden, zo ook moeten onze algoritmes een (digitale) dobbelsteen hebben.
 
 Digitale systemen die perfect willekeurige getallen genereren noemt men **random number generators** (RNG). Uiteraard moet een RNG geprogrammeerd kunnen worden: dat behelst dus een algoritme. Een algoritme is per definitie "voorspelbaar". Alles hangt daarom af van de invoer die het algoritme gebruikt om random getallen te beginnen genereren. We spreken dan van een **pseudorandom number generator** (PRNG), pseudo (**schijnbaar**) omdat de uitvoer afhankelijk is van het startgetal, de zogenaamde **seed**. Die seed kan bijvoorbeeld de encryptiesleutel zijn: enkel met dié sleutel zal het algoritme dezelfde reeks getallen generen. Er zijn echter ook systemen die bijvoorbeeld de huidige tijd of de staat van een flipflop als startpunt gebruiken (wanneer je een flipflop aanzet kan je niet voorspellen of deze op 1 of 0 zal staan, daar deze staat beïnvloed wordt door de elektromagnetische straling). Uiteraard is een dergelijke seed voor een keystream generator nutteloos, daar zowel verzender én ontvanger dezelfde reeks getallen moeten kunnen genereren.
+
+#### Een eenvoudig PRNG: middle-square
+
+Een van de eerste PRNG-algoritmes werd in 1946 bedacht door de legendarische wiskundige John von Neumann: de **middle-square methode**. De werking is verbluffend eenvoudig:
+
+1. Neem een startgetal (de **seed**).
+2. Kwadrateer het.
+3. Neem de middelste cijfers als volgende pseudo-willekeurig getal.
+4. Gebruik dat getal opnieuw als invoer voor stap 2, enzovoort.
+
+Laten we dit uitvoeren met seed `1111` (pad tot 8 cijfers zodat we altijd 4 middelste cijfers hebben):
+
+- $1111^2 = 01234321$ → middelste 4 cijfers: `2343`
+- $2343^2 = 05489649$ → middelste 4 cijfers: `4896`
+- $4896^2 = 23970816$ → middelste 4 cijfers: `9708`
+- ...
+
+Onze pseudo-willekeurige reeks wordt dus `2343, 4896, 9708, ...`. Wie met dezelfde seed start, krijgt gegarandeerd dezelfde reeks. En dát is precies wat we willen voor encryptie: zender én ontvanger moeten dezelfde keystream kunnen genereren.
+
+In de praktijk is middle-square ondertussen niet meer bruikbaar: de gegenereerde reeksen vallen snel in korte cycli of landen op `0000` waarna het algoritme vast komt te zitten. Maar het idee - *deterministisch uit een seed een schijnbaar willekeurige reeks maken* - blijft de basis van alle moderne PRNGs zoals die in RC4.
+
+#### PRNG in de praktijk: Random() in C\#
+
+Zo goed als iedere moderne programmeertaal heeft een ingebouwde PRNG. In C# gebruik je `new Random(seed)`, in Python `random.seed()`, in JavaScript... tja, daar is het een beetje complexer. Een eenvoudig voorbeeld in C# maakt het principe meteen concreet:
+
+```csharp
+int key = 666;
+
+// Zender genereert 10 getallen
+Random s = new Random(key);
+for (int i = 0; i < 10; i++) Console.Write(s.Next(1, 10));
+// Output: 6337963648
+
+// Ontvanger gebruikt dezelfde seed → identieke reeks
+Random r = new Random(key);
+for (int i = 0; i < 10; i++) Console.Write(r.Next(1, 10));
+// Output: 6337963648
+
+// Eve probeert met een andere seed
+Random e = new Random(123);
+for (int i = 0; i < 10; i++) Console.Write(e.Next(1, 10));
+// Output: 9978711226
+```
+
+Zender en ontvanger die dezelfde sleutel (seed) gebruiken, krijgen identiek dezelfde reeks — perfect als keystream voor een streamcipher. Zonder de juiste seed krijg je een totaal andere reeks en is de keystream nutteloos voor cryptanalyse.
+
+::: {.callout-warning}
+De ingebouwde `Random`-klasse in C# is **niet cryptografisch veilig**. Hij is prima voor games, simulaties of dobbelstenen, maar niet geschikt om data mee te beschermen. Voor écht cryptografisch gebruik neem je de klasse `RandomNumberGenerator` uit `System.Security.Cryptography`. Het basisprincipe (*seed + deterministisch algoritme = reproduceerbare reeks*) blijft wel identiek.
+:::
 
 #### RC4 tot op het bot
 
@@ -498,6 +587,20 @@ De werking van 3DES (*tripple DES*) is verrassend eenvoudig: ieder blok data wor
 Het bankwezen gebruikt 3DES nog steeds (of varianten die erop gebaseerd) zijn om financiële transacties van onder andere Visa en Mastercard te beveiligen.
 :::
 
+#### DES in de praktijk gekraakt: EFF Deep Crack
+
+De zorgen om de korte 56-bit sleutel van DES werden in 1998 op spectaculaire wijze bevestigd. De *Electronic Frontier Foundation* (EFF) bouwde voor ongeveer $250.000 een gespecialiseerde machine, bijgenaamd **Deep Crack**, die bestond uit **1.856 custom chips** die speciaal ontworpen waren om DES-sleutels te testen.
+
+Het resultaat? Deep Crack kon iedere willekeurige DES-sleutel in een **kwestie van dagen** bruteforcen. Een paar jaar later deed het project, in samenwerking met distributed.net, een DES-sleutel zelfs in minder dan 24 uur. Daarmee werd ondubbelzinnig aangetoond dat DES niet langer veilig was voor gevoelige data — exact wat critici al jaren beweerden.
+
+![Een Deep Crack circuit board met 64 custom DES-kraakchips. De volledige machine bevatte er 1.856. (Bron: Electronic Frontier Foundation / Matt Crypto, CC-BY 3.0).](assets/deepcrack.jpg){ width=60% }
+
+Dit was eigenlijk geen verrassing voor wie had opgelet: de NSA had bij de originele Lucifer-standaard de sleutellengte van 128 bits naar 56 bits *laten* halveren. Een toevalligheid? Critici waren al jaren overtuigd van niet. Deep Crack bevestigde hun vermoeden op de meest publieke manier mogelijk en gaf zo ook retroactief gelijk aan de keuze voor 3DES in 1995.
+
+::: {.callout-note}
+Bij de publieke aankondiging werd een versleuteld bericht gekraakt in 56 uur. Het bericht? *"It's time for those 128-, 192-, and 256-bit keys."* Een niet zo subtiele boodschap aan de industrie om over te schakelen naar sterkere algoritmes. In 2001 gebeurde dat effectief, met de komst van AES (zie verder).
+:::
+
 #### Block cipher modes
 
 Tot hiertoe gingen we data steeds blok per blok in het encryptiecipher sturen en het resultaat ervan doorsturen. Klaar.  Oplettende mensen hebben hier mogelijk al een hiaat in gezien: wat als twee blokken exact dezelfde data bevatten? Beiden zullen dezelfde ciphertext als resultaat genereren, daar we telkens dezelfde sleutel (en dus subkeys) gebruiken. Twee ciphertexts die identiek zijn, willen we vermijden daar het potentiële informatie over de plaintext zichtbaar maakt. Voorts laat dit soort werking ook replay attacks toe: de aanvaller kan een geëncrypteerd pakket bewaren en op een later moment terug opsturen, zonder dat hij moet weten wat de plaintext bevat.
@@ -525,6 +628,26 @@ Er zijn verschillende modes om veiliger te encrypteren dan ECB. We bespreken hie
 Bij CBC wordt de output van het vorige blok (de ciphertext) mee als input voor de encryptie van het volgende blok gebruikt. Concreet wordt de ciphertext van het vorige blok ge-XOR'd met het huidige plaintext-blok, vóór de encryptie plaatsvindt. Hierdoor is de encryptie van elk blok afhankelijk van alle voorgaande blokken, wat patronen in de plaintext verbergt.
 
 ![CBC encryptie (Bron wikipedia).](assets/cbc.png){ width=80% }
+
+Laten we dit concreet maken met een minimalistisch voorbeeld. Stel dat ons blockcipher maar 2 bits per blok verwerkt, volgens volgende substitutietabel:
+
+| Input | Output |
+| ----- | ------ |
+| 00    | 01     |
+| 01    | 10     |
+| 10    | 11     |
+| 11    | 00     |
+
+Onze plaintext is `00 01 10 11` (vier blokken), onze IV is `10`. De CBC-encryptie verloopt dan als volgt:
+
+| Blok | Plaintext | XOR met | Na XOR | Door cipher | Ciphertext |
+| ---- | --------- | ------- | ------ | ----------- | ---------- |
+| 1    | `00`      | IV=`10` | `10`   | → `11`      | **`11`**   |
+| 2    | `01`      | `11`    | `10`   | → `11`      | **`11`**   |
+| 3    | `10`      | `11`    | `01`   | → `10`      | **`10`**   |
+| 4    | `11`      | `10`    | `01`   | → `10`      | **`10`**   |
+
+De uiteindelijke ciphertext wordt `11 11 10 10`. Merk op dat onze vier plaintext-blokken allemaal verschillend waren (`00`, `01`, `10`, `11`), maar dat er in de ciphertext toch herhalingen verschijnen (`11 11` en `10 10`). Dat is exact wat we willen: repetities in de ciphertext dragen géén informatie meer over repetities in de plaintext. De link tussen patronen in plaintext en ciphertext is doorgeknipt.
 
 ##### CFB (Cipher Feedback)
 

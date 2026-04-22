@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:www.scworld.com)",
       "WebSearch",
-      "WebFetch(domain:edri.org)"
+      "WebFetch(domain:edri.org)",
+      "WebFetch(domain:en.wikipedia.org)"
     ]
   }
 }

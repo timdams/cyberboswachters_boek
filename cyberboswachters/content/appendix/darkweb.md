@@ -33,11 +33,20 @@ Zoals elke technologie kan ook het Darkweb gebruikt worden voor goede én slecht
 
 ## Waarom bestaat het Darkweb?
 
-Het bestaan van het Darkweb roept veel vragen op over privacy en veiligheid. Aan de ene kant biedt het Darkweb een veilige ruimte voor mensen om zich vrij en anoniem te uiten. Dit kan van groot belang zijn voor journalisten, activisten en klokkenluiders die in landen leven met sterke censuur en toezicht (zoals China, Iran of Noord-Korea). Zo kan anonimiteit een cruciaal hulpmiddel zijn voor vrije meningsuiting en democratie.
+Een belangrijk uitgangspunt: **het gewone internet is niet anoniem**. Via je IP-adres, cookies, logs van providers en talloze trackers ben je bijna altijd traceerbaar. Voor de meeste mensen is dat geen probleem — maar voor sommigen wél.
 
-Aan de andere kant trekt anonimiteit ook mensen aan die het internet gebruiken voor illegale activiteiten, zoals handel in drugs, wapens, gehackte gegevens, of gestolen creditcardgegevens.
+Er zijn immers landen die het hele internet in de gaten houden of censureren, zoals China, Saudi-Arabië, Iran, Egypte, Noord-Korea en Cuba. Dat toezicht kent verschillende vormen:
+
+* **Volledige controle**: de overheid monitort al het verkeer en logt wie wat doet.
+* **Blacklisting**: bepaalde sites of diensten (sociale media, nieuwssites, messengers) worden gewoon geblokkeerd.
+
+In die context biedt het Darkweb een veilige ruimte voor journalisten, activisten en klokkenluiders om zich vrij en anoniem te uiten. Denk aan het belang van een **schuilnaam** (*nom-de-plume*): niet iedereen — en zeker niet de overheid — moet weten wat jij in je vrije tijd leest, schrijft of bespreekt. Anonimiteit is zo een cruciaal hulpmiddel voor vrije meningsuiting en democratie.
+
+Aan de andere kant trekt anonimiteit ook mensen aan die het internet gebruiken voor illegale activiteiten, zoals handel in drugs, wapens, gehackte gegevens, of gestolen creditcardgegevens. Belangrijk om te onthouden: **anonimiteit is geen vrijgeleide**. Als je iets illegaal doet op het Darkweb, ben je sowieso strafrechterlijk vervolgbaar — politiediensten hebben wel degelijk middelen om criminelen op het Darkweb op te sporen.
 
 Het Darkweb is dus niet per definitie illegaal, maar wat je erop doet kan dat wel zijn. In sommige landen, zoals Rusland en China, is het gebruik van het Darkweb zelf al strafbaar.
+
+Het vinden van een evenwicht tussen privacy en vrijheid enerzijds, en opsporing en veiligheid anderzijds, blijft een **moeilijke afweging** die onze samenleving voortdurend opnieuw moet maken.
 
 ## Toegang tot het Darkweb: TOR
 

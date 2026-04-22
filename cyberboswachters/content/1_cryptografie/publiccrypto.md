@@ -69,6 +69,22 @@ Uiteraard zullen in de praktijk Bob en Alice véél grotere getallen kiezen dan 
 Dat Bob en Alice de waarden X en Y naar elkaar kunnen sturen is dankzij de eigenschappen van de modulo-berekening.  X en Y kunnen het resultaat zijn van een gigantische hoeveelheid berekeningen en een stroper zal dus veel rekenwerk nodig hebben om alle mogelijkheden te testen. 
 :::
 
+::: {.callout-tip}
+## Een intuïtieve metafoor: verfkleuren mengen
+
+Je kan Diffie-Hellman visueel begrijpen via verfkleuren:
+
+1. Alice en Bob spreken **publiek** een gemeenschappelijke startkleur af (bijvoorbeeld geel).
+2. Elk kiest daarnaast een **geheime** kleur die nooit gedeeld wordt (bijvoorbeeld Alice oranje, Bob turquoise).
+3. Beiden mengen hun geheime kleur met de gemeenschappelijke kleur en sturen het mengsel naar de andere partij. Een stroper kan de mengsels onderweg zien, maar kan ze niet ontleden in de originele kleuren.
+4. Alice voegt haar geheime kleur toe aan Bobs mengsel; Bob doet hetzelfde met het mengsel van Alice.
+5. Beiden komen uit op exact **dezelfde eindkleur**: het gedeeld geheim.
+
+Het principe berust erop dat *mengen* makkelijk is, maar *ontmengen* praktisch onmogelijk. In de digitale versie vervult de modulo-berekening die rol.
+
+![De verfkleurenmetafoor voor Diffie-Hellman. Bron: Wikimedia Commons (CC BY-SA).](assets//dh-paint.png){width=40%}
+:::
+
 ### RSA
 
 Eén van de oudste, maar nog steeds populairste, publieke cryptosystemen is het in 1977 ontwikkelde RSA algoritme. RSA, wat staat voor de achternamen van de drie ontwikkelaars (Rivest, Shamis en Adleman) gebruikt sleutels van 1536 tot 4096 bits lang. Het systeem is vrij traag maar heeft als voordeel dat het veilige sleuteltransmissie toestaat over een onveilig kanaal: we zien daarom vaak RSA gebruikt worden om eerst sessiesleutels uit te wisselen, vervolgens wordt overgeschakeld op een sneller symmetrisch cipher.
@@ -217,6 +233,18 @@ De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensd
 
 ![Een certificaat aanmaken.](assets//certcreatie.png)
 
+Een X.509-certificaat bevat minstens volgende velden:
+
+* **Versie** van de X.509-standaard (vandaag doorgaans v3).
+* **Serienummer**: uniek binnen de uitgevende CA.
+* **Signature algorithm**: welk algoritme de CA gebruikte om te ondertekenen (bv. SHA-256 met RSA).
+* **Issuer**: naam van de CA die het certificaat uitgaf.
+* **Validity**: begin- en einddatum van geldigheid.
+* **Subject**: naam van de eigenaar (domeinnaam of persoon).
+* **Public key** van de eigenaar, met het gebruikte algoritme.
+* **Extensions**: bijkomende info zoals gebruiksbeperkingen of alternatieve domeinnamen.
+* **Signature**: de digitale handtekening van de CA over al het bovenstaande.
+
 Voorgaande proces zal bijvoorbeeld plaatsvinden wanneer je browser via een **HTTPS** verbinding surft naar een website en zo wil controleren of wel degelijk met de website wordt gecommuniceerd en niet met een imposter. Indien de browser (of de gebruiker) twijfelt aan de echtheid van de publieke sleutel van de CA die het certificaat van de website ondertekent, dan zal het voorgaande proces zich herhalen, maar deze keer om het certificaat van de CA te controleren met behulp van een bovenliggende CA. Op die manier kan het dus zijn dat een keten van CA's ontstaan die telkens CA's onder zich bewijzen. Uiteraard zal er steeds bovenaan zo'n ketting een **root CA** staan. Als je die vertrouwt, dan kan je al de CA's er onder dus ook vertrouwen...maar ook vice versa! 
 
 ![Het certificaat tijdens het surfen.](assets//webcert.png){width=80%}
@@ -231,8 +259,11 @@ Het ergste dat voor een CA kan voorvallen is dat de betrouwbaarheid van de CA in
 
 ![De chain-of-trust: oh zo belangrijk bij digitale certificaten.](assets//chaintrust.png){width=60%}
 
+::: {.callout-note}
+## Case: de val van DigiNotar (2011)
 
-
+In 2011 werd de Nederlandse CA **DigiNotar** gehackt. De aanvallers konden valse certificaten uitgeven voor onder andere `google.com`, die vervolgens werden ingezet om Iraanse Gmail-gebruikers te bespioneren. Zodra de inbraak publiek werd, verwijderden browserfabrikanten DigiNotar uit hun lijst van vertrouwde root-CA's. **Alle** certificaten van DigiNotar werden daarmee in één klap ongeldig — ook die van de Nederlandse overheid, die DigiNotar gebruikte voor DigiD en andere diensten. DigiNotar zelf ging binnen enkele weken failliet. Het incident toont hoe fragiel de chain of trust is: één gecompromitteerde CA kan het vertrouwen voor duizenden sites kapotmaken.
+:::
 
 ### Certificaten bekijken
 
@@ -251,6 +282,10 @@ Het certificaat van Sectigo is uiteraard een **selfsigned certificate**, daar zi
 ### Persoonlijke certificaten
 
 Naast certificaten voor webservers (zogenaamde **SSL certificaten**) kan je ook een persoonlijk certificaat aankopen om je eigen identiteit aan derden te bewijzen tijdens bijvoorbeeld e-mail-communicatie. Voorts heb je ook **code signing** certificaten die de echtheid van een applicatie bewijzen zodat je zeker bent dat je geen malware installeert als je programma X hebt gedownload. 
+
+Persoonlijke certificaten worden ook gebruikt voor **mutual TLS** (mTLS), een uitbreiding op gewone HTTPS waarbij niet alleen de server, maar ook de **client** zich met een certificaat authenticeert. Dit wordt vaak gebruikt in bankomgevingen, e-government, bedrijfs-VPN's en communicatie tussen backend-servers, waar de server zeker wil zijn dat de client effectief is wie die beweert te zijn. Bij gewone HTTPS gebeurt dit niet omdat een website in principe elke bezoeker welkom heet.
+
+![Bij mutual TLS presenteren zowel server als client een certificaat; beide zijden worden geverifieerd tegen dezelfde CA. Bron: Wikimedia Commons (CC BY 3.0).](assets//mtls.png){width=70%}
 
 Als je in Windows 10 of nieuwer een applicatie of installer probeert uit te voeren dan zal de ingebouwde *SmartScreen* service ogenblikkelijk de echtheid (of ontbreken van) het certificaat controleren, net zoals dit ook in de browser zou gebeuren.
 
@@ -274,7 +309,7 @@ Het PKI-model steunt op **gecentraliseerde** Certificate Authorities die de iden
 
 In een Web of Trust zijn er geen centrale autoriteiten. In plaats daarvan ondertekenen gebruikers *elkaars* publieke sleutels. Als Alice de publieke sleutel van Bob persoonlijk heeft geverifieerd (bijvoorbeeld door zijn *key fingerprint* te vergelijken tijdens een ontmoeting), kan zij zijn sleutel ondertekenen met haar eigen private sleutel. Hiermee verklaart Alice: *"Ik bevestig dat deze publieke sleutel effectief van Bob is."*
 
-![In een Web of Trust ondertekenen gebruikers elkaars sleutels in plaats van te vertrouwen op een centrale autoriteit.](assets//weboftrust.png){width=60%}
+<!--![In een Web of Trust ondertekenen gebruikers elkaars sleutels in plaats van te vertrouwen op een centrale autoriteit.](assets//weboftrust.png){width=60%}-->
 
 Stel nu dat Carol de sleutel van Bob nodig heeft maar hem niet persoonlijk kent. Als Carol wél Alice vertrouwt en ziet dat Alice de sleutel van Bob heeft ondertekend, dan kan Carol via dat **vertrouwenspad** besluiten om ook Bobs sleutel te aanvaarden. Zo ontstaat een netwerk — een *web* — van onderlinge vertrouwensrelaties.
 

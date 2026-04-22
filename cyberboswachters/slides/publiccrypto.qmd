@@ -158,6 +158,30 @@ In de praktijk kiezen Alice en Bob **véél** grotere getallen dan 3 en 6!
 
 ---
 
+## Diffie-Hellman: de verfkleurenmetafoor
+
+:::: {.columns}
+
+::: {.column width="55%"}
+1. Alice en Bob spreken **publiek** een startkleur af (geel)
+2. Elk kiest een **geheime** kleur (nooit gedeeld)
+3. Ze mengen beide en sturen het mengsel naar elkaar
+4. Elk voegt bij het ontvangen mengsel de eigen geheime kleur toe
+5. Beiden komen uit op **dezelfde eindkleur** → gedeeld geheim
+
+::: {.callout-tip .fragment}
+Verf mengen is makkelijk, *ontmengen* praktisch onmogelijk. In de digitale versie vervult de modulo-berekening die rol.
+:::
+:::
+
+::: {.column width="45%"}
+![](crypto_assets/dh-paint.png){width=80%}
+:::
+
+::::
+
+---
+
 ## RSA
 
 * **1977**, door Rivest, Shamir en Adleman
@@ -434,6 +458,22 @@ Zelfde hash genereren → vergelijken met certificaat na decryptie met **publiek
 
 ---
 
+## X.509: inhoud van een certificaat
+
+Een X.509-certificaat bevat minstens:
+
+* **Versie** van de standaard (doorgaans v3)
+* **Serienummer** (uniek binnen de CA)
+* **Signature algorithm** (bv. SHA-256 met RSA)
+* **Issuer**: de CA die het certificaat uitgaf
+* **Validity**: geldigheidsperiode
+* **Subject**: eigenaar (domeinnaam of persoon)
+* **Public key** van de eigenaar
+* **Extensions**: gebruiksbeperkingen, alternatieve domeinnamen, ...
+* **Signature**: de digitale handtekening van de CA
+
+---
+
 ## Chain of Trust
 
 * Browser controleert certificaat van website via CA
@@ -480,6 +520,21 @@ Pas sinds ~2017 biedt >50% van websites HTTPS aan.
 ::::
 
 
+
+---
+
+## Case: DigiNotar (2011)
+
+* Nederlandse CA, gehackt in 2011
+* Aanvallers gaven valse certificaten uit voor o.a. `google.com`
+* Ingezet om Iraanse Gmail-gebruikers te bespioneren
+* Browsers verwijderden DigiNotar als vertrouwde root-CA
+* **Alle** DigiNotar-certificaten werden ongeldig — ook die van DigiD en de Nederlandse overheid
+* DigiNotar ging binnen enkele weken failliet
+
+::: {.callout-warning .fragment}
+Eén gecompromitteerde CA kan het vertrouwen voor duizenden sites kapotmaken.
+:::
 
 ---
 
@@ -619,6 +674,31 @@ TLS/HTTPS combineert de **sterktes** van beide soorten crypto!
 ::: {.callout-note .fragment}
 Meer weten? Bekijk de briljante visualisatie op [tls.ulfheim.net](HTTPS://tls.ulfheim.net/)
 :::
+
+---
+
+## Mutual TLS (mTLS)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Normaal HTTPS: **enkel de server** heeft een certificaat
+* Bij mTLS: **ook de client** authenticeert met een certificaat
+* Typisch gebruikt in:
+  * Bankomgevingen, e-government
+  * Bedrijfs-VPN's
+  * API-verkeer tussen backend-servers
+
+::: {.callout-tip .fragment}
+De server weet dan zeker dat de client effectief is wie die beweert te zijn.
+:::
+:::
+
+::: {.column width="50%"}
+![](crypto_assets/mtls.png){width=100%}
+:::
+
+::::
 
 ---
 
