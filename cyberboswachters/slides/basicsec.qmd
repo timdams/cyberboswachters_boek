@@ -651,6 +651,10 @@ Beschikbaar op [lab401.com](https://lab401.com) en [hak5.org](https://hak5.org)
 
 ::::
 
+::: {.callout-note .fragment}
+In 2026 werd een Bluetooth-tracker van **€5** verstopt in een briefkaart en verstuurd naar een Nederlands marineschip van **€585 miljoen**. De tracker zond **24 uur lang** ongemerkt de locatie van het oorlogsschip uit. [Bron: Tom's Hardware](https://www.tomshardware.com/tech-industry/cyber-security/bluetooth-tracker-hidden-in-a-postcard-and-mailed-to-a-warship-exposed-its-location-a-eur5-gadget-put-a-eur500-million-dutch-ship-at-risk-for-24-hours)
+:::
+
 ---
 
 ## Side-channel aanvallen

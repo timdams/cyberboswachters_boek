@@ -460,6 +460,22 @@ Deepfakes van afbeeldingen, video én spraak zijn al niet meer te onderscheiden 
 
 ---
 
+## 2026: Mythos — AI als ultieme hacker
+
+* **Mythos**: AI-model van Anthropic dat zwakke plekken in systemen kan vinden én exploiteren
+* Menselijke expert-hacker: **~10 uur** → Mythos: **enkele minuten**
+* Doelwitten: bankensystemen, energiecentrales, kritieke infrastructuur
+
+::: {.callout-important}
+Anthropic houdt Mythos bewust **achter slot en grendel**. De Amerikaanse banktoezichthouder sloeg alarm; Fed-voorzitter Powell en minister Bessent hielden een spoedvergadering.
+:::
+
+::: {.callout-warning .fragment}
+Concurrenten kunnen binnen **6 maanden tot 1 jaar** vergelijkbare tools ontwikkelen. Vooral **kleine bedrijven** zonder uitgebreide cybersecurity-afdeling lopen gevaar. [Bron: VRT NWS](https://www.vrt.be/vrtnws/nl/2026/04/12/mythos-blijft-achter-slot-en-grendel-wegens-te-gevaarlijk-voor-c/)
+:::
+
+---
+
 ## 2025: Prompt Injection
 
 * **SQL injection**: kwaadaardige SQL-code in een invoerveld → database voert iets anders uit

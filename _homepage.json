@@ -1,0 +1,45 @@
+{
+  "name": "NWSecBook",
+  "tech": "Onbekend",
+  "techDetail": "Onbekend",
+  "branch": "main",
+  "lastCommit": "2026-04-01",
+  "lastCommitMsg": "ecc",
+  "lastCommitHash": "904a668",
+  "hasGit": true,
+  "remote": "https://github.com/timdams/cyberboswachters_boek",
+  "tag": "0.4.2",
+  "recentCommits": [
+    {
+      "hash": "904a668",
+      "msg": "ecc"
+    },
+    {
+      "hash": "287209b",
+      "msg": "issues oplossen"
+    },
+    {
+      "hash": "306b024",
+      "msg": "slides droog gemaakt. nu komende dagen verbeteren.."
+    },
+    {
+      "hash": "84d6565",
+      "msg": "slides beter?"
+    },
+    {
+      "hash": "94bddc6",
+      "msg": "betere ux"
+    }
+  ],
+  "workspace": null,
+  "noteFiles": [
+    "TODO.md"
+  ],
+  "path": "cursus\\NWSecBook",
+  "desc": "Dit project bevat het handboek **Cyberboswachters** (een cybersecurity cursus) én de bijhorende slideshows. Alles wordt automatisch gepubliceerd als website via GitHub Actions naar GitHub Pages.",
+  "category": "Overig",
+  "status": "cursus",
+  "tags": [],
+  "aiSummary": null,
+  "customNotes": null
+}
