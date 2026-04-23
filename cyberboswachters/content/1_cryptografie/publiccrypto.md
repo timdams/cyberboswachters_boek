@@ -19,9 +19,9 @@ Publieke crypto oftewel **asymmetrische encryptie** zal het probleem met symmetr
 * Eén publieke sleutel.
 * Eén private sleutel.
 
-De publieke sleutel kan iedereen, vrij, gebruiken om versleutelde berichten mee aan te maken. Echter, enkel de eigenaar van de bijhorende private sleutel zal deze berichten kunnen decrypteren. Kortom, we lossen nu een deel van het sleutelprobleem op: iedereen heeft z'n eigen private sleutel (**en moet deze geheim houden!**) en kan via z'n publieke sleutel berichten krijgen.
+Iedereen kan de publieke sleutel gebruiken om versleutelde berichten naar de eigenaar te sturen. Enkel de eigenaar van de bijhorende private sleutel kan deze berichten echter decrypteren. Kortom, we lossen nu een deel van het sleutelprobleem op: iedereen heeft z'n eigen private sleutel (**en moet deze geheim houden!**) en kan via z'n publieke sleutel berichten ontvangen.
 
-De techniek werd in de jaren 70 door Diffie en Hellman ontwikkeld en had een grote impact op de manier waarop beveiligde communicatie op het Internet mogelijk werd maakt. 
+Het concept van publieke cryptografie werd in 1976 gepubliceerd door Diffie en Hellman en had een grote impact op de manier waarop beveiligde communicatie op het Internet mogelijk werd. Hun eigen artikel beschreef meteen een sleuteluitwisselingsprotocol (Diffie-Hellman, zie verder); het eerste volwaardige asymmetrische encryptie-algoritme (RSA) volgde een jaar later, in 1977.
 
 ![Publieke crypto: Bob gebruikt de publieke sleutel van Alice om haar een beveiligd bericht te sturen.](assets//public.png)
 
@@ -34,30 +34,38 @@ Je kan publieke encryptie beschouwen als volgt: de publieke sleutel, die niet ge
 Enkele van de bekendere publieke cryptosystemen zijn onder andere RSA, DSS en El Gamal.
 :::
 
-### Dualiteit van publieke cryptografie
+### Drie toepassingen van publieke cryptografie
 
-Asymmetrische crypto zal niet alleen het sleutel-probleem oplossen, het heeft als extra eigenschap dat het publiek/private sleutelpaar ook dienst kan doen als **digitale handtekening** om te controleren of een boodschap wel degelijk afkomstig is van een specifiek persoon. Hierbij zal een private sleutel gebruikt worden om het digitale bericht te ondertekenen. Daar de ondertekenaar de enige persoon kan zijn die deze private sleutel in z'n bezit heeft, kan men zijn identiteit bevestigen door de bijhorende publieke sleutel te gebruiken. Enkel de bijhorende publieke sleutel zal hiervoor gebruikt kunnen worden en zo hebben we een vorm van integriteit of data authenticatie.
+Publieke cryptografie wordt in de praktijk voor drie doeleinden ingezet:
+
+* **Asymmetrische encryptie** (bv. RSA): berichten versleutelen met de publieke sleutel van de ontvanger, die ze enkel met zijn private sleutel kan lezen.
+* **Sleuteluitwisseling** (*key exchange*, bv. Diffie-Hellman): twee partijen spreken over een onveilig kanaal een gemeenschappelijke symmetrische sleutel af, die daarna voor snellere symmetrische encryptie wordt gebruikt.
+* **Digitale handtekeningen**: met de private sleutel wordt een bericht "getekend", en iedereen kan met de bijhorende publieke sleutel verifiëren dat het bericht effectief van die persoon afkomstig is en onderweg niet werd aangepast.
+
+Die laatste toepassing is een erg nuttige extra eigenschap: daar enkel de ondertekenaar de private sleutel in z'n bezit heeft, levert een geldige handtekening tegelijk **authenticatie** (de verzender is wie hij beweert te zijn) én **integriteit** (het bericht is onderweg niet gewijzigd).
 
 ![Het ondertekenen van een document met behulp van je private sleutel.](assets//sign.png)
 
-We zullen dit concept verderop uitwerken, maar eerst gaan we bekijken hoe publieke crypto juist werkt.
+In wat volgt werken we deze drie toepassingen één voor één uit, te beginnen met sleuteluitwisseling.
 
 ### Diffie-Hellman sleuteluitwisseling
 
-Publieke cryptografie kan voor drie doeleinden worden ingezet: **asymmetrische encryptie** (zoals RSA), **digitale handtekeningen** en **sleuteluitwisseling** (*key exchange*). We hebben de eerste twee reeds kort aangehaald. Nu bekijken we eerst de sleuteluitwisseling, omdat dit concept mooi illustreert hoe publieke crypto in de praktijk wordt gebruikt.
+We starten met **sleuteluitwisseling**, omdat dit concept mooi illustreert hoe publieke crypto in de praktijk wordt gebruikt.
 
 Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetrische crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Hellman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gebruikers over een onveilig kanaal op een veilige manier een gemeenschappelijk geheim (*shared secret*) afspreken.
 
-Zowel Bob als Alice kiezen eerst elk een **geheime waarde** die ze enkel voor deze sessie gebruiken. Op basis van deze geheime waarde berekenen ze elk een **publieke waarde** die ze naar de ander sturen (wat kan over een onbeveiligd kanaal). De ontvanger zal deze publieke waarde combineren met de eigen geheime waarde wat zal resulteren in een *shared secret* dat beiden nu kennen en kunnen gebruiken, bijvoorbeeld als de symmetrische sleutel om verdere communicatie te beveiligen. De geheime waarden kunnen na de uitwisseling worden weggegooid: ze zijn niet hetzelfde als een publiek/privaat sleutelpaar zoals bij RSA.
+Belangrijk om meteen mee te geven: de waarden die Bob en Alice bij Diffie-Hellman gebruiken zijn **sessie-specifiek** (*ephemeral*) en worden na de uitwisseling weggegooid. Ze zijn dus niet hetzelfde als een langdurig publiek/privaat sleutelpaar zoals bij RSA — DH dient louter om een gemeenschappelijke symmetrische sleutel af te spreken, niet om berichten rechtstreeks te versleutelen.
+
+Zowel Bob als Alice kiezen eerst elk een **geheime waarde** die ze enkel voor deze sessie gebruiken. Op basis van deze geheime waarde berekenen ze elk een **publieke waarde** die ze naar de ander sturen (wat kan over een onbeveiligd kanaal). De ontvanger zal deze publieke waarde combineren met de eigen geheime waarde wat zal resulteren in een *shared secret* dat beiden nu kennen en kunnen gebruiken, bijvoorbeeld als de symmetrische sleutel om verdere communicatie te beveiligen.
 
 De reden dat dit werkt, is met dank aan de modulo operator en de eigenschappen ervan. Een voorbeeld:
 
 |   Stap     | Alice                                           | Bob                                            |
 | ------ | ----------------------------------------------- | ---------------------------------------------- |
 | 1 | Alice kiest een geheim getal A. Ze kiest A= 3   | Bob kiest ook een geheim getal B = 6.          |
-| 2 | Alice berekent $7^A\%11$ => $343\%11 = 2$ , genaamd X. | Bob berekent $7^B\%11$ => $11764\%11 = 4$, genaamd Y. |
+| 2 | Alice berekent $7^A \bmod 11 = 343 \bmod 11 = 2$, genaamd X. | Bob berekent $7^B \bmod 11 = 117649 \bmod 11 = 4$, genaamd Y. |
 | 3 | Alice stuurt X=2 naar Bob                           | Bob stuurt Y=4 naar Alice.                        |
-| 4 | Alice berekent $Y^A\%11 = 4^3\%11 = 9$.             | Bob berekent $X^B\%11 = 2^6\%11 = 9$.               |
+| 4 | Alice berekent $Y^A \bmod 11 = 4^3 \bmod 11 = 9$.   | Bob berekent $X^B \bmod 11 = 2^6 \bmod 11 = 9$.     |
 
 Zoals je merkt kunnen nu Alice en Bob het berekende getal **9** als gedeeld geheim gebruiken. Enkel zij kennen dit getal.
 
@@ -87,7 +95,7 @@ Het principe berust erop dat *mengen* makkelijk is, maar *ontmengen* praktisch o
 
 ### RSA
 
-Eén van de oudste, maar nog steeds populairste, publieke cryptosystemen is het in 1977 ontwikkelde RSA algoritme. RSA, wat staat voor de achternamen van de drie ontwikkelaars (Rivest, Shamis en Adleman) gebruikt sleutels van 1536 tot 4096 bits lang. Het systeem is vrij traag maar heeft als voordeel dat het veilige sleuteltransmissie toestaat over een onveilig kanaal: we zien daarom vaak RSA gebruikt worden om eerst sessiesleutels uit te wisselen, vervolgens wordt overgeschakeld op een sneller symmetrisch cipher.
+Eén van de oudste, maar nog steeds populairste, publieke cryptosystemen is het in 1977 ontwikkelde RSA algoritme. RSA, wat staat voor de achternamen van de drie ontwikkelaars (Rivest, Shamir en Adleman) gebruikt sleutels van 1536 tot 4096 bits lang. Het systeem is vrij traag maar heeft als voordeel dat het veilige sleuteltransmissie toestaat over een onveilig kanaal: we zien daarom vaak RSA gebruikt worden om eerst sessiesleutels uit te wisselen, vervolgens wordt overgeschakeld op een sneller symmetrisch cipher.
 
 De exacte berekeningen die gebeuren tijdens encryptie en decryptie leiden ons iets te ver, maar volgend voorbeeld toont een vereenvoudigde wijze waarop RSA wordt toegepast:
 
@@ -98,8 +106,8 @@ Eerst dient een publieke sleutel aangemaakt te worden:
 * Hiertoe dient Bob twee grote priemgetallen, ``q`` en ``p`` te kiezen, bijvoorbeeld ``p=17`` en ``q=11``. 
 * Vervolgens berekent Bob ``N`` door deze priemgetallen met elkaar te vermenigvuldigen (``p*q`` geeft 17 * 11, ``N=187``). 
 * Bob kiest nu nog een priemgetal ``e``, bijvoorbeeld ``7``.
-* Bob kan nu zijn eigen geheime, private sleutel ``d`` maken, namelijk $e*d = 1\%((p-1)*(q-1))$ wat dus $7*d=1\%(16*10)$ geeft of  $7*d=1\%160$ .
-* Om nu ``d`` te vinden moeten we een getal vinden zodat $7*d$ een veelvoud van $1\%160$ geeft, dus bijvoorbeeld 1, 161, etc. In dit geval vinden we ``d=23``. 
+* Bob kan nu zijn eigen geheime, private sleutel ``d`` maken, zodat geldt: $e \cdot d \equiv 1 \pmod{(p-1)(q-1)}$. In dit voorbeeld wordt dat $7 \cdot d \equiv 1 \pmod{16 \cdot 10}$, oftewel $7 \cdot d \equiv 1 \pmod{160}$.
+* Om ``d`` te vinden zoeken we dus een getal zodat $7 \cdot d \bmod 160 = 1$. De mogelijke waarden voor $7 \cdot d$ zijn bijgevolg $1, 161, 321, \dots$. Met $7 \cdot 23 = 161$ klopt het: ``d=23``.
 
 ::: {.callout-tip}
 Om $d$ te berekenen maken we gebruik van de zogenaamde *Uitgebreid Euclidisch algoritme*, een eeuwenoud algoritme gebaseerd op het *Algoritme van Euclides* dat we in het lager leerden gebruiken om de grootste gemene deler te berekenen van twee getallen.
@@ -115,10 +123,10 @@ Iedereen die nu naar Bob iets wilt sturen, kan dit via z'n publieke sleutel (``N
 Stel dat Alice het ASCII-karakter X naar Bob wil sturen:
 
 * De ASCII-waarde van X is 88. 
-* De encryptie door Alice gebeurt dan als volgt: $C = data^e\%N$. 
-* De te versturen ciphertext C wordt dus: $(88^7)\%187$ oftewel ``C=11``.
+* De encryptie door Alice gebeurt dan als volgt: $C = \text{data}^e \bmod N$. 
+* De te versturen ciphertext C wordt dus: $88^7 \bmod 187$ oftewel ``C=11``.
 
-Enkel Bob zal deze ciphertext met zijn private sleutel ``d`` kunnen decrypteren door $C^d(\%N)$ te doen, oftewel $11^{23}\%187$ wat terug de plaintext ``88`` geeft!
+Enkel Bob zal deze ciphertext met zijn private sleutel ``d`` kunnen decrypteren door $C^d \bmod N$ te doen, oftewel $11^{23} \bmod 187$ wat terug de plaintext ``88`` geeft!
 
 ::: {.callout-tip}
 De sterkte van publieke crypto stoelt dus op het feit dat ontbinden van (grote) getallen in factoren computationeel veel moeilijker is dan de omgekeerde stap, namelijk twee getallen met elkaar vermenigvuldigen.
@@ -153,9 +161,9 @@ Moderne TLS-verbindingen (en dus HTTPS) gebruiken vrijwel altijd ECC-gebaseerde 
 Net als RSA is ook ECC kwetsbaar voor toekomstige **quantumcomputers**. Daarom wordt er actief gewerkt aan zogenaamde **post-quantum cryptografie**: nieuwe algoritmes die bestand zijn tegen aanvallen met quantumcomputers. In 2024 publiceerde NIST de eerste standaarden hiervoor.
 :::
 
-#### Intermezzo: Hashes
+### Intermezzo: Hashes
 
-We gaan nu even een zijtak inslaan om het concept "hash" te bespreken. Een hash is een concept uit de informatica dat we gebruiken om te controleren of een digitaal stuk tekst werd aangepast of niet. Door de tekst in een hashfuntie te steken wordt een hash aangemaakt. Deze hash is een stuk code met een vaste lengte, ongeacht de originele input. Wanneer 1 bit of meer wordt aangepast in de originele boodschap dan zal deze in een totaal andere hash resulteren. Enkel dus wanneer een identiek stuk tekst als invoer (tot op bitniveau identiek) wordt gebruikt, zullen twee hashes gelijk zijn.
+Voor we de digitale handtekeningen uitwerken, slaan we even een zijtak in om het concept "hash" te bespreken. Een hash is een concept uit de informatica dat we gebruiken om te controleren of een digitaal stuk tekst werd aangepast of niet. Door de tekst in een hashfuntie te steken wordt een hash aangemaakt. Deze hash is een stuk code met een vaste lengte, ongeacht de originele input. Wanneer 1 bit of meer wordt aangepast in de originele boodschap dan zal deze in een totaal andere hash resulteren. Enkel dus wanneer een identiek stuk tekst als invoer (tot op bitniveau identiek) wordt gebruikt, zullen twee hashes gelijk zijn.
 
 
 Voorgaande is uiteraard onmogelijk: daar een hash meestal veel korter is dan de originele boodschap, is het mathematisch mogelijk dat twee totaal verschillende teksten toch dezelfde hash geven. Het is de opdracht van een goede hashfunctie om dit soort **hash collisions** zo klein mogelijk te houden.
@@ -187,16 +195,16 @@ Een digitale handtekening wordt als extra bericht achteraan de te versturen bood
 
 Om een digitale handtekening te berekenen moeten we eerst een hash van het bericht berekenen. We gebruiken hier bijvoorbeeld MD5 of één van de SHA-algoritmes voor. Deze hash gaan we nu "verpakken" met de private sleutel. 
 
-Stel dat we willen versturen ``35`` is en we hebben reeds volgende sleutelpaar berekend ([bron](HTTPS://crypto.stackexchange.com/questions/11117/simple-digital-signature-example-with-number)):
+Stel dat de berekende hash van ons bericht de waarde ``35`` heeft (in werkelijkheid is een hash veel langer, maar voor dit voorbeeld houden we het klein) en we beschikken over volgend sleutelpaar ([bron](HTTPS://crypto.stackexchange.com/questions/11117/simple-digital-signature-example-with-number)):
 
 * publieke sleutel: $e=5$ en $n=91$.
 * private sleutel: $d=29$.
 
-De handtekening wordt berekend door: $s=m^d\%n$ oftewel $s=35^{29}\%91$ wat ``42`` geeft. 
+De handtekening wordt berekend door de hash te versleutelen met de private sleutel: $s = m^d \bmod n$, oftewel $s = 35^{29} \bmod 91 = 42$.
 
-We versturen dus naar de ontvanger de boodschap zelf en de bijhorende handtekening: ``35,42``.
+We versturen naar de ontvanger dus de boodschap zelf én de bijhorende handtekening ``42``.
 
-De ontvanger kan nu controleren of de ontvangen boodschap klopt of niet. Hij zal zijn eigen hash genereren van de ontvangen boodschap. Als deze overeen komt met de hash die bij de boodschap zat, is alles in orde. Om de handtekening te decrypteren gebruikt de ontvanger ``e`` en berekent: $42^e == 35^n$, als dit overeenkomt dan weet de ontvanger dat hij het bericht kan vertrouwen.
+De ontvanger kan nu controleren of de boodschap klopt. Hij berekent eerst zelf de hash van het ontvangen bericht. Vervolgens "ontsleutelt" hij de handtekening met de publieke sleutel van de verzender door $s^e \bmod n$ te berekenen, oftewel $42^5 \bmod 91 = 35$. Als de zelf berekende hash gelijk is aan dit resultaat, dan weet de ontvanger dat het bericht afkomstig is van de verwachte verzender én onderweg niet werd aangepast.
 
 ![Het volledig proces bij een digitale handtekening.](assets//signaturesend.png){width=80%}
 
@@ -228,8 +236,8 @@ Het gehele systeem van CA's, RA's, etc. dat bestaat om certificaten uit te geven
 
 De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensduur, te genereren. Hierbij zal de echtheid van het certificaat achteraf bewezen kunnen worden door de CA:
 
-* Het certificaat is een geëncrypteerde hash van Bobs publieke sleutel, informatie over de CA en over Bob. De encryptie van de hash gebeurt aan de hand van de private sleutel van de CA.
-* Om later de echtheid van een certificaat te testen voldoet het om dezelfde hash te genereren (publieke sleutel, info over Bob en CA) en deze te vergelijken met het certificaat na decryptie met de publieke sleutel van de CA. Als deze gelijk zijn weten we dat het certificaat door de gegeven CA werd ondertekend (enkel hun publiek/private sleutelpaar zal terug de originele hash geven).
+* Het certificaat bevat Bobs publieke sleutel en informatie over Bob en de CA in **leesbare vorm**. Daaraan wordt een **digitale handtekening** van de CA toegevoegd: een hash van al deze informatie, versleuteld met de private sleutel van de CA.
+* Om later de echtheid van het certificaat te verifiëren, berekent de ontvanger zelf de hash van de inhoud van het certificaat en vergelijkt die met de ontsleutelde handtekening (die met de publieke sleutel van de CA wordt gedecrypteerd). Als beide hashes gelijk zijn, weten we dat het certificaat door de gegeven CA werd ondertekend — enkel de houder van de private sleutel van die CA kan zo'n geldige handtekening produceren.
 
 ![Een certificaat aanmaken.](assets//certcreatie.png)
 

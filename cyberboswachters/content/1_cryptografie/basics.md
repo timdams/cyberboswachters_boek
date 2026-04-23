@@ -45,7 +45,7 @@ Let op met encryptiesystemen die zichzelf verkopen met zinnen zoals *"10 jaar no
 
 Stel dat je een sleutel hebt die bestaat uit 8 karakters. Een karakter is een letter van a tot z (geen onderscheid tussen hoofd- en kleine letters en geen getallen of speciale tekens). Er zijn $26^8$ mogelijke sleutels (we gaan ervan uit dat de sleutel exact 8 karakters moet bevatten). Een computer kan één miljoen sleutels per seconde testen. De duur om alle mogelijke sleutels te testen is dus $\frac{(26^8)}{1 000 000}$, oftewel 208 827 seconden, pakweg 58 uur. Intuïtief zou je kunnen denken dat je dus meer dan twee dagen "veilig" zit, wat niet zo is. De kans dat de eerste sleutel die je test reeds de juiste is, is even groot als dat het de laatste sleutel is. Kortom, gemiddeld gezien zal de sleutel in de helft van de maximum tijd gevonden worden, oftewel 29 uur. 
 
-Zouden we de lengte van de sleutel met één karakter verhogen, naar 9, dan stijgt de totale duur naar pakweg 1500 uur, oftewel 62 dagen. Eén karakter extra heeft dus wel degelijk een gigantische impact op de veiligheid van een sleutel!
+Zouden we de lengte van de sleutel met één karakter verhogen, naar 9, dan stijgt de *maximale* duur naar pakweg 1500 uur, oftewel 62 dagen. Gemiddeld gezien vinden we de sleutel dus na ongeveer 750 uur (ruim 31 dagen). Eén karakter extra heeft wel degelijk een gigantische impact op de veiligheid van een sleutel!
 
 
 
@@ -61,8 +61,8 @@ Volgende tool, speciaal gemaakt om crypto te leren, is een erg handig iets om de
 
 De Caesar encryptie (naar Julius Caesar) bestaat uit een eenvoudig substitutie algoritme. De sleutel is een getal tussen 1 en 25 en geeft aan door welk element uit het alfabet een teken wordt aangepast, als volgt:
 
-* Ieder element wordt voorgesteld als een cijfer. A krijgt de waarde 1, B wordt 2,... Z wordt 26.
-* Als de sleutel het getal 3 is, dan zal nu iedere letter A in de tekst vervangen worden door het teken 1+3, dus D. Iedere B wordt een E, enzovoort.
+* Ieder element wordt voorgesteld als een cijfer. A krijgt de waarde 0, B wordt 1,... Z wordt 25. (We tellen vanaf 0, zodat we straks netjes met de modulo-operator kunnen werken.)
+* Als de sleutel het getal 3 is, dan zal nu iedere letter A in de tekst vervangen worden door het teken 0+3, dus D. Iedere B wordt een E, enzovoort.
 * Indien er een "overflow" is achteraan komen we uiteraard terug naar voor in het alfabet. Iedere Z wordt dus een C, iedere Y een B, enzovoort.
 
 Het Caesarcipher wordt ook wel kortweg *Rot* genoemd, naar het woord *rotatie*. Een cijfer erachter geeft dan aan welk de te gebruiken sleutel is. Rot4 wil dus zeggen dat alle elementen vier plaatsen opgeschoven moeten worden. Merk op dat Rot13 (ook wel *Caesaralfabet* genoemd) een speciale sleutel is. Als je namelijk twee maal na elkaar Rot13 toepast op een tekst (eerst op de plaintext, dan op de resulterende ciphertext) dan verkrijgt men terug de originele tekst.
@@ -121,7 +121,7 @@ Plaintext:  v i g e n e r e c i p h e r
 Ciphertext: X W A R G S E G Q C C A S E
 ```
 
-De eerste `v` gecombineerd met sleutel-letter `C` levert `X` op (shift 2). De volgende `i` met `O` geeft `W`. En zo verder. Merk op dat de `e`'s in de plaintext nu telkens door een *andere* letter worden vervangen (respectievelijk `R`, `S`, `G`, `S`, `E`), afhankelijk van welke sleutelletter er op dat moment boven staat.
+De eerste `v` gecombineerd met sleutel-letter `C` levert `X` op (shift 2). De volgende `i` met `O` geeft `W`. En zo verder. Merk op dat de vier `e`'s in de plaintext telkens door een *andere* letter worden vervangen (respectievelijk `R`, `S`, `G` en `S`), afhankelijk van welke sleutelletter er op dat moment boven staat.
 
 In de praktijk gebruikte men een *tabula recta* - een tabel met alle 26 Caesar-alfabetten onder elkaar - om snel de juiste substitutie af te lezen. De rij kies je op basis van de sleutelletter, de kolom op basis van de plaintext-letter.
 
@@ -223,7 +223,7 @@ Om bovenstaande gigantische getallen wat te duiden: de leeftijd van ons universu
 
 Wanneer de cryptanalist vermoedt dat de te zoeken sleutel iets anders is dan volledig willekeurige tekens dan kan hij de bruteforce aanval verbeteren (denk aan "administrator2022"). In plaats van alle mogelijke combinaties (permutaties) van de sleutel te testen, zal hij een woordenboek (**dictionary**) gebruiken met daarin alle mogelijke sleutels en woorden die mogelijk de originele sleutel bevatten.
 
-Tools zoals John The Ripper kan je *voeden* met een dergelijk woordenboek en dan vragen om sleutels te testen die gebaseerd zijn op zaken uit dat woordenboek, inclusief bijvoorbeeld door er tekens voor en na te zetten. Als in het woordenboek het woord *god* staat, dan kan Jaohn The Ripper bijvoorbeeld ook alle sleutels testen zoals *god1*, *god2*, etc. 
+Tools zoals John The Ripper kan je *voeden* met een dergelijk woordenboek en dan vragen om sleutels te testen die gebaseerd zijn op zaken uit dat woordenboek, inclusief bijvoorbeeld door er tekens voor en na te zetten. Als in het woordenboek het woord *god* staat, dan kan John The Ripper bijvoorbeeld ook alle sleutels testen zoals *god1*, *god2*, etc. 
 
 Er zijn tal van woordenboeken online te downloaden die gevuld zijn met de meest gebruikte wachtwoorden die cryptanalisten (en dus ook de digitale stropers) kunnen gebruiken om de sleutel sneller te vinden. Het is aangeraden om zeker geen wachtwoorden (of permutaties ervan) te gebruiken die in volgende  lijsten voorkomen: [https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials)
 
@@ -262,7 +262,7 @@ Deze categorie aanvallen noemen we **social engineering** en we behandelen ze ui
 
 Al jaren houdt de crypto-wereld angstvallig de ontwikkelingen in de quantum-computer wereld in het oog. Alhoewel we nog maar in de babyfase van quantum-computers zijn, is het toch best mogelijk dat binnen afzienbare tijd (20, 30 jaar?) we effectief zodanig sterke quantum-computers zullen hebben die alle bestaande cryptografische systemen in een handomdraai kunnen "kraken". 
 
-Daarom hanteren veiligheidsdienten al vele decenia ook het **store now, decrypt later** principe. Ze gaan ervan uit dat computers steeds krachtiger worden: berichten die in de jaren 60 werden versleuteld, kunnen nu in een handomdraai ontcijferd worden. Quantum-computers zullen dit proces nog veel sneller maken.
+Daarom hanteren veiligheidsdiensten al vele decennia ook het **store now, decrypt later** principe. Ze gaan ervan uit dat computers steeds krachtiger worden: berichten die in de jaren 60 werden versleuteld, kunnen nu in een handomdraai ontcijferd worden. Quantum-computers zullen dit proces nog veel sneller maken.
 
 Hoe dit zal gebeuren snapt de auteur ook (nog) niet en zal dus niet verder uitgewerkt worden in dit handboek. Besef gewoon dat quantum-computers van de toekomst potentiële bruteforce aanvallen drastisch zullen kunnen versnellen. 
 
@@ -482,12 +482,17 @@ Telkens zal het algoritme één specifieke waarde (tussen 0 en 255) uit de array
 Als we verder werken met de tabel ``S`` van het vorige uitgewerkte KSA voorbeeld en de waarden ervan gebruiken na één iteratie dan krijgen we onderstaande berekeningen (*We veronderstellen even dat we de KSA niet verder hebben uitgevoerd en de tabel ``S`` dus dezelfde is gebleven als op het einde van het voorbeeld, wat in het echt niet zal zijn.*):
 
 ```
-i = (0+1) % 256  => 1
-j = (0+97) % 256 => 97
-Verwissel(S[1],S[97]) => Verwissel(1,0)
-k = S[ (S[1]+S[97])%256 ] => k = S[ (0 + 1) % 256] 
-we outputten de waarde die op S[1] staat
+i = (0+1) % 256 => 1
+j = (0 + S[1]) % 256 => (0+1) % 256 => 1
+  (S[1] is nog steeds 1: in de KSA-iteratie hebben we enkel S[0] en S[97] gewisseld)
+Verwissel(S[1], S[1]) => geen werkelijke wissel, want i en j vallen samen
+k = S[ (S[1] + S[1]) % 256 ] => k = S[2] => 2
+we outputten de waarde 2 als eerste keystream-karakter
 ```
+
+::: {.callout-note}
+In dit specifieke voorbeeld vallen `i` en `j` toevallig samen, waardoor er geen wissel gebeurt. In een realistische PRGA-run (na een volledige KSA van 256 iteraties) is de tabel `S` echter grondig dooreengeschud en zal vrijwel iedere PRGA-iteratie wél een wissel opleveren.
+:::
 
 Finaal zal de output, de waarde ``k``, ge-XOR'd worden met het huidige karakter van de plaintext stream.
 
@@ -542,7 +547,7 @@ In het F-blok wordt eerst het 32-bit blok uitgebreid (*E* in de figuur, van expa
 
 ![De expansie van 32 naar 48 bits.](assets/des4.png){ width=90% }
 
-Nu worden deze 48 bits ge-XOR'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst. 
+Nu worden deze 48 bits ge-XOR'd met de subkey. Het resultaat wordt in blokjes van 6 bits door een *S*-blok gestuurd (zogenaamde *Selection blocks*). In dit blokje wordt 6 bit omgezet naar 4 bit. In de figuur hieronder zien we bijvoorbeeld hoe de omzetting in blok *S5* gebeurt. Ieder blokje heeft een soortgelijke tabel, maar met andere resultaten.  De 6 bits bestaan uit de 2 outer bits, namelijk de eerste en de laatste bit, alsook de 4 innerbits. De **outer bits vormen de rij-index** in de S-box-tabel, de **inner bits de kolom-index**. De figuur toont bijvoorbeeld dat de output `1001` zou zijn indien er `011011` in het blok wordt geplaatst: outer bits `01` wijzen naar rij 1, inner bits `1101` naar kolom 13, en op die positie in de S5-tabel staat de waarde `1001`.
 
 ![Waarheidstabel van het S5-blok (Bron wikipedia).](assets/des5.png){ width=100% }
 
@@ -575,7 +580,7 @@ In de Compression P-Box wordt een aantal bits van de sleutel "tegengehouden". We
 
 Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES (56 bits, 48 in effectiviteit vanwege de pariteitsbits) redelijk snel zou gebruteforced worden. Om die reden werd 3DES in het leven geroepen in 1995. De oplossing, 3DES, was een mooi staaltje compromisvorming: het bood een verhoogde beveiliging doordat het een lange sleutel had (tot 168 bits lang) maar bleef tegelijkertijd compatibel met de bestaande DES hardware en software.
 
-De werking van 3DES (*tripple DES*) is verrassend eenvoudig: ieder blok data wordt drie keer doorheen een DES-cipher gestuurd. Hierbij wordt steeds een andere sleutel gebruikt. Om de bestaande DES hardware te gebruiken, wordt hierbij de data eerst door de encryptie gestuurd, dan doorheen de decryptie en terug door de encryptie. Daar we in iedere fase een andere sleutel gebruiken heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we dus effectief drie maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvanger zijde gebeurt dan het omgekeerde: decryptie, encryptie, decryptie én dit dus allemaal met de bestaande DES hardware!
+De werking van 3DES (*triple DES*) is verrassend eenvoudig: ieder blok data wordt drie keer doorheen een DES-cipher gestuurd, telkens met een andere sleutel. Om compatibel te blijven met bestaande DES hardware wordt de data hierbij eerst *Encrypted*, dan *Decrypted*, en tenslotte opnieuw *Encrypted*. Dit patroon wordt daarom het **EDE-schema** (Encrypt-Decrypt-Encrypt) genoemd. Daar we in iedere fase een andere sleutel gebruiken, heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we effectief drie maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvangerzijde gebeurt het omgekeerde — decryptie, encryptie, decryptie (DED) — en ook dit met dezelfde DES hardware!
 
 ![3DES.](assets/3des.png){ width=60% }
 
@@ -685,12 +690,15 @@ Alhoewel 3DES een verbetering op DES was, was er toch nood aan een nieuwe encryp
 
 AES is een symmetrisch blockcipher dat data in blokken van 128 bits zal opsplitsen en sleutels tot 256 bits lang toelaat. De volledige werking van AES gaan we hier niet uit de doeken doen, het voldoet te begrijpen dat in grote lijnen hetzelfde soort stappen worden doorlopen als DES en andere symmetrische ciphers:
 
-* Er is een *key expansie* stap om een unieke sleutel pér ronde te hebben.
-* De data wordt doorheen meerdere rondes gestuurd.
-* Iedere ronde gebeuren er zaken zoals substituties en transposities, zowel van bytes als van hele rijen of kolommen data.
-* Finaal vindt er een XOR-encryptie plaats.
+* **KeyExpansion**: uit de hoofdsleutel worden alle round keys afgeleid (één per ronde, net zoals bij DES).
+* De data wordt vervolgens doorheen **10, 12 of 14 rondes** gestuurd, afhankelijk van de sleutellengte (respectievelijk 128, 192 of 256 bits). Het te encrypteren blok wordt daarbij voorgesteld als een 4×4-matrix van bytes, de zogenaamde *state*.
+* Iedere ronde bestaat uit vier vaste stappen op die state:
+    * **SubBytes** — iedere byte wordt via een vaste S-box vervangen door een andere byte (*substitutie*).
+    * **ShiftRows** — de rijen van de state worden cyclisch verschoven (*transpositie*).
+    * **MixColumns** — binnen iedere kolom worden de bytes met elkaar gemengd via een lineaire transformatie (zorgt voor *diffusie*). Deze stap valt weg in de allerlaatste ronde.
+    * **AddRoundKey** — de state wordt ge-XOR'd met de round key van die ronde. Dít is waar de sleutel opnieuw in de encryptie binnenkomt.
 
-Merk op dat ook hier, onderaan, de XOR-functie nog steeds dienst zal doen als de feitelijke encryptie van de data. Zonder deze XOR-functie zou al het voorgaande enkel maar resulteren in data die van plek verandert, volgens een patroon waar de geheime sleutel niet bij van te pas komt.
+Merk op dat ook hier, in de AddRoundKey-stap, de XOR-functie nog steeds dienst zal doen als de feitelijke encryptie van de data. Zonder deze XOR-functie zou al het voorgaande enkel maar resulteren in data die van plek verandert, volgens een patroon waar de geheime sleutel niet bij van te pas komt.
 
 
 {{< include publiccrypto.md >}}
