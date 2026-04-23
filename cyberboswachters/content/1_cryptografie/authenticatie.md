@@ -208,17 +208,14 @@ Maar ook andere metrieken kunnen erg interessant zijn zoals de manier waarop je 
 
 Niet elke biometriek is evenwaardig wat betreft accuraatheid en kost. **Iris**-scans staan bovenaan qua accuraatheid maar vereisen dure, gespecialiseerde hardware. **Retina**- en **vingerafdruk**-scanners zijn redelijk accuraat aan een midden- tot lage kost. Aan de goedkope (maar ook minder accurate) kant vind je bijvoorbeeld **stem**herkenning en **gezicht**sherkenning via een gewone webcam. Je keuze van biometriek hangt dus niet alleen af van technische vereisten, maar ook van budget en use case (een irisscan aan de grens is iets heel anders dan gezichtsherkenning om je telefoon te ontgrendelen).
 
-```{mermaid}
+<!--```{mermaid}
 %%| label: fig-biometrics-cost
 %%| fig-cap: "Biometrics: kost versus accuraatheid (indicatief)."
+%% TIM: TTT vervangen door -- > (zonder spatie)
 quadrantChart
     title Biometrics - kost versus accuraatheid
-    x-axis Lage accuraatheid --> Hoge accuraatheid
-    y-axis Lage kost --> Hoge kost
-    quadrant-1 Duur en accuraat
-    quadrant-2 Duur en minder accuraat
-    quadrant-3 Goedkoop en minder accuraat
-    quadrant-4 Goedkoop en accuraat
+    x-axis Lage accuraatheid ttt Hoge accuraatheid
+    y-axis Lage kost ttt Hoge kost
     "Iris": [0.95, 0.85]
     "Retina": [0.80, 0.70]
     "Vingerafdruk": [0.75, 0.30]
@@ -227,6 +224,10 @@ quadrantChart
     "Gezicht": [0.50, 0.30]
     "Stem": [0.30, 0.20]
 ```
+-->
+
+![Indicatieve positionering van verschillende biometrieken op een kost-accuraatheid diagram.](assets/biome.jpg)
+
 
 ::: {.callout-warning}
 Paswoorden van miljoenen mensen opslaan is één ding. De biometrische gegevens is een heel ander verhaal waarbij ook **privacy** plots een erg heikel punt wordt (beeld je even in dat Hitler en zijn trawanten 80 jaar geleden toegang hadden tot biometrische data waarmee met een bepaalde zekerheid kon vastgesteld worden of iemand van Joodse origine was of niet.)
