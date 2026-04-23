@@ -5,7 +5,15 @@
       "WebSearch",
       "WebFetch(domain:edri.org)",
       "WebFetch(domain:en.wikipedia.org)",
-      "WebFetch(domain:commons.wikimedia.org)"
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Bash(curl -A 'NWSecBookBuild/1.0 \\(timdams@gmail.com\\) curl' -L -o cyberboswachters/content/0_het_security_landschap/assets/atomanlage_natanz_2022.jpg https://upload.wikimedia.org/wikipedia/commons/0/01/Atomanlage_Natanz_%282022%29.jpg)",
+      "Bash(curl -A 'NWSecBookBuild/1.0 \\(timdams@gmail.com\\) curl' -L -o cyberboswachters/content/0_het_security_landschap/assets/edward_snowden-2.jpg https://upload.wikimedia.org/wikipedia/commons/6/60/Edward_Snowden-2.jpg)",
+      "Bash(curl -A 'NWSecBookBuild/1.0 \\(timdams@gmail.com\\) curl' -L -o cyberboswachters/content/0_het_security_landschap/assets/prism_slide_5.jpg https://upload.wikimedia.org/wikipedia/commons/c/c7/Prism_slide_5.jpg)",
+      "Bash(curl -A 'NWSecBookBuild/1.0 \\(timdams@gmail.com\\) curl' -L -o cyberboswachters/content/0_het_security_landschap/assets/julian_assange_in_2008.jpg https://upload.wikimedia.org/wikipedia/commons/9/90/Julian_Assange_in_2008.jpg)",
+      "Bash(curl -A 'NWSecBookBuild/1.0 \\(timdams@gmail.com\\) curl' -L -o cyberboswachters/content/0_het_security_landschap/assets/heartbleed.svg https://upload.wikimedia.org/wikipedia/commons/d/dc/Heartbleed.svg)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\p008465\\Koofr\\PROGPROJECTS\\cursus\\NWSecBook\\cyberboswachters\\content\\0_het_security_landschap\\assets"
     ]
   }
 }
