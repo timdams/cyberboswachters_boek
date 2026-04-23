@@ -208,23 +208,7 @@ Maar ook andere metrieken kunnen erg interessant zijn zoals de manier waarop je 
 
 Niet elke biometriek is evenwaardig wat betreft accuraatheid en kost. **Iris**-scans staan bovenaan qua accuraatheid maar vereisen dure, gespecialiseerde hardware. **Retina**- en **vingerafdruk**-scanners zijn redelijk accuraat aan een midden- tot lage kost. Aan de goedkope (maar ook minder accurate) kant vind je bijvoorbeeld **stem**herkenning en **gezicht**sherkenning via een gewone webcam. Je keuze van biometriek hangt dus niet alleen af van technische vereisten, maar ook van budget en use case (een irisscan aan de grens is iets heel anders dan gezichtsherkenning om je telefoon te ontgrendelen).
 
-<!--```{mermaid}
-%%| label: fig-biometrics-cost
-%%| fig-cap: "Biometrics: kost versus accuraatheid (indicatief)."
-%% TIM: TTT vervangen door -- > (zonder spatie)
-quadrantChart
-    title Biometrics - kost versus accuraatheid
-    x-axis Lage accuraatheid ttt Hoge accuraatheid
-    y-axis Lage kost ttt Hoge kost
-    "Iris": [0.95, 0.85]
-    "Retina": [0.80, 0.70]
-    "Vingerafdruk": [0.75, 0.30]
-    "Handvorm": [0.45, 0.65]
-    "Handtekening": [0.35, 0.55]
-    "Gezicht": [0.50, 0.30]
-    "Stem": [0.30, 0.20]
-```
--->
+
 
 ![Indicatieve positionering van verschillende biometrieken op een kost-accuraatheid diagram.](assets/biome.jpg)
 
@@ -246,28 +230,6 @@ Een biometrisch systeem kent drie duidelijk te onderscheiden fasen:
 3. **Identification (identificatie)**: *"Wie ben jij?"* — de aangeboden feature points worden vergeleken met álle templates in de databank (**1-op-N**). Dit is een veel zwaardere operatie en wordt typisch ingezet bij bv. grenscontrole of forensisch onderzoek.
 
 ![De drie fasen van een biometrisch systeem en hun interactie met de templatedatabank.](assets/bioproc.png)
-
-<!--```{mermaid}
-%%| label: fig-biometric-phases
-%%| fig-cap: "De drie fasen van een biometrisch systeem en hun interactie met de templatedatabank."
-flowchart LR
-    subgraph ENR["Enrollment (eenmalig)"]
-        E1[Kenmerk<br/>aanbieden] ttt E2[Feature points<br/>extraheren] ttt E3[(Template-<br/>databank)]
-    end
-    subgraph VER["Verification (1-op-1)"]
-        V1[Kenmerk + claim<br/>'ik ben user X'] ttt V2[Feature points<br/>extraheren] ttt V3{Match met<br/>template X?}
-        V3 ttt|Ja| V4[Toegang]
-        V3 ttt|Nee| V5[Geweigerd]
-    end
-    subgraph IDE["Identification (1-op-N)"]
-        I1[Kenmerk<br/>aanbieden] ttt I2[Feature points<br/>extraheren] ttt I3{Match met<br/>één van N<br/>templates?}
-        I3 ttt|Match k| I4[Dit is user k]
-        I3 ttt|Geen match| I5[Onbekend]
-    end
-    E3 -.bewaart templates.-> V3
-    E3 -.bewaart templates.-> I3
-```
--->
 
 
 ::: {.callout-tip}

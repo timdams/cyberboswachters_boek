@@ -26,6 +26,27 @@ Er zijn nu meer **verbonden apparaten** dan mensen, en aanvallers worden steeds 
 
 ---
 
+## &hellip; en de formele NIST-definitie
+
+> *"The protection afforded to an automated information system in order to attain the applicable objectives of preserving the **integrity**, **availability** and **confidentiality** of information system resources."*
+
+::: {.fragment}
+Waarover praten we dan juist? &rarr; de *resources*:
+:::
+
+::: {.incremental}
+* Hardware
+* Software &amp; firmware
+* Information / data
+* Telecommunications
+:::
+
+::: {.callout-tip .fragment}
+NIST = *National Institute of Standards and Technology* (VS). Hun definitie introduceert meteen **CIA** én de scope van de **McCumber kubus**.
+:::
+
+---
+
 ## CIA-model
 
 | Pijler | Betekenis | Oplossingen |
@@ -37,6 +58,43 @@ Er zijn nu meer **verbonden apparaten** dan mensen, en aanvallers worden steeds 
 ::: {.callout-tip .fragment}
 **DoS-aanvallen** richten zich specifiek op de *Availability*-pijler.
 :::
+
+---
+
+## CIA gaat dieper: elk met twee gezichten
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Confidentiality**
+
+* *Data confidentiality*: de **inhoud** is afgeschermd
+  * → Encryptie
+* *Privacy*: het feit **dát er data over jou bestaat**
+  * → GDPR, access logs
+
+**Integrity**
+
+* *Data integrity*: de **data zelf** is niet aangepast
+  * → Hashes
+* *System integrity*: het **systeem** werkt zoals bedoeld
+  * → Anti-rootkit, secure boot
+:::
+
+::: {.column width="50%"}
+**Availability** + bonus:
+
+* *Non-repudiation*: onweerlegbaarheid
+  * → Digitale handtekeningen
+
+::: {.callout-warning .fragment}
+Een rootkit kan je **data** ongemoeid laten &mdash; en toch je **systeem** overnemen.
+
+Data integer ≠ systeem integer.
+:::
+:::
+
+::::
 
 ---
 
@@ -61,6 +119,36 @@ Er zijn nu meer **verbonden apparaten** dan mensen, en aanvallers worden steeds 
 :::
 
 ::::
+
+---
+
+## McCumber in actie: Twitter's hash-bug (2018)
+
+:::: {.columns}
+
+::: {.column width="60%"}
+Twitter deed **alles goed**:
+
+* Wachtwoorden werden met **bcrypt** gehasht in de database (status: *opslag*) ✅
+
+&hellip; maar door een bug werden wachtwoorden **vóór** het hashen in een interne log geschreven (status: *verwerking*) ❌
+
+::: {.fragment}
+Resultaat: miljoenen wachtwoorden in **plaintext** in logs waar medewerkers bij konden.
+:::
+:::
+
+::: {.column width="40%" .fragment}
+::: {.callout-warning}
+**Eén vergeten hoekje** van de McCumber kubus volstaat om alle andere verdedigingen te omzeilen.
+:::
+:::
+
+::::
+
+::: aside
+Bron: Twitter Blog, mei 2018.
+:::
 
 ---
 
@@ -92,6 +180,25 @@ De cyberboswachter van de 21e eeuw heeft het moeilijker dan ooit:
 
 ---
 
+## De scheve grafiek
+
+```{mermaid}
+%%{init: {"theme": "base"} }%%
+timeline
+    title Evolutie van aanvalstools
+    1980 : Password guessing : Self-replicating code
+    1990 : Sniffers : Session hijacking : Packet spoofing
+    2000 : WWW attacks : DoS : Automated probes
+    2010 : Botnets : DDoS : Morphing malware
+    2020 : Ransomware-as-a-Service : AI-aanvallen
+```
+
+::: {.callout-important .fragment}
+Aanvalstools worden steeds **krachtiger** — terwijl de vereiste **kennis** van de aanvaller alleen maar **daalt**. Dit verklaart waarom scriptkiddies zo'n reëel probleem zijn.
+:::
+
+---
+
 ## Zero days en patching
 
 * **Zero day** = kwetsbaarheid die nog onbekend is bij de softwarefabrikant
@@ -105,6 +212,33 @@ In dit *window* heeft de aanvaller vrij spel.
 
 ::: {.fragment}
 Zelfs **ná de patch**: niet elk systeem wordt meteen bijgewerkt → één niet-gepatcht systeem = het gaatje in de linie.
+:::
+
+---
+
+## Patch Tuesday &amp; Exploit Wednesday
+
+:::: {.columns}
+
+::: {.column width="55%"}
+**Patch Tuesday** (sinds 2003):
+
+* Microsoft rolt updates uit op **2<sup>de</sup> dinsdag** van de maand
+* Voordeel: voorspelbaar voor IT-beheerders
+:::
+
+::: {.column width="45%"}
+**Exploit Wednesday**:
+
+* Aanvallers doen *reverse-engineering* van de patch
+* &rarr; Achterhalen welke kwetsbaarheid gedicht werd
+* &rarr; Jagen op alle nog niet gepatchte systemen
+:::
+
+::::
+
+::: {.callout-warning .fragment}
+Het *window of vulnerability* is hierdoor vaak **verrassend voorspelbaar**. Wie na dinsdag niet patcht, is woensdag doelwit.
 :::
 
 ---
@@ -243,6 +377,47 @@ Het "bedrijfsmodel" van cybercriminelen zorgt ervoor dat aanvallers zelf geen te
 
 ---
 
+## Max Butler, alias *"Iceman"*
+
+* **2006**: vanuit een appartement in San Francisco neemt Butler de **wereldmarkt voor gestolen creditcards** over
+* Zijn truc: concurrenten *hacken* en hun databases overnemen
+* **13 jaar cel** &mdash; maar het verhaal stopt daar niet&hellip;
+
+::: {.callout-note .fragment}
+**2018**: vanuit de gevangenis aangeklaagd voor een poging om via een **drone** een smartphone binnen te smokkelen — om zijn criminele business te heropstarten.
+:::
+
+::: aside
+Bronnen: Wired (2008), Washington Times (2018).
+:::
+
+---
+
+## Money mules: *de zichtbare schakel*
+
+```{mermaid}
+%%{init: {"theme": "base", "flowchart": {"useMaxWidth": true}} }%%
+graph LR
+    S("🎣 Slachtoffer") -->|phishing| P("Paswoord &amp; userid")
+    P --> C("💀 Crimineel")
+    C -->|"bankoverschrijving"| M("🫏 Money Mule")
+    M -->|"Western Union"| C2("💰 Crimineel cashout")
+    style S fill:#aed6f1,stroke:#333,color:#000
+    style C fill:#e74c3c,stroke:#333,color:#fff
+    style C2 fill:#e74c3c,stroke:#333,color:#fff
+    style M fill:#f39c12,stroke:#333,color:#000
+```
+
+* Criminelen werken zelden direct met gestolen geld
+* *Money mules* zijn mensen met een *"leuk bijverdienstje"* als **financial manager**
+* Ze zetten hun eigen rekening ter beschikking
+
+::: {.callout-warning .fragment}
+**Nov 2017**: Europese opsporingsdiensten arresteerden in één actie **159 geldezels**. Als een vacature te mooi klinkt om waar te zijn&hellip;
+:::
+
+---
+
 ## Cyberterroristen, spionnen & overheden
 
 * De scheidslijn tussen **terrorist**, **spion** en **staatshacker** is vaag en politiek
@@ -256,6 +431,50 @@ Maak een realistische inschatting van je tegenstander. Een staatsactor *zal* bin
 
 ::: {.fragment}
 ![Stuxnet: door staten gesponsorde malware die Iraanse centrifuges saboteerde.](assets/stuxnet.png){ width=50% }
+:::
+
+---
+
+## Een (onvolledige) geschiedenis
+
+| Jaar | Operatie | Wat |
+|---|---|---|
+| **2005** | *Titan Rain* 🇨🇳 | Chinese inbraak in honderden Amerikaanse defensiesystemen |
+| **2007** | *Estonia* 🇷🇺 | DDoS legt Estland plat — "de eerste cyberoorlog" |
+| **2008** | *Georgia* 🇷🇺 | Cyberaanval synchroon met militaire invasie |
+| **2009** | *Operation Aurora* 🇨🇳 | Google, Adobe, Juniper, Yahoo gehackt voor broncode |
+| **2010** | *Stuxnet* 🇺🇸🇮🇱 | Iraanse centrifuges gesaboteerd |
+| **~2015** | *Nitro Zeus* 🇺🇸 | Geheim plan B tegen Iran |
+
+::: {.callout-tip .fragment}
+*"The Perfect Weapon"* (David Sanger, NYT 2018) &mdash; cyberoorlog als vast instrument van moderne diplomatie.
+:::
+
+---
+
+## Hacktivisme in de Oekraïne-oorlog
+
+:::: {.columns}
+
+::: {.column width="55%"}
+Sinds **februari 2022**: tienduizenden hacktivisten aan **beide** kanten:
+
+* *IT Army of Ukraine* viseert Russische banken, media, overheidswebsites
+* Pro-Russische groepen verstoren Oekraïense infrastructuur
+
+::: {.callout-warning .fragment}
+Ongecoördineerd: "goedbedoelde" aanvallen raken soms neutrale partijen. Bedrijven kunnen geen onderscheid meer maken tussen staatsactoren en individuele activisten.
+:::
+:::
+
+::: {.column width="45%"}
+![Hacktivists stoke pandemonium (Wired).](assets/rusukr.jpg){ width=100% }
+:::
+
+::::
+
+::: aside
+Bron: Wired, *"Hacktivists Stoke Pandemonium Amid Russia's War in Ukraine"*.
 :::
 
 ---
@@ -291,6 +510,35 @@ graph LR
 
 ::: {.callout-tip .fragment}
 **Red team / Blue team**: bij legale pentests speelt het *red team* de aanvallers, het *blue team* de verdedigers.
+:::
+
+---
+
+## Dwell time: de stille meerderheid
+
+Aanvallers zijn er snel in, maar blijven vaak **maandenlang** onopgemerkt:
+
+| Overgang | Min. | Dagen | Weken | Maanden |
+|---|---|---|---|---|
+| Aanval &rarr; inbraak | **75%** | 2% | 0% | 1% |
+| Inbraak &rarr; **ontdekking** | 0% | 13% | 29% | **54%** |
+
+```{mermaid}
+%%{init: {"theme": "base"} }%%
+pie showData
+    "Maanden" : 54
+    "Weken" : 29
+    "Dagen" : 13
+    "Uren" : 2
+    "Jaren" : 2
+```
+
+::: {.callout-important .fragment}
+In **54%** van de gevallen merkt een organisatie pas **na maanden** dat er iemand in haar netwerk zit. *Detectie* is minstens even kritisch als *preventie*.
+:::
+
+::: aside
+Bron: Verizon Data Breach Investigation Report.
 :::
 
 ---
@@ -459,6 +707,7 @@ De naam *phishing* is afgeleid van *fishing* — hengelen naar slachtoffers.
 * Cruciale stap bij spear phishing (reconnaissance-fase)
 
 Technieken:
+
 * Geavanceerde zoekopdrachten (`site:`, `filetype:`, `+`)
 * **Reverse image search** (Google Lens)
 * **EXIF-data** uit foto's (locatie, toestelinfo, tijdstip)
@@ -509,6 +758,33 @@ graph TD
 
 ---
 
+## Mikko Hyppönen
+
+:::: {.columns}
+
+::: {.column width="55%"}
+De **levende encyclopedie** van malware-geschiedenis (F-Secure):
+
+* Spoorde persoonlijk de auteurs van de eerste DOS-virussen op in Pakistan
+* Analyseerde Stuxnet, Flame, Regin &hellip;
+
+::: {.callout-tip .fragment}
+**Hyppönen's wet**:
+
+> *"If it's smart, it's vulnerable."*
+:::
+
+TED-talk: [*Fighting viruses, defending the net*](https://www.youtube.com/watch?v=cf3zxHuSM2Y)
+:::
+
+::: {.column width="45%"}
+![Mikko Hyppönen (Wikimedia Commons, CC-BY-SA).](assets/hypponen.jpg){ width=100% }
+:::
+
+::::
+
+---
+
 ## Worm
 
 * Zoals een virus, maar **verspreidt zichzelf** via netwerken, e-mail, Bluetooth, ...
@@ -517,6 +793,22 @@ graph TD
 * Groei is **exponentieel** tot quasi alle kwetsbare systemen besmet zijn
 
 ![Worm propagation model (Bron: ResearchGate).](assets/wormprop.png){ width=65% }
+
+---
+
+## Hoe reist een worm? — 5 replication paths
+
+| Pad | Hoe het werkt | Voorbeeld |
+|---|---|---|
+| **E-mail / IM** | Zichzelf mailen als bijlage | ILOVEYOU (2000) |
+| **File sharing** | Kopiëren naar USB / shared folder | Stuxnet |
+| **Remote execution** | Exploit &rarr; directe uitvoering elders | WannaCry, Conficker |
+| **Remote file access** | Schrijven via SMB / FTP / NFS | Duqu |
+| **Remote login** | Inloggen met default creds (SSH, Telnet) | Mirai |
+
+::: {.callout-warning .fragment}
+Gevaarlijke wormen combineren **meerdere paden tegelijk** &mdash; blokkeer één route en de andere blijven actief.
+:::
 
 ---
 
@@ -544,6 +836,28 @@ Mogelijke payloads:
 
 ::: {.callout-note .fragment}
 De naam is gebaseerd op de legende van *Het Paard van Troje* uit de Aeneid van Vergilius.
+:::
+
+---
+
+## Supply-chain trojan: CIA &amp; Xcode
+
+Onthulling uit de **Snowden-lekken (2015)**:
+
+* CIA ontwikkelde een eigen variant van Apple's **Xcode** (officiële dev-tool voor iOS/macOS)
+* Developers bouwden hun apps met die *gemanipuleerde* Xcode
+* Elke app die ermee gebouwd werd, bevatte ongemerkt een **CIA-backdoor**
+
+::: {.callout-warning .fragment}
+Een trojan hoeft niet in jóuw software te zitten &mdash; ze kan zich veel eerder in de **keten** hebben genesteld.
+:::
+
+::: {.callout-tip .fragment}
+Moderne variant: supply-chain attacks zoals **SolarWinds (2020)** en **XZ Utils (2024)**.
+:::
+
+::: aside
+Bron: The Intercept / Tweakers.net
 :::
 
 ---
@@ -597,6 +911,33 @@ Back-ups helpen — maar enkel als ze **buiten het bereik van de ransomware** st
 
 ---
 
+## Betalen = geen garantie
+
+Onderzoek van Hive Systems op **24.000** Amerikaanse bedrijven:
+
+```{mermaid}
+%%{init: {"theme": "base"} }%%
+pie showData title Uitkomst na ransomware-aanval
+    "Betaald + data terug" : 38
+    "Niet betaald + data terug (back-ups)" : 36
+    "Betaald + data tóch verloren" : 19
+    "Niet betaald + data verloren" : 7
+```
+
+::: {.callout-warning .fragment}
+**1 op 5** die betaalt, krijgt **niets terug**. Totale kost VS 2021: **$7.9 miljard** &mdash; waarvan $1.4 miljard aan losgeld.
+:::
+
+::: {.callout-important .fragment}
+Betalen is russische roulette &mdash; én het financiert de volgende aanval. **Offline** back-ups zijn de enige echte verzekering.
+:::
+
+::: aside
+Bron: hivesystems.com
+:::
+
+---
+
 ## Botnet: zombie-legers
 
 :::: {.columns}
@@ -620,6 +961,75 @@ Oplossing: **C&C-server uit de lucht halen** → de zombies worden nutteloos.
 
 ---
 
+## Mirai (2016): het IoT-botnet
+
+* Jaagt niet op computers, maar op **IoT**: routers, camera's, DVR's, babyfoons
+* Verspreidingstruc: lijst van **64 default logins** uitproberen (admin/admin, root/root&hellip;)
+* Piek: **600.000 besmette toestellen**
+
+::: {.callout-warning .fragment}
+**21 oktober 2016**: DDoS op DNS-provider **Dyn** &rarr; Twitter, Netflix, Reddit, GitHub, Spotify urenlang offline.
+:::
+
+::: {.callout-note .fragment}
+Broncode publiek gemaakt &rarr; dozijnen varianten nog steeds actief.
+:::
+
+---
+
+## Mantis (2022): kwaliteit &gt; kwantiteit
+
+* Geen IoT-apparaten, maar **gekaapte VM's en servers**
+* Elke bot heeft enorm veel rekenkracht
+
+::: {.callout-important .fragment}
+Cloudflare registreerde in juni 2022:
+
+**26 miljoen HTTPS-requests per seconde** &mdash; een record.
+:::
+
+::: {.callout-tip .fragment}
+De evolutie van botnets: niet *meer* zombies, maar **sterkere** zombies.
+:::
+
+::: aside
+Bron: Cloudflare blog.
+:::
+
+---
+
+## BYOB: *Build Your Own Botnet*
+
+* Open-source op **GitHub** (malwaredllc/byob)
+* *"Educatief"* framework, in enkele klikken:
+  * Command &amp; Control-server met webinterface
+  * Payload generator voor Windows, Linux, macOS
+  * 12+ kant-en-klare post-exploitation modules (keylogger, webcam, persistentie&hellip;)
+
+::: {.callout-warning .fragment}
+Malware maken is **laagdrempeliger dan ooit**. De scheve grafiek in actie.
+:::
+
+---
+
+## *"DDoS à la carte"* &mdash; echte afpersingsbrief
+
+> *"If you want to continue having your site operational, you must pay us 10 000 rubles monthly.*
+>
+> *Starting [DATE] your site will be subject to a DDoS attack. The first attack will involve 2,000 bots. If the companies involved in DDoS protection begin to block our bots, we will increase to **50,000 bots**.*
+>
+> ***You will also receive several bonuses:***
+>
+> *1. **30% korting** als je een DDoS op je concurrenten bestelt.*
+>
+> *2. Als je concurrenten óns inhuren om jou aan te vallen &mdash; weigeren we."*
+
+::: {.callout-warning .fragment}
+RaaS in z'n meest cynische vorm: koop bescherming én aanvalswapen tegelijk.
+:::
+
+---
+
 ## Hardware-based aanvallen
 
 | Aanval | Beschrijving |
@@ -630,6 +1040,26 @@ Oplossing: **C&C-server uit de lucht halen** → de zombies worden nutteloos.
 | **Warshipping** | Raspberry Pi in postpakket → belt terug naar aanvaller |
 | **Keylogger** | Registreert toetsaanslagen → wachtwoorden stelen |
 | **Juice hacking** | Valse USB-oplaadpunt steelt data of installeert malware |
+
+---
+
+## De Russische USB's van Kabul (2008)
+
+* **Airgapped** Amerikaans militair netwerk &mdash; niet verbonden met het internet
+* Russische spionnen leveren **goedkope USB-sticks vol malware** aan retailkiosken vlak bij het NATO-HQ in Kaboel
+* Pure wiskundige gok: vroeg of laat steekt een Amerikaanse militair er één in een veilige computer&hellip;
+
+::: {.callout-warning .fragment}
+**Dat gebeurde ook**. Tienduizenden bestanden gestolen: hardware-designs, troepenconfiguraties, kaarten van bases.
+:::
+
+::: {.callout-important .fragment}
+De eerste grootschalige staats-inbraak in een gerubriceerd Amerikaans netwerk. Directe aanleiding voor het Pentagon-verbod op USB-sticks in gevoelige omgevingen.
+:::
+
+::: aside
+Bron: Fred Kaplan, *Dark Territory: The Secret History of Cyber War* (2016).
+:::
 
 ---
 
@@ -653,6 +1083,101 @@ Beschikbaar op [lab401.com](https://lab401.com) en [hak5.org](https://hak5.org)
 
 ::: {.callout-note .fragment}
 In 2026 werd een Bluetooth-tracker van **€5** verstopt in een briefkaart en verstuurd naar een Nederlands marineschip van **€585 miljoen**. De tracker zond **24 uur lang** ongemerkt de locatie van het oorlogsschip uit. [Bron: Tom's Hardware](https://www.tomshardware.com/tech-industry/cyber-security/bluetooth-tracker-hidden-in-a-postcard-and-mailed-to-a-warship-exposed-its-location-a-eur5-gadget-put-a-eur500-million-dutch-ship-at-risk-for-24-hours)
+:::
+
+---
+
+## Juice jacking: verdedigen
+
+Publieke USB-oplaadpunten zijn **nooit echt te vertrouwen**:
+
+::: {.incremental}
+* Gebruik je **eigen oplader** in een gewoon stopcontact
+* Neem een **power bank** mee op reis
+* Koop een **charge-only cable** of **USB data blocker** (€5) &rarr; datapinnen fysiek afgesloten
+* Schakel *"data transfer bij aansluiting"* uit op je telefoon
+:::
+
+::: {.callout-tip .fragment}
+Kostprijs van een data blocker: **minder dan een koffie**. Kostprijs van een gecompromitteerde smartphone: onbetaalbaar.
+:::
+
+---
+
+## Mobiele aanvallen
+
+Je smartphone = je **primaire** digitale apparaat:
+
+* Permanent verbonden
+* Bomvol persoonlijke data
+* Camera, microfoon, GPS
+* Bank-app &amp; 2FA-tokens
+
+&rarr; **Een droomdoelwit voor stropers.**
+
+---
+
+## Clickjacking op Android
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Overlay-aanval**:
+
+* Kwaadaardige app toont een **onzichtbare laag** over andere apps
+* Je klikt op *"Confirm bank payment"*&hellip; maar raakt eigenlijk *"Claim your prize"* in de verborgen app
+* Misbruikt de Android **Accessibility Service**
+
+::: {.callout-warning .fragment}
+De app kan andere apps besturen &mdash; zonder dat je iets ziet.
+:::
+:::
+
+::: {.column width="50%"}
+![Clickjacking overlay (Wikimedia Commons).](assets/clickjacking.png){ width=100% }
+:::
+
+::::
+
+::: {.callout-tip .fragment}
+Android 12+ beperkt dit &mdash; maar wees steeds voorzichtig met apps die *Accessibility*-rechten vragen.
+:::
+
+---
+
+## Android/PowerOffHijack (2015)
+
+Je telefoon **uitzetten** &hellip; of toch niet?
+
+* Malware neemt de **shutdown-procedure** over
+* Animatie *"Shutting down&hellip;"* speelt gewoon af
+* Toestel **lijkt** uit &mdash; maar blijft volledig actief:
+  * Telefoneert
+  * Maakt foto's met de camera
+  * Verstuurt data
+
+::: {.callout-warning .fragment}
+Ontdekt na ~**10.000 besmettingen** via Chinese alternatieve app-stores.
+:::
+
+::: {.callout-important .fragment}
+Wil je écht zeker zijn dat je toestel uit is? **Haal de batterij eruit** (als dat nog kan).
+:::
+
+---
+
+## Xenomorph (2022+): Android banking trojan
+
+* Verkleed als **"performance booster"** of **"pdf reader"** in de Play Store
+* Eens geïnstalleerd: toont een nep-inlogscherm bovenop bank-apps &rarr; credentials gestolen
+* Viseert **400+ banken &amp; crypto-wallets** wereldwijd (ook BE / NL)
+
+::: {.callout-warning .fragment}
+**Automated Transfer System (ATS)**: Xenomorph kan automatisch geld overboeken &mdash; zonder dat de gebruiker iets moet invullen.
+:::
+
+::: aside
+Bron: BleepingComputer, maart 2023.
 :::
 
 ---
@@ -694,6 +1219,68 @@ Dit is een echte, gedocumenteerde side-channel DoS-aanval!
 
 ---
 
+## KNOB Attack (2019): Bluetooth op 1 byte
+
+**K**ey **N**egotiation **o**f **B**luetooth:
+
+* Twee Bluetooth-toestellen onderhandelen over de sleutelsterkte: normaal **16 bytes** (128 bit)
+* Een MitM-aanvaller dwingt de onderhandeling naar **1 byte** (8 bit)
+* Die sleutel is in **minder dan een seconde** te bruteforcen
+
+::: {.callout-warning .fragment}
+**Bijna elk Bluetooth-toestel van vóór 2019** was kwetsbaar: telefoons, koptelefoons, toetsenborden, auto's.
+:::
+
+::: aside
+Meer info: [knobattack.com](https://knobattack.com/)
+:::
+
+---
+
+## Whisper Leak (nov 2025): LLM-gesprekken lekken
+
+Versleutelde ChatGPT/Claude/Gemini-gesprekken zijn **toch niet privé**:
+
+* Een LLM *streamt* antwoorden woord per woord
+* **Grootte** en **timing** van elk pakketje zijn zichtbaar over het netwerk &mdash; ook mét TLS
+* Een ML-classifier leidt uit die metadata het **onderwerp** af
+
+::: {.callout-warning .fragment}
+Microsoft's proof-of-concept voorspelt met **92% zekerheid** of een gebruiker over een *"gevoelig onderwerp"* (bv. *money laundering*) aan het praten is.
+:::
+
+::: {.callout-important .fragment}
+Een passieve aanvaller (ISP, wifi-mede-gebruiker, router-operator) ziet mee &mdash; zonder één bit encryptie te breken.
+:::
+
+::: aside
+Bron: Microsoft Defender Security Research, nov 2025.
+:::
+
+---
+
+## Bitsquatting: DNS-hijacking zonder hack
+
+RAM-chips zijn **niet perfect**: heel af en toe flipt een bit spontaan.
+
+* `microsoft.com` in RAM = een reeks bytes
+* Eén bit flip &rarr; `micrnsoft.com` of `licrosoft.com`
+* Registreer die *look-alike* domeinen &hellip;
+
+::: {.callout-warning .fragment}
+&hellip; en ontvang gratis verkeer van gebruikers wiens RAM een foutje maakte. **Zonder** iets te hacken.
+:::
+
+::: {.callout-tip .fragment}
+Dinaburg's experiment (2011): **honderdduizenden** onterechte DNS-queries per dag. Pure passieve side-channel.
+:::
+
+::: aside
+Bron: [dinaburg.org/bitsquatting.html](http://dinaburg.org/bitsquatting.html)
+:::
+
+---
+
 ## Conclusie
 
 * **CIA-model** is het fundament van alle cybersecurity
@@ -702,7 +1289,8 @@ Dit is een echte, gedocumenteerde side-channel DoS-aanval!
 * Aanvallen volgen **5 fasen**: verkennen → scannen → toegang → bestendigen → wissen
 * **Social engineering** is de meest effectieve aanvalsvector
 * Malware heeft vele vormen: virus, worm, trojan, ransomware, botnet, ...
-* Hardware- en side-channel aanvallen zijn reëel en vaak onderschat
+* Hardware-, mobile- en side-channel aanvallen zijn reëel en vaak onderschat
+* **Supply-chain** compromise is de nieuwste grote bedreiging
 
 ::: {.callout-important}
 De sterkste firewall ter wereld helpt niet als een werknemer z'n wachtwoord op een post-it plakt.

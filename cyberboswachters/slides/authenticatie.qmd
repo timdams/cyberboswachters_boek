@@ -483,7 +483,7 @@ Biometrics dienen niet alleen als extra **authenticatie**factor, maar ook als **
 ## Biometrics: drie fasen
 
 ```{mermaid}
-%%{init: {"theme": "base", "flowchart": {"useMaxWidth": true}} }%%
+%%{init: {"theme": "neutral", "flowchart": {"useMaxWidth": true}} }%%
 flowchart LR
     subgraph ENR["Enrollment (eenmalig)"]
         E1[Kenmerk] --> E2[Feature<br/>points] --> E3[(DB)]
