@@ -1,5 +1,15 @@
 # IoT Security
 
+::: {.callout-note title="Leerdoelen"}
+Na dit hoofdstuk kan je:
+
+1. De **specifieke uitdagingen van IoT-security** benoemen (low-cost, long-life, fysieke toegang, firmware, default credentials).
+2. Aan de hand van de **Mirai-aanval** illustreren waarom zwakke IoT-toestellen een systemisch risico vormen voor het hele Internet.
+3. De rol van een **TPM** (of gelijkwaardig) en andere hardware-mitigaties situeren in de IoT-verdediging.
+4. De **McCumber-kubus toepassen op een concrete IoT-case**, rekening houdend met data in rust, transport én verwerking.
+5. De **wet van *diminishing returns*** toepassen: welke basismaatregelen (KISS, geen defaults, updates) leveren de grootste veiligheidswinst op?
+:::
+
 We spraken in het eerste hoofdstuk al over de problemen die inherent zijn bij Internet-of-Things (IoT) apparaten en netwerken. Zo had je in 2016 het Mirai-botnet dat aantoonde hoe krachtig een botnet van IoT-apparaten kan zijn, puur door de grote hoeveelheid potentiële zombies.
 
 Het is niet toevallig dat we dit boek afsluiten met het hoofdstuk omtrent IoT Security: alles (en meer) wat je in de voorgaande hoofdstukken hebt geleerd heb je namelijk nodig om IoT-netwerken te beveiligen. Er zijn zoveel manieren voor digitale stropers om misbruik te maken van een slecht beveiligd IoT-apparaat of netwerk dat het complexe probleem van netwerken beveiligen nog ingewikkelder is geworden, namelijk:
@@ -144,7 +154,17 @@ Er is gelukkig een trend gaande waarbij de TPM-chip (of alternatief) steeds meer
 
 De Mccumber kubus in gedachte nemende spreekt het natuurlijk voor zich dat ook de data geëncrypteerd op het IoT-apparaat moet bewaard worden.
 
-# Besluit
+## Samenvatting
+
+IoT stapelt klassieke security-problemen op een bijzonder ongunstige hardware-context:
+
+* **Low-cost, long-life**: toestellen gaan 10+ jaar mee, update-support vaak een pak korter.
+* **Default credentials** en zwakke firmware blijven de #1 instap (cfr. Mirai).
+* **Fysieke toegang** betekent bij IoT vaak meteen *game over* — een **TPM-chip** (of alternatief) heft dat grotendeels op.
+* **KISS** is een onderschatte verdediging: elke extra feature is extra attack surface.
+* De **McCumber kubus** blijft gelden: ook op een sensor moet data beschermd zijn — in rust, tijdens transport én tijdens verwerking.
+
+## Tot slot
 
 En zo hebben we het einde van het prille begin der cyberboswachters bereikt. Zoals je vermoedelijk ook zelf al aanvoelt, hebben we enkel maar het tipje van de ijsberg besproken. Als we er echter gezamenlijk in slagen om dit tipje alvast en zelf toe te passen én aan anderen aan te leren, dan maken we het de digitale stropers al een pak moeilijker. Beschouw dit een beetje als een toepassing van de wet van *diminishing returns.* De primaire, eenvoudige veiligheidstechnieken en gewoonten (goede wachtwoorden, geen default instellingen, KISS, etc.) gaan de grootste impact hebben op je algemene veiligheid. Alle daaropvolgende stappen, hoe belangrijk en nuttig ook, zullen steeds een kleiner stuk van de potentiële problemen voorkomen. 
 

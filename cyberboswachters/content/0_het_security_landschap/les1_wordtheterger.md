@@ -1,5 +1,15 @@
 # Wordt het erger?
 
+::: {.callout-note title="Leerdoelen"}
+Na dit hoofdstuk kan je:
+
+1. **De evolutie van cyberaanvallen in het voorbije decennium schetsen** aan de hand van kernmomenten (Stuxnet, Snowden, ransomware-golf, AI-dreigingen).
+2. **Uitleggen waarom cyberaanvallen impact hebben ver buiten de digitale wereld** — van kritieke infrastructuur tot geopolitiek en democratie.
+3. **De rol van AI aan beide zijden van de wapenwedloop duiden**: als offensief wapen én als verdedigingsinstrument.
+4. **De paradox *"attack sophistication ↑ / vereiste aanvallerskennis ↓"* toepassen** op een gegeven scenario om de gevolgen voor de verdediging in te schatten.
+5. **White, grey en black hat hackers onderscheiden** en de spelregels van ethisch hacken in België (sinds februari 2023) correct toepassen.
+:::
+
 Het laatste decennium jaar is de (cyber)security wereld erg veranderd. Ze doet dit niet omdat ze daar zin in heeft, maar wel als antwoord op wat er gebeurt in de wereld omtrent cyberaanvallen, geopolitieke situaties, etc. 
 
 Het is altijd een kat en muisspel, waarbij de boswachters helaas bijna altijd zullen achterlopen op de stropers. De kwaadwillige hackers hoeven maar één klein gaatje te vinden in je peperdure beveiliging en ze zijn binnen. Terwijl jij als boswachter wel aan alles moet (proberen te) denken. Dat het erger wordt, is eigenlijk daarom bijna automatisch een evidentie. De wereld van de beveiliging gebeurt per opbod en hoe beter de boswachters het bos kunnen verdedigen, hoe complexer de technieken zullen worden die de stropers hanteren.
@@ -484,6 +494,18 @@ Het Mythos-verhaal illustreert een nieuw tijdperk in cybersecurity: de strijd tu
 Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren. Zoals gezegd gaan bedrijven uit van *when* in plaats van *if* als het gaat over de vraag of ze al dan niet ooit gehackt zullen worden. Daarnaast zien we dat hoogtechnologische producten meer en meer ingeburgerd geraken in het cybercrime-milieu. Zeker door de AI golf die ons nu al enkele jaren overspoelt aan een razend tempo: deep fakes video van bekenden zijn nu nog "grappig", maar de realistische beelden (afbeeldingen, video én nu zelfs ook spraak) die ze kunnen produceren zijn al even niet meer te onderscheiden van het echte en zullen dus meer en meer kunnen gebruikt worden voor sextortion, spear phishing en soortgelijke aanvallen. 
 
 Dit soort trends zullen nog jaren *fake news* hoogtij laten vieren waardoor ook toekomstige verkiezingen interessante doelen blijven voor andere mogendheden om hun stempel te drukken op geopolitieke tegenstanders.  Er gaan zelfs stemmen op dat we leven in een tijdperk van het "dead internet": een tijdperk waarin we niet meer kunnen vertrouwen op de informatie die we online vinden. En waarin bots met bots communiceren op sociale media en nieuwe narratieven creëren die de publieke opinie beïnvloeden.
+
+## Samenvatting
+
+Het voorbije decennium laat één duidelijke trend zien: cyberaanvallen verschuiven van kattenkwaad naar strategisch wapen.
+
+* **Stuxnet (2010)** bewees dat cyberaanvallen mensenlevens kunnen raken — kritieke infrastructuur is een legitiem doelwit geworden.
+* **Snowden (2013)** en de iCloud-lek (2014) zetten privacy en overheidssurveillance op scherp.
+* **Ransomware** groeide uit tot georganiseerde business (WannaCry, Colonial Pipeline, Haven van Antwerpen).
+* **Sociale media, deepfakes en fake news** maken van desinformatie een geopolitiek wapen.
+* **AI** versnelt zowel aanval als verdediging — Mythos illustreert het nieuwe tempo.
+
+De rode draad: *attack sophistication stijgt, terwijl de vereiste kennis van de aanvaller daalt*. De grootste winst haal je nog steeds uit de fundamenten: goede wachtwoorden, tijdig patchen, en een gezonde dosis scepsis.
 
 ## Het is erger, maar...
 

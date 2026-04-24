@@ -11,6 +11,18 @@ format:
     logo: ../cover.png
 ---
 
+## Wat leer je in dit hoofdstuk?
+
+Na dit hoofdstuk kan je:
+
+* het **CIA-model** en de **McCumber-kubus** toepassen op een scenario
+* **soorten aanvallers** onderscheiden (motivatie, middelen, doelwit)
+* **passieve vs actieve aanvallen** toelichten en herkennen
+* malware-families en social engineering-technieken illustreren
+* uitleggen wat een **zero day** en **window of vulnerability** zijn
+
+---
+
 ## Wat is cybersecurity?
 
 > *"Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks."*

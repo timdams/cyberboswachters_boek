@@ -1,5 +1,15 @@
 # Authenticatie
 
+::: {.callout-note title="Leerdoelen"}
+Na dit hoofdstuk kan je:
+
+1. De **drie gouden regels van wachtwoordbeheer** toepassen op een gegeven authenticatie-ontwerp.
+2. De werking van **hashing, salting en een rainbow-table-aanval** uitleggen — en tonen waarom salting die aanval onbruikbaar maakt.
+3. **CRAM, SCRAM en passkeys** onderling situeren en aangeven welk probleem elk protocol oplost.
+4. De vier **MFA-factoren** (weten, hebben, zijn, waar/wanneer) combineren voor een gepaste authenticatiesterkte in een gegeven context.
+5. Uitleggen hoe **TOTP** werkt en benoemen waarom **passkeys** veiliger zijn dan TOTP tegen real-time phishing.
+:::
+
 Bewijzen wie je bent om toegang te krijgen tot een website of applicatie heet **authenticatie**. Vervolgens, afhankelijk van wie je bent, zal je bepaalde rechten toegewezen krijgen die bepalen wat je wel en niet kunt doen op de website of applicatie, dit heet **autorisatie**. In dit hoofdstuk gaan we ons toespitsen op het eerste deel van dit proces: de authenticatie. Hierbij gaan we vooral kijken hoe we als web- of applicatiebeheerders op een veilige manier moeten omgaan met de login-informatie van gebruikers.
 
 We weten al dat je geheime sleutel een belangrijk onderdeel is in heel veel aspecten van cybersecurity. Het **weten van de geheime sleutel** is een eerste vorm van authenticatie (maar uiteraard niet de beste). Je login gegevens die je gebruikt om toegang te krijgen tot een website bestaan in primaire vorm meestal uit een combinatie van gebruikersnaam en wachtwoord. Het wachtwoord in dit verhaal is kortom gewoon een ander woord voor je geheime sleutel. Als beheerder is het dan ook essentieel dat we uitermate veilig omgaan met de wachtwoorden van gebruiker. We zouden niet willen dat alle login gegevens van onze gebruikers in verkeerde handen vallen.

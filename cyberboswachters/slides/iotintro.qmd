@@ -11,6 +11,18 @@ format:
     logo: ../cover.png
 ---
 
+## Wat leer je in dit hoofdstuk?
+
+Na dit hoofdstuk kan je:
+
+* de **specifieke uitdagingen van IoT-security** benoemen (low-power, long-life, firmware, defaults)
+* met **Mirai** illustreren waarom zwakke IoT een systemisch risico vormt
+* de rol van **TPM** en andere hardware-mitigaties situeren
+* de **McCumber-kubus** toepassen op een IoT-case (rust / transport / verwerking)
+* de **wet van diminishing returns** gebruiken bij security-prioritering
+
+---
+
 ## IoT Security: alles komt samen
 
 * We zagen al hoe Mirai (2016) aantoonde hoe krachtig een botnet van IoT-apparaten kan zijn

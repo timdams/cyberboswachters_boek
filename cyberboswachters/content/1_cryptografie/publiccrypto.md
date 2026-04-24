@@ -386,3 +386,19 @@ De kern van het probleem is telkens hetzelfde: je kan niet tegelijk **echte** en
 De aanvaller zal echter nog steeds geen geldige certificaten kunnen genereren waardoor moderne browsers normaal gezien hier een waarschuwing zouden moeten geven.
 
 ![De waarschuwing die Chrome genereert wanneer het een, potentiële, mitm-aanval detecteert.](assets//mitmbrowser.png){width=70%}
+
+## Samenvatting
+
+Cryptografie is de gereedschapskist waarmee we CIA realiseren. De centrale inzichten uit dit hoofdstuk:
+
+* **Kerckhoffs** is de kern: alleen de **sleutel** moet geheim blijven, nooit het algoritme. *Security through obscurity* is een valstrik.
+* Oude technieken (Caesar, Vigenère, scytale) combineren **substitutie** en **transpositie** — dezelfde bouwstenen die AES nog steeds gebruikt.
+* **Symmetrische encryptie** is snel (AES als de-facto standaard, gebaseerd op het Belgische Rijndael) maar kent het **sleuteloverdrachtsprobleem**.
+* De **blockcipher-mode** is even kritiek als de cipher zelf: **ECB lekt patronen**, **CBC/CTR** niet — mits correcte IV/nonce.
+* **Asymmetrische encryptie** (RSA, ECC) lost het sleuteloverdrachtsprobleem op via een publiek/privé-sleutelpaar. **Diffie-Hellman** laat twee partijen zonder vooraf gedeeld geheim een gezamenlijke sleutel afspreken.
+* **Hashes** zorgen voor *integrity*, **digitale handtekeningen** voegen daar authenticiteit en *non-repudiation* aan toe.
+* **Digitale certificaten en PKI** lossen het vertrouwensprobleem op — maar enkel zolang de CA betrouwbaar blijft (cfr. de val van DigiNotar).
+* **HTTPS/TLS** combineert al deze bouwstenen, en toch blijft het kwetsbaar zonder goede certificaatvalidatie, zoals *mitmproxy* aantoont.
+* **Cryptanalyse** dwingt sleutels steeds langer te maken; **quantum-computers** bedreigen RSA/ECC op lange termijn — *store now, decrypt later* is een realistische dreiging.
+
+In het volgende hoofdstuk zien we hoe authenticatie op deze crypto-bouwstenen steunt.

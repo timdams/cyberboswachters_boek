@@ -1,5 +1,15 @@
 # Cryptografie
 
+::: {.callout-note title="Leerdoelen"}
+Na dit hoofdstuk kan je:
+
+1. Het **principe van Kerckhoffs** uitleggen en motiveren waarom publiek getest crypto veiliger is dan *security through obscurity*.
+2. Het verschil tussen **symmetrische en asymmetrische encryptie** duiden (snelheid ↔ sleuteldistributie) en aangeven wanneer je welke inzet.
+3. Voor een gegeven **blockcipher-mode** (ECB, CBC, CTR) uitleggen waarom ECB onveilig is en de rol van **IV/nonce** beschrijven.
+4. **Hashing, digitale handtekeningen en certificaten** correct situeren binnen integrity, authenticiteit en non-repudiation.
+5. De werking van **HTTPS/TLS** beschrijven als samenspel van asymmetrische + symmetrische crypto, hashing en PKI — en de impact van een MITM-aanval (mitmproxy) inschatten.
+:::
+
 In dit hoofdstuk duiken we de boeiende wereld van de cryptografie in: het versleutelen van informatie zodat enkel zender en ontvanger het bericht kunnen lezen. 
 
 ## Encryptie en decryptie

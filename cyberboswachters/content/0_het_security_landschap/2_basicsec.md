@@ -1,5 +1,15 @@
 # Cybersecurity fundamenten
 
+::: {.callout-note title="Leerdoelen"}
+Na dit hoofdstuk kan je:
+
+1. **Het CIA-model en de McCumber-kubus toepassen** op een gegeven (bedrijfs)scenario om te toetsen of aan alle beveiligingsaspecten gedacht werd.
+2. De verschillende **soorten aanvallers** (scriptkiddies, werknemers, cybercriminelen, overheden…) onderscheiden op basis van motivatie, middelen en doelwit.
+3. Het verschil tussen **passieve en actieve aanvallen** toelichten en ze herkennen in een concrete case.
+4. De belangrijkste **malware-families** (virus, worm, trojan, rootkit, ransomware, botnet) én **social engineering**-technieken benoemen en illustreren met een actueel voorbeeld.
+5. Uitleggen wat een **zero day** en een **window of vulnerability** zijn, en waarom **side-channel aanvallen** een bijzonder moeilijk aanvalsoppervlak vormen.
+:::
+
 "Iedere goede film begint met een zwart scherm", zegt Batman in de "The Lego Batman Movie" &trade; film. Wel, ik vul dit aan met "...en ieder goed hoofdstuk begint met een definitie."
 
 Laten we daarom eerst eens een definitie van cybersecurity neerpennen dat netwerkbedrijf *Cisco* gebruikt: 
@@ -581,5 +591,17 @@ Wist je dat een oud liedje van Janet Jackson kan gebruikt worden om (oude) lapto
 
 ![De briljante xkcd.com strip legt perfect uit hoe Heartbleed werkt.](assets/heartbleed.png)
 
+## Samenvatting
+
+In dit hoofdstuk legden we de fundamenten vast waarop de rest van dit boek verder bouwt:
+
+* **CIA** (confidentiality, integrity, availability) is het doel; de **McCumber kubus** dwingt je om dat doel te bewaken op élke datastatus (opslag, transport, verwerking) én op élke laag (technologie, beleid, mensen).
+* De **wapenwedloop is scheef**: aanvallers hebben snelheid, schaal en eenvoudig te gebruiken tools, terwijl verdedigers aan álles moeten denken.
+* **Zero days** en het **window of vulnerability** maken patchen tot een permanente discipline — *Patch Tuesday* impliceert *Exploit Wednesday*.
+* De **aanvallers** zijn divers: van scriptkiddies over eigen werknemers tot cybercriminelen en door overheden gesponsorde actoren. Ieder profiel vraagt een eigen verdediging.
+* Aanvallen zijn **passief** (sniffen, OSINT) of **actief** (modify, replay, DoS); de meeste starten met **social engineering**.
+* Malware-families (virus, worm, trojan, rootkit, ransomware, botnet) én **side-channels** (Rowhammer, KNOB, Whisper Leak) tonen dat elke laag — software, hardware én menselijk gedrag — een aanvalsoppervlak is.
+
+Onthoud vooral: **de zwakste schakel is zelden technisch**.
 
 

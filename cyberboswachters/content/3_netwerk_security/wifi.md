@@ -1,5 +1,15 @@
 # Wifi security
 
+::: {.callout-note title="Leerdoelen"}
+Na dit hoofdstuk kan je:
+
+1. Uitleggen welke fundamentele **beveiligingsproblemen draadloze netwerken oplossen én introduceren** t.o.v. bedrade netwerken.
+2. Concreet beschrijven **waarom WEP fundamenteel gebroken is** (RC4-misbruik, te korte IV, zwakke CRC, geen sleutelbeheer).
+3. De **evolutie WEP → WPA1/TKIP → WPA2/CCMP → WPA3** chronologisch én technisch motiveren: welk probleem loste elke stap op?
+4. Het verschil tussen **personal en enterprise mode** (incl. de rol van **802.1X**) toelichten en een correcte keuze maken voor een gegeven context.
+5. De impact van een kwetsbaarheid zoals **KRACK** kaderen en uitleggen waarom **forward secrecy** in WPA3 belangrijk is.
+:::
+
 ## De problemen van wifi
 
 We kunnen draadloze netwerken, specifiek wifi-netwerken, niet meer uit ons leven wegdenken. De opkomst van de IEEE 802.11b standaard (spreek IEEE uit als *"Ai-trippel-i"*) in 1999 veroorzaakte een kleine revolutie in de manier waarop bedrijven en privégebruikers konden werken. Plots kon je met een laptop van overal in het gebouw - en zelfs er buiten - op het netwerk geraken. Die vrijheid voor de gebruikers betekende wel een nachtmerrie voor de cyberboswachters. Een netwerkkabel heeft een intrinsieke extra beveiliging: enkel daar waar de kabel ligt kunnen gebruikers op het netwerk geraken. Zolang je dus geen netwerkkabel naar de publieke parking brengt kan niemand van daar illegaal het netwerk benaderen. Met wifi leek het alsof plotseling het hele bedrijfsnetwerk in een straal van tientallen meters rond het gebouw beschikbaar was, met alle gevolgen van dien.
@@ -634,4 +644,16 @@ Ook in WPA3 werden twee modes voorzien: een personal en een enterprise mode. Enk
 * *Wifi enhanced open*: publieke hotspots blijven publiek, maar iedere client heeft z'n eigen veilige kanaal met het AP. Gedaan zijn de dagen van je in de Starbucks zetten om zo privé-trafiek van omstaanders te sniffen.
 * *Geauthenticeerde encryptie* gebruik makend van *"256-bit Galois/Counter Mode Protocol (GCMP-256)"* een cryptocipher dat we hier niet uit de doeken gaan doen (maar geef toe, met zo'n naam klinkt het toch ogenblikkelijk extra veilig!).
 * Gebruikt de meest moderne veilige authenticatie- en sleuteldistributiemethoden mogelijk binnen 802.1X (HMAC, HMAC-SHA384 en ECDH)
+
+## Samenvatting
+
+Draadloze netwerken vervangen de fysieke beveiliging van een kabel door cryptografische beveiliging — en dat is een harde les geweest:
+
+* **WEP** faalde op alle fronten: verkeerd gebruik van RC4, te korte IV (24 bit), zwakke CRC-integriteit en geen sleutelbeheer. Binnen enkele minuten te kraken.
+* **WPA1/TKIP** was een softwarepatch op dezelfde hardware: langere IV's, *key mixing* en **Michael** voor integriteit. Tussenoplossing — niet toekomstvast.
+* **WPA2** introduceerde **CCMP** op basis van **AES** en werd jarenlang als veilig beschouwd, tot **KRACK** (Mathy Vanhoef, 2017) een fout in de handshake blootlegde.
+* **WPA3** ("Wifi 6") lost de oude pijnpunten op: **SAE** tegen offline dictionary-aanvallen, **forward secrecy** en **Wifi Enhanced Open** voor veilige publieke hotspots.
+* **802.1X** (enterprise-mode) voorziet per-gebruiker-sleutels en centrale authenticatie — een must voor elk bedrijfsnetwerk.
+
+Vier praktische take-aways: **kies WPA3 waar mogelijk**, **vermijd WEP/WPA1 als de pest**, **gebruik enterprise-mode boven personal-mode in bedrijfscontext**, en **hou access points fysiek én softwarematig gepatcht**.
 

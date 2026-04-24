@@ -11,6 +11,18 @@ format:
     logo: ../cover.png
 ---
 
+## Wat leer je in dit hoofdstuk?
+
+Na dit hoofdstuk kan je:
+
+* **beveiligingsproblemen** van draadloos vs bedraad uitleggen
+* concreet beschrijven waarom **WEP fundamenteel gebroken is**
+* de evolutie **WEP → WPA1 → WPA2 → WPA3** technisch motiveren
+* **personal vs enterprise mode** (802.1X) kiezen voor een gegeven context
+* de impact van **KRACK** kaderen + uitleggen waarom **forward secrecy** telt
+
+---
+
 ## Wifi: vrijheid met een prijskaartje
 
 * **IEEE 802.11b** (1999) → revolutie in draadloos werken

@@ -11,6 +11,18 @@ format:
     logo: ../cover.png
 ---
 
+## Wat leer je in dit hoofdstuk?
+
+Na dit hoofdstuk kan je:
+
+* de **drie gouden regels** van wachtwoordbeheer toepassen
+* **hashing, salting en rainbow tables** uitleggen — en waarom salting beschermt
+* **CRAM, SCRAM en passkeys** onderling situeren
+* de vier **MFA-factoren** (weten/hebben/zijn/waar-wanneer) combineren
+* **TOTP** uitleggen + waarom **passkeys** veiliger zijn tegen real-time phishing
+
+---
+
 ## Authenticatie vs Autorisatie
 
 | Concept | Vraag |

@@ -11,6 +11,18 @@ format:
     logo: ../cover.png
 ---
 
+## Wat leer je in dit hoofdstuk?
+
+Na dit hoofdstuk kan je:
+
+* de **evolutie van cyberaanvallen** het voorbije decennium schetsen
+* uitleggen waarom cyberaanvallen impact hebben **buiten de digitale wereld**
+* de rol van **AI** aan beide zijden van de wapenwedloop duiden
+* de paradox *"attack sophistication ↑ / vereiste kennis ↓"* toepassen op een scenario
+* **white/grey/black hat** onderscheiden + de BE-wet ethisch hacken (feb 2023) toepassen
+
+---
+
 ## Wordt het erger?
 
 > *"De boswachters lopen bijna altijd achter op de stropers. Een aanvaller hoeft maar één klein gaatje te vinden — de verdediger moet aan alles denken."*
@@ -902,6 +914,24 @@ Bedrijven denken niet meer in termen van *of* ze gehackt worden, maar *wanneer*.
   * 300 cybercrime-groepen
   * 200 *influence operations*-groepen
 * Sinds 2022: **+400% techscam**, +180% malware, +30% phishing
+
+---
+
+## Samenvatting
+
+Cyber schuift van kattenkwaad naar **strategisch wapen**:
+
+* **Stuxnet (2010)** — kritieke infrastructuur als doelwit
+* **Snowden (2013) + iCloud-lek (2014)** — privacy & surveillance op scherp
+* **Ransomware** — van losse aanval naar georganiseerde business
+* **Deepfakes & fake news** — desinformatie als geopolitiek wapen
+* **AI (2025–2026)** — Mythos illustreert het nieuwe tempo
+
+::: {.callout-important .fragment}
+Rode draad: *attack sophistication* ↑ terwijl *vereiste kennis van de aanvaller* ↓.
+
+De grootste winst haal je nog steeds uit de **fundamenten**: goede wachtwoorden, tijdig patchen, gezonde scepsis.
+:::
 
 ---
 
