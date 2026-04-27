@@ -12,6 +12,9 @@ book:
     left:
       - text: "Slides"
         href: slides/overzicht.qmd
+      - text: "PDF"
+        icon: file-pdf
+        href: Cyberboswachters.pdf
   chapters:
     - index.qmd
     - content/0_het_security_landschap/les1_wordtheterger.md
