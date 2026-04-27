@@ -689,6 +689,97 @@ De naam *phishing* is afgeleid van *fishing* — hengelen naar slachtoffers.
 
 ---
 
+## Phishing-varianten: meer dan e-mail
+
+| Techniek | Hoe het werkt |
+|---|---|
+| **Vishing** | Voice phishing — via de telefoon (bv. MGM Resorts, 2023) |
+| **Smishing** | Phishing via SMS / WhatsApp (bv. *"Bpost-pakketje"* SMS) |
+| **Whaling** | Spear phishing op de "grote vissen": CEO, CFO, C-levels |
+| **CEO-fraude (BEC)** | Aanvaller doet zich voor als CEO → dringende overschrijving |
+
+::: {.callout-warning .fragment}
+**Business Email Compromise** (BEC) richtte tussen 2013 en 2022 wereldwijd voor **>50 miljard dollar** schade aan (FBI).
+:::
+
+---
+
+## Andere social engineering-technieken
+
+::: {.incremental}
+* **Pretexting**: een verzonnen, geloofwaardig scenario opbouwen (bv. *"Telenet-technieker aan de lijn"*)
+* **Baiting**: lokaas uitleggen — een USB-stick *"salarissen 2025"* op de parking
+* **Tailgating** (*piggybacking*): meelopen met een geautoriseerd persoon door een veilige deur
+* **MFA fatigue** (*prompt bombing*): slachtoffer spammen met MFA-prompts tot die uit frustratie op *"Accepteren"* drukt — door **Lapsus$** ingezet bij Uber, Microsoft, Rockstar
+:::
+
+---
+
+## Waarom werkt social engineering zo goed?
+
+Cialdini's **6 beïnvloedingsprincipes** (uit *Influence*, 1984):
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* **Autoriteit**: gezag dwingt af
+* **Urgentie**: tijdsdruk schakelt kritisch denken uit
+* **Schaarste**: *"nog 3 plaatsen vrij"*
+:::
+
+::: {.column width="50%"}
+* **Wederkerigheid**: voor wat hoort wat
+* **Sympathie**: ja zeggen tegen wie je leuk vindt
+* **Sociale bewijskracht**: *"iedereen doet het"*
+:::
+
+::::
+
+::: {.callout-tip .fragment}
+**Kevin Mitnick** (*"America's Most Wanted Hacker"*) wandelde simpelweg zelfverzekerd door deuren van grote bedrijven alsof hij er werkte — en niemand stelde vragen.
+
+Z'n boek *The Art of Deception* is een aanrader.
+:::
+
+---
+
+## SE in het AI-tijdperk
+
+::: {.fragment}
+**Deepfakes** = AI-gegenereerde audio of video van bestaande personen.
+:::
+
+::: {.incremental}
+* Live videocall met een *fake* CFO (Hong Kong, 2024 → **25 miljoen \$** verlies)
+* Stem van een familielid klonen voor nep-noodgevallen
+* AI-vishing op grote schaal
+:::
+
+::: {.callout-important .fragment}
+Klassieke detectie-tips (*"let op tikfouten in de mail"*) volstaan niet meer wanneer de aanvaller met de stem van je baas belt.
+
+Volledige bespreking: zie hoofdstuk 1, *"A.I. is here to stay"*.
+:::
+
+---
+
+## Verdedigen: het is een mens-probleem
+
+Social engineering los je niet op met technologie alleen.
+
+::: {.incremental}
+* Trainen, trainen, trainen — **awareness-campagnes** zijn cruciaal
+* **Phishing-simulaties** geven directe feedback
+* Procedures voor helpdesks (vooral bij wachtwoordresets!)
+* Cultuur waarin werknemers durven *"nee"* of *"laat me even checken"* zeggen tegen de "CEO"
+:::
+
+::: {.callout-tip .fragment}
+De volledige aanpak voor het opzetten van een awareness-cultuur staat in de **appendix *Cybersecurity Awareness creëren***.
+:::
+
+---
+
 ## Social Engineering Toolkit (SET)
 
 :::: {.columns}

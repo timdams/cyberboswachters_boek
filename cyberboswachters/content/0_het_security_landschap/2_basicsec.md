@@ -323,7 +323,7 @@ Enkele voorbeelden:
 * Bij de rokers aan de achterkant van het gebouw gaan staan, wat met hen keuvelen en hen sigaretje aanbieden. Wanneer ze terug binnengaan hen volgen (*piggybacking*).
 * Bellen en je voordoen als een technieker van Telenet en vervolgens de login-gegevens vragen van het slachtoffer.
 
-Uiteraard hoeven social engineers zich niet te beperken tot *fysiek* contact. Ze hanteren ook erg vaak geschreven teksten (e-mail) om aan social engineering te doen. Hierbij onderscheiden we twee soorten:
+Uiteraard hoeven social engineers zich niet te beperken tot *fysiek* contact. Ze hanteren ook erg vaak geschreven teksten (e-mail) om aan social engineering te doen. Twee veelvoorkomende vormen die we onderscheiden zijn:
 
 * **Phishing**: trachten zoveel mogelijk mensen naar een bepaalde website of document te lokken waar vervolgens de aanvaller informatie van het slachtoffer zal proberen te verkrijgen door een fake login scherm te tonen, malware ongezien te installeren, etc.
 * **Spear phishing**: deze vorm van phishing heeft als doel één persoon of groep. De e-mail zal dan ook opgesteld worden om specifiek voor het slachtoffer te werken, i.p.v. een generieke mail.
@@ -331,6 +331,38 @@ Uiteraard hoeven social engineers zich niet te beperken tot *fysiek* contact. Ze
 ::: {.callout-tip}
 De term *phishing* is afgeleid van *fishing* oftewel vissen/hengelen naar iets. Vroeger had je het concept *phreaking* dat werd toegepast door hackers om op telefooncentrales in te breken door de 2600 hertz fluittonen die telefoons gebruiken te imiteren.
 :::
+
+### Meer dan phishing alleen
+
+Phishing en spear phishing zijn slechts het topje van de social engineering ijsberg. Een goede cyberboswachter herkent de volgende technieken meteen aan hun naam, want je zult ze in het werkveld te pas en te onpas tegenkomen:
+
+* **Vishing** (*voice phishing*): hetzelfde principe als phishing, maar dan via de telefoon. Vaak gecombineerd met een verzonnen scenario zoals *"uw bank heeft een verdachte transactie opgemerkt, kunt u even bevestigen?"*. In 2023 werd het hele **MGM Resorts** imperium in Las Vegas hiermee platgelegd: de aanvallers belden simpelweg de helpdesk en vroegen een wachtwoordreset.
+* **Smishing**: phishing via SMS of WhatsApp. De klassieker is het *"Bpost-pakketje dat niet kan worden geleverd"* SMS-je met een link naar een fake betaalpagina.
+* **Whaling**: een spear phishing aanval die specifiek gericht is op de "grote vissen" van een organisatie (CEO, CFO, andere C-levels). De buit is groter, maar deze profielen zijn meestal ook beter getraind én mediagevoeliger.
+* **CEO-fraude** (of *Business Email Compromise*, BEC): een aanvaller doet zich voor als de CEO of een andere leidinggevende en vraagt aan een werknemer (vaak iemand uit de financiële afdeling) een dringende overschrijving uit te voeren. Eén van de duurste vormen van social engineering: het FBI rapporteerde dat BEC-aanvallen tussen 2013 en 2022 wereldwijd meer dan 50 miljard dollar schade veroorzaakten.
+* **Pretexting**: het verzinnen van een geloofwaardig scenario (een *pretext*) om informatie of toegang te krijgen. Het Telenet-voorbeeld hierboven is in feite een pretexting-aanval.
+* **Baiting**: het uitleggen van *lokaas*. Bijvoorbeeld een USB-stick met een verleidelijke label (*"salarissen 2025"*) op de parking achterlaten in de hoop dat een nieuwsgierige werknemer hem in z'n werkstation steekt.
+* **Tailgating** (of *piggybacking*): meelopen met een geautoriseerd persoon om zo een beveiligde ruimte binnen te raken. Het rokers-voorbeeld hierboven is hiervan de schoolvoorbeeld-versie.
+* **MFA fatigue** (of *prompt bombing*): wanneer een aanvaller reeds in het bezit is van een wachtwoord en het slachtoffer overspoelt met MFA-goedkeuringsverzoeken (vaak 's nachts), in de hoop dat die uit vermoeidheid of frustratie eens op *"Accepteren"* duwt. Werd onder andere door de groep **Lapsus$** ingezet om bij Microsoft, Uber en Rockstar Games binnen te raken (zie hoofdstuk 1).
+
+### Waarom werkt social engineering zo goed?
+
+Social engineers zijn geen hackers in de traditionele zin, maar eerder *amateur-psychologen*. Ze maken handig gebruik van de zogenaamde **beïnvloedingsprincipes** die de Amerikaanse psycholoog Robert Cialdini in z'n boek *Influence* (1984) beschreef. Ken je deze principes, dan herken je ook meteen de hefbomen die de aanvaller hanteert:
+
+* **Autoriteit**: mensen volgen instructies van iemand die gezag uitstraalt &mdash; de "CEO" die plots mailt, de "politie-agent" die belt, de "IT-helpdesk" die langskomt.
+* **Urgentie**: een tijdsdruk creëren zorgt ervoor dat het slachtoffer niet meer kritisch nadenkt (*"uw account wordt binnen 1 uur gedeactiveerd"*).
+* **Schaarste**: iets is bijna op of slechts beschikbaar voor weinigen (*"nog 3 plaatsen vrij"*).
+* **Wederkerigheid**: als ik jou iets geef, voel jij je verplicht iets terug te doen. Een gratis pen, een sigaretje, een dienstje &mdash; en plots houd je de deur open voor de "pizzakoerier".
+* **Sympathie**: we zeggen makkelijker ja tegen mensen die we sympathiek vinden of die op ons lijken.
+* **Sociale bewijskracht**: *"iedereen doet het, dus zal het wel oké zijn"*.
+
+::: {.callout-tip}
+Het boek **The Art of Deception** van Kevin Mitnick (een ex-cybercrimineel die door de FBI ooit "*America's Most Wanted Hacker*" werd genoemd) is een aanrader voor wie meer wil weten over de psychologie achter social engineering. Mitnick haalde in z'n hoogdagen de meest absurde stunts uit: hij wandelde gewoon zelfverzekerd door deuren van grote bedrijven alsof hij er werkte. Niemand stelde vragen.
+:::
+
+### Social engineering in het AI-tijdperk
+
+Sinds de doorbraak van generatieve AI en deepfakes is social engineering nóg een trapje gevaarlijker geworden. Aanvallers gebruiken **deepfakes** (AI-gegenereerde audio of video van bestaande personen) om bijvoorbeeld een CFO te imiteren in een live videocall, of de stem van een familielid te klonen voor een nep-noodgeval-telefoontje. Een uitgebreidere bespreking met concrete voorbeelden (waaronder de 25 miljoen dollar-deepfake-CFO en de fake Joe Biden robocall) vind je in [hoofdstuk 1](les1_wordtheterger.qmd) onder "*A.I. is here to stay*".
 
 ### SET
 

@@ -192,7 +192,7 @@ Gebruik nooit wachtwoorden uit bekende lijsten! Zie: [SecLists](https://github.c
 ## Soorten cryptanalytische aanvallen
 
 | Type | Beschrijving |
-|---|---|
+|---|-----|
 | **Enkel ciphertext** | Alleen geëncrypteerde data beschikbaar (beste scenario voor cyberboswachters) |
 | **Gekende plaintext** | Zowel ciphertext als bijhorende plaintext gekend |
 | **Gekozen plaintext** | Analist kiest plaintext en ziet resulterende ciphertext |
@@ -205,10 +205,11 @@ Gebruik nooit wachtwoorden uit bekende lijsten! Zie: [SecLists](https://github.c
 * Veel makkelijker dan sleutels kraken: **vraag** de sleutel gewoon aan de gebruiker
   * Phishing, helpdesk-scams, post-its onder toetsenbord, ...
 * *"There is no patch for human stupidity"*
-* → Hoofdstuk **Social Engineering** behandelt dit uitgebreid
+
+→ Hoofdstuk **Social Engineering** behandelt dit uitgebreid
 
 ::: {.callout-important .fragment}
-Cryptografie is **noodzakelijk** maar zelden **voldoende** voor veiligheid.
+Cryptografie is **noodzakelijk** maar zelden **voldoende** voor veiligheid (cfr McCumber).
 :::
 
 ---
@@ -218,11 +219,13 @@ Cryptografie is **noodzakelijk** maar zelden **voldoende** voor veiligheid.
 * Quantum-computers kunnen bruteforce **drastisch versnellen**
   * Veel veiligheidsdiensten hanteren al jaren **"Store now, decrypt later"** strategie
 * Alle huidige encryptie potentieel kwetsbaar
-* Impact op **cryptocurrencies**, e-commerce, wachtwoorden, ...
-* Onderzoek naar **post-quantum cryptografie** is bezig
+* Impact op cryptocurrencies, e-commerce, wachtwoorden, ...
+* Onderzoek naar **post-quantum cryptografie** is volop bezig
 
 ::: {.callout-note .fragment}
 *"Encryption is everywhere in modern day life — everything will be vulnerable!"*
+
+<small>— [uclftr.com](https://www.uclftr.com/post/what-does-the-rise-of-quantum-computers-mean-for-encryption-technology)</small>
 :::
 
 ---
@@ -244,14 +247,17 @@ Handige tool om crypto te leren: [CrypTool](HTTPS://www.cryptool.org/en/ct2/)
 ## Caesar encryptie (substitutie)
 
 * Sleutel = getal 1-25 → iedere letter schuift op
-  * A=1, B=2, ... Z=26
+  * A=0, B=1, ... Z=25 
   * Sleutel 3: A→D, B→E, ... Z→C (overflow)
+
 * Ook wel **Rot** (rotatie) genoemd: Rot4, Rot13, ...
   * **Rot13** is speciaal: 2x toepassen = originele tekst
 
 **Formule**: ``(teken + sleutel) % 26 = nieuw teken``
 
-Voorbeeld: Y (24) met sleutel 7: ``(24+7) % 26 = 5`` → **F**
+Voorbeeld: Y (24) met sleutel 7: 
+
+``(24+7) % 26 = 5`` → **F**
 
 ---
 
@@ -375,6 +381,28 @@ graph TD
 
 ---
 
+## Wat maakt crypto "modern"?
+
+Klassieke ciphers (Caesar, Vigenère, scytale) zijn ondertussen allemaal gekraakt → tijd voor zwaarder geschut.
+
+Moderne systemen verschillen op vier punten:
+
+* **Grote sleutels** (128–256 bits) → bruteforce onhaalbaar
+* **Vele rondes** van substitutie + transpositie
+* **Publiek getest** algoritme (Kerckhoffs!)
+* **Wisselende subkeys** per ronde (Vigenère op steroïden)
+
+Twee grote families volgens **aantal sleutels**:
+
+* **Symmetrisch**: zelfde sleutel aan beide kanten
+* **Asymmetrisch**: publieke + private sleutel
+
+::: {.callout-tip .fragment}
+We starten met **symmetrisch** — de oudste van de twee.
+:::
+
+---
+
 ## Symmetrische encryptie
 
 * **Eén sleutel** voor zowel encryptie als decryptie
@@ -402,7 +430,7 @@ Het grote probleem: hoe wissel je de sleutel **veilig** uit?
 ## Block- en streamciphers
 
 | | Streamcipher | Blockcipher |
-|---|---|---|
+|---|-----|-----|
 | **Verwerking** | Teken per teken | Blok per blok (bv. 128 bits) |
 | **Snelheid** | Sneller | Trager |
 | **Voorbeelden** | RC4 | AES, DES, 3DES |
@@ -427,18 +455,30 @@ graph TD
 
 ## Streamciphers: werking
 
+![](crypto_assets/stream.png)
+
 Twee onderdelen:
 
 1. **Keystream generator**: expandeert sleutel naar keystream (zelfde lengte als data)
 2. **XOR-functie**: plaintext $\oplus$ keystream = ciphertext
 
-![](crypto_assets/stream.png)
 
-::: {.callout-important }
+
+---
+
+## Streamciphers: Belangrijk inzicht
+
+
+::: {.callout-important}
 
 Ontvanger met **zelfde sleutel** → zelfde keystream → originele plaintext
 
+Enkel dus ontvanger met zelfde sleutel kan bericht decrypteren. 
+
 :::
+![](crypto_assets/stream.png)
+
+
 
 ---
 
@@ -451,9 +491,17 @@ Ontvanger met **zelfde sleutel** → zelfde keystream → originele plaintext
 | 0 | 0 | **0** |
 | 1 | 1 | **0** |
 
-Voorbeeld: `1010` $\oplus$ `1101` = `0111` (ciphertext)
+::: {.callout-important}
 
-**Dezelfde XOR met keystream decrypteert weer!**
+Voorbeeld: 
+
+`1010` $\oplus$ `1101` = `0111` (ciphertext)
+
+**Dezelfde XOR met keystream (`1101`) decrypteert weer!**
+
+`0111` $\oplus$ `1101` = `1010` (originele plaintext)
+
+:::
 
 ---
 
@@ -470,30 +518,44 @@ Voorbeeld: `1010` $\oplus$ `1101` = `0111` (ciphertext)
 
 ## Middle-square: de eerste PRNG
 
+:::: {.columns}
+
+::: {.column width="50%"}
 Von Neumann (1946): eenvoudig maar krachtig idee
 
 1. Start met **seed**
 2. **Kwadrateer**
 3. Neem **middelste cijfers** → nieuw getal
 4. Herhaal
+:::
+
+::: {.column width="50%"  .fragment}
 
 **Voorbeeld** (seed = 1111):
 
 ```
-1111² = 01234321  →  2343
-2343² = 05489649  →  4896
-4896² = 23970816  →  9708
+1111² = 01 2343 21  →  2343
+2343² = 05 4896 49  →  4896
+4896² = 23 9708 16  →  9708
 ```
 
 Reeks: `2343, 4896, 9708, ...`
+:::
+
+::::
 
 ::: {.callout-note .fragment}
 Ondertussen onveilig (korte cycli), maar basis van alle moderne PRNGs!
 :::
 
+
+
+
 ---
 
 ## PRNG in de praktijk: Random() in C#
+
+
 
 ```csharp
 int key = 666;
@@ -533,11 +595,6 @@ C# `Random` is **niet** cryptografisch veilig! Gebruik `RandomNumberGenerator` u
   2. **PRGA** (Pseudo-Random Generation Algorithm): werksleutel → keystream
 
 ![](crypto_assets/rc4.png)
-
----
-
-
-![](crypto_assets/rc4-a.png)
 
 ---
 
@@ -784,9 +841,7 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 
 ::::
 
-::: {.callout-note .fragment}
-Eerste gekraakte bericht (56u): *"It's time for those 128-, 192-, and 256-bit keys."* → 3 jaar later kwam AES er inderdaad.
-:::
+
 
 ---
 
@@ -795,7 +850,7 @@ Eerste gekraakte bericht (56u): *"It's time for those 128-, 192-, and 256-bit ke
 * Hoe decryptie toepassen op data groter dan 1 blok?
 * Zelfde plaintext-blok + zelfde sleutel = **zelfde ciphertext**
 * Lekt informatie! Maakt **replay attacks** mogelijk
-* Verschillende **modes of operation** bedenkt om dit probleem te verhelpen.
+* Verschillende **modes of operation** bedacht om dit probleem te verhelpen.
 
 ---
 
@@ -860,9 +915,7 @@ Plaintext: `00 01 10 11`, IV: `10`
 
 Ciphertext: `11 11 10 10`
 
-::: {.callout-tip .fragment}
-4 **verschillende** plaintext-blokken → toch herhalingen in ciphertext. Patronen zijn **doorgeknipt**.
-:::
+
 
 ---
 
@@ -889,7 +942,7 @@ Ciphertext: `11 11 10 10`
 
 * Meest recente en meest gebruikte symmetric block cipher
 * **2001**: nieuwe wereldwijde standaard
-* Gebaseerd op **Rijndael** (Belgisch! Door Vincent Rijmen & Joan Daemen)
+* Gebaseerd op **Rijndael** (Belgisch! Door Vincent **Rij**men & Joan **Dae**men)
 * Blokken van **128 bits**, sleutels tot **256 bits**
 
 
@@ -914,7 +967,7 @@ Ciphertext: `11 11 10 10`
 
 ---
 
-## Conclusie
+## Conclusie (deel 1)
 
 * **Cryptografie** beschermt vertrouwelijkheid (CIA) via encryptie met geheime sleutels
 * **Kerckhoffs' principe**: de sleutel is het geheim, niet het algoritme

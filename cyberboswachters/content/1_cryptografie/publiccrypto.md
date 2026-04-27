@@ -56,9 +56,11 @@ Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) co
 
 Belangrijk om meteen mee te geven: de waarden die Bob en Alice bij Diffie-Hellman gebruiken zijn **sessie-specifiek** (*ephemeral*) en worden na de uitwisseling weggegooid. Ze zijn dus niet hetzelfde als een langdurig publiek/privaat sleutelpaar zoals bij RSA — DH dient louter om een gemeenschappelijke symmetrische sleutel af te spreken, niet om berichten rechtstreeks te versleutelen.
 
-Zowel Bob als Alice kiezen eerst elk een **geheime waarde** die ze enkel voor deze sessie gebruiken. Op basis van deze geheime waarde berekenen ze elk een **publieke waarde** die ze naar de ander sturen (wat kan over een onbeveiligd kanaal). De ontvanger zal deze publieke waarde combineren met de eigen geheime waarde wat zal resulteren in een *shared secret* dat beiden nu kennen en kunnen gebruiken, bijvoorbeeld als de symmetrische sleutel om verdere communicatie te beveiligen.
+Voor de eigenlijke uitwisseling start, spreken Alice en Bob eerst twee **publieke parameters** af: een (groot) priemgetal $p$ dat als modulus dient, en een **basis** $g$ (ook wel *generator* genoemd), kleiner dan $p$. Deze twee waarden mogen over een onveilig kanaal worden uitgewisseld — een eventuele afluisteraar mag ze gerust kennen, dat is geen probleem voor de veiligheid. In het rekenvoorbeeld hieronder gebruiken we $g = 7$ en $p = 11$.
 
-De reden dat dit werkt, is met dank aan de modulo operator en de eigenschappen ervan. Een voorbeeld:
+Zowel Bob als Alice kiezen vervolgens elk een **geheime waarde** die ze enkel voor deze sessie gebruiken. Op basis van deze geheime waarde berekenen ze elk een **publieke waarde** (via de formule $g^{geheim} \bmod p$) die ze naar de ander sturen (wat kan over een onbeveiligd kanaal). De ontvanger zal deze publieke waarde combineren met de eigen geheime waarde wat zal resulteren in een *shared secret* dat beiden nu kennen en kunnen gebruiken, bijvoorbeeld als de symmetrische sleutel om verdere communicatie te beveiligen.
+
+De reden dat dit werkt, is met dank aan de modulo operator en de eigenschappen ervan. Een voorbeeld (met $g = 7$ en $p = 11$):
 
 |   Stap     | Alice                                           | Bob                                            |
 | ------ | ----------------------------------------------- | ---------------------------------------------- |

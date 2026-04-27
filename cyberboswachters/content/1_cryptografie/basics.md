@@ -287,9 +287,27 @@ Denk daarbij bijvoorbeeld aan *cryptocurrencies* zoals Ethereum en Bitcoin:
 
 :::
 
+## Moderne cryptosystemen
+
+De klassieke ciphers die we tot nu toe zagen — Caesar, Vigenère en scytale — zijn fantastisch om de basisprincipes van substitutie en transpositie uit te leggen, maar in de praktijk vallen ze ondertussen om als een kaartenhuis. Caesar kraak je in maximaal 25 pogingen, Vigenère valt na Kasiski's truc terug op een handvol parallelle Caesars, en de sleutelruimte van een scytale beperkt zich tot het aantal vlakken dat redelijkerwijs op een stok past. Tegen de rekenkracht van vandaag (denk terug aan de bruteforce-tabel hierboven) houdt geen enkel klassiek algoritme nog stand.
+
+**Moderne cryptografische systemen** zijn dan ook compleet anders opgebouwd:
+
+* **Veel grotere sleutelruimtes** (128, 192, 256 bits en meer) waardoor bruteforce praktisch onhaalbaar wordt.
+* **Iteratief**: niet één enkele substitutie, maar tientallen rondes van substitutie én transpositie achter elkaar, waardoor statistische patronen volledig verdwijnen.
+* **Publiek ontworpen en getest** door duizenden experts wereldwijd (Kerckhoffs in actie) → géén *security through obscurity*.
+* **Wisselende subkeys per ronde**, afgeleid uit de hoofdsleutel. Eigenlijk het idee van Vigenère, maar dan op steroïden.
+
+Wanneer we deze moderne systemen klasseren volgens het **aantal sleutels** dat ze gebruiken, vallen ze in twee grote families:
+
+* **Symmetrische** systemen: zender en ontvanger gebruiken **dezelfde** sleutel.
+* **Asymmetrische** systemen: er zijn **twee** sleutels — één publiek (om te encrypteren) en één privaat (om te decrypteren).
+
+We starten met de oudste van de twee, de symmetrische cryptosystemen. Verderop in dit hoofdstuk komen de asymmetrische aan bod, en zal blijken dat beide families elkaar in de praktijk perfect aanvullen.
+
 ## Symmetrische encryptie
 
-Er zijn twee soorten encryptiesystemen als we kijken naar het aantal sleutels. Symmetrische systemen zijn systemen waarbij maar één sleutel nodig is: zowel ontvanger als verzender gebruiken dezelfde sleutel.  De term symmetrisch verwijst naar het feit dat het algoritme exact hetzelfde doet aan beide zijden. Het enige verschil is dat bij de verzender de plaintext in het systeem wordt gestoken, wat resulteert in een ciphertext. Terwijl de ontvanger de ciphertext in het systeem plaatst om een plaintext te krijgen.
+Symmetrische systemen zijn de oudste vorm van encryptie: zowel ontvanger als verzender gebruiken dezelfde sleutel. De term *symmetrisch* verwijst naar het feit dat het algoritme exact hetzelfde doet aan beide zijden. Het enige verschil is dat bij de verzender de plaintext in het systeem wordt gestoken, wat resulteert in een ciphertext. Terwijl de ontvanger de ciphertext in het systeem plaatst om een plaintext te krijgen.
 
 ![Het basismodel van symmetrische encryptie.](assets/basicencrypt.png)
 

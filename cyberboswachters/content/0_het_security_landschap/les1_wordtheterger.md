@@ -236,6 +236,10 @@ Dat een tiener met een telefoon de Amerikaanse topveiligheidsdiensten kon binnen
 
 Deze les zouden we in 2022-2024 opnieuw (en véél pijnlijker) geleerd krijgen met de **Lapsus$**- en **Scattered Spider**-aanvallen, die we verderop bespreken.
 
+::: {.callout-tip}
+Verderop in dit hoofdstuk komen termen als *MFA fatigue*, *vishing* en *deepfakes* meermaals langs. We leggen ze ter plaatse kort uit, maar de volledige definities en bijhorende technieken (pretexting, baiting, BEC, ...) bespreken we systematisch in het volgende hoofdstuk onder *Social Engineering*.
+:::
+
 ### 2016: Internet-of-horrors
 
 In onze huizen verschenen steeds meer apparaatjes die via het, meestal draadloze,  netwerk met elkaar en het Internet konden communiceren. Internet-of-Things (IoT) bracht een weelde aan nieuwe oplossingen in onze levens. Domotica, wearables, slimme thermostaten, beveiligingssystemen, weegschalen, alles werd én slimmer gemaakt én aan het Internet gehangen.

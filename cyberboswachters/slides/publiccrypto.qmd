@@ -27,6 +27,7 @@ format:
 :::
 
 ::: {.column width="30%" .fragment}
+
 ![Bij 6 gebruikers zijn er al 15 sleutels nodig.](crypto_assets/keyprob.png){ width=40% }
 
 :::
@@ -122,10 +123,11 @@ Private sleutel = uniek voor eigenaar → bewijs van identiteit (**authenticatie
 
 ## Diffie-Hellman: werkwijze
 
-1. Alice en Bob kiezen elk een **geheime waarde** (enkel voor deze sessie)
-2. Ze berekenen elk een **publieke waarde** en sturen die naar de ander (mag onbeveiligd)
-3. Elk combineert ontvangen publieke waarde met eigen geheime waarde
-4. Resultaat: een **shared secret** dat beiden kennen
+1. Alice en Bob spreken **publiek** twee parameters af: een priemgetal $p$ en een basis $g$
+2. Elk kiest daarnaast een **geheime waarde** (enkel voor deze sessie)
+3. Ze berekenen elk een **publieke waarde** $g^{geheim}\%p$ en sturen die naar de ander (mag onbeveiligd)
+4. Elk combineert de ontvangen publieke waarde met de eigen geheime waarde
+5. Resultaat: een **shared secret** dat beiden kennen
 
 ::: {.callout-note .fragment}
 Deze waarden zijn **geen sleutelparen** zoals bij RSA — ze worden na de uitwisseling weggegooid.
@@ -134,6 +136,8 @@ Deze waarden zijn **geen sleutelparen** zoals bij RSA — ze worden na de uitwis
 ---
 
 ## Diffie-Hellman: rekenvoorbeeld
+
+**Publiek afgesproken:** basis $g = 7$, priemgetal $p = 11$
 
 |   Stap     | Alice                                           | Bob                                            |
 | ------ | ----------------------------------------------- | ---------------------------------------------- |
@@ -212,9 +216,6 @@ Stap 2: private sleutel berekenen
 * **Publieke sleutel**: $N=187$ en $e=7$ (openbaar)
 * **Private sleutel**: $d=23$ (geheim!)
 
-::: {.callout-tip .fragment}
-Om $d$ te berekenen gebruiken we het *Uitgebreid Euclidisch algoritme*, gebaseerd op het *Algoritme van Euclides* voor de grootste gemene deler.
-:::
 
 ---
 
