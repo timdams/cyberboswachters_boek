@@ -35,22 +35,42 @@ We bekijken de evolutie aan de hand van enkele sleutelmomenten.
 
 ---
 
-## Een tijdlijn
+## Een tijdlijn (1/3): 2000 – 2014
 
 ```{mermaid}
 %%{init: {"theme": "base", "timeline": {"useMaxWidth": true}} }%%
 timeline
-    title Cybersecurity: een decennium van escalatie
+    title De vroege jaren — van kattenkwaad naar staatswapen
     Voor 2010 : Virussen & wormen — irritant, maar geen levensgevaar
     2010 : Stuxnet — kritische infrastructuur als doelwit
     2013 : Snowden — privacy op het Internet is een illusie
     2014 : iCloud-hack & Sony — de cloud en landen als aanvallers
     2014-15 : Heartbleed & Shellshock — bugs in de fundamenten
+```
+
+---
+
+## Een tijdlijn (2/3): 2015 – 2019
+
+```{mermaid}
+%%{init: {"theme": "base", "timeline": {"useMaxWidth": true}} }%%
+timeline
+    title Ransomware, IoT en de eerste kinetische respons
     2015 : Oekraïne stroomloos (Industroyer) — Ashley Madison datalek
     2016 : Social engineering tegen CIA — Mirai IoT-botnet
     2017 : WannaCry & Petya — ransomware op wereldschaal
     2018 : Haven Antwerpen — cybercrime meets drugsmaffia
     2019 : Israël bombardeert Hamas-cybercel — kinetische respons
+```
+
+---
+
+## Een tijdlijn (3/3): 2020 – 2025
+
+```{mermaid}
+%%{init: {"theme": "base", "timeline": {"useMaxWidth": true}} }%%
+timeline
+    title Supply chains, AI en geopolitiek
     2020 : Twitter-hack, MGM lek — sociale media als geopolitiek wapen
     2021 : Log4J — verborgen tijdbommen in open-source code
     2022-24 : MFA fatigue, supply chain attacks, CrowdStrike, XZ Utils
@@ -101,9 +121,10 @@ Stuxnet deed twee dingen:
 
 ---
 
-## Stuxnet: man-in-the-middle tussen Step 7 en PLC
+## Stuxnet: man-in-the-middle tussen Step 7 en PLC {.smaller}
 
 ```{mermaid}
+%%{init: {'sequence': {'actorMargin': 60, 'messageMargin': 22, 'boxMargin': 4, 'noteMargin': 6, 'mirrorActors': false, 'actorFontSize': 13, 'noteFontSize': 12, 'messageFontSize': 12} } }%%
 sequenceDiagram
     autonumber
     participant Op as Operator
@@ -164,7 +185,7 @@ Een variant gericht op een waterdam, kerncentrale of ziekenhuis kan catastrofale
 ::: {.callout-note .fragment}
 Stuxnet was gericht op de **uraniumcentrifuges van Iran** — hoogstwaarschijnlijk ontwikkeld door de VS en Israël om het nucleaire programma te saboteren.
 
-Bevestiging hiervan duurde jaren.
+Bevestiging hiervan duurde jaren (zie documentaire: **"Zero Days"** van Alex Gibney (2016))
 :::
 
 ::: {.callout-important .fragment}
@@ -184,9 +205,7 @@ Yahoo News onthulde in **2019** hoe een **Nederlandse AIVD-mol** — zich voordo
 
 Les: grote cyberaanvallen op kritieke infrastructuur combineren bijna altijd **digitale + klassieke spionage**.
 
-::: {.callout-tip}
-Documentaire: **"Zero Days"** van Alex Gibney (2016).
-:::
+
 :::
 
 ::: {.column width="45%"}
@@ -204,9 +223,33 @@ Twee personen sloegen het glazen huisje aan diggelen:
 :::: {.columns}
 
 ::: {.column width="50%"}
-![Edward Snowden (2013). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Edward_Snowden-2.jpg), Laura Poitras / Praxis Films, CC BY 3.0.](assets/edward_snowden-2.jpg){ width=75% }
+**1) Julian Assange**
 
-**Edward Snowden**
+* Oprichter van **WikiLeaks** (2006)
+* Platform voor klokkenluiders om documenten anoniem te lekken
+* Verregaande diplomatieke en geopolitieke gevolgen
+:::
+
+::: {.column width="50%"}
+![Julian Assange (2008). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Julian_Assange_in_2008.jpg), auteur Periodismodepaz, CC BY 4.0.](assets/julian_assange_in_2008.jpg){ width=75% }
+
+:::
+
+::::
+
+
+---
+
+## 2013: Privacy op het Internet is een illusie
+
+Twee personen sloegen het glazen huisje aan diggelen:
+
+:::: {.columns}
+
+
+
+::: {.column width="50%"}
+**2) Edward Snowden**
 
 * Systeembeheerder bij de NSA
 * Lekte het **PRISM**-programma: NSA had *taps* bij Microsoft, Google, Apple, Facebook, ...
@@ -214,16 +257,13 @@ Twee personen sloegen het glazen huisje aan diggelen:
 :::
 
 ::: {.column width="50%"}
-![Julian Assange (2008). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Julian_Assange_in_2008.jpg), auteur Periodismodepaz, CC BY 4.0.](assets/julian_assange_in_2008.jpg){ width=75% }
+![Edward Snowden (2013). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Edward_Snowden-2.jpg), Laura Poitras / Praxis Films, CC BY 3.0.](assets/edward_snowden-2.jpg)
 
-**Julian Assange**
 
-* Oprichter van **WikiLeaks** (2006)
-* Platform voor klokkenluiders om documenten anoniem te lekken
-* Verregaande diplomatieke en geopolitieke gevolgen
 :::
 
 ::::
+
 
 ---
 
@@ -282,9 +322,7 @@ Hoe was dit mogelijk?
 * **Geen 2FA** — in 2014 nog nauwelijks gemeengoed
 :::
 
-::: {.callout-tip .fragment}
-Lieg gerust op beveiligingsvragen — er bestaat geen leugendetector in die systemen. Onthoud wel je antwoord.
-:::
+
 
 ::: {.callout-note .fragment}
 Hackers gebruikten o.a. de forensische tool **EPPB** (*Elcomsoft Phone Password Breaker*), normaal verkocht aan politiediensten, om volledige iCloud-backups te downloaden zodra ze het wachtwoord hadden.
@@ -292,18 +330,39 @@ Hackers gebruikten o.a. de forensische tool **EPPB** (*Elcomsoft Phone Password 
 
 ---
 
-## 2014: Als landen vechten — Sony & Noord-Korea
+## Liegen
 
+
+::: {.callout-tip .fragment}
+Lieg gerust op beveiligingsvragen — er bestaat geen leugendetector in die systemen. Onthoud wel je antwoord.
+:::
+
+---
+
+## 2014: Als landen vechten — Sony & Noord-Korea
+:::: {.columns}
+
+::: {.column width="80%"}
 * Sony bracht **"The Interview"** uit: komedie waarin een dictator wordt vermoord
 * Vergelijking met Kim Jong-un was voor iedereen duidelijk
 
-::: {.fragment}
 **Gevolg**: hackers (hoogstwaarschijnlijk Noord-Koreaans) stalen van Sony:
 
-* Onuitgebrachte films
-* Interne e-mails en salarissen
-* Privé-informatie van werknemers
+  * Onuitgebrachte films
+  * Interne e-mails en salarissen
+  * Privé-informatie van werknemers
 :::
+
+::: {.column width="20%"}
+
+![](assets/interview.jpg)
+
+:::
+
+::::
+
+
+
 
 ::: {.callout-warning .fragment}
 **Primeur**: een soeverein land voert een cyberaanval uit op een bedrijf in een ander land.
@@ -333,24 +392,14 @@ Cyberaanvallen zijn verdomd lastig in kaart te brengen.
 
 ## 2014-2015: Megaexploits in de fundamenten
 
-:::: {.columns}
 
-::: {.column width="70%"}
 | | Heartbleed (2014) | Shellshock (2014) |
 |---|---|---|
 | **Locatie** | OpenSSL-bibliotheek | Linux Bash-shell |
 | **Impact** | Servergeheugen uitlezen (sleutels, wachtwoorden) | **Elk** commando uitvoeren |
 | **Reach** | Miljoenen webservers/routers | Bijna elke Linux- en macOS-machine |
 | **Na maanden** | 200.000+ kwetsbare apparaten nog online | Al patches maar jarenlang nasmeul |
-:::
 
-::: {.column width="30%"}
-![Heartbleed-logo. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heartbleed.svg), Leena Kurjenniska / Codenomicon, CC0.](assets/heartbleed.svg){ width=80% }
-
-![Shellshock-logo. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Shellshock_logo_lock.svg), Bf5man, CC0.](assets/shellshock_logo_lock.svg){ width=80% }
-:::
-
-::::
 
 ::: {.callout-warning .fragment}
 Eerste waarschuwing voor wat we later bij **Log4J** (2021) en **XZ Utils** (2024) opnieuw zouden zien: open-source fundamenten worden zelden grondig doorgelicht.
@@ -867,6 +916,16 @@ Anthropic houdt Mythos bewust **achter slot en grendel**. De Amerikaanse banktoe
 ::: {.callout-warning .fragment}
 Concurrenten kunnen binnen **6 maanden tot 1 jaar** vergelijkbare tools ontwikkelen. Vooral **kleine bedrijven** zonder uitgebreide cybersecurity-afdeling lopen gevaar. [Bron: VRT NWS](https://www.vrt.be/vrtnws/nl/2026/04/12/mythos-blijft-achter-slot-en-grendel-wegens-te-gevaarlijk-voor-c/)
 :::
+
+---
+
+## 2026: Ook GPT speelt mee
+
+Zowel Mythos als GPT-5.5 lossen de "The Last Ones" challenge volledig op (mens doet hier 20 uur over), wat tot nogtoe nooit gelukt was.
+
+![](assets/mythos.png)
+
+[Bron](https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities)
 
 ---
 

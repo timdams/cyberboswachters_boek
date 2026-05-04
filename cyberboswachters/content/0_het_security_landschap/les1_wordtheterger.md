@@ -492,6 +492,10 @@ In april 2026 werd de wereld opgeschrikt door het bestaan van **Mythos**, een AI
 Het Mythos-verhaal illustreert een nieuw tijdperk in cybersecurity: de strijd tussen aanvaller en verdediger wordt niet langer alleen door mensen gevoerd, maar steeds meer door AI-systemen die exponentieel sneller opereren dan welke menselijke hacker ook. De vraag is niet meer *of* AI ingezet zal worden voor cyberaanvallen, maar hoe snel dit gemeengoed wordt. [Bron: VRT NWS, 12 april 2026](https://www.vrt.be/vrtnws/nl/2026/04/12/mythos-blijft-achter-slot-en-grendel-wegens-te-gevaarlijk-voor-c/)
 :::
 
+En het bleef niet bij Mythos alleen. Kort daarna bleek dat ook **GPT-5.5** van OpenAI mee aan de top zat: zowel Mythos als GPT-5.5 slaagden erin om de zogenaamde *"The Last Ones"*-challenge volledig op te lossen, een cyberopdracht waar een menselijke expert ongeveer 20 uur over doet en die tot dan toe door geen enkel AI-model was gekraakt. Het signaal is duidelijk: de capaciteit om autonoom complexe cyberaanvallen uit te voeren zit niet langer bij één enkel labo, maar duikt zo goed als gelijktijdig op bij meerdere grote AI-spelers.
+
+![Resultaten van de evaluatie door het AI Safety Institute: zowel Mythos (Anthropic) als GPT-5.5 (OpenAI) lossen de "The Last Ones"-challenge volledig op. Bron: [AISI](https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities).](assets/mythos.png){ width=70% }
+
 
 ### En de toekomst? AI will rule the world
 

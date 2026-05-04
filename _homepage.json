@@ -3,32 +3,32 @@
   "tech": "Onbekend",
   "techDetail": "Onbekend",
   "branch": "main",
-  "lastCommit": "2026-04-23",
-  "lastCommitMsg": "local images",
-  "lastCommitHash": "ecee47b",
+  "lastCommit": "2026-04-27",
+  "lastCommitMsg": "pdf in header",
+  "lastCommitHash": "48a6a52",
   "hasGit": true,
   "remote": "https://github.com/timdams/cyberboswachters_boek",
   "tag": "0.4.2",
   "recentCommits": [
     {
-      "hash": "ecee47b",
-      "msg": "local images"
+      "hash": "48a6a52",
+      "msg": "pdf in header"
     },
     {
-      "hash": "77a096c",
-      "msg": "betere gitignore?"
+      "hash": "0694ccf",
+      "msg": "crypto slides NOG beter"
     },
     {
-      "hash": "c94e61c",
-      "msg": "komaan!"
+      "hash": "1c57641",
+      "msg": "tijd om slides na te kijken en dan is't goe geweest"
     },
     {
-      "hash": "2a3433b",
-      "msg": "mermaid faalt..."
+      "hash": "69f1ad6",
+      "msg": "ik zei lghtbox"
     },
     {
-      "hash": "6a048cc",
-      "msg": "qmd"
+      "hash": "af7a0ab",
+      "msg": "lightbox"
     }
   ],
   "workspace": null,
