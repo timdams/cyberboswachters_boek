@@ -3,13 +3,17 @@
   "tech": "Onbekend",
   "techDetail": "Onbekend",
   "branch": "main",
-  "lastCommit": "2026-04-27",
-  "lastCommitMsg": "pdf in header",
-  "lastCommitHash": "48a6a52",
+  "lastCommit": "2026-05-04",
+  "lastCommitMsg": "mythos inc",
+  "lastCommitHash": "1f31b8a",
   "hasGit": true,
   "remote": "https://github.com/timdams/cyberboswachters_boek",
   "tag": "0.4.2",
   "recentCommits": [
+    {
+      "hash": "1f31b8a",
+      "msg": "mythos inc"
+    },
     {
       "hash": "48a6a52",
       "msg": "pdf in header"
@@ -25,10 +29,6 @@
     {
       "hash": "69f1ad6",
       "msg": "ik zei lghtbox"
-    },
-    {
-      "hash": "af7a0ab",
-      "msg": "lightbox"
     }
   ],
   "workspace": null,

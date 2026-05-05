@@ -186,6 +186,15 @@ Verf mengen is makkelijk, *ontmengen* praktisch onmogelijk. In de digitale versi
 
 ---
 
+## Diffie-Hellman uitgelegd in filmpje
+
+![Alles samen uitgelegd](crypto_assets/ssh.mp4)
+
+---
+
+
+
+
 ## RSA
 
 * **1977**, door Rivest, Shamir en Adleman
