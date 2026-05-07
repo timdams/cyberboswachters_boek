@@ -1,0 +1,20 @@
+---
+title: "Slides (English)"
+lang: en
+---
+
+This page lists the English versions of the slide decks for the *Cyberboswachters* handbook. Translations are added incrementally — chapters not listed here are currently only available in Dutch (see the [Dutch slides overview](../overzicht.html)).
+
+## Available presentations
+
+| Chapter | Slides | PDF |
+|---------|--------|-----|
+| 🕒 Example: Introduction | [View slides](intro.html){target="_blank"} | [Download PDF](intro.pdf) |
+| ✅ Appendix B: Dark web | [View slides](darkweb.html){target="_blank"} | [Download PDF](darkweb.pdf) |
+
+
+**Legend:**
+
+* ❌: Slides not yet available
+* ✅: Slides available
+* 🕒: Slides in development (not yet exam material)

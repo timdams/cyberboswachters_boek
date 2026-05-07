@@ -3,7 +3,9 @@ project:
   output-dir: ../build/slides
   render:
     - "*.qmd"
+    - "en/*.qmd"
     - "!overzicht.qmd"
+    - "!en/index.qmd"
 
 website:
   title: "Cyberboswachters – Slides"

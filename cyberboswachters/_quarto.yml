@@ -12,6 +12,8 @@ book:
     left:
       - text: "Slides"
         href: slides/overzicht.qmd
+      - text: "Slides (EN)"
+        href: slides/en/index.qmd
       - text: "PDF"
         icon: file-pdf
         href: Cyberboswachters.pdf
@@ -30,6 +32,7 @@ book:
     - content/appendix/meerweten.md
     - content/appendix/bronnen.md
     - slides/overzicht.qmd
+    - slides/en/index.qmd
 
 bibliography: references.bib
 

@@ -36,9 +36,9 @@ jobs:
 
       - name: Convert changed slides to PDF
         run: |
-          # Copy any cached PDFs into the build directory
+          # Restore cached PDFs into build dir, preserving subfolder structure
           if [ -d cached-slide-pdfs ]; then
-            cp cached-slide-pdfs/*.pdf cyberboswachters/build/slides/ 2>/dev/null || true
+            rsync -a cached-slide-pdfs/ cyberboswachters/build/slides/ 2>/dev/null || true
           fi
 
           # Check if global slide config changed → rebuild all PDFs
@@ -47,19 +47,23 @@ jobs:
             REBUILD_ALL=true
           fi
 
-          # Find which specific .qmd slide files changed
-          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null -- 'cyberboswachters/slides/*.qmd' | xargs -rI{} basename {} .qmd)
+          # Find which specific .qmd slide files changed (relative path, no extension)
+          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null -- 'cyberboswachters/slides/' \
+            | grep '\.qmd$' \
+            | sed -E 's|^cyberboswachters/slides/||; s|\.qmd$||')
 
-          # Collect slides that need PDF (re)generation
+          # Collect slides that need PDF (re)generation (recursive, supports en/ etc.)
           TO_CONVERT=""
-          for f in cyberboswachters/build/slides/*.html; do
-            name=$(basename "$f" .html)
-            [ "$name" = "index" ] && continue
+          while IFS= read -r f; do
+            rel=${f#cyberboswachters/build/slides/}
+            name=${rel%.html}
+            base=$(basename "$name")
+            [ "$base" = "index" ] && continue
             pdf="cyberboswachters/build/slides/${name}.pdf"
-            if [ "$REBUILD_ALL" = "true" ] || [ ! -f "$pdf" ] || echo "$CHANGED" | grep -qw "$name"; then
+            if [ "$REBUILD_ALL" = "true" ] || [ ! -f "$pdf" ] || echo "$CHANGED" | grep -Fxq "$name"; then
               TO_CONVERT="$TO_CONVERT $name"
             fi
-          done
+          done < <(find cyberboswachters/build/slides -type f -name '*.html')
 
           if [ -z "$TO_CONVERT" ]; then
             echo "All slide PDFs are up to date"
@@ -73,9 +77,10 @@ jobs:
             done
           fi
 
-          # Update cache directory
+          # Update cache directory (preserve subfolder structure)
           mkdir -p cached-slide-pdfs
-          cp cyberboswachters/build/slides/*.pdf cached-slide-pdfs/ 2>/dev/null || true
+          rsync -a --include='*/' --include='*.pdf' --exclude='*' \
+            cyberboswachters/build/slides/ cached-slide-pdfs/ 2>/dev/null || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

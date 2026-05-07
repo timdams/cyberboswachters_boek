@@ -1,0 +1,29 @@
+---
+title: "Introduction"
+subtitle: "Cyberboswachters"
+author: "Tim Dams"
+format:
+  revealjs:
+    lang: en
+---
+
+## Welcome
+
+This is a placeholder English slide deck.
+
+Translated chapters will replace this stub as they become available.
+
+---
+
+## What's coming
+
+- Cryptography
+- Wi-Fi security
+- Authentication
+- IoT security
+
+---
+
+## In the meantime
+
+The full handbook and Dutch slide decks are available on the [main site](../../).
