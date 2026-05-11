@@ -184,6 +184,34 @@ Maar: vatbaar voor **pass-the-hash** aanval!
 
 ---
 
+## Pass-the-hash aanval
+
+```{mermaid}
+%%{init: {"theme": "base", "sequence": {"useMaxWidth": true}} }%%
+sequenceDiagram
+    participant A as 😈 Aanvaller
+    participant V as 💻 Slachtoffer-PC
+    participant S as 🖥️ Server
+
+    Note over V,S: Normale login
+    V->>S: gebruikersnaam + hash(wachtwoord)
+    S-->>V: ✅ Toegang
+
+    Note over A,V: Compromittering
+    A->>V: Steelt hash uit geheugen / SAM
+    V-->>A: hash(wachtwoord)
+
+    Note over A,S: Pass-the-hash
+    A->>S: gebruikersnaam + gestolen hash
+    S-->>A: ✅ Toegang (zonder paswoord te kennen!)
+```
+
+::: {.callout-warning .fragment}
+De aanvaller hoeft het **originele wachtwoord nooit te kraken** — de hash zelf is genoeg om zich aan te melden.
+:::
+
+---
+
 ## Probleem met hashing
 
 ::: {.callout-tip}
@@ -238,7 +266,7 @@ Een **rainbow table** biedt een compromis tussen beide bottlenecks.
 | Bruteforce @ 1 miljoen/s | ~2,4 dagen |
 | Bruteforce @ 2,8 miljard/s (GPU, 2011) | **minuten** |
 | Opslag alle hashes | ~1,46 TB |
-| Alle Google-servers samen | ~10¹⁵ bytes (1 PB) |
+
 
 ::: {.callout-note .fragment}
 Puur bruteforcen *of* puur precomputen loont nauwelijks. Rainbow tables zoeken bewust een **compromis** tussen beide uitersten.
@@ -248,11 +276,12 @@ Puur bruteforcen *of* puur precomputen loont nauwelijks. Rainbow tables zoeken b
 
 ## Rainbow table: het concept
 
-* Een **gecomprimeerde** tabel van precomputed hashes
-* Niet alle hashes bewaren, maar toch een grote set bestrijken
-* Vergelijk: getallen 1 tot 101 bewaren als *"start=1, eind=101, stap=2"*
+![Zonder rainbow table: Ieder wachtwoord mapt naar exact één hash==omslachtig](crypto_assets/rainbow0.png){ width=70% }
 
-![Ieder wachtwoord mapt naar exact één hash.](crypto_assets/rainbow0.png){ width=70% }
+* Rainbow table: Een **gecomprimeerde** tabel van precomputed hashes
+* Niet alle hashes bewaren, maar toch een grote set bestrijken
+* Vergelijk: oneven getallen 1 tot 101 bewaren als *"start=1, eind=101, stap=2"*
+
 
 ---
 
@@ -290,11 +319,11 @@ Reductiefunctie: bv. som van ASCII-waarden → index in de wachtwoordenset.
 :::: {.columns}
 
 ::: {.column width="55%"}
-1. Start met de **gestolen hash**
-2. Pas reductie + hash toe tot je een **bekend eindpunt** vindt
-3. Neem het **startpunt** van die chain
-4. Herhaal hash + reductie tot je de gestolen hash bereikt
-5. Één stap terug = het **wachtwoord**!
+0. Start met de **gestolen hash** (waarvan we het wachtwoord willen weten)
+1. Pas reductie + hash toe tot je een **bekend eindpunt** vindt (om te weten in welke chain je zit)
+2. Neem het **startpunt** van die chain
+3. Herhaal hash + reductie tot je de gestolen hash bereikt
+4. Één stap terug = het **wachtwoord**!
 :::
 
 ::: {.column width="45%"}
@@ -305,11 +334,24 @@ Reductiefunctie: bv. som van ASCII-waarden → index in de wachtwoordenset.
 
 ---
 
-## Het volledige zoekproces in één beeld
+<!--## Het volledige zoekproces in één beeld
 
 ![Van gestolen hash `re3xes` → eindpunt `linux23` vinden → chain herberekenen vanuit `passwd` → wachtwoord `culture` ligt één stap vóór de gestolen hash. Bron: Wikimedia Commons, CC BY-SA 4.0.](crypto_assets/rainbow_search.svg){ width=95% }
 
+----->
+
 ---
+
+# Rainbow tables conclusie
+
+* Rainbow tables zijn een **efficiënte** manier om grote sets wachtwoorden te kraken
+  * Ze bieden een compromis tussen tijd en opslag
+  * Maar enkel bij dictiory-based wachtwoorden
+
+* Wat als we manier hadden om **identieke wachtwoorden** verschillende hashes te geven? → **Salting!**
+
+---
+
 
 ## Stap 3: Salting
 
@@ -331,6 +373,10 @@ Reductiefunctie: bv. som van ASCII-waarden → index in de wachtwoordenset.
 
 ::: {.callout-warning .fragment}
 Merk op: ook nu zijn we nog steeds **niet beschermd** tegen pass-the-hash aanvallen!
+:::
+
+::: {.callout-tip .fragment}
+Dit is identiek wat we de Initialisatie Vector (IV) noemen bij symmetrische encryptie: een random waarde die ervoor zorgt dat dezelfde plaintext verschillende ciphertexts oplevert (zie onder andere ECB block modus)
 :::
 
 ---
@@ -403,15 +449,15 @@ Petya en NotPetya werden getraceerd naar **Sandworm**, een Russische hackinggroe
 :::: {.columns}
 
 ::: {.column width="50%"}
-****
-
-Lost **pass-the-hash** op! Twee garanties:
-
-1. De salted hash wordt **NOOIT** verzonden
-2. **Geen replay** aanval mogelijk
 
 
-Server stuurt ook de **bewaarde salt** naar de client → client moet zelf de hash berekenen.
+Voegt **salting** toe aan CRAM. Twee eigenschappen:
+
+1. De gesalte hash wordt **NOOIT** verzonden
+2. Salt bemoeilijkt **offline brute-force / rainbow tables**
+
+
+Server stuurt de **bewaarde salt** naar de client → client moet telkens zelf de hash uit wachtwoord + salt afleiden.
 :::
 
 ::: {.column width="50%"}
@@ -419,6 +465,10 @@ Server stuurt ook de **bewaarde salt** naar de client → client moet zelf de ha
 :::
 
 ::::
+
+::: {.callout-warning .fragment}
+Deze vereenvoudigde SCRAM voorkomt **geen** pass-the-hash bij een gelekte databank — de échte SCRAM (RFC 5802) doet dat wel via `StoredKey = H(ClientKey)`: de server bewaart enkel de hash van de inlogsleutel, niet de sleutel zelf.
+:::
 
 ---
 
@@ -442,10 +492,8 @@ Vier **factoren** om identiteit te controleren:
 * **2FA** = minstens twee factoren vereist
 * Meer factoren = **veiliger**, maar ook **minder gebruiksvriendelijk**
 * Systemen passen MFA **dynamisch** aan:
+   * Je woont in België maar iemand logt in vanuit de Azoren met jouw wachtwoord? → Google vraagt **extra verificatie** (andere factor).
 
-::: {.callout-note .fragment}
-Je woont in België maar iemand logt in vanuit de Azoren met jouw wachtwoord? → Google vraagt **extra verificatie** (andere factor).
-:::
 
 ---
 
@@ -490,37 +538,48 @@ Veelgebruikte biometrieken:
 Biometrics dienen niet alleen als extra **authenticatie**factor, maar ook als **identificatie**: een aanvaller kan niet zomaar een andere identiteit claimen als een vingerafdrukscanner wordt gebruikt.
 :::
 
----
-
-## Biometrics: drie fasen
-
-```{mermaid}
-%%{init: {"theme": "neutral", "flowchart": {"useMaxWidth": true}} }%%
-flowchart LR
-    subgraph ENR["Enrollment (eenmalig)"]
-        E1[Kenmerk] --> E2[Feature<br/>points] --> E3[(DB)]
-    end
-    subgraph VER["Verification — 1-op-1"]
-        V1["Kenmerk +<br/>'ik ben X'"] --> V3{Match<br/>template X?}
-        V3 -->|Ja| V4[Toegang]
-        V3 -->|Nee| V5[Geweigerd]
-    end
-    subgraph IDE["Identification — 1-op-N"]
-        I1[Kenmerk] --> I3{Match met<br/>één van N?}
-        I3 -->|Match k| I4[User k]
-        I3 -->|Geen match| I5[Onbekend]
-    end
-    E3 -.-> V3
-    E3 -.-> I3
-```
-
 ::: {.callout-tip .fragment}
 Identification is véél zwaarder: vergelijking met **elke** template in de databank (grenscontrole, forensisch onderzoek).
 :::
 
 ---
 
+## Biometrics: drie fasen
+
+```{mermaid}
+%%{init: {"flowchart": {"useMaxWidth": true}} }%%
+flowchart LR
+    classDef box fill:#ffffff,stroke:#333,color:#000,stroke-width:1px
+    classDef db fill:#fff3cd,stroke:#333,color:#000,stroke-width:1px
+    classDef good fill:#d4edda,stroke:#333,color:#000,stroke-width:1px
+    classDef bad fill:#f8d7da,stroke:#333,color:#000,stroke-width:1px
+    classDef cluster color:#ffffff,stroke:#ffffff
+    subgraph ENR["① Enrollment (eenmalig)"]
+        E1[Kenmerk]:::box --> E2[Features]:::box --> E3[(DB)]:::db
+    end
+    subgraph VER["② Verification (1-op-1)"]
+        V1["+ 'ik ben X'"]:::box --> V3{Match X?}:::box
+        V3 -->|Ja| V4[Toegang]:::good
+        V3 -->|Nee| V5[Geweigerd]:::bad
+    end
+    subgraph IDE["③ Identification (1-op-N)"]
+        I1[Kenmerk]:::box --> I3{Match 1/N?}:::box
+        I3 -->|Match k| I4[User k]:::good
+        I3 -->|Geen| I5[Onbekend]:::bad
+    end
+    E3 -.-> V3
+    E3 -.-> I3
+    class ENR,VER,IDE cluster
+```
+
+
+
+---
+
 ## Biometrics: kost vs. accuraatheid
+
+Keuze hangt af van **use case** en **budget**: irisscan aan de grens ≠ gezichtsherkenning via webcam.
+
 
 ```{mermaid}
 %%{init: {"theme": "base"} }%%
@@ -541,9 +600,6 @@ quadrantChart
     "Stem": [0.30, 0.20]
 ```
 
-::: {.callout-note .fragment}
-Keuze hangt af van **use case** en **budget**: irisscan aan de grens ≠ gezichtsherkenning via webcam.
-:::
 
 ---
 
@@ -588,12 +644,22 @@ Nadeel: fysiek object kan je **verliezen** of het kan **stuk gaan**.
 
 ## Delegation vs Federation
 
+
+:::: {.columns}
+
+::: {.column width="70%"}
 | Concept | Beschrijving |
 |---|---|
 | **Delegation** | Verplicht inloggen met **één specifieke** third-party (bv. Facebook) |
 | **Federation** | Éénder welke compatibele third-party (bv. via **OpenID**) |
+:::
 
+::: {.column width="30%"}
 ![Typische SSO knoppen.](crypto_assets/ssoexamples.png){ width=30% }
+
+:::
+
+::::
 
 ::: {.callout-tip .fragment}
 **OAuth** (*open authorization*) is een gestandaardiseerde manier om aan authenticatie te doen.
@@ -602,6 +668,7 @@ Nadeel: fysiek object kan je **verliezen** of het kan **stuk gaan**.
 ::: {.callout-warning .fragment}
 Bij federatie: in hoeverre **vertrouw** je Google of Meta met jouw (login)data? → **privacy**!
 :::
+
 
 ---
 
@@ -618,6 +685,12 @@ Belangrijke termen:
 | **WebAuthn** | Web Authentication API |
 | **FIDO2** | Standaard die WebAuthn ondersteunt |
 | **U2F** | Universal 2nd Factor (oudere standaard) |
+
+
+
+---
+
+## Passkeys: het concept
 
 ::: {.callout-tip .fragment}
 Duidelijke uitleg over passkeys: [youtu.be/cEhc6vMFTh4](https://youtu.be/cEhc6vMFTh4)
@@ -657,22 +730,32 @@ Private sleutels worden opgeslagen op de authenticator. Verlies je die? → **ac
 
 ## Inloggen met een Passkey
 
+
+:::: {.columns}
+
+::: {.column width="50%"}
 Gebaseerd op **public key crypto**:
 
 1. Server stuurt een **challenge**
 2. Gebruiker encrypteert de challenge met zijn **private sleutel**
 3. Server decrypteert met de bewaarde **publieke sleutel**
 4. Lukt dit? → gebruiker is **geauthenticeerd**!
+:::
+
+::: {.column width="50%"}
 
 ![Het login proces met een passkey.](crypto_assets/passkey.png)
 
+:::
+
+::::
 ---
 
 ## Authenticator apps en TOTP
 
 * Apps zoals **Google Authenticator**, Microsoft Authenticator, Authy
 * Genereren om de **30 seconden** een nieuwe **zescijferige code**
-* Werken **zonder internetverbinding**!
+
 
 ::: {.callout-note .fragment}
 Hoe kan een app op jouw telefoon dezelfde code genereren als de server verwacht? → **TOTP** (*Time-based One-Time Password*)
@@ -715,12 +798,6 @@ graph LR
     style F fill:#44aa44,stroke:#333,color:#fff
 ```
 
-## TOTP: waarom is het veilig?
-
-::: {.callout-tip .fragment}
-Servers accepteren meestal ook de code van het **vorige en volgende** tijdsblok (~90 sec marge) om klokverschillen op te vangen.
-:::
-
 ---
 
 ## TOTP: waarom is het veilig?
@@ -734,6 +811,11 @@ Servers accepteren meestal ook de code van het **vorige en volgende** tijdsblok 
 ::: {.callout-warning .fragment}
 TOTP is **niet onfeilbaar**: een real-time phishing aanval (proxy tussen jou en de echte site) kan wachtwoord + TOTP-code tegelijk onderscheppen. **Passkeys** zijn hiertegen beter beschermd (domeingebonden).
 :::
+
+::: {.callout-tip .fragment}
+Servers accepteren meestal ook de code van het **vorige en volgende** tijdsblok (~90 sec marge) om klokverschillen op te vangen.
+:::
+
 
 ---
 
@@ -755,7 +837,7 @@ Alles in dit hoofdstuk valt terug te brengen tot:
 
 * **Authenticatie** = bewijzen wie je bent; **autorisatie** = wat mag je
 * Wachtwoorden: nooit plaintext → **hashing + salting** als minimum
-* **CRAM/SCRAM** beschermen tegen pass-the-hash aanvallen
+* **CRAM/SCRAM** versturen het wachtwoord nooit over de draad; de échte SCRAM beschermt ook tegen pass-the-hash bij een DB-lek
 * **MFA** combineert meerdere factoren (weten, zijn, hebben, waar/wanneer)
 * **TOTP** (authenticator apps): gedeelde sleutel + tijd → eenmalige codes
 * **Passkeys** (WebAuthn) = de toekomst: asymmetrische crypto zonder wachtwoorden

@@ -55,6 +55,8 @@ Door een wachtwoord te hashen kunnen we de wachtwoorden al iets veiliger bewaren
 
 We versturen dus niet meer het wachtwoord over het netwerk, maar we zijn nu wel vatbaar voor een **pass-the-hash** aanval. Het volstaat om een geldige combinatie van gebruikersnaam en hash te capteren en deze vervolgens te gebruiken om ergens in te loggen. De aanvaller heeft hierbij geen kennis nodig van het originele wachtwoord.
 
+
+
 ::: {.callout-tip}
 Door een secure hash van een wachtwoord te genereren creëren we een stuk tekst dat niet terug naar het originele wachtwoord kan omgezet worden. In theorie zal ieder wachtwoord een andere hash creëren. Uiteraard kunnen er toch twee zaken zich voordoen:
 
@@ -168,14 +170,20 @@ Het mechanisme van een CRAM werkt als volgt:
 
 ![CRAM flow.](assets/cramflow.png){}
 
-Om het probleem van *pass-the-hash* op te lossen kan je gebruiken maken van een **S**CRAM, een **Salted Challenge-Response Authentication Mechanism**. We bespreken een vereenvoudigde versie (een echte SCRAM voorziet ook *mutual authentication*) waarbij we hoofdzakelijk willen uitleggen waarom een SCRAM systeem veiliger is dan een klassieke salted wachtwoord login van daarnet. Met dit systeem zorgen we ervoor dat :
+**SCRAM (Salted Challenge-Response Authentication Mechanism)** bouwt voort op CRAM met twee verbeteringen. We bespreken een vereenvoudigde versie die de kern toont; de echte SCRAM (RFC 5802) voorziet bovendien *mutual authentication* en gaat — zoals je hieronder zal zien — nog een belangrijke stap verder.
 
-1. De salted hash van de gebruiker NOOIT moet verzonden worden.
-2. Geen replay aanval m.b.v. pass-the-hash mogelijk is.
-
-Zoals je in de afbeelding kunt zien zal in dit systeem de server ook de bewaarde salt naar de client sturen, zodat deze geen gebruik kan maken van een bewaarde password hash die hij niet zelf heeft gemaakt.
+1. De server bewaart een *gesalte* hash in plaats van een gewone hash, en stuurt de salt mee bij elke loginpoging. Daardoor moet de client telkens opnieuw uit wachtwoord + salt zijn hash afleiden — er is geen vaste hash die op het clienttoestel hoeft te staan.
+2. De gesalte hash zelf wordt nooit over het netwerk verzonden; enkel `H(pw_hash + challenge)` gaat over de draad, en omdat de challenge per sessie verandert kan een afgeluisterde response niet hergebruikt worden.
 
 ![SCRAM.](assets/scramflow.png){}
+
+::: {.callout-warning}
+Let op: ook deze vereenvoudigde SCRAM beschermt **niet** tegen pass-the-hash wanneer een aanvaller de gesalte hash uit de gelekte databank steelt. De aanvaller kan dan immers gewoon `H(gestolen_hash + challenge)` berekenen en zich aanmelden. De salting maakt wél offline brute-force en rainbow-tables een stuk duurder. De échte SCRAM lost de pass-the-hash kwestie wél op (zie callout hieronder).
+:::
+
+::: {.callout-tip title="Hoe de échte SCRAM pass-the-hash wél tegenhoudt"}
+RFC 5802 gebruikt een slimme asymmetrische constructie. Uit het gesalte wachtwoord leidt de client twee sleutels af: een `ClientKey` (waarmee de client zich bewijst) en een `StoredKey = H(ClientKey)` (wat de server bewaart). De server bewaart dus **niet** de sleutel waarmee je inlogt, maar een eenrichtingshash daarvan. Een aanvaller die `StoredKey` uit een gelekte databank steelt, kan er `ClientKey` niet uit afleiden — en zonder `ClientKey` is inloggen onmogelijk. Dát is wat pass-the-hash bij de échte SCRAM onmogelijk maakt.
+:::
 
 
 
