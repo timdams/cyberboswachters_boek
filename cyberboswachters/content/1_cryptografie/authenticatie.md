@@ -116,9 +116,9 @@ Wanneer de aanvaller nu van een gestolen hash terug het wachtwoord te pakken wil
 3. De aanvaller neemt vervolgens het startpunt van deze lijst (een wachtwoord) en past daarop opnieuw de combinatie van hashing en reductie toe (als het ware opnieuw een rainbow table genereren). Uiteindelijk zal hij weer op de gestolen hash uitkomen.
 4. Als hij dan één stapje terug kijkt dan zal hij daar het wachtwoord zien die bij deze gestolen hash hoort.
 
-![Ieder wachtwoord mapt naar exact één hash.](assets/rainbow3.png){ width=70% }
+![Hoe een gestolen hash wordt opgelost.](assets/rainbow3.png){ width=70% }
 
-![Het volledige zoekproces: begin bij de gestolen hash (`re3xes`), reduceer en hash tot je een bekend eindpunt (`linux23`) bereikt, herbereken die chain vanuit het startpunt (`passwd`), en lees één stap vóór de gestolen hash het bijhorende wachtwoord (`culture`). Bron: Wikimedia Commons, [Simple_rainbow_search.svg](https://commons.wikimedia.org/wiki/File:Simple_rainbow_search.svg), CC BY-SA 4.0.](assets/rainbow_search.svg){ width=85% }
+
 
 
 ### Salting
