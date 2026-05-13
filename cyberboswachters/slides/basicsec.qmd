@@ -374,6 +374,37 @@ De "veilige burcht" werkt niet meer als je iedereen met hun eigen sleutel naar b
 
 ---
 
+## `DROP DATABASE;` &mdash; de gebroeders Akhter (2025)
+
+:::: {.columns}
+
+::: {.column width="60%"}
+* Tweelingbroers, IT-contractors voor een D.C.-bedrijf met **45+ federale agentschappen** als klant
+* **18 feb 2025**: ontslagen tijdens online meeting — strafblad ontdekt
+* Diezelfde dag nog, in enkele uren:
+  * databases *write-protected* &rarr; collega's konden niets redden
+  * **96 federale databases gedropt** (FOIA, DHS&hellip;)
+  * **AI-assistent** gevraagd hoe systeemlogs te wissen
+:::
+
+::: {.column width="40%" .fragment}
+::: {.callout-warning}
+**Recidive**: in 2016 al veroordeeld voor inbraak op het US State Department &mdash; en daarna gewoon **opnieuw aangeworven** als overheidscontractor. Geen background check.
+:::
+:::
+
+::::
+
+::: {.callout-important .fragment}
+Muneeb: **39 maanden cel** (schuldbekentenis). Sohaib: schuldig bevonden door jury op 8 mei 2026 &mdash; riskeert tot **21 jaar** (strafmeting 9 sept 2026).
+:::
+
+::: aside
+Bron: Ars Technica, *Drop database: what not to do after losing an IT job* (mei 2026).
+:::
+
+---
+
 ## Cybercriminelen
 
 * **Geld** is de enige motivatie

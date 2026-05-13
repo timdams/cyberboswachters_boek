@@ -155,6 +155,25 @@ Low Orbit Ion Cannon is zo'n typische scriptkiddie tool: eenvoudig in gebruik, m
 
 Werknemers die niet tevreden zijn over hun baas of werkomgeving, of net zijn ontslagen, zijn een veelvoorkomend probleem (volgens sommige experts zelfs hét belangrijkste cybersecurity probleem). Ze zitten vaak letterlijk "aan de binnenkant" van de beveiligingssystemen en kunnen daardoor ook veel meer schade aanrichten als ze dat willen. Ontevreden werknemers die wraak nemen op hun werkgever is een veel voorkomend probleem. Zeker als die werknemer op de koop toe bijvoorbeeld de netwerk-administrator was. Er zijn verhalen van ex-admins die voor hun vertrek de IT-systemen van het bedrijf saboteerden en, als klap op de vuurpijl, dan ook nog eens losgeld eisten om de systemen terug up-and-running te brengen. Het hoeft natuurlijk niet zo spectaculair zijn. Of wat te denken van werknemers die waardevolle documenten stelen, doorverkopen of aanpassen zonder dat het bedrijf er erg op heeft.
 
+::: {.callout-warning}
+**`DROP DATABASE;` &mdash; de gebroeders Akhter (2025)**: een textbook voorbeeld van een *insider threat* dat alle alarmbellen had moeten doen rinkelen. De Amerikaanse tweelingbroers **Sohaib en Muneeb Akhter** werkten als IT-contractors voor een tech-bedrijf in Washington D.C. dat software leverde aan **meer dan 45 federale agentschappen** &mdash; van het Department of Homeland Security tot het Freedom of Information Act-verwerkingssysteem.
+
+Op **18 februari 2025** werden ze tijdens een online vergadering ontslagen, nadat het bedrijf ontdekt had dat Sohaib een eerdere strafrechtelijke veroordeling verzwegen had. *Onmiddellijk* daarna gebruikten de broers hun nog actieve credentials om in te loggen en begonnen ze aan een digitale sloopactie van enkele uren:
+
+* eerst zetten ze databases op *write-protect*, zodat collega's de schade niet meer konden tegenhouden;
+* vervolgens **droppen ze 96 federale databases**
+* op het einde vroegen ze aan een **AI-assistent** hoe ze de systeemlogs konden wissen om hun sporen uit te poetsen.
+
+Het pijnlijkste detail? Het was **niet hun eerste keer**. In **2016** waren de broers al veroordeeld voor het ongeoorloofd binnendringen van systemen van het **Amerikaanse State Department** en het stelen van persoonsgegevens van collega's. Na het uitzitten van hun straf werden ze gewoon **opnieuw aangenomen** als overheidscontractor &mdash; het bedrijf in kwestie had blijkbaar geen background check gedaan.
+
+Muneeb pleitte schuldig en kreeg **39 maanden cel**. Sohaib koos voor een juryproces, werd op **8 mei 2026** schuldig bevonden en riskeert tot **21 jaar gevangenisstraf** (strafmeting voorzien op 9 september 2026).
+
+> *Drie pijnlijke lessen*: (1) trek credentials **onmiddellijk** in bij ontslag &mdash; niet "morgen, na de papierwinkel"; (2) doe een echte **background check** vóór je iemand toegang geeft tot kritieke systemen; (3) één rancuneuze admin doet in een paar uur meer schade dan een externe aanvaller in een jaar.
+
+[Bron: Ars Technica, *Drop database: what not to do after losing an IT job* (mei 2026)](https://arstechnica.com/tech-policy/2026/05/drop-database-what-not-to-do-after-losing-an-it-job/).
+
+:::
+
 Werknemers zijn ook vaak onbedoeld de oorzaak van veel problemen: ze gaan misschien slordig om met de manier waarop ze hun wachtwoord bewaren, waardoor anderen via hun account kunnen inbreken. Ze laten mensen binnen die gekleed zijn als "collega's" zonder te vragen of ze wel werknemer van het bedrijf zijn. Of ze installeren bijvoorbeeld een extra draadloos access point om een betere wifi-dekking op de bureau te hebben, waardoor dit toestel plots een veel minder goed beveiligd doelwit is dat hackers kunnen misbruiken.  
 
 ::: {.callout-tip}
