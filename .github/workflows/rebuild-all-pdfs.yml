@@ -1,0 +1,67 @@
+name: Rebuild All Slide PDFs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Quarto book
+        run: quarto render cyberboswachters/
+
+      - name: Render slides
+        run: quarto render cyberboswachters/slides/
+
+      - name: Convert all slides to PDF
+        run: |
+          npm install -g decktape
+          while IFS= read -r f; do
+            rel=${f#cyberboswachters/build/slides/}
+            name=${rel%.html}
+            base=$(basename "$name")
+            [ "$base" = "index" ] && continue
+            echo "Converting $name to PDF..."
+            decktape reveal "file://$(pwd)/cyberboswachters/build/slides/${name}.html" \
+              "cyberboswachters/build/slides/${name}.pdf" \
+              --size 1920x1080 --chrome-arg=--no-sandbox || true
+          done < <(find cyberboswachters/build/slides -type f -name '*.html')
+
+      - name: Refresh slide PDF cache
+        uses: actions/cache@v4
+        with:
+          path: cached-slide-pdfs
+          key: slide-pdfs-${{ github.sha }}
+
+      - name: Populate cache directory
+        run: |
+          mkdir -p cached-slide-pdfs
+          rsync -a --include='*/' --include='*.pdf' --exclude='*' \
+            cyberboswachters/build/slides/ cached-slide-pdfs/ 2>/dev/null || true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: cyberboswachters/build/
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

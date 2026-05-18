@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -41,16 +43,30 @@ jobs:
             rsync -a cached-slide-pdfs/ cyberboswachters/build/slides/ 2>/dev/null || true
           fi
 
+          # Determine diff base: prefer the pre-push SHA, fall back to HEAD~1
+          BASE="${{ github.event.before }}"
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BASE" 2>/dev/null; then
+            BASE=$(git rev-parse HEAD~1 2>/dev/null || echo "")
+          fi
+          echo "Diff base: ${BASE:-<none, rebuilding all>}"
+
           # Check if global slide config changed → rebuild all PDFs
           REBUILD_ALL=false
-          if git diff --name-only HEAD~1 HEAD 2>/dev/null | grep -qE 'cyberboswachters/slides/(_quarto\.yml|_extensions/)'; then
+          if [ -z "$BASE" ]; then
+            REBUILD_ALL=true
+          elif git diff --name-only "$BASE" HEAD | grep -qE 'cyberboswachters/slides/(_quarto\.yml|_extensions/)'; then
             REBUILD_ALL=true
           fi
 
           # Find which specific .qmd slide files changed (relative path, no extension)
-          CHANGED=$(git diff --name-only HEAD~1 HEAD 2>/dev/null -- 'cyberboswachters/slides/' \
-            | grep '\.qmd$' \
-            | sed -E 's|^cyberboswachters/slides/||; s|\.qmd$||')
+          CHANGED=""
+          if [ -n "$BASE" ]; then
+            CHANGED=$(git diff --name-only "$BASE" HEAD -- 'cyberboswachters/slides/' \
+              | grep '\.qmd$' \
+              | sed -E 's|^cyberboswachters/slides/||; s|\.qmd$||')
+          fi
+          echo "Changed slides:"
+          echo "$CHANGED"
 
           # Collect slides that need PDF (re)generation (recursive, supports en/ etc.)
           TO_CONVERT=""
