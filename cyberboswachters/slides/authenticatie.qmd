@@ -175,12 +175,36 @@ Zelfs de grootste techbedrijven vallen in deze klassieke val. [Bron: The Verge (
 * **Hash** wordt verstuurd (niet het wachtwoord zelf)
 * Server vergelijkt ontvangen hash met hash in database
 
-::: {.fragment}
-Maar: vatbaar voor **pass-the-hash** aanval!
+---
+
+## Hashing flow
+
+```{mermaid}
+%%{init: {"theme": "base", "sequence": {"useMaxWidth": true}} }%%
+sequenceDiagram
+    participant U as 👤 Gebruiker
+    participant C as 💻 Client
+    participant S as 🖥️ Server
+    participant DB as 🗄️ Database
+
+    U->>C: typt wachtwoord
+    C->>C: hash(wachtwoord)
+    C->>S: gebruikersnaam + hash
+    S->>DB: zoek opgeslagen hash
+    DB-->>S: opgeslagen hash
+    S->>S: vergelijk hashes
+    S-->>C: ✅ Toegang (indien gelijk)
+```
+
+---
+
+## Paswoord hashing gevaar
+
+Vatbaar voor **pass-the-hash** aanval!
 
 * Aanvaller hoeft enkel een geldige **gebruikersnaam + hash** te capteren
 * Geen kennis van het originele wachtwoord nodig
-:::
+
 
 ---
 
@@ -332,13 +356,6 @@ Reductiefunctie: bv. som van ASCII-waarden → index in de wachtwoordenset.
 
 ::::
 
----
-
-<!--## Het volledige zoekproces in één beeld
-
-![Van gestolen hash `re3xes` → eindpunt `linux23` vinden → chain herberekenen vanuit `passwd` → wachtwoord `culture` ligt één stap vóór de gestolen hash. Bron: Wikimedia Commons, CC BY-SA 4.0.](crypto_assets/rainbow_search.svg){ width=95% }
-
------>
 
 ---
 
@@ -346,7 +363,7 @@ Reductiefunctie: bv. som van ASCII-waarden → index in de wachtwoordenset.
 
 * Rainbow tables zijn een **efficiënte** manier om grote sets wachtwoorden te kraken
   * Ze bieden een compromis tussen tijd en opslag
-  * Maar enkel bij dictiory-based wachtwoorden
+  * Maar enkel bij dictionary-based wachtwoorden
 
 * Wat als we manier hadden om **identieke wachtwoorden** verschillende hashes te geven? → **Salting!**
 
@@ -431,7 +448,7 @@ Petya en NotPetya werden getraceerd naar **Sandworm**, een Russische hackinggroe
 
 ---
 
-## CRAM: de flow
+## CRAM:  flow bij een password login
 
 1. Gebruiker stuurt **username** → "ik wil inloggen"
 2. Server genereert **random challenge** → stuurt terug
@@ -466,7 +483,11 @@ Server stuurt de **bewaarde salt** naar de client → client moet telkens zelf d
 
 ::::
 
-::: {.callout-warning .fragment}
+---
+
+## SCRAM
+
+::: {.callout-warning }
 Deze vereenvoudigde SCRAM voorkomt **geen** pass-the-hash bij een gelekte databank — de échte SCRAM (RFC 5802) doet dat wel via `StoredKey = H(ClientKey)`: de server bewaart enkel de hash van de inlogsleutel, niet de sleutel zelf.
 :::
 
@@ -680,21 +701,17 @@ Bij federatie: in hoeverre **vertrouw** je Google of Meta met jouw (login)data? 
 Belangrijke termen:
 
 | Term | Beschrijving |
-|---|---|
+|---|-------|
 | **FIDO Alliance** | Organisatie achter de standaarden (*Fast IDentity Online*) |
 | **WebAuthn** | Web Authentication API |
 | **FIDO2** | Standaard die WebAuthn ondersteunt |
 | **U2F** | Universal 2nd Factor (oudere standaard) |
 
 
-
----
-
-## Passkeys: het concept
-
 ::: {.callout-tip .fragment}
 Duidelijke uitleg over passkeys: [youtu.be/cEhc6vMFTh4](https://youtu.be/cEhc6vMFTh4)
 :::
+
 
 ---
 
