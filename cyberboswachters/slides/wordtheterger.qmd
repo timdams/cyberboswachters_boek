@@ -309,6 +309,20 @@ Het **Tor**-netwerk met *onion routing* kan een stevige extra privacylaag bieden
 
 ---
 
+## Data leeft langer dan jij denkt {.smaller}
+
+**Het Amsterdams bevolkingsregister** — een historische waarschuwing:
+
+* Vóór WO II: Nederland had een buitengewoon nauwkeurig **bevolkingsregister** (adres, gezin, **godsdienst**) — te goeder trouw ingevuld voor gewone administratie.
+* Onder nazi-bezetting werd net dát register hét instrument om Joodse burgers op te sporen en te deporteren.
+* **27 maart 1943**: een verzetsgroep (o.l.v. **Van der Veen** & **Arondéus**) pleegt een aanslag op het register om de data te vernietigen → slechts ~15% verloren, **12 deelnemers gefusilleerd**.
+
+::: {.callout-important .fragment}
+Data die je vandaag deelt, blíjft bestaan. Wie er later toegang toe krijgt — en met welke bedoelingen — heb je niet meer in de hand.
+:::
+
+---
+
 ## 2014: The Fappening — de cloud als doelwit
 
 * Hackers stalen privéfoto's van ~100 celebrities van hun **Apple iCloud** accounts

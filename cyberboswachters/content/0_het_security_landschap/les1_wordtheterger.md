@@ -124,6 +124,16 @@ PRISM was slechts één onthulling. De Snowden-documenten legden een hele reeks 
 Een interessant debat dat altijd opduikt bij deze problematiek is de "Ik heb toch niets te verbergen"-houding. In het kleine maar fijne boekje "Je hebt wél iets te verbergen" van onderzoeksjournalisten Maurits Martijn en Dimitri Tokmetzis (ISBN 9789082821611) wordt onherroepelijk brandhout gemaakt met deze stelling. Finaal zijn we volledig afhankelijk van de online diensten die we gebruiken en wat ze met onze data nu én belangrijker, in de toekomst zullen doen. Privé-informatie over jou die nu ogenschijnlijk ongevaarlijk lijkt, kan dat potentieel in de toekomst wel zijn wanneer normen, waarden of wetten veranderen. 
 :::
 
+::: {.callout-note title="Een historische waarschuwing: het Amsterdams bevolkingsregister"}
+Dat informatie die vandaag onschuldig lijkt morgen dodelijk kan zijn, is helaas geen theoretische bedreiging. Nederland stond voor de Tweede Wereldoorlog bekend om zijn buitengewoon nauwkeurige en goed georganiseerde **bevolkingsregister**. Burgers gaven hun gegevens — adres, gezinssamenstelling én ook hun godsdienst — te goeder trouw door, puur voor alledaagse administratie. Niemand kon vermoeden waartoe die keurig bijgehouden kaartenbakken ooit zouden dienen.
+
+Toen nazi-Duitsland Nederland bezette, werd net dat voorbeeldige register het ideale instrument om Joodse burgers op te sporen, te deporteren en te vermoorden. Vervalste identiteitspapieren van het verzet konden bovendien eenvoudig ontmaskerd worden door ze te vergelijken met de originele registratiegegevens.
+
+Het verzet besefte de dodelijke waarde van die data. In de nacht van **27 maart 1943** pleegde een verzetsgroep een aanslag op het bevolkingsregister in Amsterdam, in een wanhopige poging de gegevens van zo'n 70.000 Amsterdamse Joden te vernietigen. De aanslag slaagde slechts gedeeltelijk: ongeveer 15% van de gegevens ging verloren. Twaalf deelnemers werden opgepakt en op **2 juli 1943** gefusilleerd..
+
+De les voor de (toekomstige) cyberboswachter is universeel en tijdloos: data die je vandaag verzamelt of deelt, blíjft bestaan. Wie er ooit toegang toe krijgt — een toekomstige werkgever, een verzekeraar, of in het ergste geval een kwaadaardig regime — en met welke bedoelingen, heb je op het moment van registreren niet meer in de hand.
+:::
+
 ### 2014: Hoe veilig is *the cloud* ?
 
 In 2014 vond er een controverse plaats die vooral de puberende tiener zich zal herinneren: *"The fappening"*. Deze naam laat weinig aan de verbeelding over en dekt de lading goed. In het jaar dat Oekraïne Russische legers zag binnenrollen om de Krim (terug) in te palmen, verschenen er duizenden privéfoto's van een honderdtal *celebrities* op het Internet. Deze,vaak weinig verhullende, privéfoto's hadden kwaadwillige hackers van de Apple iCloud accounts van de slachtoffers gestolen en vervolgens gepubliceerd via Reddit, 4chan, etc. De foto's verspreidden zich als een lopend vuurtje en de slachtoffers konden enkel toezien hoe hun in de privésfeer opgenomen beelden door miljoenen mensen werden gedownload. 
