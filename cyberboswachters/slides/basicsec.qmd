@@ -686,6 +686,24 @@ Alice en Bob zijn eender welk start- en eindpunt van informatie: ook CPU → RAM
 
 ---
 
+## Aanvalsvectoren: de grotere kaart
+
+*Hoe zet een aanvaller een eerste voet binnen?* &mdash; *initial access vectors*:
+
+::: {.incremental}
+* **Social engineering** &rarr; phishing, vishing, smishing, &hellip; *(deze sectie)*
+* **Zero-day exploit** &rarr; eerder bij *Zero days en patching*
+* **Insider threat** &rarr; eerder bij *Werknemers*
+* **Supply chain attack** &rarr; hoofdstuk 1 (SolarWinds, NotPetya, CCleaner, Hezbollah-pagers&hellip;)
+* **Drive-by download & watering hole** &rarr; straks bij *Software-based aanvallen*
+:::
+
+::: {.callout-tip .fragment}
+Vraag jezelf bij elke aanval die je analyseert eerst af: *via welke vector* is de stroper binnen geraakt?
+:::
+
+---
+
 ## Social Engineering: het hacken van mensen
 
 * Mensen zijn de **zwakste schakel** in elk securitymodel
@@ -942,6 +960,22 @@ TED-talk: [*Fighting viruses, defending the net*](https://www.youtube.com/watch?
 
 ::: {.callout-warning .fragment}
 Gevaarlijke wormen combineren **meerdere paden tegelijk** &mdash; blokkeer één route en de andere blijven actief.
+:::
+
+---
+
+## Drive-by download & watering hole
+
+::: {.incremental}
+* **Drive-by download**: een gecompromitteerde webpagina bezoeken volstaat &mdash; *geen klik nodig*. Misbruik van browser-, plugin- of PDF-kwetsbaarheid
+* **Watering hole**: aanvaller infecteert een site die zijn doelwit dagelijks raadpleegt (bv. vak-nieuwssite van een defensieleverancier) &mdash; *gerichte* variant
+* **2013**: bezoekers van een denktank-site &rarr; Department of Labor, NIST en defensiecontractors besmet *zonder één klik op een e-mail*
+:::
+
+::: {.callout-tip .fragment}
+Nauw verwant: **malvertising** &mdash; kwaadaardige advertentiebanners via reguliere ad-netwerken op anders gerespecteerde websites.
+
+**Verdediging**: patch je browser én gebruik een ad-blocker.
 :::
 
 ---

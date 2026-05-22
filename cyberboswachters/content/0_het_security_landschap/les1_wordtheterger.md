@@ -476,6 +476,18 @@ Andere voorbeelden van AI-gedreven incidenten die we recent zagen opduiken:
 Deze trend zagen we eerder al in eigen land: de **"*Ja, en soms met wat koppigheid*"-deepfake** van een Belgische politicus (VTM/VRT-productie, ter bewustmaking) toonde hoe eenvoudig het is om vertrouwde publieke figuren iets te laten "zeggen" dat ze nooit gezegd hebben.
 :::
 
+### 2026: Mini Shai-Hulud &mdash; een AI-gegenereerd wormpje door npm
+
+Op **20 mei 2026** publiceerde Microsoft de [analyse](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/) van een supply chain-aanval die de open-source wereld lelijk wakker schudde. Slachtoffer: **AntV**, de organisatie achter populaire JavaScript-grafiekenbibliotheken (G2, G6) die in miljoenen dashboards en applicaties verwerkt zitten. Een aanvaller wist een maintainer-account te compromitteren en publiceerde vergiftigde versies van **alle pakketten onder de @antv-scope**. Via de dependency-keten bereikte de payload ook downstream-bibliotheken zoals *echarts-for-react*, dat alleen al **meer dan 1 miljoen downloads per week** noteert. GitHub haalde uiteindelijk **640 kwaadaardige pakketten** offline en invalideerde **61.274 npm-tokens** met schrijfrechten.
+
+Zodra een ontwikkelaar of CI/CD-pipeline zo'n vergiftigde versie installeerde, draaide via een **preinstall-hook** een 499 KB grote, zwaar geobfusceerde JavaScript-payload. Die was *speciaal gemaakt* om binnen **GitHub Actions** te draaien (de runner werd expliciet gedetecteerd; op een gewone laptop deed de malware niets) en plunderde daar zo veel mogelijk geheimen: **GitHub-tokens, AWS-credentials, HashiCorp Vault-tokens, Kubernetes service accounts, 1Password-gegevens en npm access tokens**. Met de gestolen npm-tokens kon de malware zich vervolgens *als een worm* zelf voortplanten: nieuwe pakketten publiceren in naam van het slachtoffer, mét vergiftigde payload. Onder gestolen accounts ontstonden zo **meer dan 2.200 nieuwe repositories**.
+
+Twee details maken deze aanval bijzonder modern. Ten eerste **forgéért** de payload **SLSA-attestations** via Sigstore om er legitiem uit te zien voor de gangbare supply-chain verificatietools &mdash; de toolchain die ons net tegen dit soort aanvallen zou moeten beschermen, wordt zélf gebruikt om de aanval te camoufleren. Ten tweede classificeerde Microsoft de payload als `Trojan:AIGen/NPMStealer`: het *AIGen*-prefix is het label dat Defender geeft aan code waarvan de machine-learning detectie met hoge zekerheid denkt dat ze **door een LLM is gegenereerd**. Of de aanvaller letterlijk aan ChatGPT vroeg om de wormcode te schrijven valt niet hard te bewijzen, maar het is een teken aan de wand: 2026 is het jaar waarin AI-gegenereerde malware *gewoon* lijkt te worden.
+
+::: {.callout-tip}
+De naam **Shai-Hulud** is een knipoog naar de zandwormen uit Frank Herbert's *Dune*. Het verwijst naar een eerder ontdekte npm-worm met dezelfde *self-propagating via gestolen npm-tokens*-techniek; *Mini Shai-Hulud* is een gerichter, agressiever broertje &mdash; minder breed, maar veel doelgerichter op de CI/CD-secrets van moderne cloud-native ontwikkelteams.
+:::
+
 ## AI als verdediger: de andere kant van de medaille
 
 Het verhaal is niet louter doemdenken: AI wordt óók steeds vaker **aan de kant van de verdediging** ingezet. Een moderne cybersecurity-afdeling zonder AI is quasi ondenkbaar geworden.

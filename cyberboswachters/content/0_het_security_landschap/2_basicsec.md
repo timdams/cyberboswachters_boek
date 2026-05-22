@@ -332,6 +332,18 @@ Soms zal je digitale stropers horen spreken over "Ik heb dat systeem gepwnd", ui
 
 ## Social Engineering
 
+::: {.callout-note title="De grotere kaart: aanvalsvectoren"}
+Social engineering is één manier waarop een aanvaller een eerste voet binnen jouw systeem krijgt &mdash; in vakjargon een *initial access vector*. In dit boek komen de belangrijkste vectoren aan bod, maar verspreid over meerdere secties en hoofdstukken:
+
+* **Social engineering** (phishing, vishing, smishing, &hellip;) &mdash; deze sectie.
+* **Zero-day exploit** &mdash; zie *Een ongelijke strijd* &rarr; *Zero days en patching* eerder in dit hoofdstuk.
+* **Insider threat** &mdash; zie *Wie zijn de stropers?* &rarr; *Werknemers* eerder in dit hoofdstuk.
+* **Supply chain attack** &mdash; uitgebreid behandeld in [hoofdstuk 1](les1_wordtheterger.qmd) (SolarWinds, NotPetya, CCleaner, Hezbollah-pagers, Mini Shai-Hulud&hellip;).
+* **Drive-by download & watering hole** &mdash; verderop in dit hoofdstuk onder *Soorten aanvallen &rarr; Software-based aanvallen*.
+
+Het is geen exhaustieve lijst, maar wel een handig mentaal kader: vraag jezelf bij elke aanval die je analyseert eerst af *via welke vector* de stroper binnen is geraakt.
+:::
+
 In het eerste hoofdstuk kwam de term "Social engineering" al enkele keren voor. We zagen ook bij de McCumber kubus dat we niet enkel op technologie mogen rekenen wanneer we onze verdediging opzetten, maar dat we ook een heel belangrijke schakel moeten trainen en opvolgen: de mensen. Mensen zijn meestal de zwakste schakel in ons securitymodel en dus daarom ook een interessante "aanvalsvector" voor digitale stropers. 
 
 Social engineering wordt ook wel eens *het hacken van mensen* genoemd en is een erg laagdrempelige, maar oh zo effectieve aanvalstechniek die vaak over het hoofd wordt gezien. Bij social engineering zal de aanvaller *menselijke* interacties gebruiken om zijn slachtoffers onbewust zaken te laten doen of informatie te geven dat niet zou mogen. Hierbij misbruikt de aanvaller onze aangeboren gewoonte om mensen te vertrouwen in plaats van te wantrouwen. We gaan meestal uit *van het goede van onze medemens* en zullen vaak meerdere goede redenen kunnen verzinnen waarom iemand iets van jou nodig heeft. Andere menselijke trekken die we kunnen gebruiken als social engineer zijn onder andere de nieuwsgierigheid van mensen, hun hebzucht, onwetendheid of angst. 
@@ -451,6 +463,16 @@ De werkelijk gevaarlijke wormen combineren vaak **meerdere paden tegelijk** &mda
 ![Worm propagation model. Bron: Network Eye: End-to-End Computer Security Visualization - Scientific Figure on ResearchGate.](assets/wormprop.png){ width=65% }
 
 Bovenstaande afbeelding toont het *worm propagation model*. Dit model toont hoe snel een worm zich kan verspreiden en hoe belangrijk het is om een nieuwe worm zo snel mogelijk te detecteren, in de hoop voldoende systemen vervolgens te beschermen tegen besmettingen ervan. Naarmate een worm meer systemen kan besmetten, die op hun beurt dan ook als uitvalsbasis van de worm dienen, merk je een exponentiële groei van besmette systemen. Deze groei bereikt een plateau wanneer quasi alle systemen besmet zijn die konden besmet worden. 
+
+#### Drive-by download en watering hole
+
+Niet alle malware vereist een nietsvermoedende klik op een bijlage of phishing-link. Bij een **drive-by download** word je gewoon door het bezoeken van een gecompromitteerde webpagina besmet &mdash; *zonder iets te downloaden of aan te klikken*. De pagina misbruikt een kwetsbaarheid in je browser, in een plugin (Flash en Java waren in hun hoogdagen de klassiekers) of in een PDF-viewer, en installeert de payload op de achtergrond. De term "drive-by" verwijst naar de Amerikaanse maffia: net zoals iemand vanuit een rijdende auto schiet zonder uit te stappen, hoef jij ook niets actief te doen om geraakt te worden.
+
+De **watering hole**-aanval is een gerichte variant op datzelfde principe. In de savanne wachten roofdieren bij het drinkpoeltje tot prooien er komen drinken, en dat is exact wat een aanvaller hier nabootst: hij infecteert een website waarvan hij weet dat zijn specifieke doelwit ze regelmatig bezoekt &mdash; bijvoorbeeld een vak-nieuwssite die engineers van een defensieleverancier dagelijks raadplegen. In **2013** infecteerde een staatsgesponsorde groep zo de website van een Amerikaanse buitenlandse-zakendenktank; bezoekers van het Department of Labor, NIST en enkele defensiecontractors raakten besmet zonder ook maar één verdachte e-mail aan te klikken.
+
+::: {.callout-tip}
+Een nauw verwante variant is **malvertising**: kwaadaardige advertentiebanners die via reguliere advertentienetwerken op anders volkomen respectabele websites belanden (van krantensites tot YouTube). Bezoek de pagina, krijg een banner ingeladen via een derde-partij ad-server, en de drive-by start. Vandaar de eeuwige aanbeveling: **patch je browser én gebruik een ad-blocker** &mdash; deze laatste is in deze context bijna een security-tool.
+:::
 
 #### Trojan
 

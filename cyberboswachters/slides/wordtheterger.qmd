@@ -917,6 +917,25 @@ Het verhaal is niet louter doemdenken:
 
 ---
 
+## 2026: Mini Shai-Hulud — AI-gegenereerde worm in npm
+
+* **20 mei 2026**: supply chain attack op **@antv** npm-pakketten (G2, G6 &mdash; in miljoenen dashboards)
+* **640 kwaadaardige pakketten** offline, **61.274 npm-tokens** geïnvalideerd, **2.200+ repos** besmet
+* Via dependency-keten ook in *echarts-for-react* (**>1 miljoen downloads/week**)
+
+::: {.callout-warning .fragment}
+**Payload (499 KB obfuscated JS)** draait alleen in **GitHub Actions** en steelt geheimen van GitHub, AWS, Vault, Kubernetes, 1Password en npm. Met gestolen npm-tokens publiceert hij zichzelf opnieuw &mdash; *als een worm*.
+:::
+
+::: {.callout-important .fragment}
+Twee details die 2026 typeren:
+
+* **SLSA-attestations geforgéérd** via Sigstore &rarr; lijkt legitiem voor supply-chain verificatietools
+* Microsoft labelt de payload als `Trojan:AIGen/NPMStealer` &mdash; *AIGen* = *vermoedelijk door een LLM geschreven*
+:::
+
+---
+
 ## 2026: Mythos — AI als ultieme hacker
 
 * **Mythos**: AI-model van Anthropic dat zwakke plekken in systemen kan vinden én exploiteren
