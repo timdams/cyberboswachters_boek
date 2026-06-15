@@ -121,7 +121,7 @@ Stuxnet deed twee dingen:
 
 ---
 
-## Stuxnet: man-in-the-middle tussen Step 7 en PLC {.smaller}
+## Stuxnet:Normale werking PLC PLC {.smaller}
 
 ```{mermaid}
 %%{init: {'sequence': {'actorMargin': 60, 'messageMargin': 22, 'boxMargin': 4, 'noteMargin': 6, 'mirrorActors': false, 'actorFontSize': 13, 'noteFontSize': 12, 'messageFontSize': 12} } }%%
@@ -143,6 +143,24 @@ sequenceDiagram
       S7-->>Op: Alles in orde ✓
     end
 
+```
+
+
+---
+
+## Stuxnet: man-in-the-middle tussen Step 7 en PLC {.smaller}
+
+```{mermaid}
+%%{init: {'sequence': {'actorMargin': 60, 'messageMargin': 22, 'boxMargin': 4, 'noteMargin': 6, 'mirrorActors': false, 'actorFontSize': 13, 'noteFontSize': 12, 'messageFontSize': 12} } }%%
+sequenceDiagram
+    autonumber
+    participant Op as Operator
+    participant S7 as Step 7 (PC)
+    participant SX as Stuxnet DLL
+    participant PLC as Siemens PLC
+    participant HW as Centrifuge
+
+
     rect rgb(255, 220, 220)
       Note over Op,HW: Met Stuxnet (verborgen tussen Step 7 en PLC)
       Op->>S7: Geef opdracht
@@ -156,21 +174,6 @@ sequenceDiagram
     end
 ```
 
----
-
-## Stuxnet: originele diagrammen
-
-:::: {.columns}
-
-::: {.column width="50%"}
-![Normale communicatie tussen Step 7 en een Siemens PLC. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Step7_communicating_with_plc.svg), auteur Grixlkraxl, CC BY-SA 3.0.](assets/step7_communicating_with_plc.svg){ width=100% }
-:::
-
-::: {.column width="50%"}
-![Stuxnet hijackt de communicatie door een eigen DLL (`s7otbxdx.dll`) tussen Step 7 en de PLC te plaatsen. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stuxnet_modifying_plc.svg), auteur Grixlkraxl, CC BY-SA 3.0.](assets/stuxnet_modifying_plc.svg){ width=100% }
-:::
-
-::::
 
 ---
 
@@ -408,7 +411,7 @@ Cyberaanvallen zijn verdomd lastig in kaart te brengen.
 
 
 | | Heartbleed (2014) | Shellshock (2014) |
-|---|---|---|
+|---|------|------|
 | **Locatie** | OpenSSL-bibliotheek | Linux Bash-shell |
 | **Impact** | Servergeheugen uitlezen (sleutels, wachtwoorden) | **Elk** commando uitvoeren |
 | **Reach** | Miljoenen webservers/routers | Bijna elke Linux- en macOS-machine |
@@ -454,13 +457,15 @@ Eerste waarschuwing voor wat we later bij **Log4J** (2021) en **XZ Utils** (2024
 
 ::::
 
-::: {.fragment}
-Gevolgen:
+---
+
+## 2015: Ashley Madison — gevolgen
+
 
 * Mensen publiekelijk vernederd en ontslagen
 * **Minstens 2 zelfmoorden** rechtstreeks als gevolg
 * Wachtwoorden en creditcardgegevens stonden **onversleuteld** op de servers
-:::
+
 
 ::: {.callout-warning .fragment}
 Vraag je niet af **of** je gehackt zult worden, maar **wanneer**. En zorg ervoor dat gestolen data onbruikbaar is — door ze te **encrypteren**.
@@ -483,6 +488,21 @@ Een 16-jarige Britse tiener (collectief **Crackas With Attitude**) kraakte met p
 Geen dure tools, geen zero-days — enkel een telefoon en een overtuigende stem.
 
 Les: **geen enkele firewall beschermt tegen een behulpzame helpdesk-medewerker.**
+:::
+
+
+
+---
+
+
+## 2016: Internet-of-Horrors
+
+::: {.callout-warning .fragment}
+**Shodan.io**: een "Google voor IoT" die alle publiek zichtbare IoT-apparaten in kaart brengt — inclusief welke nog het standaard wachtwoord hebben.
+:::
+
+::: {.callout-tip .fragment}
+IoT vergroot de **attack surface** exponentieel. Elk slim apparaat is een potentieel toegangspunt.
 :::
 
 ---
@@ -509,20 +529,12 @@ Mirai creëerde een botnet van honderdduizenden IoT-apparaten die:
 
 ::::
 
-::: {.callout-warning .fragment}
-**Shodan.io**: een "Google voor IoT" die alle publiek zichtbare IoT-apparaten in kaart brengt — inclusief welke nog het standaard wachtwoord hebben.
-:::
-
-::: {.callout-tip .fragment}
-IoT vergroot de **attack surface** exponentieel. Elk slim apparaat is een potentieel toegangspunt.
-:::
-
 ---
 
 ## 2017: WannaCry & Petya — ransomware op wereldschaal
 
 | | WannaCry | Petya/NotPetya |
-|---|---|---|
+|---|------|------|
 | **Slachtoffers** | NHS, Telefónica, Deutsche Bahn, Renault, FedEx | Maersk, Merck, Mondelez, banken |
 | **Impact** | Ziekenhuizen platgelegd | 17 Maersk-terminals stil |
 | **Schade** | ~4 miljard dollar | ~10 miljard dollar |
@@ -763,6 +775,10 @@ De grens tussen "legaal dataverzamelen" en "illegaal bespioneren" vervaagt elk j
 20 miljoen downloads per week → duizenden applicaties plots kapot.
 :::
 
+::: {.callout-important .fragment}
+Eén enkele regel in een log-header = volledige overname van de server. Log4J zit **overal** — vandaar de paniek in december 2021.
+:::
+
 ---
 
 ## Log4J: de JNDI-injectie
@@ -784,9 +800,7 @@ sequenceDiagram
     L-->>A: Volledige controle over de server
 ```
 
-::: {.callout-important .fragment}
-Eén enkele regel in een log-header = volledige overname van de server. Log4J zit **overal** — vandaar de paniek in december 2021.
-:::
+
 
 ---
 
@@ -872,7 +886,7 @@ De ultieme langlopende supply chain attack — mislukt op de valreep.
 ## 2025: AI-gedreven aanvallen
 
 | Aanval | Beschrijving |
-|---|---|
+|---|-------|
 | **Deepfake CFO** | Multinational verloor **25 miljoen dollar** na videocall met fake CFO en collega's |
 | **WormGPT / FraudGPT** | Malafide LLMs getraind om malware te schrijven en phishing op te stellen |
 | **AI-vishing** | Stemmen van bekenden nabootsen in realtime → slachtoffer geeft geld of data |
@@ -1050,14 +1064,21 @@ Cybersecurity is een mentaliteit, geen product.
 | **Grey hat** | Onderzoekt zonder toestemming, maar meldt netjes |
 | **Black hat** | Misbruikt lekken voor eigen gewin — de *stropers* |
 
-::: {.callout-important .fragment}
-**Sinds februari 2023: ethisch hacken is legaal in België!** Spelregels:
+
+
+---
+
+##  Bountyhunters
+
+**Sinds februari 2023: ethisch hacken is legaal in België!** 
+
+Spelregels:
 
 1. Niet verder gaan dan nodig
 2. Lek snel melden bij het bedrijf
 3. Óók melden bij het CCB
 4. Niets publiceren zonder toestemming
-:::
+
 
 ::: {.callout-tip .fragment}
 Inti De Ceukelaire en collega's pleitten hier jarenlang voor. Eindelijk geen been in de gevangenis meer voor wie bedrijven *gratis* helpt.
@@ -1073,7 +1094,7 @@ Inti De Ceukelaire en collega's pleitten hier jarenlang voor. Eindelijk geen bee
 * **[grahamcluley.com](https://grahamcluley.com/)** — dagelijks security-nieuws
 * **[hackmageddon.com](https://www.hackmageddon.com/)** — tweemaandelijks breach-overzicht + *breachometer*
 * **Microsoft Digital Defense Report** — jaarlijkse state-of-the-state
-* **Tools**: uBlock Origin, AdGuard, Privacy Badger (Firefox ook op Android)
+* **Tools**: uBlock Origin, AdGuard, Privacy Badger (Firefox ook op Android), Pihole/Adguard/Quad9
 :::
 
 ::: {.column width="40%"}
