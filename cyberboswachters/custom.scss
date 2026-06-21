@@ -1,27 +1,311 @@
 /*-- scss:defaults --*/
-$link-color: #FF0000;
-$link-hover-color: #B30000;
+
+// ============================================================
+//  Zie Scherp Scherper - modern, strak en vlot lezend thema.
+//  Richting "Strak & licht": sans-serif tekst, veel witruimte,
+//  AP-rood enkel als verfijnd accent (links, actief item, lijn).
+// ============================================================
+
+// --- Lettertypes (Inter + JetBrains Mono via include-in-header) ---
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-family-monospace: "JetBrains Mono", "Cascadia Code", "Fira Code", SFMono-Regular, Menlo, Consolas, monospace;
+$headings-font-family: $font-family-sans-serif;
+
+// --- Basisformaat en leescomfort ---
+$font-size-root: 17px;
+$line-height-base: 1.7;
+$headings-line-height: 1.25;
+$headings-font-weight: 700;
+$paragraph-margin-bottom: 1.15rem;
+
+// --- Kleuren ---
+$body-bg: #ffffff;
+$body-color: #2b2b33;          // donker leigrijs, zachter dan zwart
+$headings-color: #1a1a22;      // bijna zwart voor strakke koppen
+
+// AP-rood, maar verfijnd. Pure #FF0000 is te fel en slecht leesbaar.
+$ap-red: #e11d2a;              // accent (lijnen, balken, actief item)
+$ap-red-readable: #c01622;     // donkerder rood voor tekst/links
+$primary: $ap-red;
+$link-color: $ap-red-readable;
+$link-hover-color: #8f0f1a;
+
+// --- Vormgeving ---
+$border-radius: 0.5rem;
+$border-radius-sm: 0.35rem;
+$border-radius-lg: 0.75rem;
+$border-color: #e6e8eb;
+
+// --- Navbar (licht en strak) ---
+$navbar-bg: #ffffff;
+$navbar-fg: #2b2b33;
+$navbar-hl: $ap-red;
+
+// --- Sidebar met hoofdstukken (links) ---
+$sidebar-bg: #ffffff;
+$sidebar-fg: #4a4a55;
+$sidebar-hl: $ap-red;
+
+// --- Code ---
+$code-block-bg: #f7f8fa;
+$code-bg: #f1f3f5;             // inline code achtergrond
+$code-color: #b30000;         // inline code kleur (subtiel rood accent)
+
 
 /*-- scss:rules --*/
 
-// Rode streep onder navbar
+// ---------- Algemeen leescomfort ----------
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+// Kop niet onder de navbar verstoppen bij het aanklikken in de TOC
+.content :is(h1, h2, h3, h4, h5, h6),
+:target {
+  scroll-margin-top: 5rem;
+}
+
+// ---------- Koppen ----------
+.content :is(h1, h2, h3, h4, h5, h6),
+h1.title {
+  color: $headings-color;
+  letter-spacing: -0.015em;
+}
+
+// Hoofdstuktitel met fijn rood accentstreepje eronder
+h1.title,
+.content > h1:first-of-type {
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+  position: relative;
+}
+h1.title::after,
+.content > h1:first-of-type::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3rem;
+  height: 3px;
+  border-radius: 2px;
+  background: $ap-red;
+}
+
+.content h2 {
+  font-size: 1.6rem;
+  margin-top: 2.6rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.content h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.content h4 {
+  font-size: 1.05rem;
+  margin-top: 1.6rem;
+  color: #3a3a44;
+}
+
+// ---------- Links ----------
+.content a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba($ap-red, 0.35);
+  transition: color .15s ease, border-color .15s ease;
+}
+.content a:hover {
+  color: $link-hover-color;
+  border-bottom-color: $ap-red;
+}
+
+// ---------- Navbar ----------
 .navbar {
-  border-bottom: 3px solid #FF0000 !important;
+  border-bottom: 2px solid $ap-red;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
+}
+.navbar .navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.navbar .navbar-nav .nav-link {
+  font-weight: 500;
 }
 
-// Headings in rood
-.content h1, .content h2 {
-  color: #B30000 !important;
+// ---------- Sidebar (hoofdstukken, links) ----------
+#quarto-sidebar {
+  border-right: 1px solid #eef0f2;
+}
+.sidebar-navigation {
+  font-size: 0.92rem;
+}
+.sidebar-item .sidebar-item-text {
+  border-radius: $border-radius-sm;
+  padding: 0.25rem 0.5rem;
+  transition: background-color .15s ease, color .15s ease;
+}
+.sidebar-item .sidebar-item-text:hover {
+  background-color: #f4f5f7;
+}
+.sidebar-item-text.active,
+.sidebar-link.active {
+  color: $ap-red !important;
+  font-weight: 600;
+  background-color: rgba($ap-red, 0.07);
+}
+// "Part"-koppen in de sidebar wat nadrukkelijker
+.sidebar-item.sidebar-item-section > .sidebar-item-container .sidebar-item-text {
+  font-weight: 700;
+  color: #1a1a22;
 }
 
-// Sidebar actief item
-.sidebar-item-text.active {
-  color: #FF0000 !important;
+// ---------- Rechtse inhoudstafel (TOC) ----------
+nav[role="doc-toc"] .nav-link,
+#TOC .nav-link {
+  color: #6b6b76;
+  border-left: 2px solid transparent;
+  padding: 0.15rem 0.75rem;
+  transition: color .15s ease, border-color .15s ease;
+}
+nav[role="doc-toc"] .nav-link:hover,
+#TOC .nav-link:hover {
+  color: $body-color;
+}
+.nav-link.active {
+  color: $ap-red !important;
+  border-left: 2px solid $ap-red !important;
+  font-weight: 600;
+}
+.toc-title,
+nav[role="doc-toc"] > h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9a9aa3;
+  font-weight: 700;
+}
+
+// ---------- Codeblokken ----------
+div.sourceCode {
+  margin: 1.3rem 0;
+  background: $code-block-bg;
+  border: 1px solid #e9ecef;
+  border-radius: $border-radius;
+}
+pre.sourceCode {
+  padding: 0.9rem 1.1rem;
+}
+div.sourceCode pre code,
+pre code {
+  font-size: 0.875em;
+  line-height: 1.55;
+}
+// inline code
+:not(pre) > code {
+  background: $code-bg;
+  color: $code-color;
+  padding: 0.12em 0.4em;
+  border-radius: $border-radius-sm;
+  font-size: 0.86em;
+  font-weight: 500;
+}
+.code-copy-button {
+  color: #adb5bd;
+}
+
+// ---------- Callouts ----------
+.callout {
+  border-radius: $border-radius;
+  border-width: 1px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .03);
+}
+.callout.callout-style-default > .callout-header {
   font-weight: 600;
 }
 
-// TOC actief item
-.nav-link.active {
-  color: #FF0000 !important;
-  border-left: 3px solid #FF0000 !important;
+// ---------- Mascotte-notities (blockquotes met afbeelding) ----------
+.content blockquote {
+  background: #f8f9fb;
+  border-left: 3px solid $ap-red;
+  border-radius: $border-radius;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  color: #3a3a44;
+}
+.content blockquote p {
+  margin-bottom: 0.5rem;
+}
+.content blockquote p:last-child {
+  margin-bottom: 0;
+}
+.content blockquote img {
+  float: left;
+  width: 60px;
+  height: auto;
+  margin: 0 1rem 0.5rem 0;
+}
+
+// ---------- Tabellen ----------
+.content table,
+table.table {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+.table > thead {
+  background: #f4f5f7;
+}
+.table > thead th {
+  font-weight: 700;
+  color: #1a1a22;
+  border-bottom: 1px solid $border-color;
+}
+.table > tbody tr:hover {
+  background: #fafbfc;
+}
+
+// ---------- Afbeeldingen ----------
+.quarto-figure img,
+.content > p > img {
+  border-radius: $border-radius-sm;
+}
+.figure-caption,
+figcaption {
+  font-size: 0.85rem;
+  color: #8a8a93;
+  margin-top: 0.5rem;
+}
+
+// ---------- Vorige/volgende navigatie onderaan ----------
+.page-navigation .nav-page a {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: 0.75rem 1rem;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.page-navigation .nav-page a:hover {
+  border-color: $ap-red;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+// ---------- Diverse ----------
+::selection {
+  background: rgba($ap-red, 0.15);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $border-color;
+  margin: 2.5rem 0;
 }

@@ -8,7 +8,8 @@ book:
   title: "Cyberboswachters"
   author: "Tim Dams"
   navbar:
-    background: dark
+    background: light
+    pinned: true
     left:
       - text: "Slides"
         href: slides/overzicht.qmd
@@ -38,9 +39,23 @@ bibliography: references.bib
 
 format:
   html:
-    theme: [sandstone, brand, custom.scss]
+    theme: [cosmo, brand, custom.scss]
     toc: true
+    toc-title: "Op deze pagina"
     lightbox: true
+    number-sections: false
+    highlight-style: github
+    code-copy: true
+    grid:
+      sidebar-width: 290px
+      body-width: 820px
+      margin-width: 240px
+      gutter-width: 1.5rem
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   typst:
     mainfont: "Arial"
     papersize: a4
@@ -48,4 +63,3 @@ format:
     margin:
       x: 2.5cm
       y: 3cm
-      

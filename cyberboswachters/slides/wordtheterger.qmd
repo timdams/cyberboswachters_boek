@@ -969,6 +969,42 @@ Zowel Mythos als GPT-5.5 lossen de "The Last Ones" challenge volledig op (mens d
 
 ---
 
+## 2026: VS blokkeert Fable 5 & Mythos 5
+
+* **Juni 2026**: het Witte Huis verbiedt Anthropics nieuwste modellen (**Fable 5**, **Mythos 5**) voor iedereen **zonder Amerikaanse nationaliteit** — wereldwijd
+* Filtering op nationaliteit is technisch onhaalbaar → beide modellen voor **álle** klanten uitgeschakeld (oudere Claude-modellen blijven werken)
+* Aanleiding: een vermoede **jailbreak** waarmee Fable 5 kwetsbaarheden zou opsporen
+
+::: {.callout-note .fragment}
+Anthropic weerspreekt: het ging om enkele *reeds bekende*, triviale bugs die **GPT-5.5** óók vindt — zónder omzeiling. Net wat security-experts dagelijks legitiem doen.
+:::
+
+---
+
+## 2026: Een gevaarlijk precedent?
+
+:::: {.columns}
+
+::: {.column width="55%"}
+**Anthropics verweer**:
+
+* Waterdichte beveiliging tegen jailbreaks is industriebreed **onmogelijk**
+* Daarom **defense in depth**: monitoring + 30 dagen dataretentie
+* Fable 5 vooraf duizenden uren getest (VS-overheid, **AISI**, externen)
+:::
+
+::: {.column width="45%"}
+::: {.callout-warning}
+Een commercieel model voor honderden miljoenen gebruikers terugtrekken om **één beperkte bug**?
+
+Wordt dit de norm, dan valt de uitrol van álle toekomstige AI-modellen stil.
+:::
+:::
+
+::::
+
+---
+
 ## 2025: Prompt Injection
 
 * **SQL injection**: kwaadaardige SQL-code in een invoerveld → database voert iets anders uit

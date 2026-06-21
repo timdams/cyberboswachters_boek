@@ -513,6 +513,26 @@ En het bleef niet bij Mythos alleen. Kort daarna bleek dat ook **GPT-5.5** van O
 ![Resultaten van de evaluatie door het AI Safety Institute: zowel Mythos (Anthropic) als GPT-5.5 (OpenAI) lossen de "The Last Ones"-challenge volledig op. Bron: [AISI](https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities).](assets/mythos.png){ width=70% }
 
 
+### 2026: De VS grijpt in — Fable 5 en Mythos 5 geblokkeerd
+
+Dat overheden worstelen met deze nieuwe realiteit, bleek ongeveer twee maanden later. **Midden juni 2026** verbood het Amerikaanse Witte Huis het gebruik van Anthropics twee nieuwste AI-modellen, **Fable 5** en **Mythos 5**, voor iedereen zónder de Amerikaanse nationaliteit. Het verbod — opgelegd via een brief van minister van Handel **Howard W. Lutnick** aan Anthropic-topman **Dario Amodei** — trof buitenlanders wereldwijd, niet-Amerikaanse ingezetenen ín de VS én de buitenlandse werknemers van Anthropic zelf.
+
+Omdat zo'n gerichte filtering op nationaliteit technisch niet zomaar uitvoerbaar is, zag Anthropic zich genoodzaakt beide modellen voor *álle* klanten wereldwijd uit te schakelen. Enkel de oudere Claude-modellen bleven operationeel. Het bedrijf ontving het dwingende bevel op een vrijdagmiddag om 17u21 (ET) en reageerde met een officiële verklaring.
+
+De aanleiding? De Amerikaanse overheid ging ervan uit dat er een methode — een *jailbreak* — was gevonden om de beveiliging van Fable 5 te omzeilen en het model zo kwetsbaarheden in software te laten opsporen.
+
+::: {.callout-note}
+Anthropic weerspreekt de ernst van de situatie. Na analyse bleek de techniek slechts gebruikt om een handvol *reeds bekende* en minder belangrijke kwetsbaarheden te identificeren — zó eenvoudig dat andere publiek beschikbare modellen (waaronder **GPT-5.5** van OpenAI) ze net zo goed vinden, zónder enige beveiligingsomzeiling. Het "bewijs" van de overheid kwam volgens Anthropic neer op één scenario: vraag het model een specifieke codebase te lezen en fouten te herstellen — exact wat cybersecurity-experts elke dag legitiem doen.
+:::
+
+In zijn verklaring zet Anthropic de eigen verdedigingsstrategie uiteen. Een *waterdichte* beveiliging tegen jailbreaks is volgens het bedrijf vandaag industriebreed technisch onmogelijk. Daarom kiest het voor **defense in depth**: een gelaagde aanpak met strenge monitoring en een dataretentiebeleid van 30 dagen om misbruik snel te detecteren en te blokkeren. Fable 5 werd vóór de lancering bovendien duizenden uren getest door onder meer de Amerikaanse overheid, het Britse **AI Safety Institute (AISI)** en externe partijen — met filters die effectiever bleken dan die van eerdere modellen.
+
+::: {.callout-warning}
+Anthropic respecteert de juridische richtlijn en blokkeert de toegang, maar is het er fundamenteel mee oneens dat een commercieel model voor honderden miljoenen gebruikers wordt teruggetrokken op basis van één beperkte kwetsbaarheid. Wordt zo'n maatregel de norm, dan dreigt volgens het bedrijf de uitrol van *alle* toekomstige geavanceerde AI-modellen stil te vallen. Anthropic pleit voor een transparant, wettelijk proces op basis van technische feiten en wil de toegang voor zijn klanten zo snel mogelijk herstellen.
+:::
+
+Het incident legt dezelfde spanning bloot die we bij Mythos al zagen: precies de capaciteiten die een AI-model tot een sterke verdediger maken, maken het ook tot een potentieel wapen. Overheden zoeken nog naar een manier om daarop te reageren zonder meteen een hele sector lam te leggen.
+
 ### En de toekomst? AI will rule the world
 
 Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren. Zoals gezegd gaan bedrijven uit van *when* in plaats van *if* als het gaat over de vraag of ze al dan niet ooit gehackt zullen worden. Daarnaast zien we dat hoogtechnologische producten meer en meer ingeburgerd geraken in het cybercrime-milieu. Zeker door de AI golf die ons nu al enkele jaren overspoelt aan een razend tempo: deep fakes video van bekenden zijn nu nog "grappig", maar de realistische beelden (afbeeldingen, video én nu zelfs ook spraak) die ze kunnen produceren zijn al even niet meer te onderscheiden van het echte en zullen dus meer en meer kunnen gebruikt worden voor sextortion, spear phishing en soortgelijke aanvallen. 
