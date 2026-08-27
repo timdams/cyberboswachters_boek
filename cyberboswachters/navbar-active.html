@@ -1,0 +1,31 @@
+<script>
+// Quarto markeert in een book-navbar het eerste item als actief zodra de
+// href-vergelijking mislukt (de slides-links krijgen een pad dat wel klopt,
+// maar niet letterlijk overeenkomt met de huidige pagina). Daardoor kleurde
+// "Handboek" ook rood op de slidespagina's. Hieronder bepalen we het actieve
+// item zelf, met "Handboek" als terugvaloptie voor alle hoofdstukpagina's.
+window.addEventListener("DOMContentLoaded", function () {
+  const links = document.querySelectorAll(".navbar .navbar-nav .nav-link");
+  if (!links.length) return;
+
+  const here = window.location.pathname;
+  let matched = false;
+
+  links.forEach(function (link) {
+    const target = new URL(link.getAttribute("href"), window.location.href).pathname;
+    const active = !target.endsWith(".pdf") && target === here;
+    link.classList.toggle("active", active);
+    if (active) {
+      link.setAttribute("aria-current", "page");
+      matched = true;
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+
+  if (!matched) {
+    links[0].classList.add("active");
+    links[0].setAttribute("aria-current", "page");
+  }
+});
+</script>
