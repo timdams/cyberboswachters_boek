@@ -933,7 +933,7 @@ Het verhaal is niet louter doemdenken:
 
 ## 2026: Mini Shai-Hulud — AI-gegenereerde worm in npm
 
-* **Mei 2026**: gecompromitteerd maintainer-account &rarr; vergiftigde **@antv** npm-pakketten (G2, G6); via *echarts-for-react* >1 miljoen downloads/week besmet
+* **Mei 2026**: gecompromitteerd maintainer-account &rarr; vergiftigde **\@antv** npm-pakketten (G2, G6); via *echarts-for-react* >1 miljoen downloads/week besmet
 * Payload draait enkel in **GitHub Actions**, steelt CI/CD-secrets (GitHub, AWS, Vault, K8s, npm) en publiceert zichzelf opnieuw met gestolen tokens &mdash; *als een worm* (Dune-knipoog)
 * Microsoft labelt de payload als `Trojan:AIGen/NPMStealer` &mdash; *vermoedelijk LLM-geschreven code*
 
