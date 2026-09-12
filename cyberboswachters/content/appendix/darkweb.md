@@ -5,7 +5,7 @@ Het internet is vergelijkbaar met de echte wereld: het heeft goed verlichte plek
 
 Binnen dat Deep Web bestaat een extra verborgen deel, het Darkweb, bekend om anonimiteit en privacy. Dit deel van het internet is alleen toegankelijk via speciale software zoals TOR (The Onion Router).
 
-![De internet ijsberg](darkweb/ijsberg.jpg){ width=70% }
+![De internet ijsberg](darkweb/ijsberg.png){ width=90% }
 
 ## Kenmerken van het Darkweb
 
@@ -52,7 +52,7 @@ Het vinden van een evenwicht tussen privacy en vrijheid enerzijds, en opsporing 
 
 De meest voorkomende manier om het Darkweb te bezoeken is via het zogenaamde TOR-netwerk (The Onion Router). Dit netwerk leidt jouw internetverkeer via meerdere relais-servers om jouw identiteit te verhullen. Een website op het Darkweb herken je aan het ".onion"-adres, wat alleen via een TOR-browser te openen is.
 
-![Er worden letterlijk lagen, zoals een UI, tussen jou en je doel opgebouwd.](darkweb/relais.jpg){ width=70% }
+![Er worden letterlijk lagen, zoals bij een ui, tussen jou en je doel opgebouwd.](darkweb/relais.png){ width=70% }
 
 ## TOR heeft ook nadelen:
 

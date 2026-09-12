@@ -281,7 +281,7 @@ Voorbeeld: Y (24) met sleutel 7:
   * Letter `e` komt veel vaker voor dan `v` in NL
   * Meest voorkomende letter in ciphertext → waarschijnlijk `e`
 
-![Frequentie-analyse Nederlandstalige tekst (Bron: Wikipedia).](crypto_assets/freqNL.jpg)
+![Frequentie-analyse Nederlandstalige tekst (cijfers: Wikipedia).](crypto_assets/freqNL.png)
 
 ---
 
@@ -930,7 +930,7 @@ Ciphertext: `11 11 10 10`
 :::
 
 ::: {.column width="50%"}
-![CTR mode (Bron: Wikipedia).](crypto_assets/ctr.png){ width=100% }
+![CTR mode: encryptie en decryptie.](crypto_assets/ctr.png){ width=100% }
 :::
 
 ::::

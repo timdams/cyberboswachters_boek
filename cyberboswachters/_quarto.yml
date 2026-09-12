@@ -12,7 +12,7 @@ book:
     pinned: true
     left:
       - text: "Handboek"
-        href: index.qmd
+        href: content/voorwoord.md
       - text: "Slides (NL)"
         href: slides/overzicht.qmd
       - text: "Handboek in PDF"
@@ -20,6 +20,7 @@ book:
         href: Cyberboswachters.pdf
   chapters:
     - index.qmd
+    - content/voorwoord.md
     - content/0_het_security_landschap/les1_wordtheterger.md
     - content/0_het_security_landschap/2_basicsec.md
     - content/1_cryptografie/basics.md
@@ -59,6 +60,8 @@ format:
     include-after-body: navbar-active.html
   typst:
     mainfont: "Arial"
+    template-partials:
+      - typst-show.typ
     papersize: a4
     section-numbering: "1.1"
     margin:

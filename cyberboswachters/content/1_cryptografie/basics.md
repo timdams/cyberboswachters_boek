@@ -91,7 +91,7 @@ Uiteraard kan iedere weldenkende mens in de 21e eeuw een Caesar encryptie brutef
 
 Door **frequentieanalyse** op de ciphertext toe te passen kan men ook de plaintext terugvinden zonder te moeten bruteforcen. Indien de plaintext een tekst in, bijvoorbeeld, het Nederlands is, dan kunnen we gebruik maken van de statistische eigenschappen van een taal. Zo weten we dat bepaalde letters in een standaard Nederlandstalige tekst meer of minder vaak voorkomen. De letter `e` komt bijvoorbeeld veel vaker voor dan de `v`. Daar iedere letter in de encryptie door een andere wordt vervangen, is het dus voldoende om te ontdekken (a.d.h.v. frequentieanalyse) welke letter(s) het meest of minst voorkomen om je zo een vermoeden te geven van de originele letter. 
 
-![De frequentie-analyse van een typisch Nederlandstalige tekst. Merk op dat de letterscore bij het bordspel Scrabble omgekeerd evenredig is met de frequentie dat de letter gemiddeld voorkomt. Dit verklaart ook waarom er per taal een eigen Scrabble-editie bestaat met eigen letterscores (Bron: Wikipedia).](assets/freqNL.jpg)
+![De frequentie-analyse van een typisch Nederlandstalige tekst. Merk op dat de letterscore bij het bordspel Scrabble omgekeerd evenredig is met de frequentie dat de letter gemiddeld voorkomt. Dit verklaart ook waarom er per taal een eigen Scrabble-editie bestaat met eigen letterscores (cijfers: Wikipedia).](assets/freqNL.png)
 
 
 Dit verklaart ook waarom je best je te encrypteren berichten zo kort mogelijk houdt. Hoe minder tekens, hoe minder frequentieanalyse zal werken. Een andere veelvoorkomende fout (in klassiekere encryptie) was dat de verzender bijvoorbeeld voorspelbare tekst ging encrypteren. Als je weet dat de verzender altijd begint met "Geachte" in z'n berichten, dan is de kans groot dat de eerste 7 tekens in de ciphertext deze plaintext voorstellen.
@@ -694,7 +694,7 @@ Bij OFB wordt het blockcipher als een streamcipher gebruikt: de output van het b
 
 CTR is één van de meest gebruikte modes en werkt fundamenteel anders dan CBC of CFB. In plaats van blokken aan elkaar te ketenen, wordt een **teller** (counter) als input voor het blockcipher gebruikt. Deze teller bevat een **Initialisatie Vector (IV)** die bij elk volgend blok met 1 wordt verhoogd.
 
-![CTR mode (Bron wikipedia).](assets/ctr.png){ width=80% }
+![CTR mode: encryptie en decryptie.](assets/ctr.png){ width=100% }
 
 De werking is als volgt: het blockcipher encrypteert niet de plaintext zelf, maar de tellerwaarde. Het resultaat hiervan wordt vervolgens ge-XOR'd met het plaintext-blok om de ciphertext te bekomen. Doordat elk blok een unieke tellerwaarde gebruikt, levert dezelfde plaintext in verschillende blokken steeds andere ciphertext op.
 

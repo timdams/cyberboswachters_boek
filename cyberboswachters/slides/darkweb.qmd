@@ -13,7 +13,7 @@ format:
 
 ## Het internet is een ijsberg
 
-![De internet ijsberg: surface web, deep web en dark web.](darkweb/ijsberg.jpg){width=70%}
+![De internet ijsberg: surface web, deep web en dark web.](darkweb/ijsberg.png){width=70%}
 
 ---
 
@@ -124,7 +124,7 @@ In landen zoals Rusland en China is het gebruik van het Dark Web zelf al strafba
 :::
 
 ::: {.column width="40%"}
-![Onion routing](darkweb/relais.jpg){width=70%}
+![Onion routing](darkweb/relais.png){width=70%}
 
 :::
 

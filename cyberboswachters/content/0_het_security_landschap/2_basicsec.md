@@ -460,7 +460,7 @@ Als bijkomende handigheid zullen wormen ook vaak zichzelf veranderen zodat ze mo
 De werkelijk gevaarlijke wormen combineren vaak **meerdere paden tegelijk** - als één route geblokkeerd is, blijven de andere nog actief.
 :::
 
-![Worm propagation model. Bron: Network Eye: End-to-End Computer Security Visualization - Scientific Figure on ResearchGate.](assets/wormprop.png){ width=65% }
+![Het worm propagation model.](assets/wormprop.png){ width=85% }
 
 Bovenstaande afbeelding toont het *worm propagation model*. Dit model toont hoe snel een worm zich kan verspreiden en hoe belangrijk het is om een nieuwe worm zo snel mogelijk te detecteren, in de hoop voldoende systemen vervolgens te beschermen tegen besmettingen ervan. Naarmate een worm meer systemen kan besmetten, die op hun beurt dan ook als uitvalsbasis van de worm dienen, merk je een exponentiële groei van besmette systemen. Deze groei bereikt een plateau wanneer quasi alle systemen besmet zijn die konden besmet worden. 
 

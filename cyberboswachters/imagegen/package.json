@@ -1,0 +1,10 @@
+{
+  "name": "excalidraw-figuur",
+  "private": true,
+  "description": "Dependencies voor excal.js. Kopieer dit bestand mee naar de imagegen-map en draai npm install.",
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "jsdom": "^29.1.1",
+    "roughjs": "^4.6.6"
+  }
+}

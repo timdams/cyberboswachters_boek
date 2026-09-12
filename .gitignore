@@ -12,3 +12,5 @@ __pycache__/
 tests/
 
 /.quarto/
+node_modules/
+

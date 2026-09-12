@@ -13,7 +13,7 @@ format:
 
 ## The internet is an iceberg
 
-![The internet iceberg: surface web, deep web and dark web.](../darkweb/ijsberg.jpg){width=70%}
+![The internet iceberg: surface web, deep web and dark web.](../darkweb/ijsberg.png){width=70%}
 
 ---
 
@@ -124,7 +124,7 @@ In countries such as Russia and China the use of the Dark Web itself is already 
 :::
 
 ::: {.column width="40%"}
-![Onion routing](../darkweb/relais.jpg){width=70%}
+![Onion routing](../darkweb/relais.png){width=70%}
 
 :::
 

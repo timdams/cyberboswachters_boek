@@ -28,7 +28,7 @@ format:
 
 ::: {.column width="30%" .fragment}
 
-![Bij 6 gebruikers zijn er al 15 sleutels nodig.](crypto_assets/keyprob.png){ width=40% }
+![Bij 6 gebruikers zijn er al 15 sleutels nodig.](crypto_assets/keyprob.png){ width=55% }
 
 :::
 

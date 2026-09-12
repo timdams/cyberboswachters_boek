@@ -8,7 +8,7 @@ Wat als je bij symmetrische encryptie met meerdere mensen wilt communiceren zond
 * 10 gebruikers vereisen er al 45.
 * 100 gebruikers vereisen er 4950!
 
-![Bij 6 gebruikers zijn er al 15 sleutels nodig.](assets//keyprob.png){ width=40% }
+![Bij 6 gebruikers zijn er al 15 sleutels nodig.](assets/keyprob.png){ width=60% }
 
 Symmetrische encryptie heeft dus een *key distribution problem* wanneer er encryptie op een grote schaal nodig is. Zeker als we spreken over online communicatie, over het Internet, wordt de schaal ogenblikkelijk gigantisch groot en wordt het *sleutelmanagement* problematisch. Een andere oplossing is dus aan de orde.
 

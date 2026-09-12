@@ -309,3 +309,84 @@ hr {
   border-top: 1px solid $border-color;
   margin: 2.5rem 0;
 }
+
+// ---------- Landingspagina (index.qmd) ----------
+// Weinig tekst, drie duidelijke wegwijzers: handboek, slides, PDF.
+
+.start-intro {
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-style: italic;
+  color: $ap-red-readable;
+  line-height: 1.45;
+  margin: -0.5rem 0 1.25rem;
+}
+
+.start-kaarten {
+  margin: 2rem 0 1.75rem;
+}
+
+.start-kaart {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  padding: 1.3rem 1.4rem 1.4rem;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.start-kaart:hover {
+  border-color: $ap-red;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .07);
+  transform: translateY(-2px);
+}
+.start-kaart p {
+  margin-bottom: .8rem;
+}
+// De knop zakt naar onder, zodat alle drie de kaarten op dezelfde lijn eindigen.
+.start-kaart p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.start-kaart-titel {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $headings-color;
+  margin-bottom: .15rem;
+}
+
+.content a.start-knop {
+  display: inline-block;
+  background: $ap-red;
+  color: #fff;
+  font-weight: 600;
+  font-size: .95rem;
+  line-height: 1.2;
+  padding: .55rem 1.05rem;
+  border-radius: $border-radius-sm;
+  border-bottom: none;
+  transition: background-color .15s ease;
+}
+.content a.start-knop:hover {
+  background: $link-hover-color;
+  color: #fff;
+  border-bottom: none;
+}
+
+.start-voetnoot {
+  font-size: .92rem;
+  color: #6b6b76;
+  padding-top: 1.1rem;
+  border-top: 1px solid $border-color;
+}
+
+// Op de landingspagina is een auteursregel onder de titel overbodig: de naam
+// staat daar al onderaan bij de wegwijzers.
+// De selector is met opzet zo lang: Quarto zet zelf
+// "#title-block-header.quarto-title-block.default .quarto-title-meta" op
+// display:grid, en dat is specifieker dan een kortere regel hier.
+body.start-pagina #title-block-header.quarto-title-block .quarto-title-meta {
+  display: none;
+}

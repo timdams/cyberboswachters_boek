@@ -944,7 +944,7 @@ TED-talk: [*Fighting viruses, defending the net*](https://www.youtube.com/watch?
 * Kan zichzelf **vervormen** (*polymorfisme*) om virusscanners te misleiden
 * Groei is **exponentieel** tot quasi alle kwetsbare systemen besmet zijn
 
-![Worm propagation model (Bron: ResearchGate).](assets/wormprop.png){ width=65% }
+![Het worm propagation model.](assets/wormprop.png){ width=65% }
 
 ---
 

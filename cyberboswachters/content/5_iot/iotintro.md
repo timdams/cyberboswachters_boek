@@ -101,7 +101,7 @@ In 2020 was er veel heisa omtrent de *SolarWinds-hack* bij SolarWinds. Duizenden
 
 Dit soort aanval heet een **supply chain attack**: de aanvallers richten zich op de *weakest link* binnen de supply chain om zo finaal tot bij de klant *achteraan* de keten te geraken. 
 
-![Bron dynatrace.com](assets/supchain.png){ width=75% }
+![Supply chain attack: de aanvaller richt zich op een zwakke schakel in de keten.](assets/supchain.png){ width=95% }
 
 :::
 

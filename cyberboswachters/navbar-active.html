@@ -4,15 +4,24 @@
 // maar niet letterlijk overeenkomt met de huidige pagina). Daardoor kleurde
 // "Handboek" ook rood op de slidespagina's. Hieronder bepalen we het actieve
 // item zelf, met "Handboek" als terugvaloptie voor alle hoofdstukpagina's.
+// Op de startpagina zelf valt er niets terug te vallen: dat is een
+// landingspagina die bij geen van de drie navbar-items hoort.
 window.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll(".navbar .navbar-nav .nav-link");
   if (!links.length) return;
 
-  const here = window.location.pathname;
+  // "/map/" en "/map/index.html" zijn dezelfde pagina.
+  const norm = p => p.replace(/index\.html$/, "");
+  const here = norm(window.location.pathname);
+
+  const brand = document.querySelector(".navbar .navbar-brand");
+  const isStart = brand &&
+    norm(new URL(brand.getAttribute("href"), window.location.href).pathname) === here;
+
   let matched = false;
 
   links.forEach(function (link) {
-    const target = new URL(link.getAttribute("href"), window.location.href).pathname;
+    const target = norm(new URL(link.getAttribute("href"), window.location.href).pathname);
     const active = !target.endsWith(".pdf") && target === here;
     link.classList.toggle("active", active);
     if (active) {
@@ -23,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  if (!matched) {
+  if (!matched && !isStart) {
     links[0].classList.add("active");
     links[0].setAttribute("aria-current", "page");
   }

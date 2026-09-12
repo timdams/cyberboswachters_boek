@@ -199,7 +199,7 @@ Een bug in een gedeelde component (bv. een Bluetooth-chip of een open-source bib
 
 ## #5 - SolarWinds: de supply chain attack
 
-![Supply chain attack: de aanvaller richt zich op een zwakke schakel in de keten (Bron: dynatrace.com).](iot_assets/supchain.png){ width=75% }
+![Supply chain attack: de aanvaller richt zich op een zwakke schakel in de keten.](iot_assets/supchain.png){ width=75% }
 
 ::: {.callout-note}
 Hackers kraakten de FTP-server van SolarWinds (wachtwoord: *solarwinds123*).

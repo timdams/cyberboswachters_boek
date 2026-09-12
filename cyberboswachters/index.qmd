@@ -1,42 +1,58 @@
+---
+body-classes: start-pagina
+toc: false
+sidebar: false
+lightbox: false
+---
 
-# Preface {.unnumbered}
+::: {.content-visible when-format="html"}
 
+::: {.start-intro}
+De beste digitale stropers zijn ook de beste cyberboswachters.
+:::
 
+Een brede inleiding tot cybersecurity voor de opleidingen elektronica-ict en toegepaste informatica van de AP Hogeschool. Kies hieronder waar je begint.
 
-Dit handboek wordt gebruikt als basis-cursus binnen de opleidingen elektronica-ict en toegepaste informatica van de AP Hogeschool. Het heeft als doel een breed overzicht te geven van de *wereld van de cybersecurity*. Het doel is niet alomvattend te zijn, maar vooral om mensen zin te geven om meer te weten te komen over deze belangrijke én boeiende wereld. Dit boek gaat ervan uit dat de lezer minimale voorkennis heeft inzake ICT, zo wordt er verwacht dat een basiskenis netwerk-technologie aanwezig is (denk aan termen zoals IP-adressering, routering en firewalls).
+::: {.grid .start-kaarten}
 
+::: {.g-col-12 .g-col-md-4 .start-kaart}
+[Handboek]{.start-kaart-titel}
 
-## Boswachters en stropers
+Alle hoofdstukken online, doorzoekbaar en met doorklikbare inhoudstafel.
 
-De subtitel,*"De beste digitale stropers zijn ook de beste cyberboswachters"*, van dit handboek verdient een extra woordje uitleg. Dit boek zal zeker niet de obscure wereld van de hackers en cybercriminelen verheerlijken, integendeel. We willen echter wel tonen hoe de stropers, de slechterikken in dit boek, te werk gaan, opdat het ons zo een beter beeld geeft waar we ons tegen moeten beschermen als goede cyberboswachters. 
+[Lees online](content/voorwoord.md){.start-knop}
+:::
 
-## Dankwoord
+::: {.g-col-12 .g-col-md-4 .start-kaart}
+[Slides]{.start-kaart-titel}
 
+De presentatie bij elk hoofdstuk, om te bekijken of als PDF mee te nemen.
 
-Dank aan (soms al oud-)studenten Ernie de Magtige,  Dimitriy Vassilchenko, Jasper Van Meel en Erik Van Dyck om als externe fact- en spellingcheckers aardig wat (gênante) foutjes en typos te ontdekken.
+[Bekijk de slides](slides/overzicht.qmd){.start-knop}
+:::
 
-Een oprechte dank aan Stefaan Somerling (RealDolmen) voor de feedback op het hoofdstuk omtrent GDPR. Geef gerust een sein als u, conform de GDPR wetgeving, liever uw naam niet in dit document ziet staan ;).
+::: {.g-col-12 .g-col-md-4 .start-kaart}
+[PDF]{.start-kaart-titel}
 
-Een dikke fist bump voor collega en *brother from another mother* Koen Van Eyken, die een deel van z'n paasvakantie opofferde om met een kritische blik door dit boek te gaan!  Uiteraard ook een dikke merci aan de collega's die feedback op dit document hebben gegeven, en dan zeker aan Michael Boeynaems en Serge Horsmans.
+Het volledige handboek in één bestand, om af te drukken of offline te lezen.
 
-## Waarschuwingen
+[Download de PDF](Cyberboswachters.pdf){.start-knop}
+:::
 
-Dit brengt ons automatisch bij een belangrijke waarschuwing: je zal in dit handboek geregeld technieken en tools tegenkomen die verregaande gevolgen voor derden én jezelf kunnen hebben indien ze misbruikt worden. We tonen deze zaken enkel vanuit het standpunt dat zonet werd besproken: digitale stropers zijn de beste cyberboswachters. Het is belangrijk dat je begrijpt dat je deze tools en technieken NOOIT of te NIMMER voor kwade doeleinden mag gebruiken. Het is zelfs zo dat het gebruik van veel van deze zaken strafrechtelijke gevolgen kunnen hebben, inclusief boetes tot zelfs jarenlange opsluiting.
+:::
 
-Indien je dus deze tools of technieken wenst te gebruiken dan mag dit enkel op volgende doelwitten:
+::: {.start-voetnoot}
+Slides in English: [English slides](slides/en/index.qmd). Nieuw hier? Begin bij het [voorwoord](content/voorwoord.md), daar staan ook de spelregels bij het uitproberen van de technieken uit dit boek.
 
-* Zaken waar jij de eigenaar van bent. Denk aan servers, webpagina's, gebruikers, etc.
-* Op doelwitten waar je geen eigenaar van bent, maar waar je wel expliciete toestemming voor hebt gekregen.
+Tim Dams, AP Hogeschool.
+:::
 
+:::
 
-### Opletten met experimenten
+::: {.content-visible when-format="typst"}
 
-Indien je van plan bent om met bepaalde tools te experimenteren, hou dan rekening met volgende tips:
+# Cyberboswachters {.unnumbered}
 
-* Werk zoveel mogelijk met virtuele machines en test nooit op een *live systeem* indien daar geen erg goede reden voor is.
-* Hou er rekening mee dat bepaalde tools permanente "gaten" slagen in je systemen. Deze kunnen dus na (of tijdens!) je experimenten door digitale stropers misbruikt worden. 
+Dit handboek staat ook online, samen met de slides bij elk hoofdstuk, op <https://timdams.github.io/cyberboswachters_boek/>.
 
-
-
-
-
+:::
