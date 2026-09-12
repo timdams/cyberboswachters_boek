@@ -16,7 +16,7 @@ format:
 Na dit hoofdstuk kan je:
 
 * de **drie gouden regels** van wachtwoordbeheer toepassen
-* **hashing, salting en rainbow tables** uitleggen — en waarom salting beschermt
+* **hashing, salting en rainbow tables** uitleggen - en waarom salting beschermt
 * **CRAM, SCRAM en passkeys** onderling situeren
 * de vier **MFA-factoren** (weten/hebben/zijn/waar-wanneer) combineren
 * **TOTP** uitleggen + waarom **passkeys** veiliger zijn tegen real-time phishing
@@ -27,11 +27,11 @@ Na dit hoofdstuk kan je:
 
 | Concept | Vraag |
 |---|---|
-| **Authenticatie** | *Wie ben je?* — Bewijs van identiteit |
-| **Autorisatie** | *Wat mag je?* — Toekennen van rechten |
+| **Authenticatie** | *Wie ben je?* - Bewijs van identiteit |
+| **Autorisatie** | *Wat mag je?* - Toekennen van rechten |
 
 ::: {.callout-tip .fragment}
-Dit hoofdstuk: focus op **authenticatie** — hoe gaan we als beheerders veilig om met login-informatie?
+Dit hoofdstuk: focus op **authenticatie** - hoe gaan we als beheerders veilig om met login-informatie?
 :::
 
 ---
@@ -52,8 +52,8 @@ Als beheerder is het **essentieel** om uitermate veilig om te gaan met de wachtw
 
 Regels die continu **niét** gehanteerd worden:
 
-* **Hergebruik nooit** een wachtwoord — één per service
-* Gebruik geen wachtwoorden uit **dictionaries** — overweeg random gegenereerde wachtwoorden
+* **Hergebruik nooit** een wachtwoord - één per service
+* Gebruik geen wachtwoorden uit **dictionaries** - overweeg random gegenereerde wachtwoorden
 * Minimum **16 tekens** lang
 * Combinatie van **cijfers, letters** (groot + klein) **en leestekens**
 
@@ -231,7 +231,7 @@ sequenceDiagram
 ```
 
 ::: {.callout-warning .fragment}
-De aanvaller hoeft het **originele wachtwoord nooit te kraken** — de hash zelf is genoeg om zich aan te melden.
+De aanvaller hoeft het **originele wachtwoord nooit te kraken** - de hash zelf is genoeg om zich aan te melden.
 :::
 
 ---
@@ -488,7 +488,7 @@ Server stuurt de **bewaarde salt** naar de client → client moet telkens zelf d
 ## SCRAM
 
 ::: {.callout-warning }
-Deze vereenvoudigde SCRAM voorkomt **geen** pass-the-hash bij een gelekte databank — de échte SCRAM (RFC 5802) doet dat wel via `StoredKey = H(ClientKey)`: de server bewaart enkel de hash van de inlogsleutel, niet de sleutel zelf.
+Deze vereenvoudigde SCRAM voorkomt **geen** pass-the-hash bij een gelekte databank - de échte SCRAM (RFC 5802) doet dat wel via `StoredKey = H(ClientKey)`: de server bewaart enkel de hash van de inlogsleutel, niet de sleutel zelf.
 :::
 
 ---
@@ -821,8 +821,8 @@ graph LR
 
 | Eigenschap | Uitleg |
 |---|---|
-| **Eenmalig** | Code is slechts **30 seconden** geldig — onderschepte code is snel vervallen |
-| **Offline** | Na registratie is **geen internet** meer nodig — enkel de tijd synchroniseert |
+| **Eenmalig** | Code is slechts **30 seconden** geldig - onderschepte code is snel vervallen |
+| **Offline** | Na registratie is **geen internet** meer nodig - enkel de tijd synchroniseert |
 | **Onvoorspelbaar** | Zonder de geheime sleutel zijn toekomstige codes **onmogelijk** te berekenen |
 
 ::: {.callout-warning .fragment}

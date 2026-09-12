@@ -26,14 +26,14 @@ Voorbeelden:
 ::: {.callout-important .fragment}
 Technische maatregelen alleen zijn **niet voldoende**.
 
-Medewerkers moeten begrijpen *waarom* regels bestaan — niet alleen *wat* de regels zijn.
+Medewerkers moeten begrijpen *waarom* regels bestaan - niet alleen *wat* de regels zijn.
 :::
 
 ---
 
 ## Jouw rol als cybersecurity-professional
 
-Je bent meer dan een technicus — je bent een **bewustzijnsambassadeur**:
+Je bent meer dan een technicus - je bent een **bewustzijnsambassadeur**:
 
 :::: {.columns}
 
@@ -69,7 +69,7 @@ Wel: *"hier is waarom dit gevaarlijk is"*
 
 * Zelfstandig de link leggen tussen gedrag en risico
 * Bewust kiezen voor veilige werkmethoden
-* Nieuwe risico's herkennen en melden — ook in onbekende situaties
+* Nieuwe risico's herkennen en melden - ook in onbekende situaties
 * Veilig handelen als **routine** beschouwen, niet als verplichting
 :::
 
@@ -84,7 +84,7 @@ Wel: *"hier is waarom dit gevaarlijk is"*
 | *"Waarom laptop vergrendelen?"* | Collega of bezoeker kan anders toegang krijgen |
 
 ::: {.callout-note .fragment}
-Een goed geïnformeerde medewerker stelt deze vragen niet meer — en helpt ze te beantwoorden voor anderen.
+Een goed geïnformeerde medewerker stelt deze vragen niet meer - en helpt ze te beantwoorden voor anderen.
 :::
 
 ---
@@ -114,7 +114,7 @@ Nuttige gratis bronnen: **SANS Institute**, **CISA**, **GoPhish** (phishing simu
 ::: {.callout-tip}
 Grappige of uitdagende posters worden sneller opgemerkt én onthouden.
 
-Gedragsverandering bereik je niet door te straffen — maar door te **motiveren en inspireren**.
+Gedragsverandering bereik je niet door te straffen - maar door te **motiveren en inspireren**.
 :::
 
 ---
@@ -198,7 +198,7 @@ Snelheid van detectie bepaalt de **omvang van de schade**.
 
 ## Incident response: in de praktijk
 
-![Het incident response-plan als cyclus — niet als lineaire sequentie.](aware/incident.png){width=85%}
+![Het incident response-plan als cyclus, niet als lineaire sequentie.](aware/incident.png){width=85%}
 
 ---
 
@@ -211,7 +211,7 @@ Snelheid van detectie bepaalt de **omvang van de schade**.
 ::: {.callout-warning .fragment}
 Een complex incident response-plan dat niemand kent is nutteloos.
 
-Oefen het plan regelmatig — en zorg dat medewerkers weten wat **hun** rol is.
+Oefen het plan regelmatig - en zorg dat medewerkers weten wat **hun** rol is.
 :::
 
 ---
@@ -222,7 +222,7 @@ Oefen het plan regelmatig — en zorg dat medewerkers weten wat **hun** rol is.
 |---|---|
 | **Pretexting** | Aanvaller doet zich voor als collega of IT-medewerker om info te ontfutselen |
 | **Tailgating** | Volgt een medewerker een beveiligd gebied binnen |
-| **Vishing** | Voice phishing via telefoon — AI maakt stemimitatie steeds realistischer |
+| **Vishing** | Voice phishing via telefoon - AI maakt stemimitatie steeds realistischer |
 | **Baiting** | Lokt met iets aantrekkelijks (gratis USB, Spotify, ...) dat malware bevat |
 | **Quid Pro Quo** | Biedt iets aan in ruil voor gevoelige informatie |
 
@@ -232,7 +232,7 @@ Oefen het plan regelmatig — en zorg dat medewerkers weten wat **hun** rol is.
 
 * Bij twijfel: stel een **challenge** die enkel de echte persoon kan beantwoorden
 * Geeft de aanvaller het juiste antwoord? Stel een **tweede challenge**
-  * Geef aan dat het eerste antwoord fout was — kijkt de aanvaller of het antwoord wordt aangepast?
+  * Geef aan dat het eerste antwoord fout was - kijkt de aanvaller of het antwoord wordt aangepast?
   * Dit heet **reverse social engineering**
 
 ::: {.callout-tip .fragment}
@@ -246,30 +246,30 @@ Een kleine verlegenheid is een kleine prijs voor de veiligheid van je organisati
 ## Phishing herkennen: signalen
 
 ::: {.incremental}
-* **Controleer het afzenderadres** — vergelijk met eerdere communicatie of de website
-* **Hover over links** zonder te klikken — zie je het echte doel-URL?
+* **Controleer het afzenderadres**: vergelijk met eerdere communicatie of de website
+* **Hover over links** zonder te klikken - zie je het echte doel-URL?
 * **Bijlagen van onbekenden** nooit openen zonder verificatie
 * **Gevoel van urgentie** ("Onmiddellijk actie vereist!") is een klassiek manipulatiemiddel
 * **Vraag om gevoelige info** via e-mail of telefoon is bijna altijd verdacht
-* **Bij twijfel**: bel de afzender terug via een gekend nummer — niet via het nummer in de mail
+* **Bij twijfel**: bel de afzender terug via een gekend nummer - niet via het nummer in de mail
 :::
 
 ::: {.callout-important .fragment}
 **Bij twijfel: niet klikken.**
 
-Melden is altijd beter dan niets doen — ook als het uiteindelijk vals alarm blijkt.
+Melden is altijd beter dan niets doen - ook als het uiteindelijk vals alarm blijkt.
 :::
 
 ---
 
 ## Conclusie
 
-* **90%** van de incidenten is menselijk — awareness is geen optie maar noodzaak
+* **90%** van de incidenten is menselijk - awareness is geen optie maar noodzaak
 * Goede campagnes leggen uit **waarom**, niet alleen wat
 * Gebruik gevarieerde methoden: trainingen, simulaties, gamification, posters
 * Een **incident response-plan** werkt alleen als medewerkers het kennen
 * Social engineering herken je door **te challengen en te verifiëren**
 
 ::: {.callout-important}
-Cybersecurity is een **gedeelde verantwoordelijkheid** — van de IT-afdeling tot de receptionist.
+Cybersecurity is een **gedeelde verantwoordelijkheid** - van de IT-afdeling tot de receptionist.
 :::

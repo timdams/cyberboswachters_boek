@@ -169,7 +169,7 @@ Aanvaller die dit snifft ziet **plaintext + ciphertext** → *gekende plaintext 
 * Hart: **RC4** streamcipher
 * WEP-sleutel = seed voor keystream
 * Keystream $\oplus$ frame = ciphertext
-* **Optioneel** — veel netwerken gebruikten het niet eens
+* **Optioneel**: veel netwerken gebruikten het niet eens
 :::
 
 ::: {.column width="45%"}
@@ -208,7 +208,7 @@ Aanvaller die dit snifft ziet **plaintext + ciphertext** → *gekende plaintext 
 * IV wordt als **plaintext** in de header meegestuurd (ontvanger moet hem kennen)
 
 ::: {.callout-tip .fragment}
-Dit concept van een sleutel verlengen met een getal heet **salting** — kennen we ook van het authenticatie-hoofdstuk.
+Dit concept van een sleutel verlengen met een getal heet **salting** - kennen we ook van het authenticatie-hoofdstuk.
 :::
 
 ---
@@ -260,7 +260,7 @@ WEP probeert dit op te lossen met de IV... maar ook dat gaat fout.
 
 ---
 
-## Probleem 2: IV — Weak keys (FMS-aanval)
+## Probleem 2: IV - Weak keys (FMS-aanval)
 
 * Paper van Fluhrer, Mantin & Shamir (2001):
   * Sommige IV's zorgen voor **sleutel-lekkage** naar de keystream
@@ -274,7 +274,7 @@ Tools: **Airsnort** en **WEPCrack** implementeren de FMS-aanval.
 
 ---
 
-## Probleem 2: IV — Collisions
+## Probleem 2: IV - Collisions
 
 * 24-bit IV → $2^{24}$ = 16.777.216 mogelijke waarden
 
@@ -480,7 +480,7 @@ Met *dynamic key exchange*: sleutels worden automatisch ververst.
 
 ## TKIP: WEP-wrapper
 
-**Temporal Key Integrity Protocol** — WPA1's oplossing:
+**Temporal Key Integrity Protocol** - WPA1's oplossing:
 
 | Verbetering | Oplost |
 |---|---|
@@ -530,7 +530,7 @@ Met *dynamic key exchange*: sleutels worden automatisch ververst.
 
 ## WPA1: het totaalplaatje
 
-![WPA1 in volle glorie — een wrapper rond WEP.](wifi_assets/wpa1.png)
+![WPA1 in volle glorie: een wrapper rond WEP.](wifi_assets/wpa1.png)
 
 ::: {.callout-tip .fragment}
 Tools zoals **coWPAtty** en **Aircrack** kunnen WPA1-Personal kraken door de handshake te capteren.
@@ -581,7 +581,7 @@ WPA1/WPA2 **Personal** mode blijft altijd gevoelig voor **dictionary aanvallen**
 
 ## WPA3 ("Wifi 6")
 
-**2018**: Wifi Alliance brengt WPA3 uit — state-of-the-art:
+**2018**: Wifi Alliance brengt WPA3 uit - state-of-the-art:
 
 | Verbetering | Wat? |
 |---|---|
@@ -592,7 +592,7 @@ WPA1/WPA2 **Personal** mode blijft altijd gevoelig voor **dictionary aanvallen**
 | **GCMP-256** | Geauthenticeerde encryptie |
 
 ::: {.callout-note .fragment}
-Resistent tegen **offline dictionary attacks** — een groot verschil met WPA2-Personal!
+Resistent tegen **offline dictionary attacks** - een groot verschil met WPA2-Personal!
 :::
 
 ---

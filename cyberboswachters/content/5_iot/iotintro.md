@@ -16,7 +16,7 @@ Het is niet toevallig dat we dit boek afsluiten met het hoofdstuk omtrent IoT Se
 
 * Van nature werken IoT-apparaten op **low-power**, daar ze vele dagen of weken moeten voortkunnen zonder te veel verbruik. Ingebouwde security protocollen mogen dus geen grote percentages van het vermogen opsouperen, zeker niet als dat ten koste is van de hoofdbestaansreden van het apparaat.
 * Meestal, ook weer om een laag energieverbruik te behouden, hebben ze ook een **beperkte bandbreedte** ter beschikking (daarbij: beeld je de miserie op een wifi-netwerk in wanneer honderden kleine sensoren aan hoge bandbreedtes het netwerk mee gebruiken).
-* Zowel de fysieke dimensies en bovenstaande twee eigenschappen zorgen er ook voor dat IoT-apparaten meestal maar een **beperkt aantal zaken kunnen**. Het heeft niet altijd de netwerkverbindingsmogelijkheden die je nodig hebt (meestal heeft een apparaat een draadloze - wifi,  Zigbee, LoRaWAN,etc. - of bedrade aansluiting, maar zelden beiden) en ook qua opslag en processormogelijkheden zijn de apparaten uiteraard vaak veel beperkter dan de kracht van computers en mobiele telefoons. Het grootste probleem hiervan is echter dat IoT-apparaten *by nature* vaak **niet evident zijn om te updaten**. Sommige apparaten kunnen bijvoorbeeld enkel geüpdatet worden door fysiek met het apparaat te zijn verbonden (en dan door de firmware te flashen bijvoorbeeld). Vanuit een fysieke beveiligingsconcept is dat goed, maar niet als jouw honderden apparaten een kritieke beveiligingslek hebben die dringend gepatcht moet worden.
+* Zowel de fysieke dimensies en bovenstaande twee eigenschappen zorgen er ook voor dat IoT-apparaten meestal maar een **beperkt aantal zaken kunnen**. Het heeft niet altijd de netwerkverbindingsmogelijkheden die je nodig hebt (meestal heeft een apparaat een draadloze aansluiting zoals wifi, Zigbee of LoRaWAN, of een bedrade, maar zelden beiden) en ook qua opslag en processormogelijkheden zijn de apparaten uiteraard vaak veel beperkter dan de kracht van computers en mobiele telefoons. Het grootste probleem hiervan is echter dat IoT-apparaten *by nature* vaak **niet evident zijn om te updaten**. Sommige apparaten kunnen bijvoorbeeld enkel geüpdatet worden door fysiek met het apparaat te zijn verbonden (en dan door de firmware te flashen bijvoorbeeld). Vanuit een fysieke beveiligingsconcept is dat goed, maar niet als jouw honderden apparaten een kritieke beveiligingslek hebben die dringend gepatcht moet worden.
 * Vaak bevinden IoT-apparaten zich op de koop toe op **onbeschermde locaties** die maar moeilijk fysiek te beveiligen zijn. Hierdoor kunnen digitale stropers, zonder schrik om betrapt te worden, ongezien met de apparaten knoeien (*tamperen*).
 
 ::: {.callout-note}
@@ -160,9 +160,9 @@ IoT stapelt klassieke security-problemen op een bijzonder ongunstige hardware-co
 
 * **Low-cost, long-life**: toestellen gaan 10+ jaar mee, update-support vaak een pak korter.
 * **Default credentials** en zwakke firmware blijven de #1 instap (cfr. Mirai).
-* **Fysieke toegang** betekent bij IoT vaak meteen *game over* — een **TPM-chip** (of alternatief) heft dat grotendeels op.
+* **Fysieke toegang** betekent bij IoT vaak meteen *game over* - een **TPM-chip** (of alternatief) heft dat grotendeels op.
 * **KISS** is een onderschatte verdediging: elke extra feature is extra attack surface.
-* De **McCumber kubus** blijft gelden: ook op een sensor moet data beschermd zijn — in rust, tijdens transport én tijdens verwerking.
+* De **McCumber kubus** blijft gelden: ook op een sensor moet data beschermd zijn - in rust, tijdens transport én tijdens verwerking.
 
 ## Tot slot
 

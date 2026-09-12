@@ -4,7 +4,7 @@
 Na dit hoofdstuk kan je:
 
 1. **De evolutie van cyberaanvallen in het voorbije decennium schetsen** aan de hand van kernmomenten (Stuxnet, Snowden, ransomware-golf, AI-dreigingen).
-2. **Uitleggen waarom cyberaanvallen impact hebben ver buiten de digitale wereld** — van kritieke infrastructuur tot geopolitiek en democratie.
+2. **Uitleggen waarom cyberaanvallen impact hebben ver buiten de digitale wereld**: van kritieke infrastructuur tot geopolitiek en democratie.
 3. **De rol van AI aan beide zijden van de wapenwedloop duiden**: als offensief wapen én als verdedigingsinstrument.
 4. **De paradox *"attack sophistication ↑ / vereiste aanvallerskennis ↓"* toepassen** op een gegeven scenario om de gevolgen voor de verdediging in te schatten.
 5. **White, grey en black hat hackers onderscheiden** en de spelregels van ethisch hacken in België (sinds februari 2023) correct toepassen.
@@ -63,7 +63,7 @@ Stuxnet bleek een worm te zijn die probeerde een specifiek soort centrifuge te s
 :::
 
 ::: {.callout-important}
-**Airgapped systems don't exist.** De Iraanse Natanz-verrijkingsinstallatie was bewust níet met het Internet verbonden (*air-gapped*): een klassieke beveiligingsmaatregel voor kritieke infrastructuur. Toch raakte Stuxnet binnen. Hoe? Via geïnfecteerde USB-sticks die door werknemers (bewust of onbewust) werden binnengebracht. Stuxnet bewees daarmee een pijnlijke waarheid: een volledig van het Internet afgesloten systeem bestáát in de praktijk zelden of nooit — mensen, USB-sticks, updates en onderhoudsapparatuur vormen altijd bruggen die aanvallers kunnen misbruiken.
+**Airgapped systems don't exist.** De Iraanse Natanz-verrijkingsinstallatie was bewust níet met het Internet verbonden (*air-gapped*): een klassieke beveiligingsmaatregel voor kritieke infrastructuur. Toch raakte Stuxnet binnen. Hoe? Via geïnfecteerde USB-sticks die door werknemers (bewust of onbewust) werden binnengebracht. Stuxnet bewees daarmee een pijnlijke waarheid: een volledig van het Internet afgesloten systeem bestáát in de praktijk zelden of nooit - mensen, USB-sticks, updates en onderhoudsapparatuur vormen altijd bruggen die aanvallers kunnen misbruiken.
 :::
 
 ![De uraniumverrijkingsinstallatie in Natanz (Iran), het doelwit van Stuxnet. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Atomanlage_Natanz_(2022).jpg), auteur Parsa 2au, CC BY-SA 4.0.](assets/atomanlage_natanz_2022.jpg){ width=70% }
@@ -88,7 +88,7 @@ Dat glazen huisje werd in 2013 hardhandig aan diggelen geslagen door twee belang
 
 ![Edward Snowden tijdens een interview met Glenn Greenwald in Hong Kong, 2013. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Edward_Snowden-2.jpg), Laura Poitras / Praxis Films, CC BY 3.0.](assets/edward_snowden-2.jpg){ width=50% }
 
-![Originele gelekte NSA-slide: *"Dates When PRISM Collection Began For Each Provider"* — van Microsoft in 2007 tot Apple in 2012. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Prism_slide_5.jpg), NSA, public domain.](assets/prism_slide_5.jpg){ width=75% }
+![Originele gelekte NSA-slide: *"Dates When PRISM Collection Began For Each Provider"*, van Microsoft in 2007 tot Apple in 2012. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Prism_slide_5.jpg), NSA, public domain.](assets/prism_slide_5.jpg){ width=75% }
 
 * **Julian Assange**: er zijn altijd klokkenluiders (*whistleblowers*) geweest die om persoonlijke overtuigingen vonden dat bepaalde informatie met het publiek moesten worden gedeeld. Zeker in dictatoriale middens kan dit levensgevaarlijk zijn. Aan het eind van de 20e eeuw kregen deze klokkenluiders echter een krachtig apparaat om hun nieuws veilig te verspreiden: het Internet.  Julian Assange besefte dit en richtte daarom in 2006 Wikileaks op. Een site waar klokkenluiders op een anonieme manier documenten konden *lekken*. Tot 2010 zijn zo enkele erg controversiële documenten met de wereld gedeeld die soms verregaande diplomatieke of geopolitieke gevolgen hadden. Het lot van Assange is nog steeds onduidelijk: momenteel wordt hij in het Verenigd Koninkrijk in hechtenis gehouden en voert hij hevig strijd (via de rechtbank) om niet uitgeleverd te worden aan de Verenigde Staten.
 
@@ -125,13 +125,13 @@ Een interessant debat dat altijd opduikt bij deze problematiek is de "Ik heb toc
 :::
 
 ::: {.callout-note title="Een historische waarschuwing: het Amsterdams bevolkingsregister"}
-Dat informatie die vandaag onschuldig lijkt morgen dodelijk kan zijn, is helaas geen theoretische bedreiging. Nederland stond voor de Tweede Wereldoorlog bekend om zijn buitengewoon nauwkeurige en goed georganiseerde **bevolkingsregister**. Burgers gaven hun gegevens — adres, gezinssamenstelling én ook hun godsdienst — te goeder trouw door, puur voor alledaagse administratie. Niemand kon vermoeden waartoe die keurig bijgehouden kaartenbakken ooit zouden dienen.
+Dat informatie die vandaag onschuldig lijkt morgen dodelijk kan zijn, is helaas geen theoretische bedreiging. Nederland stond voor de Tweede Wereldoorlog bekend om zijn buitengewoon nauwkeurige en goed georganiseerde **bevolkingsregister**. Burgers gaven hun gegevens (adres, gezinssamenstelling én ook hun godsdienst) te goeder trouw door, puur voor alledaagse administratie. Niemand kon vermoeden waartoe die keurig bijgehouden kaartenbakken ooit zouden dienen.
 
 Toen nazi-Duitsland Nederland bezette, werd net dat voorbeeldige register het ideale instrument om Joodse burgers op te sporen, te deporteren en te vermoorden. Vervalste identiteitspapieren van het verzet konden bovendien eenvoudig ontmaskerd worden door ze te vergelijken met de originele registratiegegevens.
 
 Het verzet besefte de dodelijke waarde van die data. In de nacht van **27 maart 1943** pleegde een verzetsgroep een aanslag op het bevolkingsregister in Amsterdam, in een wanhopige poging de gegevens van zo'n 70.000 Amsterdamse Joden te vernietigen. De aanslag slaagde slechts gedeeltelijk: ongeveer 15% van de gegevens ging verloren. Twaalf deelnemers werden opgepakt en op **2 juli 1943** gefusilleerd..
 
-De les voor de (toekomstige) cyberboswachter is universeel en tijdloos: data die je vandaag verzamelt of deelt, blíjft bestaan. Wie er ooit toegang toe krijgt — een toekomstige werkgever, een verzekeraar, of in het ergste geval een kwaadaardig regime — en met welke bedoelingen, heb je op het moment van registreren niet meer in de hand.
+De les voor de (toekomstige) cyberboswachter is universeel en tijdloos: data die je vandaag verzamelt of deelt, blíjft bestaan. Wie er ooit toegang toe krijgt (een toekomstige werkgever, een verzekeraar, of in het ergste geval een kwaadaardig regime) en met welke bedoelingen, heb je op het moment van registreren niet meer in de hand.
 :::
 
 ### 2014: Hoe veilig is *the cloud* ?
@@ -203,7 +203,7 @@ Microsoft monitort al geruime tijd de vele fake news bronnen die Rusland rijk is
 
 Tussen alle spectaculaire aanvallen door, kwamen er in deze jaren ook twee bugs aan het licht die aantoonden hoe broos het **fundament** van het Internet is: bugs in bibliotheken die zó veel gebruikt werden dat een enkel gaatje plots de halve wereld kwetsbaar maakte.
 
-* **Heartbleed** (2014): een kwetsbaarheid in **OpenSSL**, de bibliotheek die ontelbare webservers, routers en apparaten gebruiken om TLS/HTTPS-verbindingen op te zetten. Door een verkeerd gecontroleerde buffer-lengte kon een aanvaller kleine brokjes servergeheugen uitlezen — inclusief privésleutels, wachtwoorden en sessietokens. Maanden na de publieke bekendmaking waren er wereldwijd nóg steeds 200.000+ kwetsbare apparaten online.
+* **Heartbleed** (2014): een kwetsbaarheid in **OpenSSL**, de bibliotheek die ontelbare webservers, routers en apparaten gebruiken om TLS/HTTPS-verbindingen op te zetten. Door een verkeerd gecontroleerde buffer-lengte kon een aanvaller kleine brokjes servergeheugen uitlezen - inclusief privésleutels, wachtwoorden en sessietokens. Maanden na de publieke bekendmaking waren er wereldwijd nóg steeds 200.000+ kwetsbare apparaten online.
 
 ![Het iconische Heartbleed-logo, ontworpen door Leena Kurjenniska (Codenomicon) in minder dan twee uur en in één klap wereldberoemd. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Heartbleed.svg), CC0.](assets/heartbleed.svg){ width=25% }
 
@@ -211,7 +211,7 @@ Tussen alle spectaculaire aanvallen door, kwamen er in deze jaren ook twee bugs 
 
 ![Shellshock-logo. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Shellshock_logo_lock.svg), auteur Bf5man, CC0.](assets/shellshock_logo_lock.svg){ width=25% }
 
-Beide bugs zaten al **jaren** in de code voor iemand ze ontdekte. Het is een vroege waarschuwing voor wat we later bij **Log4J** (2021) en **XZ Utils** (2024) opnieuw zouden zien: de open-source bibliotheken waarop het Internet draait, worden zelden grondig doorgelicht — en als er iets misgaat, gaat het gigantisch mis.
+Beide bugs zaten al **jaren** in de code voor iemand ze ontdekte. Het is een vroege waarschuwing voor wat we later bij **Log4J** (2021) en **XZ Utils** (2024) opnieuw zouden zien: de open-source bibliotheken waarop het Internet draait, worden zelden grondig doorgelicht - en als er iets misgaat, gaat het gigantisch mis.
 
 ### 2015: Scheidingen en zelfmoord
 
@@ -235,7 +235,7 @@ Kortom: bedrijven moéten data die ze van ons opslaan minstens encrypteren en sy
 
 > *"Because there is no patch for human stupidity."*
 
-Terwijl staten miljarden uitgaven aan offensieve cyberwapens, toonde een 16-jarige Britse tiener (onderdeel van het collectief **Crackas With Attitude**) aan dat je soms helemaal geen geavanceerde tools nodig hebt. Met puur **social engineering** — overtuigende telefoontjes naar helpdesks en support-medewerkers — wist hij:
+Terwijl staten miljarden uitgaven aan offensieve cyberwapens, toonde een 16-jarige Britse tiener (onderdeel van het collectief **Crackas With Attitude**) aan dat je soms helemaal geen geavanceerde tools nodig hebt. Met puur **social engineering** (overtuigende telefoontjes naar helpdesks en support-medewerkers) wist hij:
 
 * In te breken in de **AOL-mailbox van CIA-directeur John Brennan**
 * Toegang te krijgen tot mail- en telefoonaccounts van de Amerikaanse spionage-chef James Clapper
@@ -284,7 +284,7 @@ De gecombineerde economische schade werd geschat op bijna **4 miljard dollar** v
 De schade én de losgeldbedragen werden ook steeds groter. Zo was er het voorval met Garmin in de zomer van 2020 dat niet alleen de populaire sport-tracking diensten gedurende meerdere dagen uit de lucht haalde, maar er ook voor zorgde dat menig vliegtuig niet mocht vliegen omdat de Garmin Pilot apps niet werkten waardoor de piloten geen up-to-date aeronautische plannen voorhanden hadden. Het is nooit geweten of Garmin het losgeld (10 miljoen dollar!) wel of niet heeft betaald, vast staat wel dat ransomware tegenwoordig een, helaas, erg lucratieve handel is geworden voor cybercriminelen.
 
 ::: {.callout-note}
-Een minder bekend maar sprekend voorbeeld: de Deense hoortoestelfabrikant **Demant** werd in 2019 getroffen door ransomware. De totale kost voor het bedrijf — productieverlies, herstel, verzekeringen — bedroeg **95 miljoen dollar**, ook al was er niet eens losgeld betaald. Ransomware-kosten zijn zelden beperkt tot het losgeld zelf; de indirecte schade is vaak een veelvoud.
+Een minder bekend maar sprekend voorbeeld: de Deense hoortoestelfabrikant **Demant** werd in 2019 getroffen door ransomware. De totale kost voor het bedrijf (productieverlies, herstel, verzekeringen) bedroeg **95 miljoen dollar**, ook al was er niet eens losgeld betaald. Ransomware-kosten zijn zelden beperkt tot het losgeld zelf; de indirecte schade is vaak een veelvoud.
 :::
 
 ::: {.callout-note}
@@ -298,11 +298,11 @@ Ondertussen weten we vrij zeker (uiteraard in de cyberwereld zal attributie nooi
 :::
 
 ::: {.callout-note}
-Shadow Brokers was niet de eerste die NSA-cyberwapens publiekelijk maakte. Al in 2013 publiceerde *Der Spiegel* (op basis van Snowden-documenten) de **NSA ANT Product Catalog**, een soort "catalogus" van spionagehardware en -software van de NSA. Hierin stonden bizarre gadgets zoals **PICASSO**: een op maat gemaakte GSM die gesprekken, locatie en kamer-audio kan onderscheppen én een "panic button" voor de gebruiker bevat. De inhoud van deze catalogus leest als een James Bond-gadgetlijst, maar is volledig echt — en toont hoe ver staats-spionage in de digitale wereld gaat. [Volledige catalogus](https://www.cryptomuseum.com/covert/bugs/nsaant/files/NSA_ANT_20070108.pdf)
+Shadow Brokers was niet de eerste die NSA-cyberwapens publiekelijk maakte. Al in 2013 publiceerde *Der Spiegel* (op basis van Snowden-documenten) de **NSA ANT Product Catalog**, een soort "catalogus" van spionagehardware en -software van de NSA. Hierin stonden bizarre gadgets zoals **PICASSO**: een op maat gemaakte GSM die gesprekken, locatie en kamer-audio kan onderscheppen én een "panic button" voor de gebruiker bevat. De inhoud van deze catalogus leest als een James Bond-gadgetlijst, maar is volledig echt - en toont hoe ver staats-spionage in de digitale wereld gaat. [Volledige catalogus](https://www.cryptomuseum.com/covert/bugs/nsaant/files/NSA_ANT_20070108.pdf)
 :::
 
 ::: {.callout-note}
-De NSA-tools die Shadow Brokers lekte, werden daarna niet enkel door Russen gebruikt. In 2017 toonde de *New York Times* aan dat **Chinese staatshackers** vergelijkbare NSA-hackingtools (EternalBlue-varianten) hadden bemachtigd — waarschijnlijk door ze te onderscheppen toen de NSA zelf Chinese doelwitten aanviel, om ze vervolgens om te keren en tegen andere slachtoffers in te zetten. Cyberwapens zijn in die zin anders dan conventionele wapens: eenmaal gebruikt, kunnen ze worden gereverse-engineered en door de tegenstander tegen jou worden ingezet.
+De NSA-tools die Shadow Brokers lekte, werden daarna niet enkel door Russen gebruikt. In 2017 toonde de *New York Times* aan dat **Chinese staatshackers** vergelijkbare NSA-hackingtools (EternalBlue-varianten) hadden bemachtigd - waarschijnlijk door ze te onderscheppen toen de NSA zelf Chinese doelwitten aanviel, om ze vervolgens om te keren en tegen andere slachtoffers in te zetten. Cyberwapens zijn in die zin anders dan conventionele wapens: eenmaal gebruikt, kunnen ze worden gereverse-engineered en door de tegenstander tegen jou worden ingezet.
 :::
 
 ::: {.callout-note}
@@ -320,7 +320,7 @@ Het lek toont tegelijk de kwetsbaarheid van organisaties: betalingen gebeurden o
 
 
 
-### 2018: Cyber meets georganiseerde misdaad — Haven van Antwerpen
+### 2018: Cyber meets georganiseerde misdaad - Haven van Antwerpen
 
 Cybercrime bleef voor veel mensen een abstract, ver-van-mijn-bed-gevoel. Tot een zaak voor de Antwerpse correctionele rechtbank kwam die liet zien dat het ook bij ons, in eigen haven, plaatsvindt.
 
@@ -335,7 +335,7 @@ Het toont hoe cybercrime en **georganiseerde misdaad** naadloos in elkaar overvl
 
 ### 2019: De eerste kinetische reactie op een cyberaanval
 
-In mei 2019 lanceerde Hamas vanuit Gaza een cyberaanval op Israëlische doelwitten. De Israel Defense Forces (IDF) reageerden niet — zoals we tot dan toe gewoon waren — met een tegenhack, maar met een **luchtbombardement** op het gebouw waarin de Hamas-cybercel gevestigd was. *"I think we just crossed a line we haven't crossed before"*, tweette cybersecurityexpert Mikko Hyppönen.
+In mei 2019 lanceerde Hamas vanuit Gaza een cyberaanval op Israëlische doelwitten. De Israel Defense Forces (IDF) reageerden niet (zoals we tot dan toe gewoon waren) met een tegenhack, maar met een **luchtbombardement** op het gebouw waarin de Hamas-cybercel gevestigd was. *"I think we just crossed a line we haven't crossed before"*, tweette cybersecurityexpert Mikko Hyppönen.
 
 Het was **de eerste keer in de geschiedenis dat een digitale aanval in realtime beantwoord werd met een fysieke, militaire respons**. De vraag die we in 2014 bij de Sony-hack stelden ("*vanaf wanneer is een cyberaanval een act of aggression?*") had plots een heel concrete, gewelddadige interpretatie gekregen. Het gebrek aan internationale *rules of engagement* voor cyberoorlog werd daarmee nog urgenter.
 
@@ -346,10 +346,10 @@ Het was **de eerste keer in de geschiedenis dat een digitale aanval in realtime 
 De inmenging van Rusland in een buitenlandse verkiezing (een daad waar menig land zich reeds schuldig aan heeft gemaakt) was ontluisterend vanwege de schaal waarop het gebeurde. Het toonde de almacht van de grote Silicon Valley bedrijven en hoe zij op geopolitiek niveau een belangrijke speler zijn geworden. Iets dat vervolgens nogmaals bevestigd werd door het simultaan plaatsgevonden Cambridge Analytica schandaal, dat niet alleen mede ervoor gezorgd heeft dat Trump president werd, maar dat hoogstwaarschijnlijk ook een grote groep twijfelaars heeft kunnen overhalen om een pro-Brexit stem uit te brengen. 
 
 ::: {.callout-note}
-**Hoe werkte Cambridge Analytica eigenlijk?** Het is belangrijk om te begrijpen dat er géén klassieke hack plaatsvond — het bedrijf gebruikte Facebook precies zoals het was ontworpen. De *mechanica*:
+**Hoe werkte Cambridge Analytica eigenlijk?** Het is belangrijk om te begrijpen dat er géén klassieke hack plaatsvond - het bedrijf gebruikte Facebook precies zoals het was ontworpen. De *mechanica*:
 
 1. Ongeveer 320.000 Amerikaanse kiezers kregen $2-5 betaald om een persoonlijkheidstest in te vullen (*"Welke Harry Potter ben jij?"*-achtige quizzen). Daarvoor moesten ze inloggen met hun Facebook-account.
-2. Via een destijds bestaande Facebook-instelling (*"Apps Others Use"*) kreeg de quiz-app **ook toegang tot data van alle vrienden** van de deelnemer — zonder dat die vrienden ooit toestemming gaven of zelfs maar wisten dat de app bestond.
+2. Via een destijds bestaande Facebook-instelling (*"Apps Others Use"*) kreeg de quiz-app **ook toegang tot data van alle vrienden** van de deelnemer - zonder dat die vrienden ooit toestemming gaven of zelfs maar wisten dat de app bestond.
 3. Zo groeiden die 320.000 invullers tot meer dan **50 miljoen profielen** aan data (likes, demografie, interesses).
 4. Algoritmes combineerden deze data met kiezerslijsten om **hypergepersonaliseerde politieke advertenties** te serveren aan twijfelaars in zwing-staten.
 
@@ -359,7 +359,7 @@ Na het schandaal verwijderde Facebook in 2018 de *"Apps Others Use"*-instelling 
 :::
 
 ::: {.callout-tip}
-In februari 2023 gaf **Yevgeny Prigozhin**, baas van het Russische Wagner-huurlingenleger, publiekelijk toe dat hij de **Internet Research Agency (IRA)** had opgericht — de Russische trollenfabriek die door de VS gesanctioneerd was voor inmenging in de Amerikaanse verkiezingen. Jarenlang werd dit ontkend; nu werd het door de oprichter zelf bevestigd.
+In februari 2023 gaf **Yevgeny Prigozhin**, baas van het Russische Wagner-huurlingenleger, publiekelijk toe dat hij de **Internet Research Agency (IRA)** had opgericht - de Russische trollenfabriek die door de VS gesanctioneerd was voor inmenging in de Amerikaanse verkiezingen. Jarenlang werd dit ontkend; nu werd het door de oprichter zelf bevestigd.
 :::
 
 Drie jaar later zagen onderzoekers een soortgelijk fenomeen tijdens de verkiezingen van de Europese Unie in 2019. Een rapport toonde aan dat Rusland actieve misinformatie campagnes organiseerde om zo de verkiezingen te beïnvloeden. Ze gebruiken hierbij zogenaamde *bad actors*: fake social media accounts die (al dan niet fake) nieuws verspreiden dat "in de winkel van Rusland past". Uit het onderzoek bleek dat de toenmalige belangrijkste EU-mandatarissen (Juncker, King, Tajani, etc.) soms tot 20% volgers op Twitter hadden die eigenlijk *bad actors* waren. 
@@ -383,14 +383,14 @@ Ook persoonlijkheden zelf werden doelwit. Op **15 juli 2020** werden simultaan d
 :::
 
 ::: {.callout-warning}
-Een klassiek, niet-gehackt maar zéér veelzeggend voorbeeld van *wat je met legaal verzamelde data kan doen*: in 2012 ontdekte een Amerikaanse vader dat warenhuisketen **Target** kortingsbonnen voor baby-artikelen naar zijn tienerdochter stuurde. Hij was woest — tot bleek dat zijn dochter inderdaad zwanger was. Target had via aankoop-patronen (25 specifieke producten zoals geurloze lotion en bepaalde vitaminen) **haar zwangerschap correct voorspeld** nog vóór ze het zelf aan haar familie had verteld. Data is niet alleen het nieuwe goud, het is ook een zeer accuraat voorspelmiddel.
+Een klassiek, niet-gehackt maar zéér veelzeggend voorbeeld van *wat je met legaal verzamelde data kan doen*: in 2012 ontdekte een Amerikaanse vader dat warenhuisketen **Target** kortingsbonnen voor baby-artikelen naar zijn tienerdochter stuurde. Hij was woest - tot bleek dat zijn dochter inderdaad zwanger was. Target had via aankoop-patronen (25 specifieke producten zoals geurloze lotion en bepaalde vitaminen) **haar zwangerschap correct voorspeld** nog vóór ze het zelf aan haar familie had verteld. Data is niet alleen het nieuwe goud, het is ook een zeer accuraat voorspelmiddel.
 :::
 
 ::: {.callout-note}
 Recentere voorbeelden van hoe techbedrijven de grenzen van privacy blijven opzoeken:
 
-* **Facebook detecteert selfie-verwijderingen (2022)**: de platform zou actief hebben gedetecteerd wanneer tienermeisjes net een selfie hadden verwijderd om hen vervolgens gericht **beauty-advertenties** te tonen — op het moment dat ze zich onzeker voelden.
-* **WhatsApp "traffic analysis"-kwetsbaarheid (mei 2024)**: interne engineers waarschuwden Meta dat overheden — ondanks end-to-end encryptie — kunnen zien **wie met wie communiceert**. Medewerkers vreesden dat Israël deze techniek gebruikte om doelwitten in Gaza te selecteren.
+* **Facebook detecteert selfie-verwijderingen (2022)**: de platform zou actief hebben gedetecteerd wanneer tienermeisjes net een selfie hadden verwijderd om hen vervolgens gericht **beauty-advertenties** te tonen - op het moment dat ze zich onzeker voelden.
+* **WhatsApp "traffic analysis"-kwetsbaarheid (mei 2024)**: interne engineers waarschuwden Meta dat overheden (ondanks end-to-end encryptie) kunnen zien **wie met wie communiceert**. Medewerkers vreesden dat Israël deze techniek gebruikte om doelwitten in Gaza te selecteren.
 * **Meta Flo-zaak (augustus 2025)**: een jury oordeelde dat Meta *"opzettelijk meeluisterde"* op de in-app-communicatie van gebruikers van de menstruatiecyclus-app Flo en daarmee illegaal **cyclus-data** verzamelde.
 * **Facebook/Android localhost-tracking (juni 2025)**: onderzoekers toonden aan dat de Facebook-app op Android je surfgedrag op andere websites kan volgen via een truc met localhost-verbindingen.
 :::
@@ -405,7 +405,7 @@ De opmerkelijkste gebeurtenis in 2021 was de lek in de **Log4J** Java-bibliothee
 
 ![Apache Log4J-logo. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Apache_Log4j_Logo.svg), Apache Software Foundation, CC0 / Apache 2.0.](assets/apache_log4j_logo.svg){ width=35% }
 
-De kwetsbaarheid (later *Log4Shell* genoemd) zat in een functie die strings met `${jndi:...}` automatisch opzocht via het Java Naming and Directory Interface-protocol. Door zo'n string in een plek te zetten die de server logt (bv. de `User-Agent`-header), kon een aanvaller de server dwingen om **externe code op te halen en uit te voeren** — een *remote code execution* van de griezeligste soort, bereikbaar met één enkele regel tekst:
+De kwetsbaarheid (later *Log4Shell* genoemd) zat in een functie die strings met `${jndi:...}` automatisch opzocht via het Java Naming and Directory Interface-protocol. Door zo'n string in een plek te zetten die de server logt (bv. de `User-Agent`-header), kon een aanvaller de server dwingen om **externe code op te halen en uit te voeren** - een *remote code execution* van de griezeligste soort, bereikbaar met één enkele regel tekst:
 
 ![Log4J kwetsbaarheid.](assets/log4j.png)
 
@@ -433,7 +433,7 @@ In 2022 en 2023 bewees de hackersgroep **Lapsus$** (bestaande uit tieners!) dat 
 Nog bonter maakte de **Scattered Spider** groep het in september 2023. Ze legden het **MGM Resorts** imperium in Las Vegas plat door simpelweg naar de helpdesk te bellen, zich voor te doen als een werknemer, en het wachtwoord te resetten. Gevolg: gokkasten op zwart, sleutelkaarten van hotelkamers werkten niet meer en liften stonden stil. Schade: meer dan 100 miljoen dollar. Het toonde aan dat *vishing* (voice phishing) in combinatie met een zwakke helpdesk-procedure dodelijker kan zijn dan de meest geavanceerde malware.
 
 
-### 2024: Een nieuwe, fysieke primeur — de Hezbollah-pagers
+### 2024: Een nieuwe, fysieke primeur - de Hezbollah-pagers
 
 Op **17 september 2024** kregen we opnieuw een "primeur" die niemand wenste te zien. In Libanon explodeerden **simultaan duizenden pagers** die door leden van Hezbollah werden gebruikt om te communiceren (pagers werden gebruikt om GSM-traceerbaarheid te vermijden). Eén dag later volgden **radiotoestellen**. De balans: minstens **9 doden en 2.750 gewonden**, velen met zware verwondingen aan handen en gezicht.
 
@@ -468,7 +468,7 @@ Andere voorbeelden van AI-gedreven incidenten die we recent zagen opduiken:
 
 * **Deepfake CFO (2024)**: Een multinational in Hong Kong verloor 25 miljoen dollar nadat een werknemer geld overmaakte na een videocall met wat leek op de CFO en andere collega's. Iedereen in de call, behalve het slachtoffer, was een deepfake.
 * **WormGPT & FraudGPT**: Dit zijn kwaadaardige varianten van ChatGPT, specifiek getraind om malware te schrijven, phishing mails op te stellen en kwetsbaarheden te vinden, zonder de ethische beperkingen die commerciële modellen hebben.
-* **AI-gestuurde Social Engineering**: Aanvallers gebruiken AI om in *real-time* stemmen van bekenden na te bootsen (vishing) om zo slachtoffers te overtuigen vertrouwelijke gegevens te delen of geld over te maken. De *New Yorker* publiceerde in 2024 een spraakmakend verhaal over een Brooklyn-koppel dat een telefoontje kreeg van familieleden die "gegijzeld" werden — hun stemmen waren perfect gekloond met AI.
+* **AI-gestuurde Social Engineering**: Aanvallers gebruiken AI om in *real-time* stemmen van bekenden na te bootsen (vishing) om zo slachtoffers te overtuigen vertrouwelijke gegevens te delen of geld over te maken. De *New Yorker* publiceerde in 2024 een spraakmakend verhaal over een Brooklyn-koppel dat een telefoontje kreeg van familieleden die "gegijzeld" werden - hun stemmen waren perfect gekloond met AI.
 * **Fake Joe Biden robocall (januari 2024)**: kort voor de voorverkiezingen in New Hampshire kregen Democraten een telefoontje met een **AI-gegenereerde stem van president Biden** die hen opriep om niét te gaan stemmen.
 * **Slovaakse verkiezingen (2023)**: een gelekte "opname" van een liberale politicus die stemverkiezingsfraude besprak, bleek een AI-fabricatie. Het wordt beschouwd als mogelijk de **eerste verkiezing die werd beïnvloed door deepfakes**. De pro-Kremlin populist won.
 
@@ -484,7 +484,7 @@ Een klassieke aanval uit de webwereld is **SQL injection**: als een applicatie g
 Je ziet hier ook een verschuiving van **SEO** (*Search Engine Optimisation*) naar **GEO** (*Generative Search Optimisation*): niet enkel “hoog scoren in Google”””, maar content zo helder, gestructureerd en citeerbaar maken dat generatieve zoekmachines en chatbots (op basis van LLMs) jouw informatie opnemen in hun antwoord.
 :::
 
-### April 2026: Mythos — de AI als expert-hacker
+### April 2026: Mythos - de AI als expert-hacker
 
 In april 2026 werd de wereld opgeschrikt door het bestaan van **Mythos**, een AI-model ontwikkeld door Anthropic (het bedrijf achter Claude) dat in staat is om zwakke plekken in computersystemen te identificeren én te exploiteren. Waar een menselijke expert-hacker zo'n 10 uur nodig heeft om een systeem te kraken, kan Mythos dit in enkele minuten. De potentiële gevolgen zijn enorm: bankensystemen, energiecentrales en andere kritieke infrastructuur zouden kwetsbaar kunnen zijn. Anthropic besloot het model bewust niet publiek vrij te geven vanwege de risico's. De Amerikaanse banktoezichthouder sloeg alarm en Federal Reserve-voorzitter Jerome Powell en minister van Financiën Scott Bessent hielden een spoedvergadering. AI-onderzoeker Steven Latré waarschuwde bovendien dat concurrenten binnen zes maanden tot een jaar vergelijkbare tools zouden kunnen ontwikkelen, wat vooral kleine bedrijven zonder uitgebreide cybersecurity-afdelingen kwetsbaar maakt.
 
@@ -497,25 +497,25 @@ En het bleef niet bij Mythos alleen. Kort daarna bleek dat ook **GPT-5.5** van O
 ![Resultaten van de evaluatie door het AI Safety Institute: zowel Mythos (Anthropic) als GPT-5.5 (OpenAI) lossen de "The Last Ones"-challenge volledig op. Bron: [AISI](https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities).](assets/mythos.png){ width=70% }
 
 
-::: {.callout-warning title="Mei 2026: Mini Shai-Hulud &mdash; een AI-gegenereerde worm door npm"}
+::: {.callout-warning title="Mei 2026: Mini Shai-Hulud - een AI-gegenereerde worm door npm"}
 Op **20 mei 2026** publiceerde Microsoft een [analyse](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/) van een supply chain-aanval op **\@antv**, een populaire familie JavaScript-grafiekenbibliotheken (G2, G6) die in miljoenen dashboards zit ingebed. Een gecompromitteerd maintainer-account volstond om vergiftigde versies van alle \@antv-pakketten te publiceren; via de dependency-keten besmette dit ook *echarts-for-react* (>1 miljoen downloads per week). GitHub haalde uiteindelijk **640 pakketten** offline en invalideerde **61.274 npm-tokens**.
 
-Wat de aanval bijzonder maakt: zodra een CI/CD-pipeline het pakket installeerde, draaide via een preinstall-hook een payload die zichzelf *enkel* activeerde binnen **GitHub Actions**. Daar plunderde hij geheimen (GitHub, AWS, Vault, Kubernetes, 1Password, npm) en *propageerde zich als een worm* door met de gestolen npm-tokens nieuwe vergiftigde pakketten te publiceren &mdash; vandaar de Dune-knipoog *Shai-Hulud*. Microsoft Defender classificeert de payload als `Trojan:AIGen/NPMStealer`. Het *AIGen*-prefix is hun label voor code die volgens de ML-detectie **door een LLM is gegenereerd**.
+Wat de aanval bijzonder maakt: zodra een CI/CD-pipeline het pakket installeerde, draaide via een preinstall-hook een payload die zichzelf *enkel* activeerde binnen **GitHub Actions**. Daar plunderde hij geheimen (GitHub, AWS, Vault, Kubernetes, 1Password, npm) en *propageerde zich als een worm* door met de gestolen npm-tokens nieuwe vergiftigde pakketten te publiceren - vandaar de Dune-knipoog *Shai-Hulud*. Microsoft Defender classificeert de payload als `Trojan:AIGen/NPMStealer`. Het *AIGen*-prefix is hun label voor code die volgens de ML-detectie **door een LLM is gegenereerd**.
 :::
 
-### Juni 2026: De VS grijpt in — Fable 5 en Mythos 5 geblokkeerd
+### Juni 2026: De VS grijpt in - Fable 5 en Mythos 5 geblokkeerd
 
-Dat overheden worstelen met deze nieuwe realiteit, bleek ongeveer twee maanden later. **Midden juni 2026** verbood het Amerikaanse Witte Huis het gebruik van Anthropics twee nieuwste AI-modellen, **Fable 5** en **Mythos 5**, voor iedereen zónder de Amerikaanse nationaliteit. Het verbod — opgelegd via een brief van minister van Handel **Howard W. Lutnick** aan Anthropic-topman **Dario Amodei** — trof buitenlanders wereldwijd, niet-Amerikaanse ingezetenen ín de VS én de buitenlandse werknemers van Anthropic zelf.
+Dat overheden worstelen met deze nieuwe realiteit, bleek ongeveer twee maanden later. **Midden juni 2026** verbood het Amerikaanse Witte Huis het gebruik van Anthropics twee nieuwste AI-modellen, **Fable 5** en **Mythos 5**, voor iedereen zónder de Amerikaanse nationaliteit. Het verbod - opgelegd via een brief van minister van Handel **Howard W. Lutnick** aan Anthropic-topman **Dario Amodei** - trof buitenlanders wereldwijd, niet-Amerikaanse ingezetenen ín de VS én de buitenlandse werknemers van Anthropic zelf.
 
 Omdat zo'n gerichte filtering op nationaliteit technisch niet zomaar uitvoerbaar is, zag Anthropic zich genoodzaakt beide modellen voor *álle* klanten wereldwijd uit te schakelen. Enkel de oudere Claude-modellen bleven operationeel. Het bedrijf ontving het dwingende bevel op een vrijdagmiddag om 17u21 (ET) en reageerde met een officiële verklaring.
 
-De aanleiding? De Amerikaanse overheid ging ervan uit dat er een methode — een *jailbreak* — was gevonden om de beveiliging van Fable 5 te omzeilen en het model zo kwetsbaarheden in software te laten opsporen.
+De aanleiding? De Amerikaanse overheid ging ervan uit dat er een methode (een *jailbreak*) was gevonden om de beveiliging van Fable 5 te omzeilen en het model zo kwetsbaarheden in software te laten opsporen.
 
 ::: {.callout-note}
-Anthropic weerspreekt de ernst van de situatie. Na analyse bleek de techniek slechts gebruikt om een handvol *reeds bekende* en minder belangrijke kwetsbaarheden te identificeren — zó eenvoudig dat andere publiek beschikbare modellen (waaronder **GPT-5.5** van OpenAI) ze net zo goed vinden, zónder enige beveiligingsomzeiling. Het "bewijs" van de overheid kwam volgens Anthropic neer op één scenario: vraag het model een specifieke codebase te lezen en fouten te herstellen — exact wat cybersecurity-experts elke dag legitiem doen.
+Anthropic weerspreekt de ernst van de situatie. Na analyse bleek de techniek slechts gebruikt om een handvol *reeds bekende* en minder belangrijke kwetsbaarheden te identificeren - zó eenvoudig dat andere publiek beschikbare modellen (waaronder **GPT-5.5** van OpenAI) ze net zo goed vinden, zónder enige beveiligingsomzeiling. Het "bewijs" van de overheid kwam volgens Anthropic neer op één scenario: vraag het model een specifieke codebase te lezen en fouten te herstellen - exact wat cybersecurity-experts elke dag legitiem doen.
 :::
 
-In zijn verklaring zet Anthropic de eigen verdedigingsstrategie uiteen. Een *waterdichte* beveiliging tegen jailbreaks is volgens het bedrijf vandaag industriebreed technisch onmogelijk. Daarom kiest het voor **defense in depth**: een gelaagde aanpak met strenge monitoring en een dataretentiebeleid van 30 dagen om misbruik snel te detecteren en te blokkeren. Fable 5 werd vóór de lancering bovendien duizenden uren getest door onder meer de Amerikaanse overheid, het Britse **AI Safety Institute (AISI)** en externe partijen — met filters die effectiever bleken dan die van eerdere modellen.
+In zijn verklaring zet Anthropic de eigen verdedigingsstrategie uiteen. Een *waterdichte* beveiliging tegen jailbreaks is volgens het bedrijf vandaag industriebreed technisch onmogelijk. Daarom kiest het voor **defense in depth**: een gelaagde aanpak met strenge monitoring en een dataretentiebeleid van 30 dagen om misbruik snel te detecteren en te blokkeren. Fable 5 werd vóór de lancering bovendien duizenden uren getest door onder meer de Amerikaanse overheid, het Britse **AI Safety Institute (AISI)** en externe partijen - met filters die effectiever bleken dan die van eerdere modellen.
 
 ::: {.callout-warning}
 Anthropic respecteert de juridische richtlijn en blokkeert de toegang, maar is het er fundamenteel mee oneens dat een commercieel model voor honderden miljoenen gebruikers wordt teruggetrokken op basis van één beperkte kwetsbaarheid. Wordt zo'n maatregel de norm, dan dreigt volgens het bedrijf de uitrol van *alle* toekomstige geavanceerde AI-modellen stil te vallen. Anthropic pleit voor een transparant, wettelijk proces op basis van technische feiten en wil de toegang voor zijn klanten zo snel mogelijk herstellen.
@@ -529,8 +529,8 @@ Tot nu toe ging het verhaal over AI en cybercrime vooral over *wat zou kunnen*: 
 
 Een greep uit de gedocumenteerde gevallen:
 
-* **Russische spionage (cluster `GTG-20006`, gelinkt aan *Midnight Blizzard*)**: aanvallen op militaire inlichtingendoelwitten binnen Oekraïense en Europese overheden, bij **meer dan 20 organisaties**. Het bijzondere: de volledige keten — verkenning, inbraak, exfiltratie — draaide in grotendeels **autonome AI-workflows**. Sloeg een virusscanner aan op hun malware? Dan herschreef het systeem de code zelf tot de detectie verdween. Dezelfde groep kaapte via *headless browsers* WhatsApp-accounts van hoge Oekraïense ambtenaren en exporteerde hun gesprekken in bulk, terwijl de leesbevestigingen werden onderdrukt zodat niemand iets merkte. Ook drone-fabrikanten waren doelwit: er werd een complete *software development kit* van een dronecamerasysteem buitgemaakt.
-* **Chinese exploit-fabriek (cluster `GTG-10007`)**: twee **bachelorstudenten** van een universiteit in Hunan lieten *agent swarms* — zwermen samenwerkende AI-agenten — parallel scannen en inbreken. Resultaat: **meer dan een dozijn mogelijke zerodays in één maand** en ongeveer **vijftig getroffen organisaties** in onderwijs, retail, energie en overheid.
+* **Russische spionage (cluster `GTG-20006`, gelinkt aan *Midnight Blizzard*)**: aanvallen op militaire inlichtingendoelwitten binnen Oekraïense en Europese overheden, bij **meer dan 20 organisaties**. Het bijzondere: de volledige keten (verkenning, inbraak, exfiltratie) draaide in grotendeels **autonome AI-workflows**. Sloeg een virusscanner aan op hun malware? Dan herschreef het systeem de code zelf tot de detectie verdween. Dezelfde groep kaapte via *headless browsers* WhatsApp-accounts van hoge Oekraïense ambtenaren en exporteerde hun gesprekken in bulk, terwijl de leesbevestigingen werden onderdrukt zodat niemand iets merkte. Ook drone-fabrikanten waren doelwit: er werd een complete *software development kit* van een dronecamerasysteem buitgemaakt.
+* **Chinese exploit-fabriek (cluster `GTG-10007`)**: twee **bachelorstudenten** van een universiteit in Hunan lieten *agent swarms* (zwermen samenwerkende AI-agenten) parallel scannen en inbreken. Resultaat: **meer dan een dozijn mogelijke zerodays in één maand** en ongeveer **vijftig getroffen organisaties** in onderwijs, retail, energie en overheid.
 * **Criminele buit (cluster `GTG-50014`, affiliates van *ShinyHunters*)**: één operator downloadde **1,8 miljoen Android-apps** en liet er automatisch naar hardcoded wachtwoorden en sleutels in zoeken. Elders werd **meer dan een terabyte** data gestolen bij een technologiebedrijf, **tientallen miljoenen passagiersgegevens** bij een luchtvaartmaatschappij, en via één gecompromitteerde SaaS-leverancier ook data van **zo'n 200 klantorganisaties** (een supply chain attack, zoals eerder besproken). Tijd tussen eerste toegang en massale datadiefstal: **uren**.
 * **Desinformatie op industriële schaal**: een Frans bedrijf verkocht *influence-as-a-service* met **circa 70 verzonnen nieuwssites**, **250+ nep-commentaaraccounts** en minstens **8.913 artikels in een twintigtal talen**, verspreid over zes continenten. Een Turkse speler bouwde **meer dan 1.000 valse X-accounts** om gericht te stoken in alle **222 Maleisische kieskringen**.
 
@@ -541,7 +541,7 @@ Merk op dat het niet enkel om cyberaanvallen *met* AI gaat: **toegang tot AI is 
 Dit rapport illustreert de rode draad uit dit hoofdstuk: **attack sophistication ↑, vereiste aanvallerskennis ↓**. Anthropic stelt zelf dat AI de kloof in *mankracht en gereedschap* tussen topspelers en amateurs heeft dichtgereden: de twee bachelorstudenten uit Hunan haalden op één maand een resultaat waar vroeger een goed gefinancierd expertteam voor nodig was. Het argument "wij zijn te klein of te oninteressant" houdt daardoor geen steek meer. Zodra een aanvalsketen grotendeels autonoom draait, kost een extra doelwit de aanvaller immers bijna niets.
 
 ::: {.callout-note}
-Er zit ook een lichtpunt in dit verhaal. Dat we dit allemaal zo gedetailleerd wéten, komt omdat de aanvallers een **commercieel, cloudgebaseerd model** gebruikten — en de aanbieder dus meekijkt, verdachte patronen detecteert, accounts afsluit en de *indicators of compromise* publiek deelt met onderzoekers en overheden. Datzelfde onderzoek is veel moeilijker wanneer aanvallers een open model lokaal op eigen hardware draaien.
+Er zit ook een lichtpunt in dit verhaal. Dat we dit allemaal zo gedetailleerd wéten, komt omdat de aanvallers een **commercieel, cloudgebaseerd model** gebruikten - en de aanbieder dus meekijkt, verdachte patronen detecteert, accounts afsluit en de *indicators of compromise* publiek deelt met onderzoekers en overheden. Datzelfde onderzoek is veel moeilijker wanneer aanvallers een open model lokaal op eigen hardware draaien.
 :::
 
 ## AI als verdediger: de andere kant van de medaille
@@ -549,9 +549,9 @@ Er zit ook een lichtpunt in dit verhaal. Dat we dit allemaal zo gedetailleerd w�
 Het verhaal is niet louter doemdenken: AI wordt óók steeds vaker **aan de kant van de verdediging** ingezet. Een moderne cybersecurity-afdeling zonder AI is quasi ondenkbaar geworden.
 
 * **Faster threat detection & prevention**: AI-modellen analyseren netwerkverkeer in realtime en detecteren patronen die mensen nooit zouden opmerken (bv. een laptop die plots 3u 's nachts gigabytes naar een onbekend IP begint te sturen).
-* **Faster incident response & recovery**: bij een lopende aanval kan AI automatisch systemen isoleren, accounts blokkeren of backups activeren — seconden tellen in zo'n scenario.
+* **Faster incident response & recovery**: bij een lopende aanval kan AI automatisch systemen isoleren, accounts blokkeren of backups activeren - seconden tellen in zo'n scenario.
 * **Security automation**: repetitieve taken (log-analyse, phishing-mail-classificatie, patch-beheer) worden meer en meer uitbesteed aan AI.
-* **User Behavior Analytics (UBA)**: AI leert het "normale" gedrag van elke medewerker (werktijden, systemen, datavolumes) en slaat alarm bij afwijkingen — een effectieve verdediging tegen gestolen credentials en insider threats.
+* **User Behavior Analytics (UBA)**: AI leert het "normale" gedrag van elke medewerker (werktijden, systemen, datavolumes) en slaat alarm bij afwijkingen - een effectieve verdediging tegen gestolen credentials en insider threats.
 * **Deepfake-detectie**: tools zoals **Adobe Content Credentials** (gelanceerd op Black Hat 2024) voegen een soort *"nutrition label"* toe aan digitale content waarop je kan aflezen welk percentage AI-gegenereerd is en welke tools werden gebruikt.
 
 ::: {.callout-tip}
@@ -568,11 +568,11 @@ Waar het precies naartoe gaat weet niemand, maar één scenario duikt steeds vak
 
 Het voorbije decennium laat één duidelijke trend zien: cyberaanvallen verschuiven van kattenkwaad naar strategisch wapen.
 
-* **Stuxnet (2010)** bewees dat cyberaanvallen mensenlevens kunnen raken — kritieke infrastructuur is een legitiem doelwit geworden.
+* **Stuxnet (2010)** bewees dat cyberaanvallen mensenlevens kunnen raken - kritieke infrastructuur is een legitiem doelwit geworden.
 * **Snowden (2013)** en de iCloud-lek (2014) zetten privacy en overheidssurveillance op scherp.
 * **Ransomware** groeide uit tot georganiseerde business (WannaCry, Colonial Pipeline, Haven van Antwerpen).
 * **Sociale media, deepfakes en fake news** maken van desinformatie een geopolitiek wapen.
-* **AI** versnelt zowel aanval als verdediging — Mythos illustreert het nieuwe tempo.
+* **AI** versnelt zowel aanval als verdediging - Mythos illustreert het nieuwe tempo.
 * **2026** maakt van die dreiging praktijk: staatsactoren en criminelen laten aanvalsketens grotendeels autonoom door AI-agenten uitvoeren, en toegang tot AI wordt zelf buit.
 
 De rode draad: *attack sophistication stijgt, terwijl de vereiste kennis van de aanvaller daalt*. De grootste winst haal je nog steeds uit de fundamenten: goede wachtwoorden, tijdig patchen, en een gezonde dosis scepsis.
@@ -597,9 +597,9 @@ Maar laten we deze cyberstropers geen vrij spel geven! Laten we leren van hun te
 
 Goed nieuws: als toekomstige cyberboswachter heb je **meer mogelijkheden dan ooit** om op een legale manier je hack-vaardigheden te ontwikkelen. In de cybersecurity-wereld spreken we traditioneel over drie soorten "hoeden":
 
-* **White hat**: ethische hackers die kwetsbaarheden opsporen om ze te **laten fixen** — bv. pentester, bug-bounty-jager, security-auditor.
+* **White hat**: ethische hackers die kwetsbaarheden opsporen om ze te **laten fixen** - bv. pentester, bug-bounty-jager, security-auditor.
 * **Grey hat**: hackers die zonder expliciete toestemming systemen onderzoeken, maar de eigenaar vervolgens wél op de hoogte brengen (in plaats van de bug te misbruiken of te verkopen).
-* **Black hat**: de echte *stropers* — hackers die kwetsbaarheden misbruiken voor persoonlijk of crimineel gewin.
+* **Black hat**: de echte *stropers* - hackers die kwetsbaarheden misbruiken voor persoonlijk of crimineel gewin.
 
 ::: {.callout-important}
 Sinds **februari 2023 is ethisch hacken legaal in België**. Voor die datum kon je als ethische hacker vervolgd worden, zelfs als je alleen maar een bug bij een bedrijf wilde melden. De nieuwe wet maakt het mogelijk om Belgische systemen te onderzoeken op kwetsbaarheden, *mits* je je aan een paar spelregels houdt:

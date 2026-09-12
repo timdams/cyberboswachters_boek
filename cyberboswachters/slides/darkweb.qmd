@@ -26,7 +26,7 @@ format:
 | **Dark Web** | Anoniem, versleuteld, niet geïndexeerd | Speciale software (TOR) |
 
 ::: {.callout-note .fragment}
-Het **Deep Web** is veel groter dan het Surface Web — denk aan alle bedrijfsdatabases, medische dossiers, cloud-opslag, ... die nooit door Google worden geïndexeerd.
+Het **Deep Web** is veel groter dan het Surface Web - denk aan alle bedrijfsdatabases, medische dossiers, cloud-opslag, ... die nooit door Google worden geïndexeerd.
 
 Het **Dark Web** is een klein maar berucht onderdeel van het Deep Web.
 :::
@@ -42,7 +42,7 @@ Op het gewone internet ben je **bijna altijd traceerbaar**:
   * China, Saudi-Arabië, Iran, Egypte, Noord-Korea, Cuba, ...
 
 ::: {.callout-note .fragment}
-Onder een **schuilnaam** (*nom-de-plume*) je mening kunnen uiten is belangrijk voor een democratie. Niet iedereen — en zeker niet de overheid — moet weten wat jij legaal in je vrije tijd doet.
+Onder een **schuilnaam** (*nom-de-plume*) je mening kunnen uiten is belangrijk voor een democratie. Niet iedereen (en zeker niet de overheid) moet weten wat jij legaal in je vrije tijd doet.
 
 Privacy vs opsporing blijft een **moeilijk evenwicht**.
 :::
@@ -101,7 +101,7 @@ Geen centrale autoriteit → moeilijk te censureren of uit de lucht te halen.
 ::::
 
 ::: {.callout-important .fragment}
-Het Dark Web is **niet per definitie illegaal** — maar wat je er op doet kan dat wel zijn.
+Het Dark Web is **niet per definitie illegaal** - maar wat je er op doet kan dat wel zijn.
 
 **Anonimiteit ≠ vrijgeleide**: politiediensten traceren ook op het Dark Web. Illegale activiteiten zijn sowieso strafrechterlijk vervolgbaar.
 
@@ -146,7 +146,7 @@ In landen zoals Rusland en China is het gebruik van het Dark Web zelf al strafba
 | **Firewalls** | Bedrijfsnetwerken blokkeren TOR standaard |
 
 ::: {.callout-tip .fragment}
-Browsers zoals **Brave** hebben TOR al geïntegreerd — één klik om anoniem te surfen.
+Browsers zoals **Brave** hebben TOR al geïntegreerd - één klik om anoniem te surfen.
 
 TOR biedt ook extra privacy op het **gewone internet**, niet alleen op het Dark Web.
 :::
@@ -174,7 +174,7 @@ Zelfs passief browsen kan je in contact brengen met illegale content of gecompro
 
 ## Zelf verkennen
 
-Vóór je vertrekt — check of je IP effectief beschermd is:
+Vóór je vertrekt - check of je IP effectief beschermd is:
 
 * [moanmyip.com/simple](https://moanmyip.com/simple)
 
@@ -185,5 +185,5 @@ Een goed **vertrekpunt** op het Dark Web zelf:
 * Extra lijst onions: [k00.fr/l1octcbo](https://k00.fr/l1octcbo)
 
 ::: {.callout-warning .fragment}
-Ga op verkenning, maar **klik niet blind door** — veel sites zijn schimmig, illegaal of gecompromitteerd.
+Ga op verkenning, maar **klik niet blind door** - veel sites zijn schimmig, illegaal of gecompromitteerd.
 :::

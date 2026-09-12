@@ -28,7 +28,7 @@ Na dit hoofdstuk kan je:
 > Cryptografie: het versleutelen van informatie zodat enkel zender en ontvanger het bericht kunnen lezen.
 
 ::: {.callout-tip .fragment}
-Meer weten? Lees "The Codebreakers" van David Kahn — 1200 pagina's die lezen als een thriller.
+Meer weten? Lees "The Codebreakers" van David Kahn - 1200 pagina's die lezen als een thriller.
 :::
 
 ---
@@ -223,9 +223,9 @@ Cryptografie is **noodzakelijk** maar zelden **voldoende** voor veiligheid (cfr 
 * Onderzoek naar **post-quantum cryptografie** is volop bezig
 
 ::: {.callout-note .fragment}
-*"Encryption is everywhere in modern day life — everything will be vulnerable!"*
+*"Encryption is everywhere in modern day life - everything will be vulnerable!"*
 
-<small>— [uclftr.com](https://www.uclftr.com/post/what-does-the-rise-of-quantum-computers-mean-for-encryption-technology)</small>
+<small> - [uclftr.com](https://www.uclftr.com/post/what-does-the-rise-of-quantum-computers-mean-for-encryption-technology)</small>
 :::
 
 ---
@@ -398,7 +398,7 @@ Twee grote families volgens **aantal sleutels**:
 * **Asymmetrisch**: publieke + private sleutel
 
 ::: {.callout-tip .fragment}
-We starten met **symmetrisch** — de oudste van de twee.
+We starten met **symmetrisch** - de oudste van de twee.
 :::
 
 ---
@@ -973,7 +973,7 @@ Ciphertext: `11 11 10 10`
 * **Kerckhoffs' principe**: de sleutel is het geheim, niet het algoritme
 * **Symmetrische encryptie**: één sleutel, snel, maar sleuteluitwisseling is moeilijk
 * **Stream-** (RC4) vs **blockciphers** (DES, AES) met verschillende modes (ECB, CBC, CTR)
-* **AES** is de huidige standaard — Belgisch en ongebroken!
+* **AES** is de huidige standaard - Belgisch en ongebroken!
 
 ::: {.callout-important}
 Langere sleutels + sterke algoritmes = betere bescherming. Maar sleuteluitwisseling blijft het grote probleem → **asymmetrische crypto** biedt de oplossing!

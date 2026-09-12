@@ -54,9 +54,9 @@ We starten met **sleuteluitwisseling**, omdat dit concept mooi illustreert hoe p
 
 Het is namelijk zo dat symmetrische crypto sneller is én dus voor (realtime) communicatie interessanter is. We weten echter dat het sleutelmanagement bij symmetrische crypto een probleem is als we met grote groepen gebruikers zitten. Het Diffie-Hellman sleuteluitwisselingsconcept helpt ons hierbij: het laat toe dat twee gebruikers over een onveilig kanaal op een veilige manier een gemeenschappelijk geheim (*shared secret*) afspreken.
 
-Belangrijk om meteen mee te geven: de waarden die Bob en Alice bij Diffie-Hellman gebruiken zijn **sessie-specifiek** (*ephemeral*) en worden na de uitwisseling weggegooid. Ze zijn dus niet hetzelfde als een langdurig publiek/privaat sleutelpaar zoals bij RSA — DH dient louter om een gemeenschappelijke symmetrische sleutel af te spreken, niet om berichten rechtstreeks te versleutelen.
+Belangrijk om meteen mee te geven: de waarden die Bob en Alice bij Diffie-Hellman gebruiken zijn **sessie-specifiek** (*ephemeral*) en worden na de uitwisseling weggegooid. Ze zijn dus niet hetzelfde als een langdurig publiek/privaat sleutelpaar zoals bij RSA - DH dient louter om een gemeenschappelijke symmetrische sleutel af te spreken, niet om berichten rechtstreeks te versleutelen.
 
-Voor de eigenlijke uitwisseling start, spreken Alice en Bob eerst twee **publieke parameters** af: een (groot) priemgetal $p$ dat als modulus dient, en een **basis** $g$ (ook wel *generator* genoemd), kleiner dan $p$. Deze twee waarden mogen over een onveilig kanaal worden uitgewisseld — een eventuele afluisteraar mag ze gerust kennen, dat is geen probleem voor de veiligheid. In het rekenvoorbeeld hieronder gebruiken we $g = 7$ en $p = 11$.
+Voor de eigenlijke uitwisseling start, spreken Alice en Bob eerst twee **publieke parameters** af: een (groot) priemgetal $p$ dat als modulus dient, en een **basis** $g$ (ook wel *generator* genoemd), kleiner dan $p$. Deze twee waarden mogen over een onveilig kanaal worden uitgewisseld - een eventuele afluisteraar mag ze gerust kennen, dat is geen probleem voor de veiligheid. In het rekenvoorbeeld hieronder gebruiken we $g = 7$ en $p = 11$.
 
 Zowel Bob als Alice kiezen vervolgens elk een **geheime waarde** die ze enkel voor deze sessie gebruiken. Op basis van deze geheime waarde berekenen ze elk een **publieke waarde** (via de formule $g^{geheim} \bmod p$) die ze naar de ander sturen (wat kan over een onbeveiligd kanaal). De ontvanger zal deze publieke waarde combineren met de eigen geheime waarde wat zal resulteren in een *shared secret* dat beiden nu kennen en kunnen gebruiken, bijvoorbeeld als de symmetrische sleutel om verdere communicatie te beveiligen.
 
@@ -141,14 +141,14 @@ Zonder in detail te treden hoe cryptocoins en blockchains werken, is het nuttig 
 
 ### Elliptic Curve Cryptografie (ECC)
 
-RSA baseert zich op de moeilijkheid van het ontbinden van grote getallen in priemfactoren. **Elliptic Curve Cryptografie** (ECC) is een modernere vorm van asymmetrische crypto die zich baseert op de wiskundige eigenschappen van **elliptische krommen over eindige velden**. Het onderliggende wiskundige probleem — het *Elliptic Curve Discrete Logarithm Problem* (ECDLP) — is nóg moeilijker op te lossen dan factorisatie, waardoor ECC met veel kleinere sleutels hetzelfde beveiligingsniveau kan bieden als RSA:
+RSA baseert zich op de moeilijkheid van het ontbinden van grote getallen in priemfactoren. **Elliptic Curve Cryptografie** (ECC) is een modernere vorm van asymmetrische crypto die zich baseert op de wiskundige eigenschappen van **elliptische krommen over eindige velden**. Het onderliggende wiskundige probleem - het *Elliptic Curve Discrete Logarithm Problem* (ECDLP) - is nóg moeilijker op te lossen dan factorisatie, waardoor ECC met veel kleinere sleutels hetzelfde beveiligingsniveau kan bieden als RSA:
 
 | ECC sleutellengte | RSA equivalent | Beveiligingsniveau |
 |---|---|---|
 | 256 bits | 3072 bits | 128 bits |
 | 384 bits | 7680 bits | 192 bits |
 
-Het **beveiligingsniveau** (*security strength*) drukt uit hoeveel rekenwerk een aanvaller nodig heeft om de encryptie te kraken, uitgedrukt in bits. Een beveiligingsniveau van 128 bits betekent dat een aanvaller $2^{128}$ bewerkingen moet uitvoeren — evenveel als nodig is om een symmetrische sleutel van 128 bits (zoals AES-128) te bruteforcen. Zo kunnen we de sterkte van verschillende cryptosystemen met elkaar vergelijken: een ECC-sleutel van 256 bits en een RSA-sleutel van 3072 bits zijn dus *even moeilijk te kraken*.
+Het **beveiligingsniveau** (*security strength*) drukt uit hoeveel rekenwerk een aanvaller nodig heeft om de encryptie te kraken, uitgedrukt in bits. Een beveiligingsniveau van 128 bits betekent dat een aanvaller $2^{128}$ bewerkingen moet uitvoeren - evenveel als nodig is om een symmetrische sleutel van 128 bits (zoals AES-128) te bruteforcen. Zo kunnen we de sterkte van verschillende cryptosystemen met elkaar vergelijken: een ECC-sleutel van 256 bits en een RSA-sleutel van 3072 bits zijn dus *even moeilijk te kraken*.
 
 Kleinere sleutels betekenen snellere berekeningen, minder dataverkeer en lager energieverbruik. Dat maakt ECC bijzonder geschikt voor toepassingen waar rekenkracht of bandbreedte beperkt is, zoals **mobiele toestellen** en **IoT-apparaten**.
 
@@ -239,7 +239,7 @@ Het gehele systeem van CA's, RA's, etc. dat bestaat om certificaten uit te geven
 De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensduur, te genereren. Hierbij zal de echtheid van het certificaat achteraf bewezen kunnen worden door de CA:
 
 * Het certificaat bevat Bobs publieke sleutel en informatie over Bob en de CA in **leesbare vorm**. Daaraan wordt een **digitale handtekening** van de CA toegevoegd: een hash van al deze informatie, versleuteld met de private sleutel van de CA.
-* Om later de echtheid van het certificaat te verifiëren, berekent de ontvanger zelf de hash van de inhoud van het certificaat en vergelijkt die met de ontsleutelde handtekening (die met de publieke sleutel van de CA wordt gedecrypteerd). Als beide hashes gelijk zijn, weten we dat het certificaat door de gegeven CA werd ondertekend — enkel de houder van de private sleutel van die CA kan zo'n geldige handtekening produceren.
+* Om later de echtheid van het certificaat te verifiëren, berekent de ontvanger zelf de hash van de inhoud van het certificaat en vergelijkt die met de ontsleutelde handtekening (die met de publieke sleutel van de CA wordt gedecrypteerd). Als beide hashes gelijk zijn, weten we dat het certificaat door de gegeven CA werd ondertekend - enkel de houder van de private sleutel van die CA kan zo'n geldige handtekening produceren.
 
 ![Een certificaat aanmaken.](assets//certcreatie.png)
 
@@ -272,7 +272,7 @@ Het ergste dat voor een CA kan voorvallen is dat de betrouwbaarheid van de CA in
 ::: {.callout-note}
 ## Case: de val van DigiNotar (2011)
 
-In 2011 werd de Nederlandse CA **DigiNotar** gehackt. De aanvallers konden valse certificaten uitgeven voor onder andere `google.com`, die vervolgens werden ingezet om Iraanse Gmail-gebruikers te bespioneren. Zodra de inbraak publiek werd, verwijderden browserfabrikanten DigiNotar uit hun lijst van vertrouwde root-CA's. **Alle** certificaten van DigiNotar werden daarmee in één klap ongeldig — ook die van de Nederlandse overheid, die DigiNotar gebruikte voor DigiD en andere diensten. DigiNotar zelf ging binnen enkele weken failliet. Het incident toont hoe fragiel de chain of trust is: één gecompromitteerde CA kan het vertrouwen voor duizenden sites kapotmaken.
+In 2011 werd de Nederlandse CA **DigiNotar** gehackt. De aanvallers konden valse certificaten uitgeven voor onder andere `google.com`, die vervolgens werden ingezet om Iraanse Gmail-gebruikers te bespioneren. Zodra de inbraak publiek werd, verwijderden browserfabrikanten DigiNotar uit hun lijst van vertrouwde root-CA's. **Alle** certificaten van DigiNotar werden daarmee in één klap ongeldig - ook die van de Nederlandse overheid, die DigiNotar gebruikte voor DigiD en andere diensten. DigiNotar zelf ging binnen enkele weken failliet. Het incident toont hoe fragiel de chain of trust is: één gecompromitteerde CA kan het vertrouwen voor duizenden sites kapotmaken.
 :::
 
 ### Certificaten bekijken
@@ -321,7 +321,7 @@ In een Web of Trust zijn er geen centrale autoriteiten. In plaats daarvan ondert
 
 <!--![In een Web of Trust ondertekenen gebruikers elkaars sleutels in plaats van te vertrouwen op een centrale autoriteit.](assets//weboftrust.png){width=60%}-->
 
-Stel nu dat Carol de sleutel van Bob nodig heeft maar hem niet persoonlijk kent. Als Carol wél Alice vertrouwt en ziet dat Alice de sleutel van Bob heeft ondertekend, dan kan Carol via dat **vertrouwenspad** besluiten om ook Bobs sleutel te aanvaarden. Zo ontstaat een netwerk — een *web* — van onderlinge vertrouwensrelaties.
+Stel nu dat Carol de sleutel van Bob nodig heeft maar hem niet persoonlijk kent. Als Carol wél Alice vertrouwt en ziet dat Alice de sleutel van Bob heeft ondertekend, dan kan Carol via dat **vertrouwenspad** besluiten om ook Bobs sleutel te aanvaarden. Zo ontstaat een netwerk (een *web*) van onderlinge vertrouwensrelaties.
 
 | Eigenschap           | PKI                                       | Web of Trust                                |
 | -------------------- | ----------------------------------------- | ------------------------------------------- |
@@ -361,9 +361,9 @@ Alhoewel HTTPS onze verbinding een pak veiliger maakt, heeft het voor je ISP (In
 
 ### End-to-end encryptie onder druk: Apple en de UK
 
-End-to-end encryptie (E2EE) zorgt ervoor dat enkel de zender en ontvanger de inhoud van berichten of data kunnen lezen — zelfs de dienstverlener (zoals Apple of Google) heeft geen toegang. Dit principe is een directe toepassing van de publieke cryptografie die we in dit hoofdstuk bespraken: data wordt versleuteld met de publieke sleutel van de ontvanger en kan enkel met diens private sleutel worden ontsleuteld.
+End-to-end encryptie (E2EE) zorgt ervoor dat enkel de zender en ontvanger de inhoud van berichten of data kunnen lezen - zelfs de dienstverlener (zoals Apple of Google) heeft geen toegang. Dit principe is een directe toepassing van de publieke cryptografie die we in dit hoofdstuk bespraken: data wordt versleuteld met de publieke sleutel van de ontvanger en kan enkel met diens private sleutel worden ontsleuteld.
 
-In 2025 werd Apple door de Britse overheid gedwongen om **Advanced Data Protection** (ADP), de end-to-end encryptie van iCloud-data, uit te schakelen voor alle gebruikers in het Verenigd Koninkrijk. De overheid eiste namelijk een *backdoor*: een manier voor opsporingsdiensten om toegang te krijgen tot versleutelde gegevens. Apple weigerde een backdoor in te bouwen — omdat dit de beveiliging voor **alle** gebruikers zou verzwakken — en koos er in plaats daarvan voor om de E2EE-functionaliteit in het VK volledig te verwijderen. iMessage, FaceTime en iCloud Keychain behielden wel hun end-to-end encryptie.
+In 2025 werd Apple door de Britse overheid gedwongen om **Advanced Data Protection** (ADP), de end-to-end encryptie van iCloud-data, uit te schakelen voor alle gebruikers in het Verenigd Koninkrijk. De overheid eiste namelijk een *backdoor*: een manier voor opsporingsdiensten om toegang te krijgen tot versleutelde gegevens. Apple weigerde een backdoor in te bouwen (omdat dit de beveiliging voor **alle** gebruikers zou verzwakken) en koos er in plaats daarvan voor om de E2EE-functionaliteit in het VK volledig te verwijderen. iMessage, FaceTime en iCloud Keychain behielden wel hun end-to-end encryptie.
 
 ::: {.callout-warning}
 Dit voorbeeld illustreert een fundamenteel spanningsveld in cryptografie: **een backdoor die enkel voor "de goeden" werkt, bestaat niet**. Zodra er een achterpoortje in een encryptiesysteem zit, is het slechts een kwestie van tijd voordat ook kwaadwillige actoren deze ontdekken of misbruiken. Dit gaat recht in tegen Kerckhoffs principe: de veiligheid van het systeem mag enkel afhangen van de geheimhouding van de sleutel, niet van het verbergen van zwakheden in het systeem zelf.
@@ -371,12 +371,12 @@ Dit voorbeeld illustreert een fundamenteel spanningsveld in cryptografie: **een 
 
 #### Chat Control: ook in de EU
 
-Dit debat speelt niet enkel in het Verenigd Koninkrijk. De Europese Commissie stelde in 2022 de **Child Sexual Abuse Regulation** voor, beter bekend als **Chat Control**. Dit voorstel zou chatdiensten zoals WhatsApp en Signal verplichten om berichten van alle gebruikers automatisch te scannen op illegale inhoud — ook berichten die end-to-end versleuteld zijn. Critici, waaronder cryptografen en organisaties als de EFF en EDRi, waarschuwen dat dit technisch neerkomt op het inbouwen van een backdoor of het installeren van *client-side scanning* (spyware op het toestel zelf), wat de facto end-to-end encryptie onmogelijk maakt.
+Dit debat speelt niet enkel in het Verenigd Koninkrijk. De Europese Commissie stelde in 2022 de **Child Sexual Abuse Regulation** voor, beter bekend als **Chat Control**. Dit voorstel zou chatdiensten zoals WhatsApp en Signal verplichten om berichten van alle gebruikers automatisch te scannen op illegale inhoud - ook berichten die end-to-end versleuteld zijn. Critici, waaronder cryptografen en organisaties als de EFF en EDRi, waarschuwen dat dit technisch neerkomt op het inbouwen van een backdoor of het installeren van *client-side scanning* (spyware op het toestel zelf), wat de facto end-to-end encryptie onmogelijk maakt.
 
-Na jarenlange controverse en tegenstand vanuit het Europees Parlement, werd het meest omstreden onderdeel — het verplicht scannen van versleutelde berichten — in 2025 afgezwakt. Het voorstel wordt echter nog steeds onderhandeld en de uiteindelijke impact op E2EE blijft onzeker.
+Na jarenlange controverse en tegenstand vanuit het Europees Parlement, werd het meest omstreden onderdeel (het verplicht scannen van versleutelde berichten) in 2025 afgezwakt. Het voorstel wordt echter nog steeds onderhandeld en de uiteindelijke impact op E2EE blijft onzeker.
 
 ::: {.callout-note}
-De kern van het probleem is telkens hetzelfde: je kan niet tegelijk **echte** end-to-end encryptie garanderen én een manier voorzien om berichten te lezen. Of de sleutel is geheim, of hij is het niet — er is geen tussenweg.
+De kern van het probleem is telkens hetzelfde: je kan niet tegelijk **echte** end-to-end encryptie garanderen én een manier voorzien om berichten te lezen. Of de sleutel is geheim, of hij is het niet - er is geen tussenweg.
 :::
 
 ### Mitmproxy
@@ -394,13 +394,13 @@ De aanvaller zal echter nog steeds geen geldige certificaten kunnen genereren wa
 Cryptografie is de gereedschapskist waarmee we CIA realiseren. De centrale inzichten uit dit hoofdstuk:
 
 * **Kerckhoffs** is de kern: alleen de **sleutel** moet geheim blijven, nooit het algoritme. *Security through obscurity* is een valstrik.
-* Oude technieken (Caesar, Vigenère, scytale) combineren **substitutie** en **transpositie** — dezelfde bouwstenen die AES nog steeds gebruikt.
+* Oude technieken (Caesar, Vigenère, scytale) combineren **substitutie** en **transpositie** - dezelfde bouwstenen die AES nog steeds gebruikt.
 * **Symmetrische encryptie** is snel (AES als de-facto standaard, gebaseerd op het Belgische Rijndael) maar kent het **sleuteloverdrachtsprobleem**.
-* De **blockcipher-mode** is even kritiek als de cipher zelf: **ECB lekt patronen**, **CBC/CTR** niet — mits correcte IV/nonce.
+* De **blockcipher-mode** is even kritiek als de cipher zelf: **ECB lekt patronen**, **CBC/CTR** niet - mits correcte IV/nonce.
 * **Asymmetrische encryptie** (RSA, ECC) lost het sleuteloverdrachtsprobleem op via een publiek/privé-sleutelpaar. **Diffie-Hellman** laat twee partijen zonder vooraf gedeeld geheim een gezamenlijke sleutel afspreken.
 * **Hashes** zorgen voor *integrity*, **digitale handtekeningen** voegen daar authenticiteit en *non-repudiation* aan toe.
-* **Digitale certificaten en PKI** lossen het vertrouwensprobleem op — maar enkel zolang de CA betrouwbaar blijft (cfr. de val van DigiNotar).
+* **Digitale certificaten en PKI** lossen het vertrouwensprobleem op - maar enkel zolang de CA betrouwbaar blijft (cfr. de val van DigiNotar).
 * **HTTPS/TLS** combineert al deze bouwstenen, en toch blijft het kwetsbaar zonder goede certificaatvalidatie, zoals *mitmproxy* aantoont.
-* **Cryptanalyse** dwingt sleutels steeds langer te maken; **quantum-computers** bedreigen RSA/ECC op lange termijn — *store now, decrypt later* is een realistische dreiging.
+* **Cryptanalyse** dwingt sleutels steeds langer te maken; **quantum-computers** bedreigen RSA/ECC op lange termijn - *store now, decrypt later* is een realistische dreiging.
 
 In het volgende hoofdstuk zien we hoe authenticatie op deze crypto-bouwstenen steunt.

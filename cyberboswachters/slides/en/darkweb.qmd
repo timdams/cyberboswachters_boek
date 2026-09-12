@@ -26,7 +26,7 @@ format:
 | **Dark Web** | Anonymous, encrypted, not indexed | Special software (TOR) |
 
 ::: {.callout-note .fragment}
-The **Deep Web** is much larger than the Surface Web — think of all the corporate databases, medical records, cloud storage, ... that are never indexed by Google.
+The **Deep Web** is much larger than the Surface Web - think of all the corporate databases, medical records, cloud storage, ... that are never indexed by Google.
 
 The **Dark Web** is a small but notorious part of the Deep Web.
 :::
@@ -42,7 +42,7 @@ On the regular internet you are **almost always traceable**:
   * China, Saudi Arabia, Iran, Egypt, North Korea, Cuba, ...
 
 ::: {.callout-note .fragment}
-Being able to express your opinion under a **pseudonym** (*nom-de-plume*) is important for a democracy. Not everyone — and certainly not the government — needs to know what you legally do in your free time.
+Being able to express your opinion under a **pseudonym** (*nom-de-plume*) is important for a democracy. Not everyone (and certainly not the government) needs to know what you legally do in your free time.
 
 Privacy vs investigation remains a **difficult balance**.
 :::
@@ -101,7 +101,7 @@ No central authority → hard to censor or take down.
 ::::
 
 ::: {.callout-important .fragment}
-The Dark Web is **not illegal by definition** — but what you do on it can be.
+The Dark Web is **not illegal by definition** - but what you do on it can be.
 
 **Anonymity ≠ free pass**: law enforcement also tracks activity on the Dark Web. Illegal activities remain criminally prosecutable.
 
@@ -141,7 +141,7 @@ In countries such as Russia and China the use of the Dark Web itself is already 
 | **Firewalls** | Corporate networks block TOR by default |
 
 ::: {.callout-tip .fragment}
-Browsers such as **Brave** already integrate TOR — one click to surf anonymously.
+Browsers such as **Brave** already integrate TOR - one click to surf anonymously.
 
 TOR also offers extra privacy on the **regular internet**, not just on the Dark Web.
 :::
@@ -169,7 +169,7 @@ Even passive browsing can expose you to illegal content or compromised servers.
 
 ## Explore for yourself
 
-Before you set off — check whether your IP is effectively protected:
+Before you set off - check whether your IP is effectively protected:
 
 * [moanmyip.com/simple](https://moanmyip.com/simple)
 
@@ -180,5 +180,5 @@ A good **starting point** on the Dark Web itself:
 * Extra list of onions: [k00.fr/l1octcbo](https://k00.fr/l1octcbo)
 
 ::: {.callout-warning .fragment}
-Go exploring, but **don't click blindly through** — many sites are shady, illegal or compromised.
+Go exploring, but **don't click blindly through** - many sites are shady, illegal or compromised.
 :::

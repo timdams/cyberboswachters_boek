@@ -3,7 +3,7 @@ title: "Slides (English)"
 lang: en
 ---
 
-This page lists the English versions of the slide decks for the *Cyberboswachters* handbook (*Cyber Rangers*). Translations are added incrementally — chapters not listed here are currently only available in Dutch (see the [Dutch slides overview](../overzicht.html)).
+This page lists the English versions of the slide decks for the *Cyberboswachters* handbook (*Cyber Rangers*). Translations are added incrementally - chapters not listed here are currently only available in Dutch (see the [Dutch slides overview](../overzicht.html)).
 
 :::note
 Translations are made using machine translation and may contain errors. If you find any mistakes or have suggestions for improvement, please let us know.

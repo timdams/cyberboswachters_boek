@@ -130,7 +130,7 @@ Private sleutel = uniek voor eigenaar → bewijs van identiteit (**authenticatie
 5. Resultaat: een **shared secret** dat beiden kennen
 
 ::: {.callout-note .fragment}
-Deze waarden zijn **geen sleutelparen** zoals bij RSA — ze worden na de uitwisseling weggegooid.
+Deze waarden zijn **geen sleutelparen** zoals bij RSA - ze worden na de uitwisseling weggegooid.
 :::
 
 ---
@@ -285,7 +285,7 @@ Kleiner = **sneller**, minder data, minder energie → ideaal voor **mobiel** en
 * Moderne **TLS/HTTPS** gebruikt vrijwel altijd ECC voor sleuteluitwisseling
 
 ::: {.callout-warning .fragment}
-Net als RSA is ECC kwetsbaar voor **quantumcomputers**. Daarom werkt men aan **post-quantum cryptografie** — NIST publiceerde in 2024 de eerste standaarden.
+Net als RSA is ECC kwetsbaar voor **quantumcomputers**. Daarom werkt men aan **post-quantum cryptografie** - NIST publiceerde in 2024 de eerste standaarden.
 :::
 
 ---
@@ -539,7 +539,7 @@ Pas sinds ~2017 biedt >50% van websites HTTPS aan.
 * Aanvallers gaven valse certificaten uit voor o.a. `google.com`
 * Ingezet om Iraanse Gmail-gebruikers te bespioneren
 * Browsers verwijderden DigiNotar als vertrouwde root-CA
-* **Alle** DigiNotar-certificaten werden ongeldig — ook die van DigiD en de Nederlandse overheid
+* **Alle** DigiNotar-certificaten werden ongeldig - ook die van DigiD en de Nederlandse overheid
 * DigiNotar ging binnen enkele weken failliet
 
 ::: {.callout-warning .fragment}
@@ -600,7 +600,7 @@ Eén gecompromitteerde CA kan het vertrouwen voor duizenden sites kapotmaken.
 ![Windows 10 Smartscreen beschermt je van niet digitaal ondertekende software.](crypto_assets/smartscreen.png){width=40%}
 
 ::: {.callout-note .fragment}
-Geen certificaat ≠ automatisch onveilig. Certificaten kosten geld — niet alle ontwikkelaars kunnen dit betalen.
+Geen certificaat ≠ automatisch onveilig. Certificaten kosten geld - niet alle ontwikkelaars kunnen dit betalen.
 :::
 
 ---
@@ -619,7 +619,7 @@ Bekijk lokaal geïnstalleerde certificaten via ``certlm.msc``
 
 * PKI = **gecentraliseerd** (vertrouwen via CA's)
 * **Web of Trust** (WoT) = **gedecentraliseerd** alternatief (bekend van **PGP/GPG**)
-* Geen centrale autoriteiten — gebruikers ondertekenen **elkaars** publieke sleutels
+* Geen centrale autoriteiten - gebruikers ondertekenen **elkaars** publieke sleutels
 
 ::: {.callout-tip .fragment}
 Alice verifieert Bobs sleutel persoonlijk → ondertekent deze met haar private sleutel → *"Ik bevestig dat deze sleutel van Bob is."*
@@ -730,7 +730,7 @@ De server weet dan zeker dat de client effectief is wie die beweert te zijn.
 * iMessage, FaceTime en iCloud Keychain behouden wel E2EE
 
 ::: {.callout-warning .fragment}
-**Een backdoor die enkel voor "de goeden" werkt, bestaat niet.** Een achterpoortje verzwakt de beveiliging voor **alle** gebruikers — in strijd met Kerckhoffs principe.
+**Een backdoor die enkel voor "de goeden" werkt, bestaat niet.** Een achterpoortje verzwakt de beveiliging voor **alle** gebruikers - in strijd met Kerckhoffs principe.
 :::
 
 ---
@@ -738,7 +738,7 @@ De server weet dan zeker dat de client effectief is wie die beweert te zijn.
 ## Chat Control: ook in de EU
 
 * EU stelde in 2022 de **Child Sexual Abuse Regulation** ("Chat Control") voor
-* Verplicht scannen van **alle** chatberichten — ook E2E-versleutelde
+* Verplicht scannen van **alle** chatberichten - ook E2E-versleutelde
 * Critici: dit is technisch een **backdoor** of *client-side scanning* (spyware)
 * Na jarenlange controverse werd verplicht scannen van E2EE afgezwakt (2025)
 

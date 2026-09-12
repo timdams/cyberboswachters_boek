@@ -647,13 +647,13 @@ Ook in WPA3 werden twee modes voorzien: een personal en een enterprise mode. Enk
 
 ## Samenvatting
 
-Draadloze netwerken vervangen de fysieke beveiliging van een kabel door cryptografische beveiliging — en dat is een harde les geweest:
+Draadloze netwerken vervangen de fysieke beveiliging van een kabel door cryptografische beveiliging - en dat is een harde les geweest:
 
 * **WEP** faalde op alle fronten: verkeerd gebruik van RC4, te korte IV (24 bit), zwakke CRC-integriteit en geen sleutelbeheer. Binnen enkele minuten te kraken.
-* **WPA1/TKIP** was een softwarepatch op dezelfde hardware: langere IV's, *key mixing* en **Michael** voor integriteit. Tussenoplossing — niet toekomstvast.
+* **WPA1/TKIP** was een softwarepatch op dezelfde hardware: langere IV's, *key mixing* en **Michael** voor integriteit. Tussenoplossing - niet toekomstvast.
 * **WPA2** introduceerde **CCMP** op basis van **AES** en werd jarenlang als veilig beschouwd, tot **KRACK** (Mathy Vanhoef, 2017) een fout in de handshake blootlegde.
 * **WPA3** ("Wifi 6") lost de oude pijnpunten op: **SAE** tegen offline dictionary-aanvallen, **forward secrecy** en **Wifi Enhanced Open** voor veilige publieke hotspots.
-* **802.1X** (enterprise-mode) voorziet per-gebruiker-sleutels en centrale authenticatie — een must voor elk bedrijfsnetwerk.
+* **802.1X** (enterprise-mode) voorziet per-gebruiker-sleutels en centrale authenticatie - een must voor elk bedrijfsnetwerk.
 
 Vier praktische take-aways: **kies WPA3 waar mogelijk**, **vermijd WEP/WPA1 als de pest**, **gebruik enterprise-mode boven personal-mode in bedrijfscontext**, en **hou access points fysiek én softwarematig gepatcht**.
 

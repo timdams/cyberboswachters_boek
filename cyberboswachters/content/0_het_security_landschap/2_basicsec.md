@@ -25,7 +25,7 @@ Alles draait met andere woorden rond het beschermen van informatie, of dat die n
 
 > *"The protection afforded to an automated information system in order to attain the applicable objectives of preserving the **integrity**, **availability** and **confidentiality** of information system resources (includes hardware, software, firmware, information/data, and telecommunications)."*
 
-Merk op dat NIST meteen drie centrale begrippen introduceert &mdash; integrity, availability, confidentiality &mdash; én vier types *resources*: hardware, software, firmware, data en telecommunicatie. Dit sluit perfect aan bij het **CIA-model** en de **McCumber kubus** die we hierna bespreken.
+Merk op dat NIST meteen drie centrale begrippen introduceert (integrity, availability, confidentiality) én vier types *resources*: hardware, software, firmware, data en telecommunicatie. Dit sluit perfect aan bij het **CIA-model** en de **McCumber kubus** die we hierna bespreken.
 :::
 
 ## CIA en het security model
@@ -40,13 +40,13 @@ Data (of informatie), in welke vorm dan ook (berichten over een netwerk, bestand
 **CIA gaat dieper dan je denkt**: zowel confidentiality als integrity hebben in de praktijk **twee aparte dimensies** die vaak door elkaar gehaald worden.
 
 * **Confidentiality** valt uiteen in:
-  * *Data confidentiality* &mdash; de **inhoud** van de data zelf is afgeschermd (bv. je bericht is versleuteld).
-  * *Privacy* &mdash; het feit **dát er data bestaat** over jou, of wie ze mag verwerken, is beschermd. Denk aan GDPR: zelfs als niemand je medisch dossier effectief leest, is het al een privacy-inbreuk dat een onbevoegde werknemer het kan opvragen.
+  * *Data confidentiality*: de **inhoud** van de data zelf is afgeschermd (bv. je bericht is versleuteld).
+  * *Privacy*: het feit **dát er data bestaat** over jou, of wie ze mag verwerken, is beschermd. Denk aan GDPR: zelfs als niemand je medisch dossier effectief leest, is het al een privacy-inbreuk dat een onbevoegde werknemer het kan opvragen.
 * **Integrity** valt uiteen in:
-  * *Data integrity* &mdash; de **data zelf** is niet aangepast (vandaar onze hashes).
-  * *System integrity* &mdash; het **systeem** functioneert zoals bedoeld, zonder stille manipulatie. Een rootkit kan je data onaangeroerd laten maar toch je systeem *hijacken*: je data is integer, maar je systeem niet.
+  * *Data integrity*: de **data zelf** is niet aangepast (vandaar onze hashes).
+  * *System integrity*: het **systeem** functioneert zoals bedoeld, zonder stille manipulatie. Een rootkit kan je data onaangeroerd laten maar toch je systeem *hijacken*: je data is integer, maar je systeem niet.
 
-**Availability** heeft daarnaast ook een extra laag: *non-repudiation* (onweerlegbaarheid) &mdash; kon de zender later ontkennen dat hij het bericht verstuurd heeft? Digitale handtekeningen lossen dat op.
+**Availability** heeft daarnaast ook een extra laag: *non-repudiation* (onweerlegbaarheid) - kon de zender later ontkennen dat hij het bericht verstuurd heeft? Digitale handtekeningen lossen dat op.
 :::
 
 
@@ -93,7 +93,7 @@ De cyberboswachters van de 21e eeuw hebben geen eenvoudige job. Ze was in de vor
 * 2020 : Ransomware-as-a-Service : AI-gedreven aanvallen : Supply-chain attacks
 
 
-*Aanvalstools worden steeds krachtiger &mdash; terwijl de vereiste kennis van de aanvaller alleen maar daalt.*
+*Aanvalstools worden steeds krachtiger - terwijl de vereiste kennis van de aanvaller alleen maar daalt.*
 :::
 
 ### Zero days en patching
@@ -105,7 +105,7 @@ Een zero day zal quasi gegarandeerd blijven werken tot de ontwikkelaars een nieu
 De meeste fabrikanten van besturingssystemen (Apple, Microsoft, etc.) en veelgebruikte softwarepakketten (Adobe, Microsoft, etc.) brengen patches op welbepaalde dagen uit. Dit zorgt er bijvoorbeeld voor dat systeembeheerders hier rekening mee kunnen houden in hun wekelijkse planning. Voor gebruikers van zero days is dit ook nuttig: er ontstaat een zogenaamde **window of vulnerability**. Dit is de periode tussen het "ontdekken en in gebruik nemen van een zero day" en de moment waarop de patch tegen de zero day wordt verspreid. In dit *window* heeft de aanvaller vrij spel daar geen enkel systeem al kan gepatcht zijn. 
 
 ::: {.callout-note}
-**Patch Tuesday &amp; Exploit Wednesday**: Microsoft rolt sinds 2003 haar beveiligingsupdates standaard uit op de **tweede dinsdag van elke maand** &mdash; bekend als *Patch Tuesday*. Voordeel voor systeembeheerders: voorspelbaarheid in hun onderhoudsplanning. Maar&hellip; aanvallers weten dit óók. De dag erna wordt in de security-wereld vaak **Exploit Wednesday** genoemd: aanvallers doen *reverse-engineering* op de patch om te achterhalen **welke kwetsbaarheid** er juist gedicht werd, en richten zich dan op alle systemen die nog niet zijn bijgewerkt. Het *window of vulnerability* is in die zin vaak verrassend goed te voorspellen.
+**Patch Tuesday &amp; Exploit Wednesday**: Microsoft rolt sinds 2003 haar beveiligingsupdates standaard uit op de **tweede dinsdag van elke maand** - bekend als *Patch Tuesday*. Voordeel voor systeembeheerders: voorspelbaarheid in hun onderhoudsplanning. Maar&hellip; aanvallers weten dit óók. De dag erna wordt in de security-wereld vaak **Exploit Wednesday** genoemd: aanvallers doen *reverse-engineering* op de patch om te achterhalen **welke kwetsbaarheid** er juist gedicht werd, en richten zich dan op alle systemen die nog niet zijn bijgewerkt. Het *window of vulnerability* is in die zin vaak verrassend goed te voorspellen.
 :::
 
 ::: {.callout-tip}
@@ -156,7 +156,7 @@ Low Orbit Ion Cannon is zo'n typische scriptkiddie tool: eenvoudig in gebruik, m
 Werknemers die niet tevreden zijn over hun baas of werkomgeving, of net zijn ontslagen, zijn een veelvoorkomend probleem (volgens sommige experts zelfs hét belangrijkste cybersecurity probleem). Ze zitten vaak letterlijk "aan de binnenkant" van de beveiligingssystemen en kunnen daardoor ook veel meer schade aanrichten als ze dat willen. Ontevreden werknemers die wraak nemen op hun werkgever is een veel voorkomend probleem. Zeker als die werknemer op de koop toe bijvoorbeeld de netwerk-administrator was. Er zijn verhalen van ex-admins die voor hun vertrek de IT-systemen van het bedrijf saboteerden en, als klap op de vuurpijl, dan ook nog eens losgeld eisten om de systemen terug up-and-running te brengen. Het hoeft natuurlijk niet zo spectaculair zijn. Of wat te denken van werknemers die waardevolle documenten stelen, doorverkopen of aanpassen zonder dat het bedrijf er erg op heeft.
 
 ::: {.callout-warning}
-**`DROP DATABASE;` &mdash; de gebroeders Akhter (2025)**: een textbook voorbeeld van een *insider threat* dat alle alarmbellen had moeten doen rinkelen. De Amerikaanse tweelingbroers **Sohaib en Muneeb Akhter** werkten als IT-contractors voor een tech-bedrijf in Washington D.C. dat software leverde aan **meer dan 45 federale agentschappen** &mdash; van het Department of Homeland Security tot het Freedom of Information Act-verwerkingssysteem.
+**`DROP DATABASE;` - de gebroeders Akhter (2025)**: een textbook voorbeeld van een *insider threat* dat alle alarmbellen had moeten doen rinkelen. De Amerikaanse tweelingbroers **Sohaib en Muneeb Akhter** werkten als IT-contractors voor een tech-bedrijf in Washington D.C. dat software leverde aan **meer dan 45 federale agentschappen** - van het Department of Homeland Security tot het Freedom of Information Act-verwerkingssysteem.
 
 Op **18 februari 2025** werden ze tijdens een online vergadering ontslagen, nadat het bedrijf ontdekt had dat Sohaib een eerdere strafrechtelijke veroordeling verzwegen had. *Onmiddellijk* daarna gebruikten de broers hun nog actieve credentials om in te loggen en begonnen ze aan een digitale sloopactie van enkele uren:
 
@@ -164,11 +164,11 @@ Op **18 februari 2025** werden ze tijdens een online vergadering ontslagen, nada
 * vervolgens **droppen ze 96 federale databases**
 * op het einde vroegen ze aan een **AI-assistent** hoe ze de systeemlogs konden wissen om hun sporen uit te poetsen.
 
-Het pijnlijkste detail? Het was **niet hun eerste keer**. In **2016** waren de broers al veroordeeld voor het ongeoorloofd binnendringen van systemen van het **Amerikaanse State Department** en het stelen van persoonsgegevens van collega's. Na het uitzitten van hun straf werden ze gewoon **opnieuw aangenomen** als overheidscontractor &mdash; het bedrijf in kwestie had blijkbaar geen background check gedaan.
+Het pijnlijkste detail? Het was **niet hun eerste keer**. In **2016** waren de broers al veroordeeld voor het ongeoorloofd binnendringen van systemen van het **Amerikaanse State Department** en het stelen van persoonsgegevens van collega's. Na het uitzitten van hun straf werden ze gewoon **opnieuw aangenomen** als overheidscontractor - het bedrijf in kwestie had blijkbaar geen background check gedaan.
 
 Muneeb pleitte schuldig en kreeg **39 maanden cel**. Sohaib koos voor een juryproces, werd op **8 mei 2026** schuldig bevonden en riskeert tot **21 jaar gevangenisstraf** (strafmeting voorzien op 9 september 2026).
 
-> *Drie pijnlijke lessen*: (1) trek credentials **onmiddellijk** in bij ontslag &mdash; niet "morgen, na de papierwinkel"; (2) doe een echte **background check** vóór je iemand toegang geeft tot kritieke systemen; (3) één rancuneuze admin doet in een paar uur meer schade dan een externe aanvaller in een jaar.
+> *Drie pijnlijke lessen*: (1) trek credentials **onmiddellijk** in bij ontslag - niet "morgen, na de papierwinkel"; (2) doe een echte **background check** vóór je iemand toegang geeft tot kritieke systemen; (3) één rancuneuze admin doet in een paar uur meer schade dan een externe aanvaller in een jaar.
 
 [Bron: Ars Technica, *Drop database: what not to do after losing an IT job* (mei 2026)](https://arstechnica.com/tech-policy/2026/05/drop-database-what-not-to-do-after-losing-an-it-job/).
 
@@ -193,11 +193,11 @@ Cybercriminaliteit wordt soms wel eens de motor van de cybersecurity genoemd omd
 Cybercriminaliteit is nu zelfs zo ver geëvolueerd dat ze heuse moderne bedrijfsconcepten overnemen en hun zaakje als echte bedrijven runnen. Moderne ransomware criminelen hebben zelfs helpdesks die je kan bellen om je te helpen om de betaling (de *ransom*) te regelen. Of wat te denken van website die botnets verhuren als waren het legale services. Hier en daar zie je nu zelfs het "-as a service" zinnetje verschijnen waarbij bijvoorbeeld "Ransomware as a Service" ([RaaS](https://zvelo.com/raas-ransomware-as-a-service/)) of "spam as a service" kan gehuurd worden. Het doel hierbij is natuurlijk om de strafbare feiten zoveel mogelijk te verleggen naar de persoon die de services inhuurt, en niet naar de aanbieder ervan.
 
 ::: {.callout-note}
-**Max Butler alias *Iceman***: in 2006 nam Butler, vanuit een appartement in San Francisco's Tenderloin, de **wereldwijde zwarte markt voor gestolen kredietkaarten** over. Niet door technisch de beste te zijn, maar door zijn concurrenten gewoon te *hacken* en hun databases met gestolen cards over te nemen. Hij kreeg 13 jaar cel &mdash; maar het verhaal stopt daar niet. In **2018** werd hij vanuit de gevangenis aangeklaagd voor een poging om met een **drone** een smartphone binnen te smokkelen, zodat hij z'n business kon heropstarten. [Wired: *One Hacker's Audacious Plan*](https://www.wired.com/2008/12/ff-max-butler/) &mdash; [Washington Times: *Iceman with a drone*](https://www.washingtontimes.com/news/2018/dec/1/iceman-hacker-accused-having-drone-smuggle-cellpho/)
+**Max Butler alias *Iceman***: in 2006 nam Butler, vanuit een appartement in San Francisco's Tenderloin, de **wereldwijde zwarte markt voor gestolen kredietkaarten** over. Niet door technisch de beste te zijn, maar door zijn concurrenten gewoon te *hacken* en hun databases met gestolen cards over te nemen. Hij kreeg 13 jaar cel - maar het verhaal stopt daar niet. In **2018** werd hij vanuit de gevangenis aangeklaagd voor een poging om met een **drone** een smartphone binnen te smokkelen, zodat hij z'n business kon heropstarten. [Wired: *One Hacker's Audacious Plan*](https://www.wired.com/2008/12/ff-max-butler/) - [Washington Times: *Iceman with a drone*](https://www.washingtontimes.com/news/2018/dec/1/iceman-hacker-accused-having-drone-smuggle-cellpho/)
 :::
 
 ::: {.callout-note}
-**Phishing &amp; *money mules***: cybercriminelen werken zelden rechtstreeks met het gestolen geld &mdash; dat laat te duidelijke sporen na. Ze rekruteren *money mules* (geldezels): gewone mensen die via een jobadvertentie denken een legitieme job te hebben als *"financial manager"*. Zij stellen hun bankrekening ter beschikking om gestolen geld door te sluizen, meestal via Western Union, richting de echte criminelen. In november 2017 werden bij één actie van Europese opsporingsdiensten **159 geldezels** gearresteerd. Moraal: als een online vacature verdacht goed klinkt ("verdien €3000 per maand van thuis uit, enkel uw rekening ter beschikking stellen")&hellip; is het dat ook. [Bron: HLN, 28 nov 2017](https://m.hln.be/nieuws/buitenland/159-arrestaties-voor-witwassen-via-geldezels~ab33f566/)
+**Phishing &amp; *money mules***: cybercriminelen werken zelden rechtstreeks met het gestolen geld - dat laat te duidelijke sporen na. Ze rekruteren *money mules* (geldezels): gewone mensen die via een jobadvertentie denken een legitieme job te hebben als *"financial manager"*. Zij stellen hun bankrekening ter beschikking om gestolen geld door te sluizen, meestal via Western Union, richting de echte criminelen. In november 2017 werden bij één actie van Europese opsporingsdiensten **159 geldezels** gearresteerd. Moraal: als een online vacature verdacht goed klinkt ("verdien €3000 per maand van thuis uit, enkel uw rekening ter beschikking stellen")&hellip; is het dat ook. [Bron: HLN, 28 nov 2017](https://m.hln.be/nieuws/buitenland/159-arrestaties-voor-witwassen-via-geldezels~ab33f566/)
 :::
 
 ### Cyberterroristen, spionnen en overheden
@@ -209,7 +209,7 @@ De laatste drie groepen bespreken we samen, ook al omdat de termen soms overvloe
 
 * **Titan Rain** (2005): Chinese aanvallen op honderden Amerikaanse overheid- en defensiesystemen, waarbij onder andere militaire hardware-designs werden gestolen.
 * **Estonia** (2007): massale DDoS-aanval op Estlandse overheid, banken en media, toegeschreven aan Russische actoren na een diplomatiek incident rond een sovjet-standbeeld. Wordt door sommigen *"de eerste cyberoorlog"* genoemd.
-* **Georgia** (2008): synchroon met de Russische militaire invasie werden Georgische overheidsites en infrastructuur lamgelegd &mdash; de eerste keer dat cyberaanvallen parallel liepen met een militaire inval.
+* **Georgia** (2008): synchroon met de Russische militaire invasie werden Georgische overheidsites en infrastructuur lamgelegd - de eerste keer dat cyberaanvallen parallel liepen met een militaire inval.
 * **Operation Aurora** (2009): Chinese aanval op Google, Adobe, Juniper, Yahoo, Rackspace, Morgan Stanley en tientallen andere bedrijven, specifiek gericht op broncode-repositories.
 * **Stuxnet** (2010): Amerikaanse/Israëlische worm die Iraanse kerncentrifuges saboteerde (zie hoofdstuk 1).
 * **Nitro Zeus**: zwaar geclassificeerd Amerikaans cyber-sabotageprogramma gericht tegen Iraanse infrastructuur, als plan B mocht de nucleaire deal mislukken.
@@ -218,7 +218,7 @@ Het boek *"The Perfect Weapon"* van David Sanger (NYT, 2018) geeft een uitsteken
 :::
 
 ::: {.callout-note}
-**Hacktivisme in de Oekraïne-oorlog**: sinds de Russische invasie van Oekraïne in februari 2022 zijn tienduizenden hacktivisten online tot actie overgegaan &mdash; aan *beide* kanten. Westerse vrijwilligers (het zogenaamde "IT Army of Ukraine") viseerden Russische banken, staatsmedia en overheidswebsites; pro-Russische groepen verstoorden Oekraïense infrastructuur en westerse bedrijven. Wired documenteerde hoe deze *"hacktivist pandemonium"* soms ongecoördineerd en onvoorspelbaar uitpakt: goedbedoelde aanvallen raakten soms neutrale partijen, en bedrijven konden geen onderscheid meer maken tussen staatsactoren en individuele activisten. [Bron: Wired, maart 2022](https://www.wired.com/story/hacktivists-pandemonium-russia-war-ukraine/)
+**Hacktivisme in de Oekraïne-oorlog**: sinds de Russische invasie van Oekraïne in februari 2022 zijn tienduizenden hacktivisten online tot actie overgegaan - aan *beide* kanten. Westerse vrijwilligers (het zogenaamde "IT Army of Ukraine") viseerden Russische banken, staatsmedia en overheidswebsites; pro-Russische groepen verstoorden Oekraïense infrastructuur en westerse bedrijven. Wired documenteerde hoe deze *"hacktivist pandemonium"* soms ongecoördineerd en onvoorspelbaar uitpakt: goedbedoelde aanvallen raakten soms neutrale partijen, en bedrijven konden geen onderscheid meer maken tussen staatsactoren en individuele activisten. [Bron: Wired, maart 2022](https://www.wired.com/story/hacktivists-pandemonium-russia-war-ukraine/)
 
 ![Hacktivisme tijdens de Oekraïne-oorlog.](assets/rusukr.jpg){ width=60% }
 :::
@@ -245,7 +245,7 @@ Wanneer een netwerk wordt gepentest (legaal) werkt men vaak met twee teams die t
 :::
 
 ::: {.callout-important}
-**Dwell time &mdash; de stille meerderheid**: cijfers uit de (ondertussen legendarische) Verizon *Data Breach Investigation Reports* schetsen een ontluisterend beeld. Aanvallers zijn razendsnel *binnen*, maar blijven vaak *maandenlang* onopgemerkt.
+**Dwell time - de stille meerderheid**: cijfers uit de (ondertussen legendarische) Verizon *Data Breach Investigation Reports* schetsen een ontluisterend beeld. Aanvallers zijn razendsnel *binnen*, maar blijven vaak *maandenlang* onopgemerkt.
 
 | Overgang | Sec. | Min. | Uren | Dagen | Weken | Maanden | Jaren |
 |---|---|---|---|---|---|---|---|
@@ -333,13 +333,13 @@ Soms zal je digitale stropers horen spreken over "Ik heb dat systeem gepwnd", ui
 ## Social Engineering
 
 ::: {.callout-note title="De grotere kaart: aanvalsvectoren"}
-Social engineering is één manier waarop een aanvaller een eerste voet binnen jouw systeem krijgt &mdash; in vakjargon een *initial access vector*. In dit boek komen de belangrijkste vectoren aan bod, maar verspreid over meerdere secties en hoofdstukken:
+Social engineering is één manier waarop een aanvaller een eerste voet binnen jouw systeem krijgt - in vakjargon een *initial access vector*. In dit boek komen de belangrijkste vectoren aan bod, maar verspreid over meerdere secties en hoofdstukken:
 
-* **Social engineering** (phishing, vishing, smishing, &hellip;) &mdash; deze sectie.
-* **Zero-day exploit** &mdash; zie *Een ongelijke strijd* &rarr; *Zero days en patching* eerder in dit hoofdstuk.
-* **Insider threat** &mdash; zie *Wie zijn de stropers?* &rarr; *Werknemers* eerder in dit hoofdstuk.
-* **Supply chain attack** &mdash; uitgebreid behandeld in [hoofdstuk 1](les1_wordtheterger.qmd) (SolarWinds, NotPetya, CCleaner, Hezbollah-pagers, Mini Shai-Hulud&hellip;).
-* **Drive-by download & watering hole** &mdash; verderop in dit hoofdstuk onder *Soorten aanvallen &rarr; Software-based aanvallen*.
+* **Social engineering** (phishing, vishing, smishing, &hellip;) - deze sectie.
+* **Zero-day exploit**: zie *Een ongelijke strijd* &rarr; *Zero days en patching* eerder in dit hoofdstuk.
+* **Insider threat**: zie *Wie zijn de stropers?* &rarr; *Werknemers* eerder in dit hoofdstuk.
+* **Supply chain attack**: uitgebreid behandeld in [hoofdstuk 1](les1_wordtheterger.qmd) (SolarWinds, NotPetya, CCleaner, Hezbollah-pagers, Mini Shai-Hulud&hellip;).
+* **Drive-by download & watering hole**: verderop in dit hoofdstuk onder *Soorten aanvallen &rarr; Software-based aanvallen*.
 
 Het is geen exhaustieve lijst, maar wel een handig mentaal kader: vraag jezelf bij elke aanval die je analyseert eerst af *via welke vector* de stroper binnen is geraakt.
 :::
@@ -380,10 +380,10 @@ Phishing en spear phishing zijn slechts het topje van de social engineering ijsb
 
 Social engineers zijn geen hackers in de traditionele zin, maar eerder *amateur-psychologen*. Ze maken handig gebruik van de zogenaamde **beïnvloedingsprincipes** die de Amerikaanse psycholoog Robert Cialdini in z'n boek *Influence* (1984) beschreef. Ken je deze principes, dan herken je ook meteen de hefbomen die de aanvaller hanteert:
 
-* **Autoriteit**: mensen volgen instructies van iemand die gezag uitstraalt &mdash; de "CEO" die plots mailt, de "politie-agent" die belt, de "IT-helpdesk" die langskomt.
+* **Autoriteit**: mensen volgen instructies van iemand die gezag uitstraalt - de "CEO" die plots mailt, de "politie-agent" die belt, de "IT-helpdesk" die langskomt.
 * **Urgentie**: een tijdsdruk creëren zorgt ervoor dat het slachtoffer niet meer kritisch nadenkt (*"uw account wordt binnen 1 uur gedeactiveerd"*).
 * **Schaarste**: iets is bijna op of slechts beschikbaar voor weinigen (*"nog 3 plaatsen vrij"*).
-* **Wederkerigheid**: als ik jou iets geef, voel jij je verplicht iets terug te doen. Een gratis pen, een sigaretje, een dienstje &mdash; en plots houd je de deur open voor de "pizzakoerier".
+* **Wederkerigheid**: als ik jou iets geef, voel jij je verplicht iets terug te doen. Een gratis pen, een sigaretje, een dienstje - en plots houd je de deur open voor de "pizzakoerier".
 * **Sympathie**: we zeggen makkelijker ja tegen mensen die we sympathiek vinden of die op ons lijken.
 * **Sociale bewijskracht**: *"iedereen doet het, dus zal het wel oké zijn"*.
 
@@ -457,7 +457,7 @@ Als bijkomende handigheid zullen wormen ook vaak zichzelf veranderen zodat ze mo
 | **Remote file access** | De worm gebruikt een legitieme file-transfer dienst (SMB, FTP, NFS) om zichzelf naar het andere systeem te schrijven. |
 | **Remote login** | De worm logt als gebruiker in op een ander systeem (bv. via SSH, Telnet, of default IoT-wachtwoorden &agrave; la *Mirai*) en start zichzelf daar. |
 
-De werkelijk gevaarlijke wormen combineren vaak **meerdere paden tegelijk** &mdash; als één route geblokkeerd is, blijven de andere nog actief.
+De werkelijk gevaarlijke wormen combineren vaak **meerdere paden tegelijk** - als één route geblokkeerd is, blijven de andere nog actief.
 :::
 
 ![Worm propagation model. Bron: Network Eye: End-to-End Computer Security Visualization - Scientific Figure on ResearchGate.](assets/wormprop.png){ width=65% }
@@ -466,12 +466,12 @@ Bovenstaande afbeelding toont het *worm propagation model*. Dit model toont hoe 
 
 #### Drive-by download en watering hole
 
-Niet alle malware vereist een nietsvermoedende klik op een bijlage of phishing-link. Bij een **drive-by download** word je gewoon door het bezoeken van een gecompromitteerde webpagina besmet &mdash; *zonder iets te downloaden of aan te klikken*. De pagina misbruikt een kwetsbaarheid in je browser, in een plugin (Flash en Java waren in hun hoogdagen de klassiekers) of in een PDF-viewer, en installeert de payload op de achtergrond. De term "drive-by" verwijst naar de Amerikaanse maffia: net zoals iemand vanuit een rijdende auto schiet zonder uit te stappen, hoef jij ook niets actief te doen om geraakt te worden.
+Niet alle malware vereist een nietsvermoedende klik op een bijlage of phishing-link. Bij een **drive-by download** word je gewoon door het bezoeken van een gecompromitteerde webpagina besmet - *zonder iets te downloaden of aan te klikken*. De pagina misbruikt een kwetsbaarheid in je browser, in een plugin (Flash en Java waren in hun hoogdagen de klassiekers) of in een PDF-viewer, en installeert de payload op de achtergrond. De term "drive-by" verwijst naar de Amerikaanse maffia: net zoals iemand vanuit een rijdende auto schiet zonder uit te stappen, hoef jij ook niets actief te doen om geraakt te worden.
 
-De **watering hole**-aanval is een gerichte variant op datzelfde principe. In de savanne wachten roofdieren bij het drinkpoeltje tot prooien er komen drinken, en dat is exact wat een aanvaller hier nabootst: hij infecteert een website waarvan hij weet dat zijn specifieke doelwit ze regelmatig bezoekt &mdash; bijvoorbeeld een vak-nieuwssite die engineers van een defensieleverancier dagelijks raadplegen. In **2013** infecteerde een staatsgesponsorde groep zo de website van een Amerikaanse buitenlandse-zakendenktank; bezoekers van het Department of Labor, NIST en enkele defensiecontractors raakten besmet zonder ook maar één verdachte e-mail aan te klikken.
+De **watering hole**-aanval is een gerichte variant op datzelfde principe. In de savanne wachten roofdieren bij het drinkpoeltje tot prooien er komen drinken, en dat is exact wat een aanvaller hier nabootst: hij infecteert een website waarvan hij weet dat zijn specifieke doelwit ze regelmatig bezoekt - bijvoorbeeld een vak-nieuwssite die engineers van een defensieleverancier dagelijks raadplegen. In **2013** infecteerde een staatsgesponsorde groep zo de website van een Amerikaanse buitenlandse-zakendenktank; bezoekers van het Department of Labor, NIST en enkele defensiecontractors raakten besmet zonder ook maar één verdachte e-mail aan te klikken.
 
 ::: {.callout-tip}
-Een nauw verwante variant is **malvertising**: kwaadaardige advertentiebanners die via reguliere advertentienetwerken op anders volkomen respectabele websites belanden (van krantensites tot YouTube). Bezoek de pagina, krijg een banner ingeladen via een derde-partij ad-server, en de drive-by start. Vandaar de eeuwige aanbeveling: **patch je browser én gebruik een ad-blocker** &mdash; deze laatste is in deze context bijna een security-tool.
+Een nauw verwante variant is **malvertising**: kwaadaardige advertentiebanners die via reguliere advertentienetwerken op anders volkomen respectabele websites belanden (van krantensites tot YouTube). Bezoek de pagina, krijg een banner ingeladen via een derde-partij ad-server, en de drive-by start. Vandaar de eeuwige aanbeveling: **patch je browser én gebruik een ad-blocker** - deze laatste is in deze context bijna een security-tool.
 :::
 
 #### Trojan
@@ -485,7 +485,7 @@ De naam Trojan is gebaseerd op de legende van Het Paard van Troje uit de Aeneid 
 :::
 
 ::: {.callout-warning}
-**Supply-chain trojans &mdash; de CIA en Xcode**: één van de meest verrassende onthullingen uit de Snowden-lekken (2015) was dat de CIA jarenlang gewerkt heeft aan een **eigen versie van Apple's Xcode**, de officiële IDE waarmee developers iOS- en macOS-apps bouwen. Met die gemanipuleerde Xcode-versie konden onwetende app-developers hun eigen apps bouwen &mdash; waarin ongemerkt **CIA-backdoors** werden mee geïnjecteerd. Eens die *trojan-apps* in de App Store of op iPhones stonden, hadden de Amerikaanse inlichtingendiensten toegang tot het toestel van de eindgebruiker. De CIA zou ook Apple's update-tool voor macOS gemanipuleerd hebben om zo stiekem keyloggers te installeren. Moraal: een trojan hoeft niet per se in *jouw* software te zitten &mdash; ze kan zich veel eerder in de *keten* hebben genesteld. [Bron: The Intercept / Tweakers](https://tweakers.net/nieuws/101806/cia-ontwikkelde-xcode-variant-voor-plaatsen-spyware-op-iphones.html)
+**Supply-chain trojans - de CIA en Xcode**: één van de meest verrassende onthullingen uit de Snowden-lekken (2015) was dat de CIA jarenlang gewerkt heeft aan een **eigen versie van Apple's Xcode**, de officiële IDE waarmee developers iOS- en macOS-apps bouwen. Met die gemanipuleerde Xcode-versie konden onwetende app-developers hun eigen apps bouwen - waarin ongemerkt **CIA-backdoors** werden mee geïnjecteerd. Eens die *trojan-apps* in de App Store of op iPhones stonden, hadden de Amerikaanse inlichtingendiensten toegang tot het toestel van de eindgebruiker. De CIA zou ook Apple's update-tool voor macOS gemanipuleerd hebben om zo stiekem keyloggers te installeren. Moraal: een trojan hoeft niet per se in *jouw* software te zitten - ze kan zich veel eerder in de *keten* hebben genesteld. [Bron: The Intercept / Tweakers](https://tweakers.net/nieuws/101806/cia-ontwikkelde-xcode-variant-voor-plaatsen-spyware-op-iphones.html)
 :::
 
 #### Spyware
@@ -533,7 +533,7 @@ Herinner je dat de ransomware-aanvallen uit hoofdstuk 1 (WannaCry en Petya in 20
 | Niet betaald | Data gerecupereerd (back-ups) | 36% |
 | Niet betaald | Data verloren | 7% |
 
-Eén op de vijf bedrijven die het losgeld betaalde, kreeg dus **gewoon geen data terug**. De totale kost van ransomware-incidenten in de VS bedroeg in 2021 maar liefst **$7.9 miljard** aan downtime, waarvan $1.4 miljard effectief aan losgeld werd betaald. Moraal: betalen is russische roulette &mdash; én het financiert onbedoeld de volgende aanval. Zorg voor goede, *offline* back-ups.
+Eén op de vijf bedrijven die het losgeld betaalde, kreeg dus **gewoon geen data terug**. De totale kost van ransomware-incidenten in de VS bedroeg in 2021 maar liefst **$7.9 miljard** aan downtime, waarvan $1.4 miljard effectief aan losgeld werd betaald. Moraal: betalen is russische roulette - én het financiert onbedoeld de volgende aanval. Zorg voor goede, *offline* back-ups.
 :::
 
 #### Botnet
@@ -556,15 +556,15 @@ Het is in het voordeel van de herder dat botnets zo onzichtbaar mogelijk blijven
 Omdat botnets zo'n grote impact kunnen hebben, jagen Microsoft, Cisco, McAfee, etc. actief op deze zaken. Een botnet uitschakelen door de zombies te bestrijden is natuurlijk onbegonnen werk. De oplossing ligt natuurlijk bij de C&C-servers! Als je die server uit de lucht krijgt dan zijn de zombies nutteloos en heb je letterlijk het botnet onthoofd. 
 
 ::: {.callout-note}
-**Mirai (2016): het IoT-botnet**: in september 2016 dook Mirai op, een botnet dat niet op gewone computers jaagde maar op **IoT-apparaten**: routers, IP-camera's, digitale videorecorders, babyfoons. De verspreidings-*trick* was verbluffend simpel: Mirai probeerde gewoon een lijst van **64 default logins** (admin/admin, root/root, user/user, &hellip;) op elk IoT-toestel dat aan het internet hing. Resultaat: op het hoogtepunt ruim **600.000 besmette toestellen**. Op 21 oktober 2016 voerde Mirai een DDoS-aanval uit op DNS-provider Dyn, waardoor grote delen van het Amerikaanse internet &mdash; Twitter, Netflix, Reddit, GitHub, Spotify &mdash; urenlang onbereikbaar waren. Mirai's broncode werd later publiek gemaakt, waarna tal van varianten ontstonden die tot vandaag actief zijn.
+**Mirai (2016): het IoT-botnet**: in september 2016 dook Mirai op, een botnet dat niet op gewone computers jaagde maar op **IoT-apparaten**: routers, IP-camera's, digitale videorecorders, babyfoons. De verspreidings-*trick* was verbluffend simpel: Mirai probeerde gewoon een lijst van **64 default logins** (admin/admin, root/root, user/user, &hellip;) op elk IoT-toestel dat aan het internet hing. Resultaat: op het hoogtepunt ruim **600.000 besmette toestellen**. Op 21 oktober 2016 voerde Mirai een DDoS-aanval uit op DNS-provider Dyn, waardoor grote delen van het Amerikaanse internet (Twitter, Netflix, Reddit, GitHub, Spotify) urenlang onbereikbaar waren. Mirai's broncode werd later publiek gemaakt, waarna tal van varianten ontstonden die tot vandaag actief zijn.
 :::
 
 ::: {.callout-note}
-**Mantis (2022): meest krachtige botnet tot nu toe**: waar Mirai inzette op **volume** (veel, maar zwakke IoT-apparaten), gooit Mantis het over een andere boeg: **kwaliteit**. Dit botnet rekruteert gekaapte virtuele machines en krachtige servers. Gevolg: elke bot heeft enorm veel rekenkracht. Cloudflare registreerde in juni 2022 een DDoS-aanval van **26 miljoen HTTPS-requests per seconde** &mdash; een record. Les: de evolutie van botnets gaat niet noodzakelijk richting *meer zombies*, maar richting *sterkere zombies*. [Bron: Cloudflare blog](https://blog.cloudflare.com/mantis-botnet/)
+**Mantis (2022): meest krachtige botnet tot nu toe**: waar Mirai inzette op **volume** (veel, maar zwakke IoT-apparaten), gooit Mantis het over een andere boeg: **kwaliteit**. Dit botnet rekruteert gekaapte virtuele machines en krachtige servers. Gevolg: elke bot heeft enorm veel rekenkracht. Cloudflare registreerde in juni 2022 een DDoS-aanval van **26 miljoen HTTPS-requests per seconde** - een record. Les: de evolutie van botnets gaat niet noodzakelijk richting *meer zombies*, maar richting *sterkere zombies*. [Bron: Cloudflare blog](https://blog.cloudflare.com/mantis-botnet/)
 :::
 
 ::: {.callout-warning}
-**BYOB &mdash; "Build Your Own Botnet"**: op GitHub staat al jaren een open-source *educatief* framework ([github.com/malwaredllc/byob](https://github.com/malwaredllc/byob)) waarmee je in enkele klikken je eigen botnet kan opzetten: command &amp; control-server met webinterface, payload-generator voor Windows/Linux/macOS, en een dozijn kant-en-klare post-exploitation modules (keylogger, webcam, persistentie, &hellip;). Officieel voor onderzoekers en studenten, maar een mooi illustratie van hoe **laagdrempelig** malware-ontwikkeling is geworden. De scheve grafiek uit eerder in dit hoofdstuk in actie.
+**BYOB - "Build Your Own Botnet"**: op GitHub staat al jaren een open-source *educatief* framework ([github.com/malwaredllc/byob](https://github.com/malwaredllc/byob)) waarmee je in enkele klikken je eigen botnet kan opzetten: command &amp; control-server met webinterface, payload-generator voor Windows/Linux/macOS, en een dozijn kant-en-klare post-exploitation modules (keylogger, webcam, persistentie, &hellip;). Officieel voor onderzoekers en studenten, maar een mooi illustratie van hoe **laagdrempelig** malware-ontwikkeling is geworden. De scheve grafiek uit eerder in dit hoofdstuk in actie.
 :::
 
 ::: {.callout-warning}
@@ -598,7 +598,7 @@ Dit hoofdstuk zou wederom een heel eigen boek kunnen bevatten, we gaan daarom en
 :::
 
 ::: {.callout-note}
-**De Russische USB's van Kabul (2008)**: één van de meest beruchte USB-aanvallen aller tijden, beschreven in Fred Kaplan's boek *"Dark Territory"*. Russische spionnen slaagden erin een **airgapped** (dus volledig van het internet afgesneden) geclassificeerd Amerikaans militair netwerk binnen te dringen. Hun methode? Gewoon **goedkope USB-sticks volgestopt met malware** leveren aan retailkiosken vlak bij het NATO-hoofdkwartier in Kaboel. Pure wiskundige gok: vroeg of laat koopt een Amerikaanse militair er één en steekt die in een veilige computer. Dat is exact wat er gebeurde. Tienduizenden bestanden &mdash; hardware-designs, troepenconfiguraties, kaarten van bases &mdash; werden buitgemaakt. De operatie wordt beschouwd als de eerste grootschalige staats-doordringing van een gerubriceerd Amerikaans netwerk en was de directe aanleiding voor een Pentagon-verbod op USB-sticks in gevoelige omgevingen.
+**De Russische USB's van Kabul (2008)**: één van de meest beruchte USB-aanvallen aller tijden, beschreven in Fred Kaplan's boek *"Dark Territory"*. Russische spionnen slaagden erin een **airgapped** (dus volledig van het internet afgesneden) geclassificeerd Amerikaans militair netwerk binnen te dringen. Hun methode? Gewoon **goedkope USB-sticks volgestopt met malware** leveren aan retailkiosken vlak bij het NATO-hoofdkwartier in Kaboel. Pure wiskundige gok: vroeg of laat koopt een Amerikaanse militair er één en steekt die in een veilige computer. Dat is exact wat er gebeurde. Tienduizenden bestanden (hardware-designs, troepenconfiguraties, kaarten van bases) werden buitgemaakt. De operatie wordt beschouwd als de eerste grootschalige staats-doordringing van een gerubriceerd Amerikaans netwerk en was de directe aanleiding voor een Pentagon-verbod op USB-sticks in gevoelige omgevingen.
 :::
 
 ::: {.callout-tip}
@@ -606,7 +606,7 @@ Dit hoofdstuk zou wederom een heel eigen boek kunnen bevatten, we gaan daarom en
 
 * Gebruik een **eigen oplader** in een gewoon stopcontact (niet die publieke USB-poort).
 * Neem je **eigen power bank** mee.
-* Koop een **charge-only cable** of een zogenaamde **USB data blocker** (kostprijs: enkele euro). Dit is een adapter die de datapinnen van de USB-connector fysiek afsluit &mdash; enkel de stroompinnen werken nog, dus data-overdracht is onmogelijk.
+* Koop een **charge-only cable** of een zogenaamde **USB data blocker** (kostprijs: enkele euro). Dit is een adapter die de datapinnen van de USB-connector fysiek afsluit - enkel de stroompinnen werken nog, dus data-overdracht is onmogelijk.
 * Schakel op je telefoon de optie *"data transfer bij aansluiting"* uit, zodat een toestel bij default enkel oplaadt.
 :::
 
@@ -615,13 +615,13 @@ Dit hoofdstuk zou wederom een heel eigen boek kunnen bevatten, we gaan daarom en
 Onze smartphones zijn ondertussen onze *primaire* digitale apparaten geworden: permanent verbonden, bomvol persoonlijke data, met camera, microfoon, GPS en toegang tot onze bank- en sociale media-accounts. Geen wonder dat ze een uitgelezen doelwit zijn voor stropers. Enkele mobile-specifieke aanvalstechnieken:
 
 ::: {.callout-warning}
-**Clickjacking op Android (*overlay attacks*)**: een kwaadaardige app toont bovenop legitieme schermen een **onzichtbare overlay**. Je denkt dat je op *"Niet nu"* klikt in een dialoogje, maar in werkelijkheid klik je op *"Installeer deze app"* of *"Geef toegang tot je contacten"* onder die overlay. De Android *Accessibility Service* (oorspronkelijk bedoeld als hulp voor mensen met een beperking) maakt dit mogelijk: eens een app die rechten krijgt, kan ze andere apps besturen, velden invullen en knoppen indrukken &mdash; zonder dat de gebruiker het ziet. Gelukkig heeft Google sinds Android 12+ extra beperkingen doorgevoerd.
+**Clickjacking op Android (*overlay attacks*)**: een kwaadaardige app toont bovenop legitieme schermen een **onzichtbare overlay**. Je denkt dat je op *"Niet nu"* klikt in een dialoogje, maar in werkelijkheid klik je op *"Installeer deze app"* of *"Geef toegang tot je contacten"* onder die overlay. De Android *Accessibility Service* (oorspronkelijk bedoeld als hulp voor mensen met een beperking) maakt dit mogelijk: eens een app die rechten krijgt, kan ze andere apps besturen, velden invullen en knoppen indrukken - zonder dat de gebruiker het ziet. Gelukkig heeft Google sinds Android 12+ extra beperkingen doorgevoerd.
 
 ![Clickjacking: het slachtoffer denkt op *"Confirm bank payment"* te klikken, maar raakt in werkelijkheid de verborgen *"Claim your prize"*-knop (Bron: Wikimedia Commons).](assets/clickjacking.png){ width=60% }
 :::
 
 ::: {.callout-warning}
-**Android/PowerOffHijack (2015)**: malware die de *shutdown*-procedure van je toestel overneemt. Als je je telefoon *uitzet*, **doet hij alleen alsof**: je krijgt het animatie-scherm en het toestel lijkt dood, maar in werkelijkheid blijft hij volledig functioneel. De malware kan ondertussen gewoon telefoneren, foto's maken met de camera en data versturen &mdash; terwijl jij denkt dat je toestel *offline* is. Ongeveer 10.000 toestellen waren besmet voor de aanval werd ontdekt, voornamelijk via Chinese alternatieve app-stores. Moraal: haal je **batterij eruit** (als dat nog kan) wanneer je zeker wilt weten dat je toestel echt uit is.
+**Android/PowerOffHijack (2015)**: malware die de *shutdown*-procedure van je toestel overneemt. Als je je telefoon *uitzet*, **doet hij alleen alsof**: je krijgt het animatie-scherm en het toestel lijkt dood, maar in werkelijkheid blijft hij volledig functioneel. De malware kan ondertussen gewoon telefoneren, foto's maken met de camera en data versturen - terwijl jij denkt dat je toestel *offline* is. Ongeveer 10.000 toestellen waren besmet voor de aanval werd ontdekt, voornamelijk via Chinese alternatieve app-stores. Moraal: haal je **batterij eruit** (als dat nog kan) wanneer je zeker wilt weten dat je toestel echt uit is.
 :::
 
 ::: {.callout-warning}
@@ -629,7 +629,7 @@ Onze smartphones zijn ondertussen onze *primaire* digitale apparaten geworden: p
 :::
 
 ::: {.callout-tip}
-**De enige écht onhackbare smartphone** blijft de Nokia 3310. Maar dat geeft je dan natuurlijk ook geen WhatsApp, Google Maps of Mobile Banking &mdash; alles heeft z'n prijs.
+**De enige écht onhackbare smartphone** blijft de Nokia 3310. Maar dat geeft je dan natuurlijk ook geen WhatsApp, Google Maps of Mobile Banking - alles heeft z'n prijs.
 :::
 
 ### Side-channel aanvallen
@@ -650,15 +650,15 @@ Wist je dat een oud liedje van Janet Jackson kan gebruikt worden om (oude) lapto
 :::
 
 ::: {.callout-warning}
-**KNOB Attack (2019): Bluetooth op 1 byte entropie**: de *Key Negotiation of Bluetooth*-aanval misbruikt een zwakheid in de manier waarop twee Bluetooth-toestellen de sterkte van hun gedeelde versleutelingssleutel afspreken. Normaal onderhandelen ze over een sleutel van **16 bytes** (128 bit). Maar een Man-in-the-Middle aanvaller kan die onderhandeling onderscheppen en de beide toestellen laten *"akkoord gaan"* met een sleutel van slechts **1 byte** &mdash; 8 bit. Die sleutel kan dan in minder dan een seconde worden gebruteforced, waarna de stroper de volledige Bluetooth-communicatie in plaintext kan lezen. Bijna elk Bluetooth-toestel van vóór 2019 was kwetsbaar: telefoons, koptelefoons, toetsenborden, auto's. [Meer info: knobattack.com](https://knobattack.com/)
+**KNOB Attack (2019): Bluetooth op 1 byte entropie**: de *Key Negotiation of Bluetooth*-aanval misbruikt een zwakheid in de manier waarop twee Bluetooth-toestellen de sterkte van hun gedeelde versleutelingssleutel afspreken. Normaal onderhandelen ze over een sleutel van **16 bytes** (128 bit). Maar een Man-in-the-Middle aanvaller kan die onderhandeling onderscheppen en de beide toestellen laten *"akkoord gaan"* met een sleutel van slechts **1 byte** - 8 bit. Die sleutel kan dan in minder dan een seconde worden gebruteforced, waarna de stroper de volledige Bluetooth-communicatie in plaintext kan lezen. Bijna elk Bluetooth-toestel van vóór 2019 was kwetsbaar: telefoons, koptelefoons, toetsenborden, auto's. [Meer info: knobattack.com](https://knobattack.com/)
 :::
 
 ::: {.callout-warning}
-**Whisper Leak (Microsoft, nov 2025): LLM-gesprekken afluisteren &mdash; zelfs al zijn ze versleuteld**: een recent ontdekte side-channel in taalmodellen (ChatGPT, Claude, Gemini, &hellip;). Wanneer een LLM een antwoord *streamt* (woord per woord), zijn de **grootte** en **timing** van elk pakketje over het netwerk nog zichtbaar &mdash; ook al is de inhoud geëncrypteerd met TLS. Microsoft toonde aan dat een machine learning-classifier op basis van enkel die metadata met **92% zekerheid** kan voorspellen of een gebruiker een *"gevoelig onderwerp"* (zoals *money laundering*) aan het bespreken is. Een passieve aanvaller op je ISP, op hetzelfde wifi-netwerk of op je router kan dus zien waar je met ChatGPT over praat, zelfs zonder de encryptie te breken. [Bron: The Hacker News](https://thehackernews.com/2025/11/microsoft-uncovers-whisper-leak-attack.html)
+**Whisper Leak (Microsoft, nov 2025): LLM-gesprekken afluisteren - zelfs al zijn ze versleuteld**: een recent ontdekte side-channel in taalmodellen (ChatGPT, Claude, Gemini, &hellip;). Wanneer een LLM een antwoord *streamt* (woord per woord), zijn de **grootte** en **timing** van elk pakketje over het netwerk nog zichtbaar - ook al is de inhoud geëncrypteerd met TLS. Microsoft toonde aan dat een machine learning-classifier op basis van enkel die metadata met **92% zekerheid** kan voorspellen of een gebruiker een *"gevoelig onderwerp"* (zoals *money laundering*) aan het bespreken is. Een passieve aanvaller op je ISP, op hetzelfde wifi-netwerk of op je router kan dus zien waar je met ChatGPT over praat, zelfs zonder de encryptie te breken. [Bron: The Hacker News](https://thehackernews.com/2025/11/microsoft-uncovers-whisper-leak-attack.html)
 :::
 
 ::: {.callout-note}
-**Bitsquatting &mdash; DNS-hijacking zonder één bug te misbruiken**: RAM-chips zijn niet perfect. Heel af en toe flipt een bit spontaan van 0 naar 1 of omgekeerd (door kosmische straling, hitte, &hellip;). Onderzoeker Artem Dinaburg besefte in 2011 dat je dit kunt uitbuiten. Stel: de domeinnaam `microsoft.com` staat in RAM als een reeks bytes. Als één bit flipt, kan dat `micrnsoft.com` of `licrosoft.com` worden. Door die *look-alike* domeinen alvast te registreren, krijg je gewoon organisch verkeer van gebruikers wiens RAM een foutje maakte &mdash; zonder dat je iets hoeft te hacken. In Dinaburg's experiment kreeg hij honderdduizenden onterechte DNS-queries per dag. Pure passieve side-channel aanval. [Bron: dinaburg.org](http://dinaburg.org/bitsquatting.html)
+**Bitsquatting - DNS-hijacking zonder één bug te misbruiken**: RAM-chips zijn niet perfect. Heel af en toe flipt een bit spontaan van 0 naar 1 of omgekeerd (door kosmische straling, hitte, &hellip;). Onderzoeker Artem Dinaburg besefte in 2011 dat je dit kunt uitbuiten. Stel: de domeinnaam `microsoft.com` staat in RAM als een reeks bytes. Als één bit flipt, kan dat `micrnsoft.com` of `licrosoft.com` worden. Door die *look-alike* domeinen alvast te registreren, krijg je gewoon organisch verkeer van gebruikers wiens RAM een foutje maakte - zonder dat je iets hoeft te hacken. In Dinaburg's experiment kreeg hij honderdduizenden onterechte DNS-queries per dag. Pure passieve side-channel aanval. [Bron: dinaburg.org](http://dinaburg.org/bitsquatting.html)
 :::
 
 
@@ -670,10 +670,10 @@ In dit hoofdstuk legden we de fundamenten vast waarop de rest van dit boek verde
 
 * **CIA** (confidentiality, integrity, availability) is het doel; de **McCumber kubus** dwingt je om dat doel te bewaken op élke datastatus (opslag, transport, verwerking) én op élke laag (technologie, beleid, mensen).
 * De **wapenwedloop is scheef**: aanvallers hebben snelheid, schaal en eenvoudig te gebruiken tools, terwijl verdedigers aan álles moeten denken.
-* **Zero days** en het **window of vulnerability** maken patchen tot een permanente discipline — *Patch Tuesday* impliceert *Exploit Wednesday*.
+* **Zero days** en het **window of vulnerability** maken patchen tot een permanente discipline - *Patch Tuesday* impliceert *Exploit Wednesday*.
 * De **aanvallers** zijn divers: van scriptkiddies over eigen werknemers tot cybercriminelen en door overheden gesponsorde actoren. Ieder profiel vraagt een eigen verdediging.
 * Aanvallen zijn **passief** (sniffen, OSINT) of **actief** (modify, replay, DoS); de meeste starten met **social engineering**.
-* Malware-families (virus, worm, trojan, rootkit, ransomware, botnet) én **side-channels** (Rowhammer, KNOB, Whisper Leak) tonen dat elke laag — software, hardware én menselijk gedrag — een aanvalsoppervlak is.
+* Malware-families (virus, worm, trojan, rootkit, ransomware, botnet) én **side-channels** (Rowhammer, KNOB, Whisper Leak) tonen dat elke laag (software, hardware én menselijk gedrag) een aanvalsoppervlak is.
 
 Onthoud vooral: **de zwakste schakel is zelden technisch**.
 

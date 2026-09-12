@@ -26,10 +26,10 @@ Na dit hoofdstuk kan je:
 ## Wat is cybersecurity?
 
 > *"Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks."*
-> — Cisco
+> *Cisco*
 
 ::: {.fragment}
-Alles draait rond het beschermen van **informatie** — op een server, in een document, of in iemands hoofd.
+Alles draait rond het beschermen van **informatie** - op een server, in een document, of in iemands hoofd.
 :::
 
 ::: {.callout-note .fragment}
@@ -100,7 +100,7 @@ NIST = *National Institute of Standards and Technology* (VS). Hun definitie intr
   * → Digitale handtekeningen
 
 ::: {.callout-warning .fragment}
-Een rootkit kan je **data** ongemoeid laten &mdash; en toch je **systeem** overnemen.
+Een rootkit kan je **data** ongemoeid laten - en toch je **systeem** overnemen.
 
 Data integer ≠ systeem integer.
 :::
@@ -206,7 +206,7 @@ timeline
 ```
 
 ::: {.callout-important .fragment}
-Aanvalstools worden steeds **krachtiger** — terwijl de vereiste **kennis** van de aanvaller alleen maar **daalt**. Dit verklaart waarom scriptkiddies zo'n reëel probleem zijn.
+Aanvalstools worden steeds **krachtiger** - terwijl de vereiste **kennis** van de aanvaller alleen maar **daalt**. Dit verklaart waarom scriptkiddies zo'n reëel probleem zijn.
 :::
 
 ---
@@ -214,7 +214,7 @@ Aanvalstools worden steeds **krachtiger** — terwijl de vereiste **kennis** van
 ## Zero days en patching
 
 * **Zero day** = kwetsbaarheid die nog onbekend is bij de softwarefabrikant
-  * Gegarandeerd werkzaam — er bestaat nog geen patch
+  * Gegarandeerd werkzaam - er bestaat nog geen patch
 
 ::: {.callout-warning .fragment}
 **Window of vulnerability**: de periode tussen het ontdekken van een zero day en de release van een patch.
@@ -301,7 +301,7 @@ Elke groep heeft **eigen motivaties, middelen en methodes**.
 | ⬜ **Whitehat** | Ethisch hacker | Legaal pentesten, bug bounty |
 | 🩶 **Greyhat** | Grijs gebied | Goede intenties, niet altijd legaal |
 | ⬛ **Blackhat** | Crimineel (*cracker*) | Illegale toegang, eigenbelang |
-| 🟥 **Redhat** | Vigilante | Vecht terug tegen blackhats — middelen niet altijd legaal |
+| 🟥 **Redhat** | Vigilante | Vecht terug tegen blackhats - middelen niet altijd legaal |
 | 🟦 **Bluehat** | Wraaklustig | Eén doel: wraak nemen |
 | 🟩 **Greenhat** | Beginner | Scriptkiddie in opleiding |
 
@@ -309,12 +309,12 @@ Elke groep heeft **eigen motivaties, middelen en methodes**.
 
 ## Scriptkiddies
 
-* Weinig tot geen kennis — maar gebruiken **krachtige, gebruiksvriendelijke tools**
+* Weinig tot geen kennis - maar gebruiken **krachtige, gebruiksvriendelijke tools**
 * Beseffen vaak **niet** dat hun acties strafbaar zijn
 * Gevolgen kunnen even ernstig zijn als bij doorgewinterde aanvallers
 
 ::: {.callout-warning .fragment}
-Veiligheidsdiensten kunnen niet zien wie er achter een aanval zit — ze reageren altijd op dezelfde manier.
+Veiligheidsdiensten kunnen niet zien wie er achter een aanval zit - ze reageren altijd op dezelfde manier.
 
 Een politie-inval + zware boetes als gevolg van "gewoon een knopje indrukken".
 :::
@@ -374,13 +374,13 @@ De "veilige burcht" werkt niet meer als je iedereen met hun eigen sleutel naar b
 
 ---
 
-## `DROP DATABASE;` &mdash; de gebroeders Akhter (2025)
+## `DROP DATABASE;` - de gebroeders Akhter (2025)
 
 :::: {.columns}
 
 ::: {.column width="60%"}
 * Tweelingbroers, IT-contractors voor een D.C.-bedrijf met **45+ federale agentschappen** als klant
-* **18 feb 2025**: ontslagen tijdens online meeting — strafblad ontdekt
+* **18 feb 2025**: ontslagen tijdens online meeting - strafblad ontdekt
 * Diezelfde dag nog, in enkele uren:
   * databases *write-protected* &rarr; collega's konden niets redden
   * **96 federale databases gedropt** (FOIA, DHS&hellip;)
@@ -389,14 +389,14 @@ De "veilige burcht" werkt niet meer als je iedereen met hun eigen sleutel naar b
 
 ::: {.column width="40%" .fragment}
 ::: {.callout-warning}
-**Recidive**: in 2016 al veroordeeld voor inbraak op het US State Department &mdash; en daarna gewoon **opnieuw aangeworven** als overheidscontractor. Geen background check.
+**Recidive**: in 2016 al veroordeeld voor inbraak op het US State Department - en daarna gewoon **opnieuw aangeworven** als overheidscontractor. Geen background check.
 :::
 :::
 
 ::::
 
 ::: {.callout-important .fragment}
-Muneeb: **39 maanden cel** (schuldbekentenis). Sohaib: schuldig bevonden door jury op 8 mei 2026 &mdash; riskeert tot **21 jaar** (strafmeting 9 sept 2026).
+Muneeb: **39 maanden cel** (schuldbekentenis). Sohaib: schuldig bevonden door jury op 8 mei 2026 - riskeert tot **21 jaar** (strafmeting 9 sept 2026).
 :::
 
 ::: aside
@@ -424,10 +424,10 @@ Het "bedrijfsmodel" van cybercriminelen zorgt ervoor dat aanvallers zelf geen te
 
 * **2006**: vanuit een appartement in San Francisco neemt Butler de **wereldmarkt voor gestolen creditcards** over
 * Zijn truc: concurrenten *hacken* en hun databases overnemen
-* **13 jaar cel** &mdash; maar het verhaal stopt daar niet&hellip;
+* **13 jaar cel**: maar het verhaal stopt daar niet&hellip;
 
 ::: {.callout-note .fragment}
-**2018**: vanuit de gevangenis aangeklaagd voor een poging om via een **drone** een smartphone binnen te smokkelen — om zijn criminele business te heropstarten.
+**2018**: vanuit de gevangenis aangeklaagd voor een poging om via een **drone** een smartphone binnen te smokkelen - om zijn criminele business te heropstarten.
 :::
 
 ::: aside
@@ -483,14 +483,14 @@ Maak een realistische inschatting van je tegenstander. Een staatsactor *zal* bin
 | Jaar | Operatie | Wat |
 |---|---|---|
 | **2005** | *Titan Rain* 🇨🇳 | Chinese inbraak in honderden Amerikaanse defensiesystemen |
-| **2007** | *Estonia* 🇷🇺 | DDoS legt Estland plat — "de eerste cyberoorlog" |
+| **2007** | *Estonia* 🇷🇺 | DDoS legt Estland plat - "de eerste cyberoorlog" |
 | **2008** | *Georgia* 🇷🇺 | Cyberaanval synchroon met militaire invasie |
 | **2009** | *Operation Aurora* 🇨🇳 | Google, Adobe, Juniper, Yahoo gehackt voor broncode |
 | **2010** | *Stuxnet* 🇺🇸🇮🇱 | Iraanse centrifuges gesaboteerd |
 | **~2015** | *Nitro Zeus* 🇺🇸 | Geheim plan B tegen Iran |
 
 ::: {.callout-tip .fragment}
-*"The Perfect Weapon"* (David Sanger, NYT 2018) &mdash; cyberoorlog als vast instrument van moderne diplomatie.
+*"The Perfect Weapon"* (David Sanger, NYT 2018) - cyberoorlog als vast instrument van moderne diplomatie.
 :::
 
 ---
@@ -545,8 +545,8 @@ graph LR
 
 | Fase | Activiteit |
 |---|---|
-| **1. Verkennen** | Google, sociale media, dumpster diving — *onzichtbaar voor het slachtoffer* |
-| **2. Scannen** | Port scanners, vulnerability scanners — *detecteerbaar* |
+| **1. Verkennen** | Google, sociale media, dumpster diving - *onzichtbaar voor het slachtoffer* |
+| **2. Scannen** | Port scanners, vulnerability scanners - *detecteerbaar* |
 | **3. Toegang** | Kwetsbaarheid uitbuiten, phishing, privilege escalation |
 | **4. Bestendigen** | Backdoor installeren, laterale beweging in netwerk |
 | **5. Sporen wissen** | Logs aanpassen of verwijderen, backdoors opruimen |
@@ -656,7 +656,7 @@ Alice en Bob zijn eender welk start- en eindpunt van informatie: ook CPU → RAM
 ![Actieve aanval, type 3: Man-in-the-middle aanval.](assets/mitm.png){ width=70% }
 
 * Eve nestelt zich **tussen** Alice en Bob
-* Kan communicatie **lezen, aanpassen of blokkeren** — volledig onzichtbaar
+* Kan communicatie **lezen, aanpassen of blokkeren** - volledig onzichtbaar
 * Vereist vaak ook masquerading naar beide kanten tegelijk
 
 ---
@@ -678,17 +678,17 @@ Alice en Bob zijn eender welk start- en eindpunt van informatie: ook CPU → RAM
 | **Layering** | Meerdere beveiligingslagen rondom je data (als een ui) |
 | **Limiting** | Enkel de rechten die iemand echt nodig heeft |
 | **Diversity** | Verscheidenheid aan beveiligingen → één faling ≠ totale neergang |
-| **Simplicity** | KISS: *Keep It Simple, Stupid* — complexiteit introduceert fouten |
+| **Simplicity** | KISS: *Keep It Simple, Stupid* - complexiteit introduceert fouten |
 
 ::: {.callout-warning .fragment}
-**+1 — Obscurity**: verberg hoe je verdediging is opgebouwd. Maar gebruik dit **nooit** als vervanging voor echte beveiliging. Gebruik standaarden en vertrouwde producten — heruitvind het wiel niet!
+**+1 - Obscurity**: verberg hoe je verdediging is opgebouwd. Maar gebruik dit **nooit** als vervanging voor echte beveiliging. Gebruik standaarden en vertrouwde producten - heruitvind het wiel niet!
 :::
 
 ---
 
 ## Aanvalsvectoren: de grotere kaart
 
-*Hoe zet een aanvaller een eerste voet binnen?* &mdash; *initial access vectors*:
+*Hoe zet een aanvaller een eerste voet binnen?* - *initial access vectors*:
 
 ::: {.incremental}
 * **Social engineering** &rarr; phishing, vishing, smishing, &hellip; *(deze sectie)*
@@ -733,7 +733,7 @@ Je hoeft niet eens aanwezig te zijn: **phishing via e-mail** is de meest gebruik
 | **Voorbeeld** | Nep-ING mail naar iedereen | Gerichte mail naar de CEO van bedrijf X |
 
 ::: {.callout-note .fragment}
-De naam *phishing* is afgeleid van *fishing* — hengelen naar slachtoffers.
+De naam *phishing* is afgeleid van *fishing* - hengelen naar slachtoffers.
 :::
 
 ---
@@ -742,7 +742,7 @@ De naam *phishing* is afgeleid van *fishing* — hengelen naar slachtoffers.
 
 | Techniek | Hoe het werkt |
 |---|---|
-| **Vishing** | Voice phishing — via de telefoon (bv. MGM Resorts, 2023) |
+| **Vishing** | Voice phishing - via de telefoon (bv. MGM Resorts, 2023) |
 | **Smishing** | Phishing via SMS / WhatsApp (bv. *"Bpost-pakketje"* SMS) |
 | **Whaling** | Spear phishing op de "grote vissen": CEO, CFO, C-levels |
 | **CEO-fraude (BEC)** | Aanvaller doet zich voor als CEO → dringende overschrijving |
@@ -757,9 +757,9 @@ De naam *phishing* is afgeleid van *fishing* — hengelen naar slachtoffers.
 
 ::: {.incremental}
 * **Pretexting**: een verzonnen, geloofwaardig scenario opbouwen (bv. *"Telenet-technieker aan de lijn"*)
-* **Baiting**: lokaas uitleggen — een USB-stick *"salarissen 2025"* op de parking
+* **Baiting**: lokaas uitleggen - een USB-stick *"salarissen 2025"* op de parking
 * **Tailgating** (*piggybacking*): meelopen met een geautoriseerd persoon door een veilige deur
-* **MFA fatigue** (*prompt bombing*): slachtoffer spammen met MFA-prompts tot die uit frustratie op *"Accepteren"* drukt — door **Lapsus$** ingezet bij Uber, Microsoft, Rockstar
+* **MFA fatigue** (*prompt bombing*): slachtoffer spammen met MFA-prompts tot die uit frustratie op *"Accepteren"* drukt - door **Lapsus$** ingezet bij Uber, Microsoft, Rockstar
 :::
 
 ---
@@ -785,7 +785,7 @@ Cialdini's **6 beïnvloedingsprincipes** (uit *Influence*, 1984):
 ::::
 
 ::: {.callout-tip .fragment}
-**Kevin Mitnick** (*"America's Most Wanted Hacker"*) wandelde simpelweg zelfverzekerd door deuren van grote bedrijven alsof hij er werkte — en niemand stelde vragen.
+**Kevin Mitnick** (*"America's Most Wanted Hacker"*) wandelde simpelweg zelfverzekerd door deuren van grote bedrijven alsof hij er werkte - en niemand stelde vragen.
 
 Z'n boek *The Art of Deception* is een aanrader.
 :::
@@ -817,7 +817,7 @@ Volledige bespreking: zie hoofdstuk 1, *"A.I. is here to stay"*.
 Social engineering los je niet op met technologie alleen.
 
 ::: {.incremental}
-* Trainen, trainen, trainen — **awareness-campagnes** zijn cruciaal
+* Trainen, trainen, trainen - **awareness-campagnes** zijn cruciaal
 * **Phishing-simulaties** geven directe feedback
 * Procedures voor helpdesks (vooral bij wachtwoordresets!)
 * Cultuur waarin werknemers durven *"nee"* of *"laat me even checken"* zeggen tegen de "CEO"
@@ -872,7 +872,7 @@ Technieken:
 ::::
 
 ::: {.callout-tip .fragment}
-[osintframework.com](https://osintframework.com/) toont hoe véél publieke informatie er over iemand beschikbaar is — zonder één illegale stap te zetten.
+[osintframework.com](https://osintframework.com/) toont hoe véél publieke informatie er over iemand beschikbaar is - zonder één illegale stap te zetten.
 :::
 
 ---
@@ -892,20 +892,20 @@ graph TD
 ```
 
 ::: {.callout-note}
-**CVE** (*Common Vulnerabilities and Exposures*): publieke database van alle gekende kwetsbaarheden — essentieel hulpmiddel voor elke cyberboswachter.
+**CVE** (*Common Vulnerabilities and Exposures*): publieke database van alle gekende kwetsbaarheden - essentieel hulpmiddel voor elke cyberboswachter.
 :::
 
 ---
 
 ## Virus
 
-* Nestelt zich in een **uitvoerbaar bestand** (.exe, .bat, .com) — heeft een hostfile nodig
+* Nestelt zich in een **uitvoerbaar bestand** (.exe, .bat, .com) - heeft een hostfile nodig
 * Verspreidt zich via gebruikershandeling: bestand openen, download, diskette
 * Vroeger: bootsector infecteren, bestanden verwijderen
 * Nu: geëvolueerd naar gevaarlijkere varianten (wormen, ransomware)
 
 ::: {.callout-tip .fragment}
-*Don't pirate, kids* — gepirateerde software was (en is) een klassieke virusdrager.
+*Don't pirate, kids*: gepirateerde software was (en is) een klassieke virusdrager.
 :::
 
 ---
@@ -940,7 +940,7 @@ TED-talk: [*Fighting viruses, defending the net*](https://www.youtube.com/watch?
 ## Worm
 
 * Zoals een virus, maar **verspreidt zichzelf** via netwerken, e-mail, Bluetooth, ...
-* **Geen hostfile** nodig — actiever en gevaarlijker dan een virus
+* **Geen hostfile** nodig - actiever en gevaarlijker dan een virus
 * Kan zichzelf **vervormen** (*polymorfisme*) om virusscanners te misleiden
 * Groei is **exponentieel** tot quasi alle kwetsbare systemen besmet zijn
 
@@ -948,7 +948,7 @@ TED-talk: [*Fighting viruses, defending the net*](https://www.youtube.com/watch?
 
 ---
 
-## Hoe reist een worm? — 5 replication paths
+## Hoe reist een worm? - 5 replication paths
 
 | Pad | Hoe het werkt | Voorbeeld |
 |---|---|---|
@@ -959,7 +959,7 @@ TED-talk: [*Fighting viruses, defending the net*](https://www.youtube.com/watch?
 | **Remote login** | Inloggen met default creds (SSH, Telnet) | Mirai |
 
 ::: {.callout-warning .fragment}
-Gevaarlijke wormen combineren **meerdere paden tegelijk** &mdash; blokkeer één route en de andere blijven actief.
+Gevaarlijke wormen combineren **meerdere paden tegelijk** - blokkeer één route en de andere blijven actief.
 :::
 
 ---
@@ -967,13 +967,13 @@ Gevaarlijke wormen combineren **meerdere paden tegelijk** &mdash; blokkeer één
 ## Drive-by download & watering hole
 
 ::: {.incremental}
-* **Drive-by download**: een gecompromitteerde webpagina bezoeken volstaat &mdash; *geen klik nodig*. Misbruik van browser-, plugin- of PDF-kwetsbaarheid
-* **Watering hole**: aanvaller infecteert een site die zijn doelwit dagelijks raadpleegt (bv. vak-nieuwssite van een defensieleverancier) &mdash; *gerichte* variant
+* **Drive-by download**: een gecompromitteerde webpagina bezoeken volstaat - *geen klik nodig*. Misbruik van browser-, plugin- of PDF-kwetsbaarheid
+* **Watering hole**: aanvaller infecteert een site die zijn doelwit dagelijks raadpleegt (bv. vak-nieuwssite van een defensieleverancier) - *gerichte* variant
 * **2013**: bezoekers van een denktank-site &rarr; Department of Labor, NIST en defensiecontractors besmet *zonder één klik op een e-mail*
 :::
 
 ::: {.callout-tip .fragment}
-Nauw verwant: **malvertising** &mdash; kwaadaardige advertentiebanners via reguliere ad-netwerken op anders gerespecteerde websites.
+Nauw verwant: **malvertising** - kwaadaardige advertentiebanners via reguliere ad-netwerken op anders gerespecteerde websites.
 
 **Verdediging**: patch je browser én gebruik een ad-blocker.
 :::
@@ -1017,7 +1017,7 @@ Onthulling uit de **Snowden-lekken (2015)**:
 * Elke app die ermee gebouwd werd, bevatte ongemerkt een **CIA-backdoor**
 
 ::: {.callout-warning .fragment}
-Een trojan hoeft niet in jóuw software te zitten &mdash; ze kan zich veel eerder in de **keten** hebben genesteld.
+Een trojan hoeft niet in jóuw software te zitten - ze kan zich veel eerder in de **keten** hebben genesteld.
 :::
 
 ::: {.callout-tip .fragment}
@@ -1046,13 +1046,13 @@ Sommige adware gebruikt **rootkit-technieken** en is bijzonder moeilijk te verwi
 
 ## Rootkit
 
-* Nestelt zich op **kernel-niveau** — dieper dan een gewoon virus
+* Nestelt zich op **kernel-niveau** - dieper dan een gewoon virus
 * Kan bepalen **wat het besturingssysteem aan de gebruiker toont** → volledig onzichtbaar
 * Systeembestanden worden aangepast → verwijderen veroorzaakt systeemschade
 * Enige zekere oplossing: **harde schijf formatteren**
 
 ::: {.callout-important .fragment}
-Zelfs een OS herinstallatie via aanwezige installatiebestanden biedt geen garantie — de rootkit kan al in die bestanden zitten!
+Zelfs een OS herinstallatie via aanwezige installatiebestanden biedt geen garantie - de rootkit kan al in die bestanden zitten!
 :::
 
 ---
@@ -1064,10 +1064,10 @@ Zelfs een OS herinstallatie via aanwezige installatiebestanden biedt geen garant
 ::: {.column width="55%"}
 * **Gijzelt data** door ze te versleutelen met een sleutel die enkel de crimineel kent
 * Slachtoffer krijgt betaalinstructies (crypto)
-* Zelfs ziekenhuizen en havens werden getroffen (WannaCry, Petya — 2017)
+* Zelfs ziekenhuizen en havens werden getroffen (WannaCry, Petya - 2017)
 
 ::: {.callout-tip .fragment}
-Back-ups helpen — maar enkel als ze **buiten het bereik van de ransomware** staan!
+Back-ups helpen - maar enkel als ze **buiten het bereik van de ransomware** staan!
 :::
 :::
 
@@ -1093,11 +1093,11 @@ pie showData title Uitkomst na ransomware-aanval
 ```
 
 ::: {.callout-warning .fragment}
-**1 op 5** die betaalt, krijgt **niets terug**. Totale kost VS 2021: **$7.9 miljard** &mdash; waarvan $1.4 miljard aan losgeld.
+**1 op 5** die betaalt, krijgt **niets terug**. Totale kost VS 2021: **$7.9 miljard** - waarvan $1.4 miljard aan losgeld.
 :::
 
 ::: {.callout-important .fragment}
-Betalen is russische roulette &mdash; én het financiert de volgende aanval. **Offline** back-ups zijn de enige echte verzekering.
+Betalen is russische roulette - én het financiert de volgende aanval. **Offline** back-ups zijn de enige echte verzekering.
 :::
 
 ::: aside
@@ -1153,7 +1153,7 @@ Broncode publiek gemaakt &rarr; dozijnen varianten nog steeds actief.
 ::: {.callout-important .fragment}
 Cloudflare registreerde in juni 2022:
 
-**26 miljoen HTTPS-requests per seconde** &mdash; een record.
+**26 miljoen HTTPS-requests per seconde**: een record.
 :::
 
 ::: {.callout-tip .fragment}
@@ -1180,7 +1180,7 @@ Malware maken is **laagdrempeliger dan ooit**. De scheve grafiek in actie.
 
 ---
 
-## *"DDoS à la carte"* &mdash; echte afpersingsbrief
+## *"DDoS à la carte"* - echte afpersingsbrief
 
 > *"If you want to continue having your site operational, you must pay us 10 000 rubles monthly.*
 >
@@ -1190,7 +1190,7 @@ Malware maken is **laagdrempeliger dan ooit**. De scheve grafiek in actie.
 >
 > *1. **30% korting** als je een DDoS op je concurrenten bestelt.*
 >
-> *2. Als je concurrenten óns inhuren om jou aan te vallen &mdash; weigeren we."*
+> *2. Als je concurrenten óns inhuren om jou aan te vallen - weigeren we."*
 
 ::: {.callout-warning .fragment}
 RaaS in z'n meest cynische vorm: koop bescherming én aanvalswapen tegelijk.
@@ -1204,7 +1204,7 @@ RaaS in z'n meest cynische vorm: koop bescherming én aanvalswapen tegelijk.
 |---|---|
 | **USB stick** | Gevuld met malware → autorun bij aansluiten |
 | **USB of death** | Stuurt 220V door computer → directe hardwareschade |
-| **BIOS rootkit** | Nestelt zich in UEFI-chip (bv. Moonbounce) — overleeft formattering |
+| **BIOS rootkit** | Nestelt zich in UEFI-chip (bv. Moonbounce) - overleeft formattering |
 | **Warshipping** | Raspberry Pi in postpakket → belt terug naar aanvaller |
 | **Keylogger** | Registreert toetsaanslagen → wachtwoorden stelen |
 | **Juice hacking** | Valse USB-oplaadpunt steelt data of installeert malware |
@@ -1213,7 +1213,7 @@ RaaS in z'n meest cynische vorm: koop bescherming én aanvalswapen tegelijk.
 
 ## De Russische USB's van Kabul (2008)
 
-* **Airgapped** Amerikaans militair netwerk &mdash; niet verbonden met het internet
+* **Airgapped** Amerikaans militair netwerk - niet verbonden met het internet
 * Russische spionnen leveren **goedkope USB-sticks vol malware** aan retailkiosken vlak bij het NATO-HQ in Kaboel
 * Pure wiskundige gok: vroeg of laat steekt een Amerikaanse militair er één in een veilige computer&hellip;
 
@@ -1297,7 +1297,7 @@ Je smartphone = je **primaire** digitale apparaat:
 * Misbruikt de Android **Accessibility Service**
 
 ::: {.callout-warning .fragment}
-De app kan andere apps besturen &mdash; zonder dat je iets ziet.
+De app kan andere apps besturen - zonder dat je iets ziet.
 :::
 :::
 
@@ -1308,7 +1308,7 @@ De app kan andere apps besturen &mdash; zonder dat je iets ziet.
 ::::
 
 ::: {.callout-tip .fragment}
-Android 12+ beperkt dit &mdash; maar wees steeds voorzichtig met apps die *Accessibility*-rechten vragen.
+Android 12+ beperkt dit - maar wees steeds voorzichtig met apps die *Accessibility*-rechten vragen.
 :::
 
 ---
@@ -1319,7 +1319,7 @@ Je telefoon **uitzetten** &hellip; of toch niet?
 
 * Malware neemt de **shutdown-procedure** over
 * Animatie *"Shutting down&hellip;"* speelt gewoon af
-* Toestel **lijkt** uit &mdash; maar blijft volledig actief:
+* Toestel **lijkt** uit - maar blijft volledig actief:
   * Telefoneert
   * Maakt foto's met de camera
   * Verstuurt data
@@ -1341,7 +1341,7 @@ Wil je écht zeker zijn dat je toestel uit is? **Haal de batterij eruit** (als d
 * Viseert **400+ banken &amp; crypto-wallets** wereldwijd (ook BE / NL)
 
 ::: {.callout-warning .fragment}
-**Automated Transfer System (ATS)**: Xenomorph kan automatisch geld overboeken &mdash; zonder dat de gebruiker iets moet invullen.
+**Automated Transfer System (ATS)**: Xenomorph kan automatisch geld overboeken - zonder dat de gebruiker iets moet invullen.
 :::
 
 ::: aside
@@ -1352,7 +1352,7 @@ Bron: BleepingComputer, maart 2023.
 
 ## Side-channel aanvallen
 
-Informatie stelen via een **onverwachte weg** — niet via het protocol zelf.
+Informatie stelen via een **onverwachte weg** - niet via het protocol zelf.
 
 ::: {.callout-tip}
 Vergelijking: je wil inbreken in een bank, maar enkel als de bewaker slaapt. Je volgt hem op Goodreads. Zodra hij zijn leesvoortgang post → tijd om in te breken. Dat is een side-channel aanval.
@@ -1410,7 +1410,7 @@ Meer info: [knobattack.com](https://knobattack.com/)
 Versleutelde ChatGPT/Claude/Gemini-gesprekken zijn **toch niet privé**:
 
 * Een LLM *streamt* antwoorden woord per woord
-* **Grootte** en **timing** van elk pakketje zijn zichtbaar over het netwerk &mdash; ook mét TLS
+* **Grootte** en **timing** van elk pakketje zijn zichtbaar over het netwerk - ook mét TLS
 * Een ML-classifier leidt uit die metadata het **onderwerp** af
 
 ::: {.callout-warning .fragment}
@@ -1418,7 +1418,7 @@ Microsoft's proof-of-concept voorspelt met **92% zekerheid** of een gebruiker ov
 :::
 
 ::: {.callout-important .fragment}
-Een passieve aanvaller (ISP, wifi-mede-gebruiker, router-operator) ziet mee &mdash; zonder één bit encryptie te breken.
+Een passieve aanvaller (ISP, wifi-mede-gebruiker, router-operator) ziet mee - zonder één bit encryptie te breken.
 :::
 
 ::: aside
@@ -1452,7 +1452,7 @@ Bron: [dinaburg.org/bitsquatting.html](http://dinaburg.org/bitsquatting.html)
 ## Conclusie
 
 * **CIA-model** is het fundament van alle cybersecurity
-* De **McCumber kubus** helpt om niets over het hoofd te zien — inclusief mensen
+* De **McCumber kubus** helpt om niets over het hoofd te zien - inclusief mensen
 * Aanvallers zijn divers: van scriptkiddies tot staatshackers
 * Aanvallen volgen **5 fasen**: verkennen → scannen → toegang → bestendigen → wissen
 * **Social engineering** is de meest effectieve aanvalsvector

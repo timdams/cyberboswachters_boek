@@ -17,16 +17,16 @@ format:
 
 *Algemene Verordening Gegevensbescherming*
 
-> *"The toughest privacy and security law in the world."* — Europese Unie
+> *"The toughest privacy and security law in the world."* - Europese Unie
 
 ::: {.fragment}
 * Beschermt de privacy van **EU-burgers**, eender waar ter wereld
-* **Ieder bedrijf** dat data van EU-burgers bewaart, valt eronder — ook buiten Europa
+* **Ieder bedrijf** dat data van EU-burgers bewaart, valt eronder - ook buiten Europa
 * 99 artikels over rechten van burgers en **plichten van bedrijven**
 :::
 
 ::: {.callout-tip .fragment}
-GDPR gaat over de verplichtingen van **bedrijven** — niet van personen.
+GDPR gaat over de verplichtingen van **bedrijven** - niet van personen.
 :::
 
 ---
@@ -60,12 +60,12 @@ Sindsdien zijn ze een stuk behulpzamer.
 
 ## Recht op overdraagbaarheid
 
-* Van provider veranderen was vroeger een helse opdracht — elk bedrijf had eigen dataformaten
+* Van provider veranderen was vroeger een helse opdracht - elk bedrijf had eigen dataformaten
 * GDPR verplicht nu een **vast, gestandaardiseerd formaat** voor overdracht van persoonsgegevens
 * Overdracht moet **transparant en zo geautomatiseerd mogelijk** verlopen
 
 ::: {.callout-note .fragment}
-De voorganger van GDPR was de **DPD** (*Data Protection Directive*) — een aanbeveling, geen wet.
+De voorganger van GDPR was de **DPD** (*Data Protection Directive*) - een aanbeveling, geen wet.
 
 GDPR zorgt ervoor dat burgers geen speelbal meer zijn van bedrijven die data als nieuw goud verzamelen.
 :::
@@ -101,12 +101,12 @@ GDPR zorgt ervoor dat burgers geen speelbal meer zijn van bedrijven die data als
 ::: {.fragment}
 Bij een datalek moet het bedrijf **binnen 72 uur** melden aan:
 
-1. De **toezichthoudende autoriteit** — in België: de **CBPL** (*Commissie voor de Bescherming van de Persoonlijke Levenssfeer*)
+1. De **toezichthoudende autoriteit** - in België: de **CBPL** (*Commissie voor de Bescherming van de Persoonlijke Levenssfeer*)
 2. **Elk individu** wiens data betrokken is bij het lek
 :::
 
 ::: {.callout-tip .fragment}
-De 72 uur gaan in op het moment van **ontdekking** — niet van het moment dat het lek plaatsvond. Een lek dat maanden geleden gebeurde telt dus pas vanaf het moment dat het bedrijf het ontdekt.
+De 72 uur gaan in op het moment van **ontdekking** - niet van het moment dat het lek plaatsvond. Een lek dat maanden geleden gebeurde telt dus pas vanaf het moment dat het bedrijf het ontdekt.
 :::
 
 ---
@@ -119,7 +119,7 @@ Het bedrijf hoeft het individu **niet** te verwittigen als:
 **1. Data onbruikbaar is:**
 De gestolen data was geëncrypteerd → aanvallers kunnen er niets mee doen.
 
-*(Kanttekening: encryptie is nooit 100% waterdicht — decryptie in de toekomst blijft mogelijk.)*
+*(Kanttekening: encryptie is nooit 100% waterdicht - decryptie in de toekomst blijft mogelijk.)*
 :::
 
 ::: {.fragment}
@@ -219,12 +219,12 @@ De kracht van GDPR zit in de **handhaving**: boetes zijn hoog genoeg om bedrijve
 
 | Wet | Doel |
 |---|---|
-| **DSA** — Digital Services Act | Aanpakken van illegale content en grote platforms |
-| **DMA** — Digital Markets Act | Inperken van de macht van grote techbedrijven (Google, Meta, Amazon) |
+| **DSA** - Digital Services Act | Aanpakken van illegale content en grote platforms |
+| **DMA** - Digital Markets Act | Inperken van de macht van grote techbedrijven (Google, Meta, Amazon) |
 | **AI Act** (augustus 2024) | Reguleren van artificiële intelligentie in Europa |
 
 ::: {.callout-tip .fragment}
 Europa zet de toon wereldwijd op het gebied van digitale regulering.
 
-Of het werkt, hangt af van de **uitvoering en handhaving** — en de concurrentiepositie ten opzichte van de rest van de wereld.
+Of het werkt, hangt af van de **uitvoering en handhaving** - en de concurrentiepositie ten opzichte van de rest van de wereld.
 :::

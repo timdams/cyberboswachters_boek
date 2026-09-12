@@ -4,7 +4,7 @@
 Na dit hoofdstuk kan je:
 
 1. De **drie gouden regels van wachtwoordbeheer** toepassen op een gegeven authenticatie-ontwerp.
-2. De werking van **hashing, salting en een rainbow-table-aanval** uitleggen — en tonen waarom salting die aanval onbruikbaar maakt.
+2. De werking van **hashing, salting en een rainbow-table-aanval** uitleggen - en tonen waarom salting die aanval onbruikbaar maakt.
 3. **CRAM, SCRAM en passkeys** onderling situeren en aangeven welk probleem elk protocol oplost.
 4. De vier **MFA-factoren** (weten, hebben, zijn, waar/wanneer) combineren voor een gepaste authenticatiesterkte in een gegeven context.
 5. Uitleggen hoe **TOTP** werkt en benoemen waarom **passkeys** veiliger zijn dan TOTP tegen real-time phishing.
@@ -30,7 +30,7 @@ Trouwens, herinner je je de McCumber kubus waarin we benadrukten dat technologie
 
 ## Hoe wachtwoorden opslaan
 
-De aanvallen die we zonet besproken hebben (spraying, phishing, keyloggers) zijn hoofdzakelijk **online aanvallen**: de aanvaller probeert actief in te loggen of onderschept wachtwoorden bij de bron. Daarnaast bestaan er **offline aanvallen**, waarbij de aanvaller — via een SQL injection, een insider of een datalek — (leestoegang tot) de gebruikersdatabank heeft bemachtigd. Vanaf nu plaatsen we ons in de schoenen van de *beheerder* en gaan we uit van het ergste: **ga er van uit dat jouw databank vroeg of laat zal lekken**. Hoe moet je dan als cyberboswachter de login gegevens van je gebruikers bewaren zodat zo'n lek minimale schade oplevert? We gaan een soort *bottom-up* aanpak hanteren, waarbij we beginnen met de meest naïeve oplossing en telkens verbeteringen zullen aanbrengen.
+De aanvallen die we zonet besproken hebben (spraying, phishing, keyloggers) zijn hoofdzakelijk **online aanvallen**: de aanvaller probeert actief in te loggen of onderschept wachtwoorden bij de bron. Daarnaast bestaan er **offline aanvallen**, waarbij de aanvaller (via een SQL injection, een insider of een datalek) (leestoegang tot) de gebruikersdatabank heeft bemachtigd. Vanaf nu plaatsen we ons in de schoenen van de *beheerder* en gaan we uit van het ergste: **ga er van uit dat jouw databank vroeg of laat zal lekken**. Hoe moet je dan als cyberboswachter de login gegevens van je gebruikers bewaren zodat zo'n lek minimale schade oplevert? We gaan een soort *bottom-up* aanpak hanteren, waarbij we beginnen met de meest naïeve oplossing en telkens verbeteringen zullen aanbrengen.
 
 ### Paswoorden als plaintext
 
@@ -77,8 +77,8 @@ Als de database door aanvallers gestolen wordt dan zitten we ook een tikkeltje v
 ::: {.callout-tip}
 **Even concreet.** Stel dat gebruikers enkel wachtwoorden van 8 kleine letters mogen kiezen. Dat geeft 26⁸ ≈ 2·10¹¹ mogelijke combinaties.
 
-* Bij 1 miljoen hashes per seconde kost het gemiddeld **2,4 dagen** om de volledige ruimte te doorzoeken — nog te overzien, maar met een moderne GPU gaat het veel sneller (commerciële tools haalden in 2011 al **2,8 miljard** wachtwoordpogingen per seconde).
-* De alternatieve piste — álle hashes vooraf precomputen — vraagt **~1,46 TB** opslag, en dat is nog enkel voor deze beperkte set van 8 kleine letters. Ter vergelijking: alle Google-servers tezamen bewaren in de orde van 10¹⁵ bytes (1 petabyte).
+* Bij 1 miljoen hashes per seconde kost het gemiddeld **2,4 dagen** om de volledige ruimte te doorzoeken - nog te overzien, maar met een moderne GPU gaat het veel sneller (commerciële tools haalden in 2011 al **2,8 miljard** wachtwoordpogingen per seconde).
+* De alternatieve piste (álle hashes vooraf precomputen) vraagt **~1,46 TB** opslag, en dat is nog enkel voor deze beperkte set van 8 kleine letters. Ter vergelijking: alle Google-servers tezamen bewaren in de orde van 10¹⁵ bytes (1 petabyte).
 
 Conclusie: puur bruteforcen *of* puur precomputen loont nauwelijks. Rainbow tables zoeken bewust een **compromis** tussen beide uitersten.
 :::
@@ -170,9 +170,9 @@ Het mechanisme van een CRAM werkt als volgt:
 
 ![CRAM flow.](assets/cramflow.png){}
 
-**SCRAM (Salted Challenge-Response Authentication Mechanism)** bouwt voort op CRAM met twee verbeteringen. We bespreken een vereenvoudigde versie die de kern toont; de echte SCRAM (RFC 5802) voorziet bovendien *mutual authentication* en gaat — zoals je hieronder zal zien — nog een belangrijke stap verder.
+**SCRAM (Salted Challenge-Response Authentication Mechanism)** bouwt voort op CRAM met twee verbeteringen. We bespreken een vereenvoudigde versie die de kern toont; de echte SCRAM (RFC 5802) voorziet bovendien *mutual authentication* en gaat (zoals je hieronder zal zien) nog een belangrijke stap verder.
 
-1. De server bewaart een *gesalte* hash in plaats van een gewone hash, en stuurt de salt mee bij elke loginpoging. Daardoor moet de client telkens opnieuw uit wachtwoord + salt zijn hash afleiden — er is geen vaste hash die op het clienttoestel hoeft te staan.
+1. De server bewaart een *gesalte* hash in plaats van een gewone hash, en stuurt de salt mee bij elke loginpoging. Daardoor moet de client telkens opnieuw uit wachtwoord + salt zijn hash afleiden - er is geen vaste hash die op het clienttoestel hoeft te staan.
 2. De gesalte hash zelf wordt nooit over het netwerk verzonden; enkel `H(pw_hash + challenge)` gaat over de draad, en omdat de challenge per sessie verandert kan een afgeluisterde response niet hergebruikt worden.
 
 ![SCRAM.](assets/scramflow.png){}
@@ -182,7 +182,7 @@ Let op: ook deze vereenvoudigde SCRAM beschermt **niet** tegen pass-the-hash wan
 :::
 
 ::: {.callout-tip title="Hoe de échte SCRAM pass-the-hash wél tegenhoudt"}
-RFC 5802 gebruikt een slimme asymmetrische constructie. Uit het gesalte wachtwoord leidt de client twee sleutels af: een `ClientKey` (waarmee de client zich bewijst) en een `StoredKey = H(ClientKey)` (wat de server bewaart). De server bewaart dus **niet** de sleutel waarmee je inlogt, maar een eenrichtingshash daarvan. Een aanvaller die `StoredKey` uit een gelekte databank steelt, kan er `ClientKey` niet uit afleiden — en zonder `ClientKey` is inloggen onmogelijk. Dát is wat pass-the-hash bij de échte SCRAM onmogelijk maakt.
+RFC 5802 gebruikt een slimme asymmetrische constructie. Uit het gesalte wachtwoord leidt de client twee sleutels af: een `ClientKey` (waarmee de client zich bewijst) en een `StoredKey = H(ClientKey)` (wat de server bewaart). De server bewaart dus **niet** de sleutel waarmee je inlogt, maar een eenrichtingshash daarvan. Een aanvaller die `StoredKey` uit een gelekte databank steelt, kan er `ClientKey` niet uit afleiden - en zonder `ClientKey` is inloggen onmogelijk. Dát is wat pass-the-hash bij de échte SCRAM onmogelijk maakt.
 :::
 
 
@@ -244,8 +244,8 @@ De zogenaamde *feature points* van een biometrische eigenschap worden in de data
 Een biometrisch systeem kent drie duidelijk te onderscheiden fasen:
 
 1. **Enrollment (registratie)**: de gebruiker biedt zijn biometrisch kenmerk voor het eerst aan, het systeem extraheert de feature points en bewaart deze in de databank. Dit is het moment waarop de koppeling *user ↔ biometrie* wordt gemaakt.
-2. **Verification (verificatie)**: *"Ben jij wel degelijk user X?"* — de aangeboden feature points worden vergeleken met één specifieke template in de databank (**1-op-1**). Dit is het klassieke inlog-scenario.
-3. **Identification (identificatie)**: *"Wie ben jij?"* — de aangeboden feature points worden vergeleken met álle templates in de databank (**1-op-N**). Dit is een veel zwaardere operatie en wordt typisch ingezet bij bv. grenscontrole of forensisch onderzoek.
+2. **Verification (verificatie)**: *"Ben jij wel degelijk user X?"* - de aangeboden feature points worden vergeleken met één specifieke template in de databank (**1-op-1**). Dit is het klassieke inlog-scenario.
+3. **Identification (identificatie)**: *"Wie ben jij?"* - de aangeboden feature points worden vergeleken met álle templates in de databank (**1-op-N**). Dit is een veel zwaardere operatie en wordt typisch ingezet bij bv. grenscontrole of forensisch onderzoek.
 
 ![De drie fasen van een biometrisch systeem en hun interactie met de templatedatabank.](assets/bioproc.png)
 
@@ -271,13 +271,13 @@ Bij cryptografie wordt het ten stelligste afgeraden om zomaar op de *wilde boef*
 
 ### Wat is Single Sign-On (SSO)?
 
-**Single Sign-On (SSO)** is een authenticatiemethode waarbij een gebruiker zich **éénmaal aanmeldt** en vervolgens automatisch toegang krijgt tot **meerdere applicaties of diensten**, zonder zich bij elk systeem apart te moeten aanmelden. Je kent dit waarschijnlijk al: wanneer je inlogt op je Google-account, heb je meteen ook toegang tot Gmail, YouTube, Google Drive en tientallen andere Google-diensten — zonder telkens opnieuw je wachtwoord in te voeren. Dat is SSO in actie.
+**Single Sign-On (SSO)** is een authenticatiemethode waarbij een gebruiker zich **éénmaal aanmeldt** en vervolgens automatisch toegang krijgt tot **meerdere applicaties of diensten**, zonder zich bij elk systeem apart te moeten aanmelden. Je kent dit waarschijnlijk al: wanneer je inlogt op je Google-account, heb je meteen ook toegang tot Gmail, YouTube, Google Drive en tientallen andere Google-diensten - zonder telkens opnieuw je wachtwoord in te voeren. Dat is SSO in actie.
 
 Het basisprincipe is eenvoudig: in plaats van dat elke applicatie zelf verantwoordelijk is voor authenticatie, wordt dit uitbesteed aan een centrale **identity provider** (IdP). Die identity provider bevestigt de identiteit van de gebruiker, waarna de applicatie (de **service provider**) de gebruiker vertrouwt op basis van die bevestiging.
 
 ### Federation
 
-Dankzij het concept **federation** kan SSO ook werken **over de grenzen van organisaties heen**. Gebruikers kunnen inloggen op jouw site of app (de *service provider*) gebruik makend van hun bestaande Google, Facebook of andere accounts. Een *third-party* — die jij en je gebruiker vertrouwen — zorgt dan voor de eigenlijke authenticatie als *identity provider*. Zo hoef je als ontwikkelaar niet wakker te liggen van hoe je gebruikerswachtwoorden gaat opslaan.
+Dankzij het concept **federation** kan SSO ook werken **over de grenzen van organisaties heen**. Gebruikers kunnen inloggen op jouw site of app (de *service provider*) gebruik makend van hun bestaande Google, Facebook of andere accounts. Een *third-party* (die jij en je gebruiker vertrouwen) zorgt dan voor de eigenlijke authenticatie als *identity provider*. Zo hoef je als ontwikkelaar niet wakker te liggen van hoe je gebruikerswachtwoorden gaat opslaan.
 
 ![Een vereenvoudigd single sign-on proces.](assets/sso.png){}
 

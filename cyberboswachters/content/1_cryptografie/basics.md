@@ -7,7 +7,7 @@ Na dit hoofdstuk kan je:
 2. Het verschil tussen **symmetrische en asymmetrische encryptie** duiden (snelheid ↔ sleuteldistributie) en aangeven wanneer je welke inzet.
 3. Voor een gegeven **blockcipher-mode** (ECB, CBC, CTR) uitleggen waarom ECB onveilig is en de rol van **IV/nonce** beschrijven.
 4. **Hashing, digitale handtekeningen en certificaten** correct situeren binnen integrity, authenticiteit en non-repudiation.
-5. De werking van **HTTPS/TLS** beschrijven als samenspel van asymmetrische + symmetrische crypto, hashing en PKI — en de impact van een MITM-aanval (mitmproxy) inschatten.
+5. De werking van **HTTPS/TLS** beschrijven als samenspel van asymmetrische + symmetrische crypto, hashing en PKI - en de impact van een MITM-aanval (mitmproxy) inschatten.
 :::
 
 In dit hoofdstuk duiken we de boeiende wereld van de cryptografie in: het versleutelen van informatie zodat enkel zender en ontvanger het bericht kunnen lezen. 
@@ -77,7 +77,7 @@ De Caesar encryptie (naar Julius Caesar) bestaat uit een eenvoudig substitutie a
 
 Het Caesarcipher wordt ook wel kortweg *Rot* genoemd, naar het woord *rotatie*. Een cijfer erachter geeft dan aan welk de te gebruiken sleutel is. Rot4 wil dus zeggen dat alle elementen vier plaatsen opgeschoven moeten worden. Merk op dat Rot13 (ook wel *Caesaralfabet* genoemd) een speciale sleutel is. Als je namelijk twee maal na elkaar Rot13 toepast op een tekst (eerst op de plaintext, dan op de resulterende ciphertext) dan verkrijgt men terug de originele tekst.
 
-Een mooie fysieke manier om Caesar te visualiseren is met een **cipher wheel** (of *Caesar-wiel*): twee concentrische schijven die allebei het alfabet langs de rand hebben staan. Door de binnenste schijf een aantal plaatsen te draaien (afhankelijk van je sleutel), kan je voor iedere letter op de buitenste schijf meteen aflezen welke letter eronder staat. Geen pen en papier nodig — gewoon draaien en aflezen. Historisch werden dergelijke wielen letterlijk gebruikt door legers en spionnen om snel in en uit geheimschrift te gaan.
+Een mooie fysieke manier om Caesar te visualiseren is met een **cipher wheel** (of *Caesar-wiel*): twee concentrische schijven die allebei het alfabet langs de rand hebben staan. Door de binnenste schijf een aantal plaatsen te draaien (afhankelijk van je sleutel), kan je voor iedere letter op de buitenste schijf meteen aflezen welke letter eronder staat. Geen pen en papier nodig - gewoon draaien en aflezen. Historisch werden dergelijke wielen letterlijk gebruikt door legers en spionnen om snel in en uit geheimschrift te gaan.
 
 ![Een Caesar-wiel: draai de binnenste schijf en lees af.](assets/caesarwheel.png){ width=50% }
 
@@ -139,7 +139,7 @@ In de praktijk gebruikte men een *tabula recta* - een tabel met alle 26 Caesar-a
 
 **En dát is de kracht van Vigenère**: eenvoudige frequentieanalyse werkt niet meer. Letters die in de plaintext veel voorkomen, zijn niet langer letters die in de ciphertext veel voorkomen.
 
-Vigenère heette eeuwenlang *le chiffre indéchiffrable* — "het onontcijferbare cipher". Pas in de 19e eeuw werd het systematisch gekraakt door Friedrich Kasiski: eens je de sleutellengte kan achterhalen (via het tellen van herhalingen in de ciphertext), herleidt Vigenère zich tot meerdere parallelle Caesar-ciphers die je elk afzonderlijk met frequentieanalyse kan aanvallen.
+Vigenère heette eeuwenlang *le chiffre indéchiffrable* - "het onontcijferbare cipher". Pas in de 19e eeuw werd het systematisch gekraakt door Friedrich Kasiski: eens je de sleutellengte kan achterhalen (via het tellen van herhalingen in de ciphertext), herleidt Vigenère zich tot meerdere parallelle Caesar-ciphers die je elk afzonderlijk met frequentieanalyse kan aanvallen.
 
 Het principe van Vigenère - **variatie inbrengen door een sleutel die zelf varieert** - zie je nog steeds terug in moderne algoritmes. De *round keys* in DES en AES die we verderop behandelen, zijn directe nazaten van dit idee.
 
@@ -262,7 +262,7 @@ Er wordt in deze sectie soms over aanvaller gesproken, alsof de cryptanalist aut
 
 ### De menselijke factor: de échte beste "cryptanalyse"
 
-Tijd voor een ongemakkelijke waarheid: de meest effectieve aanval op een cryptografisch systeem is in de praktijk *géén* cryptanalyse. Het is véél goedkoper, sneller en betrouwbaarder om de sleutel gewoon **te vragen aan de gebruiker**. Een welgemikte phishingmail, een vervalste helpdeskoproep, een post-it onder het toetsenbord, of een collega die "even snel" z'n scherm ontgrendelt — dát zijn de aanvallen waar cyberboswachters écht wakker van liggen.
+Tijd voor een ongemakkelijke waarheid: de meest effectieve aanval op een cryptografisch systeem is in de praktijk *géén* cryptanalyse. Het is véél goedkoper, sneller en betrouwbaarder om de sleutel gewoon **te vragen aan de gebruiker**. Een welgemikte phishingmail, een vervalste helpdeskoproep, een post-it onder het toetsenbord, of een collega die "even snel" z'n scherm ontgrendelt - dát zijn de aanvallen waar cyberboswachters écht wakker van liggen.
 
 *There is no patch for human stupidity*, is een vaak gehoord cliché in de security-wereld. Hoe sterk je algoritme ook is, hoe lang je sleutel ook, als de gebruiker z'n wachtwoord opschrijft op een briefje of doorgeeft aan wie er "vriendelijk om vraagt", dan valt heel je cryptografische kaartenhuis in elkaar.
 
@@ -289,7 +289,7 @@ Denk daarbij bijvoorbeeld aan *cryptocurrencies* zoals Ethereum en Bitcoin:
 
 ## Moderne cryptosystemen
 
-De klassieke ciphers die we tot nu toe zagen — Caesar, Vigenère en scytale — zijn fantastisch om de basisprincipes van substitutie en transpositie uit te leggen, maar in de praktijk vallen ze ondertussen om als een kaartenhuis. Caesar kraak je in maximaal 25 pogingen, Vigenère valt na Kasiski's truc terug op een handvol parallelle Caesars, en de sleutelruimte van een scytale beperkt zich tot het aantal vlakken dat redelijkerwijs op een stok past. Tegen de rekenkracht van vandaag (denk terug aan de bruteforce-tabel hierboven) houdt geen enkel klassiek algoritme nog stand.
+De klassieke ciphers die we tot nu toe zagen (Caesar, Vigenère en scytale) zijn fantastisch om de basisprincipes van substitutie en transpositie uit te leggen, maar in de praktijk vallen ze ondertussen om als een kaartenhuis. Caesar kraak je in maximaal 25 pogingen, Vigenère valt na Kasiski's truc terug op een handvol parallelle Caesars, en de sleutelruimte van een scytale beperkt zich tot het aantal vlakken dat redelijkerwijs op een stok past. Tegen de rekenkracht van vandaag (denk terug aan de bruteforce-tabel hierboven) houdt geen enkel klassiek algoritme nog stand.
 
 **Moderne cryptografische systemen** zijn dan ook compleet anders opgebouwd:
 
@@ -301,7 +301,7 @@ De klassieke ciphers die we tot nu toe zagen — Caesar, Vigenère en scytale �
 Wanneer we deze moderne systemen klasseren volgens het **aantal sleutels** dat ze gebruiken, vallen ze in twee grote families:
 
 * **Symmetrische** systemen: zender en ontvanger gebruiken **dezelfde** sleutel.
-* **Asymmetrische** systemen: er zijn **twee** sleutels — één publiek (om te encrypteren) en één privaat (om te decrypteren).
+* **Asymmetrische** systemen: er zijn **twee** sleutels - één publiek (om te encrypteren) en één privaat (om te decrypteren).
 
 We starten met de oudste van de twee, de symmetrische cryptosystemen. Verderop in dit hoofdstuk komen de asymmetrische aan bod, en zal blijken dat beide families elkaar in de praktijk perfect aanvullen.
 
@@ -413,7 +413,7 @@ for (int i = 0; i < 10; i++) Console.Write(e.Next(1, 10));
 // Output: 9978711226
 ```
 
-Zender en ontvanger die dezelfde sleutel (seed) gebruiken, krijgen identiek dezelfde reeks — perfect als keystream voor een streamcipher. Zonder de juiste seed krijg je een totaal andere reeks en is de keystream nutteloos voor cryptanalyse.
+Zender en ontvanger die dezelfde sleutel (seed) gebruiken, krijgen identiek dezelfde reeks - perfect als keystream voor een streamcipher. Zonder de juiste seed krijg je een totaal andere reeks en is de keystream nutteloos voor cryptanalyse.
 
 ::: {.callout-warning}
 De ingebouwde `Random`-klasse in C# is **niet cryptografisch veilig**. Hij is prima voor games, simulaties of dobbelstenen, maar niet geschikt om data mee te beschermen. Voor écht cryptografisch gebruik neem je de klasse `RandomNumberGenerator` uit `System.Security.Cryptography`. Het basisprincipe (*seed + deterministisch algoritme = reproduceerbare reeks*) blijft wel identiek.
@@ -608,7 +608,7 @@ In de Compression P-Box wordt een aantal bits van de sleutel "tegengehouden". We
 
 Al van bij de start gingen er stemmen op dat de originele sleutellengte voor DES (56 bits, 48 in effectiviteit vanwege de pariteitsbits) redelijk snel zou gebruteforced worden. Om die reden werd 3DES in het leven geroepen in 1995. De oplossing, 3DES, was een mooi staaltje compromisvorming: het bood een verhoogde beveiliging doordat het een lange sleutel had (tot 168 bits lang) maar bleef tegelijkertijd compatibel met de bestaande DES hardware en software.
 
-De werking van 3DES (*triple DES*) is verrassend eenvoudig: ieder blok data wordt drie keer doorheen een DES-cipher gestuurd, telkens met een andere sleutel. Om compatibel te blijven met bestaande DES hardware wordt de data hierbij eerst *Encrypted*, dan *Decrypted*, en tenslotte opnieuw *Encrypted*. Dit patroon wordt daarom het **EDE-schema** (Encrypt-Decrypt-Encrypt) genoemd. Daar we in iedere fase een andere sleutel gebruiken, heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we effectief drie maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvangerzijde gebeurt het omgekeerde — decryptie, encryptie, decryptie (DED) — en ook dit met dezelfde DES hardware!
+De werking van 3DES (*triple DES*) is verrassend eenvoudig: ieder blok data wordt drie keer doorheen een DES-cipher gestuurd, telkens met een andere sleutel. Om compatibel te blijven met bestaande DES hardware wordt de data hierbij eerst *Encrypted*, dan *Decrypted*, en tenslotte opnieuw *Encrypted*. Dit patroon wordt daarom het **EDE-schema** (Encrypt-Decrypt-Encrypt) genoemd. Daar we in iedere fase een andere sleutel gebruiken, heeft dit (dankzij de eigenschappen van symmetrische ciphers) als effect dat we effectief drie maal na elkaar encrypteren met steeds een andere sleutel. Aan de ontvangerzijde gebeurt het omgekeerde - decryptie, encryptie, decryptie (DED) - en ook dit met dezelfde DES hardware!
 
 ![3DES.](assets/3des.png){ width=60% }
 
@@ -624,7 +624,7 @@ Het bankwezen gebruikt 3DES nog steeds (of varianten die erop gebaseerd) zijn om
 
 De zorgen om de korte 56-bit sleutel van DES werden in 1998 op spectaculaire wijze bevestigd. De *Electronic Frontier Foundation* (EFF) bouwde voor ongeveer $250.000 een gespecialiseerde machine, bijgenaamd **Deep Crack**, die bestond uit **1.856 custom chips** die speciaal ontworpen waren om DES-sleutels te testen.
 
-Het resultaat? Deep Crack kon iedere willekeurige DES-sleutel in een **kwestie van dagen** bruteforcen. Een paar jaar later deed het project, in samenwerking met distributed.net, een DES-sleutel zelfs in minder dan 24 uur. Daarmee werd ondubbelzinnig aangetoond dat DES niet langer veilig was voor gevoelige data — exact wat critici al jaren beweerden.
+Het resultaat? Deep Crack kon iedere willekeurige DES-sleutel in een **kwestie van dagen** bruteforcen. Een paar jaar later deed het project, in samenwerking met distributed.net, een DES-sleutel zelfs in minder dan 24 uur. Daarmee werd ondubbelzinnig aangetoond dat DES niet langer veilig was voor gevoelige data - exact wat critici al jaren beweerden.
 
 ![Een Deep Crack circuit board met 64 custom DES-kraakchips. De volledige machine bevatte er 1.856. (Bron: Electronic Frontier Foundation / Matt Crypto, CC-BY 3.0).](assets/deepcrack.jpg){ width=60% }
 
@@ -721,10 +721,10 @@ AES is een symmetrisch blockcipher dat data in blokken van 128 bits zal opsplits
 * **KeyExpansion**: uit de hoofdsleutel worden alle round keys afgeleid (één per ronde, net zoals bij DES).
 * De data wordt vervolgens doorheen **10, 12 of 14 rondes** gestuurd, afhankelijk van de sleutellengte (respectievelijk 128, 192 of 256 bits). Het te encrypteren blok wordt daarbij voorgesteld als een 4×4-matrix van bytes, de zogenaamde *state*.
 * Iedere ronde bestaat uit vier vaste stappen op die state:
-    * **SubBytes** — iedere byte wordt via een vaste S-box vervangen door een andere byte (*substitutie*).
-    * **ShiftRows** — de rijen van de state worden cyclisch verschoven (*transpositie*).
-    * **MixColumns** — binnen iedere kolom worden de bytes met elkaar gemengd via een lineaire transformatie (zorgt voor *diffusie*). Deze stap valt weg in de allerlaatste ronde.
-    * **AddRoundKey** — de state wordt ge-XOR'd met de round key van die ronde. Dít is waar de sleutel opnieuw in de encryptie binnenkomt.
+    * **SubBytes**: iedere byte wordt via een vaste S-box vervangen door een andere byte (*substitutie*).
+    * **ShiftRows**: de rijen van de state worden cyclisch verschoven (*transpositie*).
+    * **MixColumns**: binnen iedere kolom worden de bytes met elkaar gemengd via een lineaire transformatie (zorgt voor *diffusie*). Deze stap valt weg in de allerlaatste ronde.
+    * **AddRoundKey**: de state wordt ge-XOR'd met de round key van die ronde. Dít is waar de sleutel opnieuw in de encryptie binnenkomt.
 
 Merk op dat ook hier, in de AddRoundKey-stap, de XOR-functie nog steeds dienst zal doen als de feitelijke encryptie van de data. Zonder deze XOR-functie zou al het voorgaande enkel maar resulteren in data die van plek verandert, volgens een patroon waar de geheime sleutel niet bij van te pas komt.
 
