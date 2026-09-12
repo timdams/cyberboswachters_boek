@@ -1028,11 +1028,11 @@ Wordt dit de norm, dan valt de uitrol van álle toekomstige AI-modellen stil.
 ::: {.callout-important}
 **Attack sophistication ↑, vereiste kennis ↓**
 
-AI dichtte de kloof in mankracht en gereedschap: twee studenten doen wat vroeger een expertteam vroeg.
+Anthropic: AI dichtte de kloof in *mankracht en gereedschap*. De twee studenten uit Hunan: 12+ mogelijke zerodays op één maand.
 :::
 
 ::: {.fragment}
-"Wij zijn te klein om interessant te zijn" is **geen verdediging** meer — aanvallen schalen quasi gratis.
+Zodra de keten autonoom draait, kost een extra doelwit bijna niets: **ook kleine organisaties zijn rendabele doelwitten**.
 :::
 :::
 
@@ -1063,7 +1063,7 @@ Het verhaal is niet louter doemdenken:
 * **Deepfake-detectie**: Adobe Content Credentials = *"nutrition label"* voor AI-content
 
 ::: {.callout-tip .fragment}
-**Granny AI**: een AI-persona die zich voordoet als een verwarde bejaarde om scammers zo lang mogelijk aan de lijn te houden. Elke minuut aan een AI-oma = geen echte slachtoffers.
+**Granny AI**: een AI-persona die zich voordoet als een verwarde bejaarde om scammers zo lang mogelijk aan de lijn te houden.
 :::
 
 ---

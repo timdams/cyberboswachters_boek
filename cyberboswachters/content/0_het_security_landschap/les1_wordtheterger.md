@@ -409,7 +409,7 @@ De kwetsbaarheid (later *Log4Shell* genoemd) zat in een functie die strings met 
 
 ![Log4J kwetsbaarheid.](assets/log4j.png)
 
-Het voorval toonde nog maar eens aan hoe afhankelijk we zijn geworden van onze code én netwerkinfrastructuur die vaak al jaren oud is en zo goed als zeker nog ongekende bugs bevatten die misbruikt kunnen worden. Het is exact hetzelfde patroon als bij **Heartbleed** en **Shellshock** zeven jaar eerder: een bibliotheek die al jaren onzichtbaar overal meedraait, tot iemand het gaatje vindt.
+Het voorval toonde nog maar eens aan hoe afhankelijk we zijn geworden van onze code én netwerkinfrastructuur die vaak al jaren oud is en zo goed als zeker nog ongekende bugs bevatten die misbruikt kunnen worden. Ook bij **Heartbleed** en **Shellshock**, zeven jaar eerder, zat de fout in een bibliotheek die op ontelbare servers meedraaide.
 
 ::: {.callout-note}
 
@@ -492,7 +492,7 @@ In april 2026 werd de wereld opgeschrikt door het bestaan van **Mythos**, een AI
 Het Mythos-verhaal illustreert een nieuw tijdperk in cybersecurity: de strijd tussen aanvaller en verdediger wordt niet langer alleen door mensen gevoerd, maar steeds meer door AI-systemen die exponentieel sneller opereren dan welke menselijke hacker ook. De vraag is niet meer *of* AI ingezet zal worden voor cyberaanvallen, maar hoe snel dit gemeengoed wordt. [Bron: VRT NWS, 12 april 2026](https://www.vrt.be/vrtnws/nl/2026/04/12/mythos-blijft-achter-slot-en-grendel-wegens-te-gevaarlijk-voor-c/)
 :::
 
-En het bleef niet bij Mythos alleen. Kort daarna bleek dat ook **GPT-5.5** van OpenAI mee aan de top zat: zowel Mythos als GPT-5.5 slaagden erin om de zogenaamde *"The Last Ones"*-challenge volledig op te lossen, een cyberopdracht waar een menselijke expert ongeveer 20 uur over doet en die tot dan toe door geen enkel AI-model was gekraakt. Het signaal is duidelijk: de capaciteit om autonoom complexe cyberaanvallen uit te voeren zit niet langer bij één enkel labo, maar duikt zo goed als gelijktijdig op bij meerdere grote AI-spelers.
+En het bleef niet bij Mythos alleen. Kort daarna bleek dat ook **GPT-5.5** van OpenAI mee aan de top zat: zowel Mythos als GPT-5.5 slaagden erin om de zogenaamde *"The Last Ones"*-challenge volledig op te lossen, een cyberopdracht waar een menselijke expert ongeveer 20 uur over doet en die tot dan toe door geen enkel AI-model was gekraakt. De capaciteit om autonoom complexe cyberaanvallen uit te voeren duikt daarmee zo goed als gelijktijdig op bij meerdere grote AI-labo's.
 
 ![Resultaten van de evaluatie door het AI Safety Institute: zowel Mythos (Anthropic) als GPT-5.5 (OpenAI) lossen de "The Last Ones"-challenge volledig op. Bron: [AISI](https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities).](assets/mythos.png){ width=70% }
 
@@ -500,7 +500,7 @@ En het bleef niet bij Mythos alleen. Kort daarna bleek dat ook **GPT-5.5** van O
 ::: {.callout-warning title="Mei 2026: Mini Shai-Hulud &mdash; een AI-gegenereerde worm door npm"}
 Op **20 mei 2026** publiceerde Microsoft een [analyse](https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/) van een supply chain-aanval op **\@antv**, een populaire familie JavaScript-grafiekenbibliotheken (G2, G6) die in miljoenen dashboards zit ingebed. Een gecompromitteerd maintainer-account volstond om vergiftigde versies van alle \@antv-pakketten te publiceren; via de dependency-keten besmette dit ook *echarts-for-react* (>1 miljoen downloads per week). GitHub haalde uiteindelijk **640 pakketten** offline en invalideerde **61.274 npm-tokens**.
 
-Wat de aanval bijzonder maakt: zodra een CI/CD-pipeline het pakket installeerde, draaide via een preinstall-hook een payload die zichzelf *enkel* activeerde binnen **GitHub Actions**. Daar plunderde hij geheimen (GitHub, AWS, Vault, Kubernetes, 1Password, npm) en *propageerde zich als een worm* door met de gestolen npm-tokens nieuwe vergiftigde pakketten te publiceren &mdash; vandaar de Dune-knipoog *Shai-Hulud*. De kers op de taart: Microsoft Defender classificeert de payload als `Trojan:AIGen/NPMStealer`. Het *AIGen*-prefix is hun label voor code die volgens de ML-detectie **door een LLM is gegenereerd**. 2026 lijkt het jaar te worden waarin AI-gegenereerde malware *gewoon* wordt.
+Wat de aanval bijzonder maakt: zodra een CI/CD-pipeline het pakket installeerde, draaide via een preinstall-hook een payload die zichzelf *enkel* activeerde binnen **GitHub Actions**. Daar plunderde hij geheimen (GitHub, AWS, Vault, Kubernetes, 1Password, npm) en *propageerde zich als een worm* door met de gestolen npm-tokens nieuwe vergiftigde pakketten te publiceren &mdash; vandaar de Dune-knipoog *Shai-Hulud*. Microsoft Defender classificeert de payload als `Trojan:AIGen/NPMStealer`. Het *AIGen*-prefix is hun label voor code die volgens de ML-detectie **door een LLM is gegenereerd**.
 :::
 
 ### Juni 2026: De VS grijpt in — Fable 5 en Mythos 5 geblokkeerd
@@ -525,7 +525,7 @@ Het incident legt dezelfde spanning bloot die we bij Mythos al zagen: precies de
 
 ### September 2026: $hit hits the fan 🤐
 
-Tot nu toe ging het verhaal over AI en cybercrime vooral over *wat zou kunnen*: labo-experimenten, benchmarks en een handvol spectaculaire incidenten. In **september 2026** kwam daar een ontnuchterend antwoord op. Anthropic publiceerde een [threat intelligence rapport](https://www.anthropic.com/threat-intelligence-report-september-2026) over de periode **december 2025 – augustus 2026**, waarin het beschrijft hoe het operaties detecteerde en stillegde waarin staatsactoren, criminele bendes en activisten hun modellen inzetten voor échte aanvallen. Geen proof-of-concept meer, maar campagnes met slachtoffers. Het is belangrijke, maar niet erg blij-makende lectuur.
+Tot nu toe ging het verhaal over AI en cybercrime vooral over *wat zou kunnen*: labo-experimenten, benchmarks en een handvol spectaculaire incidenten. In **september 2026** kwam daar een ontnuchterend antwoord op. Anthropic publiceerde een [threat intelligence rapport](https://www.anthropic.com/threat-intelligence-report-september-2026) over de periode **december 2025 – augustus 2026**, waarin het beschrijft hoe het operaties detecteerde en stillegde waarin staatsactoren, criminele bendes en activisten hun modellen inzetten voor échte aanvallen.
 
 Een greep uit de gedocumenteerde gevallen:
 
@@ -538,10 +538,10 @@ Een greep uit de gedocumenteerde gevallen:
 Merk op dat het niet enkel om cyberaanvallen *met* AI gaat: **toegang tot AI is zélf een doelwit geworden**. Gestolen API-sleutels, sessietokens en accounts worden doorverkocht en hergebruikt. Anthropic beschrijft onder meer een frauduleuze "goedkope Claude-verkoper" wiens klanten dachten een korting te krijgen, terwijl hun verkeer stiekem via gestolen credentials werd doorgesluisd. Een andere actor had het expliciet gemunt op een nog niet uitgebracht model.
 :::
 
-Dit rapport is daarmee de meest concrete illustratie van de rode draad uit dit hoofdstuk: **attack sophistication ↑, vereiste aanvallerskennis ↓**. Anthropic verwoordt het zelf scherp: AI heeft de kloof in *mankracht en gereedschap* tussen topspelers en amateurs dichtgereden. Twee studenten met een laptop doen nu op een maand wat vroeger een goed gefinancierd team van experten vroeg. Voor jou als toekomstige boswachter betekent dat vooral één ding: je kan er niet langer van uitgaan dat "wij zijn te klein of te oninteressant om zo'n aanval te verdienen". Aanvallen schalen nu zo goedkoop dat iedereen binnen bereik ligt.
+Dit rapport illustreert de rode draad uit dit hoofdstuk: **attack sophistication ↑, vereiste aanvallerskennis ↓**. Anthropic stelt zelf dat AI de kloof in *mankracht en gereedschap* tussen topspelers en amateurs heeft dichtgereden: de twee bachelorstudenten uit Hunan haalden op één maand een resultaat waar vroeger een goed gefinancierd expertteam voor nodig was. Het argument "wij zijn te klein of te oninteressant" houdt daardoor geen steek meer. Zodra een aanvalsketen grotendeels autonoom draait, kost een extra doelwit de aanvaller immers bijna niets.
 
 ::: {.callout-note}
-Er zit ook een lichtpunt in dit verhaal. Dat we dit allemaal zo gedetailleerd wéten, komt omdat de aanvallers een **commercieel, cloudgebaseerd model** gebruikten — en de aanbieder dus meekijkt, verdachte patronen detecteert, accounts afsluit en de *indicators of compromise* publiek deelt met onderzoekers en overheden. Datzelfde onderzoek is veel moeilijker wanneer aanvallers een open model lokaal op eigen hardware draaien. De wapenwedloop uit de inleiding van dit hoofdstuk krijgt er zo een extra front bij: niet enkel aanvaller tegen verdediger, maar ook *wie ziet wat er gebeurt*.
+Er zit ook een lichtpunt in dit verhaal. Dat we dit allemaal zo gedetailleerd wéten, komt omdat de aanvallers een **commercieel, cloudgebaseerd model** gebruikten — en de aanbieder dus meekijkt, verdachte patronen detecteert, accounts afsluit en de *indicators of compromise* publiek deelt met onderzoekers en overheden. Datzelfde onderzoek is veel moeilijker wanneer aanvallers een open model lokaal op eigen hardware draaien.
 :::
 
 ## AI als verdediger: de andere kant van de medaille
@@ -555,14 +555,14 @@ Het verhaal is niet louter doemdenken: AI wordt óók steeds vaker **aan de kant
 * **Deepfake-detectie**: tools zoals **Adobe Content Credentials** (gelanceerd op Black Hat 2024) voegen een soort *"nutrition label"* toe aan digitale content waarop je kan aflezen welk percentage AI-gegenereerd is en welke tools werden gebruikt.
 
 ::: {.callout-tip}
-Een ludieke maar effectieve toepassing: sommige telecomproviders experimenteren met **"Granny AI"**, een AI-persona die zich voordoet als een verwarde bejaarde dame om scammers zo lang mogelijk aan de lijn te houden. Elke minuut die een scammer besteedt aan een AI-oma, is een minuut waarop hij geen echte slachtoffers kan maken.
+Een ludieke maar effectieve toepassing: sommige telecomproviders experimenteren met **"Granny AI"**, een AI-persona die zich voordoet als een verwarde bejaarde dame om scammers zo lang mogelijk aan de lijn te houden.
 :::
 
 ## En de toekomst? AI will rule the world
 
-Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren. Bedrijven gaan uit van *when* in plaats van *if*, en de AI-golf van de voorbije jaren maakt die verwachting alleen maar concreter. Wat in 2024 nog een spectaculair eenmalig incident was — een deepfake-videocall, een gekloonde stem aan de telefoon — is intussen gereedschap dat je gewoon kan huren. Hoogtechnologische producten raken met andere woorden razendsnel ingeburgerd in het cybercrime-milieu, en de drempel om ze te gebruiken zakt elk jaar verder.
+Een glazen bol hebben we niet, maar vast staat dat het er niet op zal verbeteren. Bedrijven gaan uit van *when* in plaats van *if*, en de AI-golf van de voorbije jaren maakt die verwachting alleen maar concreter. Hoogtechnologische producten geraken meer en meer ingeburgerd in het cybercrime-milieu: deepfake-videocalls en gekloonde stemmen aan de telefoon zijn geen eenmalige stunts meer, dat gereedschap kan je gewoon huren.
 
-Waar het precies naartoe gaat weet niemand, maar één scenario duikt steeds vaker op: het **"dead internet"**. Een tijdperk waarin we niet meer kunnen vertrouwen op de informatie die we online vinden, waarin bots met bots communiceren op sociale media en zo nieuwe narratieven creëren die de publieke opinie beïnvloeden. De influence-operaties uit het rapport van september 2026 — duizenden nepaccounts en bijna negenduizend artikels, commercieel te bestellen — tonen dat dat geen sciencefiction meer is.
+Waar het precies naartoe gaat weet niemand, maar één scenario duikt steeds vaker op: het **"dead internet"**. Een tijdperk waarin we niet meer kunnen vertrouwen op de informatie die we online vinden, waarin bots met bots communiceren op sociale media en zo nieuwe narratieven creëren die de publieke opinie beïnvloeden. Het rapport van september 2026 laat zien hoe ver dat al staat: duizenden nepaccounts en bijna negenduizend artikels, commercieel te bestellen.
 
 ## Samenvatting
 
