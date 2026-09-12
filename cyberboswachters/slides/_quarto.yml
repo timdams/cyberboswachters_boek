@@ -12,8 +12,8 @@ website:
 
 format:
   revealjs:
-    theme: [default, _extensions/grantmcdermott/clean/clean.scss]
+    theme: [default, cyberboswachters.scss]
     lang: nl
     slide-number: true
-    logo: ../cover.png
+    logo: assets/wordmark.svg
     transition: slide

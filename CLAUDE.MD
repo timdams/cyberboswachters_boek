@@ -29,3 +29,25 @@ Nieuwe teksten moeten altijd zoveel mogelijk in de vorm/schrijftstijl als voorga
 - EN-slides leven in `cyberboswachters/slides/en/`, **nooit** gemengd met NL-slides in dezelfde folder.
 - `slides/en/index.qmd` is een gewone HTML-pagina (rendert via het boek als appendix), `slides/en/*.qmd` daarbuiten zijn revealjs decks (renderen via de slides-website). De render-list in `slides/_quarto.yml` regelt deze splitsing.
 - Voor de volledige migratie naar een tweetalige site (boek + slides via Quarto profiles) bestaat een trackingsissue op GitHub. Volg die fasering — geen bestanden mixen, geen parallel project, geen branch-per-taal.
+
+## Schrijfstijl & content-conventies
+
+- Taal: **Nederlands** (informeel, je-vorm, vlaams/belgisch).
+- **Geen em-dashes (—).** Tim wil ze nergens: niet in de cursustekst, niet in chat. Gebruik in de plaats een gewoon koppel-/liggend streepje (`-`), een dubbele punt, haakjes of gewoon een nieuwe zin.
+- Bestanden zijn `.md` of `.qmd`; in Quarto gedragen die zich nagenoeg gelijk.
+- Callouts via Quarto-syntax (`:::{.callout-important}` etc.).
+- **Nog geen nullables (`string?`, `int?`, ...) gebruiken** in de cursustekst. Nullable reference types worden bewust pas later geïntroduceerd; schrijf in de vroege hoofdstukken gewone types (bv. `string result = Console.ReadLine();`).
+- **Terminologie: gebruik "instantievariabelen", niet "velden"** (`fields`). Dit is de term die doorheen het hele boek consistent gehanteerd wordt.
+- Hoofdstukken eindigen meestal op een `kennisclips.md` met video-embeds.
+- Coding guidelines voor studenten staan onder [content/B_appendix/boetes/](content/B_appendix/boetes/) ("boetes" = puntenaftrek).
+
+### Anti-AI-stijl (belangrijk, Tim leest hierop na)
+
+De tekst moet klinken als Tim die het uitlegt, niet als een chatbot die een vergelijking netjes inpakt. Vermijd daarom expliciet:
+
+- **Geen samenvattende "wijze" slotzin** onder een callout of vergelijking. Stop na het laatste codevoorbeeld of na de feitelijke uitleg. Een callout hoeft geen moraal.
+- **Geen tel-formules** zoals "Drie talen, hetzelfde idee, telkens een andere naam" of "Dezelfde gedachte in drie talen". De lezer ziet de codeblokken zelf staan; tellen voegt niets toe.
+- **Geen symmetrische antithese** als afsluiter, type "Python kiest gemak, C# kiest zekerheid" / "Het keyword verschilt, de gedachte niet" / "X checkt streng, Y pas tijdens de uitvoer". Die spiegelzinnen klinken als een quote-card. Schrijf concreet wat er gebeurt, of laat het weg.
+- **Geen grootse rhetoriek** ("de ontwikkelaar van morgen", "moderne talen convergeren"). Houd het nuchter en praktisch.
+- **Vetgedrukte taalnamen** (`**Python**`) hooguit één keer per callout, bij de eerste vermelding; daarna gewoon plat.
+- Test voor een slotzin: voegt hij een *feit* toe? Zo nee, schrappen. Een vergelijking mag gerust droog en onafgewerkt eindigen.

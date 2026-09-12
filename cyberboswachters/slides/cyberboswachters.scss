@@ -1,0 +1,489 @@
+/*-- scss:defaults --*/
+
+// ============================================================
+//  Cyberboswachters - slidethema "Zie Scherp Scherper".
+//  Zelfde look & feel als het handboek (custom.scss):
+//  Inter, veel witruimte, strakke koppen en AP-rood als
+//  verfijnd accent (titelstreepje, links, actief item).
+// ============================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// --- Lettertypes ---
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !default;
+$font-family-monospace: "JetBrains Mono", "Cascadia Code", "Fira Code", SFMono-Regular, Menlo, Consolas, monospace !default;
+$presentation-heading-font: $font-family-sans-serif !default;
+
+// --- Kleuren (identiek aan het handboek) ---
+$ap-red: #e11d2a;              // accent (lijnen, balken, actief item)
+$ap-red-readable: #c01622;     // donkerder rood voor tekst/links
+$ap-red-hover: #8f0f1a;
+$ink: #2b2b33;                 // donker leigrijs, zachter dan zwart
+$ink-strong: #1a1a22;          // bijna zwart voor strakke koppen
+$muted: #6b6b76;
+$rule: #e6e8eb;
+$surface: #f7f8fa;
+
+$body-bg: #ffffff !default;
+$body-color: $ink !default;
+$link-color: $ap-red-readable !default;
+$link-color-hover: $ap-red-hover !default;
+$selection-bg: rgba($ap-red, 0.15) !default;
+$selection-color: $ink-strong !default;
+
+// --- Typografie op slides ---
+$presentation-font-size-root: 30px;
+$presentation-heading-color: $ink-strong !default;
+$presentation-heading-font-weight: 700;
+$presentation-heading-line-height: 1.2;
+$presentation-h1-font-size: 2.1em;
+$presentation-h2-font-size: 1.35em;
+$presentation-h3-font-size: 1.05em;
+$presentation-h4-font-size: 0.95em;
+$presentation-line-height: 1.45;
+$presentation-block-margin: 20px;
+
+// --- Code ---
+$code-block-bg: $surface !default;
+$code-block-border-color: #e9ecef !default;
+$code-block-font-size: 0.55em !default;
+$code-color: #b30000 !default;
+$code-bg: #f1f3f5 !default;
+
+// --- Mermaid-diagrammen in dezelfde huisstijl ---
+$mermaid-bg-color: #ffffff;
+$mermaid-fg-color: $ink;
+$mermaid-node-bg-color: #fdecee;
+$mermaid-node-fg-color: $ap-red-readable;
+$mermaid-edge-color: #9a9aa3;
+$mermaid-label-bg-color: #ffffff;
+$mermaid-label-fg-color: $ink;
+$mermaid-font-family: $font-family-sans-serif;
+
+$border-radius: 0.5rem;
+$border-radius-sm: 0.35rem;
+
+
+/*-- scss:rules --*/
+
+.reveal {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.reveal p,
+.reveal li {
+  font-weight: 400;
+}
+
+.reveal strong,
+.reveal b {
+  font-weight: 700;
+  color: $ink-strong;
+}
+
+// ---------- Koppen ----------
+.reveal :is(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: -0.015em;
+  text-transform: none;
+}
+
+// Slidetitel (h2) krijgt hetzelfde rode accentstreepje als een
+// hoofdstuktitel in het handboek.
+.reveal .slides section > h2 {
+  font-weight: 800;
+  color: $ink-strong;
+  margin-bottom: 0.85em;
+  padding-bottom: 0.32em;
+  position: relative;
+}
+.reveal .slides section > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.2rem;
+  height: 3px;
+  border-radius: 2px;
+  background: $ap-red;
+}
+
+.reveal h3 {
+  color: $ink-strong;
+  font-weight: 700;
+  margin-top: 1.1em;
+}
+
+.reveal h4 {
+  color: #3a3a44;
+  font-weight: 600;
+  margin-top: 1em;
+}
+
+// ---------- Sectieslide (h1) ----------
+.reveal .slides section > h1 {
+  font-weight: 800;
+  color: $ink-strong;
+  padding-bottom: 0.3em;
+  position: relative;
+  display: inline-block;
+}
+.reveal .slides section > h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3.2rem;
+  height: 4px;
+  border-radius: 2px;
+  background: $ap-red;
+}
+
+// ---------- Titelslide ----------
+#title-slide,
+.reveal .title-slide {
+  text-align: left;
+
+  .title {
+    color: $ink-strong;
+    font-size: 1.9em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    padding-bottom: 0.4rem;
+    position: relative;
+  }
+
+  .title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3.5rem;
+    height: 4px;
+    border-radius: 2px;
+    background: $ap-red;
+  }
+
+  .subtitle {
+    color: $ap-red-readable;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.02em;
+    margin-top: 1rem;
+  }
+
+  .author,
+  .quarto-title-author-name {
+    color: $muted;
+    font-size: 0.7em;
+    font-weight: 500;
+  }
+
+  .date {
+    color: $muted;
+    font-size: 0.6em;
+  }
+
+  .institute,
+  .quarto-title-affiliation,
+  .quarto-title-author-email {
+    color: $muted;
+    font-size: 0.6em;
+    font-style: normal;
+  }
+
+  .quarto-title-authors {
+    display: flex;
+    justify-content: left;
+
+    .quarto-title-author {
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+}
+
+// ---------- Links ----------
+.reveal a {
+  line-height: 1.5em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($ap-red, 0.35);
+  transition: color .15s ease, border-color .15s ease;
+}
+.reveal a:hover {
+  color: $link-color-hover;
+  border-bottom-color: $ap-red;
+}
+// Geen streepje onder knoppen, logo's, menu en beeldlinks
+.reveal a:has(img),
+.reveal .slide-logo-link,
+.reveal a.button,
+.reveal .footer a,
+.reveal .slide-menu-button a,
+.reveal .slide-chalkboard-buttons a,
+.reveal .slide-menu a,
+.reveal .slide-number a {
+  border-bottom: none !important;
+}
+
+// ---------- Lijsten ----------
+.reveal ul,
+.reveal ol {
+  padding-left: 1.1em;
+}
+.reveal ul li,
+.reveal ol li {
+  margin-bottom: 0.35em;
+}
+.reveal ul li::marker {
+  color: $ap-red;
+}
+.reveal ol li::marker {
+  color: $ap-red;
+  font-weight: 600;
+}
+.reveal ul ul {
+  list-style: none;
+
+  li::before {
+    content: "\2192";
+    color: rgba($ap-red, 0.55);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    margin-right: 0.5em;
+  }
+}
+
+// ---------- Code ----------
+.reveal div.sourceCode {
+  background: $code-block-bg;
+  border: 1px solid $code-block-border-color;
+  border-radius: $border-radius;
+}
+.reveal pre.sourceCode code {
+  padding: 0.7em 0.9em;
+  line-height: 1.5;
+}
+.reveal code:not(.sourceCode) {
+  background: $code-bg;
+  color: $code-color;
+  padding: 0.1em 0.35em;
+  border-radius: $border-radius-sm;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+.reveal pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0.7em 0.9em;
+}
+
+// ---------- Callouts ----------
+.reveal .callout {
+  border-radius: $border-radius;
+  border-width: 1px;
+  border-left-width: 4px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .03);
+  margin: 0.9em 0;
+  font-size: 0.9em;
+}
+.reveal .callout.callout-style-default > .callout-header {
+  font-weight: 600;
+  padding: 0.35em 0.6em;
+  width: 100%;
+  box-sizing: border-box;
+}
+.reveal .callout .callout-body,
+.reveal .callout .callout-body-container {
+  padding: 0.35em 0.6em;
+}
+.reveal .callout .callout-body p:first-child {
+  margin-top: 0;
+}
+.reveal .callout .callout-body p:last-child {
+  margin-bottom: 0;
+}
+// "important" krijgt het AP-rood van het handboek
+.reveal .callout.callout-important {
+  border-left-color: $ap-red;
+}
+.reveal .callout.callout-important > .callout-header {
+  background-color: rgba($ap-red, 0.08);
+}
+
+// ---------- Blockquote (mascotte-notities) ----------
+.reveal blockquote {
+  background: #f8f9fb;
+  border-left: 3px solid $ap-red;
+  border-radius: $border-radius;
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  color: #3a3a44;
+  box-shadow: none;
+  font-style: normal;
+}
+.reveal blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+// ---------- Tabellen ----------
+.reveal table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.75em;
+  border: 1px solid $rule;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+.reveal table th,
+.reveal table td {
+  border: none;
+  border-bottom: 1px solid #eef0f2;
+  padding: 0.3em 0.55em;
+  text-align: left;
+  font-weight: 400;
+}
+.reveal table thead {
+  background: #f4f5f7;
+}
+.reveal table thead th {
+  font-weight: 700;
+  color: $ink-strong;
+  border-bottom: 1px solid $rule;
+}
+.reveal table tbody tr:last-child td {
+  border-bottom: none;
+}
+.reveal table caption {
+  color: $muted;
+  font-size: 0.9em;
+  font-variant: normal;
+}
+
+// ---------- Afbeeldingen ----------
+.reveal .slides section img {
+  border-radius: $border-radius-sm;
+  border: none;
+  box-shadow: none;
+}
+.reveal figcaption,
+.reveal .figure-caption {
+  font-size: 0.6em;
+  color: #8a8a93;
+  margin-top: 0.4em;
+}
+
+// ---------- Accenten ----------
+.alert {
+  color: $ap-red-readable;
+  font-weight: 600;
+}
+
+.fg {
+  color: var(--col, #{$ink});
+}
+
+.bg {
+  background-color: var(--col, #fff);
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+// ---------- Voortgangsbalk, logo en slidenummer ----------
+.reveal .progress {
+  color: $ap-red;
+  height: 3px;
+}
+
+.slide-logo {
+  display: block !important;
+  position: fixed !important;
+  bottom: 8px !important;
+  left: 14px !important;
+  max-width: 175px;
+  max-height: 34px;
+  width: auto !important;
+  opacity: 0.9;
+}
+
+.slide-number,
+.reveal.has-logo .slide-number {
+  bottom: 6px !important;
+  right: 10px !important;
+  top: unset !important;
+  color: #9a9aa3 !important;
+  font-size: 0.5em;
+  background: transparent;
+}
+
+// Menuknop en chalkboard-knoppen naar rechtsboven
+.reveal .slide-menu-button {
+  position: fixed;
+  top: 6px;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+}
+.reveal .slide-menu-button > * {
+  pointer-events: auto;
+}
+
+.reveal .slide-chalkboard-buttons {
+  position: fixed;
+  top: 12px;
+  right: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+}
+.reveal .slide-chalkboard-buttons > * {
+  pointer-events: auto;
+}
+
+// ---------- Knop in beamer-stijl ----------
+.button {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.43;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: $ap-red;
+  border: 1px solid $ap-red;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: $border-radius-sm;
+  transition: all 0.15s ease-in-out;
+}
+.button:hover {
+  background-color: $ap-red-hover;
+  border-color: $ap-red-hover;
+}
+.button::before {
+  content: "\25B6";
+  margin-right: 5px;
+}
+
+// ---------- Kolomverhoudingen (output-location: column) ----------
+.reveal .columns3070 > div.column:first-child { width: 30%; }
+.reveal .columns3070 div.column:not(:first-child) { width: 70%; }
+.reveal .columns7030 > div.column:first-child { width: 70%; }
+.reveal .columns7030 div.column:not(:first-child) { width: 30%; }
+.reveal .columns4060 > div.column:first-child { width: 40%; }
+.reveal .columns4060 div.column:not(:first-child) { width: 60%; }
+.reveal .columns6040 > div.column:first-child { width: 60%; }
+.reveal .columns6040 div.column:not(:first-child) { width: 40%; }

@@ -4,11 +4,11 @@ subtitle: "Cyberboswachters"
 author: "Tim Dams"
 format:
   revealjs:
-    theme: [default, ../_extensions/grantmcdermott/clean/clean.scss]
+    theme: [default, ../cyberboswachters.scss]
     lang: en
     slide-number: true
     transition: slide
-    logo: ../../cover.png
+    logo: ../assets/wordmark.svg
 ---
 
 ## The internet is an iceberg
