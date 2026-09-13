@@ -11,7 +11,7 @@ format:
     logo: assets/wordmark.svg
 ---
 
-## {background-image="assets/cover_wordtheterger.png" background-size="cover"}
+## {.ai-beeld background-image="assets/cover_wordtheterger.png" background-size="cover"}
 
 ---
 
@@ -104,7 +104,7 @@ Menig mens zou graag terug willen naar die tijd.
 
 ---
 
-## Een wereld die draait op PLC's
+## Een wereld die draait op PLC's {.ai-beeld}
 
 ![](assets/plc_wereld.png){fig-alt="Een wereld vol kritieke installaties die allemaal verbonden zijn via PLC's."}
 
@@ -230,7 +230,7 @@ Les: grote cyberaanvallen op kritieke infrastructuur combineren bijna altijd **d
 
 ---
 
-## The veil is lifted
+## The veil is lifted {.ai-beeld}
 
 ::: {.curtain-stage}
 ![](assets/veil_lifted.png){fig-alt="Achter het gordijn luisteren duistere figuren ons af."}
@@ -450,7 +450,7 @@ Cyberaanvallen zijn verdomd lastig in kaart te brengen.
 
 ---
 
-## Megaexploits
+## Megaexploits {.ai-beeld}
 
 ![](assets/megaexploits.png){fig-alt="Eén kwetsbaarheid verspreidt zich als een lopend vuurtje over alle verbonden systemen."}
 
@@ -498,7 +498,7 @@ Een operator zag zijn muis bewegen en greep op tijd in. En zelfs dan hadden de d
 
 ---
 
-## Big data, big leaks
+## Big data, big leaks {.ai-beeld}
 
 ![](assets/big_data.png){fig-alt="Steeds grotere hoeveelheden data lekken met steeds grotere gevolgen."}
 
@@ -547,7 +547,7 @@ Een 16-jarige Britse tiener (collectief **Crackas With Attitude**) kraakte met p
 
 ---
 
-## No patch for human stupidity
+## No patch for human stupidity {.ai-beeld}
 
 :::: {.columns}
 
@@ -569,7 +569,7 @@ Les: **geen enkele firewall beschermt tegen een behulpzame helpdesk-medewerker.*
 
 ---
 
-## 2016: Internet-of-Horrors
+## 2016: Internet-of-Horrors {.ai-beeld}
 
 ![](assets/iot_horrors.png){fig-alt="Huis en bewoner verbonden via allerlei IoT-apparaten, waarvan enkele besmet."}
 
@@ -609,7 +609,7 @@ Mirai creëerde een botnet van honderdduizenden IoT-apparaten die:
 
 ---
 
-## 2017: losgeld gevraagd!
+## 2017: losgeld gevraagd! {.ai-beeld}
 
 ![](assets/ransomware.png){fig-alt="Ransomware legt ziekenhuizen en bedrijven plat en eist losgeld."}
 
@@ -931,7 +931,7 @@ sequenceDiagram
 
 ---
 
-## 2023: Scattered Spider - MGM Resorts
+## 2023: Scattered Spider - MGM Resorts {.ai-beeld}
 
 :::: {.columns}
 
@@ -1062,7 +1062,7 @@ Van **SEO** naar **GEO** (*Generative Engine Optimisation*): content zo helder m
 
 ---
 
-## 2026: A.I. hell
+## 2026: A.I. hell {.ai-beeld}
 
 ![](assets/ai_hell.png){fig-alt="Een brandende wereld, geterroriseerd door AI-gedreven aanvallen."}
 

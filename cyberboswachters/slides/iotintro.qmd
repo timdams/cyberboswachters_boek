@@ -11,7 +11,7 @@ format:
     logo: assets/wordmark.svg
 ---
 
-## {background-image="assets/cover_iot.png" background-size="cover"}
+## {.ai-beeld background-image="assets/cover_iot.png" background-size="cover"}
 
 ---
 

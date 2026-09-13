@@ -273,7 +273,7 @@ Het *window of vulnerability* is hierdoor vaak **verrassend voorspelbaar**. Wie 
 
 ---
 
-## Wie zijn de stropers?
+## Wie zijn de stropers? {.ai-beeld}
 
 ![](assets/stropers.png){fig-alt="Een boswachter bekijkt verse voetafdrukken, terwijl tussen de bomen heel verschillende figuren toekijken."}
 
@@ -375,7 +375,7 @@ De "veilige burcht" werkt niet meer als je iedereen met hun eigen sleutel naar b
 
 ---
 
-## Net ontslagen&hellip;
+## Net ontslagen&hellip; {.ai-beeld}
 
 ![](assets/akhter_meeting.png){fig-alt="Een laptop op de keukentafel: de online meeting is net afgelopen, de handen hangen boven het toetsenbord."}
 
@@ -968,7 +968,7 @@ Gevaarlijke wormen combineren **meerdere paden tegelijk** - blokkeer één route
 
 ---
 
-## Hoe lang overleeft deze pc?
+## Hoe lang overleeft deze pc? {.ai-beeld}
 
 ![](assets/xp_wekker.png){fig-alt="Een gloednieuwe pc wordt aan het netwerk gehangen, met een keukenwekker ernaast."}
 
@@ -1190,7 +1190,7 @@ Oplossing: **C&C-server uit de lucht halen** → de zombies worden nutteloos.
 
 ---
 
-## Wat hebben deze toestellen gemeen?
+## Wat hebben deze toestellen gemeen? {.ai-beeld}
 
 ![](assets/mirai_woonkamer.png){fig-alt="Een gezellige woonkamer met een babyfoon-camera, een router en een slimme camera. Op de babyfoon brandt een klein rood lampje."}
 
@@ -1278,7 +1278,7 @@ RaaS in z'n meest cynische vorm: koop bescherming én aanvalswapen tegelijk.
 
 ---
 
-## Ergens in Kaboel, 2008
+## Ergens in Kaboel, 2008 {.ai-beeld}
 
 ![](assets/kabul_usb.png){fig-alt="Een hand in legeruniform pakt een goedkope USB-stick van een marktkraam, met een militaire compound op de achtergrond."}
 
@@ -1386,7 +1386,7 @@ Android 12+ beperkt dit - maar wees steeds voorzichtig met apps die *Accessibili
 
 ---
 
-## Je telefoon staat uit. Toch?
+## Je telefoon staat uit. Toch? {.ai-beeld}
 
 ![](assets/poweroff_nachtkastje.png){fig-alt="Een smartphone ligt omgekeerd op een nachtkastje, maar aan de rand brandt nog een piepklein rood lampje."}
 
