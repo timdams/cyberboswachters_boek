@@ -22,14 +22,18 @@ P[big_data]="A large, bright archive hall with tall shelves of neatly stacked da
 P[social_engineering]="A split-screen editorial illustration. On the left, a friendly helpdesk employee with a headset in a bright office happily performs a password reset. On the right, at the other end of the phone line, a grinning teenager in a hoodie sits in a messy but sunlit bedroom full of monitors, talking into a phone. Between them stands a huge corporate firewall wall with padlocks and shields, completely useless, because the phone cable simply runs around it. The phone cable is the red accent. Humorous but pointed."
 P[ransomware]="A bright hospital corridor and nursing station during the day. Every computer screen and a medical monitor shows the same large, simple padlock shape and a countdown made of simple bars. A few doctors and nurses stand puzzled around a workstation, one of them holding a phone. A small chain with a padlock hangs around a server cabinet in an open side room. The padlocks on the screens are the red accent. Confusion and curiosity rather than horror."
 P[scattered_spider]="A large stylised spider made of phone cables and network wires sits in a web spun across the image in daylight. One strand of the web leads down to a helpdesk on the left, where an employee on the phone resets a password. On the right, a casino resort shows the consequences: slot machines with blank screens, hotel key cards with a small cross, and guests waiting in front of a stuck elevator. The spider is the red accent. Composition flows from the helpdesk on the left to the paralysed casino on the right."
-P[ai_hell]="Earth seen from low orbit against a light sky. Swarms of small red geometric AI agents, like tiny drones, trace attack paths between cities across the continents, and a few city grids flicker as if something is wrong. Above the planet hovers a large abstract artificial intelligence presence made of lines and nodes, looking down on the world. The swarms are the red accent. Sense of scale and unease, but no fire and no destruction. Keep a calm, empty band along the top for a slide title."
+P[ai_hell]="Earth seen from low orbit. Over the horizon a colossal artificial intelligence rises like a thunderstorm front: a towering wall of dark grey cloud built from lines, nodes and circuit patterns, with the suggestion of a vast watchful face inside it. From this front, dense swarms of small red geometric AI agents, like tiny drones, pour down onto the planet and race along attack paths between cities across the continents. Where they arrive, city grids flicker and whole regions of lights go out in patches, while a few untouched areas still glow calm blue-white. Lightning-like red lines crackle between the swarms. The swarms and attack paths are the red accent. Huge sense of scale and escalation, the moment a storm hits. Keep a calmer band along the top for a slide title."
+# T = eigen toon in plaats van de standaardtoon (enkel voor beelden die spannender mogen)
+declare -A T
+T[ai_hell]=" Tense, dramatic mood like a storm breaking over the world, stronger contrast with dark storm greys against the light sky, but not horror: no fire, no explosions, no gore, no glowing eyes."
 
 NAMEN=("$@")
 [ ${#NAMEN[@]} -eq 0 ] && NAMEN=(plc_wereld veil_lifted megaexploits iot_horrors big_data social_engineering ransomware scattered_spider ai_hell)
 
 gen() {
-  local naam=$1 pad
-  pad=$(node "$G" --model "$M" --aspect 16:9 --out "$OUT" --name "$naam" --prompt "${P[$naam]}$BASIS$TOON" \
+  local naam=$1 pad toon
+  toon=${T[$naam]:-$TOON}
+  pad=$(node "$G" --model "$M" --aspect 16:9 --out "$OUT" --name "$naam" --prompt "${P[$naam]}$BASIS$toon" \
         | tee /dev/stderr | awk '/^SAVED/{print $2; exit}')
   if [ -z "$pad" ]; then echo "MISLUKT: $naam" >&2; return 1; fi
   # vaste bestandsnaam, want de slides verwijzen naar assets/<naam>.png
