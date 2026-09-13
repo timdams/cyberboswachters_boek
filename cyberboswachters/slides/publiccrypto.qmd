@@ -77,7 +77,7 @@ graph TD
 
 ---
 
-## De kist-metafoor
+## De kist-metafoor {.ai-beeld}
 
 ::: {.callout-tip}
 
@@ -90,7 +90,7 @@ Iedereen kan er een boodschap in leggen en op slot klikken (*encrypteren*).
 Enkel de eigenaar heeft de **private sleutel** om de kist te openen (*decrypteren*).
 :::
 
-![](crypto_assets/kist_metafoor.png){ width=90% fig-alt="Een openstaande kist die iedereen kan dichtklikken, een kist op slot, en de eigenaar die de kist weer opent." }
+![](crypto_assets/kist_metafoor.png){.nostretch width=82% fig-align="center" fig-alt="Een openstaande kist die iedereen kan dichtklikken, een kist op slot, en de eigenaar die de kist weer opent." }
 
 
 ---

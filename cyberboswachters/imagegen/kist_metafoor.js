@@ -1,49 +1,48 @@
 // kist_metafoor - publieke crypto als kist: de publieke sleutel is een openstaande kist die
 // iedereen kan dichtklikken, enkel de eigenaar opent hem met de private sleutel.
+// De drie kisten komen uit het imagegen-bronbeeld kist_drieluik.png (zie slidebeelden_crypto.sh)
+// en worden hier uitgeknipt via een geneste SVG met viewBox; tekst en pijlen komen uit excal.js.
 // Draaien vanuit deze map:  node kist_metafoor.js
+const fs = require('fs');
 const { createCanvas, C } = require('./excal');
 const plaats = require('./plaats');
 
-const c = createCanvas(1700, 440);
+const c = createCanvas(1700, 580);
+const SVGNS = 'http://www.w3.org/2000/svg';
+// achtergrond gelijk aan die van het bronbeeld (gesampled: #f7f7f7), zodat de uitsnedes niet als rechthoeken opvallen
+c.svg.querySelector('rect').setAttribute('fill', '#f7f7f7');
+const BRON = 'data:image/png;base64,' + fs.readFileSync('kist_drieluik.png').toString('base64');
 
-const Y0 = 150;           // bovenkant van de kist
-const B = 220, H = 130;   // breedte en hoogte van de kist
-const CX = [250, 850, 1450];
+// knip het gebied (sx, sy, sw, sh) uit het bronbeeld (1280x720) en zet het op (x, y) met schaal s
+function uitsnede(x, y, s, sx, sy, sw, sh) {
+  const nest = c.document.createElementNS(SVGNS, 'svg');
+  nest.setAttribute('x', x); nest.setAttribute('y', y);
+  nest.setAttribute('width', sw * s); nest.setAttribute('height', sh * s);
+  nest.setAttribute('viewBox', `${sx} ${sy} ${sw} ${sh}`);
+  const img = c.document.createElementNS(SVGNS, 'image');
+  img.setAttribute('width', 1280); img.setAttribute('height', 720);
+  img.setAttribute('href', BRON);
+  nest.appendChild(img);
+  c.svg.appendChild(nest);
+}
 
-const lijf = cx => c.rect(cx - B / 2, Y0, B, H, { strokeWidth: 2.6 });
-const openDeksel = cx => c.poly([[cx - B / 2, Y0], [cx + B / 2, Y0], [cx + B / 2 + 25, Y0 - 95], [cx - B / 2 + 25, Y0 - 95]],
-  { fill: C.BOX_TOP, fillStyle: 'solid', strokeWidth: 2.4 });
-// briefje dat boven de rand van de kist uitsteekt, zodat de tekst niet achter de kist verdwijnt
-const boodschap = cx => {
-  c.rect(cx - 70, Y0 - 62, 140, 52, { strokeWidth: 2 });
-  c.txt(cx, Y0 - 27, 'boodschap', 26, C.GRAY, 700);
-};
+const S = 0.95, TOP = 40, SY = 95, SH = 430;
+uitsnede(40, TOP, S, 0, SY, 380, SH);      // open kist, hand legt brief erin
+uitsnede(660, TOP, S, 440, SY, 340, SH);   // kist op slot met rood hangslot
+uitsnede(1240, TOP, S, 840, SY, 440, SH);  // eigenaar opent met sleutel
 
-// 1. openstaande kist
-openDeksel(CX[0]);
-boodschap(CX[0]);
-lijf(CX[0]);
-c.lines(CX[0], Y0 + 180, ['publieke sleutel:', 'openstaande kist'], 30, C.GRAY, 700, 'middle', 1.1);
+// pijlen met uitleg in de tussenruimtes
+const PY = 320;
+c.lines(530, 232, ['iedereen legt een', 'boodschap erin en', 'klikt het slot dicht'], 24, C.GRAY, 400, 'middle', 1.15);
+c.arrow(420, PY, 640, PY, { strokeWidth: 2.6, head: 16 });
+c.lines(1112, 232, ['enkel de eigenaar', 'opent het slot met', 'de private sleutel'], 24, C.RED_DARK, 700, 'middle', 1.15);
+c.arrow(1002, PY, 1222, PY, { stroke: C.RED, strokeWidth: 2.8, head: 16 });
 
-// 2. op slot geklikt
-lijf(CX[1]);
-c.rect(CX[1] - B / 2, Y0 - 40, B, 40, { fill: C.BOX_TOP, fillStyle: 'solid', strokeWidth: 2.4 });
-c.path(`M ${CX[1] - 14} ${Y0 + 5} C ${CX[1] - 14} ${Y0 - 30} ${CX[1] + 14} ${Y0 - 30} ${CX[1] + 14} ${Y0 + 5}`,
-  { stroke: C.RED, strokeWidth: 3 });
-c.rect(CX[1] - 24, Y0 + 5, 48, 42, { fill: C.RED_LIGHT, fillStyle: 'hachure', hachureGap: 5, stroke: C.RED, strokeWidth: 2.6 });
-c.lines(CX[1], Y0 + 180, ['op slot geklikt', '(geëncrypteerd)'], 30, C.GRAY, 700, 'middle', 1.1);
-
-// 3. geopend door de eigenaar
-openDeksel(CX[2]);
-boodschap(CX[2]);
-lijf(CX[2]);
-c.lines(CX[2], Y0 + 180, ['private sleutel:', 'enkel de eigenaar'], 30, C.RED_DARK, 700, 'middle', 1.1);
-
-// pijlen met uitleg
-c.arrow(385, Y0 + 65, 715, Y0 + 65, { strokeWidth: 2.4, head: 16 });
-c.lines(550, Y0 + 115, ['iedereen: boodschap erin', 'en slot dicht'], 26, C.GRAY, 400, 'middle', 1.1);
-c.arrow(985, Y0 + 65, 1315, Y0 + 65, { stroke: C.RED, strokeWidth: 2.6, head: 16 });
-c.lines(1150, Y0 + 115, ['enkel de eigenaar opent', 'de kist weer'], 26, C.RED_DARK, 400, 'middle', 1.1);
+// onderschriften
+const LY = TOP + SH * S + 42;
+c.lines(220, LY, ['publieke sleutel:', 'openstaande kist'], 30, C.GRAY, 700, 'middle', 1.1);
+c.lines(821, LY, ['op slot geklikt', '(geëncrypteerd)'], 30, C.GRAY, 700, 'middle', 1.1);
+c.lines(1449, LY, ['private sleutel:', 'enkel de eigenaar opent'], 30, C.RED_DARK, 700, 'middle', 1.1);
 
 c.save('kist_metafoor');
 plaats('kist_metafoor', '../slides/crypto_assets');
