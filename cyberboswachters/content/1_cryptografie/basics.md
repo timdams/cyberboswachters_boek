@@ -650,7 +650,7 @@ Stel dat we een afbeelding van Tux De Pinguïn opsplitsen in ongeveer 100 bij 10
 
 Voorgaande modus, waarin we ieder blok onafhankelijk van het vorige encrypteren, noemen we de **Electronic Codebook (ECB)** modus. 
 
-![ECB mode (Bron wikipedia).](assets/ecb.png){ width=80% }
+![ECB mode: twee gelijke plaintext-blokken geven twee gelijke ciphertext-blokken.](assets/ecb_mode.png){ width=90% }
 
 Alhoewel deze modus dus duidelijk een veiligheidsprobleem met zich mee draagt, heeft deze modus ook één voordeel:
 
@@ -664,7 +664,7 @@ Er zijn verschillende modes om veiliger te encrypteren dan ECB. We bespreken hie
 
 Bij CBC wordt de output van het vorige blok (de ciphertext) mee als input voor de encryptie van het volgende blok gebruikt. Concreet wordt de ciphertext van het vorige blok ge-XOR'd met het huidige plaintext-blok, vóór de encryptie plaatsvindt. Hierdoor is de encryptie van elk blok afhankelijk van alle voorgaande blokken, wat patronen in de plaintext verbergt.
 
-![CBC encryptie (Bron wikipedia).](assets/cbc.png){ width=80% }
+![CBC encryptie: de ciphertext van het vorige blok gaat mee in de XOR.](assets/cbc_mode.png){ width=90% }
 
 Laten we dit concreet maken met een minimalistisch voorbeeld. Stel dat ons blockcipher maar 2 bits per blok verwerkt, volgens volgende substitutietabel:
 

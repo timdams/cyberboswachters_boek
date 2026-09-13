@@ -30,6 +30,8 @@ Het concept van publieke cryptografie werd in 1976 gepubliceerd door Diffie en H
 Je kan publieke encryptie beschouwen als volgt: de publieke sleutel, die niet geheim is, is een openstaande kist. Iedereen kan de kist gebruiken om een geheime boodschap in te plaatsen en vervolgens deze op slot te klikken (*encrypteren*). Enkel de eigenaar van deze kist heeft de bijpassende private sleutel die echter deze kist kan opendoen en de originele boodschap kan lezen (*decrypteren*).
 :::
 
+![Publieke crypto als kist: iedereen kan de kist dichtklikken, enkel de eigenaar opent hem met de private sleutel.](assets/kist_metafoor.png)
+
 ::: {.callout-note}
 Enkele van de bekendere publieke cryptosystemen zijn onder andere RSA, DSS en El Gamal.
 :::
@@ -44,7 +46,7 @@ Publieke cryptografie wordt in de praktijk voor drie doeleinden ingezet:
 
 Die laatste toepassing is een erg nuttige extra eigenschap: daar enkel de ondertekenaar de private sleutel in z'n bezit heeft, levert een geldige handtekening tegelijk **authenticatie** (de verzender is wie hij beweert te zijn) én **integriteit** (het bericht is onderweg niet gewijzigd).
 
-![Het ondertekenen van een document met behulp van je private sleutel.](assets//sign.png)
+![Het ondertekenen van een document met behulp van je private sleutel.](assets/handtekening.png)
 
 In wat volgt werken we deze drie toepassingen één voor één uit, te beginnen met sleuteluitwisseling.
 
@@ -171,7 +173,7 @@ Voor we de digitale handtekeningen uitwerken, slaan we even een zijtak in om het
 Voorgaande is uiteraard onmogelijk: daar een hash meestal veel korter is dan de originele boodschap, is het mathematisch mogelijk dat twee totaal verschillende teksten toch dezelfde hash geven. Het is de opdracht van een goede hashfunctie om dit soort **hash collisions** zo klein mogelijk te houden.
 
 
-![Het hash proces.](assets//hash.png){width=60%}
+![Eén teken verschil in de input geeft een totaal andere hash, met een vaste lengte.](assets/hash_avalanche.png){width=90%}
 
 
 Een hashfunctie is niet omkeerbaar: men mag onmogelijk aan de hand van een hash (ook wel *digest* of *hashcode* genoemd) terug de originele tekst kunnen achterhalen. Een hashfunctie is dus een eenrichtingsfunctie, ook wel afbeelding genoemd in wiskundige termen.
@@ -241,7 +243,7 @@ De CA zal deze informatie gebruiken om een certificaat, van een bepaalde levensd
 * Het certificaat bevat Bobs publieke sleutel en informatie over Bob en de CA in **leesbare vorm**. Daaraan wordt een **digitale handtekening** van de CA toegevoegd: een hash van al deze informatie, versleuteld met de private sleutel van de CA.
 * Om later de echtheid van het certificaat te verifiëren, berekent de ontvanger zelf de hash van de inhoud van het certificaat en vergelijkt die met de ontsleutelde handtekening (die met de publieke sleutel van de CA wordt gedecrypteerd). Als beide hashes gelijk zijn, weten we dat het certificaat door de gegeven CA werd ondertekend - enkel de houder van de private sleutel van die CA kan zo'n geldige handtekening produceren.
 
-![Een certificaat aanmaken.](assets//certcreatie.png)
+![Een certificaat ondertekenen (CA) en controleren (browser).](assets/cert_verificatie.png)
 
 Een X.509-certificaat bevat minstens volgende velden:
 
@@ -267,7 +269,7 @@ Pas in 2017 boden meer dan de helft van de websites wereldwijd HTTPS aan. In 202
 
 Het ergste dat voor een CA kan voorvallen is dat de betrouwbaarheid van de CA in het gedrang komt. Als een CA bijvoorbeeld weet heeft van een potentiële inbraak op zijn systemen dan bestaat er de kans dat aanvallers de private sleutel van de CA hebben bemachtigd en dus zelf certificaten *op naam van de CA* kunnen genereren, met alle gevolgen van dien! Indien dus deze kans bestaat, is er een *breach of trust* en zullen alle certificaten van deze CA als ongeldig worden bestempeld, inclusief alle certificaten van sub-CA's! Dit kan verregaande gevolgen hebben.
 
-![De chain-of-trust: oh zo belangrijk bij digitale certificaten.](assets//chaintrust.png){width=60%}
+![De chain-of-trust: oh zo belangrijk bij digitale certificaten.](assets/chain_of_trust.png){width=80%}
 
 ::: {.callout-note}
 ## Case: de val van DigiNotar (2011)
@@ -295,7 +297,7 @@ Naast certificaten voor webservers (zogenaamde **SSL certificaten**) kan je ook 
 
 Persoonlijke certificaten worden ook gebruikt voor **mutual TLS** (mTLS), een uitbreiding op gewone HTTPS waarbij niet alleen de server, maar ook de **client** zich met een certificaat authenticeert. Dit wordt vaak gebruikt in bankomgevingen, e-government, bedrijfs-VPN's en communicatie tussen backend-servers, waar de server zeker wil zijn dat de client effectief is wie die beweert te zijn. Bij gewone HTTPS gebeurt dit niet omdat een website in principe elke bezoeker welkom heet.
 
-![Bij mutual TLS presenteren zowel server als client een certificaat; beide zijden worden geverifieerd tegen dezelfde CA. Bron: Wikimedia Commons (CC BY 3.0).](assets//mtls.png){width=70%}
+![Bij mutual TLS presenteren zowel server als client een certificaat; beide zijden worden geverifieerd tegen dezelfde CA.](assets/mtls_simpel.png){width=80%}
 
 Als je in Windows 10 of nieuwer een applicatie of installer probeert uit te voeren dan zal de ingebouwde *SmartScreen* service ogenblikkelijk de echtheid (of ontbreken van) het certificaat controleren, net zoals dit ook in de browser zou gebeuren.
 
@@ -319,7 +321,7 @@ Het PKI-model steunt op **gecentraliseerde** Certificate Authorities die de iden
 
 In een Web of Trust zijn er geen centrale autoriteiten. In plaats daarvan ondertekenen gebruikers *elkaars* publieke sleutels. Als Alice de publieke sleutel van Bob persoonlijk heeft geverifieerd (bijvoorbeeld door zijn *key fingerprint* te vergelijken tijdens een ontmoeting), kan zij zijn sleutel ondertekenen met haar eigen private sleutel. Hiermee verklaart Alice: *"Ik bevestig dat deze publieke sleutel effectief van Bob is."*
 
-<!--![In een Web of Trust ondertekenen gebruikers elkaars sleutels in plaats van te vertrouwen op een centrale autoriteit.](assets//weboftrust.png){width=60%}-->
+![In een Web of Trust ondertekenen gebruikers elkaars sleutels in plaats van te vertrouwen op een centrale autoriteit.](assets/weboftrust.png){width=70%}
 
 Stel nu dat Carol de sleutel van Bob nodig heeft maar hem niet persoonlijk kent. Als Carol wél Alice vertrouwt en ziet dat Alice de sleutel van Bob heeft ondertekend, dan kan Carol via dat **vertrouwenspad** besluiten om ook Bobs sleutel te aanvaarden. Zo ontstaat een netwerk (een *web*) van onderlinge vertrouwensrelaties.
 

@@ -36,4 +36,4 @@ c.txt(800, 390, 'client toont ook zijn certificaat', 30, C.RED_DARK, 700);
 c.txt(800, 480, 'gewone HTTPS: enkel de server toont een certificaat', 28, C.GRAY, 400);
 
 c.save('mtls_simpel');
-plaats('mtls_simpel', '../slides/crypto_assets');
+plaats('mtls_simpel', '../content/1_cryptografie/assets', '../slides/crypto_assets');

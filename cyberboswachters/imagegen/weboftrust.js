@@ -29,4 +29,4 @@ c.carrow(385, 612, 750, 800, 1112, 612, { stroke: C.RED, strokeWidth: 2.6, strok
 c.txt(750, 770, 'vertrouwenspad: Carol aanvaardt Bobs sleutel', 30, C.RED_DARK, 700);
 
 c.save('weboftrust');
-plaats('weboftrust', '../slides/crypto_assets');
+plaats('weboftrust', '../content/1_cryptografie/assets', '../slides/crypto_assets');

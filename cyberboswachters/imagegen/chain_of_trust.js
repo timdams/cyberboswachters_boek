@@ -46,4 +46,4 @@ c.lines(1010, 282, ['private sleutel', 'gestolen'], 30, C.RED_DARK, 700, 'end', 
 c.lines(970, 690, ['alle certificaten onder', 'deze CA worden ongeldig'], 32, C.RED_DARK, 700, 'middle', 1.15);
 
 c.save('chain_of_trust');
-plaats('chain_of_trust', '../slides/crypto_assets');
+plaats('chain_of_trust', '../content/1_cryptografie/assets', '../slides/crypto_assets');

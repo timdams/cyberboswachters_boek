@@ -45,4 +45,4 @@ c.lines(821, LY, ['op slot geklikt', '(geëncrypteerd)'], 30, C.GRAY, 700, 'midd
 c.lines(1449, LY, ['private sleutel:', 'enkel de eigenaar opent'], 30, C.RED_DARK, 700, 'middle', 1.1);
 
 c.save('kist_metafoor');
-plaats('kist_metafoor', '../slides/crypto_assets');
+plaats('kist_metafoor', '../content/1_cryptografie/assets', '../slides/crypto_assets');

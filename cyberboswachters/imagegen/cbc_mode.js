@@ -58,4 +58,4 @@ CX.forEach((cx, i) => {
 c.txt(W / 2, 630, 'de ciphertext van het vorige blok gaat mee in de XOR', 34, C.RED_DARK, 700);
 
 c.save('cbc_mode');
-plaats('cbc_mode', '../slides/crypto_assets');
+plaats('cbc_mode', '../content/1_cryptografie/assets', '../slides/crypto_assets');

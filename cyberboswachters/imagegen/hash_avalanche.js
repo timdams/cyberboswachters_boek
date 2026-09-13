@@ -35,4 +35,4 @@ rij(330, 'Ik heb geen honger', '!');
 c.txt(820, 470, '1 teken verschil in de input: een totaal andere hash', 36, C.RED_DARK, 700);
 
 c.save('hash_avalanche');
-plaats('hash_avalanche', '../slides/crypto_assets');
+plaats('hash_avalanche', '../content/1_cryptografie/assets', '../slides/crypto_assets');

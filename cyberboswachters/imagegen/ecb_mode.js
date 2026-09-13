@@ -43,4 +43,4 @@ CX.forEach((cx, i) => {
 c.txt(W / 2, 525, 'blok 1 en blok 3: zelfde plaintext geeft zelfde ciphertext', 36, C.RED_DARK, 700);
 
 c.save('ecb_mode');
-plaats('ecb_mode', '../slides/crypto_assets');
+plaats('ecb_mode', '../content/1_cryptografie/assets', '../slides/crypto_assets');

@@ -64,4 +64,4 @@ c.txt(1305, 545, 'ja: certificaat in orde', 32, C.GRAY, 700);
 c.txt(1305, 595, 'nee: niet vertrouwen', 32, C.RED_DARK, 700);
 
 c.save('cert_verificatie');
-plaats('cert_verificatie', '../slides/crypto_assets');
+plaats('cert_verificatie', '../content/1_cryptografie/assets', '../slides/crypto_assets');

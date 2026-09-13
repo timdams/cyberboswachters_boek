@@ -43,4 +43,4 @@ c.arrow(1498, Y, 1570, Y, pijl);
 c.lines(1590, Y - 8, ['komt van Bob en', 'is niet aangepast'], 32, C.RED_DARK, 700, 'start', 1.15);
 
 c.save('handtekening');
-plaats('handtekening', '../slides/crypto_assets');
+plaats('handtekening', '../content/1_cryptografie/assets', '../slides/crypto_assets');
