@@ -9,7 +9,7 @@
 //  - de auteursnaam van orange-book moet een string zijn en krijgt daardoor het
 //    standaard (serif) lettertype. We laten die slot leeg en zetten de naam zelf
 //    in de subtitel, zodat de hele balk in dezelfde letter staat.
-#import "@preview/orange-book:0.7.1": book, part, chapter, appendices
+#import "@preview/orange-book:0.7.1": book, part, chapter, appendices, update-heading-image
 #import "cover.typ": *
 
 #show: book.with(
@@ -102,3 +102,23 @@ $if(margin-geometry)$
   clearance: $margin-geometry.clearance$,
 )
 $endif$
+
+// Hoofdstukcovers: afbeelding bovenaan de eerste pagina van een hoofdstuk, met de
+// titel erover (heading-style 0 van orange-book). De sleutel is het label dat Quarto
+// aan de hoofdstuktitel hangt. Hoofdstukken zonder sleutel krijgen geen afbeelding.
+// De afbeelding moet vóór de titel gezet worden: een raw typst-blok in het .md-bestand
+// kan dat niet, want Quarto zet de H1 van een hoofdstuk altijd bovenaan.
+#let hoofdstukcovers = (
+  "wordt-het-erger": "content/0_het_security_landschap/assets/cover_wordtheterger.png",
+  "cybersecurity-fundamenten": "content/0_het_security_landschap/assets/stropers.png",
+  "cryptografie": "content/1_cryptografie/assets/cover_crypto.png",
+  "wifi-security": "content/3_netwerk_security/assets/cover_wifi.png",
+  // Quarto maakt hier "authenticatie-1" van, omdat het label "authenticatie" al elders bestaat
+  "authenticatie-1": "content/1_cryptografie/assets/cover_authenticatie.png",
+  "iot-security": "content/5_iot/assets/cover_iot.png",
+)
+#show heading.where(level: 1): it => {
+  let pad = if it.has("label") { hoofdstukcovers.at(str(it.label), default: none) } else { none }
+  update-heading-image(image: if pad == none { none } else { image(pad) })
+  it
+}

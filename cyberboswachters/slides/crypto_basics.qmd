@@ -11,6 +11,10 @@ format:
     logo: assets/wordmark.svg
 ---
 
+## {background-image="assets/cover_crypto.png" background-size="cover"}
+
+---
+
 ## Wat leer je in dit hoofdstuk?
 
 Na dit hoofdstuk kan je:

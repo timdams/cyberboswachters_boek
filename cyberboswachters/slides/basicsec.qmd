@@ -134,11 +134,11 @@ Data integer ≠ systeem integer.
 
 ---
 
-## McCumber in actie: Twitter's hash-bug (2018)
+## McCumber in actie: Twitter's hash-bug (2018) {.smaller}
 
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="45%"}
 Twitter deed **alles goed**:
 
 * Wachtwoorden werden met **bcrypt** gehasht in de database (status: *opslag*) ✅
@@ -150,13 +150,15 @@ Resultaat: miljoenen wachtwoorden in **plaintext** in logs waar medewerkers bij 
 :::
 :::
 
-::: {.column width="40%" .fragment}
-::: {.callout-warning}
-**Eén vergeten hoekje** van de McCumber kubus volstaat om alle andere verdedigingen te omzeilen.
-:::
+::: {.column width="55%"}
+![](assets/mccumber_twitter.png){ width=100% fig-alt="De McCumber kubus met de schijf verwerken rood gearceerd: daar lekten de wachtwoorden, terwijl de opslag in orde was." }
 :::
 
 ::::
+
+::: {.callout-warning .fragment}
+**Eén vergeten hoekje** van de McCumber kubus volstaat om alle andere verdedigingen te omzeilen.
+:::
 
 ::: aside
 Bron: Twitter Blog, mei 2018.
@@ -194,16 +196,7 @@ De cyberboswachter van de 21e eeuw heeft het moeilijker dan ooit:
 
 ## De scheve grafiek
 
-```{mermaid}
-%%{init: {"theme": "base"} }%%
-timeline
-    title Evolutie van aanvalstools
-    1980 : Password guessing : Self-replicating code
-    1990 : Sniffers : Session hijacking : Packet spoofing
-    2000 : WWW attacks : DoS : Automated probes
-    2010 : Botnets : DDoS : Morphing malware
-    2020 : Ransomware-as-a-Service : AI-aanvallen
-```
+![](assets/scheve_grafiek.png){ width=62% fig-align="center" fig-alt="Grafiek: de kracht van aanvalstools stijgt van 1980 tot 2020, terwijl de vereiste kennis van de aanvaller daalt." }
 
 ::: {.callout-important .fragment}
 Aanvalstools worden steeds **krachtiger** - terwijl de vereiste **kennis** van de aanvaller alleen maar **daalt**. Dit verklaart waarom scriptkiddies zo'n reëel probleem zijn.
@@ -211,10 +204,12 @@ Aanvalstools worden steeds **krachtiger** - terwijl de vereiste **kennis** van d
 
 ---
 
-## Zero days en patching
+## Zero days en patching {.smaller}
 
 * **Zero day** = kwetsbaarheid die nog onbekend is bij de softwarefabrikant
   * Gegarandeerd werkzaam - er bestaat nog geen patch
+
+![](assets/window_vuln.png){.nostretch width=80% fig-align="center" fig-alt="Tijdlijn: tussen het ontdekken van een zero day en de patch ligt het window of vulnerability. Daarna blijven niet-gepatchte systemen kwetsbaar." }
 
 ::: {.callout-warning .fragment}
 **Window of vulnerability**: de periode tussen het ontdekken van een zero day en de release van een patch.
@@ -279,6 +274,12 @@ Het *window of vulnerability* is hierdoor vaak **verrassend voorspelbaar**. Wie 
 ---
 
 ## Wie zijn de stropers?
+
+![](assets/stropers.png){fig-alt="Een boswachter bekijkt verse voetafdrukken, terwijl tussen de bomen heel verschillende figuren toekijken."}
+
+---
+
+## De stropers op een rij
 
 ```{mermaid}
 %%{init: {"theme": "base", "flowchart": {"useMaxWidth": true}} }%%
@@ -371,6 +372,12 @@ De "veilige burcht" werkt niet meer als je iedereen met hun eigen sleutel naar b
 ::: {.callout-tip .fragment}
 **Identity management**: verwijder accounts van ex-werknemers **onmiddellijk** na ontslag.
 :::
+
+---
+
+## Net ontslagen&hellip;
+
+![](assets/akhter_meeting.png){fig-alt="Een laptop op de keukentafel: de online meeting is net afgelopen, de handen hangen boven het toetsenbord."}
 
 ---
 
@@ -561,20 +568,7 @@ graph LR
 
 Aanvallers zijn er snel in, maar blijven vaak **maandenlang** onopgemerkt:
 
-| Overgang | Min. | Dagen | Weken | Maanden |
-|---|---|---|---|---|
-| Aanval &rarr; inbraak | **75%** | 2% | 0% | 1% |
-| Inbraak &rarr; **ontdekking** | 0% | 13% | 29% | **54%** |
-
-```{mermaid}
-%%{init: {"theme": "base"} }%%
-pie showData
-    "Maanden" : 54
-    "Weken" : 29
-    "Dagen" : 13
-    "Uren" : 2
-    "Jaren" : 2
-```
+![](assets/dwelltime.png){ width=100% fig-alt="Tijdlijn: 75% van de aanvallers is binnen in minuten, 54% wordt pas na maanden ontdekt." }
 
 ::: {.callout-important .fragment}
 In **54%** van de gevallen merkt een organisatie pas **na maanden** dat er iemand in haar netwerk zit. *Detectie* is minstens even kritisch als *preventie*.
@@ -671,14 +665,24 @@ Alice en Bob zijn eender welk start- en eindpunt van informatie: ook CPU → RAM
 
 ---
 
-## Hoe verdedigen? De 4+1 principes
+## Hoe verdedigen? De 4+1 principes {.smaller}
 
+:::: {.columns}
+
+::: {.column width="58%"}
 | Principe | Beschrijving |
 |---|---|
 | **Layering** | Meerdere beveiligingslagen rondom je data (als een ui) |
 | **Limiting** | Enkel de rechten die iemand echt nodig heeft |
 | **Diversity** | Verscheidenheid aan beveiligingen → één faling ≠ totale neergang |
 | **Simplicity** | KISS: *Keep It Simple, Stupid* - complexiteit introduceert fouten |
+:::
+
+::: {.column width="42%"}
+![](assets/ui_layering.png){ width=100% fig-alt="Verschillende lagen als een ui rond data, gebruikers en services: de aanvaller kraakt de buitenste laag, de volgende houdt stand." }
+:::
+
+::::
 
 ::: {.callout-warning .fragment}
 **+1 - Obscurity**: verberg hoe je verdediging is opgebouwd. Maar gebruik dit **nooit** als vervanging voor echte beveiliging. Gebruik standaarden en vertrouwde producten - heruitvind het wiel niet!
@@ -964,6 +968,12 @@ Gevaarlijke wormen combineren **meerdere paden tegelijk** - blokkeer één route
 
 ---
 
+## Hoe lang overleeft deze pc?
+
+![](assets/xp_wekker.png){fig-alt="Een gloednieuwe pc wordt aan het netwerk gehangen, met een keukenwekker ernaast."}
+
+---
+
 ## Survival time: 20 minuten
 
 ::: {.incremental}
@@ -1172,6 +1182,12 @@ Oplossing: **C&C-server uit de lucht halen** → de zombies worden nutteloos.
 
 ---
 
+## Wat hebben deze toestellen gemeen?
+
+![](assets/mirai_woonkamer.png){fig-alt="Een gezellige woonkamer met een babyfoon-camera, een router en een slimme camera. Op de babyfoon brandt een klein rood lampje."}
+
+---
+
 ## Mirai (2016): het IoT-botnet
 
 * Jaagt niet op computers, maar op **IoT**: routers, camera's, DVR's, babyfoons
@@ -1251,6 +1267,12 @@ RaaS in z'n meest cynische vorm: koop bescherming én aanvalswapen tegelijk.
 | **Warshipping** | Raspberry Pi in postpakket → belt terug naar aanvaller |
 | **Keylogger** | Registreert toetsaanslagen → wachtwoorden stelen |
 | **Juice hacking** | Valse USB-oplaadpunt steelt data of installeert malware |
+
+---
+
+## Ergens in Kaboel, 2008
+
+![](assets/kabul_usb.png){fig-alt="Een hand in legeruniform pakt een goedkope USB-stick van een marktkraam, met een militaire compound op de achtergrond."}
 
 ---
 
@@ -1353,6 +1375,12 @@ De app kan andere apps besturen - zonder dat je iets ziet.
 ::: {.callout-tip .fragment}
 Android 12+ beperkt dit - maar wees steeds voorzichtig met apps die *Accessibility*-rechten vragen.
 :::
+
+---
+
+## Je telefoon staat uit. Toch?
+
+![](assets/poweroff_nachtkastje.png){fig-alt="Een smartphone ligt omgekeerd op een nachtkastje, maar aan de rand brandt nog een piepklein rood lampje."}
 
 ---
 

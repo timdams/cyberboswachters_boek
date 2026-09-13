@@ -1,5 +1,9 @@
 # IoT Security
 
+::: {.content-visible when-format="html"}
+![](assets/cover_iot.png){.chapter-cover fig-alt="De boswachter controleert een wildcamera, terwijl achter haar rug de andere slimme toestellen in het bos stilletjes hun lens naar haar draaien."}
+:::
+
 ::: {.callout-note title="Leerdoelen"}
 Na dit hoofdstuk kan je:
 

@@ -47,6 +47,12 @@ Slides in English: [English slides](slides/en/index.qmd). Nieuw hier? Begin bij 
 Tim Dams, AP Hogeschool.
 :::
 
+::: {.start-ai}
+![](ai_modified_label.png){.start-ai-label fig-alt="EU-label: AI modified"}
+
+Deze cursus werd gemaakt met hulp van AI-assistentie. Sommige afbeeldingen in het handboek en de slides zijn door AI gegenereerd.
+:::
+
 :::
 
 ::: {.content-visible when-format="typst"}
@@ -54,5 +60,9 @@ Tim Dams, AP Hogeschool.
 # Cyberboswachters {.unnumbered}
 
 Dit handboek staat ook online, samen met de slides bij elk hoofdstuk, op <https://timdams.github.io/cyberboswachters_boek/>.
+
+![](ai_modified_label.png){width=4cm fig-alt="EU-label: AI modified"}
+
+Deze cursus werd gemaakt met hulp van AI-assistentie. Sommige afbeeldingen in het handboek en de slides zijn door AI gegenereerd.
 
 :::

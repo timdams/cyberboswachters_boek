@@ -382,6 +382,33 @@ hr {
   border-top: 1px solid $border-color;
 }
 
+// Hoofdstukcover: brede afbeelding onder de hoofdstuktitel. Zelfde verhouding
+// als de chapter-afbeelding in de PDF (orange-book: 21 x 9,4 cm).
+img.chapter-cover {
+  width: 100%;
+  aspect-ratio: 21 / 9.4;
+  object-fit: cover;
+  border-radius: .5rem;
+  margin: .25rem 0 1.5rem;
+}
+
+// AI-disclaimer met het EU-label "AI modified"
+.start-ai {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.1rem;
+  font-size: .85rem;
+  color: #6b6b76;
+
+  p { margin: 0; }
+  img.start-ai-label {
+    width: 120px;
+    max-width: none;
+    height: auto;
+  }
+}
+
 // Op de landingspagina is een auteursregel onder de titel overbodig: de naam
 // staat daar al onderaan bij de wegwijzers.
 // De selector is met opzet zo lang: Quarto zet zelf

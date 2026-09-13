@@ -1,5 +1,9 @@
 # Cryptografie
 
+::: {.content-visible when-format="html"}
+![](assets/cover_crypto.png){.chapter-cover fig-alt="Op een wiebelende touwbrug geeft de boswachter een afgesloten kistje door, terwijl beneden in het ravijn een stroper meekijkt."}
+:::
+
 ::: {.callout-note title="Leerdoelen"}
 Na dit hoofdstuk kan je:
 

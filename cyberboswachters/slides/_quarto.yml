@@ -10,8 +10,14 @@ project:
 website:
   title: "Cyberboswachters – Slides"
 
+# Disclaimer op de titelslide van elk deck (zie title-slide.html).
+# De Engelse versie staat in en/_metadata.yml.
+ai-disclaimer: "Deze cursus werd gemaakt met hulp van AI-assistentie. Sommige afbeeldingen zijn door AI gegenereerd."
+
 format:
   revealjs:
+    template-partials:
+      - title-slide.html
     theme: [default, cyberboswachters.scss]
     lang: nl
     slide-number: true

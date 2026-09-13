@@ -108,6 +108,11 @@ $border-radius-sm: 0.35rem;
   background: $ap-red;
 }
 
+// Geen accentstreepje op een slide zonder titel (bv. de hoofdstukcover als achtergrond)
+.reveal .slides section > h2:empty::after {
+  display: none;
+}
+
 .reveal h3 {
   color: $ink-strong;
   font-weight: 700;
@@ -203,6 +208,16 @@ $border-radius-sm: 0.35rem;
       padding-right: 0;
       width: 100%;
     }
+  }
+
+  // AI-disclaimer (tekst uit ai-disclaimer in _quarto.yml)
+  .ai-disclaimer {
+    color: $muted;
+    font-size: 0.45em;
+    max-width: 70%;
+    margin-top: 2.5em;
+    padding-top: 0.6em;
+    border-top: 1px solid $rule;
   }
 }
 

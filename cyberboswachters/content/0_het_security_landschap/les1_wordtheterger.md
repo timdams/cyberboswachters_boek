@@ -1,5 +1,9 @@
 # Wordt het erger?
 
+::: {.content-visible when-format="html"}
+![](assets/cover_wordtheterger.png){.chapter-cover fig-alt="Een zonnig kantoor waar iedereen rustig werkt, terwijl de naald van de barometer aan de muur naar het rode vlak kruipt."}
+:::
+
 ::: {.callout-note title="Leerdoelen"}
 Na dit hoofdstuk kan je:
 

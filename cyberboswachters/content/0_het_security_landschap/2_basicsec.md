@@ -1,5 +1,9 @@
 # Cybersecurity fundamenten
 
+::: {.content-visible when-format="html"}
+![](assets/stropers.png){.chapter-cover fig-alt="Een boswachter bekijkt verse voetafdrukken, terwijl tussen de bomen heel verschillende figuren toekijken."}
+:::
+
 ::: {.callout-note title="Leerdoelen"}
 Na dit hoofdstuk kan je:
 
@@ -60,6 +64,8 @@ Om ons doel te bereiken (C.I.A.) moeten we ervoor zorgen dat we dit toepassen op
 
 ::: {.callout-note}
 **Twitter's hashing-bug (2018)**: een treffende illustratie waarom de McCumber kubus *alle* informatiestatus-aspecten moet dekken. Twitter hashte netjes wachtwoorden met **bcrypt** in hun database (status: *opslag*). Maar door een bug werden de wachtwoorden **vóór** het hashen in een interne log geschreven (status: *verwerking*). Resultaat: miljoenen wachtwoorden in plaintext terug te vinden in logs waar Twitter-medewerkers bij konden. Eén vergeten hoekje van de kubus volstaat om de hele beveiliging te omzeilen. [Bron: Twitter Blog](https://blog.x.com/en_us/topics/company/2018/keeping-your-account-secure)
+
+![De Twitter-bug in de McCumber kubus.](assets/mccumber_twitter.png){ width=90% }
 :::
 
 ::: {.callout-warning}
@@ -86,11 +92,7 @@ De cyberboswachters van de 21e eeuw hebben geen eenvoudige job. Ze was in de vor
 ::: {.callout-tip}
 **De scheve grafiek**: een beroemd diagram uit de security-wereld toont twee lijnen die in tegenovergestelde richting gaan over de voorbije decennia. De *attack sophistication* stijgt onafgebroken, terwijl de *knowledge required of the attacker* kelderde in diezelfde periode. Wat vroeger decennia ervaring vereiste, vraagt nu enkel een download en een muisklik. Dit verklaart waarom scriptkiddies een reëel probleem zijn geworden.
 
-* 1980 : Password guessing : Self-replicating code
-* 1990 : Sniffers : Session hijacking : Packet spoofing
-* 2000 : WWW attacks : DoS : Automated probes : GUI-tools
-* 2010 : Botnets : DDoS : Morphing malware : Stealth scanning
-* 2020 : Ransomware-as-a-Service : AI-gedreven aanvallen : Supply-chain attacks
+![De scheve grafiek.](assets/scheve_grafiek.png){ width=90% }
 
 
 *Aanvalstools worden steeds krachtiger - terwijl de vereiste kennis van de aanvaller alleen maar daalt.*
@@ -103,6 +105,8 @@ Aanvallers hebben voor zero days aardig wat geld over. Een zero day kopen is een
 Een zero day zal quasi gegarandeerd blijven werken tot de ontwikkelaars een nieuwe patch ervoor maken. Maar zelfs dan blijven zero days nuttig: het is niet omdat er een patch bestaat, dat de doelwitten deze patch ook effectief reeds geïnstalleerd hebben. Veel bedrijven hebben nu erg strenge *patching policies* maar toch blijft het dweilen met de kraan open: er moet maar één systeem niet gepatcht zijn tegen de zero day van de aanvallers en het gaatje in de verdedigingslinie is gevonden en kan misbruikt worden.
 
 De meeste fabrikanten van besturingssystemen (Apple, Microsoft, etc.) en veelgebruikte softwarepakketten (Adobe, Microsoft, etc.) brengen patches op welbepaalde dagen uit. Dit zorgt er bijvoorbeeld voor dat systeembeheerders hier rekening mee kunnen houden in hun wekelijkse planning. Voor gebruikers van zero days is dit ook nuttig: er ontstaat een zogenaamde **window of vulnerability**. Dit is de periode tussen het "ontdekken en in gebruik nemen van een zero day" en de moment waarop de patch tegen de zero day wordt verspreid. In dit *window* heeft de aanvaller vrij spel daar geen enkel systeem al kan gepatcht zijn. 
+
+![Het window of vulnerability.](assets/window_vuln.png){ width=100% }
 
 ::: {.callout-note}
 **Patch Tuesday &amp; Exploit Wednesday**: Microsoft rolt sinds 2003 haar beveiligingsupdates standaard uit op de **tweede dinsdag van elke maand** - bekend als *Patch Tuesday*. Voordeel voor systeembeheerders: voorspelbaarheid in hun onderhoudsplanning. Maar&hellip; aanvallers weten dit óók. De dag erna wordt in de security-wereld vaak **Exploit Wednesday** genoemd: aanvallers doen *reverse-engineering* op de patch om te achterhalen **welke kwetsbaarheid** er juist gedicht werd, en richten zich dan op alle systemen die nog niet zijn bijgewerkt. Het *window of vulnerability* is in die zin vaak verrassend goed te voorspellen.
@@ -247,6 +251,8 @@ Wanneer een netwerk wordt gepentest (legaal) werkt men vaak met twee teams die t
 ::: {.callout-important}
 **Dwell time - de stille meerderheid**: cijfers uit de (ondertussen legendarische) Verizon *Data Breach Investigation Reports* schetsen een ontluisterend beeld. Aanvallers zijn razendsnel *binnen*, maar blijven vaak *maandenlang* onopgemerkt.
 
+![Dwell time volgens de Verizon DBIR.](assets/dwelltime.png){ width=100% }
+
 | Overgang | Sec. | Min. | Uren | Dagen | Weken | Maanden | Jaren |
 |---|---|---|---|---|---|---|---|
 | Aanval &rarr; inbraak | 10% | **75%** | 12% | 2% | 0% | 1% | 0% |
@@ -316,6 +322,8 @@ Wat en wie je wilt verdedigen in de cyberwereld kan erg gevarieerd zijn. Toch ku
 * **Limiting**: beperk steeds maximaal wat iedereen binnen je systeem kan. Zorg ervoor dat gebruikers en services enkel die zaken kunnen doen waartoe ze recht hebben volgens hun rol. Geef dus niet iedereen admin-rechten, zet je firewall niet op *allow all*, etc.
 * **Diversity**: zorg ervoor dat je een verscheidenheid aan beveiligingen hebt. Op die manier voorkomen we, net als bij layering, dat het falen van één systeem je hele verdediging neerhaalt.
 * **Simplicity**: KISS, oftewel *keep it simple, stupid*. Al het voorgaande lijkt te doen uitschijnen dat je complexe systemen moet bouwen die als het ware een doolhof voor de aanvallers maken. Op zich is daar iets van aan, maar zorg er wel voor dat je niet zelf in je doolhof verdwaalt en daardoor fouten introduceert zonder het te beseffen. Soms is *less more* en dat geldt ook bij beveiliging. 
+
+![Layering en diversity: verschillende lagen rond wat je beschermt.](assets/ui_layering.png){ width=80% }
 
 ::: caution
 Het vijfde fundamentele principe krijgt een eigen kadertje omdat deze voor discussie vatbaar is én geregeld voor de nodige controverse kan zorgen. Als je dus, om welke reden dan ook, niet genoeg tijd of budget hebt om alle principes toe te passen, probeer dan de volgende als laatste "oplossing" te gebruiken:

@@ -1,5 +1,9 @@
 # Wifi security
 
+::: {.content-visible when-format="html"}
+![](assets/cover_wifi.png){.chapter-cover fig-alt="De boswachter praat in haar radio, terwijl achter de struiken een stroper met een zelfgemaakte antenne de radiogolven opvangt."}
+:::
+
 ::: {.callout-note title="Leerdoelen"}
 Na dit hoofdstuk kan je:
 

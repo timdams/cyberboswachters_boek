@@ -1,5 +1,9 @@
 # Authenticatie
 
+::: {.content-visible when-format="html"}
+![](assets/cover_authenticatie.png){.chapter-cover fig-alt="Aan de poort van het natuurreservaat controleert de boswachter badges, terwijl in de rij een stroper met een nagemaakte badge staat te wachten."}
+:::
+
 ::: {.callout-note title="Leerdoelen"}
 Na dit hoofdstuk kan je:
 
