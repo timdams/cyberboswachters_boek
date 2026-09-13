@@ -116,11 +116,9 @@ $border-radius-sm: 0.35rem;
 }
 
 // EU-label "AI generated" op slides met een imagegen-afbeelding (slide krijgt .ai-beeld).
-// Klein en half doorzichtig rechtsonder. min-height zodat het label ook op een lege
-// coverslide (enkel achtergrondbeeld) onderaan staat en niet bovenaan.
-.reveal .slides section.ai-beeld {
-  min-height: 100%;
-}
+// Klein en half doorzichtig rechtsonder.
+// Geen min-height op de section zetten: reveal meet de resthoogte voor .r-stretch
+// met height:auto, en met min-height:100% blijft er 0px over (beeld onzichtbaar).
 .reveal .slides section.ai-beeld::after {
   content: "";
   position: absolute;

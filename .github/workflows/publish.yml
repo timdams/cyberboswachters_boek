@@ -54,7 +54,7 @@ jobs:
           REBUILD_ALL=false
           if [ -z "$BASE" ]; then
             REBUILD_ALL=true
-          elif git diff --name-only "$BASE" HEAD | grep -qE 'cyberboswachters/slides/(_quarto\.yml|_extensions/)'; then
+          elif git diff --name-only "$BASE" HEAD | grep -qE 'cyberboswachters/slides/(_quarto\.yml|_extensions/|[^/]*\.scss)'; then
             REBUILD_ALL=true
           fi
 
