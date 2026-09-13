@@ -162,7 +162,7 @@ In de praktijk kiezen Alice en Bob **véél** grotere getallen dan 3 en 6!
 
 ---
 
-## Diffie-Hellman: de verfkleurenmetafoor
+## Diffie-Hellman: de verfkleurenmetafoor {.smaller}
 
 :::: {.columns}
 
@@ -179,14 +179,14 @@ Verf mengen is makkelijk, *ontmengen* praktisch onmogelijk. In de digitale versi
 :::
 
 ::: {.column width="45%"}
-![](crypto_assets/dh-paint.png){width=80%}
+![](crypto_assets/dh-paint.png){width=55%}
 :::
 
 ::::
 
 ---
 
-## Diffie-Hellman uitgelegd in filmpje
+## Diffie-Hellman uitgelegd in filmpje {.smaller}
 
 ![Alles samen uitgelegd](crypto_assets/ssh.mp4)
 
@@ -687,7 +687,7 @@ Meer weten? Bekijk de briljante visualisatie op [tls.ulfheim.net](HTTPS://tls.ul
 
 ---
 
-## Mutual TLS (mTLS)
+## Mutual TLS (mTLS) {.smaller}
 
 :::: {.columns}
 

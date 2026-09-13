@@ -75,7 +75,7 @@ No central authority → hard to censor or take down.
 
 ---
 
-## Good *and* bad use
+## Good *and* bad use {.smaller}
 
 :::: {.columns}
 
@@ -148,7 +148,7 @@ TOR also offers extra privacy on the **regular internet**, not just on the Dark 
 
 ---
 
-## Why should you know this?
+## Why should you know this? {.smaller}
 
 As a cyber ranger you will inevitably encounter the Dark Web:
 

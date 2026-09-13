@@ -108,6 +108,13 @@ $border-radius-sm: 0.35rem;
   background: $ap-red;
 }
 
+// Mermaid-diagram dat te hoog uitvalt: begrenzen op de slidehoogte (slide krijgt .mermaid-compact)
+.reveal .slides section.mermaid-compact svg {
+  max-height: 480px;
+  width: auto !important;
+  max-width: 100%;
+}
+
 // Geen accentstreepje op een slide zonder titel (bv. de hoofdstukcover als achtergrond)
 .reveal .slides section > h2:empty::after {
   display: none;

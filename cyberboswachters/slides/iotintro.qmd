@@ -76,7 +76,7 @@ Ook de Belgische OWASP-tak organiseert (gratis) workshops en events.
 
 ---
 
-## #1 - Zwakke of hardcoded wachtwoorden
+## #1 - Zwakke of hardcoded wachtwoorden {.smaller}
 
 * Default wachtwoorden zijn publiek bekend - aanvallers kennen ze
 * Wachtwoord aanpassen is vaak **omslachtig** op IoT-apparaten
@@ -123,7 +123,7 @@ Controleer altijd welke netwerkservices actief zijn op een nieuw apparaat - en z
 
 ---
 
-## #3 - Onveilig ecosysteem
+## #3 - Onveilig ecosysteem {.smaller}
 
 IoT-apparaten zijn zelden alleen - ze maken deel uit van een **ecosysteem**:
 
@@ -145,7 +145,7 @@ Controleer geregeld via je **Google** of **Apple** accountinstellingen welke app
 
 ---
 
-## #4 - Geen of onveilig updatemechanisme
+## #4 - Geen of onveilig updatemechanisme {.smaller}
 
 * Updates zijn cruciaal om beveiligingslekken te dichten
 * Maar bij IoT is updaten vaak **niet vanzelfsprekend**:
@@ -245,7 +245,7 @@ Als de data onversleuteld op het apparaat staat, is de encryptie tijdens verzend
 
 ---
 
-## #8 - Gebrek aan apparaatbeheer
+## #8 - Gebrek aan apparaatbeheer {.smaller}
 
 In een enterprise IoT-omgeving: **honderden tot duizenden apparaten** beheren.
 
@@ -265,7 +265,7 @@ Een goed device management systeem is duur - maar een gecompromitteerd IoT-netwe
 
 ---
 
-## #9 - Onveilige standaardinstellingen
+## #9 - Onveilige standaardinstellingen {.smaller}
 
 * Apparaten komen *uit de doos* met **standaardinstellingen** die aanvallers kennen
 * Niet alleen wachtwoorden - ook:
@@ -285,7 +285,7 @@ Gezonde gewoonte: controleer **alle instellingen** van een nieuw apparaat vóór
 
 ---
 
-## #10 - Gebrek aan fysieke hardening
+## #10 - Gebrek aan fysieke hardening {.smaller}
 
 :::: {.columns}
 
@@ -330,7 +330,7 @@ xychart-beta
 
 ---
 
-## Conclusie
+## Conclusie {.smaller}
 
 * **Basismaatregelen** leveren de grootste veiligheidswinst op:
   * Goede wachtwoorden, geen defaults, updates, onnodige services uitschakelen

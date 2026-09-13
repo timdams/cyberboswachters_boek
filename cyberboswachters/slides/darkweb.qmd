@@ -75,7 +75,7 @@ Geen centrale autoriteit → moeilijk te censureren of uit de lucht te halen.
 
 ---
 
-## Goed én slecht gebruik
+## Goed én slecht gebruik {.smaller}
 
 :::: {.columns}
 
@@ -153,7 +153,7 @@ TOR biedt ook extra privacy op het **gewone internet**, niet alleen op het Dark 
 
 ---
 
-## Waarom moet je dit weten?
+## Waarom moet je dit weten? {.smaller}
 
 Als cyberboswachter kom je het Dark Web onvermijdelijk tegen:
 

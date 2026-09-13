@@ -212,8 +212,11 @@ Vatbaar voor **pass-the-hash** aanval!
 
 ---
 
-## Pass-the-hash aanval
+## Pass-the-hash aanval {.smaller}
 
+:::: {.columns}
+
+::: {.column width="60%"}
 ```{mermaid}
 %%{init: {"theme": "base", "sequence": {"useMaxWidth": true}} }%%
 sequenceDiagram
@@ -233,10 +236,15 @@ sequenceDiagram
     A->>S: gebruikersnaam + gestolen hash
     S-->>A: ✅ Toegang (zonder paswoord te kennen!)
 ```
+:::
 
+::: {.column width="40%"}
 ::: {.callout-warning .fragment}
 De aanvaller hoeft het **originele wachtwoord nooit te kraken** - de hash zelf is genoeg om zich aan te melden.
 :::
+:::
+
+::::
 
 ---
 
@@ -464,7 +472,7 @@ Petya en NotPetya werden getraceerd naar **Sandworm**, een Russische hackinggroe
 
 ---
 
-## SCRAM: Salted Challenge-Response Authentication Mechanism
+## SCRAM: Salted Challenge-Response Authentication Mechanism {.smaller}
 
 
 :::: {.columns}
@@ -549,7 +557,7 @@ Veelgebruikte biometrieken:
 
 ---
 
-## Biometrics: opslag
+## Biometrics: opslag {.smaller}
 
 * **Feature points** = unieke waarden per persoon
 * Opgeslagen als korte sequentie van getallen in de database
@@ -569,25 +577,28 @@ Identification is véél zwaarder: vergelijking met **elke** template in de data
 
 ---
 
-## Biometrics: drie fasen
+## Biometrics: drie fasen {.smaller .mermaid-compact}
 
 ```{mermaid}
 %%{init: {"flowchart": {"useMaxWidth": true}} }%%
-flowchart LR
+flowchart TB
     classDef box fill:#ffffff,stroke:#333,color:#000,stroke-width:1px
     classDef db fill:#fff3cd,stroke:#333,color:#000,stroke-width:1px
     classDef good fill:#d4edda,stroke:#333,color:#000,stroke-width:1px
     classDef bad fill:#f8d7da,stroke:#333,color:#000,stroke-width:1px
     classDef cluster color:#ffffff,stroke:#ffffff
     subgraph ENR["① Enrollment (eenmalig)"]
+        direction LR
         E1[Kenmerk]:::box --> E2[Features]:::box --> E3[(DB)]:::db
     end
     subgraph VER["② Verification (1-op-1)"]
+        direction LR
         V1["+ 'ik ben X'"]:::box --> V3{Match X?}:::box
         V3 -->|Ja| V4[Toegang]:::good
         V3 -->|Nee| V5[Geweigerd]:::bad
     end
     subgraph IDE["③ Identification (1-op-N)"]
+        direction LR
         I1[Kenmerk]:::box --> I3{Match 1/N?}:::box
         I3 -->|Match k| I4[User k]:::good
         I3 -->|Geen| I5[Onbekend]:::bad
@@ -601,7 +612,7 @@ flowchart LR
 
 ---
 
-## Biometrics: kost vs. accuraatheid
+## Biometrics: kost vs. accuraatheid {.smaller}
 
 Keuze hangt af van **use case** en **budget**: irisscan aan de grens ≠ gezichtsherkenning via webcam.
 
@@ -697,7 +708,7 @@ Bij federatie: in hoeverre **vertrouw** je Google of Meta met jouw (login)data? 
 
 ---
 
-## WebAuthn en Passkeys
+## WebAuthn en Passkeys {.smaller}
 
 * **WebAuthn**: inloggen **zonder wachtwoord** via een *authenticator* (USB-sleutel, smartphone)
 * **Passkeys** = combinatie van **asymmetrische crypto** + **hardware authenticatie**
@@ -821,7 +832,7 @@ graph LR
 
 ---
 
-## TOTP: waarom is het veilig?
+## TOTP: waarom is het veilig? {.smaller}
 
 | Eigenschap | Uitleg |
 |---|---|
@@ -854,7 +865,7 @@ Alles in dit hoofdstuk valt terug te brengen tot:
 
 ---
 
-## Conclusie
+## Conclusie {.smaller}
 
 * **Authenticatie** = bewijzen wie je bent; **autorisatie** = wat mag je
 * Wachtwoorden: nooit plaintext → **hashing + salting** als minimum

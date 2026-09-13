@@ -38,7 +38,7 @@ Er zijn nu meer **verbonden apparaten** dan mensen, en aanvallers worden steeds 
 
 ---
 
-## &hellip; en de formele NIST-definitie
+## &hellip; en de formele NIST-definitie {.smaller}
 
 > *"The protection afforded to an automated information system in order to attain the applicable objectives of preserving the **integrity**, **availability** and **confidentiality** of information system resources."*
 
@@ -73,7 +73,7 @@ NIST = *National Institute of Standards and Technology* (VS). Hun definitie intr
 
 ---
 
-## CIA gaat dieper: elk met twee gezichten
+## CIA gaat dieper: elk met twee gezichten {.smaller}
 
 :::: {.columns}
 
@@ -110,7 +110,7 @@ Data integer ≠ systeem integer.
 
 ---
 
-## McCumber kubus
+## McCumber kubus {.smaller}
 
 :::: {.columns}
 
@@ -250,7 +250,7 @@ Het *window of vulnerability* is hierdoor vaak **verrassend voorspelbaar**. Wie 
 
 ---
 
-## Zero days: een markt
+## Zero days: een markt {.smaller}
 
 :::: {.columns}
 
@@ -341,7 +341,7 @@ Een politie-inval + zware boetes als gevolg van "gewoon een knopje indrukken".
 
 ---
 
-## Werknemers: de vergeten bedreiging
+## Werknemers: de vergeten bedreiging {.smaller}
 
 :::: {.columns}
 
@@ -381,7 +381,7 @@ De "veilige burcht" werkt niet meer als je iedereen met hun eigen sleutel naar b
 
 ---
 
-## `DROP DATABASE;` - de gebroeders Akhter (2025)
+## `DROP DATABASE;` - de gebroeders Akhter (2025) {.smaller}
 
 :::: {.columns}
 
@@ -468,7 +468,7 @@ graph LR
 
 ---
 
-## Cyberterroristen, spionnen & overheden
+## Cyberterroristen, spionnen & overheden {.smaller}
 
 * De scheidslijn tussen **terrorist**, **spion** en **staatshacker** is vaag en politiek
 * Financiële en technische middelen zijn **immens** groter dan andere groepen
@@ -480,12 +480,12 @@ Maak een realistische inschatting van je tegenstander. Een staatsactor *zal* bin
 :::
 
 ::: {.fragment}
-![Stuxnet: door staten gesponsorde malware die Iraanse centrifuges saboteerde.](assets/stuxnet.png){ width=50% }
+![Stuxnet: door staten gesponsorde malware die Iraanse centrifuges saboteerde.](assets/stuxnet.png){ width=35% }
 :::
 
 ---
 
-## Een (onvolledige) geschiedenis
+## Een (onvolledige) geschiedenis {.smaller}
 
 | Jaar | Operatie | Wat |
 |---|---|---|
@@ -502,7 +502,7 @@ Maak een realistische inschatting van je tegenstander. Een staatsactor *zal* bin
 
 ---
 
-## Hacktivisme in de Oekraïne-oorlog
+## Hacktivisme in de Oekraïne-oorlog {.smaller}
 
 :::: {.columns}
 
@@ -548,7 +548,7 @@ graph LR
 
 ---
 
-## De 5 fasen: detail
+## De 5 fasen: detail {.smaller}
 
 | Fase | Activiteit |
 |---|---|
@@ -854,7 +854,7 @@ De volledige aanpak voor het opzetten van een awareness-cultuur staat in de **ap
 
 ---
 
-## OSINT: Open Source Intelligence
+## OSINT: Open Source Intelligence {.smaller}
 
 :::: {.columns}
 
@@ -914,7 +914,7 @@ graph TD
 
 ---
 
-## Mikko Hyppönen
+## Mikko Hyppönen {.smaller}
 
 :::: {.columns}
 
@@ -989,7 +989,7 @@ Advies toen: **eerst de firewall, dan pas online** (NAT-router, patches op cd, s
 
 ---
 
-## ILOVEYOU vs. SQL Slammer
+## ILOVEYOU vs. SQL Slammer {.smaller}
 
 :::: {.columns}
 
@@ -1017,7 +1017,7 @@ De tijdzonegolf bestond enkel bij **mailwormen** die afhingen van menselijk klik
 
 ---
 
-## Drive-by download & watering hole
+## Drive-by download & watering hole {.smaller}
 
 ::: {.incremental}
 * **Drive-by download**: een gecompromitteerde webpagina bezoeken volstaat - *geen klik nodig*. Misbruik van browser-, plugin- of PDF-kwetsbaarheid
@@ -1033,7 +1033,7 @@ Nauw verwant: **malvertising** - kwaadaardige advertentiebanners via reguliere a
 
 ---
 
-## Trojan
+## Trojan {.smaller}
 
 :::: {.columns}
 
@@ -1061,7 +1061,7 @@ De naam is gebaseerd op de legende van *Het Paard van Troje* uit de Aeneid van V
 
 ---
 
-## Supply-chain trojan: CIA &amp; Xcode
+## Supply-chain trojan: CIA &amp; Xcode {.smaller}
 
 Onthulling uit de **Snowden-lekken (2015)**:
 
@@ -1132,10 +1132,13 @@ Back-ups helpen - maar enkel als ze **buiten het bereik van de ransomware** staa
 
 ---
 
-## Betalen = geen garantie
+## Betalen = geen garantie {.smaller}
 
 Onderzoek van Hive Systems op **24.000** Amerikaanse bedrijven:
 
+:::: {.columns}
+
+::: {.column width="50%"}
 ```{mermaid}
 %%{init: {"theme": "base"} }%%
 pie showData title Uitkomst na ransomware-aanval
@@ -1144,7 +1147,9 @@ pie showData title Uitkomst na ransomware-aanval
     "Betaald + data tóch verloren" : 19
     "Niet betaald + data verloren" : 7
 ```
+:::
 
+::: {.column width="50%"}
 ::: {.callout-warning .fragment}
 **1 op 5** die betaalt, krijgt **niets terug**. Totale kost VS 2021: **$7.9 miljard** - waarvan $1.4 miljard aan losgeld.
 :::
@@ -1152,6 +1157,9 @@ pie showData title Uitkomst na ransomware-aanval
 ::: {.callout-important .fragment}
 Betalen is russische roulette - én het financiert de volgende aanval. **Offline** back-ups zijn de enige echte verzekering.
 :::
+:::
+
+::::
 
 ::: aside
 Bron: hivesystems.com
@@ -1159,7 +1167,7 @@ Bron: hivesystems.com
 
 ---
 
-## Botnet: zombie-legers
+## Botnet: zombie-legers {.smaller}
 
 :::: {.columns}
 
@@ -1239,7 +1247,7 @@ Malware maken is **laagdrempeliger dan ooit**. De scheve grafiek in actie.
 
 ---
 
-## *"DDoS à la carte"* - echte afpersingsbrief
+## *"DDoS à la carte"* - echte afpersingsbrief {.smaller}
 
 > *"If you want to continue having your site operational, you must pay us 10 000 rubles monthly.*
 >
@@ -1276,7 +1284,7 @@ RaaS in z'n meest cynische vorm: koop bescherming én aanvalswapen tegelijk.
 
 ---
 
-## De Russische USB's van Kabul (2008)
+## De Russische USB's van Kabul (2008) {.smaller}
 
 * **Airgapped** Amerikaans militair netwerk - niet verbonden met het internet
 * Russische spionnen leveren **goedkope USB-sticks vol malware** aan retailkiosken vlak bij het NATO-HQ in Kaboel
@@ -1296,7 +1304,7 @@ Bron: Fred Kaplan, *Dark Territory: The Secret History of Cyber War* (2016).
 
 ---
 
-## Hacking hardware
+## Hacking hardware {.smaller}
 
 :::: {.columns}
 
@@ -1350,7 +1358,7 @@ Je smartphone = je **primaire** digitale apparaat:
 
 ---
 
-## Clickjacking op Android
+## Clickjacking op Android {.smaller}
 
 :::: {.columns}
 
@@ -1384,7 +1392,7 @@ Android 12+ beperkt dit - maar wees steeds voorzichtig met apps die *Accessibili
 
 ---
 
-## Android/PowerOffHijack (2015)
+## Android/PowerOffHijack (2015) {.smaller}
 
 Je telefoon **uitzetten** &hellip; of toch niet?
 
@@ -1476,7 +1484,7 @@ Meer info: [knobattack.com](https://knobattack.com/)
 
 ---
 
-## Whisper Leak (nov 2025): LLM-gesprekken lekken
+## Whisper Leak (nov 2025): LLM-gesprekken lekken {.smaller}
 
 Versleutelde ChatGPT/Claude/Gemini-gesprekken zijn **toch niet privé**:
 
@@ -1520,7 +1528,7 @@ Bron: [dinaburg.org/bitsquatting.html](http://dinaburg.org/bitsquatting.html)
 
 ---
 
-## Conclusie
+## Conclusie {.smaller}
 
 * **CIA-model** is het fundament van alle cybersecurity
 * De **McCumber kubus** helpt om niets over het hoofd te zien - inclusief mensen

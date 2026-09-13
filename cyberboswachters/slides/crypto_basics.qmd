@@ -114,7 +114,7 @@ Integrity wordt ook vaak opgelost m.b.v. cryptgrafische technieken, zoals **hash
 
 ---
 
-## Kerckhoffs principe
+## Kerckhoffs principe {.smaller}
 
 :::: {.columns}
 
@@ -303,7 +303,7 @@ Eeuwenlang **onkraakbaar** genoemd: *le chiffre indéchiffrable*
 
 ---
 
-## Vigenère: voorbeeld
+## Vigenère: voorbeeld {.smaller}
 
 :::: {.columns}
 
@@ -322,7 +322,7 @@ X W A R G S E G Q C C A S E
 :::
 
 ::: {.column width="45%"}
-![Tabula recta](crypto_assets/vigenere.png){ width=100% }
+![Tabula recta](crypto_assets/vigenere.png){ width=70% }
 :::
 
 ::::
@@ -344,20 +344,20 @@ X W A R G S E G Q C C A S E
 ---
 
 
-## Scytale: voorbeeld
+## Scytale: voorbeeld {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 "De perzen komen er nu aan" op scytale met 4 zijden:
 
-![](crypto_assets/skypre.png){ width=100% }
+![](crypto_assets/skypre.png){ width=55% }
 :::
 
 ::: {.column width="50%"}
 Ciphertext na afwikkelen:
 
-![](crypto_assets/skyna.png){ width=100% }
+![](crypto_assets/skyna.png){ width=70% }
 :::
 
 ::::
@@ -385,7 +385,7 @@ graph TD
 
 ---
 
-## Wat maakt crypto "modern"?
+## Wat maakt crypto "modern"? {.smaller}
 
 Klassieke ciphers (Caesar, Vigenère, scytale) zijn ondertussen allemaal gekraakt → tijd voor zwaarder geschut.
 
@@ -775,7 +775,7 @@ Voorbeeld: **0**1101**1** → 1001
 
 
 
-## DES: subkeys maken
+## DES: subkeys maken {.smaller}
 
 :::: {.columns}
 
@@ -786,7 +786,7 @@ Voorbeeld: **0**1101**1** → 1001
 :::
 
 ::: {.column width="40%"}
-![De 16 rondes die telkens 1 subkey maken.](crypto_assets/des6.png){ width=100% }
+![De 16 rondes die telkens 1 subkey maken.](crypto_assets/des6.png){ width=65% }
 :::
 
 ::::
@@ -824,7 +824,7 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 
 ---
 
-## DES gekraakt in de praktijk
+## DES gekraakt in de praktijk {.smaller}
 
 :::: {.columns}
 

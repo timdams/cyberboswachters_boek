@@ -11,7 +11,7 @@ format:
     logo: assets/wordmark.svg
 ---
 
-## Wat is GDPR?
+## Wat is GDPR? {.smaller}
 
 **General Data Protection Regulation** (2018)
 
@@ -92,7 +92,7 @@ GDPR zorgt ervoor dat burgers geen speelbal meer zijn van bedrijven die data als
 
 ---
 
-## Meldplicht bij datalekken
+## Meldplicht bij datalekken {.smaller}
 
 ::: {.callout-note}
 **Datalek** = *"Een inbreuk op de beveiliging die per ongeluk of op onrechtmatige wijze leidt tot de vernietiging, het verlies, de wijziging of de ongeoorloofde verstrekking van of ongeoorloofde toegang tot persoonsgegevens."*
@@ -111,7 +111,7 @@ De 72 uur gaan in op het moment van **ontdekking** - niet van het moment dat het
 
 ---
 
-## Uitzonderingen meldplicht
+## Uitzonderingen meldplicht {.smaller}
 
 Het bedrijf hoeft het individu **niet** te verwittigen als:
 
@@ -150,7 +150,7 @@ Enkel de niet-identificeerbare database is gelekt → geen privacy-schending.
 
 ---
 
-## Criteria voor boetes
+## Criteria voor boetes {.smaller}
 
 Of er een boete volgt en hoe groot, hangt af van:
 
@@ -180,7 +180,7 @@ Een boete is **niet automatisch**: bedrijven die aantoonbaar alles in het werk h
 
 ---
 
-## GDPR in de praktijk: boetes
+## GDPR in de praktijk: boetes {.smaller}
 
 ::: {.callout-note}
 Mei 2018 → eind 2020: reeds **272 miljoen euro** aan boetes geïnd.

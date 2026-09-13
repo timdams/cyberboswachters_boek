@@ -217,9 +217,13 @@ Dit concept van een sleutel verlengen met een getal heet **salting** - kennen we
 
 ---
 
-## WEP: encryptie en decryptie
+## WEP: encryptie
 
 ![WEP encryptie.](wifi_assets/wepfull.png)
+
+---
+
+## WEP: decryptie
 
 ![WEP decryptie.](wifi_assets/wepdec.png)
 
@@ -365,7 +369,11 @@ De standaard zei enkel: *"geregeld updaten"* → fabrikanten kozen zelf:
 
 ![De bitflip aanval.](wifi_assets/bitflip.png)
 
-![Corrupte pakketjes genereren gekende foutboodschappen.](wifi_assets/respat.png){ width=70% }
+---
+
+## Bitflip aanval: gekende foutboodschappen
+
+![Corrupte pakketjes genereren gekende foutboodschappen.](wifi_assets/respat.png)
 
 ---
 

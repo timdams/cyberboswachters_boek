@@ -242,7 +242,7 @@ Les: grote cyberaanvallen op kritieke infrastructuur combineren bijna altijd **d
 
 ---
 
-## 2013: Privacy op het Internet is een illusie
+## 2013: Privacy op het Internet is een illusie {.smaller}
 
 Twee personen sloegen het glazen huisje aan diggelen:
 
@@ -257,7 +257,7 @@ Twee personen sloegen het glazen huisje aan diggelen:
 :::
 
 ::: {.column width="50%"}
-![Julian Assange (2008). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Julian_Assange_in_2008.jpg), auteur Periodismodepaz, CC BY 4.0.](assets/julian_assange_in_2008.jpg){ width=75% }
+![Julian Assange (2008). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Julian_Assange_in_2008.jpg), auteur Periodismodepaz, CC BY 4.0.](assets/julian_assange_in_2008.jpg){ width=55% }
 
 :::
 
@@ -266,7 +266,7 @@ Twee personen sloegen het glazen huisje aan diggelen:
 
 ---
 
-## 2013: Privacy op het Internet is een illusie
+## 2013: Privacy op het Internet is een illusie {.smaller}
 
 Twee personen sloegen het glazen huisje aan diggelen:
 
@@ -283,7 +283,7 @@ Twee personen sloegen het glazen huisje aan diggelen:
 :::
 
 ::: {.column width="50%"}
-![Edward Snowden (2013). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Edward_Snowden-2.jpg), Laura Poitras / Praxis Films, CC BY 3.0.](assets/edward_snowden-2.jpg)
+![Edward Snowden (2013). Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Edward_Snowden-2.jpg), Laura Poitras / Praxis Films, CC BY 3.0.](assets/edward_snowden-2.jpg){ width=55% }
 
 
 :::
@@ -377,7 +377,7 @@ Data die je vandaag deelt, blíjft bestaan. Wie er later toegang toe krijgt (en 
 
 ---
 
-## 2014: The Fappening - de cloud als doelwit
+## 2014: The Fappening - de cloud als doelwit {.smaller}
 
 * Hackers stalen privéfoto's van ~100 celebrities van hun **Apple iCloud** accounts
 * Foto's verspreidden zich razendsnel via Reddit, 4chan, ...
@@ -413,7 +413,7 @@ Lieg gerust op beveiligingsvragen - er bestaat geen leugendetector in die system
 
 ---
 
-## 2014: Als landen vechten - Sony & Noord-Korea
+## 2014: Als landen vechten - Sony & Noord-Korea {.smaller}
 
 * Sony bracht **"The Interview"** uit: komedie waarin een dictator wordt vermoord
 * Vergelijking met Kim Jong-un was voor iedereen duidelijk
@@ -585,7 +585,7 @@ IoT vergroot de **attack surface** exponentieel. Elk slim apparaat is een potent
 
 ---
 
-## 2016: Internet-of-Horrors - Mirai botnet
+## 2016: Internet-of-Horrors - Mirai botnet {.smaller}
 
 :::: {.columns}
 
@@ -602,7 +602,7 @@ Mirai creëerde een botnet van honderdduizenden IoT-apparaten die:
 :::
 
 ::: {.column width="45%"}
-![Schema van een DDoS-botnet: aanvaller → *handlers* → *agents* (besmette IoT-apparaten) → slachtoffer. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stachledraht_DDos_Attack.svg), Everaldo Coelho & YellowIcon, LGPL.](assets/stachledraht_ddos_attack.svg){ width=100% }
+![Schema van een DDoS-botnet: aanvaller → *handlers* → *agents* (besmette IoT-apparaten) → slachtoffer. Bron: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stachledraht_DDos_Attack.svg), Everaldo Coelho & YellowIcon, LGPL.](assets/stachledraht_ddos_attack.svg){ width=70% }
 :::
 
 ::::
@@ -651,7 +651,7 @@ Ransomware-schade is zelden enkel het losgeld - indirecte kosten domineren.
 
 ---
 
-## 2017: WannaCry en de NSA
+## 2017: WannaCry en de NSA {.smaller}
 
 :::: {.columns}
 
@@ -718,7 +718,7 @@ Eenmaal een cyberwapen wordt ingezet, kan het **worden gereverse-engineered** en
 
 ---
 
-## 2018: Haven Antwerpen - cybercrime meets maffia
+## 2018: Haven Antwerpen - cybercrime meets maffia {.smaller}
 
 * IT-specialist **Filip M.** veroordeeld tot **8 jaar cel** voor het hacken van Antwerpse havenbedrijven
 * In opdracht van de internationale **cocaïnemaffia**
@@ -737,7 +737,7 @@ Cybercrime is niet abstract: het gebeurt in onze eigen haven, ten dienste van de
 
 ---
 
-## 2019: De eerste kinetische respons
+## 2019: De eerste kinetische respons {.smaller}
 
 In mei 2019 lanceerde Hamas vanuit Gaza een cyberaanval op Israël.
 
@@ -759,7 +759,7 @@ De 2014-vraag "*vanaf wanneer is dit een act of aggression?*" heeft nu een heel 
 
 ---
 
-## 2020: Sociale media als geopolitiek wapen
+## 2020: Sociale media als geopolitiek wapen {.smaller}
 
 * **2016 - Trump vs Clinton**: *troll farms* beïnvloedden social media algoritmes op grote schaal
 * **Cambridge Analytica**: gebruikersdata van miljoenen Facebook-profielen ingezet voor politieke targeting
@@ -1239,7 +1239,7 @@ Bedrijven denken niet meer in termen van *of* ze gehackt worden, maar *wanneer*.
 
 ---
 
-## Samenvatting
+## Samenvatting {.smaller}
 
 Cyber schuift van kattenkwaad naar **strategisch wapen**:
 
@@ -1258,7 +1258,7 @@ De grootste winst haal je nog steeds uit de **fundamenten**: goede wachtwoorden,
 
 ---
 
-## Het is erger - maar
+## Het is erger - maar {.smaller}
 
 ::: {.callout-important}
 Als een AI-gestuurd IoT-botnet van 10 miljoen apparaten morgen jouw infrastructuur wil platleggen, zullen ze daarin slagen - ongeacht de firewalls, IDS-systemen en honeypots.
@@ -1310,7 +1310,7 @@ Inti De Ceukelaire en collega's pleitten hier jarenlang voor. Eindelijk geen bee
 
 ---
 
-## Op de hoogte blijven
+## Op de hoogte blijven {.smaller}
 
 :::: {.columns}
 

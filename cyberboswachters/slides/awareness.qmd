@@ -11,7 +11,7 @@ format:
     logo: assets/wordmark.svg
 ---
 
-## Waarom awareness?
+## Waarom awareness? {.smaller}
 
 > **90% van alle beveiligingsincidenten wordt veroorzaakt door menselijke fouten.**
 
@@ -119,7 +119,7 @@ Gedragsverandering bereik je niet door te straffen - maar door te **motiveren en
 
 ---
 
-## Praktische best practices
+## Praktische best practices {.smaller}
 
 :::: {.columns}
 
@@ -243,7 +243,7 @@ Een kleine verlegenheid is een kleine prijs voor de veiligheid van je organisati
 
 ---
 
-## Phishing herkennen: signalen
+## Phishing herkennen: signalen {.smaller}
 
 ::: {.incremental}
 * **Controleer het afzenderadres**: vergelijk met eerdere communicatie of de website

@@ -99,7 +99,7 @@ Many a person would gladly go back to those days.
 
 ---
 
-## 2010: Stuxnet appears
+## 2010: Stuxnet appears {.smaller}
 
 :::: {.columns}
 
@@ -121,7 +121,7 @@ Stuxnet did two things:
 
 ---
 
-## Stuxnet: man-in-the-middle between Step 7 and PLC {.smaller}
+## Stuxnet: normal operation of a PLC {.smaller}
 
 ```{mermaid}
 %%{init: {'sequence': {'actorMargin': 60, 'messageMargin': 22, 'boxMargin': 4, 'noteMargin': 6, 'mirrorActors': false, 'actorFontSize': 13, 'noteFontSize': 12, 'messageFontSize': 12} } }%%
@@ -142,6 +142,21 @@ sequenceDiagram
       PLC-->>S7: Status OK
       S7-->>Op: All fine ✓
     end
+```
+
+---
+
+## Stuxnet: man-in-the-middle between Step 7 and PLC {.smaller}
+
+```{mermaid}
+%%{init: {'sequence': {'actorMargin': 60, 'messageMargin': 22, 'boxMargin': 4, 'noteMargin': 6, 'mirrorActors': false, 'actorFontSize': 13, 'noteFontSize': 12, 'messageFontSize': 12} } }%%
+sequenceDiagram
+    autonumber
+    participant Op as Operator
+    participant S7 as Step 7 (PC)
+    participant SX as Stuxnet DLL
+    participant PLC as Siemens PLC
+    participant HW as Centrifuge
 
     rect rgb(255, 220, 220)
       Note over Op,HW: With Stuxnet (hidden between Step 7 and PLC)
@@ -216,7 +231,7 @@ Lesson: large cyberattacks on critical infrastructure almost always combine **di
 
 ---
 
-## 2013: Privacy on the Internet is an illusion
+## 2013: Privacy on the Internet is an illusion {.smaller}
 
 Two people shattered the glass house:
 
@@ -231,7 +246,7 @@ Two people shattered the glass house:
 :::
 
 ::: {.column width="50%"}
-![Julian Assange (2008). Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Julian_Assange_in_2008.jpg), author Periodismodepaz, CC BY 4.0.](../assets/julian_assange_in_2008.jpg){ width=75% }
+![Julian Assange (2008). Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Julian_Assange_in_2008.jpg), author Periodismodepaz, CC BY 4.0.](../assets/julian_assange_in_2008.jpg){ width=55% }
 
 :::
 
@@ -240,7 +255,7 @@ Two people shattered the glass house:
 
 ---
 
-## 2013: Privacy on the Internet is an illusion
+## 2013: Privacy on the Internet is an illusion {.smaller}
 
 Two people shattered the glass house:
 
@@ -257,7 +272,7 @@ Two people shattered the glass house:
 :::
 
 ::: {.column width="50%"}
-![Edward Snowden (2013). Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Edward_Snowden-2.jpg), Laura Poitras / Praxis Films, CC BY 3.0.](../assets/edward_snowden-2.jpg)
+![Edward Snowden (2013). Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Edward_Snowden-2.jpg), Laura Poitras / Praxis Films, CC BY 3.0.](../assets/edward_snowden-2.jpg){ width=55% }
 
 
 :::
@@ -291,7 +306,7 @@ Snowden hero or traitor? We leave that open. What is certain: great powers are w
 
 ---
 
-## 2013: "I have nothing to hide anyway"
+## 2013: "I have nothing to hide anyway" {.smaller}
 
 > *"Arguing that you don't care about the right to privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say."*
 >
@@ -309,7 +324,7 @@ The **Tor** network with *onion routing* can offer a solid extra privacy layer -
 
 ---
 
-## 2014: The Fappening - the cloud as a target
+## 2014: The Fappening - the cloud as a target {.smaller}
 
 * Hackers stole private photos of ~100 celebrities from their **Apple iCloud** accounts
 * Photos spread rapidly via Reddit, 4chan, ...
@@ -339,7 +354,7 @@ Feel free to lie on security questions - there is no lie detector in those syste
 
 ---
 
-## 2014: When countries fight - Sony & North Korea
+## 2014: When countries fight - Sony & North Korea {.smaller}
 :::: {.columns}
 
 ::: {.column width="80%"}
@@ -407,7 +422,7 @@ First warning of what we would later see again with **Log4J** (2021) and **XZ Ut
 
 ---
 
-## 2015: Ukraine - power down
+## 2015: Ukraine - power down {.smaller}
 
 * **23 December 2015**: hackers partially disabled Ukraine's electricity infrastructure
 * Almost **250,000 people** without power for hours - right before Christmas Eve
@@ -424,7 +439,7 @@ First warning of what we would later see again with **Log4J** (2021) and **XZ Ut
 
 ---
 
-## 2015: Ashley Madison - data as a weapon
+## 2015: Ashley Madison - data as a weapon {.smaller}
 
 :::: {.columns}
 
@@ -454,7 +469,7 @@ Don't ask yourself **whether** you will be hacked, but **when**. And make sure s
 
 ---
 
-## 2016: Social engineering against the CIA
+## 2016: Social engineering against the CIA {.smaller}
 
 > *"Because there is no patch for human stupidity."*
 
@@ -473,7 +488,17 @@ Lesson: **no firewall protects against a helpful helpdesk employee.**
 
 ---
 
-## 2016: Internet-of-Horrors - Mirai botnet
+## Shodan.io: a "Google for IoT"
+
+**[Shodan.io](https://www.shodan.io/)** maps all publicly visible IoT devices - including the ones still using default passwords.
+
+::: {.callout-tip .fragment}
+IoT increases the **attack surface** exponentially. Every smart device is a potential entry point.
+:::
+
+---
+
+## 2016: Internet-of-Horrors - Mirai botnet {.smaller}
 
 :::: {.columns}
 
@@ -490,22 +515,14 @@ Mirai created a botnet of hundreds of thousands of IoT devices that:
 :::
 
 ::: {.column width="45%"}
-![Diagram of a DDoS botnet: attacker → *handlers* → *agents* (infected IoT devices) → victim. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stachledraht_DDos_Attack.svg), Everaldo Coelho & YellowIcon, LGPL.](../assets/stachledraht_ddos_attack.svg){ width=100% }
+![Diagram of a DDoS botnet: attacker → *handlers* → *agents* (infected IoT devices) → victim. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Stachledraht_DDos_Attack.svg), Everaldo Coelho & YellowIcon, LGPL.](../assets/stachledraht_ddos_attack.svg){ width=60% }
 :::
 
 ::::
 
-::: {.callout-warning .fragment}
-**Shodan.io**: a "Google for IoT" mapping all publicly visible IoT devices - including the ones still using default passwords.
-:::
-
-::: {.callout-tip .fragment}
-IoT increases the **attack surface** exponentially. Every smart device is a potential entry point.
-:::
-
 ---
 
-## 2017: WannaCry & Petya - ransomware on a global scale
+## 2017: WannaCry & Petya - ransomware on a global scale {.smaller}
 
 | | WannaCry | Petya/NotPetya |
 |---|---|---|
@@ -525,7 +542,7 @@ Paradox: it worked *too well* - it also encrypted system files, so computers wou
 
 ---
 
-## 2017: WannaCry and the NSA
+## 2017: WannaCry and the NSA {.smaller}
 
 :::: {.columns}
 
@@ -562,7 +579,7 @@ Once a cyber weapon is deployed, it can be **reverse-engineered** and used again
 
 ---
 
-## 2017: LockBit chat logs (2025)
+## 2017: LockBit chat logs (2025) {.smaller}
 
 :::: {.columns}
 
@@ -605,7 +622,7 @@ Cybercrime is not abstract: it happens in our own port, serving organised crime.
 
 ---
 
-## 2019: The first kinetic response
+## 2019: The first kinetic response {.smaller}
 
 In May 2019 Hamas launched a cyberattack on Israel from Gaza.
 
@@ -627,7 +644,7 @@ The 2014 question "*from when on is this an act of aggression?*" now has a very 
 
 ---
 
-## 2020: Social media as a geopolitical weapon
+## 2020: Social media as a geopolitical weapon {.smaller}
 
 * **2016 - Trump vs Clinton**: *troll farms* influenced social media algorithms on a massive scale
 * **Cambridge Analytica**: data of millions of Facebook profiles used for political targeting
@@ -751,8 +768,11 @@ The line between "legal data collection" and "illegal spying" blurs further ever
 
 ---
 
-## Log4J: the JNDI injection
+## Log4J: the JNDI injection {.smaller}
 
+:::: {.columns}
+
+::: {.column width="60%"}
 ```{mermaid}
 sequenceDiagram
     autonumber
@@ -769,14 +789,19 @@ sequenceDiagram
     Note over L: 🚨 Remote Code Execution!
     L-->>A: Full control over the server
 ```
+:::
 
+::: {.column width="40%"}
 ::: {.callout-important .fragment}
 A single line in a log header = full takeover of the server. Log4J is **everywhere** - hence the panic in December 2021.
 :::
+:::
+
+::::
 
 ---
 
-## 2022-2024: MFA Fatigue - the human as the weakest link
+## 2022-2024: MFA Fatigue - the human as the weakest link {.smaller}
 
 * **Lapsus$** (teenagers!): cracked Uber, Microsoft, Rockstar Games (GTA VI leaked)
 
@@ -817,7 +842,7 @@ Combine this with IoT (cars, pacemakers, insulin pumps) - and the possibilities 
 
 ---
 
-## 2024: CrowdStrike - one update, worldwide chaos
+## 2024: CrowdStrike - one update, worldwide chaos {.smaller}
 
 * July 2024: faulty update of the security software **CrowdStrike**
 * Millions of Windows systems crashed at once: airports, hospitals, banks
@@ -887,7 +912,7 @@ The **Slovak election example** is considered possibly the first election concre
 
 ---
 
-## AI as defender
+## AI as defender {.smaller}
 
 The story is not pure doom and gloom:
 
@@ -976,7 +1001,7 @@ Companies no longer think in terms of *whether* they will be hacked, but *when*.
 
 ---
 
-## Summary
+## Summary {.smaller}
 
 Cyber shifts from mischief to **strategic weapon**:
 
@@ -994,7 +1019,7 @@ The biggest gain still comes from the **fundamentals**: good passwords, timely p
 
 ---
 
-## It is worse - but
+## It is worse - but {.smaller}
 
 ::: {.callout-important}
 If an AI-driven IoT botnet of 10 million devices wants to take down your infrastructure tomorrow, it will succeed - regardless of firewalls, IDS systems and honeypots.
@@ -1016,7 +1041,7 @@ Cybersecurity is a mindset, not a product.
 
 ---
 
-## Become an ethical hacker!
+## Become an ethical hacker! {.smaller}
 
 | Hat | What do they do? |
 |---|---|
