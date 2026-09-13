@@ -478,6 +478,47 @@ $border-radius-sm: 0.35rem;
   margin-right: 5px;
 }
 
+// ---------- Reveal-slides: grote tekst en gordijn ----------
+.reveal .huge-text {
+  font-size: 5.5em;
+  font-weight: 800;
+  color: $ink-strong;
+  text-align: center;
+  line-height: 1;
+  margin-top: 0.6em;
+}
+
+// Afbeelding met een theatergordijn ervoor dat bij de volgende klik omhoog gaat
+.reveal .curtain-stage {
+  position: relative;
+  overflow: hidden;
+  height: 560px;
+  border-radius: $border-radius-sm;
+
+  p { margin: 0; }
+  img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    margin: 0;
+  }
+}
+.reveal .slides section .curtain-stage .curtain.fragment {
+  position: absolute;
+  inset: 0;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 88%, rgba(0, 0, 0, 0.45) 100%),
+    repeating-linear-gradient(90deg,
+      #4a070c 0px, #8f101a 22px, #b3141f 40px, #8f101a 58px, #4a070c 80px);
+  border-bottom: 10px solid #c9a227;
+  transition: transform 2.6s cubic-bezier(.65, .05, .3, 1);
+}
+.reveal .slides section .curtain-stage .curtain.fragment.visible {
+  transform: translateY(-105%);
+}
+
 // ---------- Kolomverhoudingen (output-location: column) ----------
 .reveal .columns3070 > div.column:first-child { width: 30%; }
 .reveal .columns3070 div.column:not(:first-child) { width: 70%; }

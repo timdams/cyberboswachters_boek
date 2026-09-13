@@ -187,6 +187,8 @@ Wie het ook waren, één ding staat wel vast: in 2015 waren hackers er voor het 
 
 Enkele jaren later, in februari 2021, zou het trouwens weer bijna prijs zijn. Een hacker kreeg toegang tot de systemen die de waterzuiveringsinstallaties van Oldsmar (Florida, VS) bediende. Een operator zag op tijd dat z'n muis plots bewoog en de maximum toegelaten hoeveelheid natriumhydroxide waarde van de filters op een dodelijk niveau zette. Er werd gelukkig tijdig ingegrepen (en detectoren verderop in het systeem hadden het vergiftigde water sowieso gedetecteerd), maar het deed wederom de vraag rijzen of onze kritische systemen wel voldoende beveiligd zijn tegen dit soort *lone wolves*.
 
+![De aanval op Oldsmar strandde op twee "sensoren": de operator die zijn muis zag bewegen, en de detectoren verderop in het systeem.](assets/oldsmar.png){ width=90% }
+
 ::: {.callout-tip}
 Sinds de oorlog in Oekraïne is uitgebroken zien we ook terug verregaande cyberactiviteit vanuit Rusland. De eerste weken van de oorlog (februari 2022) was het opvallend stil en leek het alsof *de angst voor Russische cyberoorlog* ongegrond was. Ondertussen zijn we helaas meer dan een jaar verder en verschijnen er meer en meer verhalen, zoals verwacht, van Russische cyber-inmenging. [Volgende artikel geeft een heldere tijdslijn hiervan.](https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2022)733549)
 
@@ -315,6 +317,12 @@ De ransomware werkte trouwens *te goed*. Het encrypteerde vaak ook essentiële b
 In mei 2025 verschenen gelekte interne chatlogs van de ransomwaregroep LockBit, wat ongezien inzicht gaf in hun professionele werkwijze. De groep opereert als een Ransomware-as-a-Service-bedrijf met hiërarchie, *klantenservice*-achtige onderhandelingen en strikte deadlines. Van de 208 bekeken gesprekken leidde slechts 18 tot effectieve betalingen, vaak na forse kortingen, wat aangeeft dat ook cybercriminelen winstoptimalisatie en reputatie hoog in het vaandel dragen. 
 
 Het lek toont tegelijk de kwetsbaarheid van organisaties: betalingen gebeurden omdat back-ups onbruikbaar waren, besluitvorming traag verliep of verzekeringen verkeerd werden ingezet. 
+
+::: {.callout-tip}
+Onbruikbare back-ups zijn helaas een klassieker. Eén back-up die in hetzelfde netwerk naast je servers staat, wordt door de ransomware gewoon mee versleuteld. Zorg daarom voor minstens twee verschillende back-ups waarvan niet alles on-prem staat (bv. in de cloud of op een andere locatie). Hou er bovendien eentje *cold*: offline en losgekoppeld van het netwerk, zodat de ransomware er simpelweg niet aan kan.
+
+![Eén back-up naast je servers is niet genoeg: zorg voor meerdere back-ups, niet alles on-prem, en eentje offline.](assets/backups.png){ width=90% }
+:::
 
 ![Een screenshot van één van de chats uit de lek.](assets/bitlock.png){ width=70% }
 
@@ -549,6 +557,8 @@ Het verhaal is niet louter doemdenken: AI wordt óók steeds vaker **aan de kant
 * **Security automation**: repetitieve taken (log-analyse, phishing-mail-classificatie, patch-beheer) worden meer en meer uitbesteed aan AI.
 * **User Behavior Analytics (UBA)**: AI leert het "normale" gedrag van elke medewerker (werktijden, systemen, datavolumes) en slaat alarm bij afwijkingen - een effectieve verdediging tegen gestolen credentials en insider threats.
 * **Deepfake-detectie**: tools zoals **Adobe Content Credentials** (gelanceerd op Black Hat 2024) voegen een soort *"nutrition label"* toe aan digitale content waarop je kan aflezen welk percentage AI-gegenereerd is en welke tools werden gebruikt.
+
+![AI leert het normale dataverkeer van een laptop kennen, slaat alarm wanneer die om 3u 's nachts plots gigabytes naar een onbekend IP stuurt en reageert automatisch.](assets/aiverdediger.png){ width=90% }
 
 ::: {.callout-tip}
 Een ludieke maar effectieve toepassing: sommige telecomproviders experimenteren met **"Granny AI"**, een AI-persona die zich voordoet als een verwarde bejaarde dame om scammers zo lang mogelijk aan de lijn te houden.

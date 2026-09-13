@@ -460,9 +460,23 @@ Als bijkomende handigheid zullen wormen ook vaak zichzelf veranderen zodat ze mo
 De werkelijk gevaarlijke wormen combineren vaak **meerdere paden tegelijk** - als één route geblokkeerd is, blijven de andere nog actief.
 :::
 
+::: {.callout-note title="Eerst de firewall, dan pas het internet"}
+Hoe venijnig *remote execution* kan zijn, ondervonden Windows XP-gebruikers begin jaren 2000. **Blaster** (augustus 2003) en Sasser (april 2004) misbruikten gaten in respectievelijk de RPC/DCOM- en de LSASS-service van Windows. Er was geen enkele gebruikersactie nodig: een ongepatchte Windows-machine met een publiek IP-adres raakte besmet door gewoon aan het netwerk te hangen.
+
+Het SANS Internet Storm Center hield toen de zogenaamde *survival time* bij: de gemiddelde tijd voor een ongepatchte machine op het internet besmet raakte. In 2004 zakte die naar ongeveer 20 minuten. Alle patches downloaden voor een verse XP-installatie duurde langer dan dat. Je verloor dus letterlijk de race tegen Windows Update.
+
+Het standaardadvies was daarom: ga nooit online voor je firewall draait. Concreet zette je de computer eerst achter een NAT-router of firewall, nam je de patches offline mee op cd, of installeerde je vanaf *slipstreamed* media (een installatie-cd waar Service Pack 2 al in verwerkt zat). XP SP2 (augustus 2004) zette de Windows Firewall standaard aan, en dat maakte grotendeels een einde aan het probleem.
+:::
+
 ![Het worm propagation model.](assets/wormprop.png){ width=85% }
 
 Bovenstaande afbeelding toont het *worm propagation model*. Dit model toont hoe snel een worm zich kan verspreiden en hoe belangrijk het is om een nieuwe worm zo snel mogelijk te detecteren, in de hoop voldoende systemen vervolgens te beschermen tegen besmettingen ervan. Naarmate een worm meer systemen kan besmetten, die op hun beurt dan ook als uitvalsbasis van de worm dienen, merk je een exponentiële groei van besmette systemen. Deze groei bereikt een plateau wanneer quasi alle systemen besmet zijn die konden besmet worden. 
+
+::: {.callout-tip title="De golf die rond de wereld reisde"}
+Bij e-mailwormen kon je die groei soms letterlijk zien aankomen. **ILOVEYOU** startte op 4 mei 2000 in Manila en verspreidde zich via de adresboeken van Outlook. Omdat de worm pas verder reisde wanneer iemand z'n mail opende en de bijlage aanklikte, volgde hij de werkdag rond de wereld: eerst Azië, dan Europa, dan de VS. Europese vestigingen belden en mailden hun Amerikaanse collega's om hen te waarschuwen voor het daar ook losbarstte. Bedrijven en overheden legden preventief hun mailservers plat, onder meer het Britse parlement, het Pentagon en Ford. "Zet je systemen af voor het bij jullie is" was dus echt een advies.
+
+Bij de echt snelle netwerkwormen werkte dat niet. SQL Slammer (januari 2003) verdubbelde het aantal besmette systemen elke 8,5 seconden en had zo goed als alle kwetsbare machines wereldwijd te pakken binnen tien minuten, veel te snel om nog iemand te kunnen waarschuwen. De tijdzonegolf was specifiek een eigenschap van mailwormen die afhingen van mensen die op een bijlage klikten.
+:::
 
 #### Drive-by download en watering hole
 

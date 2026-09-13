@@ -964,6 +964,49 @@ Gevaarlijke wormen combineren **meerdere paden tegelijk** - blokkeer één route
 
 ---
 
+## Survival time: 20 minuten
+
+::: {.incremental}
+* **Blaster** (2003) en **Sasser** (2004): *remote execution* via gaten in Windows (RPC/DCOM, LSASS)
+* **Geen klik nodig**: een ongepatchte XP-machine met publiek IP aan het netwerk hangen volstond
+* SANS Internet Storm Center, 2004: gemiddeld **± 20 minuten** tot besmetting
+* Alle patches downloaden duurde langer &rarr; je verloor de race tegen Windows Update
+:::
+
+::: {.callout-tip .fragment}
+Advies toen: **eerst de firewall, dan pas online** (NAT-router, patches op cd, slipstreamed SP2). XP SP2 (augustus 2004) zette de firewall standaard aan.
+:::
+
+---
+
+## ILOVEYOU vs. SQL Slammer
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**ILOVEYOU** (mei 2000)
+
+* Start in Manila, verspreiding via **Outlook-adresboeken**
+* Volgde de **werkdag** rond de wereld: Azië &rarr; Europa &rarr; VS
+* Europa waarschuwde de VS, mailservers preventief plat (Britse parlement, Pentagon, Ford)
+:::
+
+::: {.column .fragment width="50%"}
+**SQL Slammer** (januari 2003)
+
+* Verdubbelde elke **8,5 seconden**
+* Quasi alle kwetsbare machines besmet binnen **10 minuten**
+* Geen tijd om iemand te waarschuwen
+:::
+
+::::
+
+::: {.callout-note .fragment}
+De tijdzonegolf bestond enkel bij **mailwormen** die afhingen van menselijk klikgedrag.
+:::
+
+---
+
 ## Drive-by download & watering hole
 
 ::: {.incremental}

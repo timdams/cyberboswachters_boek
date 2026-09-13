@@ -100,6 +100,12 @@ Menig mens zou graag terug willen naar die tijd.
 
 ---
 
+## Een wereld die draait op PLC's
+
+![](assets/plc_wereld.png){fig-alt="Een wereld vol kritieke installaties die allemaal verbonden zijn via PLC's."}
+
+---
+
 ## 2010: Stuxnet verschijnt
 
 :::: {.columns}
@@ -220,6 +226,18 @@ Les: grote cyberaanvallen op kritieke infrastructuur combineren bijna altijd **d
 
 ---
 
+## The veil is lifted
+
+::: {.curtain-stage}
+![](assets/veil_lifted.png){fig-alt="Achter het gordijn luisteren duistere figuren ons af."}
+
+```{=html}
+<div class="curtain fragment"></div>
+```
+:::
+
+---
+
 ## 2013: Privacy op het Internet is een illusie
 
 Twee personen sloegen het glazen huisje aan diggelen:
@@ -301,7 +319,14 @@ Snowden held of verrader? Dat laten we in het midden. Wat vast staat: grote moge
 >
 > *Edward Snowden*
 
-::: {.callout-tip .fragment}
+---
+
+## Je hebt wél iets te verbergen
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {.callout-tip}
 *"Je hebt wél iets te verbergen"*, Maurits Martijn & Dimitri Tokmetzis (ISBN 9789082821611)
 
 Privé-informatie die nu onschuldig lijkt, kan in de toekomst gevaarlijk zijn wanneer normen, waarden of wetten veranderen.
@@ -310,6 +335,19 @@ Privé-informatie die nu onschuldig lijkt, kan in de toekomst gevaarlijk zijn wa
 ::: {.callout-note .fragment}
 Het **Tor**-netwerk met *onion routing* kan een stevige extra privacylaag bieden - maar is geen wondermiddel.
 :::
+:::
+
+::: {.column width="40%"}
+![](assets/verbergen_cover.png){ width=100% fig-alt="Cover van het boek Je hebt wél iets te verbergen." }
+:::
+
+::::
+
+---
+
+## Data leeft langer dan jij denkt
+
+![](assets/bevolkingsregister.jpg){fig-alt="Het Amsterdamse bevolkingsregister na de aanslag van 27 maart 1943."}
 
 ---
 
@@ -323,6 +361,14 @@ Het **Tor**-netwerk met *onion routing* kan een stevige extra privacylaag bieden
 
 ::: {.callout-important .fragment}
 Data die je vandaag deelt, blíjft bestaan. Wie er later toegang toe krijgt (en met welke bedoelingen) heb je niet meer in de hand.
+:::
+
+---
+
+## 2014...
+
+::: {.huge-text}
+(.)(.)
 :::
 
 ---
@@ -357,10 +403,14 @@ Lieg gerust op beveiligingsvragen - er bestaat geen leugendetector in die system
 
 ---
 
-## 2014: Als landen vechten - Sony & Noord-Korea
-:::: {.columns}
+## Is het dit waard?
 
-::: {.column width="80%"}
+![](assets/interview.jpg){fig-alt="Filmposter van The Interview."}
+
+---
+
+## 2014: Als landen vechten - Sony & Noord-Korea
+
 * Sony bracht **"The Interview"** uit: komedie waarin een dictator wordt vermoord
 * Vergelijking met Kim Jong-un was voor iedereen duidelijk
 
@@ -369,18 +419,6 @@ Lieg gerust op beveiligingsvragen - er bestaat geen leugendetector in die system
   * Onuitgebrachte films
   * Interne e-mails en salarissen
   * Privé-informatie van werknemers
-:::
-
-::: {.column width="20%"}
-
-![](assets/interview.jpg)
-
-:::
-
-::::
-
-
-
 
 ::: {.callout-warning .fragment}
 **Primeur**: een soeverein land voert een cyberaanval uit op een bedrijf in een ander land.
@@ -405,6 +443,12 @@ Tot op de dag van vandaag zijn er experts die in de Sony-aanval de hand van **Ru
 
 Cyberaanvallen zijn verdomd lastig in kaart te brengen.
 :::
+
+---
+
+## Megaexploits
+
+![](assets/megaexploits.png){fig-alt="Eén kwetsbaarheid verspreidt zich als een lopend vuurtje over alle verbonden systemen."}
 
 ---
 
@@ -436,9 +480,23 @@ Eerste waarschuwing voor wat we later bij **Log4J** (2021) en **XZ Utils** (2024
 **Eerste keer** dat een gerichte cyberaanval honderdduizenden burgers in de problemen bracht op een manier die verder ging dan dataverlies.
 :::
 
+---
+
+## Oog van de naald
+
+**2021 - Oldsmar, Florida**: hacker verhoogde natriumhydroxide in de waterfilters tot dodelijk niveau.
+
+![](assets/oldsmar.png){ width=100% fig-alt="De aanval op Oldsmar botste op twee sensoren: de operator en de detectoren verderop." }
+
 ::: {.fragment}
-**2021 - Oldsmar, Florida**: hacker verhoogde natriumhydroxide in de waterfilters tot dodelijk niveau. Een operator zag zijn muis bewegen en greep op tijd in.
+Een operator zag zijn muis bewegen en greep op tijd in. En zelfs dan hadden de detectoren verderop het vergiftigde water opgemerkt.
 :::
+
+---
+
+## Big data, big leaks
+
+![](assets/big_data.png){fig-alt="Steeds grotere hoeveelheden data lekken met steeds grotere gevolgen."}
 
 ---
 
@@ -476,8 +534,6 @@ Vraag je niet af **of** je gehackt zult worden, maar **wanneer**. En zorg ervoor
 
 ## 2016: Social engineering tegen de CIA
 
-> *"Because there is no patch for human stupidity."*
-
 Een 16-jarige Britse tiener (collectief **Crackas With Attitude**) kraakte met pure telefoontjes:
 
 * **AOL-mail van CIA-directeur John Brennan**
@@ -485,22 +541,39 @@ Een 16-jarige Britse tiener (collectief **Crackas With Attitude**) kraakte met p
 * AOL-mail van **FBI Deputy Director Mark Giuliano**
 * Gegevens van **31.000 federale agenten** gelekt
 
+---
+
+## No patch for human stupidity
+
+:::: {.columns}
+
+::: {.column width="45%"}
+> *"Because there is no patch for human stupidity."*
+
 ::: {.callout-important .fragment}
 Geen dure tools, geen zero-days - enkel een telefoon en een overtuigende stem.
 
 Les: **geen enkele firewall beschermt tegen een behulpzame helpdesk-medewerker.**
 :::
+:::
 
+::: {.column width="55%"}
+![](assets/social_engineering.png){ width=100% fig-alt="Een helpdesk-medewerker reset een wachtwoord voor een aanvaller, de firewall wordt gewoon omzeild." }
+:::
 
+::::
 
 ---
 
-
 ## 2016: Internet-of-Horrors
 
-::: {.callout-warning .fragment}
-**Shodan.io**: een "Google voor IoT" die alle publiek zichtbare IoT-apparaten in kaart brengt - inclusief welke nog het standaard wachtwoord hebben.
-:::
+![](assets/iot_horrors.png){fig-alt="Huis en bewoner verbonden via allerlei IoT-apparaten, waarvan enkele besmet."}
+
+---
+
+## Shodan.io: een "Google voor IoT"
+
+**[Shodan.io](https://www.shodan.io/)** brengt alle publiek zichtbare IoT-apparaten in kaart - inclusief welke nog het standaard wachtwoord hebben.
 
 ::: {.callout-tip .fragment}
 IoT vergroot de **attack surface** exponentieel. Elk slim apparaat is een potentieel toegangspunt.
@@ -532,6 +605,12 @@ Mirai creëerde een botnet van honderdduizenden IoT-apparaten die:
 
 ---
 
+## 2017: losgeld gevraagd!
+
+![](assets/ransomware.png){fig-alt="Ransomware legt ziekenhuizen en bedrijven plat en eist losgeld."}
+
+---
+
 ## 2017: WannaCry & Petya - ransomware op wereldschaal
 
 | | WannaCry | Petya/NotPetya |
@@ -546,9 +625,25 @@ WannaCry was de eerste **wormable ransomware**: verspreiding zonder menselijke t
 Paradox: het werkte *te goed* - het encrypteerde ook systeembestanden waardoor computers niet meer opstartten en slachtoffers niet konden betalen.
 :::
 
-::: {.callout-warning .fragment}
-**Demant (2019, Denemarken)**: ransomware-incident bij hoortoestelfabrikant → **$95 miljoen** totale kost, zelfs zonder losgeld te betalen. Ransomware-schade is zelden enkel het losgeld - indirecte kosten domineren.
+---
+
+## Demant: het losgeld is maar het topje
+
+:::: {.columns}
+
+::: {.column width="45%"}
+::: {.callout-warning}
+**Demant (2019, Denemarken)**: ransomware-incident bij hoortoestelfabrikant → **$95 miljoen** totale kost, zelfs zonder losgeld te betalen.
+
+Ransomware-schade is zelden enkel het losgeld - indirecte kosten domineren.
 :::
+:::
+
+::: {.column width="55%"}
+![](assets/demant.png){ width=100% fig-alt="IJsberg: het losgeld is het topje, de indirecte kosten van 95 miljoen dollar zitten eronder." }
+:::
+
+::::
 
 ---
 
@@ -579,7 +674,7 @@ Voormalig NSA-onderzoeker David Aitel (2019): *"I don't know if anybody knows ot
 
 ## 2017: Cyberwapens zijn boomerangs
 
-* **NSA ANT Product Catalog** (2013, Der Spiegel): complete "catalogus" met NSA-spionage-gadgets - bv. **PICASSO**, een gemodde GSM die gesprekken, locatie en kamer-audio afluistert + een "panic button" voor de gebruiker bevat.
+* **[NSA ANT Product Catalog](https://www.cryptomuseum.com/covert/bugs/nsaant/files/NSA_ANT_20070108.pdf)** (2013, Der Spiegel): complete "catalogus" met NSA-spionage-gadgets - bv. **PICASSO**, een gemodde GSM die gesprekken, locatie en kamer-audio afluistert + een "panic button" voor de gebruiker bevat.
 
 * **Chinese spionnen & EternalBlue** (NYT 2017): Chinese staatshackers hadden NSA-hackingtools bemachtigd - waarschijnlijk door ze te onderscheppen toen de NSA zélf Chinese doelwitten aanviel.
 
@@ -597,12 +692,6 @@ Eenmaal een cyberwapen wordt ingezet, kan het **worden gereverse-engineered** en
 * Gelekte interne chatlogs van **LockBit** gaven ongezien inzicht in hun werking
 * Opereren als een **RaaS-bedrijf**: hiërarchie, klantenservice, onderhandelingen, kortingen
 * Van 208 gesprekken leidden er slechts **18** tot effectieve betaling
-
-Lessen:
-
-* Back-ups waren onbruikbaar
-* Besluitvorming verliep te traag
-* Verzekeringen werden verkeerd ingezet
 :::
 
 ::: {.column width="45%"}
@@ -610,6 +699,18 @@ Lessen:
 :::
 
 ::::
+
+---
+
+## LockBit: waarom slachtoffers toch betaalden
+
+* Back-ups waren onbruikbaar
+* Besluitvorming verliep te traag
+* Verzekeringen werden verkeerd ingezet
+
+::: {.fragment}
+![](assets/backups.png){ width=85% fig-align="center" fig-alt="Eén back-up naast je servers is niet genoeg: meerdere back-ups, niet alles on-prem, en eentje offline." }
+:::
 
 ---
 
@@ -724,10 +825,12 @@ Data is niet alleen het nieuwe goud - het is ook een ongelooflijk accuraat **voo
 
 ## Hoe techbedrijven blijven grenzen verleggen
 
+::: {.incremental}
 * **Facebook detecteert selfie-verwijderingen** (2022) → beauty-ads timen op onzeker gevoel
 * **WhatsApp "traffic analysis"** (mei 2024): ook bij end-to-end encryptie kunnen overheden zien **wie met wie communiceert**
 * **Meta Flo-verdict** (aug 2025): jury oordeelde dat Meta illegaal **menstruatie-data** verzamelde via de Flo-app
 * **Facebook/Android localhost-tracking** (juni 2025): Facebook-app volgt surfgedrag via een localhost-truc
+:::
 
 ::: {.callout-warning .fragment}
 De grens tussen "legaal dataverzamelen" en "illegaal bespioneren" vervaagt elk jaar verder.
@@ -770,14 +873,18 @@ De grens tussen "legaal dataverzamelen" en "illegaal bespioneren" vervaagt elk j
 
 ::::
 
+---
+
+## 2021: Log4J - waarom de paniek?
+
+::: {.callout-important}
+Eén enkele regel in een log-header = volledige overname van de server. Log4J zit **overal** - vandaar de paniek in december 2021.
+:::
+
 ::: {.callout-tip .fragment}
 **NPM-bibliotheek *colors***: de maker was gefrustreerd dat grote bedrijven zijn gratis code gebruikten zonder betaling. Hij bracht een update uit die zijn bibliotheek "willekeurige output" liet genereren.
 
 20 miljoen downloads per week → duizenden applicaties plots kapot.
-:::
-
-::: {.callout-important .fragment}
-Eén enkele regel in een log-header = volledige overname van de server. Log4J zit **overal** - vandaar de paniek in december 2021.
 :::
 
 ---
@@ -818,13 +925,23 @@ sequenceDiagram
 4. Aanvaller is binnen
 :::
 
-::: {.fragment}
-**Scattered Spider (2023) - MGM Resorts**:
+---
 
+## 2023: Scattered Spider - MGM Resorts
+
+:::: {.columns}
+
+::: {.column width="40%"}
 * Belden de helpdesk, deden zich voor als werknemer, vroegen wachtwoordreset
 * Gevolg: gokkasten op zwart, hotelsleutels werkloos, liften stilstaand
 * Schade: **+100 miljoen dollar**
 :::
+
+::: {.column width="60%"}
+![](assets/scattered_spider.png){ width=100% fig-alt="Via één telefoontje naar de helpdesk legt Scattered Spider een casinoresort plat." }
+:::
+
+::::
 
 ---
 
@@ -836,12 +953,6 @@ sequenceDiagram
 
 ::: {.fragment}
 Israëlische inlichtingendienst had maanden/jaren eerder de **fabricageketen** gecompromitteerd en explosieven in de toestellen gemonteerd.
-:::
-
-::: {.callout-important .fragment}
-**Nieuwe categorie**: supply chain attack die niet enkel digitale schade, maar **fysieke, lichamelijke** schade aanricht.
-
-Combineer dit met IoT (auto's, pacemakers, insulinepompen) - en het duizelt wat mogelijk is.
 :::
 
 ---
@@ -857,12 +968,26 @@ Geen cyberaanval - maar het **had het kunnen zijn**.
 Het toont aan hoe fragiel onze digitale infrastructuur is: één fout in één schakel kan de hele keten platleggen.
 :::
 
-::: {.callout-important .fragment}
+---
+
+## Supply chain attack
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-important}
 **Supply chain attack**: een aanvaller richt zich niet op het eindslachtoffer, maar op een **zwakke schakel in de leveranciersketen** (software-update, externe dienstverlener).
 
 * **SolarWinds (2020)**: malware in Orion-updates raakte duizenden organisaties waaronder de Amerikaanse overheid
 * **Kaseya (2021)**: ransomware verspreid via IT-beheersoftware naar duizenden bedrijven
 :::
+:::
+
+::: {.column width="50%"}
+![](iot_assets/supchain.png){ width=100% fig-alt="Supply chain attack: de aanvaller richt zich op een zwakke schakel in de keten." }
+:::
+
+::::
 
 ---
 
@@ -886,12 +1011,12 @@ De ultieme langlopende supply chain attack - mislukt op de valreep.
 
 ## 2025: AI-gedreven aanvallen
 
-| Aanval | Beschrijving |
-|---|-------|
-| **Deepfake CFO** | Multinational verloor **25 miljoen dollar** na videocall met fake CFO en collega's |
-| **WormGPT / FraudGPT** | Malafide LLMs getraind om malware te schrijven en phishing op te stellen |
-| **AI-vishing** | Stemmen van bekenden nabootsen in realtime → slachtoffer geeft geld of data |
-| **DarkBert** | ChatGPT-variant getraind op Darkweb-data |
+::: {.incremental}
+* **Deepfake CFO**: multinational verloor **25 miljoen dollar** na videocall met fake CFO en collega's
+* **WormGPT / FraudGPT**: malafide LLMs getraind om malware te schrijven en phishing op te stellen
+* **AI-vishing**: stemmen van bekenden nabootsen in realtime → slachtoffer geeft geld of data
+* **DarkBert**: ChatGPT-variant getraind op Darkweb-data
+:::
 
 ::: {.callout-warning .fragment}
 Deepfakes van afbeeldingen, video én spraak zijn al niet meer te onderscheiden van echt.
@@ -930,6 +1055,12 @@ Gevaarlijk wanneer het model toegang heeft tot **tools of interne data** → dat
 ::: {.callout-tip .fragment}
 Van **SEO** naar **GEO** (*Generative Engine Optimisation*): content zo helder maken dat generatieve AI jouw informatie opneemt in zijn antwoord - ook aanvallers passen dit toe.
 :::
+
+---
+
+## 2026: A.I. hell
+
+![](assets/ai_hell.png){fig-alt="Een brandende wereld, geterroriseerd door AI-gedreven aanvallen."}
 
 ---
 
@@ -1062,6 +1193,12 @@ Het verhaal is niet louter doemdenken:
 * **User Behavior Analytics (UBA)**: AI leert je "normale" gedrag → alarm bij afwijking
 * **Deepfake-detectie**: Adobe Content Credentials = *"nutrition label"* voor AI-content
 
+---
+
+## AI als verdediger: in de praktijk
+
+![](assets/aiverdediger.png){ width=100% fig-alt="AI herkent dat een laptop om 3u 's nachts gigabytes naar een onbekend IP stuurt en isoleert het systeem." }
+
 ::: {.callout-tip .fragment}
 **Granny AI**: een AI-persona die zich voordoet als een verwarde bejaarde om scammers zo lang mogelijk aan de lijn te houden.
 :::
@@ -1153,7 +1290,7 @@ Cybersecurity is een mentaliteit, geen product.
 
 ##  Bountyhunters
 
-**Sinds februari 2023: ethisch hacken is legaal in België!** 
+**Sinds februari 2023: ethisch hacken is legaal in België!**
 
 Spelregels:
 
@@ -1176,6 +1313,7 @@ Inti De Ceukelaire en collega's pleitten hier jarenlang voor. Eindelijk geen bee
 ::: {.column width="60%"}
 * **[grahamcluley.com](https://grahamcluley.com/)**: dagelijks security-nieuws
 * **[hackmageddon.com](https://www.hackmageddon.com/)**: tweemaandelijks breach-overzicht + *breachometer*
+* **[Darknet Diaries](https://darknetdiaries.com/)**: podcast met waargebeurde "horror-verhalen" over het darknet
 * **Microsoft Digital Defense Report**: jaarlijkse state-of-the-state
 * **Tools**: uBlock Origin, AdGuard, Privacy Badger (Firefox ook op Android), Pihole/Adguard/Quad9
 :::
