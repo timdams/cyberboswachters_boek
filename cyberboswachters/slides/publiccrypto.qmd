@@ -90,6 +90,8 @@ Iedereen kan er een boodschap in leggen en op slot klikken (*encrypteren*).
 Enkel de eigenaar heeft de **private sleutel** om de kist te openen (*decrypteren*).
 :::
 
+![](crypto_assets/kist_metafoor.png){ width=90% fig-alt="Een openstaande kist die iedereen kan dichtklikken, een kist op slot, en de eigenaar die de kist weer opent." }
+
 
 ---
 
@@ -108,7 +110,7 @@ Private sleutel = uniek voor eigenaar → bewijs van identiteit (**authenticatie
 
 ## Digitale handtekening: concept
 
-![Het ondertekenen van een document met behulp van je private sleutel.](crypto_assets/sign.png)
+![Het ondertekenen van een document met behulp van je private sleutel.](crypto_assets/handtekening.png)
 
 ---
 
@@ -297,7 +299,7 @@ Net als RSA is ECC kwetsbaar voor **quantumcomputers**. Daarom werkt men aan **p
   * **1 bit** wijzigen → **totaal andere hash**
 * Identieke input → identieke hash
 
-![Het hash proces.](crypto_assets/hash.png){width=60%}
+![](crypto_assets/hash_avalanche.png){width=85% fig-alt="Twee zinnen die maar één teken verschillen geven via SHA-256 een totaal andere hash."}
 
 ---
 
@@ -464,7 +466,7 @@ Het gehele systeem van CA's, RA's, etc. voor het uitgeven, beheren en bewijzen v
 
 Zelfde hash genereren → vergelijken met certificaat na decryptie met **publieke sleutel** van CA
 
-![](crypto_assets/certcreatie.png)
+![](crypto_assets/cert_verificatie.png){fig-alt="Links ondertekent de CA het certificaat, rechts vergelijkt de browser de zelf berekende hash met de ontsleutelde handtekening."}
 
 ---
 
@@ -509,27 +511,21 @@ Pas sinds ~2017 biedt >50% van websites HTTPS aan.
 
 ---
 
-## Breach of Trust
-
-:::: {.columns}
-
-::: {.column width="50%"}
+## Breach of Trust {.smaller}
 
 * Ergste scenario: **private sleutel van CA** wordt gestolen
 * Aanvallers kunnen dan certificaten genereren **op naam van de CA**
 * **Alle** certificaten van die CA (en sub-CA's!) worden ongeldig
-:::
 
-::: {.column width="50%"}
-
-
-![De chain-of-trust: oh zo belangrijk bij digitale certificaten.](crypto_assets/chaintrust.png){width=60%}
-
-:::
-
-::::
+![](crypto_assets/chain_of_trust.png){.nostretch width=62% fig-align="center" fig-alt="Keten van CA's onder een root CA: wordt de private sleutel van een CA gestolen, dan worden alle certificaten eronder ongeldig."}
 
 
+
+---
+
+## Wie vertrouw je nog? {.ai-beeld}
+
+![](assets/crypto_diginotar.png){fig-alt="In een notariskantoor drukt iemand ongemerkt een nagemaakt rood zegel op een stapel certificaten."}
 
 ---
 
@@ -629,12 +625,20 @@ Alice verifieert Bobs sleutel persoonlijk → ondertekent deze met haar private 
 
 ## Web of Trust: vertrouwenspaden
 
+:::: {.columns}
+
+::: {.column width="40%"}
 * Carol kent Bob niet, maar **vertrouwt Alice**
 * Alice heeft Bobs sleutel ondertekend
 * Carol kan via dat **vertrouwenspad** Bobs sleutel aanvaarden
 * Zo ontstaat een **web** van onderlinge vertrouwensrelaties
+:::
 
-![In een Web of Trust ondertekenen gebruikers elkaars sleutels.](crypto_assets/weboftrust.png){width=60%}
+::: {.column width="60%"}
+![](crypto_assets/weboftrust.png){width=100% fig-alt="Carol vertrouwt Alice, Alice ondertekent Bobs publieke sleutel, en zo aanvaardt Carol via een vertrouwenspad ook Bobs sleutel."}
+:::
+
+::::
 
 ---
 
@@ -694,21 +698,22 @@ Meer weten? Bekijk de briljante visualisatie op [tls.ulfheim.net](HTTPS://tls.ul
 ::: {.column width="50%"}
 * Normaal HTTPS: **enkel de server** heeft een certificaat
 * Bij mTLS: **ook de client** authenticeert met een certificaat
+:::
+
+::: {.column width="50%"}
 * Typisch gebruikt in:
   * Bankomgevingen, e-government
   * Bedrijfs-VPN's
   * API-verkeer tussen backend-servers
+:::
+
+::::
+
+![](crypto_assets/mtls_simpel.png){.nostretch width=65% fig-align="center" fig-alt="Bij mTLS toont niet enkel de server maar ook de client een certificaat, beide gecontroleerd bij dezelfde CA."}
 
 ::: {.callout-tip .fragment}
 De server weet dan zeker dat de client effectief is wie die beweert te zijn.
 :::
-:::
-
-::: {.column width="50%"}
-![](crypto_assets/mtls.png){width=100%}
-:::
-
-::::
 
 ---
 
@@ -719,6 +724,12 @@ De server weet dan zeker dat de client effectief is wie die beweert te zijn.
 * Website genereert **meer trafiek** (geen tussenliggende cache)
 * Maar: de **veiligheid** weegt ruimschoots op tegen deze nadelen
 :::
+
+---
+
+## Een extra deurtje, enkel voor de goeden? {.ai-beeld}
+
+![](assets/crypto_backdoor.png){fig-alt="Achteraan een goed beveiligd huis bouwen ambtenaren een klein rood deurtje in, terwijl een inbreker vanuit de struiken toekijkt."}
 
 ---
 

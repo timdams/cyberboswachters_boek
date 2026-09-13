@@ -204,6 +204,12 @@ Gebruik nooit wachtwoorden uit bekende lijsten! Zie: [SecLists](https://github.c
 
 ---
 
+## Hoe kraak je deze kluis? {.ai-beeld}
+
+![](assets/crypto_postit.png){fig-alt="Een zware kluisdeur in een kantoor, en vooraan een rode post-it op het computerscherm."}
+
+---
+
 ## De beste "cryptanalyse" is géén cryptanalyse
 
 * Veel makkelijker dan sleutels kraken: **vraag** de sleutel gewoon aan de gebruiker
@@ -215,6 +221,12 @@ Gebruik nooit wachtwoorden uit bekende lijsten! Zie: [SecLists](https://github.c
 ::: {.callout-important .fragment}
 Cryptografie is **noodzakelijk** maar zelden **voldoende** voor veiligheid (cfr McCumber).
 :::
+
+---
+
+## Wat ligt hier te wachten? {.ai-beeld}
+
+![](assets/crypto_quantum.png){fig-alt="Een archief vol verzegelde kluizen die geduldig worden opgeslagen, terwijl achter een glazen wand een vreemde machine gebouwd wordt."}
 
 ---
 
@@ -877,7 +889,7 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 
 **Electronic Codebook (ECB)**: elk blok onafhankelijk encrypteren
 
-![](crypto_assets/ecb.png)
+![](crypto_assets/ecb_mode.png){ width=90% fig-alt="ECB: elk blok wordt apart met dezelfde sleutel geëncrypteerd, twee gelijke plaintext-blokken geven twee gelijke ciphertext-blokken." }
 
 ---
 
@@ -892,7 +904,7 @@ Het bankwezen gebruikt 3DES nog steeds voor o.a. Visa en Mastercard transacties.
 
 **Cipher Block Chaining**: output van vorig blok als extra input voor volgende blok
 
-![CBC encryptie (Bron: Wikipedia).](crypto_assets/cbc.png){ width=80% }
+![](crypto_assets/cbc_mode.png){ width=90% fig-alt="CBC: de IV of de ciphertext van het vorige blok wordt met de plaintext ge-XOR'd vóór de encryptie." }
 
 ---
 
